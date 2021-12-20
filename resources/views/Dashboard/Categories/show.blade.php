@@ -31,7 +31,8 @@
                 </a>
             </div>
             <div class="media-body">
-                <h1>{{ trans('messages.category.name') }} : {{ $category->$name }} <small class="display-block">UX/UI designer</small></h1>
+                <h1>{{ trans('messages.category.name') }} : {{ $category->$name }} <small class="display-block">UX/UI
+                        designer</small></h1>
             </div>
 
             <div class="media-right media-middle">
@@ -50,7 +51,8 @@
     <!-- Toolbar -->
     <div class="navbar navbar-default navbar-xs content-group">
         <ul class="nav navbar-nav visible-xs-block">
-            <li class="full-width text-center"><a data-toggle="collapse" data-target="#navbar-filter"><i class="icon-menu7"></i></a></li>
+            <li class="full-width text-center"><a data-toggle="collapse" data-target="#navbar-filter"><i
+                        class="icon-menu7"></i></a></li>
         </ul>
 
         <div class="navbar-collapse collapse" id="navbar-filter">
@@ -234,7 +236,8 @@
                                     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
                                         <div class="list-icons" style="padding-right: 10px;">
                                             <a href="#" data-toggle="modal" data-target="#add_options"
-                                               class="btn btn-success btn-labeled btn-labeled-left"><b><i class="icon-plus2"></i></b>{{ trans('messages.option.add') }}
+                                               class="btn btn-success btn-labeled btn-labeled-left"><b><i
+                                                        class="icon-plus2"></i></b>{{ trans('messages.option.add') }}
                                             </a>
                                         </div>
                                         <table class="table datatable-basic" id="options" style="font-size: 16px;">
@@ -242,7 +245,8 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>{{ trans('messages.name') }}</th>
-                                                <th>@lang('messages.since')</th>
+                                                <th>@lang('messages.option.option_details')</th>
+                                                {{--                                                <th>@lang('messages.since')</th>--}}
                                                 <th class="text-center">@lang('messages.form-actions')</th>
                                             </tr>
                                             </thead>
@@ -255,7 +259,18 @@
                                                     <td>
                                                         <a href={{ route('options.show', $option->id) }}> {{ isNullable($option->$name) }}</a>
                                                     </td>
-                                                    <td>{{isset($option->created_at) ?$option->created_at->diffForHumans():'---' }}</td>
+                                                    <td>
+                                                        @if( $option->option_details->count() >1)
+                                                            @foreach($option->option_details as $option_detail)
+                                                                <span
+                                                                    class="badge bg-success badge-pill">{{ $option_detail->$value }}</span>
+                                                                /
+                                                            @endforeach
+                                                        @else
+                                                            ===
+                                                        @endif
+                                                    </td>
+                                                    {{--                                                    <td>{{isset($option->created_at) ?$option->created_at->diffForHumans():'---' }}</td>--}}
                                                     <td class="text-center">
                                                         <div class="list-icons text-center">
                                                             <div class="list-icons-item dropdown text-center">
@@ -266,26 +281,34 @@
                                                                 </a>
 
                                                                 <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
-
-
                                                                     <li>
-                                                                        <a href="{{ route('options.show', $option->id) }}"> <i
-                                                                                class="icon-eye"></i>@lang('messages.show') </a>
+                                                                        <a href="#" data-toggle="modal"
+                                                                           data-target="#add_option_details"
+                                                                           class="btn btn-success btn-labeled btn-labeled-left"><b><i
+                                                                                    class="icon-plus2"></i></b>{{ trans('messages.option_detail.add') }}
+                                                                        </a>
                                                                     </li>
 
-{{--                                                                    <li>--}}
-{{--                                                                        <a href="{{ route('options.edit',$option->id) }}">--}}
-{{--                                                                            <i--}}
-{{--                                                                                class="icon-database-edit2"></i>@lang('messages.edit')--}}
-{{--                                                                        </a>--}}
-{{--                                                                    </li>--}}
-{{--                                                                    <li>--}}
-{{--                                                                        <a data-id="{{ $option->id }}"--}}
-{{--                                                                           class="delete-action"--}}
-{{--                                                                           href="{{ Url('/option/option/'.$option->id) }}">--}}
-{{--                                                                            <i class="icon-database-remove"></i>@lang('messages.delete')--}}
-{{--                                                                        </a>--}}
-{{--                                                                    </li>--}}
+                                                                    <li>
+                                                                        <a href="{{ route('options.show', $option->id) }}">
+                                                                            <i
+                                                                                class="icon-eye"></i>@lang('messages.show')
+                                                                        </a>
+                                                                    </li>
+
+                                                                    {{--                                                                    <li>--}}
+                                                                    {{--                                                                        <a href="{{ route('options.edit',$option->id) }}">--}}
+                                                                    {{--                                                                            <i--}}
+                                                                    {{--                                                                                class="icon-database-edit2"></i>@lang('messages.edit')--}}
+                                                                    {{--                                                                        </a>--}}
+                                                                    {{--                                                                    </li>--}}
+                                                                    {{--                                                                    <li>--}}
+                                                                    {{--                                                                        <a data-id="{{ $option->id }}"--}}
+                                                                    {{--                                                                           class="delete-action"--}}
+                                                                    {{--                                                                           href="{{ Url('/option/option/'.$option->id) }}">--}}
+                                                                    {{--                                                                            <i class="icon-database-remove"></i>@lang('messages.delete')--}}
+                                                                    {{--                                                                        </a>--}}
+                                                                    {{--                                                                    </li>--}}
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -312,8 +335,8 @@
             </div>
         </div>
 
-   @include('Dashboard.Categories.option_modal')
-   @include('Dashboard.Categories.option_details_modal')
+        @include('Dashboard.Categories.option_modal')
+        @include('Dashboard.Categories.option_details_modal')
     </div>
 
 @stop

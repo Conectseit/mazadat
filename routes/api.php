@@ -38,6 +38,7 @@ Route::group(['namespace' => 'Api'], function () {
 
     //=========== settings ============
     Route::get('settings/{key?}', [SettingController::class, 'show']);
+    Route::get('our_officers', [SettingController::class, 'our_officers']);
 
     //=========== category ===========
     Route::get('all_categories', [CategoryController::class, 'index']);
@@ -46,6 +47,7 @@ Route::group(['namespace' => 'Api'], function () {
     //=========== filter category ===========
     Route::post('main_filter_category/{id}/auctions', [FilterController::class,'filter']);
     Route::post('filter_category/{id}/auctions', [FilterController::class,'filter_category']);
+    Route::post('get_options_of_category/{id}', [FilterController::class,'get_options_of_category']);
 
     //=========== auction ============
     Route::post('auction/{id}', [AuctionController::class, 'auction']);
@@ -60,6 +62,8 @@ Route::group(['namespace' => 'Api'], function () {
 
         Route::get('update_preferred_language', [UserController::class, 'updatePreferredLanguage']);
         Route::get('get_preferred_language', [UserController::class, 'getPreferredLanguage']);
+
+        Route::post('add_traffic_file_number', [UserController::class, 'add_traffic_file_number']);
 
 
         // =========== auctions ============

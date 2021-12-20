@@ -31,5 +31,13 @@ class SettingController extends PARENT_API
         }
         return responseJson('400', trans('api.Page_not_found'), []);//NOT_FOUND
     }
+    public function our_officers()
+    {
+        if ($our_officers = Setting::all())
+        {
+            return responseJson('200', trans('api.request_done_successfully'), $our_officers);  //OK don-successfully
+        }
+        return responseJson('400', trans('api.Page_not_found'), []);//NOT_FOUND
+    }
 
 }
