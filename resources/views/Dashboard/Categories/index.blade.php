@@ -71,6 +71,10 @@
 
                                     <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
                                         <li>
+                                            <a href="{{ route('categories.show', $category->id) }}"> <i
+                                                    class="icon-eye"></i>@lang('messages.show') </a>
+                                        </li>
+                                        <li>
                                             <a href="{{ route('categories.edit',$category->id) }}"> <i
                                                     class="icon-database-edit2"></i>@lang('messages.edit') </a>
                                         </li>

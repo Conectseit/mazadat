@@ -114,6 +114,13 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
+    public function watchedauctions()
+    {
+        return $this->hasMany(WatchedAuction::class, 'user_id');
+    }
+
+
+
 
 
 //    public function setImageAttribute($image)

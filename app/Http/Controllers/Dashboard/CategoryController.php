@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\CategoryRequest;
+use App\Models\Auction;
 use App\Models\Category;
+use App\Models\CategoryOption;
+use App\Models\Option;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -43,8 +46,17 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        //
+        if (!Category::find($id)) {
+            return redirect()->route('categories.index')->with('class', 'danger')->with('message', trans('dash.messages.try_2_access_not_found_content'));
+        }
+        $data['category'] = Category::find($id);
+        $data['categories'] = Category::all();
+        $data['category_auctions'] = Auction::where('category_id', $id)->get();
+        $data['category_options'] = Option::where('category_id', $id)->get();
+
+        return view('Dashboard.Categories.show', $data);
     }
+
 
     public function edit($id)
     {

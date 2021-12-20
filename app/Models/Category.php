@@ -30,5 +30,9 @@ class Category extends Model
     {
         return \Str::limit($this->attributes['description'], 10);
     }
+    public function options()
+    {
+        return $this->hasMany(Option::class);
+    }
 
 }

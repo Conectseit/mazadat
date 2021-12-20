@@ -3,6 +3,8 @@
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\NationalityController;
+use App\Http\Controllers\Dashboard\OptionController;
+use App\Http\Controllers\Dashboard\OptionDetailController;
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\AuctionController;
 use App\Http\Controllers\Dashboard\AuthController;
@@ -56,6 +58,8 @@ Route::group(
                     'sellers'    => SellerController::class,
                     'buyers'     => BuyerController::class,
                     'categories' => CategoryController::class,
+                    'options'    => OptionController::class,
+                    'option_details' => OptionDetailController::class,
                     'cities'     => CityController::class,
                     'countries'  => CountryController::class,
                     'nationalities' => NationalityController::class,
@@ -70,6 +74,8 @@ Route::group(
                 Route::post('/ajax-delete-seller', [SellerController::class, 'destroy'])->name('ajax-delete-seller');
                 Route::post('/ajax-delete-buyer', [BuyerController::class, 'destroy'])->name('ajax-delete-buyer');
                 Route::post('/ajax-delete-category', [CategoryController::class, 'destroy'])->name('ajax-delete-category');
+                Route::post('/ajax-delete-option', [OptionController::class, 'destroy'])->name('ajax-delete-option');
+                Route::post('/ajax-delete-option_detail', [OptionDetailController::class, 'destroy'])->name('ajax-delete-option_detail');
                 Route::post('/ajax-delete-nationality', [CityController::class, 'destroy'])->name('ajax-delete-nationality');
                 Route::post('/ajax-delete-country', [CityController::class, 'destroy'])->name('ajax-delete-country');
                 Route::post('/ajax-delete-city', [CityController::class, 'destroy'])->name('ajax-delete-city');

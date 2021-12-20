@@ -19,13 +19,16 @@ class Controller extends BaseController
     {
         if (LaravelLocalization::getCurrentLocale() == 'ar') {
             $name = 'name_ar';
+            $value = 'value_ar';
             $description = 'description_ar';
 
         } elseif (LaravelLocalization::getCurrentLocale() == 'en') {
             $name = 'name_en';
+            $value = 'value_en';
             $description = 'description _en';
         }
         View::share('name', $name);
+        View::share('value', $value);
         View::share('description', $description);
 
     }

@@ -20,12 +20,11 @@ class CategoryController extends PARENT_API
 
     public function categoryAuctions( Request $request ,$id)
     {
-
         $query = Auction::query();
         if ($category = Category::where('id', $id)->find($id)) {
 
-            if ($request->has('search_by_name')) {
-                $query->where('name_ar', 'like', '%' . $request['search_by_name'] . '%');
+            if ($request->has('search_by_auction_name')) {
+                $query->where('name_ar', 'like', '%' . $request['search_by_auction_name'] . '%');
             }
             $category_auctions =$query->where('category_id', $id)->get();
 //            $category_auctions = Auction::where('category_id', $id)->get();

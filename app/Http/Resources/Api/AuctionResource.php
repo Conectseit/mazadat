@@ -14,17 +14,17 @@ class AuctionResource extends JsonResource
      */
     public function toArray($request)
     {
-//        $name = 'name_' . app()->getLocale();
-//        $description = 'description_' . app()->getLocale();
+        $name = 'name_' . app()->getLocale();
+        $description = 'description_' . app()->getLocale();
         return [
-            'name_ar'                 => $this->name_ar,
-            'description_ar'                 => $this->description_ar,
-            'image'                   => $this->first_image_path,
-            'count_of_buyer'          => $this->count_of_buyer,
+            'name'                        => $this->$name,
+            'description'                 => $this->$description,
+            'image'                       => $this->first_image_path,
+            'count_of_buyer'              => $this->count_of_buyer,
             'start_auction_price'         => $this->start_auction_price,
             'value_of_increment'          => $this->value_of_increment,
             'remaining_time'              => $this->remaining_time,
-            'images'                   =>  AuctionImagesResource ::collection ($this->auctionimages),
+            'images'                      =>  AuctionImagesResource ::collection ($this->auctionimages),
         ];
     }
 }

@@ -31,6 +31,8 @@ class SellerRequest extends FormRequest
                 }
             case 'POST': {
                     return [
+                        'is_company'       => 'required|in:person,company',
+                        'commercial_register_image'        => 'required_if:is_company,company|image',
                         'full_name'   => 'required',
                         'user_name'   => 'required',
                         'email'       => 'required|unique:users,email',
@@ -40,6 +42,7 @@ class SellerRequest extends FormRequest
                         'is_appear_name' => 'required',
                         'city_id'     => 'required',
                         'gender'      => 'required',
+                        'P_O_Box'      => 'required',
                     ];
                 }
             case 'PUT':

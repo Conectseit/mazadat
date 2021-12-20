@@ -69,6 +69,11 @@ class Auction extends Model
         return $this->hasMany(AuctionBuyer::class,'auction_id');
     }
 
+    public function watchedauctions()
+    {
+        return $this->hasMany(WatchedAuction::class, 'auction_id');
+    }
+
 
     public function getDescriptionAttribute()
     {

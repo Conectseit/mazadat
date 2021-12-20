@@ -15,7 +15,7 @@ class CreateOptionDetailsTable extends Migration
     {
         Schema::create('option_details', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('option_id')->unsigned()->after('gender')->nullable();
+            $table->bigInteger('option_id')->unsigned()->nullable();
             $table->foreign('option_id')->references('id')->on('options')->onDelete('cascade')->onUpdate('cascade');
             $table->string('value_ar')->nullable();
             $table->string('value_en')->nullable();

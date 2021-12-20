@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Api\Auctions\AuctionController;
+use App\Http\Controllers\Api\Auctions\FilterController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\SettingController;
+use App\Http\Controllers\Api\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -41,6 +43,10 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('all_categories', [CategoryController::class, 'index']);
     Route::post('category/{id}/auctions', [CategoryController::class, 'categoryAuctions']);
 
+    //=========== filter category ===========
+    Route::post('main_filter_category/{id}/auctions', [FilterController::class,'filter']);
+    Route::post('filter_category/{id}/auctions', [FilterController::class,'filter_category']);
+
     //=========== auction ============
     Route::post('auction/{id}', [AuctionController::class, 'auction']);
 
@@ -52,10 +58,17 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('add_additional_contact', [AuthController::class, 'add_additional_contact']);
         Route::post('change_password', [AuthController::class, 'changepassword']);
 
+        Route::get('update_preferred_language', [UserController::class, 'updatePreferredLanguage']);
+        Route::get('get_preferred_language', [UserController::class, 'getPreferredLanguage']);
 
+
+        // =========== auctions ============
         Route::post('watched_auctions', [AuctionController::class, 'watched_auctions']);
         Route::post('make_auction/{id}/watch', [AuctionController::class, 'watch_auction']);
-//        Route::post('update_my_profile_image', [AuthController::class, 'updateProfileImage']);
+
+        // =========== bids ============
+        Route::get('my_bids', [AuctionController::class, 'my_bids']);
+        Route::post('make_bid/{id}', [AuctionController::class, 'make_bid']);
 
         //=========== notifications ============
         Route::get('notifications', [NotificationController::class, 'index']);

@@ -148,9 +148,7 @@
 
                                                         <div class="media-right">
                                                             <ul class="icons-list">
-                                                                <li><a href="#" data-toggle="modal"
-                                                                       data-target="#info_800"><i
-                                                                            class="icon-three-bars"></i></a></li>
+                                                                <li><a href="#" data-toggle="modal" data-target="#info_800"><i class="icon-three-bars"></i></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>

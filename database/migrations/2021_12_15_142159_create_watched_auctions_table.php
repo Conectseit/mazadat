@@ -15,8 +15,8 @@ class CreateWatchedAuctionsTable extends Migration
     {
         Schema::create('watched_auctions', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id_id')->unsigned()->nullable();
-            $table->foreign('user_id_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('auction_id')->unsigned()->nullable();
             $table->foreign('auction_id')->references('id')->on('auctions')->onDelete('cascade')->onUpdate('cascade');
             $table->enum('accept_auction_terms', ['yes','no'])->default('no');

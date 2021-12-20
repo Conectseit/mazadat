@@ -15,6 +15,8 @@ class CreateOptionsTable extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('category_id')->unsigned()->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name_ar')->nullable();
             $table->string('name_en')->nullable();
             $table->timestamps();

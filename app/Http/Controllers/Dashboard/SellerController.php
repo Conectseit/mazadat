@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\SellerRequest;
 use App\Models\Auction;
 use App\Models\City;
+use App\Models\Token;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class SellerController extends Controller
 {
@@ -29,19 +31,45 @@ class SellerController extends Controller
     {
         DB::beginTransaction();
         try {
-//            $seller = User::create($request->all() + ['type' => 'seller','is_accepted','1'])->except('confirm_password');
             $seller = new User();
             $seller->type = 'seller';
+            $seller->is_company = $request->is_company;
             $seller->is_accepted = 1;
+            if ($request->image) {
+                $seller->image =  uploaded($request->image,'user');
+            }
+            if ($request->commercial_register_image) {
+                $seller->commercial_register_image =  uploaded($request->commercial_register_image,'user');
+            }
+            if ($request->latitude) {
+                $seller->latitude = $request->latitude;
+            }
+            if ($request->longitude) {
+                $seller->longitude = $request->longitude;
+            }
+
             $seller->full_name = $request->full_name;
             $seller->user_name = $request->user_name;
             $seller->email = $request->email;
             $seller->mobile = $request->mobile;
+            $seller->P_O_Box = $request->P_O_Box;
             $seller->password = $request->password;
             $seller->gender = $request->gender;
             $seller->is_appear_name = $request->is_appear_name;
             $seller->city_id = $request->city_id;
             $seller->save();
+
+            if ($seller) {
+                $jwt_token = JWTAuth::fromUser($seller);
+                Token::create(['jwt' => $jwt_token, 'user_id' => $seller->id,]);
+            }
+//            $token = new Token();
+//            $token->user_id = $seller->id;
+//            $token->jwt='';
+//            $token->save();
+
+
+
 
             DB::commit();
         } catch (Exception $e) {
@@ -52,6 +80,7 @@ class SellerController extends Controller
         return redirect()->route('sellers.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
 
     }
+
 
 
     public function edit($id)
@@ -95,5 +124,65 @@ class SellerController extends Controller
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
         }
     }
+
+
+
+
+
+
+
+
+//    public function store(SellerRequest $request)
+//    {
+//        DB::beginTransaction();
+//        try {
+////            $seller = User::create($request->all() + ['type' => 'seller','is_accepted','1'])->except('confirm_password');
+//            $request_data = $request->except(['image','commercial_register_image','other']);
+//
+////            $seller = new User();
+////            $seller->type = 'seller';
+////            $seller->is_company = $request->is_company;
+////            $seller->is_accepted = 1;
+//            if ($request->image) {
+//                $request_data['image'] = $request_data['image'] =  uploaded($request->image,'user');
+//            }
+//            if ($request->commercial_register_image) {
+//                $request_data['commercial_register_image'] = $request_data['commercial_register_image'] =  uploaded($request->commercial_register_image,'user');
+//            }
+//            if ($request->latitude) {
+//                $request_data['latitude'] = $request_data['latitude'] =  uploaded($request->latitude,'user');
+//            } if ($request->longitude) {
+//                $request_data['longitude'] = $request_data['longitude'] =  uploaded($request->longitude,'user');
+//            }
+//
+//
+//
+//            $user = User::create($request_data + ['type' => 'seller','is_accepted',1]);
+//            if ($user) {
+//                $jwt_token = JWTAuth::fromUser($user);
+//                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
+//            }
+//
+//
+////            $seller->full_name = $request->full_name;
+////            $seller->user_name = $request->user_name;
+////            $seller->email = $request->email;
+////            $seller->mobile = $request->mobile;
+////            $seller->password = $request->password;
+////            $seller->gender = $request->gender;
+////            $seller->is_appear_name = $request->is_appear_name;
+////            $seller->city_id = $request->city_id;
+////            $seller->save();
+//
+//            DB::commit();
+//        } catch (Exception $e) {
+//            DB::rollback();
+//            return redirect()->route('sellers.create')
+//                ->with('message', trans('dash.messages.something_went_wrong_please_try_again'))->with('class', 'warning')->withInput($request->validated());
+//        }
+//        return redirect()->route('sellers.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
+//
+//    }
+
 
 }
