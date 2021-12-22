@@ -15,6 +15,11 @@ class Option extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function auction_data()
+    {
+        return $this->belongsTo(AuctionData::class,'option_id');
+    }
+
 
     public function option_details()
     {

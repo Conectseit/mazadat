@@ -80,4 +80,5 @@ class Auction extends Model
         return \Str::limit($this->attributes['description'], 10);
     }
 
+
 }

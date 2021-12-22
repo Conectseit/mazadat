@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\AuctionRequest;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
+use App\Models\AuctionData;
 use App\Models\AuctionImage;
 use App\Models\Category;
+use App\Models\Option;
+use App\Models\OptionDetail;
 use App\Models\Setting;
 use App\Models\User;
 use Carbon\Carbon;
@@ -29,7 +32,9 @@ class AuctionController extends Controller
     public function create()
     {
         $data['latest_auctions'] = Auction::orderBy('id', 'desc')->take(5)->get();
-        $data['categories'] = Category::all();
+        $data['categories'] = Category::with('options')->get();
+        $data['options'] = Option::all();
+        $data['option_details'] = OptionDetail::all();
         $data['users'] = User::where('type', 'seller')->get();
         return view('Dashboard.Auctions.create', $data);
     }
@@ -67,6 +72,11 @@ class AuctionController extends Controller
                 $request->is_accepted = 1;
                 $auction = Auction::create($request->except(['images']) + ['is_accepted' => '1']);
 
+            } else {
+
+                return back()->with('error', trans(  trans('messages.the end date should between') . ' '.$min_allowed_time . ' & ' . $max_allowed_time));
+            }
+
                 //======= upload auction images =======
                 $data = [];
                 if ($request->hasfile('images')) {
@@ -75,14 +85,50 @@ class AuctionController extends Controller
                     }
                 }
                 $auction_images = DB::table('auction_images')->insert($data);
+
+
+                $auction_options = AuctionData::Create([
+                    'auction_id' => $auction->id,
+                    'option_id' => $request->option_id,
+                    'option_details_id' => $request->option_details_id,
+                ]);
                 return redirect()->route('auctions.index')->with('message', trans('messages.added_successfully'));
                 //============
-            } else {
 
-                return back()->with('error', trans(  trans('messages.the end date should between') . ' '.$min_allowed_time . ' & ' . $max_allowed_time));
-            }
         }
     }
+
+
+
+
+
+
+
+
+    public function get_options_by_category_id(Request $request)
+    {
+        $category = Category::find($request->category_id);
+
+        if(!$category) return response()->json(['status' => false], 500);
+
+        return response()->json(['options' => $category->options, 'status' => true], 200);
+    }
+
+
+
+
+    public function get_option_details_by_option_id(Request $request)
+    {
+        $option = Option::find($request->option_id);
+
+        if(!$option) return response()->json(['status' => false], 500);
+
+        return response()->json(['option_details' => $option->option_details, 'status' => true], 200);
+    }
+
+
+
+
 
 
 

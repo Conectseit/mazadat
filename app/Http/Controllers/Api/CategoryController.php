@@ -15,7 +15,7 @@ class CategoryController extends PARENT_API
     public function index()
     {
         $categories = Category::all();
-        return responseJson('200', trans('api.all_categories'), CategoryResource::collection($categories));  //OK don-successfully
+        return responseJson('true', trans('api.all_categories'), CategoryResource::collection($categories));  //OK don-successfully
     }
 
     public function categoryAuctions( Request $request ,$id)
@@ -29,9 +29,8 @@ class CategoryController extends PARENT_API
             }
             $category_auctions =$query->where('category_id', $id)->get();
 //            $category_auctions = Auction::where('category_id', $id)->get();
-
-            return responseJson('200', trans('api.all_category_auctions'), CategoryAuctionsResource::collection($category_auctions));  //OK don-successfully
+            return responseJson('true', trans('api.all_category_auctions'), CategoryAuctionsResource::collection($category_auctions));  //OK don-successfully
         }
-        return responseJson('400', trans('api.not_found_category'), []);  //
+        return responseJson('false', trans('api.not_found_category'), []);  //
     }
 }

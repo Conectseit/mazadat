@@ -37,15 +37,17 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('questions', [QuestionController::class, 'index']);
 
     //=========== settings ============
-    Route::get('settings/{key?}', [SettingController::class, 'show']);
+//    Route::get('settings/{key?}', [SettingController::class, 'show']);
     Route::get('our_officers', [SettingController::class, 'our_officers']);
+    Route::get('about_app', [SettingController::class, 'about_app']);
+    Route::get('conditions_terms', [SettingController::class, 'conditions_terms']);
 
     //=========== category ===========
     Route::get('all_categories', [CategoryController::class, 'index']);
     Route::post('category/{id}/auctions', [CategoryController::class, 'categoryAuctions']);
 
     //=========== filter category ===========
-    Route::post('main_filter_category/{id}/auctions', [FilterController::class,'filter']);
+    Route::post('main_filter_category/{id}/auctions', [FilterController::class,'main_filter']);
     Route::post('filter_category/{id}/auctions', [FilterController::class,'filter_category']);
     Route::post('get_options_of_category/{id}', [FilterController::class,'get_options_of_category']);
 
@@ -76,7 +78,6 @@ Route::group(['namespace' => 'Api'], function () {
 
         //=========== notifications ============
         Route::get('notifications', [NotificationController::class, 'index']);
-
 
     });
 });

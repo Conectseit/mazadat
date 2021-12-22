@@ -22,9 +22,11 @@ class SettingsTableSeeder extends Seeder
             ['key' => 'app_description_ar', 'value' => 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء', 'created_at' => now(), ],
             ['key' => 'app_description_en', 'value' => 'موقع وتطبيق مزاداdsssvfsvgdfghت', 'created_at' => now(), ],
 
-            ['key' => 'app_lang', 'value' => 'ar', 'created_at' => now(), ],
+//            ['key' => 'app_lang', 'value' => 'ar', 'created_at' => now(), ],
             ['key' => 'mobile', 'value' => '966547855230', 'created_at' => now(), ],
-            ['key' => 'email', 'value' => 'info@mazadat.com', 'created_at' => now(), ],
+            ['key' => 'email', 'value' => 'mazadat@hr.com.uae', 'created_at' => now(), ],
+            ['key' => 'fax', 'value' => '9661111111', 'created_at' => now(), ],
+            ['key' => 'address', 'value' => 'جدة', 'created_at' => now(), ],
 
             //social
             ['key' => 'facebook_url', 'value' => 'https://www.facebook.com/', 'created_at' => now(), ],
@@ -40,21 +42,22 @@ class SettingsTableSeeder extends Seeder
             ['key' => 'max_time_unit', 'value' => 'day', 'created_at' => now(), ],
 
 
-
-            ['key' => 'sms_type', 'value' => '', 'created_at' => now(), ],
-            ['key' => 'sms_username', 'value' => '', 'created_at' => now(), ],
-            ['key' => 'sms_username', 'value' => '', 'created_at' => now(), ],
-            ['key' => 'sms_password', 'value' => '', 'created_at' => now(), ],
-            ['key' => 'sms_sender', 'value' => '', 'created_at' => now(), ],
-
-            ['key' => 'auto_active_client', 'value' => 'false', 'created_at' => now(), ], // علشان المستخدمين كلهم يتعملهم actvie على طول
-            ['key' => 'distance_search_for_stores', 'value' => '100', 'created_at' => now(), ],
-            ['key' => 'google_map_key', 'value' => 'AIzaSyDdCP49XcVxRLuY-4CYtxHXxnqucDvQLE8', 'created_at' => now(), ],
             // general
-            ['key' => 'about_ar', 'value' => 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء.', 'created_at' => now(), ],
-            ['key' => 'about_en', 'value' => 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable.', 'created_at' => now(), ],
+            ['key' => 'about_app_ar', 'value' => 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء.', 'created_at' => now(), ],
+            ['key' => 'about_app_en', 'value' => 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable.', 'created_at' => now(), ],
             ['key' => 'conditions_terms_ar', 'value' => 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء.', 'created_at' => now(), ],
             ['key' => 'conditions_terms_en', 'value' => 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable.', 'created_at' => now(), ],
+
+
+            //['key' => 'sms_type', 'value' => '', 'created_at' => now(), ],
+//            ['key' => 'sms_username', 'value' => '', 'created_at' => now(), ],
+//            ['key' => 'sms_username', 'value' => '', 'created_at' => now(), ],
+//            ['key' => 'sms_password', 'value' => '', 'created_at' => now(), ],
+//            ['key' => 'sms_sender', 'value' => '', 'created_at' => now(), ],
+//            ['key' => 'google_map_key', 'value' => 'AIzaSyDdCP49XcVxRLuY-4CYtxHXxnqucDvQLE8', 'created_at' => now(), ],
+
+            ['key' => 'auto_active_client', 'value' => 'false', 'created_at' => now(), ], // علشان المستخدمين كلهم يتعملهم active
+//            ['key' => 'distance_search_for_stores', 'value' => '100', 'created_at' => now(), ],
         ]);
 
     }

@@ -51,18 +51,7 @@
 
                     <div class="panel-body">
                         <div class="box-body">
-                            <div class="form-group">
-                                <label
-                                    class="col-lg-3 control-label display-block"> {{ trans('messages.auction.category_name') }} </label>
-                                <div class="col-lg-9">
-                                    <select name="category_id" class="select-border-color border-warning form-control">
-                                        <optgroup label="{{ trans('messages.auction.category_name') }}">
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}"> {{ $category->$name }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+
                             <div class="form-group">
                                 <label
                                     class="col-lg-3 control-label display-block"> {{ trans('messages.auction.seller_full_name') }} </label>
@@ -95,22 +84,93 @@
                                 <input type="text" class="form-control" value="" name="description_en"
                                        placeholder="@lang('messages.description_en') ">
                             </div>
+
+
+                            <div class="form-group">
+                                <div class="col-lg-9">
+                                    <select name="option_id" class="select-border-color border-warning">
+
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label
+                                    class="col-lg-3 control-label display-block"> {{ trans('messages.auction.category_name') }} </label>
+                                <div class="col-lg-9">
+                                    <select id="category" name="category_id" class="select-border-color border-warning form-control">
+                                        <optgroup label="{{ trans('messages.auction.category_name') }}">
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}"> {{ $category->$name }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+{{--                            <div class="form-group">--}}
+{{--                                <label--}}
+{{--                                    class="col-lg-3 control-label display-block"> {{ trans('messages.option.options') }} </label>--}}
+{{--                                <div class="col-lg-9">--}}
+{{--                                    <select name="option_id" id="options"--}}
+{{--                                            class="select-border-color border-warning form-control">--}}
+{{--                                        <optgroup label="{{ trans('messages.option.options') }}">--}}
+{{--                                            @foreach($options as $option)--}}
+{{--                                                <option value="{{ $option->id }}"> {{ $option->$name }} </option>--}}
+{{--                                            @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+
+
+{{--                            <div class="form-group">--}}
+{{--                                <label--}}
+{{--                                    class="col-lg-3 control-label display-block"> {{ trans('messages.option.options') }} </label>--}}
+{{--                                <div class="col-lg-9">--}}
+{{--                                    <select name="option_details_id" id="option_details"--}}
+{{--                                            class="select-border-color border-warning form-control">--}}
+{{--                                        <optgroup label="{{ trans('messages.option.option_details') }}">--}}
+{{--                                            @foreach($option_details as $option_detail)--}}
+{{--                                                <option value="{{ $option_detail->id }}"> {{ $option_detail->$value }} </option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.option.option_details') }} </label>
+                                <div class="col-lg-9">
+                                    <select name="option_details_id"  class="select-border-color border-warning form-control">
+                                        <optgroup label="{{ trans('messages.option.options') }}">
+                                            @forelse($options as $option)
+                                                <optgroup label="{{ $option->$name }}">
+                                                    @foreach ($option->option_details as $option_details)
+                                                        <option
+                                                            value="{{ $option_details->id }}"> {{ $option_details->$value }} </option>
+                                                    @endforeach
+                                                </optgroup>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </div>
+                            </div>
+
+
                             <div class="form-group">
                                 <label class="display-block">{{ trans('messages.auction.start_date') }}:</label>
-
                                 <input type="datetime-local" class="form-control" value="" name="start_date"
                                        placeholder="@lang('messages.auction.start_date') ">
                             </div>
                             <div class="form-group">
                                 <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>
-
                                 <input type="datetime-local" class="form-control" value="" name="end_date"
                                        placeholder="@lang('messages.auction.end_date') ">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="value_of_increment"
-                                       placeholder="@lang('messages.auction.value_of_increment') ">
+                                <input type="text" class="form-control" value="" name="value_of_increment" placeholder="@lang('messages.auction.value_of_increment') ">
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" value="" name="start_auction_price"
@@ -165,8 +225,8 @@
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
                         <input type="submit" class="btn btn-primary"
                                value=" {{ trans('messages.add_and_forward_to_list') }} "/>
-{{--                        <input type="submit" class="btn btn-success" name="back"--}}
-{{--                               value=" {{ trans('messages.add_and_forward_to_list') }} "/>--}}
+                        {{--                        <input type="submit" class="btn btn-success" name="back"--}}
+                        {{--                               value=" {{ trans('messages.add_and_forward_to_list') }} "/>--}}
                     </div>
 
                 </div>
@@ -217,4 +277,8 @@
 @stop
 
 
+@section('scripts')
 
+    @include('Dashboard.layouts.parts.ajax_get_options')
+
+@endsection

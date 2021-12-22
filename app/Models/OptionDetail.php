@@ -14,4 +14,8 @@ class OptionDetail extends Model
     {
         return $this->belongsTo(Option::class);
     }
+    public function auction_data()
+    {
+        return $this->belongsTo(AuctionData::class,'option_details_id');
+    }
 }

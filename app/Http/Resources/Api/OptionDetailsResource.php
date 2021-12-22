@@ -5,7 +5,7 @@ namespace App\Http\Resources\Api;
 use App\Models\OptionDetail;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoryOptionsResource extends JsonResource
+class OptionDetailsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,12 +15,10 @@ class CategoryOptionsResource extends JsonResource
      */
     public function toArray($request)
     {
-        $name = 'name_' . app()->getLocale();
+        $value = 'value_' . app()->getLocale();
         return [
             'id'       => $this->id,
-            'name'     => $this->$name,
-            'option_details'     => OptionDetailsResource::collection($this->option_details),
-
+            'value'     => $this->$value,
         ];
     }
 }

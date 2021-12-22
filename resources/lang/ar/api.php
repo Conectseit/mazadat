@@ -10,13 +10,19 @@ return [
     'sorry_invalid_email_or_password' 	=> 'عفوا بيانات الدخول غير صحيحة',
     'wrong_old_password' 	=> 'عفوا كلمة المرور القديمة غير صحيحة',
     'user_profile'         	=> 'حسابي',
+    'all_questions'         	=> 'الاسئلة الشائعة',
+    'all_notifications'         	=> ' الاشعارات',
     'please_wait_your_account_not_activated_yet'         	=> 'من فضلك انتظر حتي يتم تفعيل حسابك',
+
+
     'all_category_auctions'         	=> 'كل مزادات القسم',
     'not_found_category'         	=> ' هذاالقسم غير موجود',
     'not_found_auction'         	=> ' هذاالمزاد غير موجود',
-    'there_is_no_auctions_on_this_category'         	=> ' لا يوجد مزادات في هذا القسم',
+    'there_is_no_auctions_on_this_category'         	=> ' لا يوجد مزادات حالية في هذا القسم',
     'auction_details'         	=> ' تفاصيل المزاد',
     'not_found_auctions'         	=> ' لا يوجد مزادات',
+    'all_categories'         	=> 'كل الأقسام',
+    'category_options'         	=> 'تصنيفات القسم',
 
 
 
