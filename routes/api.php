@@ -32,6 +32,9 @@ Route::group(['namespace' => 'Api'], function () {
     Route::any('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout'])->middleware('jwt.auth');
 
+    Route::any('reset_password_page', [UserController::class, 'ResetPassword']);
+    Route::any('reset_password', [UserController::class, 'DoResetPassword']);
+
 
     //=========== questions ============
     Route::get('questions', [QuestionController::class, 'index']);
@@ -62,10 +65,15 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('add_additional_contact', [AuthController::class, 'add_additional_contact']);
         Route::post('change_password', [AuthController::class, 'changepassword']);
 
+
         Route::get('update_preferred_language', [UserController::class, 'updatePreferredLanguage']);
         Route::get('get_preferred_language', [UserController::class, 'getPreferredLanguage']);
 
         Route::post('add_traffic_file_number', [UserController::class, 'add_traffic_file_number']);
+        Route::post('upload_passport', [UserController::class, 'upload_passport']);
+        Route::post('add_document', [UserController::class, 'add_document']);
+        Route::post('choose_available_limit', [UserController::class, 'choose_available_limit']);
+        Route::any('my_wallet', [UserController::class, 'my_wallet']);
 
 
         // =========== auctions ============

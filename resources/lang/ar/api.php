@@ -5,14 +5,18 @@ return [
     'request_done_successfully' 	=> 'تم الطلب بنجاح',
     'request-deleted-successfully' 	=> 'تم الحذف بنجاح',
     'updated_successfully' 	=> 'تم التحديث بنجاح',
+    'added_successfully' 	=> 'تم الاضافة بنجاح',
     'register_user_successfully' 	=> 'تم تسجيل مستخدم بنجاح',
     'login_successfully' 	        => 'تم تسجيل الدخول بنجاح',
     'sorry_invalid_email_or_password' 	=> 'عفوا بيانات الدخول غير صحيحة',
     'wrong_old_password' 	=> 'عفوا كلمة المرور القديمة غير صحيحة',
     'user_profile'         	=> 'حسابي',
+    'please_wait_your_account_not_activated_yet'         	=> 'من فضلك انتظر حتي يتم تفعيل حسابك',
+
     'all_questions'         	=> 'الاسئلة الشائعة',
     'all_notifications'         	=> ' الاشعارات',
-    'please_wait_your_account_not_activated_yet'         	=> 'من فضلك انتظر حتي يتم تفعيل حسابك',
+
+    'passport_expiry_date'         	=> ' تاريخ انتهاء',
 
 
     'all_category_auctions'         	=> 'كل مزادات القسم',

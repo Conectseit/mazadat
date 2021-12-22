@@ -4,38 +4,112 @@ namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PARENT_API;
+use App\Http\Requests\Api\DocumentRequest;
 use App\Http\Requests\Api\TrafficFileNumberRequest;
+use App\Http\Requests\Api\UploadPassportRequest;
+use App\Models\Document;
 use App\Models\TrafficFileNumber;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends PARENT_API
 {
-    public function updatePreferredLanguage(Request $request)
+
+    public function upload_passport(UploadPassportRequest $request)
     {
-        $user =  auth()->user();
-//        dd($user->preferred_language);
-        if( $user->preferred_language  == 'arabic')
-        {
-            $user->update(['preferred_language' => 'english']);
-        }else{
-            $user->update(['preferred_language' => 'arabic']);
+        $request_data = $request->except(['passport_image']);
+        if ($request->passport_image) {
+            $request_data['passport_image'] = $request_data['passport_image'] = uploaded($request->passport_image, 'user');
         }
-        return responseJson('true', trans('api.updated_successfully'),[]); //ACCEPTED
+        $user = auth()->user();
+        if (!$user) {
+            return responseJson('false', trans('api.The_user_not_found'), []); //BAD_REQUEST
+        }
+        $user->update($request_data);
+        return responseJson('true', trans('api.uploaded_successfully'), []); //ACCEPTED
     }
 
-    public function getPreferredLanguage(Request $request)
+    public function add_document(DocumentRequest $request)
     {
-        $preferred_language = User::select('preferred_language')->where('id',  auth()->user()->id)->first();
-//        $preferred_language =  auth()->user()->select('preferred_language')->first();
-        return responseJson('true', trans('api.request_done_successfully'),$preferred_language); //ACCEPTED
+        $request_data = $request->except(['front_side_image', 'back_side_image']);
+        if ($request->front_side_image) {
+            $request_data['front_side_image'] = $request_data['front_side_image'] = uploaded($request->front_side_image, 'user');
+        }
+        if ($request->back_side_image) {
+            $request_data['back_side_image'] = $request_data['back_side_image'] = uploaded($request->back_side_image, 'user');
+        }
+        $user = auth()->user();
+        if (!$user) {
+            return responseJson('false', trans('api.The_user_not_found'), []); //BAD_REQUEST
+        }
+        $document = Document::create($request_data + ['user_id' => $user->id]);
+        return responseJson('true', trans('api.added_successfully', [])); //ACCEPTED
     }
 
     public function add_traffic_file_number(TrafficFileNumberRequest $request)
     {
-        $traffic_file_number = TrafficFileNumber::create($request->all()+['user_id'=> auth()->user()->id]);
-        return responseJson('true', trans('api.added_successfully'),$traffic_file_number); //ACCEPTED
+        $user = auth()->user();
+        if (!$user) {
+            return responseJson('false', trans('api.The_user_not_found'), []); //BAD_REQUEST
+        }
+        $traffic_file_number = TrafficFileNumber::create($request->all() + ['user_id' => $user->id]);
+        return responseJson('true', trans('api.added_successfully'), $traffic_file_number); //ACCEPTED
     }
+
+    public function choose_available_limit(Request $request)
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return responseJson('false', trans('api.The_user_not_found'), []); //BAD_REQUEST
+        }
+
+        $available_limit = $user->select('available_limit')->first();
+        if ($request->decrement) {
+//                    $user->decrement('available_limit',10); // decrease 10 count
+            $available_limit = $user->available_limit - 1;
+            $user->update(['available_limit' => $available_limit]);
+        }
+        if ($request->increment) {
+            $available_limit = $user->available_limit + 1;
+            $user->update(['available_limit' => $available_limit]);
+        }
+        return responseJson('true', trans('api.updated_successfully'), ['Available Limit'=>$available_limit]); //ACCEPTED
+    }
+
+
+
+
+
+    public function my_wallet(Request $request)
+    {
+        $user = auth()->user();
+        if (!$user) {return responseJson('false', trans('api.The_user_not_found'), []); //BAD_REQUEST
+        }
+         $user->select('available_limit','wallet')->get();
+
+        return responseJson('true', trans('api.request_done_successfully'), ['Current Deposit'=>$user->wallet,'Available Limit'=>$user->available_limit]); //ACCEPTED
+    }
+
+
+    public function updatePreferredLanguage(Request $request)
+    {
+        $user = auth()->user();
+//        dd($user->preferred_language);
+        if ($user->preferred_language == 'arabic') {
+            $user->update(['preferred_language' => 'english']);
+        } else {
+            $user->update(['preferred_language' => 'arabic']);
+        }
+        return responseJson('true', trans('api.updated_successfully'), []); //ACCEPTED
+    }
+
+    public function getPreferredLanguage(Request $request)
+    {
+        $preferred_language = User::select('preferred_language')->where('id', auth()->user()->id)->first();
+//        $preferred_language =  auth()->user()->select('preferred_language')->first();
+        return responseJson('true', trans('api.request_done_successfully'), $preferred_language); //ACCEPTED
+    }
+
 
 
 
@@ -51,7 +125,6 @@ class UserController extends PARENT_API
 //        }
 //        return responseJson('true', trans('api.updated_successfully'),[]); //ACCEPTED
 //    }
-
 
 
 }

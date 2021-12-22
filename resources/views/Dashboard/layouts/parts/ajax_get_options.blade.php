@@ -9,7 +9,7 @@
         //console.log(category_id);
         if (category_id) {
             $.ajax({
-                url: "{{ route('ajax_get_options_by_category_id') }}",
+                {{--url: "{{ route('ajax_get_options_by_category_id') }}",--}}
                 type: 'POST',
                 data: {category_id, _token},
                 success: function (response) {
@@ -37,7 +37,6 @@
 
 
     // ===== get_option_details_by_option_id ===========
-
     $("#options").change(function (e) {
         e.preventDefault();
         var option_id = $(this).val();
@@ -45,7 +44,7 @@
         //console.log(option_id);
         if (option_id) {
             $.ajax({
-                url: "{{ route('ajax_get_option_details_by_option_id') }}",
+                {{--url: "{{ route('ajax_get_option_details_by_option_id') }}",--}}
                 type: 'POST',
                 data: {option_id, _token},
                 success: function (response) {

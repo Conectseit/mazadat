@@ -105,26 +105,22 @@ class AuctionController extends Controller
 
 
 
-    public function get_options_by_category_id(Request $request)
-    {
-        $category = Category::find($request->category_id);
-
-        if(!$category) return response()->json(['status' => false], 500);
-
-        return response()->json(['options' => $category->options, 'status' => true], 200);
-    }
-
-
-
-
-    public function get_option_details_by_option_id(Request $request)
-    {
-        $option = Option::find($request->option_id);
-
-        if(!$option) return response()->json(['status' => false], 500);
-
-        return response()->json(['option_details' => $option->option_details, 'status' => true], 200);
-    }
+//    public function get_options_by_category_id(Request $request)
+//    {
+//        $category = Category::find($request->category_id);
+//
+//        if(!$category) return response()->json(['status' => false], 500);
+//
+//        return response()->json(['options' => $category->options, 'status' => true], 200);
+//    }
+//    public function get_option_details_by_option_id(Request $request)
+//    {
+//        $option = Option::find($request->option_id);
+//
+//        if(!$option) return response()->json(['status' => false], 500);
+//
+//        return response()->json(['option_details' => $option->option_details, 'status' => true], 200);
+//    }
 
 
 
