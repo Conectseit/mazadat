@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Api\Auctions;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PARENT_API;
+use App\Http\Resources\Api\AuctionDetailsResource;
 use App\Http\Resources\Api\AuctionResource;
-use App\Http\Resources\Api\WatchedAuctionResource;
+use App\Http\Resources\Api\UserAuctionsResource;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\User;
@@ -18,7 +19,7 @@ class AuctionController extends PARENT_API
     {
         if ($auction = Auction::where('id', $id)->find($id)) {
             $auction->get();
-            return responseJson('true', trans('api.auction_details'), new AuctionResource($auction));  //OK don-successfully
+            return responseJson('true', trans('api.auction_details'), new AuctionDetailsResource($auction));  //OK don-successfully
         }
         return responseJson('false', trans('api.not_found_auction'), []);  //
     }
@@ -43,7 +44,7 @@ class AuctionController extends PARENT_API
     public function watched_auctions(Request $request)
     {
         $watched_auctions = WatchedAuction::where('user_id', auth()->user()->id)->get();
-        return responseJson('true', trans('api.auction_details'), ['watched_auctions' => WatchedAuctionResource::collection($watched_auctions)]);  //OK
+        return responseJson('true', trans('api.auction_details'), ['watched_auctions' => UserAuctionsResource::collection($watched_auctions)]);  //OK
     }
 
 
@@ -59,9 +60,7 @@ class AuctionController extends PARENT_API
             } else {
                 $bid->update();
                 return responseJson('true', trans('api.updated_successfully'), []);  //NOT_FOUND
-
             }
-
         }
         return responseJson('false', trans('api.not_found_auction'), []);  //NOT_FOUND
     }
@@ -72,8 +71,7 @@ class AuctionController extends PARENT_API
         if ($my_bids->count() == 0) {
             return responseJson('true', trans('api.You_dont_have_bids_yet'), []);  //OK
         }
-        return responseJson('true', trans('api.auction_details'), ['my_bids' => WatchedAuctionResource::collection($my_bids)]);  //OK
-
+        return responseJson('true', trans('api.auction_details'), ['my_bids' => UserAuctionsResource::collection($my_bids)]);  //OK
     }
 
 

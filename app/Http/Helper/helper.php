@@ -31,14 +31,14 @@ function cruds()
     return ['sellers','categories','cities','admins','auctions'];
 }
 
-//function model_count($model, $withDeleted = false)
-//{
-//    if($model == 'seller') return \App\Models\User::where('type', 'seller')->count();
-//    elseif ($model == 'buyer') return \App\Models\User::where('type', 'buyer')->count();
-//        else
-//    $mo = "App\\Models\\".ucwords($model);
-//    return $mo::count();
-//}
+function model_count($model, $withDeleted = false)
+{
+    if($model == 'seller') return \App\Models\User::where('type', 'seller')->count();
+    elseif ($model == 'buyer') return \App\Models\User::where('type', 'buyer')->count();
+        else
+    $mo = "App\\Models\\".ucwords($model);
+    return $mo::count();
+}
 
 function checkIfHasRole($role, $crud, $type)
 {

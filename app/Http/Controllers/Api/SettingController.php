@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PARENT_API;
+use App\Http\Resources\Api\BankResource;
 use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Http\Resources\Api\CategoryResource;
 use App\Http\Resources\Api\OfficersResource;
@@ -50,7 +51,15 @@ class SettingController extends PARENT_API
     {
         if ($our_officers = Setting::all())
         {
-            return responseJson('true', trans('api.request_done_successfully') ,new OfficersResource ($our_officers));  //OK don-successfully
+            return responseJson('true', trans('api.request_done_successfully') ,['Our Officers'=>new OfficersResource ($our_officers)]);  //OK don-successfully
+        }
+        return responseJson('false', trans('api.Page_not_found'),[]);//NOT_FOUND
+    }
+    public function bank()
+    {
+        if ($bank = Setting::all())
+        {
+            return responseJson('true', trans('api.request_done_successfully') ,['Bank Deposit'=>new BankResource ($bank)]);  //OK don-successfully
         }
         return responseJson('false', trans('api.Page_not_found'),[]);//NOT_FOUND
     }

@@ -86,7 +86,10 @@ class AuthController extends PARENT_API
 
     public function showProfile()
     {
-        return responseJson('true', trans('api.user_profile'), new AuthResource(auth('api')->user()));  //OK
+        $user = auth()->user();
+        if (!$user) {return responseJson('false', trans('api.The_user_not_found'), []); //BAD_REQUEST
+        }
+        return responseJson('true', trans('api.user_profile'), new AuthResource($user));  //OK
     }
 
     public function updateProfile(UpdateProfileRequest $request)

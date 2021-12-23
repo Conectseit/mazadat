@@ -4,7 +4,7 @@ namespace App\Http\Resources\Api;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AuctionResource extends JsonResource
+class AuctionDetailsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -25,9 +25,9 @@ class AuctionResource extends JsonResource
             'start_auction_price'         => $this->start_auction_price,
             'value_of_increment'          => $this->value_of_increment,
             'remaining_time'              => $this->remaining_time,
-//            'inspection_report'           => $this->inspection_report_image_path,
-//            'Terms & Conditions'          => $this->$auction_terms,
-//            'images'                      =>  AuctionImagesResource ::collection ($this->auctionimages),
+            'inspection_report'     => $this->inspection_report_image_path,
+            'Terms & Conditions'          => $this->$auction_terms,
+            'images'                      =>  AuctionImagesResource ::collection ($this->auctionimages),
         ];
     }
 }

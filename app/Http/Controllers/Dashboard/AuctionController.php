@@ -69,8 +69,12 @@ class AuctionController extends Controller
 
             if (($end_date >= $minimum_allowed_time) && ($end_date <= $maximum_allowed_time)) {
                 //======= create auction =======
-                $request->is_accepted = 1;
-                $auction = Auction::create($request->except(['images']) + ['is_accepted' => '1']);
+//                $request->is_accepted = 1;
+
+                $request_data = $request->except([ 'inspection_report_image'.'images']);
+
+                if ($request->image) $request_data['inspection_report_image'] =  uploaded($request->inspection_report_image, 'auction');
+                $auction = Auction::create($request_data + ['is_accepted' => '1']);
 
             } else {
 
@@ -105,22 +109,22 @@ class AuctionController extends Controller
 
 
 
-//    public function get_options_by_category_id(Request $request)
-//    {
-//        $category = Category::find($request->category_id);
-//
-//        if(!$category) return response()->json(['status' => false], 500);
-//
-//        return response()->json(['options' => $category->options, 'status' => true], 200);
-//    }
-//    public function get_option_details_by_option_id(Request $request)
-//    {
-//        $option = Option::find($request->option_id);
-//
-//        if(!$option) return response()->json(['status' => false], 500);
-//
-//        return response()->json(['option_details' => $option->option_details, 'status' => true], 200);
-//    }
+    public function get_options_by_category_id(Request $request)
+    {
+        $category = Category::find($request->category_id);
+
+        if(!$category) return response()->json(['status' => false], 500);
+
+        return response()->json(['options' => $category->options, 'status' => true], 200);
+    }
+    public function get_option_details_by_option_id(Request $request)
+    {
+        $option = Option::find($request->option_id);
+
+        if(!$option) return response()->json(['status' => false], 500);
+
+        return response()->json(['option_details' => $option->option_details, 'status' => true], 200);
+    }
 
 
 

@@ -24,6 +24,7 @@ class Controller extends BaseController
             $question = 'question_ar';
             $replay = 'replay_ar';
             $conditions_terms = 'conditions_terms_ar';
+            $auction_terms = 'auction_terms_ar';
             $about_app = 'about_app_ar';
 
         } elseif (LaravelLocalization::getCurrentLocale() == 'en') {
@@ -33,6 +34,7 @@ class Controller extends BaseController
             $question = 'question_en';
             $replay = 'replay_en';
             $conditions_terms = 'conditions_terms_en';
+            $auction_terms = 'auction_terms_en';
             $about_app = 'about_app_en';
         }
         View::share('name', $name);
@@ -41,6 +43,7 @@ class Controller extends BaseController
         View::share('question', $question);
         View::share('replay', $replay);
         View::share('conditions_terms', $conditions_terms);
+        View::share('auction_terms', $auction_terms);
         View::share('about_app', $about_app);
 
     }

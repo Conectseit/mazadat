@@ -107,6 +107,7 @@ return [
         'settings' => 'الإعدادات',
         'general_settings' => 'الإعدادات العامة',
         'social_settings' => 'إعدادات التواصل الإجتماعي',
+        'auction_settings' => 'إعدادات عامة للمزاد',
         'about_app_settings' => 'إعدادات عن التطبيق',
         'conditions_app_settings' => 'إعدادات الشروط والأحكام',
         'dashboard_name_ar' => 'اسم لوحة التحكم باللغة العربية',
@@ -115,8 +116,13 @@ return [
         'project_name_en' => 'اسم المشروع باللغة الإنجليزية',
         'mobile' => 'رقم الجوال الخاص بالتطبيق',
         'email' => 'البريد الالكتروني',
-        'max_duration_of_auction' => 'أقصي مدة للمزاد',
-        'min_duration_of_auction' => 'أقل مدة للمزاد',
+        'fax' => 'فاكس',
+        'address' => 'العنوان',
+        'account_name' => 'اسم الحساب',
+        'bank_name' => 'اسم البنك',
+        'iban' => 'IBAN',
+
+
         'facebook_url' => 'رابط التطبيق على الفيسبوك',
         'twitter_url' => 'رابط التطبيق على تويتر',
         'youtube_url' => 'رابط التطبيق على اليوتيوب',
@@ -125,12 +131,15 @@ return [
         'copy_write_ar' => 'حقوق الملكية باللغة العربية',
         'copy_write_en' => 'حقوق الملكية باللغة الإنجليزية',
 
-        'about_ar' => 'كلمة عن التطبيق باللغة العربية',
-        'about_en' => 'كلمة عن التطبيق باللغة الإنجليزية',
+        'about_app_ar' => 'كلمة عن التطبيق باللغة العربية',
+        'about_app_en' => 'كلمة عن التطبيق باللغة الإنجليزية',
         'conditions_terms_ar' => 'الشروط والأحكام للتطبيق باللغة العربية',
         'conditions_terms_en' => 'الشروط والأحكام للتطبيق باللغة الإنجليزية',
 
         'distance_search_for_stores' => 'المسافة المراد البحث فيها عن اقرب المتاجر',
+
+        'max_duration_of_auction' => 'أقصي مدة للمزاد',
+        'min_duration_of_auction' => 'أقل مدة للمزاد',
         'hour' => 'ساعة',
         'day' => 'يوم',
     ],
@@ -242,6 +251,7 @@ return [
         'start_auction_price' => 'القيمةالابتدائية للمزاد ',
         'value_of_increment' => 'قيمة المزايدة في كل مرة',
         'images' => 'صور المزاد',
+        'inspection_report_image' => 'صورة تقرير الفحص',
         'seller_full_name' => 'اسم صاحب المزاد',
         'category_name' => 'اسم قسم المزاد',
         'add' => 'اضافة مزاد جديد',
@@ -256,6 +266,8 @@ return [
         'buyer_offer' => 'سعر العرض',
         'bids' => 'المزايدات',
         'show_auction_bids' => 'عرض تفاصيل المزايدة',
+        'auction_terms_ar' => 'الشروط والاحكام بالعربي',
+        'auction_terms_en' => 'الشروط والاحكام بالانجليزي',
 
     ],
 

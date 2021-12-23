@@ -42,6 +42,7 @@ Route::group(['namespace' => 'Api'], function () {
     //=========== settings ============
 //    Route::get('settings/{key?}', [SettingController::class, 'show']);
     Route::get('our_officers', [SettingController::class, 'our_officers']);
+    Route::get('bank', [SettingController::class, 'bank']);
     Route::get('about_app', [SettingController::class, 'about_app']);
     Route::get('conditions_terms', [SettingController::class, 'conditions_terms']);
 

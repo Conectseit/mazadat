@@ -28,6 +28,10 @@ class SettingsTableSeeder extends Seeder
             ['key' => 'fax', 'value' => '9661111111', 'created_at' => now(), ],
             ['key' => 'address', 'value' => 'جدة', 'created_at' => now(), ],
 
+            ['key' => 'account_name', 'value' => 'Mazadat', 'created_at' => now(), ],
+            ['key' => 'bank_name', 'value' => 'QNB', 'created_at' => now(), ],
+            ['key' => 'iban', 'value' => 'abcdef123456789', 'created_at' => now(), ],
+
             //social
             ['key' => 'facebook_url', 'value' => 'https://www.facebook.com/', 'created_at' => now(), ],
             ['key' => 'twitter_url', 'value' => 'https://twitter.com/', 'created_at' => now(), ],

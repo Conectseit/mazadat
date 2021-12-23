@@ -87,11 +87,13 @@
 
 
                             <div class="form-group">
-                                <div class="col-lg-9">
-                                    <select name="option_id" class="select-border-color border-warning">
+                                <input type="text" class="form-control" value="" name="auction.auction_terms_ar"
+                                       placeholder="@lang('messages.auction.auction_terms_ar') ">
+                            </div>
 
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="" name="auction.auction_terms_en"
+                                       placeholder="@lang('messages.auction.auction_terms_en') ">
                             </div>
 
 
@@ -108,54 +110,54 @@
                                 </div>
                             </div>
 
-{{--                            <div class="form-group">--}}
-{{--                                <label--}}
-{{--                                    class="col-lg-3 control-label display-block"> {{ trans('messages.option.options') }} </label>--}}
-{{--                                <div class="col-lg-9">--}}
-{{--                                    <select name="option_id" id="options"--}}
-{{--                                            class="select-border-color border-warning form-control">--}}
-{{--                                        <optgroup label="{{ trans('messages.option.options') }}">--}}
-{{--                                            @foreach($options as $option)--}}
-{{--                                                <option value="{{ $option->id }}"> {{ $option->$name }} </option>--}}
-{{--                                            @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-
-
-
-{{--                            <div class="form-group">--}}
-{{--                                <label--}}
-{{--                                    class="col-lg-3 control-label display-block"> {{ trans('messages.option.options') }} </label>--}}
-{{--                                <div class="col-lg-9">--}}
-{{--                                    <select name="option_details_id" id="option_details"--}}
-{{--                                            class="select-border-color border-warning form-control">--}}
-{{--                                        <optgroup label="{{ trans('messages.option.option_details') }}">--}}
-{{--                                            @foreach($option_details as $option_detail)--}}
-{{--                                                <option value="{{ $option_detail->id }}"> {{ $option_detail->$value }} </option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-
-
                             <div class="form-group">
-                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.option.option_details') }} </label>
+                                <label
+                                    class="col-lg-3 control-label display-block"> {{ trans('messages.option.options') }} </label>
                                 <div class="col-lg-9">
-                                    <select name="option_details_id"  class="select-border-color border-warning form-control">
+                                    <select name="option_id" id="options"
+                                            class="select-border-color border-warning form-control">
                                         <optgroup label="{{ trans('messages.option.options') }}">
-                                            @forelse($options as $option)
-                                                <optgroup label="{{ $option->$name }}">
-                                                    @foreach ($option->option_details as $option_details)
-                                                        <option
-                                                            value="{{ $option_details->id }}"> {{ $option_details->$value }} </option>
-                                                    @endforeach
-                                                </optgroup>
-                                        @empty
-                                        @endforelse
+                                            @foreach($options as $option)
+                                                <option value="{{ $option->id }}"> {{ $option->$name }} </option>
+                                            @endforeach
                                     </select>
                                 </div>
                             </div>
+
+
+
+                            <div class="form-group">
+                                <label
+                                    class="col-lg-3 control-label display-block"> {{ trans('messages.option.options') }} </label>
+                                <div class="col-lg-9">
+                                    <select name="option_details_id" id="option_details"
+                                            class="select-border-color border-warning form-control">
+                                        <optgroup label="{{ trans('messages.option.option_details') }}">
+                                            @foreach($option_details as $option_detail)
+                                                <option value="{{ $option_detail->id }}"> {{ $option_detail->$value }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+
+{{--                            <div class="form-group">--}}
+{{--                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.option.option_details') }} </label>--}}
+{{--                                <div class="col-lg-9">--}}
+{{--                                    <select name="option_details_id"  class="select-border-color border-warning form-control">--}}
+{{--                                        <optgroup label="{{ trans('messages.option.options') }}">--}}
+{{--                                            @forelse($options as $option)--}}
+{{--                                                <optgroup label="{{ $option->$name }}">--}}
+{{--                                                    @foreach ($option->option_details as $option_details)--}}
+{{--                                                        <option--}}
+{{--                                                            value="{{ $option_details->id }}"> {{ $option_details->$value }} </option>--}}
+{{--                                                    @endforeach--}}
+{{--                                                </optgroup>--}}
+{{--                                        @empty--}}
+{{--                                        @endforelse--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
 
                             <div class="form-group">
@@ -175,6 +177,17 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" value="" name="start_auction_price"
                                        placeholder="@lang('messages.auction.start_auction_price') ">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>@lang('messages.auction.inspection_report_image')</label>
+                                <input type="file" class="form-control image " name="inspection_report_image">
+                            </div>
+
+                            <div class="form-group">
+                                <img src=" {{ asset('uploads/default.png') }} " width=" 100px "
+                                     class="thumbnail image-preview">
                             </div>
 
                             <div class="form-group">
@@ -261,7 +274,7 @@
                         </tr>
                         @forelse($latest_auctions as $auction)
                             <tr>
-                                <td> {{ $auction->name_ar }} </td>
+                                <td> {{ $auction->$name }} </td>
                                 <td><img src="{{ $auction->first_image_path }}" style="height:50px;"/></td>
                             </tr>
                         @empty

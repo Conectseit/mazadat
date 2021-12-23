@@ -24,6 +24,16 @@ class SettingController extends Controller
             Setting::where('key', 'mobile')->update(['value' => $request->mobile]);
         if ($request->email)
             Setting::where('key', 'email')->update(['value' => $request->email]);
+        if ($request->fax)
+            Setting::where('key', 'fax')->update(['value' => $request->fax]);
+        if ($request->address)
+            Setting::where('key', 'address')->update(['value' => $request->address]);
+        if ($request->account_name)
+            Setting::where('key', 'account_name')->update(['value' => $request->account_name]);
+        if ($request->bank_name)
+            Setting::where('key', 'bank_name')->update(['value' => $request->bank_name]);
+        if ($request->iban)
+            Setting::where('key', 'iban')->update(['value' => $request->iban]);
         if ($request->facebook_url)
             Setting::where('key', 'facebook_url')->update(['value' => $request->facebook_url]);
         if ($request->twitter_url)
