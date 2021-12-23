@@ -53,7 +53,7 @@ class AuthController extends PARENT_API
             DB::commit();
             return responseJson('true', trans('api.register_user_successfully'), new AuthResource($user)); //OK
         } catch (\Exception $e) {
-            return responseJson('500', $e->getMessage());
+            return responseJson('false', $e->getMessage());
         }
     }
 

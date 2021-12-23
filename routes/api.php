@@ -4,6 +4,8 @@ use App\Http\Controllers\Api\Auctions\AuctionController;
 use App\Http\Controllers\Api\Auctions\FilterController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\CityController;
+use App\Http\Controllers\Api\NationalityController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\SettingController;
@@ -43,6 +45,8 @@ Route::group(['namespace' => 'Api'], function () {
 //    Route::get('settings/{key?}', [SettingController::class, 'show']);
     Route::get('our_officers', [SettingController::class, 'our_officers']);
     Route::get('bank', [SettingController::class, 'bank']);
+    Route::get('cities', [CityController::class, 'cities']);
+    Route::get('nationalities', [NationalityController::class, 'nationalities']);
     Route::get('about_app', [SettingController::class, 'about_app']);
     Route::get('conditions_terms', [SettingController::class, 'conditions_terms']);
 
