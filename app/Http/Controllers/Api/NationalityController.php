@@ -13,7 +13,7 @@ use App\Models\Auction;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\CommonQuestion;
-use App\Models\nationality;
+use App\Models\Nationality;
 use Illuminate\Http\Request;
 
 class NationalityController extends PARENT_API
