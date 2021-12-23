@@ -46,7 +46,7 @@ class AuthController extends Controller
     public function showProfile()
     {
         $data['admin'] = Admin::where('id', Auth::guard('admin')->user()->id)->first();
-        return view('Dashboard.Auth.show_profile', $data);
+        return view('Dashboard.auth.show_profile', $data);
     }
 
 

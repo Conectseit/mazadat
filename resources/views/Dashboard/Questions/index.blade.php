@@ -1,7 +1,5 @@
 @extends('Dashboard.layouts.master')
-
 @section('title', trans('messages.question.questions'))
-
 @section('content')
 
     <!-- Page header -->
@@ -14,16 +12,13 @@
                 </li>
                 <li class="active">@lang('messages.question.questions')</li>
             </ul>
-
             @include('Dashboard.layouts.parts.quick-links')
         </div>
         @endsection
     </div>
     <!-- /page header -->
 
-
     @include('Dashboard.layouts.parts.validation_errors')
-
 
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
@@ -41,28 +36,19 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{ trans('messages.question.question_ar') }}</th>
-                    <th>{{ trans('messages.question.question_en') }}</th>
+                    <th>{{ trans('messages.question.question') }}</th>
+                    <th>{{ trans('messages.question.replay') }}</th>
                     <th>@lang('messages.since')</th>
                     <th class="text-center">@lang('messages.form-actions')</th>
                 </tr>
                 </thead>
-
-
                 <tbody>
                 @foreach($questions as $question)
                     <tr id="question-row-{{ $question->id }}">
-
                         <td>{{ $question->id }}</td>
-
-
                         <td><a href=""> {{ isNullable($question->question_ar) }}</a></td>
-                        <td><a href=""> {{ isNullable($question->question_en) }}</a></td>
-
-
+                        <td> {{ isNullable($question->$replay) }}</td>
                         <td>{{isset($question->created_at) ?$question->created_at->diffForHumans():'---' }}</td>
-
-
                         <td class="text-center">
                             <div class="list-icons text-center">
                                 <div class="list-icons-item dropdown text-center">
@@ -89,13 +75,11 @@
                 @endforeach
                 </tbody>
             </table>
-
         @else
             <center><h2> @lang('messages.no_data_found') </h2></center>
         @endif
     </div>
     <!-- /basic datatable -->
-
 @stop
 
 @section('scripts')

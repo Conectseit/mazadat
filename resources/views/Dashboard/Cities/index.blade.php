@@ -1,7 +1,5 @@
 @extends('Dashboard.layouts.master')
-
 @section('title', trans('messages.city.cities'))
-
 @section('content')
 
     <!-- Page header -->
@@ -19,8 +17,6 @@
         @endsection
     </div>
     <!-- /page header -->
-
-
     @include('Dashboard.layouts.parts.validation_errors')
 
 

@@ -31,7 +31,7 @@ class QuestionController extends Controller
 
     public function edit($id)
     {
-        $data['latest_cities'] = CommonQuestion::orderBy('id', 'desc')->take(5)->get();
+        $data['latest_questions'] = CommonQuestion::orderBy('id', 'desc')->take(5)->get();
         $data['question'] = CommonQuestion::find($id);
         return view('Dashboard.Questions.edit', $data);
     }

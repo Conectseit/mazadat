@@ -7,9 +7,9 @@ return [
     'Statistics' => 'احصائيات عامة للموقع',
     'login' => 'تسجيل الدخول',
 
-    'Login'                => 'تسجيل دخول',
+    'Login'                 => 'تسجيل دخول',
     'logout'                => 'تسجيل الخروج',
-    'welcome' => 'مرحبا بك يا',
+    'welcome'               => 'مرحبا بك يا',
 
     'profile'               => 'الملف الشخصي',
     'profile-info'          => 'البيانات الشخصية',
@@ -56,6 +56,7 @@ return [
     'active' => ' مفعل',
     'person' => ' فرد',
     'company' => ' مؤسسة',
+    'no_value' => ' لا يوجد',
 
     'description_ar' => 'الوصف العربي',
     'description_en' => 'الوصف الانجليزية',
@@ -298,9 +299,10 @@ return [
     ],
 
     'question' => [
-        'question' => 'سؤال شائع',
+        'question' => 'سؤال ',
         'question_ar' => 'سؤال عربي',
         'question_en' => 'سؤال انجليزي',
+        'replay' => 'الرد ',
         'replay_ar' => 'رد عربي',
         'replay_en' => 'رد انجليزي',
         'questions' => 'الاسئلة الشائعة',

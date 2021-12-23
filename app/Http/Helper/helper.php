@@ -23,7 +23,7 @@ function isLocalized($lang) { return LaravelLocalization::getLocalizedURL($lang)
 
 
 function str(){ return new \Illuminate\Support\Str(); }
-function isNullable($text){ return (!isset($text) || $text == null || $text == '') ? trans('back.no-value') : ucwords($text); }
+function isNullable($text){ return (!isset($text) || $text == null || $text == '') ? trans('messages.no_value') : ucwords($text); }
 
 
 function cruds()
