@@ -240,6 +240,7 @@
                                                         class="icon-plus2"></i></b>{{ trans('messages.option.add') }}
                                             </a>
                                         </div>
+                                        @if($category_options->count() <= 0)
                                         <table class="table datatable-basic" id="options" style="font-size: 16px;">
                                             <thead>
                                             <tr>
@@ -263,8 +264,7 @@
                                                         @if( $option->option_details->count() >1)
                                                             @foreach($option->option_details as $option_detail)
                                                                 <span
-                                                                    class="badge bg-success badge-pill">{{ $option_detail->$value }}</span>
-                                                                /
+                                                                    class="badge bg-success badge-pill">{{ $option_detail->$value }}</span>/
                                                             @endforeach
                                                         @else
                                                             ===
@@ -317,8 +317,6 @@
                                             @endforeach
                                             </tbody>
                                         </table>
-
-                                        @if($category_options->count() <= 0)
                                             <br>
                                             <div style="margin:50px; padding: 20px;">
                                                 <h2> @lang('messages.no_data_found') </h2>

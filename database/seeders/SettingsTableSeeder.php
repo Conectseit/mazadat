@@ -40,9 +40,9 @@ class SettingsTableSeeder extends Seeder
             ['key' => 'whatsapp_phone', 'value' => '966123456789', 'created_at' => now(), ],
 
             //for auctions
-            ['key' => 'min_duration_of_auction', 'value' => '5 hours', 'created_at' => now(), ],
+            ['key' => 'min_duration_of_auction', 'value' => '5', 'created_at' => now(), ],
             ['key' => 'min_time_unit', 'value' => 'hour', 'created_at' => now(), ],
-            ['key' => 'max_duration_of_auction', 'value' => '10 days', 'created_at' => now(), ],
+            ['key' => 'max_duration_of_auction', 'value' => '10', 'created_at' => now(), ],
             ['key' => 'max_time_unit', 'value' => 'day', 'created_at' => now(), ],
 
 

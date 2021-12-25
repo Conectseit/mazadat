@@ -19,10 +19,10 @@ class NationalityController extends Controller
     public function create()
     {
         $data['latest_nationalities'] = Nationality::orderBy('id', 'desc')->take(10)->get();
-        return view('Dashboard.Cities.create', $data);
+        return view('Dashboard.Nationalities.create', $data);
     }
 
-    public function store(nationalityRequest $request)
+    public function store(NationalityRequest $request)
     {
          $nationality= Nationality::create($request->all());
         return redirect()->route('nationalities.index')->with('message', trans('messages.messages.added_successfully'));
@@ -35,15 +35,14 @@ class NationalityController extends Controller
         }
         $data['latest_nationalities'] = Nationality::orderBy('id', 'desc')->take(5)->get();
         $data['nationality'] = Nationality::find($id);
-        return view('Dashboard.Cities.edit', $data);
+        return view('Dashboard.Nationalities.edit', $data);
     }
 
-//    public function update(nationalityRequest $request, $id)
-//    {
-//        // nationality::findOrFail($id)->first()->fill($request->all())->save();
-//        Nationality::findOrFail($id)->update($request->all());
-//        return redirect()->route('nationalities.index')->with('success', 'تم تعديل  بنجاح');
-//    }
+    public function update(NationalityRequest $request, $id)
+    {
+        Nationality::findOrFail($id)->update($request->all());
+        return redirect()->route('nationalities.index')->with('message', trans('messages.messages.updated_successfully'));
+    }
 
     public function destroy(Request $request)
     {
@@ -51,7 +50,7 @@ class NationalityController extends Controller
         if (!$nationality) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, nationality is not exists !!']);
         try {
             $nationality->delete();
-            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
+            return response()->json(['deleteStatus' => true, 'message' => trans('messages.messages.deleted_successfully')]);
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
         }

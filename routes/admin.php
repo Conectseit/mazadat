@@ -76,8 +76,8 @@ Route::group(
                 Route::post('/ajax-delete-category', [CategoryController::class, 'destroy'])->name('ajax-delete-category');
                 Route::post('/ajax-delete-option', [OptionController::class, 'destroy'])->name('ajax-delete-option');
                 Route::post('/ajax-delete-option_detail', [OptionDetailController::class, 'destroy'])->name('ajax-delete-option_detail');
-                Route::post('/ajax-delete-nationality', [CityController::class, 'destroy'])->name('ajax-delete-nationality');
-                Route::post('/ajax-delete-country', [CityController::class, 'destroy'])->name('ajax-delete-country');
+                Route::post('/ajax-delete-nationality', [NationalityController::class, 'destroy'])->name('ajax-delete-nationality');
+                Route::post('/ajax-delete-country', [CountryController::class, 'destroy'])->name('ajax-delete-country');
                 Route::post('/ajax-delete-city', [CityController::class, 'destroy'])->name('ajax-delete-city');
                 Route::post('/ajax-delete-auction', [AuctionController::class, 'destroy'])->name('ajax-delete-auction');
                 Route::post('/ajax-delete-image', [AuctionController::class, 'deleteImage'])->name('ajax-delete-image');

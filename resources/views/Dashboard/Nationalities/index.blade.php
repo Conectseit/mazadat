@@ -39,10 +39,10 @@
             <table class="table datatable-basic" id="nationalities" style="font-size: 16px;">
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>{{ trans('messages.name') }}</th>
+                    <th class="text-center">#</th>
+                    <th class="text-center">{{ trans('messages.name') }}</th>
 {{--                    <th>{{ trans('messages.name_en') }}</th>--}}
-                    <th>@lang('messages.since')</th>
+                    <th class="text-center">@lang('messages.since')</th>
                     <th class="text-center">@lang('messages.form-actions')</th>
                 </tr>
                 </thead>
@@ -50,10 +50,10 @@
                 @foreach($nationalities as $nationality)
                     <tr id="nationality-row-{{ $nationality->id }}">
 
-                        <td>{{ $nationality->id }}</td>
-                        <td><a href=""> {{ isNullable($nationality->$name) }}</a></td>
+                        <td class="text-center">{{ $nationality->id }}</td>
+                        <td class="text-center"><a href=""> {{ isNullable($nationality->$name) }}</a></td>
 {{--                        <td><a href=""> {{ isNullable($nationality->name_en) }}</a></td>--}}
-                        <td>{{isset($nationality->created_at) ?$nationality->created_at->diffForHumans():'---' }}</td>
+                        <td class="text-center">{{isset($nationality->created_at) ?$nationality->created_at->diffForHumans():'---' }}</td>
                         <td class="text-center">
                             <div class="list-icons text-center">
                                 <div class="list-icons-item dropdown text-center">

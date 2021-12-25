@@ -111,8 +111,10 @@
     </li>
 
 
-    <li><a href="{{ route('questions.index') }}"><i class="icon-list-unordered"></i> <span>{{trans('messages.question.questions')}}<span
-                    class="label bg-blue-400">1.5</span></span></a>
+    <li>
+        @inject('questions', 'App\Models\CommonQuestion')
+        <a href="{{ route('questions.index') }}"><i class="icon-list-unordered"></i> <span>{{trans('messages.question.questions')}}<span
+                    class="label bg-blue-400">{{$questions->count()}}</span></span></a>
     </li>
     <li class="nav-item">
         <a href="{{ route('settings.index') }}"

@@ -43,12 +43,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($questions as $question)
-                    <tr id="question-row-{{ $question->id }}">
-                        <td>{{ $question->id }}</td>
-                        <td><a href=""> {{ isNullable($question->question_ar) }}</a></td>
-                        <td> {{ isNullable($question->$replay) }}</td>
-                        <td>{{isset($question->created_at) ?$question->created_at->diffForHumans():'---' }}</td>
+                @foreach($questions as $questionn)
+                    <tr id="question-row-{{ $questionn->id }}">
+                        <td>{{ $questionn->id }}</td>
+                        <td><a href=""> {{ ($questionn->$question) }}</a></td>
+                        <td> {{ isNullable($questionn->$replay) }}</td>
+                        <td>{{isset($questionn->created_at) ?$questionn->created_at->diffForHumans():'---' }}</td>
                         <td class="text-center">
                             <div class="list-icons text-center">
                                 <div class="list-icons-item dropdown text-center">
@@ -58,12 +58,12 @@
 
                                     <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
                                         <li>
-                                            <a href="{{ route('questions.edit',$question->id) }}"> <i
+                                            <a href="{{ route('questions.edit',$questionn->id) }}"> <i
                                                     class="icon-database-edit2"></i>@lang('messages.edit') </a>
                                         </li>
                                         <li>
-                                            <a data-id="{{ $question->id }}" class="delete-action"
-                                               href="{{ Url('/question/question/'.$question->id) }}">
+                                            <a data-id="{{ $questionn->id }}" class="delete-action"
+                                               href="{{ Url('/question/question/'.$questionn->id) }}">
                                                 <i class="icon-database-remove"></i>@lang('messages.delete')
                                             </a>
                                         </li>

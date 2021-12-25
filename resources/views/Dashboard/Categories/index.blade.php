@@ -1,7 +1,5 @@
 @extends('Dashboard.layouts.master')
-
 @section('title', trans('messages.category.categories'))
-
 @section('content')
 
     <!-- Page header -->
@@ -20,11 +18,7 @@
         @endsection
     </div>
     <!-- /page header -->
-
-
     @include('Dashboard.layouts.parts.validation_errors')
-
-
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
         <div class="panel-heading">

@@ -1,7 +1,5 @@
 @extends('Dashboard.layouts.master')
-
 @section('title', trans('messages.country.countries'))
-
 @section('content')
 
     <!-- Page header -->
@@ -19,10 +17,7 @@
         @endsection
     </div>
     <!-- /page header -->
-
-
     @include('Dashboard.layouts.parts.validation_errors')
-
 
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
@@ -39,10 +34,10 @@
             <table class="table datatable-basic" id="countries" style="font-size: 16px;">
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>{{ trans('messages.name') }}</th>
-{{--                    <th>{{ trans('messages.name_en') }}</th>--}}
-                    <th>@lang('messages.since')</th>
+                    <th class="text-center">#</th>
+                    <th class="text-center">{{ trans('messages.name') }}</th>
+{{--                    <th class="text-center">{{ trans('messages.name_en') }}</th>--}}
+                    <th class="text-center">@lang('messages.since')</th>
                     <th class="text-center">@lang('messages.form-actions')</th>
                 </tr>
                 </thead>
@@ -50,10 +45,10 @@
                 @foreach($countries as $country)
                     <tr id="country-row-{{ $country->id }}">
 
-                        <td>{{ $country->id }}</td>
-                        <td><a href=""> {{ isNullable($country->$name) }}</a></td>
-{{--                        <td><a href=""> {{ isNullable($country->name_en) }}</a></td>--}}
-                        <td>{{isset($country->created_at) ?$country->created_at->diffForHumans():'---' }}</td>
+                        <td class="text-center">{{ $country->id }}</td>
+                        <td class="text-center"><a href=""> {{ isNullable($country->$name) }}</a></td>
+{{--                        <td class="text-center"><a href=""> {{ isNullable($country->name_en) }}</a></td>--}}
+                        <td class="text-center">{{isset($country->created_at) ?$country->created_at->diffForHumans():'---' }}</td>
                         <td class="text-center">
                             <div class="list-icons text-center">
                                 <div class="list-icons-item dropdown text-center">

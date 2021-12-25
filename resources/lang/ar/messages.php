@@ -296,6 +296,8 @@ return [
         'add' => 'اضافة دولة جديدة',
         'edit' => 'تعديل دولة ',
         'latest_countries' => 'احدث الدول المضافة',
+        'phone_code' => 'الرقم المفتاحي للدولة',
+        'flag' => 'علم الدولة',
     ],
 
     'question' => [
@@ -358,6 +360,7 @@ return [
         'sorry_you_dont_have_permission' => 'عفوا ليس لديك صلاحية ',
         'added_successfully' => 'تمت الاضافة بنجاح',
         'updated_successfully' => 'تم التحديث بنجاح',
+        'deleted_successfully' => 'تم الحذف بنجاح',
         'try_access_not_found_content' => 'عفوا لا يوجد هذا العنصر'
     ],
 ];

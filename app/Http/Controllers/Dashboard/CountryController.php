@@ -19,7 +19,7 @@ class CountryController extends Controller
     public function create()
     {
         $data['latest_countries'] = Country::orderBy('id', 'desc')->take(10)->get();
-        return view('Dashboard.Cities.create', $data);
+        return view('Dashboard.Countries.create', $data);
     }
 
     public function store(CountryRequest $request)
@@ -35,14 +35,13 @@ class CountryController extends Controller
         }
         $data['latest_countries'] = Country::orderBy('id', 'desc')->take(5)->get();
         $data['country'] = Country::find($id);
-        return view('Dashboard.Cities.edit', $data);
+        return view('Dashboard.Countries.edit', $data);
     }
 
     public function update(CountryRequest $request, $id)
     {
-        // Country::findOrFail($id)->first()->fill($request->all())->save();
         Country::findOrFail($id)->update($request->all());
-        return redirect()->route('countries.index')->with('success', 'تم تعديل  بنجاح');
+        return redirect()->route('countries.index')->with('success',trans('messages.messages.updated_successfully'));
     }
 
     public function destroy(Request $request)
@@ -51,7 +50,7 @@ class CountryController extends Controller
         if (!$country) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, Country is not exists !!']);
         try {
             $country->delete();
-            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
+            return response()->json(['deleteStatus' => true, 'message' =>  trans('messages.messages.deleted_successfully')]);
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
         }
