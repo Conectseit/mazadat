@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Dashboard\nationalityRequest;
+use App\Http\Requests\Dashboard\NationalityRequest;
 use App\Models\Nationality;
 use Illuminate\Http\Request;
 
@@ -50,7 +50,7 @@ class NationalityController extends Controller
         if (!$nationality) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, nationality is not exists !!']);
         try {
             $nationality->delete();
-            return response()->json(['deleteStatus' => true, 'message' => trans('messages.messages.deleted_successfully')]);
+            return response()->json(['deleteStatus' => true, 'message' =>"تم الحذف بنجاح"]);
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
         }

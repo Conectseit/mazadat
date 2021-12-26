@@ -24,6 +24,8 @@ return [
     'form-status' => 'الحالة',
 //    'active'                => 'فعال',
     'type'                  => 'النوع',
+
+    'activation_code_is'                  => 'مرحبا بك كود التفعيل الخاص بك من تطبيق مزادات هو',
     'edit' => 'تعديل',
     'delete' => 'حذف',
     'save'                  => 'حفظ',
@@ -32,6 +34,8 @@ return [
     'show' => 'عرض البيانات',
     'Yes' => 'نعم',
     'No' => 'لا',
+
+    'cancel_delete' => 'تم الغاء الحذف',
     'is_appear_name' => 'هل متاح ظهور اسم العميل ؟',
     'confirm-delete-message-var' => 'هل انت متأكد من حذف هذا :var',
     'password' => 'كلمه المرور',
@@ -96,10 +100,12 @@ return [
         'name' => 'اسم التصنيف',
         'add' => 'اضافة تصنيف جديد',
         'edit' => 'تعديل تصنيف ',
+        'delete' => 'حذف تصنيف ',
         'last_options' => 'اخر التصنيفات المضافة حديثا',
     ],
     'option_detail' => [
         'add' => 'اضافة جديد',
+        'add_detail' => 'اضافة تفصيل اخر لهذا التصنيف ',
         'option_detail' => 'تفصيل التصنيف',
     ],
 
@@ -364,3 +370,6 @@ return [
         'try_access_not_found_content' => 'عفوا لا يوجد هذا العنصر'
     ],
 ];
+
+
+//swal({{trans('messages.cancel_delete')}});

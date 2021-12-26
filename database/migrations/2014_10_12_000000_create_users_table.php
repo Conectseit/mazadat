@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->enum('type', ['buyer', 'seller'])->nullable();
             $table->enum('is_company', ['company','person'])->default('person'); // (مؤسسات , أفراد)
-            $table->string('full_name')->unique()->nullable();
+            $table->string('full_name')->nullable();
             $table->string('user_name')->nullable();
             $table->string('image')->nullable();
             $table->string('mobile')->unique()->nullable();

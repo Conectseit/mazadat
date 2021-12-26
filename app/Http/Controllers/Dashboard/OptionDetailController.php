@@ -17,7 +17,6 @@ class OptionDetailController extends Controller
     public function index()
     {
          $data['option_details'] = OptionDetail::latest()->paginate(200);
-
         return view('Dashboard.OptionDetails.index', $data);
     }
 
@@ -32,8 +31,8 @@ class OptionDetailController extends Controller
     public function store(OptionDetailRequest $request)
     {
          $option= OptionDetail::create($request->all());
-//        return back()->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
-        return redirect()->route('option_details.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
+        return back()->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
+//        return redirect()->route('option_details.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
     }
 
     public function show($id)

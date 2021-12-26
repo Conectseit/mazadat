@@ -52,7 +52,7 @@
                     <tr id="option_detail-row-{{ $option_detail->id }}">
 
                         <td>{{ $option_detail->id }}</td>
-                        <td>{{ $option_detail->option->$name }}</td>
+                        <td>{{isNullable( $option_detail->option->$name) }}</td>
 
                         <td><a href={{ route('option_details.show', $option_detail->id) }}> {{ isNullable($option_detail->$value) }}</a></td>
                         <td>{{isset($option_detail->created_at) ?$option_detail->created_at->diffForHumans():'---' }}</td>

@@ -40,7 +40,6 @@ class OptionDetailRequest extends FormRequest
                     return [
                         'value_ar' => 'required',
                         'value_en' => 'required'
-
                     ];
                 }
             default:

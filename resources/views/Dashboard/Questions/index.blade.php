@@ -46,7 +46,7 @@
                 @foreach($questions as $questionn)
                     <tr id="question-row-{{ $questionn->id }}">
                         <td>{{ $questionn->id }}</td>
-                        <td><a href=""> {{ ($questionn->$question) }}</a></td>
+                        <td><a href=""> {{ isNullable($questionn->$question) }}</a></td>
                         <td> {{ isNullable($questionn->$replay) }}</td>
                         <td>{{isset($questionn->created_at) ?$questionn->created_at->diffForHumans():'---' }}</td>
                         <td class="text-center">

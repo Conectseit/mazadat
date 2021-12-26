@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Auctions;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PARENT_API;
+use App\Http\Requests\Api\MakeBidRequest;
 use App\Http\Resources\Api\AuctionDetailsResource;
 use App\Http\Resources\Api\AuctionResource;
 use App\Http\Resources\Api\UserAuctionsResource;
@@ -48,19 +49,29 @@ class AuctionController extends PARENT_API
     }
 
 
-    public function make_bid(Request $request, $id)
+    public function make_bid(MakeBidRequest $request, $id)
     {
+       $user= auth()->user();
         if ($auction = Auction::find($id)) {
-            $bid = AuctionBuyer::where(['auction_id' => $auction->id, 'buyer_id' => auth()->user()->id])->first();
-            if (is_null($bid)) {
-                AuctionBuyer::create(['auction_id' => $auction->id, 'buyer_id' => auth()->user()->id]);
+            $bid = AuctionBuyer::where(['auction_id' => $auction->id, 'buyer_id' => $user->id])->first();
+            if($request->offer <= $user->available_limit){
+
+                if (is_null($bid)) {
+                AuctionBuyer::create(['auction_id' => $auction->id, 'buyer_id' => $user->id,'buyer_offer'=>$request->offer]);
                 $auction->count_of_buyer += 1;
+                $auction->current_price = $auction->start_auction_price+ $request->offer;
                 $auction->update();
                 return responseJson('true', trans('api.request_done_successfully'), []); //OK
             } else {
-                $bid->update();
+                $auction->current_price = $auction->current_price + $request->offer;
+                $auction->update();
+                $bid->update(['buyer_offer'=>$bid->buyer_offer + $request->offer]);
                 return responseJson('true', trans('api.updated_successfully'), []);  //NOT_FOUND
             }
+            }else{
+                return responseJson('false', trans('api.sorry!_you_cant_make_bid_your_available_limit_less_than+_this_value'), []);  //NOT_FOUND
+            }
+
         }
         return responseJson('false', trans('api.not_found_auction'), []);  //NOT_FOUND
     }

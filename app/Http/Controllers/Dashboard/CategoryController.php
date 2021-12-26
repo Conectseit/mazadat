@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\CategoryRequest;
+use App\Http\Requests\Dashboard\OptionDetailRequest;
 use App\Models\Auction;
 use App\Models\Category;
 use App\Models\CategoryOption;
 use App\Models\Option;
+use App\Models\OptionDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -51,7 +53,6 @@ class CategoryController extends Controller
         $data['categories'] = Category::all();
         $data['category_auctions'] = Auction::where('category_id', $id)->get();
         $data['category_options'] = Option::where('category_id', $id)->get();
-
         return view('Dashboard.Categories.show', $data);
     }
 
@@ -79,7 +80,7 @@ class CategoryController extends Controller
 //        $category->update($request_data);
 
         Category::find($id)->update($request_data);
-        return redirect()->route('categories.index')->with('success', 'تم تعديل القسم بنجاح');
+        return redirect()->route('categories.index')->with('success',  trans('messages.messages.updated_successfully'));
     }
 
 
@@ -98,5 +99,11 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
     }
 
+
+    public function add_option_detail(OptionDetailRequest $request)
+    {
+        OptionDetail::create($request->all());
+        return back()->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
+    }
 
 }

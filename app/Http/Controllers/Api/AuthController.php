@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PARENT_API;
+use App\Http\Controllers\SmsController;
 use App\Http\Requests\Api\AdditionalContactRequest;
 use App\Http\Requests\Api\ChangePasswordRequest;
 use App\Http\Requests\Api\LoginRequest;
@@ -41,9 +42,6 @@ class AuthController extends PARENT_API
                 $request_data['commercial_register_image'] = $request_data['commercial_register_image'] =  uploaded($request->commercial_register_image,'user');
             }
 
-//            if ($request->image) $request_data['image'] =  uploaded($request->image, 'user');
-//            if ($request->commercial_register_image) $request_data['commercial_register_image'] =  uploaded($request->commercial_register_image, 'user');
-
             $user = User::create($request_data + ['type' => 'buyer','activation_code'=>$activation_code]);
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
@@ -51,6 +49,9 @@ class AuthController extends PARENT_API
             }
 
             DB::commit();
+
+            (new SmsController())->send_sms('966'.$request->mobile,trans('messages.activation_code_is'.$activation_code));
+
             return responseJson('true', trans('api.register_user_successfully'), new AuthResource($user)); //OK
         } catch (\Exception $e) {
             return responseJson('false', $e->getMessage());

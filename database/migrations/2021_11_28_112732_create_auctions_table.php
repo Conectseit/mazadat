@@ -39,7 +39,7 @@ class CreateAuctionsTable extends Migration
             $table->enum('who_can_buy',['all','users','company'])->default('all'); //خيار المزايدة في المزاد
             $table->integer('count_of_buyer')->default(0);  //عدد المزايدين
             $table->string('value_of_increment')->nullable(); //قيمة المزايدة في كل مرة
-            $table->string('start_auction_price')->nullable();  //القيمة الابتدائية للمزاد
+            $table->float('start_auction_price')->nullable();  //القيمة الابتدائية للمزاد
             $table->softDeletes();
             $table->timestamps();
         });

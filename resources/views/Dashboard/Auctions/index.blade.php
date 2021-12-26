@@ -1,7 +1,5 @@
 @extends('Dashboard.layouts.master')
-
 @section('title', trans('messages.auction.auctions'))
-
 @section('content')
 
     <!-- Page header -->
@@ -15,17 +13,12 @@
                     </li>
                     <li class="active">@lang('messages.auction.auctions')</li>
                 </ul>
-
                 @include('Dashboard.layouts.parts.quick-links')
             </div>
         @endsection
     </div>
     <!-- /page header -->
-
-
     @include('Dashboard.layouts.parts.validation_errors')
-
-
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
         <div class="panel-heading">
@@ -36,8 +29,6 @@
             <a href="{{route('auctions.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i
                         class="icon-plus2"></i></b>{{ trans('messages.auction.add') }}</a>
         </div>
-
-
         <!-- Basic pills -->
         <div class="row" style="padding: 15px;">
             <div class="col-md-12">
@@ -60,9 +51,7 @@
                                 <li><a href="#on_progress_auctions" data-toggle="tab">{{ trans('messages.auction.on_progress') }}</a></li>
                                 <li><a href="#done_auctions" data-toggle="tab">{{ trans('messages.auction.done') }}</a></li>
 {{--                                <li><a href="#bordered-justified-pill4" data-toggle="tab">{{ trans('messages.auction.not_accepted') }}</a></li>--}}
-
                             </ul>
-
                             <div class="tab-content">
                                 <div class="tab-pane active" id="all_auctions">
                                    <div class="row">
@@ -74,8 +63,8 @@
                                                    <th>{{ trans('messages.image') }}</th>
                                                    <th>{{ trans('messages.name') }}</th>
 {{--                                                   <th>{{ trans('messages.description') }}</th>--}}
-                                                   <th>{{ trans('messages.auction.seller_full_name') }}</th>
-                                                   <th>{{ trans('messages.auction.category_name') }}</th>
+{{--                                                   <th>{{ trans('messages.auction.seller_full_name') }}</th>--}}
+{{--                                                   <th>{{ trans('messages.auction.category_name') }}</th>--}}
                                                    <th>{{ trans('messages.auction.start_auction_price') }}</th>
                                                    <th>{{ trans('messages.auction.value_of_increment') }}</th>
                                                    <th>{{ trans('messages.auction.start_date') }}</th>
@@ -85,8 +74,6 @@
                                                    <th class="text-center">@lang('messages.form-actions')</th>
                                                </tr>
                                                </thead>
-
-
                                                <tbody>
                                                @foreach($auctions as $auction)
 
@@ -96,12 +83,11 @@
                                                        <td>
                                                            <a href="{{ $auction->first_image_path }}" data-popup="lightbox"><img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                        </td>
-
                                                        <td><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable($auction->$name) }}</a></td>
 {{--                                                       <td> {{ isNullable($auction->$description) }}</td>--}}
-                                                       <td> {{ ($auction->seller->full_name) }}</a></td>
-                                                       {{--                                                    <td> {{ $auction->category['name_' . app()->getLocale()] }}</a></td>--}}
-                                                       <td> {{ $auction->category->$name }}</a></td>
+{{--                                                       <td> {{ ($auction->seller->full_name) }}</a></td>--}}
+{{--                                                       --}}{{--                                                    <td> {{ $auction->category['name_' . app()->getLocale()] }}</a></td>--}}
+{{--                                                       <td> {{ $auction->category->$name }}</a></td>--}}
                                                        <td> {{ ($auction->start_auction_price ) }}</a></td>
                                                        <td> {{ ($auction->value_of_increment ) }}</a></td>
 
@@ -110,8 +96,6 @@
                                                        <td>{{($auction->remaining_days) }}</td>
                                                        {{--                                                    {{ Carbon\Carbon::now()->toDateTimeString() }}--}}
                                                        <td>{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
-
-
                                                        <td class="text-center">
                                                            <div class="list-icons text-center">
                                                                <div class="list-icons-item dropdown text-center">
@@ -120,7 +104,6 @@
                                                                       data-toggle="dropdown">
                                                                        <i class="icon-menu9"></i>
                                                                    </a>
-
                                                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
                                                                        <li>
                                                                            <a href="{{ route('auctions.edit',$auction->id) }}">
@@ -144,14 +127,11 @@
                                                                    </ul>
                                                                </div>
                                                            </div>
-
-
                                                        </td>
                                                    </tr>
                                                @endforeach
                                                </tbody>
                                            </table>
-
                                        @else
                                            <center><h3> @lang('messages.no_data_found') </h3></center>
                                        @endif
