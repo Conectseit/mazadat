@@ -110,35 +110,35 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label
-                                    class="col-lg-3 control-label display-block"> {{ trans('messages.option.options') }} </label>
-                                <div class="col-lg-9">
-                                    <select name="option_id" id="options"
-                                            class="select-border-color border-warning form-control">
-                                        <optgroup label="{{ trans('messages.option.options') }}">
-                                            @foreach($options as $option)
-                                                <option value="{{ $option->id }}"> {{ $option->$name }} </option>
-                                            @endforeach
-                                    </select>
-                                </div>
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label--}}
+{{--                                    class="col-lg-3 control-label display-block"> {{ trans('messages.option.options') }} </label>--}}
+{{--                                <div class="col-lg-9">--}}
+{{--                                    <select name="option_id" id="options"--}}
+{{--                                            class="select-border-color border-warning form-control">--}}
+{{--                                        <optgroup label="{{ trans('messages.option.options') }}">--}}
+{{--                                            @foreach($options as $option)--}}
+{{--                                                <option value="{{ $option->id }}"> {{ $option->$name }} </option>--}}
+{{--                                            @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
 
 
-                            <div class="form-group">
-                                <label
-                                    class="col-lg-3 control-label display-block"> {{ trans('messages.option.options') }} </label>
-                                <div class="col-lg-9">
-                                    <select name="option_details_id" id="option_details"
-                                            class="select-border-color border-warning form-control">
-                                        <optgroup label="{{ trans('messages.option.option_details') }}">
-                                            @foreach($option_details as $option_detail)
-                                                <option value="{{ $option_detail->id }}"> {{ $option_detail->$value }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label--}}
+{{--                                    class="col-lg-3 control-label display-block"> {{ trans('messages.option.options') }} </label>--}}
+{{--                                <div class="col-lg-9">--}}
+{{--                                    <select name="option_details_id" id="option_details"--}}
+{{--                                            class="select-border-color border-warning form-control">--}}
+{{--                                        <optgroup label="{{ trans('messages.option.option_details') }}">--}}
+{{--                                            @foreach($option_details as $option_detail)--}}
+{{--                                                <option value="{{ $option_detail->id }}"> {{ $option_detail->$value }} </option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
 
 {{--                            <div class="form-group">--}}
