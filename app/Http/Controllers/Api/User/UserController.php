@@ -23,10 +23,10 @@ class UserController extends PARENT_API
         }
         $user = auth()->user();
         if (!$user) {
-            return responseJson(false, trans('api.The_user_not_found'), []); //BAD_REQUEST
+            return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
         $user->update($request_data);
-        return responseJson(true, trans('api.uploaded_successfully'), []); //ACCEPTED
+        return responseJson(true, trans('api.uploaded_successfully'), null); //ACCEPTED
     }
 
     public function add_document(DocumentRequest $request)
@@ -40,17 +40,17 @@ class UserController extends PARENT_API
         }
         $user = auth()->user();
         if (!$user) {
-            return responseJson(false, trans('api.The_user_not_found'), []); //BAD_REQUEST
+            return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
         $document = Document::create($request_data + ['user_id' => $user->id]);
-        return responseJson(true, trans('api.added_successfully', [])); //ACCEPTED
+        return responseJson(true, trans('api.added_successfully', null)); //ACCEPTED
     }
 
     public function add_traffic_file_number(TrafficFileNumberRequest $request)
     {
         $user = auth()->user();
         if (!$user) {
-            return responseJson(false, trans('api.The_user_not_found'), []); //BAD_REQUEST
+            return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
         $traffic_file_number = TrafficFileNumber::create($request->all() + ['user_id' => $user->id]);
         return responseJson(true, trans('api.added_successfully'), $traffic_file_number); //ACCEPTED
@@ -60,7 +60,7 @@ class UserController extends PARENT_API
     {
         $user = auth()->user();
         if (!$user) {
-            return responseJson(false, trans('api.The_user_not_found'), []); //BAD_REQUEST
+            return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
 
         $available_limit = $user->select('available_limit')->first();
@@ -83,7 +83,7 @@ class UserController extends PARENT_API
     public function my_wallet(Request $request)
     {
         $user = auth()->user();
-        if (!$user) {return responseJson(false, trans('api.The_user_not_found'), []); //BAD_REQUEST
+        if (!$user) {return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
          $user->select('available_limit','wallet')->get();
 
@@ -100,7 +100,7 @@ class UserController extends PARENT_API
         } else {
             $user->update(['preferred_language' => 'arabic']);
         }
-        return responseJson(true, trans('api.updated_successfully'), []); //ACCEPTED
+        return responseJson(true, trans('api.updated_successfully'), null); //ACCEPTED
     }
 
     public function getPreferredLanguage(Request $request)
@@ -123,7 +123,7 @@ class UserController extends PARENT_API
 //        }else{
 //            $user->update(['preferred_language' => 'arabic']);
 //        }
-//        return responseJson(true, trans('api.updated_successfully'),[]); //ACCEPTED
+//        return responseJson(true, trans('api.updated_successfully'),null); //ACCEPTED
 //    }
 
 

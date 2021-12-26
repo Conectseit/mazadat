@@ -59,15 +59,15 @@ class AuthController extends PARENT_API
     {
 //        $user = User::where(['mobile' => $request->mobile])->first();
 //        if (!$user) {
-//            return responseJson(false, trans('api.The_user_not_found'), []); //BAD_REQUEST
+//            return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
 //        }
 
         $user = User::where('activation_code', $request->activation_code)->first();
         if ($user) {
             $user->update(['is_active' => 'active']);
-            return responseJson(true, trans('api.activation_done'), []);  //OK
+            return responseJson(true, trans('api.activation_done'), null);  //OK
         }
-        return responseJson(false, trans('api.sorry_wrong_activation_code_try_again'), []);
+        return responseJson(false, trans('api.sorry_wrong_activation_code_try_again'), null);
 
     }
 
@@ -77,17 +77,17 @@ class AuthController extends PARENT_API
     {
         try {
             if (!$token = JWTAuth::attempt(['email' => $request->email, 'password' => $request->password])) {
-                return responseJson(false, trans('api.sorry_invalid_email_or_password'), []);
+                return responseJson(false, trans('api.sorry_invalid_email_or_password'), null);
             }
             $user = auth()->user();
             if ($user->is_accepted == 0) {
-                return responseJson('403', trans('api.please_wait_your_account_not_activated_yet'), []);
+                return responseJson('403', trans('api.please_wait_your_account_not_activated_yet'), null);
             }
 
             auth()->user()->token->update(['jwt' => $token]);
             return responseJson(true, trans('api.login_successfully'), new AuthResource(auth()->user()));  //OK
         } catch (\Exception $e) {
-            return responseJson('500', $e->getMessage(), []);
+            return responseJson('500', $e->getMessage(), null);
         }
     }
 
@@ -96,7 +96,7 @@ class AuthController extends PARENT_API
     {
         auth()->user()->token->update(['jwt' => '']);
         auth()->logout();
-        return responseJson(true, trans('api.logout_successfully'), []); //OK
+        return responseJson(true, trans('api.logout_successfully'), null); //OK
     }
 
 
@@ -104,7 +104,7 @@ class AuthController extends PARENT_API
     {
         $user = auth()->user();
         if (!$user) {
-            return responseJson(false, trans('api.The_user_not_found'), []); //BAD_REQUEST
+            return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
         return responseJson(true, trans('api.user_profile'), new AuthResource($user));  //OK
     }
@@ -117,7 +117,7 @@ class AuthController extends PARENT_API
         }
         $user = $request->user();
         if (!$user) {
-            return responseJson(false, 'The user has been found but it is not a buyer...', []); //BAD_REQUEST
+            return responseJson(false, 'The user has been found but it is not a buyer...', null); //BAD_REQUEST
         }
         $user->update($request_data);
 //        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));
@@ -129,7 +129,7 @@ class AuthController extends PARENT_API
     {
         $user = auth()->user();
         if (!$user) {
-            return responseJson(false, 'The user has been found but it is not a buyer...', []); //BAD_REQUEST
+            return responseJson(false, 'The user has been found but it is not a buyer...', null); //BAD_REQUEST
         }
         $request_data = $request->all();
 //        $request_data['user_id'] = auth()->user()->id;
@@ -144,9 +144,9 @@ class AuthController extends PARENT_API
             if (\Hash::check($request->current_password, auth()->user()->password)) {
                 $user = auth()->user();
                 $user->update(['password' => $request->password]);
-                return responseJson(true, trans('api.updated_successfully'), []); //ACCEPTED
+                return responseJson(true, trans('api.updated_successfully'), null); //ACCEPTED
             } else {
-                return responseJson(false, trans('api.wrong_old_password'), []); //ACCEPTED
+                return responseJson(false, trans('api.wrong_old_password'), null); //ACCEPTED
             }
         }
     }

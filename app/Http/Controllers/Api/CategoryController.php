@@ -31,6 +31,6 @@ class CategoryController extends PARENT_API
 //            $category_auctions = Auction::where('category_id', $id)->get();
             return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($category_auctions));  //OK don-successfully
         }
-        return responseJson(false, trans('api.not_found_category'), []);  //
+        return responseJson(false, trans('api.not_found_category'), null);  //
     }
 }

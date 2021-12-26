@@ -23,7 +23,7 @@ class FilterController extends PARENT_API
         $query = Auction::query();
         $category = Category::where('id', $id)->find($id);
         if (!$category) {
-            return responseJson(false, trans('api.not_found_category'), []);  //
+            return responseJson(false, trans('api.not_found_category'), null);  //
         }
 //        if ($request->has('search_by_name')) {
 //            $query->where($name, 'like', '%' . $request['search_by_name'] . '%');
@@ -48,7 +48,7 @@ class FilterController extends PARENT_API
         }
         $auctions = $query->where('category_id', $id)->where('status', 'on_progress')->get();
         if ($auctions->count() == 0) {
-            return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), []);  //
+            return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
         }
         return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK don-successfully
 
@@ -58,7 +58,7 @@ class FilterController extends PARENT_API
     {
         $category = Category::where('id', $id)->find($id);
         if (!$category) {
-            return responseJson(false, trans('api.not_found_category'), []);  //
+            return responseJson(false, trans('api.not_found_category'), null);  //
         }
         $category_options=Option::where('category_id',$id)->with('option_details')->get();
         return responseJson(true, trans('api.category_options'), CategoryOptionsResource::collection($category_options));  //OK
@@ -71,13 +71,13 @@ class FilterController extends PARENT_API
     {
         $category = Category::where('id', $id)->find($id);
         if (!$category) {
-            return responseJson(false, trans('api.not_found_category'), []);  //
+            return responseJson(false, trans('api.not_found_category'), null);  //
         }
         $auctions = Auction::where('category_id', $id)->latest()->get();
         if ($auctions->count() == 0) {
-            return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), []);  //
+            return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
         }
-        $option_details= [];
+        $option_details= null;
         $data = AuctionData::whereIn('option_details_id',$option_details);
 
 //                    $auctions = Auction::where('id')->get();
@@ -96,11 +96,11 @@ class FilterController extends PARENT_API
     //    {
     //        $category = Category::where('id', $id)->find($id);
     //        if (!$category) {
-    //            return responseJson(false, trans('api.not_found_category'), []);  //
+    //            return responseJson(false, trans('api.not_found_category'), null);  //
     //        }
     //        $auctions = Auction::where('category_id', $id)->latest()->get();
     //        if ($auctions->count() == 0) {
-    //            return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), []);  //
+    //            return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
     //        }
     //
     //        if ($request->less_price) {

@@ -24,8 +24,6 @@ class SettingController extends PARENT_API
         return responseJson(true, trans('api.all_notifications'), $notifications);  //OK don-successfully
     }
 
-
-
     public function about_app()
     {
         $about_app= 'about_app_'.app()->getLocale();
@@ -34,7 +32,7 @@ class SettingController extends PARENT_API
         {
             return responseJson(true, trans('api.request_done_successfully'), $about_app);  //OK don-successfully
         }
-        return responseJson(false, trans('api.Page_not_found'), []);//NOT_FOUND
+        return responseJson(false, trans('api.Page_not_found'),null);//NOT_FOUND
     }
 
     public function conditions_terms()
@@ -45,7 +43,7 @@ class SettingController extends PARENT_API
         {
             return responseJson(true, trans('api.request_done_successfully'), $conditions_terms);  //OK don-successfully
         }
-        return responseJson(false, trans('api.Page_not_found'), []);//NOT_FOUND
+        return responseJson(false, trans('api.Page_not_found'),null);//NOT_FOUND
     }
     public function our_officers()
     {
@@ -53,7 +51,7 @@ class SettingController extends PARENT_API
         {
             return responseJson(true, trans('api.request_done_successfully') ,['Our Officers'=>new OfficersResource ($our_officers)]);  //OK don-successfully
         }
-        return responseJson(false, trans('api.Page_not_found'),[]);//NOT_FOUND
+        return responseJson(false, trans('api.Page_not_found'),null);//NOT_FOUND
     }
     public function bank()
     {
@@ -61,7 +59,7 @@ class SettingController extends PARENT_API
         {
             return responseJson(true, trans('api.request_done_successfully') ,['Bank Deposit'=>new BankResource ($bank)]);  //OK don-successfully
         }
-        return responseJson(false, trans('api.Page_not_found'),[]);//NOT_FOUND
+        return responseJson(false, trans('api.Page_not_found'),null);//NOT_FOUND
     }
 
 
@@ -75,7 +73,7 @@ class SettingController extends PARENT_API
 //        {
 //            return responseJson(true, trans('api.request_done_successfully'), $page);  //OK don-successfully
 //        }
-//        return responseJson(false, trans('api.Page_not_found'), []);//NOT_FOUND
+//        return responseJson(false, trans('api.Page_not_found'),null);//NOT_FOUND
 //    }
 
 }
