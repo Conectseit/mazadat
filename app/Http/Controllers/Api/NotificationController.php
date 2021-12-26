@@ -19,7 +19,7 @@ class NotificationController extends PARENT_API
     {
         $user = auth('api')->user();
         $notifications = Notification::where('user_id',$user->id)->get();
-        return responseJson('true', trans('api.all_notifications'),NotificationsResource::collection($notifications) );  //OK don-successfully
+        return responseJson(true, trans('api.all_notifications'),NotificationsResource::collection($notifications) );  //OK don-successfully
     }
 
 }

@@ -23,7 +23,7 @@ class FilterController extends PARENT_API
         $query = Auction::query();
         $category = Category::where('id', $id)->find($id);
         if (!$category) {
-            return responseJson('false', trans('api.not_found_category'), []);  //
+            return responseJson(false, trans('api.not_found_category'), []);  //
         }
 //        if ($request->has('search_by_name')) {
 //            $query->where($name, 'like', '%' . $request['search_by_name'] . '%');
@@ -48,9 +48,9 @@ class FilterController extends PARENT_API
         }
         $auctions = $query->where('category_id', $id)->where('status', 'on_progress')->get();
         if ($auctions->count() == 0) {
-            return responseJson('false', trans('api.there_is_no_auctions_on_this_category'), []);  //
+            return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), []);  //
         }
-        return responseJson('true', trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK don-successfully
+        return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK don-successfully
 
     }
 
@@ -58,11 +58,11 @@ class FilterController extends PARENT_API
     {
         $category = Category::where('id', $id)->find($id);
         if (!$category) {
-            return responseJson('false', trans('api.not_found_category'), []);  //
+            return responseJson(false, trans('api.not_found_category'), []);  //
         }
         $category_options=Option::where('category_id',$id)->with('option_details')->get();
-        return responseJson('true', trans('api.category_options'), CategoryOptionsResource::collection($category_options));  //OK
-//        return responseJson('true', trans('api.category_options'), CategoryOptionsResource::collection($category->options));  //OK
+        return responseJson(true, trans('api.category_options'), CategoryOptionsResource::collection($category_options));  //OK
+//        return responseJson(true, trans('api.category_options'), CategoryOptionsResource::collection($category->options));  //OK
 
     }
 
@@ -71,11 +71,11 @@ class FilterController extends PARENT_API
     {
         $category = Category::where('id', $id)->find($id);
         if (!$category) {
-            return responseJson('false', trans('api.not_found_category'), []);  //
+            return responseJson(false, trans('api.not_found_category'), []);  //
         }
         $auctions = Auction::where('category_id', $id)->latest()->get();
         if ($auctions->count() == 0) {
-            return responseJson('false', trans('api.there_is_no_auctions_on_this_category'), []);  //
+            return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), []);  //
         }
         $option_details= [];
         $data = AuctionData::whereIn('option_details_id',$option_details);
@@ -96,11 +96,11 @@ class FilterController extends PARENT_API
     //    {
     //        $category = Category::where('id', $id)->find($id);
     //        if (!$category) {
-    //            return responseJson('false', trans('api.not_found_category'), []);  //
+    //            return responseJson(false, trans('api.not_found_category'), []);  //
     //        }
     //        $auctions = Auction::where('category_id', $id)->latest()->get();
     //        if ($auctions->count() == 0) {
-    //            return responseJson('false', trans('api.there_is_no_auctions_on_this_category'), []);  //
+    //            return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), []);  //
     //        }
     //
     //        if ($request->less_price) {
@@ -120,7 +120,7 @@ class FilterController extends PARENT_API
     //            $auctions = Auction::where('status','on_progress')->OrderBy('end_date', 'asc')->get();
     //        }
     //
-    //        return responseJson('true', trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK
+    //        return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK
     //
     //    }
 

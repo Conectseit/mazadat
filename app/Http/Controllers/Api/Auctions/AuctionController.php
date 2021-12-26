@@ -20,9 +20,9 @@ class AuctionController extends PARENT_API
     {
         if ($auction = Auction::where('id', $id)->find($id)) {
             $auction->get();
-            return responseJson('true', trans('api.auction_details'), new AuctionDetailsResource($auction));  //OK don-successfully
+            return responseJson(true, trans('api.auction_details'), new AuctionDetailsResource($auction));  //OK don-successfully
         }
-        return responseJson('false', trans('api.not_found_auction'), []);  //
+        return responseJson(false, trans('api.not_found_auction'), []);  //
     }
 
 
@@ -36,16 +36,16 @@ class AuctionController extends PARENT_API
             } else {
                 $watch->delete();
             }
-            return responseJson('true', trans('api.request_done_successfully'), []); //OK
+            return responseJson(true, trans('api.request_done_successfully'), []); //OK
         }
-        return responseJson('false', trans('api.not_found_auction'), []);  //NOT_FOUND
+        return responseJson(false, trans('api.not_found_auction'), []);  //NOT_FOUND
     }
 
 
     public function watched_auctions(Request $request)
     {
         $watched_auctions = WatchedAuction::where('user_id', auth()->user()->id)->get();
-        return responseJson('true', trans('api.auction_details'), ['watched_auctions' => UserAuctionsResource::collection($watched_auctions)]);  //OK
+        return responseJson(true, trans('api.auction_details'), ['watched_auctions' => UserAuctionsResource::collection($watched_auctions)]);  //OK
     }
 
 
@@ -61,28 +61,28 @@ class AuctionController extends PARENT_API
                 $auction->count_of_buyer += 1;
                 $auction->current_price = $auction->start_auction_price+ $request->offer;
                 $auction->update();
-                return responseJson('true', trans('api.request_done_successfully'), []); //OK
+                return responseJson(true, trans('api.request_done_successfully'), []); //OK
             } else {
                 $auction->current_price = $auction->current_price + $request->offer;
                 $auction->update();
                 $bid->update(['buyer_offer'=>$bid->buyer_offer + $request->offer]);
-                return responseJson('true', trans('api.updated_successfully'), []);  //NOT_FOUND
+                return responseJson(true, trans('api.updated_successfully'), []);  //NOT_FOUND
             }
             }else{
-                return responseJson('false', trans('api.sorry!_you_cant_make_bid_your_available_limit_less_than+_this_value'), []);  //NOT_FOUND
+                return responseJson(false, trans('api.sorry!_you_cant_make_bid_your_available_limit_less_than+_this_value'), []);  //NOT_FOUND
             }
 
         }
-        return responseJson('false', trans('api.not_found_auction'), []);  //NOT_FOUND
+        return responseJson(false, trans('api.not_found_auction'), []);  //NOT_FOUND
     }
 
     public function my_bids(Request $request)
     {
         $my_bids = AuctionBuyer::where('buyer_id', auth()->user()->id)->get();
         if ($my_bids->count() == 0) {
-            return responseJson('true', trans('api.You_dont_have_bids_yet'), []);  //OK
+            return responseJson(true, trans('api.You_dont_have_bids_yet'), []);  //OK
         }
-        return responseJson('true', trans('api.auction_details'), ['my_bids' => UserAuctionsResource::collection($my_bids)]);  //OK
+        return responseJson(true, trans('api.auction_details'), ['my_bids' => UserAuctionsResource::collection($my_bids)]);  //OK
     }
 
 

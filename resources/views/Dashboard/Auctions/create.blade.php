@@ -1,10 +1,6 @@
 @extends('Dashboard.layouts.master')
-
 @section('title', trans('messages.create-var',['var'=>trans('messages.auction.auction')]))
-
-
 @section('content')
-
 
     <!-- Page header -->
     <div class="page-header page-header-default">
@@ -24,11 +20,7 @@
         @endsection
     </div>
     <!-- /page header -->
-
-
     @include('Dashboard.layouts.parts.validation_errors')
-
-
     <div class="row" style="padding: 15px;">
         <div class="col-md-6">
 

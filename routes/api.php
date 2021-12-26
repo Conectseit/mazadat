@@ -31,11 +31,12 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group(['namespace' => 'Api'], function () {
     Route::post('register', [AuthController::class, 'register']);
+    Route::post('activation', [AuthController::class, 'activation']);
     Route::any('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout'])->middleware('jwt.auth');
 
-    Route::any('reset_password_page', [UserController::class, 'ResetPassword']);
-    Route::any('reset_password', [UserController::class, 'DoResetPassword']);
+//    Route::any('reset_password_page', [UserController::class, 'ResetPassword']);
+//    Route::any('reset_password', [UserController::class, 'DoResetPassword']);
 
 
     //=========== questions ============

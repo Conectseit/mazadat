@@ -1,7 +1,5 @@
 @extends('Dashboard.layouts.master')
-
 @section('title', trans('messages.seller.sellers'))
-
 @section('content')
 
     <!-- Page header -->
@@ -15,14 +13,11 @@
                     </li>
                     <li class="active">@lang('messages.seller.sellers')</li>
                 </ul>
-
                 @include('Dashboard.layouts.parts.quick-links')
             </div>
         @endsection
     </div>
     <!-- /page header -->
-
-
     @include('Dashboard.layouts.parts.validation_errors')
 
 
@@ -54,6 +49,7 @@
                 </thead>
                 <tbody>
                 @foreach($sellers as $seller)
+
                     <tr id="seller-row-{{ $seller->id }}">
                         <td>{{ $seller->id }}</td>
 

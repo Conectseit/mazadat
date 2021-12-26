@@ -19,7 +19,7 @@ class CityController extends PARENT_API
     public function cities()
     {
         $cities = City::all();
-        return responseJson('true', trans('api.all_cities'),CitiesResource::collection($cities) );  //OK don-successfully
+        return responseJson(true, trans('api.all_cities'),CitiesResource::collection($cities) );  //OK don-successfully
     }
 
 }

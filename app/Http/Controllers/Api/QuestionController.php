@@ -17,7 +17,7 @@ class QuestionController extends PARENT_API
     public function index()
     {
         $questions = CommonQuestion::all();
-        return responseJson('true', trans('api.all_questions'),QuestionsResource::collection($questions) );  //OK don-successfully
+        return responseJson(true, trans('api.all_questions'),QuestionsResource::collection($questions) );  //OK don-successfully
     }
 
 }

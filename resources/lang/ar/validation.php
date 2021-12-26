@@ -95,6 +95,9 @@ return [
     'present' => 'يجب تقديم :attribute.',
     'regex' => 'صيغة :attribute .غير صحيحة.',
     'required' => ':attribute مطلوب.',
+
+    'activation code'         	=> ' كودالتفعيل',
+
     'sometimes' => ':attribute مطلوب.',
     'required_if' => ':attribute مطلوب في حال ما إذا كان :other يساوي :value.',
     'required_unless' => ':attribute مطلوب في حال ما لم يكن :other يساوي :values.',
@@ -162,6 +165,7 @@ return [
         'address' => 'عنوان السكن',
         'phone' => 'الهاتف',
         'mobile' => 'الجوال',
+        'activation_code'   => ' كودالتفعيل',
         'age' => 'العمر',
         'sex' => 'الجنس',
         'gender' => 'النوع',
@@ -189,6 +193,5 @@ return [
         'images.*' => 'صور المزاد',
 
         'passport_expiry_date'         	=> ' تاريخ انتهاء جواز السفر',
-
     ],
 ];

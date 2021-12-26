@@ -21,7 +21,7 @@ class NationalityController extends PARENT_API
     public function nationalities()
     {
         $nationalities = Nationality::all();
-        return responseJson('true', trans('api.all_nationalities'),NationalityResource::collection($nationalities) );  //OK don-successfully
+        return responseJson(true, trans('api.all_nationalities'),NationalityResource::collection($nationalities) );  //OK don-successfully
     }
 
 }

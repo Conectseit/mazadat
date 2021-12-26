@@ -21,7 +21,7 @@ class SettingController extends PARENT_API
     {
         $user = auth('api')->user();
         $notifications = Setting::where('user_id',$user->id)->get();
-        return responseJson('true', trans('api.all_notifications'), $notifications);  //OK don-successfully
+        return responseJson(true, trans('api.all_notifications'), $notifications);  //OK don-successfully
     }
 
 
@@ -32,9 +32,9 @@ class SettingController extends PARENT_API
 
         if ($about_app = Setting::where('key',$about_app)->first()->value)
         {
-            return responseJson('true', trans('api.request_done_successfully'), $about_app);  //OK don-successfully
+            return responseJson(true, trans('api.request_done_successfully'), $about_app);  //OK don-successfully
         }
-        return responseJson('false', trans('api.Page_not_found'), []);//NOT_FOUND
+        return responseJson(false, trans('api.Page_not_found'), []);//NOT_FOUND
     }
 
     public function conditions_terms()
@@ -43,25 +43,25 @@ class SettingController extends PARENT_API
 
         if ($conditions_terms = Setting::where('key',$conditions_terms)->first()->value)
         {
-            return responseJson('true', trans('api.request_done_successfully'), $conditions_terms);  //OK don-successfully
+            return responseJson(true, trans('api.request_done_successfully'), $conditions_terms);  //OK don-successfully
         }
-        return responseJson('false', trans('api.Page_not_found'), []);//NOT_FOUND
+        return responseJson(false, trans('api.Page_not_found'), []);//NOT_FOUND
     }
     public function our_officers()
     {
         if ($our_officers = Setting::all())
         {
-            return responseJson('true', trans('api.request_done_successfully') ,['Our Officers'=>new OfficersResource ($our_officers)]);  //OK don-successfully
+            return responseJson(true, trans('api.request_done_successfully') ,['Our Officers'=>new OfficersResource ($our_officers)]);  //OK don-successfully
         }
-        return responseJson('false', trans('api.Page_not_found'),[]);//NOT_FOUND
+        return responseJson(false, trans('api.Page_not_found'),[]);//NOT_FOUND
     }
     public function bank()
     {
         if ($bank = Setting::all())
         {
-            return responseJson('true', trans('api.request_done_successfully') ,['Bank Deposit'=>new BankResource ($bank)]);  //OK don-successfully
+            return responseJson(true, trans('api.request_done_successfully') ,['Bank Deposit'=>new BankResource ($bank)]);  //OK don-successfully
         }
-        return responseJson('false', trans('api.Page_not_found'),[]);//NOT_FOUND
+        return responseJson(false, trans('api.Page_not_found'),[]);//NOT_FOUND
     }
 
 
@@ -73,9 +73,9 @@ class SettingController extends PARENT_API
 //    {
 //        if ($page = Setting::where('key', $key)->first()->value)
 //        {
-//            return responseJson('true', trans('api.request_done_successfully'), $page);  //OK don-successfully
+//            return responseJson(true, trans('api.request_done_successfully'), $page);  //OK don-successfully
 //        }
-//        return responseJson('false', trans('api.Page_not_found'), []);//NOT_FOUND
+//        return responseJson(false, trans('api.Page_not_found'), []);//NOT_FOUND
 //    }
 
 }
