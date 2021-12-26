@@ -55,7 +55,6 @@
                 <tbody>
                 @foreach($sellers as $seller)
                     <tr id="seller-row-{{ $seller->id }}">
-
                         <td>{{ $seller->id }}</td>
 
                         <td><a href={{ route('sellers.show', $seller->id) }}> {{ isNullable($seller->full_name) }}</a>
