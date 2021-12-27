@@ -19,6 +19,7 @@ class NotificationsResource extends JsonResource
             'title'         => $this->title,
             'text'          => $this->text,
             'is_seen'       => $this->is_seen,
+            'send_at'       => $this->created_at->diffForHumans(),
         ];
 
     }
