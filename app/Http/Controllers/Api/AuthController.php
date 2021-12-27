@@ -72,7 +72,6 @@ class AuthController extends PARENT_API
     }
 
 
-
     public function login(LoginRequest $request)
     {
         try {
@@ -80,10 +79,12 @@ class AuthController extends PARENT_API
                 return responseJson(false, trans('api.sorry_invalid_email_or_password'), null);
             }
             $user = auth()->user();
-            if ($user->is_accepted == 0) {
-                return responseJson('403', trans('api.please_wait_your_account_not_activated_yet'), null);
+            if ($user->is_active == 'deactive') {
+                return responseJson(false, trans('api.please_active_your_account_by_activation_code_first'), null);
             }
-
+            if ($user->is_accepted == 0) {
+                return responseJson(false, trans('api.please_wait_your_account_not_activated_yet'), null);
+            }
             auth()->user()->token->update(['jwt' => $token]);
             return responseJson(true, trans('api.login_successfully'), new AuthResource(auth()->user()));  //OK
         } catch (\Exception $e) {

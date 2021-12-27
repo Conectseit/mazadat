@@ -15,8 +15,6 @@ use Illuminate\Http\Request;
 
 class FilterController extends PARENT_API
 {
-
-
     public function main_filter(Request $request, $id)
     {
 //        $name = 'name_' . app()->getLocale();

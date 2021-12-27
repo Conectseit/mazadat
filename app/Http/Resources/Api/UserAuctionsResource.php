@@ -18,12 +18,15 @@ class UserAuctionsResource extends JsonResource
         $name = 'name_' . app()->getLocale();
         $description = 'description_' . app()->getLocale();
         return [
+            'serial_number'               => $this->auction->serial_number,
             'name'                        => $this->auction->$name,
             'description'                 => $this->auction->$description,
             'image'                       => $this->auction->first_image_path,
             'count_of_buyer'              => $this->auction->count_of_buyer,
             'start_auction_price'         => $this->auction->start_auction_price,
+            'current_price'               => $this->auction->current_price,
             'value_of_increment'          => $this->auction->value_of_increment,
+            'start_date'                  => $this->auction->start_date,
             'remaining_time'              => $this->auction->remaining_time,
         ];
 

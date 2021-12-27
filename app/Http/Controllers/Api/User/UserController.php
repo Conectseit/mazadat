@@ -71,13 +71,13 @@ class UserController extends PARENT_API
         }
         if ($request->increment) {
             $available_limit = $user->available_limit + 1;
+            if($available_limit >$user->wallet ){
+                return responseJson(false, trans('api.Sorry_you_cant_increase_more_your_wallet_less_than_this_value'), null);
+            }
             $user->update(['available_limit' => $available_limit]);
         }
         return responseJson(true, trans('api.updated_successfully'), ['Available Limit'=>$available_limit]); //ACCEPTED
     }
-
-
-
 
 
     public function my_wallet(Request $request)

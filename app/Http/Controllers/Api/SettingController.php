@@ -49,7 +49,7 @@ class SettingController extends PARENT_API
     {
         if ($our_officers = Setting::all())
         {
-            return responseJson(true, trans('api.request_done_successfully') ,['Our Officers'=>new OfficersResource ($our_officers)]);  //OK don-successfully
+            return responseJson(true, trans('api.request_done_successfully') ,new OfficersResource ($our_officers));  //OK don-successfully
         }
         return responseJson(false, trans('api.Page_not_found'),null);//NOT_FOUND
     }
@@ -57,7 +57,7 @@ class SettingController extends PARENT_API
     {
         if ($bank = Setting::all())
         {
-            return responseJson(true, trans('api.request_done_successfully') ,['Bank Deposit'=>new BankResource ($bank)]);  //OK don-successfully
+            return responseJson(true, trans('api.request_done_successfully') ,new BankResource ($bank));  //OK don-successfully
         }
         return responseJson(false, trans('api.Page_not_found'),null);//NOT_FOUND
     }

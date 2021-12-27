@@ -11,8 +11,11 @@ return [
     'sorry_invalid_email_or_password' 	=> 'عفوا بيانات الدخول غير صحيحة',
     'wrong_old_password' 	=> 'عفوا كلمة المرور القديمة غير صحيحة',
     'user_profile'         	=> 'حسابي',
-    'please_wait_your_account_not_activated_yet'         	=> 'من فضلك انتظر حتي يتم تفعيل حسابك',
+    'activation_done'         	=> 'تم تفعيل الحساب',
+    'please_wait_your_account_not_activated_yet'         	=> 'من فضلك انتظر حتي يتم قبول حسابك من الادارة',
+    'please_active_your_account_by_activation_code_first'         	=> 'من فضلك قم بتفعيل حسابك من خلال كود التفعيل المرسل علي جوالك اولا',
     'please_check_your_mobile_activation_code_has_sent'         	=> 'تم ارسال كود التفعيل علي جوالك, من فضلك قم بتفعيل حسابك ',
+    'Sorry_you_cant_increase_more_your_wallet_less_than_this_value' => 'عفوا لايمكنك الزيادة لقد تعديت قيمة محفظتك',
 
 
 

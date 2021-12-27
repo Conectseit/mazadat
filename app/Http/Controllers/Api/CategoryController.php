@@ -27,7 +27,7 @@ class CategoryController extends PARENT_API
             if ($request->has('search_by_auction_name')) {
                 $query->where($name, 'like', '%' . $request['search_by_auction_name'] . '%');
             }
-            $category_auctions =$query->where('category_id', $id)->get();
+            $category_auctions =$query->where('category_id', $id)->where('status', 'on_progress')->get();
 //            $category_auctions = Auction::where('category_id', $id)->get();
             return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($category_auctions));  //OK don-successfully
         }

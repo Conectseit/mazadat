@@ -18,14 +18,18 @@ class AuctionDetailsResource extends JsonResource
         $auction_terms = 'auction_terms_' . app()->getLocale();
         $description = 'description_' . app()->getLocale();
         return [
+            'serial_number'               => $this->serial_number,
             'name'                        => $this->$name,
             'description'                 => $this->$description,
             'image'                       => $this->first_image_path,
             'number_of_bids'              => $this->count_of_buyer,
             'start_auction_price'         => $this->start_auction_price,
+            'current_price'               => $this->current_price,
             'value_of_increment'          => $this->value_of_increment,
+            'start_date'                  => $this->start_date,
             'remaining_time'              => $this->remaining_time,
-            'inspection_report'     => $this->inspection_report_image_path,
+
+            'inspection_report'           => $this->inspection_report_image_path,
             'Terms & Conditions'          => $this->$auction_terms,
             'images'                      =>  AuctionImagesResource ::collection ($this->auctionimages),
         ];
