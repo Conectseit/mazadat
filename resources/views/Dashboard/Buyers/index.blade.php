@@ -45,20 +45,20 @@
         <div class="list-icons" style="padding-right: 10px;">
             <a href="{{route('buyers.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i
                         class="icon-plus2"></i></b>{{ trans('messages.add_new_buyer') }}</a>
-        </div>
+        </div><br>
 
         @if($buyers->count() > 0)
             <table class="table datatable-basic" id="buyers" style="font-size: 16px;">
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>{{ trans('messages.full_name') }}</th>
-                    <th>{{ trans('messages.user_name') }}</th>
-                    <th>{{ trans('messages.mobile') }}</th>
-                    <th>{{ trans('messages.email') }}</th>
-                    <th>{{ trans('messages.city_name') }}</th>
-                    <th>{{ trans('messages.status') }}</th>
-                    <th>@lang('messages.since')</th>
+                <tr style="background-color:gainsboro">
+                    <th class="text-center">#</th>
+                    <th class="text-center">{{ trans('messages.full_name') }}</th>
+                    <th class="text-center">{{ trans('messages.user_name') }}</th>
+                    <th class="text-center">{{ trans('messages.mobile') }}</th>
+                    <th class="text-center">{{ trans('messages.email') }}</th>
+{{--                    <th class="text-center">{{ trans('messages.city_name') }}</th>--}}
+                    <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
+                    <th class="text-center">@lang('messages.since')</th>
                     <th class="text-center">@lang('messages.form-actions')</th>
                 </tr>
                 </thead>
@@ -66,24 +66,37 @@
                 @foreach($buyers as $buyer)
                     <tr id="buyer-row-{{ $buyer->id }}">
 
-                        <td>{{ $buyer->id }}</td>
+                        <td class="text-center">{{ $buyer->id }}</td>
 
-                        <td><a href={{ route('buyers.show', $buyer->id) }}> {{ isNullable($buyer->full_name) }}</a></td>
-                        <td> {{ isNullable($buyer->user_name) }}</td>
-                        <td> {{ $buyer->mobile}}</td>
-                        <td> {{ $buyer->email}}</td>
-                        <td> {{isset($buyer->city->$name) ? $buyer->city->$name:''}}</td>
+                        <td class="text-center"><a href={{ route('buyers.show', $buyer->id) }}> {{ isNullable($buyer->full_name) }}</a></td>
+                        <td class="text-center"> {{ isNullable($buyer->user_name) }}</td>
+                        <td class="text-center"> {{ $buyer->mobile}}</td>
+                        <td class="text-center"> {{ $buyer->email}}</td>
+{{--                        <td class="text-center"> {{isset($buyer->city->$name) ? $buyer->city->$name:''}}</td>--}}
 
-                        <td>
+{{--                        <td class="text-center">--}}
 
-                            @if($buyer->is_accepted  == 0)
-                                <span class="badge badge-danger">{{ trans('messages.deactive') }}</span>
+{{--                            @if($buyer->is_accepted  == 0)--}}
+{{--                                <a href="$buyer/{{$buyer->id}}/de_activate/">--}}
+{{--                                    <span class="badge badge-success">{{ trans('messages.deactive') }}</span>--}}
+{{--                                </a>--}}
+{{--                            @else--}}
+{{--                                <a href="$buyer/{{$buyer->id}}/activate/">--}}
+{{--                                    <span class="badge badge-danger">{{ trans('messages.active') }}</span>--}}
+{{--                                </a>--}}
+{{--                            @endif--}}
+{{--                        </td>--}}
+
+                        <td class="text-center">
+                            @if($buyer->is_accepted ==1)
+                                <a href="buyer/{{$buyer->id}}/not_accept/" class="btn btn-danger btn-sm"><i class="icon-close2"> </i>{{trans('messages.not_accept')}}</a>
                             @else
-                                <span class="badge badge-success">{{ trans('messages.active') }}</span>
+                                <a href="buyer/{{$buyer->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>
                             @endif
                         </td>
 
-                        <td>{{isset($buyer->created_at) ? $buyer->created_at->diffForHumans():'---' }}</td>
+
+                        <td class="text-center">{{isset($buyer->created_at) ? $buyer->created_at->diffForHumans():'---' }}</td>
                         <td class="text-center">
                             <div class="list-icons text-center">
                                 <div class="list-icons-item dropdown text-center">

@@ -28,12 +28,12 @@
         <div class="list-icons" style="padding-right: 10px;">
             <a href="{{route('categories.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i
                         class="icon-plus2"></i></b>{{ trans('messages.category.add') }}</a>
-        </div>
+        </div><br>
 
         @if($categories->count() > 0)
             <table class="table datatable-basic" id="categories" style="font-size: 16px;">
                 <thead>
-                <tr>
+                <tr style="background-color:gainsboro">
                     <th>#</th>
                     <th>{{ trans('messages.image') }}</th>
                     <th>{{ trans('messages.name') }}</th>

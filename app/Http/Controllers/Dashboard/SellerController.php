@@ -125,11 +125,18 @@ class SellerController extends Controller
         }
     }
 
-
-
-
-
-
+    public function accept($id)
+    {
+        $seller = User::findOrFail($id);
+        $seller->update(['is_accepted'=> 1]);
+        return back();
+    }
+    public function not_accept($id)
+    {
+        $seller = User::findOrFail($id);
+        $seller->update(['is_accepted'=> 0]);
+        return back();
+    }
 
 
 //    public function store(SellerRequest $request)

@@ -86,6 +86,14 @@ Route::group(
                 Route::post('/ajax-delete-contact', [ContactController::class, 'destroy'])->name('ajax-delete-contact');
                 Route::post('/ajax-delete-question', [QuestionController::class, 'destroy'])->name('ajax-delete-question');
 
+                Route::get('buyer/{id?}/accept', [BuyerController::class, 'accept'])->name('buyer/accept');
+                Route::get('buyer/{id?}/not_accept', [BuyerController::class, 'not_accept'])->name('buyer/not_accept');
+
+                Route::get('seller/{id?}/accept', [SellerController::class, 'accept'])->name('seller/accept');
+                Route::get('seller/{id?}/not_accept', [SellerController::class, 'not_accept'])->name('seller/not_accept');
+
+
+
                 Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
                 Route::put('settings/update', [SettingController::class, 'update'])->name('settings.update');
                 Route::put('add_option_detail/{option_id}', [CategoryController::class, 'add_option_detail'])->name('add_option_detail');

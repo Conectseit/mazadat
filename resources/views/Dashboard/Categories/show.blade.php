@@ -143,8 +143,7 @@
 
                                     <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
                                         <thead>
-                                        <tr>
-                                            <th>#</th>
+                                        <tr style="background-color:gainsboro">                                            <th>#</th>
                                             <th>{{ trans('messages.image') }}</th>
                                             <th>{{ trans('messages.name') }}</th>
                                             {{--                                                   <th>{{ trans('messages.description') }}</th>--}}
@@ -237,12 +236,11 @@
                                                class="btn btn-success btn-labeled btn-labeled-left"><b><i
                                                         class="icon-plus2"></i></b>{{ trans('messages.option.add') }}
                                             </a>
-                                        </div>
+                                        </div><br>
                                         @if($category_options->count() > 0)
                                         <table class="table datatable-basic" id="options" style="font-size: 16px;">
                                             <thead>
-                                            <tr>
-                                                <th class="text-center">#</th>
+                                            <tr style="background-color:gainsboro">                                                <th class="text-center">#</th>
                                                 <th class="text-center">{{ trans('messages.name') }}</th>
                                                 <th class="text-center">@lang('messages.option.option_details')</th>
                                                 {{--                                                <th>@lang('messages.since')</th>--}}

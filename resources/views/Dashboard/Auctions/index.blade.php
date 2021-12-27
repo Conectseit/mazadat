@@ -58,8 +58,7 @@
                                        @if($auctions->count() > 0)
                                            <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
                                                <thead>
-                                               <tr>
-                                                   <th>#</th>
+                                               <tr style="background-color:gainsboro">                                                   <th>#</th>
                                                    <th>{{ trans('messages.image') }}</th>
                                                    <th>{{ trans('messages.name') }}</th>
 {{--                                                   <th>{{ trans('messages.description') }}</th>--}}

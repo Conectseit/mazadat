@@ -73,9 +73,22 @@ class BuyerController extends Controller
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
         }
-
-        return redirect()->route('buyers.index');
     }
 
+
+
+
+    public function accept($id)
+    {
+        $buyer = User::findOrFail($id);
+        $buyer->update(['is_accepted'=> 1]);
+        return back();
+    }
+    public function not_accept($id)
+    {
+        $buyer = User::findOrFail($id);
+        $buyer->update(['is_accepted'=> 0]);
+        return back();
+    }
 
 }

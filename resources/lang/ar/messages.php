@@ -47,6 +47,10 @@ return [
     'value_en' => 'اسم الانجليزية',
     'value' => 'الاسم ',
 
+    'not_accept' => 'رفض ',
+    'accept' => 'قبول ',
+    'accept/not_accept' => 'قبول / رفض',
+
     'full_name' => 'الاسم بالكامل',
     'user_name' => 'اسم المستخدم',
     'mobile' => 'رقم الجوال',
