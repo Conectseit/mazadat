@@ -25,7 +25,6 @@ class AuctionController extends Controller
         $data['auctions'] = Auction::latest()->paginate(200);
         $data['on_progress_auctions'] = Auction::where('status', 'on_progress')->latest()->paginate(200);
         $data['done_auctions'] = Auction::where('status', 'done')->latest()->paginate(200);
-        $data['not_accepted_auctions'] = Auction::where('status', 'not_accepted')->latest()->paginate(200);
         return view('Dashboard.Auctions.index', $data);
     }
 
@@ -42,6 +41,7 @@ class AuctionController extends Controller
 
     public function store(AuctionRequest $request)
     {
+        dd('kkk');
         $start_date = $request->start_date;
         $end_date = $request->end_date;
         $min_duration_of_auction = Setting::where('key', 'min_duration_of_auction')->first()->value;
@@ -69,15 +69,12 @@ class AuctionController extends Controller
 
             if (($end_date >= $minimum_allowed_time) && ($end_date <= $maximum_allowed_time)) {
                 //======= create auction =======
-//                $request->is_accepted = 1;
-
                 $request_data = $request->except([ 'inspection_report_image'.'images']);
-
-                if ($request->image) $request_data['inspection_report_image'] =  uploaded($request->inspection_report_image, 'auction');
-                $auction = Auction::create($request_data + ['is_accepted' => '1']);
-
+                if ($request->image) {
+                    $request_data['inspection_report_image'] =  uploaded($request->inspection_report_image, 'auction');
+                }
+                $auction = Auction::create($request_data + ['is_accepted' => '1','current_price'=>$request->start_auction_price]);
             } else {
-
                 return back()->with('error', trans(  trans('messages.the end date should between') . ' '.$min_allowed_time . ' & ' . $max_allowed_time));
             }
 
@@ -89,16 +86,12 @@ class AuctionController extends Controller
                     }
                 }
                 $auction_images = DB::table('auction_images')->insert($data);
-
-
                 $auction_options = AuctionData::Create([
                     'auction_id' => $auction->id,
                     'option_id' => $request->option_id,
                     'option_details_id' => $request->option_details_id,
                 ]);
                 return redirect()->route('auctions.index')->with('message', trans('messages.added_successfully'));
-                //============
-
         }
     }
 

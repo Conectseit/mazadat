@@ -37,6 +37,7 @@ class UpdateProfileRequest extends REQUEST_API_PARENT
             'mobile'           => 'sometimes|string|min:9|max:255|unique:users,mobile,'.auth()->user()->id,
             'email'            => 'sometimes|email|max:255|unique:users,email,'. auth()->user()->id,
             'P_O_Box'          => 'sometimes|string|max:255',
+            'bio'               => 'sometimes|string|max:255',
             'image'            => 'sometimes|mimes:jpg,png,jpeg',
         ];
     }

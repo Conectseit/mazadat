@@ -264,7 +264,7 @@ return [
         'images' => 'صور المزاد',
         'inspection_report_image' => 'صورة تقرير الفحص',
         'seller_full_name' => 'اسم صاحب المزاد',
-        'category_name' => 'اسم قسم المزاد',
+        'choose_category' => 'اختر قسم المزاد',
         'add' => 'اضافة مزاد جديد',
         'edit' => 'تعديل مزاد ',
         'show' => 'عرض تفاصيل المزاد',
@@ -279,6 +279,13 @@ return [
         'show_auction_bids' => 'عرض تفاصيل المزايدة',
         'auction_terms_ar' => 'الشروط والاحكام بالعربي',
         'auction_terms_en' => 'الشروط والاحكام بالانجليزي',
+        'auction_terms' => 'شروط واحكام المزاد ',
+        'basic_data' => 'البيانات الاساسيه',
+        'choose_options' => ' اختر تصنيف للمزاد',
+        'choose_option_details' => ' اختر تفصيل للتصنيف',
+        'options' => 'تصنيفات المزاد',
+        'other_data' => ' بيانات اخري',
+        'time' => ' وقت المزاد وسعره',
 
     ],
 

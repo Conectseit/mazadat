@@ -12,24 +12,48 @@
 
 <!-- Theme JS files -->
 <script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/visualization/d3/d3.min.js')}}"></script>
-<script type="text/javascript"
-        src="{{asset('Dashboard/assets/js/plugins/visualization/d3/d3_tooltip.js')}}"></script>
+<script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/visualization/d3/d3_tooltip.js')}}"></script>
 
 <script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
-<script type="text/javascript"
-        src="{{asset('Dashboard/assets/js/plugins/forms/selects/bootstrap_multiselect.js')}}"></script>
+
+
+
+
+
+
+<!-- Theme JS files -->
+<script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/forms/wizards/stepy.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('Dashboard/assets/js/core/libraries/jasny_bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/forms/validation/validate.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('Dashboard/assets/js/pages/wizard_stepy.js')}}"></script>
+
+<!-- /theme JS files -->
+
+
+
+<script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/forms/selects/bootstrap_multiselect.js')}}"></script>
 <script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/ui/moment/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/pickers/daterangepicker.js')}}"></script>
-
 <script type="text/javascript" src="{{asset('Dashboard/assets/js/core/app.js')}}"></script>
 <script type="text/javascript" src="{{asset('Dashboard/assets/js/pages/dashboard.js')}}"></script>
 
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/ui/ripple.min.js')}}"></script>
-<script type="text/javascript"
-        src="{{asset('Dashboard/assets/js/plugins/tables/datatables/datatables.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/tables/datatables/datatables.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/forms/selects/select2.min.js')}}"></script>
 
 <!-- /Theme JS files -->
+
 
 
 

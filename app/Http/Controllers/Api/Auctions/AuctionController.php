@@ -71,7 +71,6 @@ class AuctionController extends PARENT_API
             }else{
                 return responseJson(false, trans('api.sorry!_you_cant_make_bid_your_available_limit_less_than+_this_value'), null);  //NOT_FOUND
             }
-
         }
         return responseJson(false, trans('api.not_found_auction'), null);  //NOT_FOUND
     }

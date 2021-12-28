@@ -17,9 +17,10 @@ class AuthResource extends JsonResource
 //        return parent::toArray($request);
         return [
             'full_name'           => $this->full_name,
-            'user_name '          => $this->user_name ,
+            'user_name'           => $this->user_name ,
             'email'               => $this->email,
             'mobile'              => $this->mobile,
+            'bio'                 => $this->bio,
             'image'               => $this->image_path,
             'commercial_register_image' => $this->commercial_register_image_path,
             'token'               => $this->token->jwt,
