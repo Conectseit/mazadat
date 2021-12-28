@@ -116,6 +116,11 @@ class AuthController extends PARENT_API
         if ($request->image) {
             $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
         }
+
+        if ($request->commercial_register_image) {
+            $request_data['commercial_register_image'] = $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
+        }
+
         $user = $request->user();
         if (!$user) {
             return responseJson(false, 'The user has been found but it is not a buyer...', null); //BAD_REQUEST

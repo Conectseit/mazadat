@@ -23,8 +23,6 @@
     @include('Dashboard.layouts.parts.validation_errors')
     <div class="row" style="padding: 15px;">
         <div class="col-md-9">
-
-
             <!-- Basic setup -->
             <div class="panel panel-white">
                 <div class="panel-heading">
@@ -37,13 +35,9 @@
                         </ul>
                     </div>
                 </div>
-
-
                 <form action="{{ route('auctions.store') }}"  method="post" class =" stepy-basic wizard-form steps-validation"
                 enctype="multipart/form-data">
                     @csrf
-
-
                     <fieldset title="1">
                         <legend class="text-semibold">{{ trans('messages.auction.basic_data') }}</legend><br><br>
                         <div class="row">
@@ -208,7 +202,6 @@
                                 </label>
                             </div>
 
-
                             <div class="form-group">
                                 <label class="display-block">{{ trans('messages.auction.who_can_buy') }}:</label>
                                 <label class="radio-inline">
@@ -232,15 +225,14 @@
                             </div>
                         </div>
                     </fieldset>
-                    {{--                        <input type="submit" class="btn btn-success" name="back" value=" {{ trans('messages.add_and_forward_to_list') }}"/>--}}
-                    <button type="submit" class="btn btn-primary stepy-finish">{{ trans('messages.add_and_forward_to_list') }}
-                        <i class="icon-check position-right"></i></button>
+                                            <input type="submit" class="btn btn-success stepy-finish"  name="back" value=" {{ trans('messages.add_and_forward_to_list') }}"/>
+{{--                    <button type="submit" class="btn btn-primary stepy-finish">{{ trans('messages.add_and_forward_to_list') }}--}}
+{{--                        <i class="icon-check position-right"></i></button>--}}
                 </form>
             </div>
             <!-- /basic setup -->
 
         </div>
-
 
         <div class="col-md-3">
             <div class="panel panel-flat">

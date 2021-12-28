@@ -31,7 +31,7 @@ class UpdateProfileRequest extends REQUEST_API_PARENT
 //            'user_name' => 'sometimes|string|max:255',
 
             'nationality_id'   => 'sometimes|numeric|exists:nationalities,id',
-            'country_id'       => 'sometimes|numeric|exists:countries,id',
+//            'country_id'       => 'sometimes|numeric|exists:countries,id',
             'city_id'          => 'sometimes|numeric|exists:cities,id',
             'address '         => 'sometimes|string|max:255',
             'mobile'           => 'sometimes|string|min:9|max:255|unique:users,mobile,'.auth()->user()->id,
@@ -39,6 +39,9 @@ class UpdateProfileRequest extends REQUEST_API_PARENT
             'P_O_Box'          => 'sometimes|string|max:255',
             'bio'               => 'sometimes|string|max:255',
             'image'            => 'sometimes|mimes:jpg,png,jpeg',
+
+            'commercial_register_image'        => 'required_if:is_company,company|image',
+
         ];
     }
 

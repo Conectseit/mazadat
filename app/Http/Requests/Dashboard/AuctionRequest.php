@@ -24,7 +24,7 @@ class AuctionRequest extends FormRequest
      */
     public function rules()
     {
-
+dd('jj');
         switch ($this->method()) {
             case 'GET':
             case 'DELETE': {
