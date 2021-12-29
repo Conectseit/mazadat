@@ -7,6 +7,7 @@ use App\Http\Controllers\PARENT_API;
 use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Http\Resources\Api\CategoryOptionsResource;
 use App\Http\Resources\Api\CategoryResource;
+use App\Http\Resources\Api\UserAuctionsResource;
 use App\Models\Auction;
 use App\Models\AuctionData;
 use App\Models\Category;
@@ -75,8 +76,13 @@ class FilterController extends PARENT_API
         if ($auctions->count() == 0) {
             return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
         }
-        $option_details= [];
-        $data = AuctionData::whereIn('option_details_id',$option_details);
+//        $option_details= [];
+//        $data = AuctionData::whereIn('option_details_id',$option_details);
+        $data = AuctionData::where('option_details_id',$request->option_details_id)->get();
+        if($data) {
+            return responseJson(true, trans('api.category_auctions'), UserAuctionsResource::collection($data));  //OK
+        }
+        return responseJson(true, trans('api.there_is_no_auctions_on_this_option'), null);  //OK
 
 //                    $auctions = Auction::where('id')->get();
     }

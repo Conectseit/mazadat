@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <div class="table-responsive content-group">
                     <!-- Basic layout-->
-                    <form action="{{ route('options.store') }}" class="form-horizontal" method="post"
+                    <form action="{{ route('auction_data.store') }}" class="form-horizontal" method="post"
                           enctype="multipart/form-data">
                         @csrf
                         <div class="panel panel-flat">
@@ -29,19 +29,17 @@
                                             </select>
                                         </div>
                                     </div><br>
-{{--                                    <div class="form-group">--}}
-{{--                                        <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_option_details') }} </label>--}}
-{{--                                        <div class="col-lg-6">--}}
-{{--                                            <select name="option_details_id" id="option_details" class="select">--}}
-{{--                                                <optgroup label="{{ trans('messages.auction.choose_option_details') }}">--}}
-{{--                                                    @foreach($option_details as $option_detail)--}}
-{{--                                                        <option value="{{ $option_detail->id }}"> {{ $option_detail->$value }} </option>--}}
-{{--                                                @endforeach--}}
-{{--                                            </select>--}}
-{{--                                        </div>--}}
-{{--                                    </div><br>--}}
-
-
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_option_details') }} </label>
+                                        <div class="col-lg-6">
+                                            <select name="option_details_id" id="option_details" class="select">
+                                                <optgroup label="{{ trans('messages.auction.choose_option_details') }}">
+                                                    @foreach($auction->category->option_details as $option_detail)
+                                                        <option value="{{ $option_detail->id }}"> {{ $option_detail->$value }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div><br>
                                 </div>
                             </div>
                             <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
@@ -52,13 +50,6 @@
                     <!-- /basic layout -->
                 </div>
                 <div class="modal-footer">
-
-                    {{--                        <div>--}}
-                    {{--                                     <span class="badge  badge-pill" style="background-color: #00838F;">--}}
-                    {{--                                        <a href=>{{__('messages.seller.show_auction_bids')}}</a>--}}
-                    {{--                                      </span>--}}
-                    {{--                        </div>--}}
-
                     <button type="button" class="btn btn-link btn-xs text-uppercase text-semibold" data-dismiss="modal">Close
                     </button>
                 </div>

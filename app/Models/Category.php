@@ -34,5 +34,9 @@ class Category extends Model
     {
         return $this->hasMany(Option::class);
     }
+    public function option_details()
+    {
+        return $this->hasManyThrough(OptionDetail::class,Option::class);
+    }
 
 }
