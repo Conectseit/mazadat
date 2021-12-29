@@ -279,5 +279,4 @@
 @stop
 @section('scripts')
     @include('Dashboard.layouts.parts.ajax_get_options')
-
 @endsection

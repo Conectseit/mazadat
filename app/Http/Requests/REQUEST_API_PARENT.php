@@ -21,6 +21,7 @@ class REQUEST_API_PARENT extends FormRequest
         $data['status'] = false;
         $data['message'] = $validator->errors()->first();
         $data['data'] = null;
-        throw new HttpResponseException(response()->json($data, JsonResponse::HTTP_UNPROCESSABLE_ENTITY)); // 422
+        throw new HttpResponseException(response()->json($data, JsonResponse::HTTP_OK)); // 422
+//        throw new HttpResponseException(response()->json($data, JsonResponse::HTTP_UNPROCESSABLE_ENTITY)); // 422
     }
 }
