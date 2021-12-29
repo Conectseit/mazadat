@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\AdminController;
+use App\Http\Controllers\Dashboard\AuctionDataController;
 use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\NationalityController;
 use App\Http\Controllers\Dashboard\OptionController;
@@ -66,6 +67,7 @@ Route::group(
                     'questions'  => QuestionController::class,
                     'contacts'   => ContactController::class,
                     'auctions'   => AuctionController::class,
+                    'auction_data'   => AuctionDataController::class,
                     'permissions' => PermissionController::class,
                     'admins'     => AdminController::class,
 //                'settings'     => SettingsController::class,
@@ -81,6 +83,7 @@ Route::group(
                 Route::post('/ajax-delete-city', [CityController::class, 'destroy'])->name('ajax-delete-city');
                 Route::post('/ajax-delete-auction', [AuctionController::class, 'destroy'])->name('ajax-delete-auction');
                 Route::post('/ajax-delete-image', [AuctionController::class, 'deleteImage'])->name('ajax-delete-image');
+                Route::post('/ajax-delete-auction_data', [AuctionDataController::class, 'delete_auction_data'])->name('ajax-delete-auction_data');
                 Route::post('/ajax-delete-permission', [PermissionController::class, 'destroy'])->name('ajax-delete-permission');
                 Route::post('/ajax-delete-admin', [AdminController::class, 'destroy'])->name('ajax-delete-admin');
                 Route::post('/ajax-delete-contact', [ContactController::class, 'destroy'])->name('ajax-delete-contact');

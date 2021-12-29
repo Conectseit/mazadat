@@ -17,9 +17,10 @@ class REQUEST_API_PARENT extends FormRequest
     public function failedValidation(Validator $validator)
     {
         // $data['field'] = $validator->errors()->keys()[0];
-        $data['status'] = "validation_errors";
+//        $data['status'] = "validation_errors";
+        $data['status'] = false;
         $data['message'] = $validator->errors()->first();
-        $data['data'] = [];
+        $data['data'] = null;
         throw new HttpResponseException(response()->json($data, JsonResponse::HTTP_UNPROCESSABLE_ENTITY)); // 422
     }
 }

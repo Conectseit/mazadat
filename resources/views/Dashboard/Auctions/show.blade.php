@@ -1,10 +1,6 @@
 @extends('Dashboard.layouts.master')
-
 @section('title', trans('messages.auction.auctions'))
-
 @section('content')
-
-
 
     <!-- Page header -->
     <div class="page-header page-header-default">
@@ -18,7 +14,6 @@
                                 class="icon-admin position-left"></i> @lang('messages.auction.auctions')</a></li>
                     <li class="active">@lang('messages.auction.show')</li>
                 </ul>
-
                 @include('Dashboard.layouts.parts.quick-links')
             </div>
         @endsection
@@ -35,17 +30,16 @@
                     <img src="{{ $auction->first_image_path }}" class="img-circle" alt="">
                 </a>
             </div>
-
             <div class="media-body">
                 <h1>{{ trans('messages.auction.name') }} : {{ $auction->$name }} <small class="display-block">UX/UI
                         designer</small></h1>
             </div>
 
             <div class="media-right media-middle">
-                {{--                <ul class="list-inline list-inline-condensed no-margin-bottom text-nowrap">--}}
-                {{--                    <li><a href="#" class="btn btn-default"><i class="icon-file-picture position-left"></i> Cover image</a></li>--}}
-                {{--                    <li><a href="#" class="btn btn-default"><i class="icon-file-stats position-left"></i> Statistics</a></li>--}}
-                {{--                </ul>--}}
+                                <ul class="list-inline list-inline-condensed no-margin-bottom text-nowrap">
+                                    <li><a href="#" class="btn btn-default"><i class="icon-file-picture position-left"></i> Cover image</a></li>
+                                    <li><a href="#" class="btn btn-default"><i class="icon-file-stats position-left"></i> Statistics</a></li>
+                                </ul>
             </div>
         </div>
     </div>
@@ -63,19 +57,16 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#activity" data-toggle="tab"><i
                             class="icon-menu7 position-left"></i> {{ trans('messages.auction.auction_data') }}</a></li>
+                <li><a href="#auction_options" data-toggle="tab"><i
+                            class="icon-menu7 position-left"></i> {{ trans('messages.auction.options') }}</a></li>
                 <li><a href="#auction_images" data-toggle="tab"><i
                             class="icon-calendar3 position-left"></i> {{ trans('messages.auction.images') }} <span
-                            class="badge badge-success badge-inline position-right">32</span></a></li>
-
-
+                            class="badge badge-success badge-inline position-right">{{$images->count()}}</span></a></li>
                 <li><a href="#auction_bids" data-toggle="tab"><i
                             class="icon-calendar3 position-left"></i> {{ trans('messages.auction.bids') }} <span
-                            class="badge badge-success badge-inline position-right">32</span></a></li>
-
+                            class="badge badge-success badge-inline position-right">{{$auction_bids->count()}}</span></a></li>
                 <li><a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> Settings</a></li>
             </ul>
-
-
         </div>
     </div>
     <!-- /toolbar -->
@@ -83,77 +74,73 @@
 
     <!-- Content area -->
     <div class="content">
-
         <!-- User profile -->
         <div class="row">
             <div class="col-lg-9">
                 <div class="tabbable">
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="activity">
-
-                            <!-- Timeline -->
-                            <div class="timeline timeline-left content-group">
-                                <div class="timeline-container">
-
-                                    <!-- Sales stats -->
-                                    <div class="timeline-row">
-
-                                        <div class="panel panel-flat timeline-content">
-                                            <div class="panel-heading">
-                                                <div class="card">
-                                                    <div class="card-header header-elements-inline">
-                                                        <h3 class="card-title">{{ trans('messages.auction.auction_data') }}</h3>
-                                                    </div><br>
-                                                    <div class="card-body">
-                                                        <form action="#">
-                                                            <div class="form-group row">
-                                                                <div class="col-md-6">
-                                                                    <label class="col-form-label">{{ trans('messages.auction.name') }}:</label>
-                                                                    <input type="text" value="{{ $auction->$name }}"
-                                                                           class="form-control" placeholder="{{ trans('messages.auction.name') }}" readonly>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label
-                                                                        class="col-form-label">{{ trans('messages.category.category') }}
-                                                                        :</label>
-                                                                    <input type="text"
-                                                                           value="{{ $auction->category['name_' . app()->getLocale()] }}"
-                                                                           class="form-control"
-                                                                           placeholder="{{ trans('messages.category.category') }}"
-                                                                           readonly>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="form-group row">
-
-                                                            </div>
-                                                            <div class="form-group row">
-
-                                                                <div class="col-md-6">
-                                                                    <label class="col-form-label">{{ trans('messages.auction.seller') }}:</label>
-                                                                    <input type="text" value="{{ $auction->seller->full_name }}" class="form-control" readonly>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label class="col-form-label">{{ trans('messages.since') }}:</label>
-                                                                    <input type="text" value="{{ $auction->created_at->diffforHumans() }}" class="form-control" readonly>
-                                                                </div>
-
-                                                            </div>
-                                                        </form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
+                                        <div class="panel-heading">
+                                            <!-- Basic layout-->
+                                            <div class="card">
+                                                <div class="card-header header-elements-inline">
+                                                    <h5 class="card-title">{{ trans('messages.auction.auction_data') }}</h5>
+                                                </div><br><br>
+                                                <div class="card-body">
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.auction.name')}}:</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text" name="" value="{{ $auction->$name }}" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.description')}}:</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text"  value="{{ $auction->$description }}" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.category.category') }}:</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text"  value="{{ $auction->category['name_' . app()->getLocale()] }}" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.auction.seller') }}:</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text"  value="{{ $auction->seller->full_name }}" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.auction.start_date') }}:</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text"  value="{{ $auction->start_date }}" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.auction.end_date') }}:</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text"  value="{{ $auction->end_date }}" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.since') }}:</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text"  value="{{ $auction->created_at->diffforHumans() }}" class="form-control" readonly>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- /basic layout -->
                                         </div>
                                     </div>
-                                    <!-- /sales stats -->
-
                                 </div>
                             </div>
-                            <!-- /timeline -->
-
                         </div>
-                        <div class="tab-pane fade" id="auction_images">
-
+                        <div class="tab-pane fade" id="auction_options">
                             <!-- auction_images -->
                             <div class="panel panel-flat">
                                 <div class="panel-heading">
@@ -166,38 +153,87 @@
                                     </div>
                                 </div>
                                 <div class="panel-body">
+                                    @if($auction_option_details->count() > 0)
+                                        <table class="table datatable-basic" id="auction_option_details" style="font-size: 16px;">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th class="text-center"><h3>{{ trans('messages.auction.option') }}:</h3></th>
+                                                <th class="text-center"><h3>{{ trans('messages.auction.option_detail') }}:</h3></th>
+                                                <th class="text-center">@lang('messages.form-actions')</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($auction_option_details as $option_detail)
+                                                <tr id="auction_option_detail-row-{{ $option_detail->id }}">
+                                                    <td>{{ $option_detail->id }}</td>
+                                                    <td class="text-center">{{isNullable( $option_detail->option->$name) }}</td>
+                                                    <td class="text-center">{{( $option_detail->option_detail->$value) }}</td>
+                                                    <td class="text-center">
+                                                        <div class="list-icons text-center">
+                                                            <div class="list-icons-item dropdown text-center">
+                                                                <a href="#" class="list-icons-item caret-0 dropdown-toggle" data-toggle="dropdown">
+                                                                    <i class="icon-menu9"></i>
+                                                                </a>
+
+                                                                <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
+                                                                    <li>
+                                                                        <a data-id="{{ $option_detail->id }}" class="delete-action"
+                                                                           href="{{ Url('/auction_data/auction_data/'.$option_detail->id) }}">
+                                                                            <i class="icon-database-remove"></i>@lang('messages.delete')
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    @else
+                                        <center><h3> @lang('messages.no_data_found') </h3></center>
+                                    @endif
+                                </div>
+                            </div>
+                            <!-- /auction_images -->
+                        </div>
+                        <div class="tab-pane fade" id="auction_images">
+                            <!-- auction_images -->
+                            <div class="panel panel-flat">
+                                <div class="panel-heading">
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li><a data-action="collapse"></a></li>
+                                            <li><a data-action="reload"></a></li>
+                                            <li><a data-action="close"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    @if($images->count() > 0)
                                     <table class="table datatable" id="images" style="font-size: 16px;">
                                         <thead>
                                         <tr>
-                                            <th><h3>{{ trans('messages.auction.images') }} : </h3></th>
+                                            <th class="text-center"><h3>{{ trans('messages.auction.images') }} : </h3></th>
                                             <th class="text-center">@lang('messages.form-actions')</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($images as $image)
                                             <tr id="image-row-{{ $image->id }}">
-
                                                 <td>
-                                                    <a href="{{asset($image->ImagePath) }}"
-                                                       data-popup="lightbox">
-                                                        <img src="{{asset($image->ImagePath) }}" alt=""
-                                                             width="80" height="70"
-                                                             class="img-preview rounded">
+                                                    <a href="{{asset($image->ImagePath) }}" data-popup="lightbox">
+                                                        <img src="{{asset($image->ImagePath) }}" alt="" width="80" height="70" class="img-preview rounded">
                                                     </a>
                                                 </td>
                                                 <td class="text-center">
                                                     <ul class="icons-list">
                                                         <li class="dropdown">
-                                                            <a href="#" class="dropdown-toggle"
-                                                               data-toggle="dropdown"><i
-                                                                    class="icon-menu9"></i></a>
-
+                                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
                                                             <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
-
                                                                 <li>
-                                                                    <a data-id="{{ $image->id }}"
-                                                                       class="delete-action"
-                                                                       href="{{ Url('/image/image/'.$image->id) }}">
+                                                                    <a data-id="{{ $image->id }}" class="delete-action" href="{{ Url('/image/image/'.$image->id) }}">
                                                                         <i class="icon-database-remove"></i>@lang('messages.delete')
                                                                     </a>
                                                                 </li>
@@ -210,6 +246,9 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                    @else
+                                        <center><h3> @lang('messages.no_data_found') </h3></center>
+                                    @endif
                                 </div>
 
                             </div>
@@ -228,17 +267,17 @@
                                     </div>
                                 </div>
                                 <div class="panel-body">
+                                    @if($auction_bids->count() > 0)
                                     <table class="table table-striped table-dark datatable" id="auction_bids" style="font-size: 16px;">
                                         <thead class="table-dark">
                                         <tr>
-                                            <th><h3>{{ trans('messages.auction.buyer') }} : </h3></th>
-                                            <th><h3>{{ trans('messages.auction.buyer_offer') }} : </h3></th>
+                                            <th class="text-center"><h3>{{ trans('messages.auction.buyer') }} : </h3></th>
+                                            <th class="text-center"><h3>{{ trans('messages.auction.buyer_offer') }} : </h3></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                               @foreach($auction_bids as $auction_bids)
                                                   <tr id="auction_bids-row-{{ $auction_bids->id }}">
-
                                                         <td>
                                                             {{$auction_bids->buyer->full_name}}
                                                         </td>
@@ -249,6 +288,9 @@
                                               @endforeach
                                         </tbody>
                                     </table>
+                                    @else
+                                        <center><h3> @lang('messages.no_data_found') </h3></center>
+                                    @endif
                                 </div>
 
                             </div>
@@ -360,8 +402,6 @@
 {{--                                </div>--}}
 {{--                            </div>--}}
 {{--                            <!-- /profile info -->--}}
-
-
 {{--                            <!-- Account settings -->--}}
 {{--                            <div class="panel panel-flat">--}}
 {{--                                <div class="panel-heading">--}}
@@ -498,6 +538,7 @@
 
 @section('scripts')
     <script>
+        // delete auction one auction image
         $('a.delete-action').on('click', function (e) {
             var id = $(this).data('id');
             var tbody = $('table#images tbody');
@@ -525,6 +566,54 @@
                                 if (response.deleteStatus) {
                                     // $('#post-row-'+id).fadeOut(); count = count - 1;tbody.attr('data-count', count);
                                     $('#image-row-' + id).remove();
+                                    count = count - 1;
+                                    tbody.attr('data-count', count);
+                                    swal(response.message, {icon: "success"});
+                                } else {
+                                    swal(response.error);
+                                }
+                            },
+                            error: function (x) {
+                                crud_handle_server_errors(x);
+                            },
+                            complete: function () {
+                                if (count == 1) tbody.append(`<tr><td colspan="5"><strong>No data available in table</strong></td></tr>`);
+                            }
+                        });
+                    } else {
+                        swal("تم الغاء العمليه");
+                    }
+                });
+        });
+
+
+        // delete auction option_detail
+        $('a.delete-action').on('click', function (e) {
+            var id = $(this).data('id');
+            var tbody = $('table#auction_option_details tbody');
+            var count = tbody.data('count');
+
+            e.preventDefault();
+
+            swal({
+                title: "هل انت متأكد من حذف هذه التصنيف ",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        var tbody = $('table#auction_option_details tbody');
+                        var count = tbody.data('count');
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '{{ route('ajax-delete-auction_data') }}',
+                            data: {id: id},
+                            success: function (response) {
+                                if (response.deleteStatus) {
+                                    // $('#post-row-'+id).fadeOut(); count = count - 1;tbody.attr('data-count', count);
+                                    $('#auction_option_detail-row-' + id).remove();
                                     count = count - 1;
                                     tbody.attr('data-count', count);
                                     swal(response.message, {icon: "success"});

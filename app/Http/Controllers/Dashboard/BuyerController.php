@@ -16,6 +16,8 @@ class BuyerController extends Controller
     public function index()
     {
         $data['buyers'] = User::where('type', 'buyer')->get();
+        $data['accepted_buyers'] = User::where(['type'=> 'buyer','is_accepted'=>1])->get();
+        $data['not_accepted_buyers'] = User::where(['type'=> 'buyer','is_accepted'=>0])->get();
         return view('Dashboard.Buyers.index', $data);
     }
 

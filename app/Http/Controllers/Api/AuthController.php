@@ -45,7 +45,7 @@ class AuthController extends PARENT_API
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
             }
             DB::commit();
-            (new SmsController())->send_sms('966' . $request->mobile, trans('messages.activation_code_is' . $activation_code));
+//            (new SmsController())->send_sms('966' . $request->mobile, trans('messages.activation_code_is' . $activation_code));
 
 //            return responseJson(true, trans('api.register_user_successfully')); //OK
             return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_sent')); //OK
@@ -116,14 +116,12 @@ class AuthController extends PARENT_API
         if ($request->image) {
             $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
         }
-
         if ($request->commercial_register_image) {
             $request_data['commercial_register_image'] = $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
         }
-
         $user = $request->user();
         if (!$user) {
-            return responseJson(false, 'The user has been found but it is not a buyer...', null); //BAD_REQUEST
+            return responseJson(false, 'The user has been found but it is not a buyer...', null); //
         }
         $user->update($request_data);
 //        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));

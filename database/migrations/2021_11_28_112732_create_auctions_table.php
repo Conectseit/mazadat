@@ -27,11 +27,11 @@ class CreateAuctionsTable extends Migration
             $table->foreign('buyer_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
-            $table->enum('status', ['on_progress', 'done','not_accepted'])->default('on_progress');
             $table->string('name_ar')->nullable();
             $table->string('name_en')->nullable();
             $table->string('description_ar')->nullable();
             $table->string('description_en')->nullable();
+            $table->enum('status', ['on_progress', 'done','not_accepted'])->default('on_progress');
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
             $table->boolean('is_accepted')->default(0);

@@ -16,6 +16,6 @@ class OptionDetail extends Model
     }
     public function auction_data()
     {
-        return $this->belongsTo(AuctionData::class,'option_details_id');
+        return $this->hasMany(AuctionData::class,'option_details_id');
     }
 }

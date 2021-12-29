@@ -16,7 +16,9 @@ class SellerController extends Controller
 {
     public function index()
     {
-        $data['sellers'] = User::where('type', 'seller')->get();
+        $data['sellers'] = User::where(['type'=> 'seller'])->get();
+        $data['accepted_sellers'] = User::where(['type'=> 'seller','is_accepted'=>1])->get();
+        $data['not_accepted_sellers'] = User::where(['type'=> 'seller','is_accepted'=>0])->get();
         return view('Dashboard.Sellers.index', $data);
     }
 

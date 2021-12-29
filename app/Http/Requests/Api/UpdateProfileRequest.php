@@ -27,9 +27,8 @@ class UpdateProfileRequest extends REQUEST_API_PARENT
     public function rules(Request $request)
     {
         return [
-//            'full_name' => 'sometimes|string|max:255',
-//            'user_name' => 'sometimes|string|max:255',
-
+            'full_name'        => 'sometimes|string|max:255',
+            'user_name'        => 'sometimes|string|max:255',
             'nationality_id'   => 'sometimes|numeric|exists:nationalities,id',
 //            'country_id'       => 'sometimes|numeric|exists:countries,id',
             'city_id'          => 'sometimes|numeric|exists:cities,id',
@@ -39,6 +38,7 @@ class UpdateProfileRequest extends REQUEST_API_PARENT
             'P_O_Box'          => 'sometimes|string|max:255',
             'bio'              => 'sometimes|string|max:255',
             'image'            => 'sometimes|image',
+
             'commercial_register_image'   => 'sometimes|image',
         ];
     }

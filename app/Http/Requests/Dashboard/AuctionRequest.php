@@ -24,7 +24,6 @@ class AuctionRequest extends FormRequest
      */
     public function rules()
     {
-dd('jj');
         switch ($this->method()) {
             case 'GET':
             case 'DELETE': {
@@ -38,7 +37,7 @@ dd('jj');
                         'category_id' => 'sometimes',
                         'description_ar' => 'required',
                         'description_en' => 'required',
-                        'start_date' => 'required|date',
+                        'start_date' => 'required',
                         'end_date' => 'required',
                         'start_auction_price'   => ['required','numeric'],
                         'value_of_increment' => ['required','numeric'],

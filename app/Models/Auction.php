@@ -67,6 +67,11 @@ class Auction extends Model
     }
 
 
+    public function auctiondata()
+    {
+        return $this->hasMany(AuctionData::class,'auction_id');
+    }
+
     public function auctionimages()
     {
         return $this->hasMany(AuctionImage::class,'auction_id');

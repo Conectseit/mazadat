@@ -75,7 +75,7 @@ class FilterController extends PARENT_API
         if ($auctions->count() == 0) {
             return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
         }
-        $option_details= null;
+        $option_details= [];
         $data = AuctionData::whereIn('option_details_id',$option_details);
 
 //                    $auctions = Auction::where('id')->get();

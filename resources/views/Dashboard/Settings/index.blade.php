@@ -218,12 +218,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{--                                <div class="form-group row">--}}
-                                                {{--                                    <label class="col-form-label col-lg-4">{{ trans('messages.settings.max_duration_of_auction') }} :</label>--}}
-                                                {{--                                    <div class="col-lg-8">--}}
-                                                {{--                                        <input type="text" name="max_duration_of_auction" value="{{ settings('max_duration_of_auction') }}" class="form-control" placeholder="{{ trans('messages.settings.max_duration_of_auction') }}">--}}
-                                                {{--                                    </div>--}}
-                                                {{--                                </div>--}}
+                                                <div class="form-group row">
+                                                    <label class="col-form-label col-lg-4">{{ trans('messages.settings.appearance_of_ended_auctions') }} :</label>
+                                                    <div class="col-lg-8">
+                                                        <select name=" appearance_of_ended_auctions" class="select-border-color border-warning">
+                                                            <option value="yes">{{trans('messages.Yes')}}</option>
+                                                            <option value="no">{{trans('messages.No')}}</option>
+                                                        </select>                                                    </div>
+                                                </div>
 
                                                 <legend class="font-weight-semibold text-uppercase font-size-sm"></legend>
                                                 <div class="text-right">

@@ -11,17 +11,17 @@ class AuctionData extends Model
     protected $guarded = [];
 
 
-    public function auctions()
+    public function auction()
     {
-        return $this->hasMany(Auction::class,'auction_id');
+        return $this->belongsTo(Auction::class);
     }
-    public function options()
+    public function option()
     {
-        return $this->hasMany(Option::class,'option_id');
+        return $this->belongsTo(Option::class,'option_id');
     }
 
-    public function option_details()
+    public function option_detail()
     {
-        return $this->hasMany(OptionDetail::class,'option_details_id');
+        return $this->belongsTo(OptionDetail::class,'option_details_id');
     }
 }

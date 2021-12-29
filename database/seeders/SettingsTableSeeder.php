@@ -45,6 +45,8 @@ class SettingsTableSeeder extends Seeder
             ['key' => 'max_duration_of_auction', 'value' => '10', 'created_at' => now(), ],
             ['key' => 'max_time_unit', 'value' => 'day', 'created_at' => now(), ],
 
+            ['key' => 'appearance_of_ended_auctions', 'value' => 'no', 'created_at' => now(), ],
+
 
             // general
             ['key' => 'about_app_ar', 'value' => 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء.', 'created_at' => now(), ],
@@ -60,7 +62,7 @@ class SettingsTableSeeder extends Seeder
 //            ['key' => 'sms_sender', 'value' => '', 'created_at' => now(), ],
 //            ['key' => 'google_map_key', 'value' => 'AIzaSyDdCP49XcVxRLuY-4CYtxHXxnqucDvQLE8', 'created_at' => now(), ],
 
-            ['key' => 'auto_active_client', 'value' => 'false', 'created_at' => now(), ], // علشان المستخدمين كلهم يتعملهم active
+//            ['key' => 'auto_active_client', 'value' => 'false', 'created_at' => now(), ], // علشان المستخدمين كلهم يتعملهم active
 //            ['key' => 'distance_search_for_stores', 'value' => '100', 'created_at' => now(), ],
         ]);
 

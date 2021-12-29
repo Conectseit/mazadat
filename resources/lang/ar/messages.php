@@ -153,6 +153,8 @@ return [
         'min_duration_of_auction' => 'أقل مدة للمزاد',
         'hour' => 'ساعة',
         'day' => 'يوم',
+
+        'appearance_of_ended_auctions' => 'ظهور المزادات المنتهية في التطبيق',
     ],
 
 
@@ -186,9 +188,11 @@ return [
 
 
 
+
+    'accepted' => 'المقبولين من الادارة',
+    'not_accepted' => 'لم يتم قبولهم بعد',
+
     //======= buyers========
-
-
     'add_new_buyer' => 'اضافة مشتري  جديد',
     'buyer_edit' => 'تعديل مشتري ',
 
@@ -286,6 +290,8 @@ return [
         'options' => 'تصنيفات المزاد',
         'other_data' => ' بيانات اخري',
         'time' => ' وقت المزاد وسعره',
+        'option' => ' التصنيف',
+        'option_detail' => 'تفصيل التصنيف',
 
     ],
 

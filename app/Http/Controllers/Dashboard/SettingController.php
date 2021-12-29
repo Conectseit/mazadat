@@ -64,8 +64,11 @@ class SettingController extends Controller
         if ($request->max_duration_of_auction)
             Setting::where('key', 'max_duration_of_auction')->update(['value' => $request->max_duration_of_auction]);
 
-        if ($request->google_map_key)
-            Setting::where('key', 'google_map_key')->update(['value' => $request->google_map_key]);
+        if ($request->appearance_of_ended_auctions)
+            Setting::where('key', 'appearance_of_ended_auctions')->update(['value' => $request->appearance_of_ended_auctions]);
+
+//        if ($request->google_map_key)
+//            Setting::where('key', 'google_map_key')->update(['value' => $request->google_map_key]);
 
         return redirect()->route('settings.index')->with('message', trans('messages.messages.updated_successfully'));;
     }

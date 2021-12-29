@@ -41,7 +41,7 @@ class AuctionController extends Controller
 
     public function store(AuctionRequest $request)
     {
-        dd('kkk');
+        $serial_number = '#'.random_int(00000, 99999);
         $start_date = $request->start_date;
         $end_date = $request->end_date;
         $min_duration_of_auction = Setting::where('key', 'min_duration_of_auction')->first()->value;
@@ -73,7 +73,8 @@ class AuctionController extends Controller
                 if ($request->image) {
                     $request_data['inspection_report_image'] =  uploaded($request->inspection_report_image, 'auction');
                 }
-                $auction = Auction::create($request_data + ['is_accepted' => '1','current_price'=>$request->start_auction_price]);
+                $auction = Auction::create($request_data + ['is_accepted' => '1',
+                        'current_price'=>$request->start_auction_price,'serial_number'=>$serial_number]);
             } else {
                 return back()->with('error', trans(  trans('messages.the end date should between') . ' '.$min_allowed_time . ' & ' . $max_allowed_time));
             }
@@ -86,12 +87,14 @@ class AuctionController extends Controller
                     }
                 }
                 $auction_images = DB::table('auction_images')->insert($data);
+
+                //======= upload auction options =======
                 $auction_options = AuctionData::Create([
-                    'auction_id' => $auction->id,
-                    'option_id' => $request->option_id,
+                    'auction_id'       => $auction->id,
+                    'option_id'         => $request->option_id,
                     'option_details_id' => $request->option_details_id,
                 ]);
-                return redirect()->route('auctions.index')->with('message', trans('messages.added_successfully'));
+                return redirect()->route('auctions.index')->with('message', trans('messages.messages.added_successfully'));
         }
     }
 
@@ -190,6 +193,7 @@ class AuctionController extends Controller
 
         $data['images'] = AuctionImage::where(['auction_id' => $id])->get();
         $data['auction_bids'] = AuctionBuyer::where(['auction_id' => $id])->get();
+        $data['auction_option_details'] = AuctionData::where(['auction_id' => $id])->get();
         return view('Dashboard.Auctions.show', $data);
     }
 
