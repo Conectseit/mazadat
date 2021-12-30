@@ -43,7 +43,7 @@ class UserController extends PARENT_API
             return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
         $document = Document::create($request_data + ['user_id' => $user->id]);
-        return responseJson(true, trans('api.added_successfully', null)); //ACCEPTED
+        return responseJson(true, trans('api.added_successfully'), null); //ACCEPTED
     }
 
     public function add_traffic_file_number(TrafficFileNumberRequest $request)

@@ -143,6 +143,10 @@ class User extends Authenticatable implements JWTSubject
 //            $this->attributes['image'] = 'images/avatars/' . $fileName;
 //        }
 //    }
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 
 
 }

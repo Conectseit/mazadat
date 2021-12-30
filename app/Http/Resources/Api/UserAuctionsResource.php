@@ -28,6 +28,7 @@ class UserAuctionsResource extends JsonResource
             'value_of_increment'          => $this->auction->value_of_increment,
             'start_date'                  => $this->auction->start_date,
             'remaining_time'              => $this->auction->remaining_time,
+            'status'                      => $this->auction->status,
         ];
 
 //        return [

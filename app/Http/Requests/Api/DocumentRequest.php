@@ -30,8 +30,8 @@ class DocumentRequest extends REQUEST_API_PARENT
             'expiry_date'               => 'required|date',
             'document_name'             => 'required|string',
             'Id_type'                  => 'required|numeric',
-            'front_side_image'          => 'required|image|mimes:jpg,png,jpeg',
-            'back_side_image'           => 'required|image|mimes:jpg,png,jpeg',
+            'front_side_image'          => 'sometimes|image|mimes:jpg,png,jpeg',
+            'back_side_image'           => 'sometimes|image|mimes:jpg,png,jpeg',
         ];
     }
 

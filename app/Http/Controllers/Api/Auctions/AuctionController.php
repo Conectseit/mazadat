@@ -7,6 +7,7 @@ use App\Http\Controllers\PARENT_API;
 use App\Http\Requests\Api\MakeBidRequest;
 use App\Http\Resources\Api\AuctionDetailsResource;
 use App\Http\Resources\Api\AuctionResource;
+use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Http\Resources\Api\UserAuctionsResource;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
@@ -46,49 +47,59 @@ class AuctionController extends PARENT_API
     public function watched_auctions(Request $request)
     {
         $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
-
-        // =========== for appear ended auctions
-//        if ($request->status=='done') {
-//            if ($appearance_of_ended_auctions == 'yes') {
-//                $watched_auctions = WatchedAuction::where('user_id', auth()->user()->id)->get();
-//
-//                    ->where('status', 'done')->get();
-//            }else{
-//                return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
-//            }
-// ==================================
-
-
-
         $watched_auctions = WatchedAuction::where('user_id', auth()->user()->id)->get();
-        return responseJson(true, trans('api.auction_details'), ['watched_auctions' => UserAuctionsResource::collection($watched_auctions)]);  //OK
+//   =========== for appear ended auctions
+        if ($request->status=='done') {
+            if ($appearance_of_ended_auctions == 'yes') {
+                foreach ($watched_auctions as $watched_auction )
+                {
+                    $ended_watched_auctions= $watched_auction->auction->where('status','done')->get();
+                    return responseJson(true, trans('api.auction_details'),  CategoryAuctionsResource::collection($ended_watched_auctions));  //OK
+                }
+            } else {
+                return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
+            }
+// ==================================
+        }else{
+            foreach ($watched_auctions as $watched_auction )
+            {
+                $on_progress_watched_auctions= $watched_auction->auction->where('status','on_progress')->get();
+                return responseJson(true, trans('api.auction_details'),  CategoryAuctionsResource::collection($on_progress_watched_auctions));  //OK
+            }
+        }
+
+//        return responseJson(true, trans('api.auction_details'), ['watched_auctions' => UserAuctionsResource::collection($watched_auctions)]);  //OK
     }
 
 
     public function make_bid(MakeBidRequest $request, $id)
     {
        $user= auth()->user();
-        if ($auction = Auction::find($id)) {
-            $bid = AuctionBuyer::where(['auction_id' => $auction->id, 'buyer_id' => $user->id])->first();
-            if($request->offer <= $user->available_limit){
+       if($user->passport_image !=null && $user->documents->count()>0){
+           if ($auction = Auction::find($id)) {
+               $bid = AuctionBuyer::where(['auction_id' => $auction->id, 'buyer_id' => $user->id])->first();
+               if($request->offer <= $user->available_limit){
 
-                if (is_null($bid)) {
-                AuctionBuyer::create(['auction_id' => $auction->id, 'buyer_id' => $user->id,'buyer_offer'=>$request->offer]);
-                $auction->count_of_buyer += 1;
-                $auction->current_price = $auction->start_auction_price+ $request->offer;
-                $auction->update();
-                return responseJson(true, trans('api.request_done_successfully'), null); //OK
-            } else {
-                $auction->current_price = $auction->current_price + $request->offer;
-                $auction->update();
-                $bid->update(['buyer_offer'=>$bid->buyer_offer + $request->offer]);
-                return responseJson(true, trans('api.updated_successfully'), null);  //NOT_FOUND
-            }
-            }else{
-                return responseJson(false, trans('api.sorry!_you_cant_make_bid_your_available_limit_less_than+_this_value'), null);  //NOT_FOUND
-            }
-        }
-        return responseJson(false, trans('api.not_found_auction'), null);  //NOT_FOUND
+                   if (is_null($bid)) {
+                       AuctionBuyer::create(['auction_id' => $auction->id, 'buyer_id' => $user->id,'buyer_offer'=>$request->offer]);
+                       $auction->count_of_buyer += 1;
+                       $auction->current_price = $auction->start_auction_price+ $request->offer;
+                       $auction->update();
+                       return responseJson(true, trans('api.request_done_successfully'), null); //OK
+                   } else {
+                       $auction->current_price = $auction->current_price + $request->offer;
+                       $auction->update();
+                       $bid->update(['buyer_offer'=>$bid->buyer_offer + $request->offer]);
+                       return responseJson(true, trans('api.updated_successfully'), null);  //NOT_FOUND
+                   }
+               }else{
+                   return responseJson(false, trans('api.sorry!_you_cant_make_bid_your_available_limit_less_than+_this_value'), null);  //NOT_FOUND
+               }
+           }
+           return responseJson(false, trans('api.not_found_auction'), null);  //NOT_FOUND
+       }else{
+           return responseJson(false, trans('api.sorry_you_should_upload_document_and_passport'), null);  //NOT_FOUND
+       }
     }
 
     public function my_bids(Request $request)
