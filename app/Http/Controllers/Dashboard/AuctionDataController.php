@@ -26,7 +26,7 @@ class AuctionDataController extends Controller
     {
         $auction_data=  AuctionData::where(['option_id'=>$request->option_id,'auction_id'=>$request->auction_id])->first();
         if($auction_data)
-            return back()->with('class', 'success')->with('message', trans('messages.messages.sorry_this_detail_added_before'));
+            return back()->with('class', 'success')->with('error', trans('messages.messages.sorry_this_option_added_before_select_another_one'));
 
         AuctionData::create($request->all());
         return back()->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));

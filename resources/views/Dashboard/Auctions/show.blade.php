@@ -185,7 +185,7 @@
                                                                 <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
                                                                     <li>
                                                                         <a data-id="{{ $option_detail->id }}" class="delete_auction_data"
-                                                                           href="{{ Url('dashboard/ajax-delete-auction_data/'.$option_detail->id) }}">
+                                                                           href="{{ Url('/auction_data/auction_data/'.$option_detail->id) }}">
                                                                             <i class="icon-database-remove"></i>@lang('messages.delete')
                                                                         </a>
                                                                     </li>
@@ -565,7 +565,7 @@
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    var tbody = $('table#postimages tbody');
+                    var tbody = $('table#auctionimages tbody');
                     var count = tbody.data('count');
 
                     $.ajax({
@@ -595,9 +595,12 @@
                 }
             });
     });
+</script>
 
 
-    // delete auction option_detail
+{{--// delete auction option_detail--}}
+<script>
+
     $('a.delete_auction_data').on('click', function (e) {
         var id = $(this).data('id');
         var tbody = $('table#auction_option_details tbody');

@@ -10,6 +10,7 @@ use App\Http\Resources\Api\AuctionResource;
 use App\Http\Resources\Api\UserAuctionsResource;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
+use App\Models\Setting;
 use App\Models\User;
 use App\Models\WatchedAuction;
 use Illuminate\Http\Request;
@@ -44,6 +45,21 @@ class AuctionController extends PARENT_API
 
     public function watched_auctions(Request $request)
     {
+        $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
+
+        // =========== for appear ended auctions
+//        if ($request->status=='done') {
+//            if ($appearance_of_ended_auctions == 'yes') {
+//                $watched_auctions = WatchedAuction::where('user_id', auth()->user()->id)->get();
+//
+//                    ->where('status', 'done')->get();
+//            }else{
+//                return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
+//            }
+// ==================================
+
+
+
         $watched_auctions = WatchedAuction::where('user_id', auth()->user()->id)->get();
         return responseJson(true, trans('api.auction_details'), ['watched_auctions' => UserAuctionsResource::collection($watched_auctions)]);  //OK
     }

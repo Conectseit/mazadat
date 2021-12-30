@@ -292,6 +292,7 @@ return [
         'time' => ' وقت المزاد وسعره',
         'option' => ' التصنيف',
         'option_detail' => 'تفصيل التصنيف',
+        'category_name' => 'اسم القسم',
 
     ],
 
@@ -384,7 +385,8 @@ return [
         'added_successfully' => 'تمت الاضافة بنجاح',
         'updated_successfully' => 'تم التحديث بنجاح',
         'deleted_successfully' => 'تم الحذف بنجاح',
-        'try_access_not_found_content' => 'عفوا لا يوجد هذا العنصر'
+        'try_access_not_found_content' => 'عفوا لا يوجد هذا العنصر',
+        'sorry_this_option_added_before_select_another_one' => 'عفوا لقد قمت باضافة هذا التصنيف من قبل,اختر تصنيف اخر',
     ],
 ];
 

@@ -21,18 +21,19 @@
     @include('Dashboard.layouts.parts.validation_errors')
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
-        <div class="panel-heading">
-            @include('Dashboard.layouts.parts.table-header', ['collection' => $auctions, 'name' => 'auctions', 'icon' => 'auctions'])
-        </div><br>
-        <div class="list-icons" style="padding-right: 10px;">
+        <br><div class="list-icons" style="padding-right: 10px;">
             <a href="{{route('auctions.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i class="icon-plus2"></i></b>{{ trans('messages.auction.add') }}</a>
         </div>
+        <div class="panel-heading">
+            @include('Dashboard.layouts.parts.table-header', ['collection' => $auctions, 'name' => 'auctions', 'icon' => 'auctions'])
+        </div>
+
         <!-- Basic pills -->
         <div class="row" style="padding: 15px;">
             <div class="col-md-12">
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-                        <h6 class="panel-title">{{ trans('messages.auction.auctions') }}</h6>
+{{--                        <h6 class="panel-title">{{ trans('messages.auction.auctions') }}</h6>--}}
                         <div class="heading-elements">
                             <ul class="icons-list">
                                 <li><a data-action="collapse"></a></li>
@@ -48,6 +49,9 @@
                                 <li><a href="#on_progress_auctions" data-toggle="tab">{{ trans('messages.auction.on_progress') }}</a></li>
                                 <li><a href="#done_auctions" data-toggle="tab">{{ trans('messages.auction.done') }}</a></li>
                             </ul>
+
+
+
                             <div class="tab-content">
                                 <div class="tab-pane active" id="all_auctions">
                                    <div class="row">
