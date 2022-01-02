@@ -120,6 +120,11 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
+    public function bidauctions()
+    {
+        return $this->belongsToMany(Auction::class, 'auction_buyers','buyer_id');
+    }
+
 
 
 

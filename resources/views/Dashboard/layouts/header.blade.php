@@ -2,7 +2,6 @@
 <div class="page-header page-header-default">
 
     <div class="page-header-content">
-
         <div class="page-title">
             <div class="row">
                 <div class="col-6">
@@ -11,7 +10,6 @@
                     </a>
                 </div>
             </div>
-
             <h1>
                 <i class="icon-arrow-right6 position-left"></i>
                 <span class="text-bold">@lang('messages.Dashboard')</span>
@@ -31,7 +29,8 @@
 
         <div class="heading-elements">
             <div class="heading-btn-group">
-                <p class="btn  btn-float text-size-small has-text" id="txt"></p>
+{{--                time--}}
+{{--                <p class="btn  btn-float text-size-small has-text" id="txt"></p>--}}
 
                 <a href="#" class="btn btn-link btn-float text-size-small has-text"><i
                                         class="icon-bars-alt text-primary"></i><span>Statistics</span></a>

@@ -41,6 +41,7 @@ return [
 
 
     'select' => 'اختر',
+    'quick_links' => 'روابط سريعة',
     'cancel_delete' => 'تم الغاء الحذف',
     'is_appear_name' => 'هل متاح ظهور اسم العميل ؟',
     'confirm-delete-message-var' => 'هل انت متأكد من حذف هذا :var',

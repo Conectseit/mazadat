@@ -18,6 +18,7 @@ class AuctionDetailsResource extends JsonResource
         $auction_terms = 'auction_terms_' . app()->getLocale();
         $description = 'description_' . app()->getLocale();
         return [
+            'id'                          => $this->id,
             'serial_number'               => $this->serial_number,
             'name'                        => $this->$name,
             'description'                 => $this->$description,

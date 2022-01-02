@@ -109,19 +109,52 @@ class AuctionController extends PARENT_API
        }
     }
 
+//    public function my_bids(Request $request)
+//    {
+//        $my_bids = AuctionBuyer::where('buyer_id', auth()->user()->id)->get();
+//        if ($my_bids->count() == 0) {
+//            return responseJson(true, trans('api.You_dont_have_bids_yet'), null);  //OK
+//        }
+//        return responseJson(true, trans('api.auction_details'), ['my_bids' => UserAuctionsResource::collection($my_bids)]);  //OK
+//    }
+
+
+
+
+
+
+
     public function my_bids(Request $request)
     {
-        $my_bids = AuctionBuyer::where('buyer_id', auth()->user()->id)->get();
-        if ($my_bids->count() == 0) {
-            return responseJson(true, trans('api.You_dont_have_bids_yet'), null);  //OK
+        $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
+        $auctions = $request->user()->bidauctions;
+
+//   =========== for appear ended auctions
+        if ($request->status=='done') {
+            if ($appearance_of_ended_auctions == 'yes')
+            {
+                if( $auctions->where('status', 'done')->count() >0)
+                {
+                    return responseJson(true, trans('api.auction_details'),  CategoryAuctionsResource::collection( $auctions->where('status', 'done')));  //OK
+                }else{
+                    return responseJson(true, trans('api.auction_details'),null);  //OK
+                }
+            }
+            else
+            {
+                return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
+            }
+// ==================================
         }
-        return responseJson(true, trans('api.auction_details'), ['my_bids' => UserAuctionsResource::collection($my_bids)]);  //OK
+        if( $auctions->where('status', 'on_progress')->count() >0)
+        {
+            return responseJson(true, trans('api.auction_details'),  CategoryAuctionsResource::collection( $auctions->where('status', 'on_progress')));  //OK
+        }else{
+            return responseJson(true, trans('api.auction_details'),null);  //OK
+        }
+
+//        return responseJson(true, trans('api.auction_details'),  CategoryAuctionsResource::collection($auctions->where('status','on_progress')));  //OK
     }
-
-
-
-
-
 
 
 

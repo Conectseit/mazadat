@@ -35,8 +35,6 @@
 
 <!-- Page container -->
 <div class="page-container">
-
-
     <!-- Page content -->
     <div class="page-content">
     @if (!Request::is(app()->getLocale().'/dashboard/show_login'))
@@ -67,7 +65,6 @@
             <!-- /page header -->
 
     @endif
-
                 @yield('content')
             </div>
             <!-- /main content -->

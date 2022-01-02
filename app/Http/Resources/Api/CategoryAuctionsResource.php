@@ -16,6 +16,7 @@ class CategoryAuctionsResource extends JsonResource
     {
         $name = 'name_'.app()->getLocale();
         return [
+            'id'                          => $this->id,
             'serial_number'               => $this->serial_number,
             'name_ar'                     => $this->$name,
             'image'                       => $this->first_image_path,

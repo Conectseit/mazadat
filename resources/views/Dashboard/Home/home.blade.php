@@ -1,10 +1,7 @@
 @extends('Dashboard.layouts.master')
 @section('title', __('messages.home'))
 
-
-@section('content')
-
-       <!-- Page header -->
+<!-- Page header -->
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
@@ -13,49 +10,43 @@
         </ul>
 
         <ul class="breadcrumb-elements">
-            <li><a href="#"><i class="icon-comment-discussion position-left"></i> Support</a></li>
+            <li><a href="{{ route('contacts.index') }}"><i class="icon-comment-discussion position-left"></i> {{trans('messages.contact.contacts')}}</a></li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <a href="{{ route('settings.index') }}" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="icon-gear position-left"></i>
-                    Settings
+                    {{ trans('messages.settings.settings') }}
                     <span class="caret"></span>
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="#"><i class="icon-user-lock"></i> Account security</a></li>
+                    <li><a href="{{ route('admin.showProfile') }}"><i class="icon-user-lock"></i> @lang('messages.my-account')</a></li>
                     <li><a href="#"><i class="icon-statistics"></i> Analytics</a></li>
                     <li><a href="#"><i class="icon-accessibility"></i> Accessibility</a></li>
                     <li class="divider"></li>
-                    <li><a href="#"><i class="icon-gear"></i> All settings</a></li>
+                    <li><a href="{{ route('settings.index') }}"><i class="icon-gear"></i> {{ trans('messages.settings.settings') }}</a></li>
                 </ul>
             </li>
-
-
         </ul>
     </div>
 @endsection
-  <!-- /page header -->
-
+<!-- /page header -->
+@section('content')
 
 {{--    @include('notify::messages')--}}
 <!-- Content area -->
 <div class="content">
     <div class="row">
         <p>{{trans('messages.Statistics')}}</p>
-
         <div class="col-lg-12" dir="{{ direction() }}">
             <div class="row">
                 @foreach (models(true) as $color => $model)
                     <div class="col-lg-2" style="float: {{ floating('right', 'left') }};">
                         <div class="panel bg-{{ $color }}-400">
                             <div class="panel-body">
-                                <h3 class="no-margin"> {{ model_count($model) ?? 0 }} </h3>
-
-                               <a href="{{route(Str::plural($model). '.'.'index')}}"> <h3 class="no-margin">  </h3>
-
+                                <h3 class="no-margin"> {{trans('messages.count')}} ({{ model_count($model) ?? 0 }}) </h3>
+                               <a href="{{route(Str::plural($model). '.'.'index')}}">
                                      @lang('messages.'.$model. '.' .Str::plural($model))</a>
                             </div>
-
                             <div class="container-fluid">
                                 <div class="chart" id="members-online"></div>
                             </div>
@@ -64,7 +55,6 @@
                 @endforeach
             </div>
         </div>
-
     </div>
 
 
@@ -83,7 +73,6 @@
                         </ul>
                     </div>
                 </div>
-
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-6">
@@ -169,8 +158,6 @@
                 </div>
             </div>
             <!-- /latest Auctions -->
-
-
         </div>
     </div>
     <!-- /dashboard content -->
