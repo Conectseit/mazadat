@@ -44,32 +44,39 @@ class AuctionController extends PARENT_API
     }
 
 
+
     public function watched_auctions(Request $request)
     {
         $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
-        $watched_auctions = WatchedAuction::where('user_id', auth()->user()->id)->get();
+        $auctions = $request->user()->auctions;
+
 //   =========== for appear ended auctions
         if ($request->status=='done') {
-            if ($appearance_of_ended_auctions == 'yes') {
-                foreach ($watched_auctions as $watched_auction )
+            if ($appearance_of_ended_auctions == 'yes')
+            {
+               if( $auctions->where('status', 'done')->count() >0)
                 {
-                    $ended_watched_auctions= $watched_auction->auction->where('status','done')->get();
-                    return responseJson(true, trans('api.auction_details'),  CategoryAuctionsResource::collection($ended_watched_auctions));  //OK
-                }
-            } else {
+                    return responseJson(true, trans('api.auction_details'),  CategoryAuctionsResource::collection( $auctions->where('status', 'done')));  //OK
+                }else{
+                   return responseJson(true, trans('api.auction_details'),null);  //OK
+               }
+            }
+            else
+            {
                 return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
             }
 // ==================================
+        }
+        if( $auctions->where('status', 'on_progress')->count() >0)
+        {
+            return responseJson(true, trans('api.auction_details'),  CategoryAuctionsResource::collection( $auctions->where('status', 'on_progress')));  //OK
         }else{
-            foreach ($watched_auctions as $watched_auction )
-            {
-                $on_progress_watched_auctions= $watched_auction->auction->where('status','on_progress')->get();
-                return responseJson(true, trans('api.auction_details'),  CategoryAuctionsResource::collection($on_progress_watched_auctions));  //OK
-            }
+            return responseJson(true, trans('api.auction_details'),null);  //OK
         }
 
-//        return responseJson(true, trans('api.auction_details'), ['watched_auctions' => UserAuctionsResource::collection($watched_auctions)]);  //OK
+//        return responseJson(true, trans('api.auction_details'),  CategoryAuctionsResource::collection($auctions->where('status','on_progress')));  //OK
     }
+
 
 
     public function make_bid(MakeBidRequest $request, $id)

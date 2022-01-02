@@ -62,21 +62,21 @@ class UserController extends PARENT_API
         if (!$user) {
             return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
-
-        $available_limit = $user->select('available_limit')->first();
+        $available_limit = $user->available_limit;
+        $wallet = $user->wallet;
+//        $wallet = $user->select('wallet')->first();
         if ($request->decrement) {
-//                    $user->decrement('available_limit',10); // decrease 10 count
-            $available_limit = $user->available_limit - 1;
-            $user->update(['available_limit' => $available_limit]);
+             $user->decrement('available_limit',100); // decrease 10 count
+//            $available_limit = $user->available_limit - 1;
+//            $user->update(['available_limit' => $available_limit]);
         }
         if ($request->increment) {
-            $available_limit = $user->available_limit + 1;
-            if($available_limit >$user->wallet ){
+            if($available_limit >= $wallet ){
                 return responseJson(false, trans('api.Sorry_you_cant_increase_more_your_wallet_less_than_this_value'), null);
             }
-            $user->update(['available_limit' => $available_limit]);
+            $user->increment('available_limit',100);
         }
-        return responseJson(true, trans('api.updated_successfully'), ['Available Limit'=>$available_limit]); //ACCEPTED
+        return responseJson(true, trans('api.updated_successfully'), $user->available_limit); //ACCEPTED
     }
 
 

@@ -114,9 +114,9 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-    public function watchedauctions()
+    public function auctions()
     {
-        return $this->hasMany(WatchedAuction::class, 'user_id');
+        return $this->belongsToMany(Auction::class, 'watched_auctions');
     }
 
 

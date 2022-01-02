@@ -22,15 +22,10 @@
     </div>
     <!-- /page header -->
 
-
-
-
     <div class="row" style="padding: 15px;">
         @include('Dashboard.layouts.parts.validation_errors')
 
         <div class="col-md-9">
-
-
             <!-- Basic layout-->
             <form action="{{ route('auctions.update',$auction) }}" class="form-horizontal" method="POST"
                   enctype="multipart/form-data">
@@ -63,8 +58,6 @@
                                 </select>
                             </div>
                         </div>
-
-
                         <div class="form-group">
                             <label
                                 class="col-lg-3 control-label display-block"> {{ trans('messages.auction.seller_full_name') }} </label>
@@ -113,8 +106,20 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label"> {{ trans('messages.auction.value_of_increment') }} </label>
                             <div class="col-lg-9">
-                                <input type="text" class="form-control" value="{{$auction->value_of_increment}}" name="value_of_increment" placeholder="@lang('messages.value_of_increment')">
+                                <input type="text" class="form-control" value="{{$auction->value_of_increment}}" name="value_of_increment"
+                                       placeholder="@lang('messages.value_of_increment')">
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="display-block">{{ trans('messages.auction.start_date') }}:</label>
+                            <input type="datetime-local" class="form-control" value="{{$auction->start_date}}" name="start_date"
+                                   placeholder="@lang('messages.auction.start_date') ">
+                        </div>
+                        <div class="form-group">
+                            <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>
+                            <input type="datetime-local" class="form-control" value="{{$auction->end_date}}" name="end_date"
+                                   placeholder="@lang('messages.auction.end_date') ">
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label"> {{ trans('messages.auction.start_auction_price') }} </label>

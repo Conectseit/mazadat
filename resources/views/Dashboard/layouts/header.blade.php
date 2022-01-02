@@ -37,6 +37,10 @@
         </div>
 
     </div>
-    @yield('breadcrumb')
+    <!-- Page header -->
+    <div class="page-header page-header-default">
+        @yield('breadcrumb')
+    </div>
+    <!-- /page header -->
 </div>
 <!-- /page header -->

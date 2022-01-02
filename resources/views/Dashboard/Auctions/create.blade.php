@@ -1,24 +1,19 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.create-var',['var'=>trans('messages.auction.auction')]))
-@section('content')
-
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
-            <div class="breadcrumb-line">
-                <ul class="breadcrumb">
-                    <li><a href="{{route('admin.home')}}"><i
-                                class="icon-home2 position-left"></i> @lang('messages.home')</a>
-                    </li>
-                    <li><a href="{{ route('auctions.index') }}"><i
-                                class="icon-admin position-left"></i> @lang('messages.auction.auctions')</a></li>
-                    <li class="active">@lang('messages.create-var',['var'=>trans('messages.auction.auction')])</li>
-                </ul>
-                @include('Dashboard.layouts.parts.quick-links')
-            </div>
-        @endsection
+@section('breadcrumb')
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{route('admin.home')}}"><i
+                        class="icon-home2 position-left"></i> @lang('messages.home')</a>
+            </li>
+            <li><a href="{{ route('auctions.index') }}"><i
+                        class="icon-admin position-left"></i> @lang('messages.auction.auctions')</a></li>
+            <li class="active">@lang('messages.create-var',['var'=>trans('messages.auction.auction')])</li>
+        </ul>
+        @include('Dashboard.layouts.parts.quick-links')
     </div>
-    <!-- /page header -->
+@endsection
+@section('content')
 
     <div class="row" style="padding: 15px;"  dir="{{ direction() }}">
         <div class="col-md-9">

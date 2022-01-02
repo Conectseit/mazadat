@@ -1,11 +1,6 @@
 @extends('Dashboard.layouts.master')
-
 @section('title', trans('messages.seller.sellers'))
-
 @section('content')
-
-
-
     <!-- Page header -->
     <div class="page-header page-header-default">
         @section('breadcrumb')
@@ -18,7 +13,6 @@
                                 class="icon-admin position-left"></i> @lang('messages.seller.sellers')</a></li>
                     <li class="active">@lang('messages.seller.show')</li>
                 </ul>
-
                 @include('Dashboard.layouts.parts.quick-links')
             </div>
         @endsection
@@ -27,9 +21,10 @@
 
     <!-- Toolbar -->
     <div class="navbar navbar-default navbar-xs content-group">
+        @include('Dashboard.layouts.parts.validation_errors')
+
         <ul class="nav navbar-nav visible-xs-block">
-            <li class="full-width text-center"><a data-toggle="collapse" data-target="#navbar-filter"><i
-                        class="icon-menu7"></i></a></li>
+            <li class="full-width text-center"><a data-toggle="collapse" data-target="#navbar-filter"><i class="icon-menu7"></i></a></li>
         </ul>
 
         <div class="navbar-collapse collapse" id="navbar-filter">
@@ -41,10 +36,10 @@
                         <span
                             class="badge badge-success badge-inline position-right">{{$seller->seller_auctions->count()}}</span></a>
                 </li>
+                <li><a href="#send_notification" data-toggle="tab"><i
+                            class="icon-bell3 position-left"></i> {{trans('messages.notification.send')}}</a></li>
                 <li><a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> Settings</a></li>
             </ul>
-
-
         </div>
     </div>
     <!-- /toolbar -->
@@ -57,7 +52,6 @@
                 <div class="tabbable">
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="seller_data">
-
                             <!-- seller_data -->
                             <div class="timeline timeline-left content-group">
                                 <div class="timeline-container">
@@ -66,34 +60,53 @@
                                         <div class="panel panel-flat timeline-content">
                                             <div class="panel-heading">
                                                 <div class="card">
-                                                    {{--                                                    <div class="card-header header-elements-inline">--}}
-                                                    {{--                                                        <h5 class="card-title">{{ trans('messages.seller.seller_data') }}</h5>--}}
-                                                    {{--                                                    </div>--}}
                                                     <div class="card-body">
                                                         <form action="#">
                                                             <div class="form-group row">
-                                                                <div class="col-md-6">
-                                                                    <label
-                                                                        class="col-form-label">{{ trans('messages.seller.full_name') }}
-                                                                        :</label>
-                                                                    <input type="text" value="{{ $seller->full_name }}"
-                                                                           class="form-control"
-                                                                           placeholder="{{ trans('messages.sellers.full_name') }}"
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.seller.full_name') }}
+                                                                    :</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $seller->full_name }}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.user_name') }}
+                                                                    :</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $seller->user_name }}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.email') }}
+                                                                    :</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $seller->email }}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.mobile') }}
+                                                                    :</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $seller->mobile }}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.since') }}
+                                                                    :</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $seller->created_at->diffForHumans() }}"
                                                                            readonly>
                                                                 </div>
-
-                                                            </div>
-
-                                                            <div class="form-group row">
-                                                                <div class="col-md-6">
-                                                                    <label
-                                                                        class="col-form-label">{{ trans('messages.since') }}
-                                                                        :</label>
-                                                                    <input type="text"
-                                                                           value="{{ $seller->created_at->diffforHumans() }}"
-                                                                           class="form-control" readonly>
-                                                                </div>
-
                                                             </div>
                                                         </form>
                                                     </div>
@@ -105,10 +118,8 @@
                                 </div>
                             </div>
                             <!-- /seller_data -->
-
                         </div>
                         <div class="tab-pane fade" id="seller_auctions">
-
                             <!-- Seller_auctions -->
                             <div class="panel panel-flat">
                                 <div class="panel-heading">
@@ -120,8 +131,6 @@
                                         </ul>
                                     </div>
                                 </div>
-
-
                                 <div class="panel-body">
                                     <!-- Palette colors -->
                                     <h6 class="content-group-sm text-semibold">
@@ -148,7 +157,9 @@
 
                                                         <div class="media-right">
                                                             <ul class="icons-list">
-                                                                <li><a href="#" data-toggle="modal" data-target="#info_800"><i class="icon-three-bars"></i></a></li>
+                                                                <li><a href="#" data-toggle="modal"
+                                                                       data-target="#info_800"><i
+                                                                            class="icon-three-bars"></i></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -205,7 +216,8 @@
                                                         <div class="modal-footer">
 
                                                             <div>
-                                                                <span class="badge  badge-pill" style="background-color: #00838F;">
+                                                                <span class="badge  badge-pill"
+                                                                      style="background-color: #00838F;">
                                                                     <a href={{ route('auctions.show', $seller_auction->id) }}>{{__('messages.seller.show_auction_bids')}}</a>
                                                                 </span>
                                                             </div>
@@ -229,6 +241,38 @@
                             </div>
                             <!-- /Seller_auctions -->
 
+                        </div>
+                        <div class="tab-pane fade" id="send_notification">
+                            <div class="panel panel-flat">
+                                <div class="panel-heading">
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li><a data-action="collapse"></a></li>
+                                            <li><a data-action="reload"></a></li>
+                                            <li><a data-action="close"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <h6 class="content-group-sm text-semibold">{{__('messages.notification.send')}}</h6>
+                                    <div class="row">
+                                        <form action="{{ route('send_single_notify') }}" class="form-horizontal"
+                                              method="post" enctype="multipart/form-data" style="border:1px solid grey;padding:20px 30px">
+                                            @csrf
+                                            <input type="hidden" name="user_id" value="{{ $seller->id }}"/>
+                                            <label> {{ trans('messages.notification.title') }} </label>
+                                            <input type="text" class="form-control" name="title"/><br>
+                                            <label> {{ trans('messages.notification.text') }} </label>
+                                            <textarea class="form-control" name="text"></textarea><br>
+                                            <center>
+                                                <button type="submit"
+                                                        class="btn btn-primary"> {{ trans('messages.notification.send') }}
+                                                    <i class="icon-arrow-left13 position-right"></i></button>
+                                            </center>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="settings">
 

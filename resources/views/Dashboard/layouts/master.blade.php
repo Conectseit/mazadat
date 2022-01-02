@@ -36,6 +36,7 @@
 <!-- Page container -->
 <div class="page-container">
 
+
     <!-- Page content -->
     <div class="page-content">
     @if (!Request::is(app()->getLocale().'/dashboard/show_login'))
@@ -81,10 +82,6 @@
 
 
 <!-- scripts -->
-
-
-
-
 @yield('scripts')
 
 <script type="text/javascript" src="{{ asset('assets/js/crud.js') }}"></script>
@@ -100,8 +97,6 @@
 {{--<x:notify-messages/>--}}
 
 @include('Dashboard.layouts.parts.custom_scripts')
-
-
 
 </body>
 </html>

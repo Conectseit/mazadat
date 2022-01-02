@@ -35,6 +35,12 @@ return [
     'Yes' => 'نعم',
     'No' => 'لا',
 
+
+
+
+
+
+    'select' => 'اختر',
     'cancel_delete' => 'تم الغاء الحذف',
     'is_appear_name' => 'هل متاح ظهور اسم العميل ؟',
     'confirm-delete-message-var' => 'هل انت متأكد من حذف هذا :var',
@@ -79,6 +85,19 @@ return [
     'description' => 'الوصف',
      'edit-var'              => 'تعديل :var',
      'the end date should between'              => 'تاريخ انتهاء المزاد يجب ان يكون بين',
+
+
+
+    'notification'=>[
+        'send' => 'ارسال اشعار',
+        'title' => 'عنوان الاشعار',
+        'text' => 'نص الاشعار',
+    ],
+
+
+
+
+
 
 //======= categories========
     'category' => [
@@ -383,6 +402,7 @@ return [
         'Plz_Login_First' => 'عفوا يجب تسجيل الدخول أولا ',
         'sorry_you_dont_have_permission' => 'عفوا ليس لديك صلاحية ',
         'added_successfully' => 'تمت الاضافة بنجاح',
+        'send_successfully' => 'تم الارسال بنجاح',
         'updated_successfully' => 'تم التحديث بنجاح',
         'deleted_successfully' => 'تم الحذف بنجاح',
         'try_access_not_found_content' => 'عفوا لا يوجد هذا العنصر',

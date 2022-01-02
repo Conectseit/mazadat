@@ -12,6 +12,9 @@ return [
     'wrong_old_password' 	=> 'عفوا كلمة المرور القديمة غير صحيحة',
     'user_profile'         	=> 'حسابي',
     'activation_done'         	=> 'تم تفعيل الحساب',
+    'uploaded_successfully'         	=> 'تم التحميل بنجاح ',
+
+
     'please_wait_your_account_not_activated_yet'         	=> 'من فضلك انتظر حتي يتم قبول حسابك من الادارة',
     'please_active_your_account_by_activation_code_first'         	=> 'من فضلك قم بتفعيل حسابك من خلال كود التفعيل المرسل علي جوالك اولا',
     'please_check_your_mobile_activation_code_has_sent'         	=> 'تم ارسال كود التفعيل علي جوالك, من فضلك قم بتفعيل حسابك ',

@@ -23,21 +23,21 @@
 
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
+       <br> <div class="list-icons" style="padding-right: 10px;">
+            <a href="{{route('sellers.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i
+                        class="icon-plus2"></i></b>{{ trans('messages.add_new_seller') }}</a>
+        </div>
         <div class="panel-heading">
             @include('Dashboard.layouts.parts.table-header', ['collection' => $sellers, 'name' => 'sellers', 'icon' => 'seller'])
         </div>
-        <br>
-        <div class="list-icons" style="padding-right: 10px;">
-            <a href="{{route('sellers.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i
-                        class="icon-plus2"></i></b>{{ trans('messages.add_new_seller') }}</a>
-        </div><br>
+
 
         <!-- Basic pills -->
         <div class="row" style="padding: 15px;">
             <div class="col-md-12">
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-                        <h6 class="panel-title">{{ trans('messages.seller.sellers') }}</h6>
+{{--                        <h6 class="panel-title">{{ trans('messages.seller.sellers') }}</h6>--}}
                         <div class="heading-elements">
                             <ul class="icons-list">
                                 <li><a data-action="collapse"></a></li>

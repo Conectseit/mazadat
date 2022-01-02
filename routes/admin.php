@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\AuctionDataController;
 use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\NationalityController;
+use App\Http\Controllers\Dashboard\NotificationController;
 use App\Http\Controllers\Dashboard\OptionController;
 use App\Http\Controllers\Dashboard\OptionDetailController;
 use App\Http\Controllers\Dashboard\PermissionController;
@@ -95,6 +96,9 @@ Route::group(
                 Route::get('seller/{id?}/accept', [SellerController::class, 'accept'])->name('seller/accept');
                 Route::get('seller/{id?}/not_accept', [SellerController::class, 'not_accept'])->name('seller/not_accept');
 
+
+
+                Route::post('send_single_notify', [NotificationController::class, 'send_single_notify'])->name('send_single_notify');
 
 
                 Route::get('settings', [SettingController::class, 'index'])->name('settings.index');

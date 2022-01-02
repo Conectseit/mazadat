@@ -99,91 +99,6 @@ class AuctionController extends Controller
     }
 
 
-
-
-
-
-
-
-    public function get_options_by_category_id(Request $request)
-    {
-        $category = Category::find($request->category_id);
-
-        if(!$category) return response()->json(['status' => false], 500);
-
-        return response()->json(['options' => $category->options, 'status' => true], 200);
-    }
-    public function get_option_details_by_option_id(Request $request)
-    {
-        $option = Option::find($request->option_id);
-
-        if(!$option) return response()->json(['status' => false], 500);
-
-        return response()->json(['option_details' => $option->option_details, 'status' => true], 200);
-    }
-
-
-
-
-
-
-
-//    public function store(AuctionRequest
-//                          $request)
-//    {
-//
-//        $max_duration_of_auction= Setting::where('key', 'max_duration_of_auction')->first()->value;
-//        $min_duration_of_auction= Setting::where('key', 'min_duration_of_auction')->first()->value;
-//
-//        $request->is_accepted=1;
-//
-//
-//        $dt = $request->start_date;
-//        if ( Setting::where('key', 'min_time_unit')->first()->value == 'hour'){
-//            $min_allowed_time = Carbon::parse($dt)->addHours(Setting::where('key', 'min_number_of_time')->first()->value);
-//        }
-//
-//        if ( Setting::where('key', 'min_time_unit')->first()->value == 'day'){
-//            $min_allowed_time = Carbon::parse($dt)->addDays(Setting::where('key', 'min_number_of_time')->first()->value);
-//        }
-//
-//        if ( Setting::where('key', 'max_time_unit')->first()->value == 'hour'){
-//            $max_allowed_time = Carbon::parse($dt)->addHours(Setting::where('key', 'max_number_of_time')->first()->value);
-//        }
-//
-//        if ( Setting::where('key', 'max_time_unit')->first()->value == 'day'){
-//            $max_allowed_time = Carbon::parse($dt)->addDays(Setting::where('key', 'max_number_of_time')->first()->value);
-//        }
-//            if ($request->end_date){
-//                $paymentDate = $request->end_date;
-//                $paymentDate=date('Y-m-d H', strtotime($paymentDate));
-//
-//                $contractDateBegin = $min_allowed_time->toDateTimeString();
-//                $contractDateEnd = $max_allowed_time->toDateTimeString();
-//
-//                if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
-////                    return back()->with('class', 'error')->with('message', trans('messages.test Yes'));
-//                }else{
-//                    return back()->with('class', 'error')
-//                        ->with('error', trans('messages.the end date should between'.$min_duration_of_auction.'&'.$max_duration_of_auction));
-//                }
-//}
-//
-//
-//        $auction = Auction::create($request->except(['images'])+['is_accepted'=>'1']);
-//        $data = [];
-//        if ($request->hasfile('images')) {
-//            foreach ($request->file('images') as $key => $img) {
-//                $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
-//            }
-//        }
-//
-//        $auction_images = DB::table('auction_images')->insert($data);
-//        return redirect()->route('auctions.index')->with('class', 'success')->with('message', trans('messages.added_successfully'));
-//    }
-//
-
-
     public function show($id)
     {
         if (!Auction::find($id)) {
@@ -213,17 +128,17 @@ class AuctionController extends Controller
 
     public function update(AuctionRequest $request, $id)
     {
-        // $request_data = $request->except(['images']);
+         $request_data = $request->except(['images']);
         // $auction->update($request_data);
-        $auction = Auction::find($id)->update($request->all());
+        $auction = Auction::find($id)->update($request_data);
 
-        foreach (Auction::find($id)->auctionimages as $image)
-        {
-            File::delete('uploads/auctions/' . $image->image);
-            $image->delete();
-        }
         $data = [];
         if ($request->hasfile('images')) {
+            foreach (Auction::find($id)->auctionimages as $image)
+            {
+                unlink('uploads/auctions/' . $image->image);
+                $image->delete();
+            }
             foreach ($request->file('images') as $key => $img) {
                 $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
             }
@@ -261,6 +176,27 @@ class AuctionController extends Controller
         }
         // return redirect()->route('auctions.index');
     }
+
+
+
+    public function get_options_by_category_id(Request $request)
+    {
+        $category = Category::find($request->category_id);
+
+        if(!$category) return response()->json(['status' => false], 500);
+
+        return response()->json(['options' => $category->options, 'status' => true], 200);
+    }
+    public function get_option_details_by_option_id(Request $request)
+    {
+        $option = Option::find($request->option_id);
+
+        if(!$option) return response()->json(['status' => false], 500);
+
+        return response()->json(['option_details' => $option->option_details, 'status' => true], 200);
+    }
+
+
 
 
 }

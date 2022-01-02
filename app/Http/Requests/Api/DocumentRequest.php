@@ -27,7 +27,7 @@ class DocumentRequest extends REQUEST_API_PARENT
     public function rules(Request $request)
     {
         return [
-            'expiry_date'               => 'required',
+            'expiry_date'               => 'required|date',
             'document_name'             => 'required|string',
             'Id_type'                  => 'required|numeric',
             'front_side_image'          => 'sometimes|image|mimes:jpg,png,jpeg',
