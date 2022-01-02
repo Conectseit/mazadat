@@ -16,6 +16,7 @@ class CategoryResource extends JsonResource
     {
         $name = 'name_' . app()->getLocale();
         return [
+            'id'       => $this->id,
             'name'     => $this->$name,
             'image'    => $this->image_path,
         ];

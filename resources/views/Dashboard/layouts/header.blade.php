@@ -2,13 +2,19 @@
 <div class="page-header page-header-default">
 
     <div class="page-header-content">
-        <div class="page-title">
-            <h1>
-{{--                <i class="icon-arrow-right6 position-left"></i>--}}
-                <span class="text-bold">@lang('messages.Dashboard')</span>
-                <img src="{{ asset('Dashboard/assets/images/login_cover.jpg') }}" alt="app_logo"
-                     style="width: 50px;height: 50px;">
 
+        <div class="page-title">
+            <div class="row">
+                <div class="col-6">
+                    <a href="{{ asset('Dashboard/assets/images/mazadat_logo.jpg') }}" data-popup="lightbox">
+                        <img src="{{ asset('Dashboard/assets/images/mazadat_logo.jpg') }}" alt="" width="150" height="80" class="img-circle">
+                    </a>
+                </div>
+            </div>
+
+            <h1>
+                <i class="icon-arrow-right6 position-left"></i>
+                <span class="text-bold">@lang('messages.Dashboard')</span>
             </h1>
         </div>
 
