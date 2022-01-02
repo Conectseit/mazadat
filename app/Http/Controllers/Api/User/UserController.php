@@ -7,6 +7,7 @@ use App\Http\Controllers\PARENT_API;
 use App\Http\Requests\Api\DocumentRequest;
 use App\Http\Requests\Api\TrafficFileNumberRequest;
 use App\Http\Requests\Api\UploadPassportRequest;
+use App\Http\Resources\Api\DocumntsResource;
 use App\Models\Document;
 use App\Models\TrafficFileNumber;
 use App\Models\User;
@@ -79,7 +80,15 @@ class UserController extends PARENT_API
         return responseJson(true, trans('api.updated_successfully'), $user->available_limit); //ACCEPTED
     }
 
+    public function my_document(Request $request)
+    {
+        $user = auth()->user();
+        if (!$user) {return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
+        }
+         $documents=Document::where('user_id',$user->id)->get();
 
+        return responseJson(true, trans('api.request_done_successfully'),DocumntsResource::collection($documents)); //ACCEPTED
+    }
     public function my_wallet(Request $request)
     {
         $user = auth()->user();

@@ -14,17 +14,17 @@ class Document extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getFrontSideImageAttribute()
+    public function getFrontSideImagePathAttribute()
     {
-        $front_side_image = User::where('id', $this->id)->first()->front_side_image;
+        $front_side_image = Document::where('id', $this->id)->first()->front_side_image;
         if (!$front_side_image) {
             return asset('uploads/default.png');
         }
         return asset('uploads/users/' . $this->front_side_image);
     }
-    public function getBackSideImageAttribute()
+    public function getBackSideImagePathAttribute()
     {
-        $back_side_image = User::where('id', $this->id)->first()->back_side_image;
+        $back_side_image = Document::where('id', $this->id)->first()->back_side_image;
         if (!$back_side_image) {
             return asset('uploads/default.png');
         }
