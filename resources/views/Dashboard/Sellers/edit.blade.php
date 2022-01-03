@@ -1,7 +1,5 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.edit-var',['var'=>trans('messages.seller.seller')]))
-
-
 @section('content')
 
 
@@ -22,11 +20,7 @@
         @endsection
     </div>
     <!-- /page header -->
-
-
     @include('Dashboard.layouts.parts.validation_errors')
-
-
     <div class="row" style="padding: 15px;">
         <div class="col-md-9">
 
@@ -82,6 +76,10 @@
                                 <input type="text" name="mobile" value="{{ $seller->mobile }}" class="form-control"
                                        placeholder="{{ trans('messages.mobile') }}">
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label>@lang('messages.image')</label>
+                            <input type="file" class="form-control image" name="image">
                         </div>
 
                         <div class="text-right">

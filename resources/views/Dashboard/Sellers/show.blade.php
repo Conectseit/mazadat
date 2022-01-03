@@ -1,5 +1,8 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.seller.sellers'))
+@section('style')
+    <style> #map { height: 400px;} </style>
+@endsection
 @section('content')
     <!-- Page header -->
     <div class="page-header page-header-default">
@@ -63,6 +66,13 @@
                                                     <div class="card-body">
                                                         <form action="#">
                                                             <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.type') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control" value="{{ $seller->is_company=='company'?trans('messages.company'):trans('messages.person')}}" readonly>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
                                                                 <label
                                                                     class="col-form-label col-lg-3">{{ trans('messages.seller.full_name') }}
                                                                     :</label>
@@ -81,33 +91,60 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label
-                                                                    class="col-form-label col-lg-3">{{ trans('messages.email') }}
-                                                                    :</label>
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.email') }}:</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control"
-                                                                           value="{{ $seller->email }}" readonly>
+                                                                    <input type="text" class="form-control" value="{{ $seller->email }}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label
-                                                                    class="col-form-label col-lg-3">{{ trans('messages.mobile') }}
-                                                                    :</label>
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.mobile') }}:</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control"
-                                                                           value="{{ $seller->mobile }}" readonly>
+                                                                    <input type="text" class="form-control" value="{{ $seller->mobile }}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label
-                                                                    class="col-form-label col-lg-3">{{ trans('messages.since') }}
-                                                                    :</label>
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.nationality.nationality') }}:</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control"
-                                                                           value="{{ $seller->created_at->diffForHumans() }}"
-                                                                           readonly>
+                                                                    <input type="text" class="form-control" value="{{ $seller->nationality->$name }}" readonly>
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.city.city') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control" value="{{ $seller->city->$name }}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.since') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $seller->created_at->diffForHumans() }}" readonly>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.personal_image') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <img src="{{ $seller->image_path }}" alt="" width="100" height="100" class="img-circle">
+                                                                </div>
+                                                            </div>
+
+                                                            @if($seller->is_company=='company')
+                                                            <div class="form-group row"><br>
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.seller.location') }}:</label>
+
+                                                                <div class="col-lg-9">
+                                                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -180px;" placeholder=" اختر المكان علي الخريطة " name="other" >
+                                                                    <div id="map"></div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <input type="text" id="geo_lat"  value="{{ $seller->latitude }}"  name="latitude" readonly="" placeholder=" latitude " class="form-control" >
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <input type="text" id="geo_lng"  value="{{ $seller->longitude }}"  name="longitude" readonly="" placeholder="longitude" class="form-control" >
+                                                                </div>
+                                                            </div>
+                                                            @endif
                                                         </form>
                                                     </div>
                                                 </div>
@@ -157,9 +194,8 @@
 
                                                         <div class="media-right">
                                                             <ul class="icons-list">
-                                                                <li><a href="#" data-toggle="modal"
-                                                                       data-target="#info_800"><i
-                                                                            class="icon-three-bars"></i></a></li>
+                                                                <li><a href="#" data-toggle="modal" data-target="#info_800">
+                                                                        <i class="icon-three-bars"></i></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -170,9 +206,6 @@
                                                     </span>
                                                 </div>
                                             </div>
-
-
-
                                             <!-- auction modal -->
                                             <div id="info_800" class="modal fade">
                                                 <div class="modal-dialog">
@@ -208,20 +241,15 @@
                                                                         <code>.{{$seller_auction->value_of_increment}}</code>
                                                                     </td>
                                                                 </tr>
-
                                                             </table>
                                                         </div>
-
-
                                                         <div class="modal-footer">
-
                                                             <div>
                                                                 <span class="badge  badge-pill"
                                                                       style="background-color: #00838F;">
                                                                     <a href={{ route('auctions.show', $seller_auction->id) }}>{{__('messages.seller.show_auction_bids')}}</a>
                                                                 </span>
                                                             </div>
-
                                                             <button type="button"
                                                                     class="btn btn-link btn-xs text-uppercase text-semibold"
                                                                     data-dismiss="modal">Close
@@ -232,8 +260,6 @@
                                             </div>
                                             <!-- /auction modal -->
                                         @endforeach
-
-
                                     </div>
                                     <!-- /palette colors -->
 
@@ -276,247 +302,109 @@
                         </div>
                         <div class="tab-pane fade" id="settings">
 
-                            <!-- Profile info -->
-                            <div class="panel panel-flat">
-                                <div class="panel-heading">
-                                    <h6 class="panel-title">Profile information</h6>
-                                    <div class="heading-elements">
-                                        <ul class="icons-list">
-                                            <li><a data-action="collapse"></a></li>
-                                            <li><a data-action="reload"></a></li>
-                                            <li><a data-action="close"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="panel-body">
-                                    <form action="#">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Username</label>
-                                                    <input type="text" value="Eugene" class="form-control">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Full name</label>
-                                                    <input type="text" value="Kopyov" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Address line 1</label>
-                                                    <input type="text" value="Ring street 12" class="form-control">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Address line 2</label>
-                                                    <input type="text" value="building D, flat #67"
-                                                           class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <label>City</label>
-                                                    <input type="text" value="Munich" class="form-control">
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label>State/Province</label>
-                                                    <input type="text" value="Bayern" class="form-control">
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label>ZIP code</label>
-                                                    <input type="text" value="1031" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Email</label>
-                                                    <input type="text" readonly="readonly" value="eugene@kopyov.com"
-                                                           class="form-control">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Your country</label>
-                                                    <select class="select">
-                                                        <option value="germany" selected="selected">Germany</option>
-                                                        <option value="france">France</option>
-                                                        <option value="spain">Spain</option>
-                                                        <option value="netherlands">Netherlands</option>
-                                                        <option value="other">...</option>
-                                                        <option value="uk">United Kingdom</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Phone #</label>
-                                                    <input type="text" value="+99-99-9999-9999" class="form-control">
-                                                    <span class="help-block">+99-99-9999-9999</span>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <label class="display-block">Upload profile image</label>
-                                                    <input type="file" class="file-styled">
-                                                    <span class="help-block">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="text-right">
-                                            <button type="submit" class="btn btn-primary">Save <i
-                                                    class="icon-arrow-left13 position-right"></i></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- /profile info -->
-
-
-                            <!-- Account settings -->
-                            <div class="panel panel-flat">
-                                <div class="panel-heading">
-                                    <h6 class="panel-title">Account settings</h6>
-                                    <div class="heading-elements">
-                                        <ul class="icons-list">
-                                            <li><a data-action="collapse"></a></li>
-                                            <li><a data-action="reload"></a></li>
-                                            <li><a data-action="close"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="panel-body">
-                                    <form action="#">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Username</label>
-                                                    <input type="text" value="Kopyov" readonly="readonly"
-                                                           class="form-control">
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <label>Current password</label>
-                                                    <input type="password" value="password" readonly="readonly"
-                                                           class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>New password</label>
-                                                    <input type="password" placeholder="Enter new password"
-                                                           class="form-control">
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <label>Repeat password</label>
-                                                    <input type="password" placeholder="Repeat new password"
-                                                           class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Profile visibility</label>
-
-                                                    <div class="radio">
-                                                        <label>
-                                                            <input type="radio" name="visibility" class="styled"
-                                                                   checked="checked">
-                                                            Visible to everyone
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="radio">
-                                                        <label>
-                                                            <input type="radio" name="visibility" class="styled">
-                                                            Visible to friends only
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="radio">
-                                                        <label>
-                                                            <input type="radio" name="visibility" class="styled">
-                                                            Visible to my connections only
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="radio">
-                                                        <label>
-                                                            <input type="radio" name="visibility" class="styled">
-                                                            Visible to my colleagues only
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <label>Notifications</label>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" class="styled" checked="checked">
-                                                            Password expiration notification
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" class="styled" checked="checked">
-                                                            New message notification
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" class="styled" checked="checked">
-                                                            New task notification
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" class="styled">
-                                                            New contact request notification
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="text-right">
-                                            <button type="submit" class="btn btn-primary">Save <i
-                                                    class="icon-arrow-left13 position-right"></i></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- /account settings -->
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 
 @stop
 
 @section('scripts')
+
+
+
+{{--    <script>--}}
+{{--        function initMap() {--}}
+{{--            let lat_val = {{ $seller->latitude }};--}}
+{{--            let lng_val = {{ $seller->longitude }};--}}
+{{--            var map = new google.maps.Map(document.getElementById('map'), {--}}
+{{--                center: {lat: lat_val, lng: lng_val},--}}
+{{--                zoom: 13--}}
+{{--            });--}}
+
+{{--            var input = document.getElementById('searchInput');--}}
+{{--            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);--}}
+
+{{--            var autocomplete = new google.maps.places.Autocomplete(input);--}}
+{{--            autocomplete.bindTo('bounds', map);--}}
+
+{{--            var infowindow = new google.maps.InfoWindow();--}}
+{{--            var marker = new google.maps.Marker({ position: {lat: lat_val, lng: lng_val}, map: map, draggable :true });--}}
+{{--            // var marker = new google.maps.Marker({--}}
+{{--            //     map: map,--}}
+{{--            //     anchorPoint: new google.maps.Point(0, -29),--}}
+{{--            //     draggable: true--}}
+{{--            // });--}}
+
+
+{{--            google.maps.event.addListener(map, 'click', function (event) {--}}
+{{--                document.getElementById("geo_lat").value = event.latLng.lat();--}}
+{{--                document.getElementById("geo_lng").value = event.latLng.lng();--}}
+{{--                marker.setPosition(event.latLng);--}}
+{{--            });--}}
+
+
+{{--            marker.addListener('position_changed', printMarkerLocation);--}}
+{{--            function printMarkerLocation() {--}}
+{{--                document.getElementById('geo_lat').value = marker.position.lat();--}}
+{{--                document.getElementById('geo_lng').value = marker.position.lng();--}}
+
+{{--                // console.log('Lat: ' + marker.position.lat() + ' Lng:' + marker.position.lng() );--}}
+{{--            }--}}
+{{--            autocomplete.addListener('place_changed', function () {--}}
+{{--                infowindow.close();--}}
+{{--                marker.setVisible(false);--}}
+{{--                var place = autocomplete.getPlace();--}}
+{{--                if (!place.geometry) {--}}
+{{--                    window.alert("Autocomplete's returned place contains no geometry");--}}
+{{--                    return;--}}
+{{--                }--}}
+
+{{--                // If the place has a geometry, then present it on a map.--}}
+{{--                if (place.geometry.viewport) {--}}
+{{--                    map.fitBounds(place.geometry.viewport);--}}
+{{--                } else {--}}
+{{--                    map.setCenter(place.geometry.location);--}}
+{{--                    map.setZoom(17);--}}
+{{--                }--}}
+{{--                marker.setIcon(({--}}
+{{--                    url: place.icon,--}}
+{{--                    size: new google.maps.Size(71, 71),--}}
+{{--                    origin: new google.maps.Point(0, 0),--}}
+{{--                    anchor: new google.maps.Point(17, 34),--}}
+{{--                    scaledSize: new google.maps.Size(35, 35)--}}
+{{--                }));--}}
+{{--                marker.setPosition(place.geometry.location);--}}
+{{--                marker.setVisible(true);--}}
+
+{{--                var address = '';--}}
+{{--                if (place.address_components) {--}}
+{{--                    address = [--}}
+{{--                        (place.address_components[0] && place.address_components[0].short_name || ''),--}}
+{{--                        (place.address_components[1] && place.address_components[1].short_name || ''),--}}
+{{--                        (place.address_components[2] && place.address_components[2].short_name || '')--}}
+{{--                    ].join(' ');--}}
+{{--                }--}}
+
+{{--                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);--}}
+{{--                infowindow.open(map, marker);--}}
+
+{{--                //Location details--}}
+{{--                for (var i = 0; i < place.address_components.length; i++) {--}}
+{{--                    if (place.address_components[i].types[0] == 'postal_code') {--}}
+{{--                        document.getElementById('postal_code').value = place.address_components[i].long_name;--}}
+{{--                    }--}}
+{{--                    if (place.address_components[i].types[0] == 'country') {--}}
+{{--                        document.getElementById('country').value = place.address_components[i].long_name;--}}
+{{--                    }--}}
+{{--                }--}}
+{{--                document.getElementById('location').value = place.formatted_address;--}}
+{{--            });--}}
+{{--        }--}}
+
+{{--    </script>--}}
+
+    @include('Dashboard.layouts.parts.map')
 @stop

@@ -7,8 +7,8 @@
         @section('breadcrumb')
             <div class="breadcrumb-line">
                 <ul class="breadcrumb">
-                    <li><a href="{{route('admin.home')}}"><i
-                                class="icon-home2 position-left"></i> @lang('messages.home')
+                    <li><a href="{{route('admin.home')}}">
+                            <i class="icon-home2 position-left"></i> @lang('messages.home')
                         </a>
                     </li>
                     <li class="active">@lang('messages.seller.sellers')</li>
@@ -19,6 +19,7 @@
     </div>
     <!-- /page header -->
     @include('Dashboard.layouts.parts.validation_errors')
+
 
 
     <!-- Basic datatable -->
@@ -61,6 +62,7 @@
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
                                                     <th class="text-center">#</th>
+                                                    <th class="text-center">{{ trans('messages.type') }}</th>
                                                     <th class="text-center">{{ trans('messages.full_name') }}</th>
                                                     {{--                    <th class="text-center">{{ trans('messages.user_name') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.mobile') }}</th>
@@ -76,9 +78,9 @@
 
                                                     <tr id="seller-row-{{ $seller->id }}">
                                                         <td class="text-center">{{ $seller->id }}</td>
-
-                                                        <td class="text-center"><a
-                                                                href={{ route('sellers.show', $seller->id) }}> {{ isNullable($seller->full_name) }}</a>
+                                                        <td class="text-center"> {{ $seller->is_company=='company'?trans('messages.company'):trans('messages.person')}} </td>
+                                                        <td class="text-center">
+                                                            <a href={{ route('sellers.show', $seller->id) }}> {{ isNullable($seller->full_name) }}</a>
                                                         </td>
                                                         {{--                        <td class="text-center"> {{ isNullable($seller->user_name) }}</td>--}}
                                                         <td class="text-center"> {{ $seller->mobile}}</td>
@@ -140,6 +142,7 @@
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
                                                     <th class="text-center">#</th>
+                                                    <th class="text-center">{{ trans('messages.type') }}</th>
                                                     <th class="text-center">{{ trans('messages.full_name') }}</th>
                                                     {{--                    <th class="text-center">{{ trans('messages.user_name') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.mobile') }}</th>
@@ -155,7 +158,7 @@
 
                                                     <tr id="seller-row-{{ $seller->id }}">
                                                         <td class="text-center">{{ $seller->id }}</td>
-
+                                                        <td class="text-center"> {{ $seller->is_company=='company'?trans('messages.company'):trans('messages.person')}} </td>
                                                         <td class="text-center"><a
                                                                 href={{ route('sellers.show', $seller->id) }}> {{ isNullable($seller->full_name) }}</a>
                                                         </td>
@@ -219,15 +222,8 @@
             </div>
         </div>
         <!-- /basic pills -->
-
-
-
-
-
     </div>
     <!-- /basic datatable -->
-
-
 @stop
 
 @section('scripts')

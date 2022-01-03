@@ -33,6 +33,8 @@ class SellerRequest extends FormRequest
                     return [
                         'is_company'       => 'required|in:person,company',
                         'commercial_register_image'        => 'required_if:is_company,company|image',
+                        'latitude'         => 'required_if:is_company,company',
+                        'longitude'        => 'required_if:is_company,company',
                         'full_name'   => 'required',
                         'user_name'   => 'required',
                         'email'       => 'required|unique:users,email',
@@ -40,6 +42,7 @@ class SellerRequest extends FormRequest
                         'password'    => 'required|min:6|confirmed',
                         'mobile'      => ['required', 'numeric', 'unique:users,mobile'],
                         'is_appear_name' => 'required',
+                        'nationality_id'     => 'required',
                         'city_id'     => 'required',
                         'gender'      => 'required',
                         'P_O_Box'      => 'required',

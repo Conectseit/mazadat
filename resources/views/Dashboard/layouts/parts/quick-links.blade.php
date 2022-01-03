@@ -8,6 +8,7 @@
         <ul class="dropdown-menu dropdown-menu-right">
             <li><a href="{{ route('auctions.index') }}"><i class="icon-stack2"></i>{{trans('messages.auction.auctions')}}</a></li>
             <li><a href="{{ route('buyers.index') }}"><i class="icon-user-tie"></i>{{trans('messages.buyer.buyers')}}</a></li>
+            <li><a href="{{ route('settings.index') }}"><i class="icon-gear"></i>{{ trans('messages.settings.settings') }}</a></li>
 
             {{--@if (auth()->user()->is_super_admin == 1)--}}
 {{--                <li><a href="{{ route('client.create') }}"><i class="icon-user"></i> @lang('back.create-var',['var'=>trans('back.client')])</a></li>--}}

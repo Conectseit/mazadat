@@ -57,13 +57,17 @@
                                     </select>
                                 </div>
                             </div>
-                            <div id="commercial_register_image" style="display:none;">
+                            <div id="location" style="display:none;">
+{{--                                <div class="form-group">--}}
+{{--                                    <label>@lang('messages.commercial_register_image')--}}
+{{--                                        <input type="file" class="col-lg-3 control-label display-block  " name="commercial_register_image">--}}
+{{--                                        <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview">--}}
+{{--                                    </label>--}}
+{{--                                </div><br>--}}
                                 <div class="form-group">
-                                    <label>@lang('messages.commercial_register_image')
-                                        <input type="file" class="col-lg-3 control-label display-block image " name="commercial_register_image">
-                                        <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview">
-                                    </label>
-                                </div><br>
+                                    <label>@lang('messages.commercial_register_image')</label>
+                                    <input type="file" class="form-control commercial_register_image" name="commercial_register_image">
+                                </div>
                                 <div class="form-group">
                                     <label>@lang('messages.seller.location'):</label>
                                     <div class="col-lg-12">
@@ -151,6 +155,17 @@
                                 </label>
                             </div>
 
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.nationality.nationality') }} </label>
+                                <div class="col-lg-9">
+                                    <select name="nationality_id" class="select form-control">
+                                        @foreach ($nationalities as $nationality)
+                                            <option value="{{ $nationality->id }}"> {{ $nationality->$name }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label display-block"> {{ trans('messages.city_name') }} </label>
                                 <div class="col-lg-9">
@@ -182,7 +197,6 @@
 
         <div class="col-md-6">
             <div class="panel panel-flat">
-
                 <div class="panel-heading">
                     <h5 class="panel-title"> {{ trans('messages.latest_sellers') }} </h5>
                     <div class="heading-elements">
@@ -233,12 +247,12 @@
             optionValue = document.getElementById("option").value;
 
             if (optionValue == nameSelect.value) {
-                document.getElementById("commercial_register_image").style.display = "block";
+                document.getElementById("location").style.display = "block";
             } else {
-                document.getElementById("commercial_register_image").style.display = "none";
+                document.getElementById("location").style.display = "none";
             }
         } else {
-            document.getElementById("commercial_register_image").style.display = "none";
+            document.getElementById("location").style.display = "none";
           }
         }
     </script>

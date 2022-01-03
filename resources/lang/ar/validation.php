@@ -156,6 +156,7 @@ return [
         'description_en' => 'الوصف بالانجليزية',
         'user_name' => 'اسم المُستخدم',
         'email' => 'البريد الالكتروني',
+        'P_O_Box' => 'الرقم البريدي',
         'first_name' => 'الاسم الأول',
         'last_name' => 'اسم العائلة',
         'password' => 'كلمة المرور',
@@ -193,5 +194,10 @@ return [
         'images.*' => 'صور المزاد',
 
         'passport_expiry_date'         	=> ' تاريخ انتهاء جواز السفر',
+        'is_company'         	=> 'النوع(فرد او مؤسسة)',
+        'company'         	=> ' شركة',
+        'commercial_register_image'         	=> 'صورة السجل التجاري',
+        'latitude'         	=> ' الموقع',
+        'longitude'         	=> ' الموقع',
     ],
 ];

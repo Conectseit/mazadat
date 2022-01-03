@@ -85,6 +85,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo(City::class,'city_id');
     }
 
+    public function nationality()
+    {
+        return $this->belongsTo(Nationality::class,'nationality_id');
+    }
+
     public function additional_contacts()
     {
         return $this->hasMany(AdditionalUserContact::class,'user_id');

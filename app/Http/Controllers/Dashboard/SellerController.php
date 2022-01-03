@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\SellerRequest;
 use App\Models\Auction;
 use App\Models\City;
+use App\Models\Nationality;
 use App\Models\Token;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class SellerController extends Controller
@@ -26,6 +28,7 @@ class SellerController extends Controller
     {
         $data['latest_sellers'] = User::where('type', 'seller')->orderBy('id', 'desc')->take(5)->get();
         $data['cities'] = City::all();
+        $data['nationalities'] = Nationality::all();
         return view('Dashboard.Sellers.create', $data);
     }
 
@@ -37,6 +40,7 @@ class SellerController extends Controller
             $seller->type = 'seller';
             $seller->is_company = $request->is_company;
             $seller->is_accepted = 1;
+            $seller->is_active = 'active';
             if ($request->image) {
                 $seller->image =  uploaded($request->image,'user');
             }
@@ -49,7 +53,6 @@ class SellerController extends Controller
             if ($request->longitude) {
                 $seller->longitude = $request->longitude;
             }
-
             $seller->full_name = $request->full_name;
             $seller->user_name = $request->user_name;
             $seller->email = $request->email;
@@ -58,6 +61,8 @@ class SellerController extends Controller
             $seller->password = $request->password;
             $seller->gender = $request->gender;
             $seller->is_appear_name = $request->is_appear_name;
+            $seller->nationality_id = $request->nationality_id;
+            $seller->country_id = 1;
             $seller->city_id = $request->city_id;
             $seller->save();
 
@@ -69,9 +74,6 @@ class SellerController extends Controller
 //            $token->user_id = $seller->id;
 //            $token->jwt='';
 //            $token->save();
-
-
-
 
             DB::commit();
         } catch (Exception $e) {
@@ -97,7 +99,28 @@ class SellerController extends Controller
 
     public function update(SellerRequest $request, $id)
     {
-        User::findOrFail($id)->update($request->all());
+        $request_data = $request->except('image');
+
+//        $data = [];
+//        if ($request->hasfile('image')) {
+//            foreach (User::find($id)->image as $image)
+//            {
+//                unlink('uploads/users/' . $image->image);
+//                $image->delete();
+//            }
+//            $request_data['image'] = uploaded($request->image, 'user');
+//        }
+      $user=  User::find($id)->first();
+        if ($request->hasfile('image')) {
+
+//            unlink('uploads/users/' .$user->image);
+//            $user->image->delete();
+//            File::delete('uploads/users/' . $user->image);
+
+            $request_data['image'] = uploaded($request->image, 'user');
+        }
+        User::findOrFail($id)->update($request_data);
+
         return redirect()->route('sellers.index')->with('success',  trans('messages.messages.updated_successfully'));
     }
 
