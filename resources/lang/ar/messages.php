@@ -26,7 +26,7 @@ return [
 //    'active'                => 'فعال',
     'type'                  => 'النوع',
 
-    'activation_code_is'                  => 'مرحبا بك كود التفعيل الخاص بك من تطبيق مزادات هو',
+    'activation_code_is'                  => 'كود التفعيل هو : :code',
     'edit' => 'تعديل',
     'delete' => 'حذف',
     'save'                  => 'حفظ',
@@ -284,6 +284,7 @@ return [
         'who_can_buy' => 'خيار مشاهدة المزاد ',
         'company' => 'مؤسسات فقط',
         'users' => 'افراد فقط ',
+        'delivery_charge' => 'الرسوم الابتدائية للشحن والتوصيل ',
         'start_auction_price' => 'القيمةالابتدائية للمزاد ',
         'value_of_increment' => 'قيمة المزايدة في كل مرة',
         'images' => 'صور المزاد',

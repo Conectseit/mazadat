@@ -30,5 +30,6 @@ return [
     'show'                  => 'show',
     'Yes'                   => 'Yes',
     'No'                    => 'No',
+    'activation_code_is_var'  => 'Activation code is : :code',
 
 ];

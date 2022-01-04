@@ -36,7 +36,7 @@ class RegisterUserRequest extends REQUEST_API_PARENT
             'city_id'          => 'required|numeric|exists:cities,id',
             'full_name'        => 'required|string|between:2,200',
             'email'            => 'required|email|max:100|unique:users,email',
-            'mobile'           => 'required|numeric|max:20|unique:users,mobile',
+            'mobile'           => 'required|numeric|unique:users,mobile',
             'user_name'        => 'required|string|between:2,200',
             'password'         => 'required|string|min:6',
         ];

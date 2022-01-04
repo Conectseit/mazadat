@@ -30,7 +30,7 @@ class Auction extends Model
         if (!$inspection_report_image) {
             return asset('uploads/default.png');
         }
-        return asset('uploads/uauctions/' . $this->inspection_report_image);
+        return asset('uploads/auctions/' . $this->inspection_report_image);
     }
 
 
@@ -47,7 +47,7 @@ class Auction extends Model
         } else {
             $diff = 0;
         }
-        return  $diff->d . ' days ' . $diff->h . ' hours';
+        return ' days '. $diff->d . '/' . ' hours' . $diff->h ;
 //        return $diff->y . ' years ' . $diff->d . ' days ' . $diff->h . ' hours';
     }
 

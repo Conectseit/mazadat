@@ -8,35 +8,20 @@ use Illuminate\Support\Facades\Log;
 
 class SmsController extends Controller
 {
-    private $username = 'mzadat';
-    private $password = 'Sa@@123456';
-    private $sender_name = 'mzadat';
-
-    public function send_sms($mobile, $message)
+    public static function send_sms($mobile, $message)
     {
-//        $date = date('Y-m-d');
-//        $time = date("H:i");
+        $requestData = self::malathData('mzadat', 'Sa@@123456', $mobile, 'MZADAT', $message);
 
-        $requestData = self::malathData($this->username, $this->password, $mobile, $this->sender_name, $message);
+        $response = Http::get('https://sms.malath.net.sa/httpSmsProvider.aspx', $requestData);
 
-        $result = Http::get('https://sms.malath.net.sa/httpSmsProvider.aspx', $requestData);
+        $code = (int)str_replace(" ", "", $response);
 
-        $code = (int)str_replace(" ", "", $result);
-
-//        Log::info(self::get_malath_message_by_code($code));
+        Log::info(self::get_malath_message_by_code($code));
 
         return ['code' => $code, 'message' => self::get_malath_message_by_code($code)];
-
-//        $url = "https://sms.malath.net.sa/httpSmsProvider.aspx?" .
-//            "username=" . $this->username .
-//            "&password=" . $this->password .
-//            "&mobile=" . $mobile .
-//            "&sender=" . $this->sender_name .
-//            "&message=" . $message  ;
-//            "&date=" . date('Y-m-d') . "&time=" . date('H:i') . "";
     }
 
-    public function get_malath_message_by_code($code)
+    public static function get_malath_message_by_code($code)
     {
         switch ($code)
         {
@@ -88,8 +73,8 @@ class SmsController extends Controller
             'username' => $username,
             'password' => $password,
             'mobile'   => $number,
-            'unicode'  => 'U',
-            'message'  => $message,
+            'unicode'  => 'none',
+            'message'  => (string)$message,
             'sender'   => $sms_sender,
         ];
     }

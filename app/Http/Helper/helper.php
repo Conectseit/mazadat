@@ -7,6 +7,18 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 
+function removePhoneZero($number, $country_code): string
+{
+    $_replaced = Str::replaceFirst('0','', $number);
+
+    $replaced = Str::replaceFirst('966','', $_replaced);
+
+    return ($number && $number[0] == 9) ? $number : $country_code.$replaced;
+}
+
+
+
+
 function responseJson($status, $message, $data = null)
 {
     $response = ['status' => $status, 'message' => $message, 'data' => $data,];

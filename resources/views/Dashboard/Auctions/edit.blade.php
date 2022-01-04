@@ -49,7 +49,7 @@
                             <label
                                 class="col-lg-3 control-label display-block"> {{ trans('messages.auction.category_name') }} </label>
                             <div class="col-lg-9">
-                                <select name="category_id" class="select-border-color border-warning form-control">
+                                <select name="category_id" class="select form-control">
                                     <optgroup label="{{ trans('messages.auction.category_name') }}">
                                         @foreach ($categories as $category)
                                             <option
@@ -62,7 +62,7 @@
                             <label
                                 class="col-lg-3 control-label display-block"> {{ trans('messages.auction.seller_full_name') }} </label>
                             <div class="col-lg-9">
-                                <select name="seller_id" class="select-border-color border-warning form-control">
+                                <select name="seller_id" class="select form-control">
                                     <optgroup label="{{ trans('messages.auction.seller_full_name') }}">
 
                                         @foreach ($sellers as $seller)

@@ -57,13 +57,16 @@
                 <li class="active"><a href="#activity" data-toggle="tab"><i
                             class="icon-menu7 position-left"></i> {{ trans('messages.auction.auction_data') }}</a></li>
                 <li><a href="#auction_options" data-toggle="tab"><i
-                            class="icon-menu7 position-left"></i> {{ trans('messages.auction.options') }}</a></li>
+                            class="icon-menu7 position-left"></i> {{ trans('messages.auction.options') }}<span
+                            class="badge badge-success badge-inline position-right">{{$auction_option_details->count()}}</span>
+                    </a></li>
                 <li><a href="#auction_images" data-toggle="tab"><i
                             class="icon-calendar3 position-left"></i> {{ trans('messages.auction.images') }} <span
                             class="badge badge-success badge-inline position-right">{{$images->count()}}</span></a></li>
                 <li><a href="#auction_bids" data-toggle="tab"><i
                             class="icon-calendar3 position-left"></i> {{ trans('messages.auction.bids') }} <span
                             class="badge badge-success badge-inline position-right">{{$auction_bids->count()}}</span></a></li>
+                <li><a href="#inspection_report_image" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{ trans('messages.auction.inspection_report_image') }}</a></li>
                 <li><a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> Settings</a></li>
             </ul>
         </div>
@@ -296,6 +299,15 @@
 
                             </div>
                             <!-- /auction_auction_bidss -->
+                        </div>
+                        <div class="tab-pane fade" id="inspection_report_image">
+                            <div class="panel panel-flat">
+                                <div class="panel-body">
+                                    <a href="{{asset($auction->inspection_report_image_path) }}" data-popup="lightbox">
+                                        <img src="{{asset($auction->inspection_report_image_path) }}" alt="" width="80" height="70" class="img-preview rounded">
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="settings">
 

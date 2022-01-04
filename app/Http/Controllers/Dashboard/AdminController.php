@@ -25,7 +25,6 @@ class AdminController extends Controller
 
     public function store(AdminRequest $request)
     {
-
         $admin = new Admin();
         $admin->full_name = $request->full_name;
         $admin->admin_role_id = $request->admin_role_id;
@@ -34,7 +33,6 @@ class AdminController extends Controller
         $admin->password = $request->password;
         $admin->save();
         return redirect()->route('admins.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
-
     }
 
 
@@ -69,8 +67,7 @@ class AdminController extends Controller
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
         }
-
-        return redirect()->route('admins.index');
+//        return redirect()->route('admins.index');
     }
 
 }

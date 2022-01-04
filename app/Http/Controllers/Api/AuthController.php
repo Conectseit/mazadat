@@ -29,6 +29,7 @@ class AuthController extends PARENT_API
     public function register(RegisterUserRequest $request)
     {
         $activation_code = random_int(0000, 9999);
+
         DB::beginTransaction();
         try {
             $request_data = $request->except(['image', 'commercial_register_image']);
@@ -45,7 +46,8 @@ class AuthController extends PARENT_API
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
             }
             DB::commit();
-//            (new SmsController())->send_sms('966' . $request->mobile, trans('messages.activation_code_is' . $activation_code));
+
+//            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
 
 //            return responseJson(true, trans('api.register_user_successfully')); //OK
             return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_sent')); //OK

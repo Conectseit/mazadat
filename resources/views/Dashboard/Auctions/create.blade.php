@@ -174,6 +174,10 @@
                                 <input type="text" class="form-control" value="" name="start_auction_price"
                                        placeholder="@lang('messages.auction.start_auction_price') ">
                             </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="" name="delivery_charge"
+                                       placeholder="@lang('messages.auction.delivery_charge') ">
+                            </div>
                         </div>
                     </fieldset>
                     <fieldset title="5">

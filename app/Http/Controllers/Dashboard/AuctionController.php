@@ -70,7 +70,7 @@ class AuctionController extends Controller
             if (($end_date >= $minimum_allowed_time) && ($end_date <= $maximum_allowed_time)) {
                 //======= create auction =======
                 $request_data = $request->except([ 'inspection_report_image'.'images']);
-                if ($request->image) {
+                if ($request->inspection_report_image) {
                     $request_data['inspection_report_image'] =  uploaded($request->inspection_report_image, 'auction');
                 }
                 $auction = Auction::create($request_data + ['is_accepted' => '1',
@@ -105,7 +105,6 @@ class AuctionController extends Controller
             return redirect()->route('auctions.index')->with('class', 'danger')->with('message', trans('dash.messages.try_2_access_not_found_content'));
         }
         $data['auction'] = Auction::find($id);
-
         $data['images'] = AuctionImage::where(['auction_id' => $id])->get();
         $data['auction_bids'] = AuctionBuyer::where(['auction_id' => $id])->get();
         $data['auction_option_details'] = AuctionData::where(['auction_id' => $id])->get();
