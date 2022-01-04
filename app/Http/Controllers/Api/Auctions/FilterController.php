@@ -36,12 +36,11 @@ class FilterController extends PARENT_API
             $query->orderBy('start_auction_price', 'ASC');
         }
         if ($request->has('less_bids')) {
-            $query->orderBy('count_of_buyer', 'ASC');
+            $query->orderBy('count_of_buyer', 'DESC');
         }
         if ($request->has('less_ending')) {
-            $query->orderBy('end_date', 'ASC');
+            $query->orderBy('end_date', 'DESC');
         }
-
         if($request->has('high_bids') && $request->has('high_ending')) {
             $query->orderBy('count_of_buyer', 'desc');
             $query->orderBy('end_date', 'desc');
