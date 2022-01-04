@@ -30,17 +30,17 @@ class FilterController extends PARENT_API
 //        if ($request->has('search_by_name')) {
 //            $query->where($name, 'like', '%' . $request['search_by_name'] . '%');
 //        }
-        if ($request->less_price) {
+        if ($request->has('less_price')) {
             $query->orderBy('start_auction_price', 'asc');
         }
 
-        if ($request->high_price) {
+        if ($request->has('high_price')) {
             $query->orderBy('start_auction_price', 'desc');
         }
-        if ($request->less_bids) {
+        if ($request->has('less_bids')) {
             $query->orderBy('count_of_buyer', 'asc');
         }
-        if ($request->less_ending) {
+        if ($request->has('less_ending')) {
             $query->orderBy('end_date', 'asc');
         }
 
@@ -68,6 +68,7 @@ class FilterController extends PARENT_API
 //// ==================================
 //            } else {
                 $auctions = $query->where('category_id', $id)->where('status', 'on_progress')->get();
+
                 if ($auctions->count() > 0) {
                     return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));
                 }
