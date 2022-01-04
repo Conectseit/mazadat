@@ -30,6 +30,7 @@ class UserAuctionsResource extends JsonResource
                 'start_date'                  => $this->auction->start_date,
                 'remaining_time'              => $this->auction->remaining_time,
                 'status'                      => $this->auction->status,
+
             ];
         }
         else return [];

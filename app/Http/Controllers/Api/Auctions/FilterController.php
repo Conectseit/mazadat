@@ -99,8 +99,13 @@ class FilterController extends PARENT_API
 //        $option_details= [];
 //        $data = AuctionData::whereIn('option_details_id',$option_details);
         $data = AuctionData::where('option_details_id', $request->option_details_id)->get();
-        if ($data) {
-            return responseJson(true, trans('api.category_auctions'), UserAuctionsResource::collection($data));  //OK
+        foreach ($data as $auction){
+           $auctions= $auction->auction->where('status','on_progress')->get();
+        }
+
+        if ($auctions->count()>0) {
+            return responseJson(true, trans('api.category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK
+//            return responseJson(true, trans('api.category_auctions'), UserAuctionsResource::collection($data));  //OK
         }
         return responseJson(true, trans('api.there_is_no_auctions_on_this_option'), null);  //OK
 
