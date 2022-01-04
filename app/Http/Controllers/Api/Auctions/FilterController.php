@@ -22,19 +22,18 @@ class FilterController extends PARENT_API
         $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
 //        $name = 'name_' . app()->getLocale();
         $query = Auction::query();
+
         $category = Category::find($id);
 
-        if (!$category) {
-            return responseJson(false, trans('api.not_found_category'), null);  //
-        }
+        if (!$category) return responseJson(false, trans('api.not_found_category'), null);  //
 //        if ($request->has('search_by_name')) {
 //            $query->where($name, 'like', '%' . $request['search_by_name'] . '%');
 //        }
         if ($request->has('less_price')) {
-            $query->orderBy('start_auction_price', 'ASC');
+            $query->orderBy('start_auction_price', 'DESC');
         }
         if ($request->has('high_price')) {
-            $query->orderBy('start_auction_price', 'desc');
+            $query->orderBy('start_auction_price', 'ASC');
         }
         if ($request->has('less_bids')) {
             $query->orderBy('count_of_buyer', 'ASC');
