@@ -22,7 +22,8 @@ class FilterController extends PARENT_API
         $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
 //        $name = 'name_' . app()->getLocale();
         $query = Auction::query();
-        $category = Category::where('id', $id)->find($id);
+        $category = Category::find($id);
+
         if (!$category) {
             return responseJson(false, trans('api.not_found_category'), null);  //
         }
@@ -30,16 +31,17 @@ class FilterController extends PARENT_API
 //            $query->where($name, 'like', '%' . $request['search_by_name'] . '%');
 //        }
         if ($request->less_price) {
-            $query->OrderBy('start_auction_price', 'asc');
+            $query->orderBy('start_auction_price', 'asc');
         }
+
         if ($request->high_price) {
-            $query->OrderBy('start_auction_price', 'desc');
+            $query->orderBy('start_auction_price', 'desc');
         }
         if ($request->less_bids) {
-            $query->OrderBy('count_of_buyer', 'asc');
+            $query->orderBy('count_of_buyer', 'asc');
         }
         if ($request->less_ending) {
-            $query->OrderBy('end_date', 'asc');
+            $query->orderBy('end_date', 'asc');
         }
 
         if($request->has('high_bids') && $request->has('high_ending')) {
