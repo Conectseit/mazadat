@@ -52,25 +52,25 @@ class FilterController extends PARENT_API
         elseif (!$request->has('high_bids') && $request->has('high_ending')){
             $query->orderBy('end_date', 'desc');
         }
-// =========== for appear ended auctions
-        if ($request->status == 'done') {
-            if ($appearance_of_ended_auctions == 'yes') {
-                $auctions = $query->where('category_id', $id)->where('status', 'done')->get();
-                if ($auctions->count() == 0) {
-                    return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
-                }
-                return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));
-            } else {
-                    return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
-                }
-// ==================================
-            } else {
+//// =========== for appear ended auctions
+//        if ($request->status == 'done') {
+//            if ($appearance_of_ended_auctions == 'yes') {
+//                $auctions = $query->where('category_id', $id)->where('status', 'done')->get();
+//                if ($auctions->count() == 0) {
+//                    return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
+//                }
+//                return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));
+//            } else {
+//                    return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
+//                }
+//// ==================================
+//            } else {
                 $auctions = $query->where('category_id', $id)->where('status', 'on_progress')->get();
                 if ($auctions->count() > 0) {
                     return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));
                 }
                 return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);
-            }
+//            }
     }
 
     public function get_options_of_category(Request $request, $id)

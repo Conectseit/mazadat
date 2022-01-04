@@ -16,7 +16,6 @@ class AuctionRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -37,6 +36,8 @@ class AuctionRequest extends FormRequest
                         'category_id' => 'sometimes',
                         'description_ar' => 'required',
                         'description_en' => 'required',
+                        'auction_terms_ar' => 'required',
+                        'auction_terms_en' => 'required',
                         'start_date' => 'required',
                         'end_date' => 'required',
                         'start_auction_price'   => ['required','numeric'],
@@ -63,8 +64,7 @@ class AuctionRequest extends FormRequest
     public function attributes()
     {
         return [
-            'start_auction_price' => 'القيمة الابتدائية للمزاد',
-            'value_of_increment' => 'قيمة المزايدة في كل مرة',
+
         ];
     }
 }

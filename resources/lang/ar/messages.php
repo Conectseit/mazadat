@@ -285,7 +285,7 @@ return [
         'company' => 'مؤسسات فقط',
         'users' => 'افراد فقط ',
         'delivery_charge' => 'الرسوم الابتدائية للشحن والتوصيل ',
-        'start_auction_price' => 'القيمةالابتدائية للمزاد ',
+        'start_auction_price' => ' السعر الابتدائي للمزاد ',
         'value_of_increment' => 'قيمة المزايدة في كل مرة',
         'images' => 'صور المزاد',
         'inspection_report_image' => 'صورة تقرير الفحص',

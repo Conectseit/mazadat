@@ -1,7 +1,5 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.edit-var',['var'=>trans('messages.auction.auctions')]))
-
-
 @section('content')
 
     <!-- Page header -->
@@ -15,7 +13,6 @@
                             class="icon-admin position-left"></i> @lang('messages.auction.auctions')</a></li>
                 <li class="active">@lang('messages.edit-var',['var'=>trans('messages.auction.auctions')])</li>
             </ul>
-
             @include('Dashboard.layouts.parts.quick-links')
         </div>
         @endsection
@@ -102,12 +99,24 @@
                                           placeholder="{{ trans('messages.description_en') }}">{{ $auction->description_en }}</textarea>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"> {{ trans('messages.auction.start_auction_price') }} </label>
+                            <div class="col-lg-9">
+                                <input class="form-control" name="start_auction_price" value="{{ $auction->start_auction_price }}" placeholder="{{ trans('messages.start_auction_price') }}">
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label"> {{ trans('messages.auction.value_of_increment') }} </label>
                             <div class="col-lg-9">
                                 <input type="text" class="form-control" value="{{$auction->value_of_increment}}" name="value_of_increment"
-                                       placeholder="@lang('messages.value_of_increment')">
+                                       placeholder="@lang('messages.auction.value_of_increment')">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"> {{ trans('messages.auction.delivery_charge') }} </label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" value="{{$auction->delivery_charge}}" name="delivery_charge"
+                                       placeholder="@lang('messages.auction.delivery_charge')">
                             </div>
                         </div>
 
@@ -121,32 +130,68 @@
                             <input type="datetime-local" class="form-control" value="{{$auction->end_date}}" name="end_date"
                                    placeholder="@lang('messages.auction.end_date') ">
                         </div>
+
+
+
                         <div class="form-group">
-                            <label class="col-lg-3 control-label"> {{ trans('messages.auction.start_auction_price') }} </label>
+                            <label class="col-lg-3 control-label"> {{ trans('messages.auction.auction_terms_ar') }} </label>
                             <div class="col-lg-9">
-                                <input class="form-control" name="start_auction_price" value="{{ $auction->start_auction_price }}" placeholder="{{ trans('messages.start_auction_price') }}">
+                                <textarea class="form-control" name="auction_terms_ar"
+                                          placeholder="{{ trans('messages.auction.auction_terms_ar') }}">{{ $auction->auction_terms_ar }}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"> {{ trans('messages.auction.auction_terms_en') }} </label>
+                            <div class="col-lg-9">
+                                <textarea class="form-control" name="auction_terms_en"
+                                          placeholder="{{ trans('messages.auction.auction_terms_en') }}">{{ $auction->auction_terms_en }}</textarea>
                             </div>
                         </div>
 
 
 
 {{--                        <div class="form-group">--}}
-{{--                            <label class="col-lg-3 control-label"> {{ trans('messages.auction.start_date') }}:</label>--}}
-{{--                            <div class="col-lg-9">--}}
-{{--                                <input type="datetime-local" class="form-control" value="" name="start_date"--}}
-{{--                                       placeholder="@lang('messages.auction.start_date') ">{{ $auction->start_date }}--}}
-{{--                            </div>--}}
+{{--                            <label class="display-block">{{ trans('messages.auction.who_can_see') }}:</label>--}}
+{{--                            <label class="radio-inline">--}}
+{{--                                <input type="radio" value="all" class="styled" name="who_can_see" checked="checked">--}}
+{{--                                {{trans('messages.all')}}--}}
+{{--                            </label>--}}
+
+{{--                            <label class="radio-inline">--}}
+{{--                                <input type="radio" value="users" class="styled" name="who_can_see">--}}
+{{--                                {{trans('messages.auction.users')}}--}}
+{{--                            </label>--}}
+{{--                            <label class="radio-inline">--}}
+{{--                                <input type="radio" value="company" class="styled" name="who_can_see">--}}
+{{--                                {{trans('messages.auction.company')}}--}}
+{{--                            </label>--}}
 {{--                        </div>--}}
+
 {{--                        <div class="form-group">--}}
-{{--                            <label class="col-lg-3 control-label"> {{ trans('messages.auction.end_date') }}:</label>--}}
-{{--                            <div class="col-lg-9">--}}
-{{--                                <input type="datetime-local" class="form-control" value="" name="end_date"--}}
-{{--                                       placeholder="@lang('messages.auction.end_date') ">{{ $auction->end_date }}--}}
-{{--                            </div>--}}
+{{--                            <label class="display-block">{{ trans('messages.auction.who_can_buy') }}:</label>--}}
+{{--                            <label class="radio-inline">--}}
+{{--                                <input type="radio" value="all" class="styled" name="who_can_buy" checked="checked">--}}
+{{--                                {{trans('messages.all')}}--}}
+{{--                            </label>--}}
+
+{{--                            <label class="radio-inline">--}}
+{{--                                <input type="radio" value="users" class="styled" name="who_can_buy">--}}
+{{--                                {{trans('messages.auction.users')}}--}}
+{{--                            </label>--}}
+{{--                            <label class="radio-inline">--}}
+{{--                                <input type="radio" value="company" class="styled" name="who_can_buy">--}}
+{{--                                {{trans('messages.auction.company')}}--}}
+{{--                            </label>--}}
 {{--                        </div>--}}
 
-
-
+                        <div class="form-group">
+                            <label>@lang('messages.auction.inspection_report_image')</label>
+                            <input type="file" class="form-control image " name="inspection_report_image">
+                        </div>
+                        <div class="form-group">
+                            <img src=" {{$auction->inspection_report_image_path}} " width=" 100px " value="{{$auction->inspection_report_image_path}}"
+                                 class="thumbnail image-preview">
+                        </div>
                         <div class="form-group">
                             <label>@lang('messages.auction.images')</label>
                             <input type="file" class="form-control " name="images[]" multiple="multiple"/>

@@ -127,10 +127,15 @@ class AuctionController extends Controller
 
     public function update(AuctionRequest $request, $id)
     {
-         $request_data = $request->except(['images']);
-        // $auction->update($request_data);
-        $auction = Auction::find($id)->update($request_data);
+//        $auction = Auction::find($id);
 
+        $request_data = $request->except(['images']);
+        // $auction->update($request_data);
+        if ($request->inspection_report_image) {
+//            unlink('uploads/auctions/' . $auction->inspection_report_image);
+//            $auction->inspection_report_image->delete();
+            $request_data['inspection_report_image'] =  uploaded($request->inspection_report_image, 'auction');
+        }
         $data = [];
         if ($request->hasfile('images')) {
             foreach (Auction::find($id)->auctionimages as $image)
@@ -143,6 +148,7 @@ class AuctionController extends Controller
             }
         }
         $auction_images = DB::table('auction_images')->insert($data);
+        $auction = Auction::find($id)->update($request_data);
         return redirect()->route('auctions.index')->with('success', trans('messages.messages.updated_successfully'));
     }
 

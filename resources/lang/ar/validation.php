@@ -199,5 +199,14 @@ return [
         'commercial_register_image'         	=> 'صورة السجل التجاري',
         'latitude'         	=> ' الموقع',
         'longitude'         	=> ' الموقع',
+
+
+
+        'start_auction_price' => ' السعر الابتدائي للمزاد ',
+        'value_of_increment' => 'قيمة المزايدة في كل مرة',
+        'delivery_charge' => 'قيمة رسوم الشحن الابتدائية',
+        'auction_terms_ar' => 'الشروط والاحكام بالعربي',
+        'auction_terms_en' => 'الشروط والاحكام بالانجليزي',
+        'inspection_report_image' => 'صورة تقرير الفحص',
     ],
 ];

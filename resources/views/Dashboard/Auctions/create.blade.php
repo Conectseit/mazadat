@@ -167,12 +167,12 @@
                                        placeholder="@lang('messages.auction.end_date') ">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="value_of_increment"
-                                       placeholder="@lang('messages.auction.value_of_increment') ">
-                            </div>
-                            <div class="form-group">
                                 <input type="text" class="form-control" value="" name="start_auction_price"
                                        placeholder="@lang('messages.auction.start_auction_price') ">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="" name="value_of_increment"
+                                       placeholder="@lang('messages.auction.value_of_increment') ">
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" value="" name="delivery_charge"

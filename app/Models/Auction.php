@@ -12,12 +12,6 @@ class Auction extends Model
     protected $guarded = ['id'];
 
 
-//    public function getNameAttribute()
-//    {
-//        return $this->name_.app()->getLocale();
-//    }
-
-
 
     public function getFirstImagePathAttribute()
     {
@@ -47,7 +41,7 @@ class Auction extends Model
         } else {
             $diff = 0;
         }
-        return ' days '. $diff->d . '/' . ' hours' . $diff->h ;
+        return ' days '. $diff->d . '/' . ' hours ' . $diff->h ;
 //        return $diff->y . ' years ' . $diff->d . ' days ' . $diff->h . ' hours';
     }
 
@@ -92,6 +86,13 @@ class Auction extends Model
     {
         return \Str::limit($this->attributes['description'], 10);
     }
+
+
+
+    //    public function getNameAttribute()
+//    {
+//        return $this->name_.app()->getLocale();
+//    }
 
 
 }
