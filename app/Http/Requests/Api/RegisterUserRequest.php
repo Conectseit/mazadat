@@ -25,7 +25,7 @@ class RegisterUserRequest extends REQUEST_API_PARENT
     public function rules()
     {
         return [
-            'image' => 'sometimes|image',
+            'image'            => 'sometimes|image',
             'type'             => 'required|in:buyer,seller',
             'is_company'       => 'required|in:person,company',
             'commercial_register_image'        => 'required_if:is_company,company|image',

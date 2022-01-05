@@ -39,19 +39,31 @@ class FilterController extends PARENT_API
         if ($request->has('less_bids')) {
             $query->orderBy('count_of_buyer', 'ASC');
         }
+        if ($request->has('high_bids')) {
+            $query->orderBy('count_of_buyer', 'DESC');
+        }
         if ($request->has('less_ending')) {
             $query->orderBy('end_date', 'ASC');
         }
-        if($request->has('high_bids') && $request->has('high_ending')) {
-            $query->orderBy('count_of_buyer', 'DESC');
+        if ($request->has('high_ending')) {
             $query->orderBy('end_date', 'DESC');
         }
-        elseif ($request->has('high_bids') && !$request->has('high_ending')){
-            $query->orderBy('count_of_buyer', 'DESC');
-        }
-        elseif (!$request->has('high_bids') && $request->has('high_ending')){
-            $query->orderBy('end_date', 'DESC');
-        }
+
+
+//        if($request->has('high_bids') && $request->has('high_ending')) {
+//            $query->orderBy('count_of_buyer', 'DESC');
+//            $query->orderBy('end_date', 'DESC');
+//        }
+//        elseif ($request->has('high_bids') && !$request->has('high_ending')){
+//            $query->orderBy('count_of_buyer', 'DESC');
+//        }
+//        elseif (!$request->has('high_bids') && $request->has('high_ending')){
+//            $query->orderBy('end_date', 'DESC');
+//        }
+
+
+
+
 //// =========== for appear ended auctions
 //        if ($request->status == 'done') {
 //            if ($appearance_of_ended_auctions == 'yes') {

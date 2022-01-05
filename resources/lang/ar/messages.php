@@ -228,6 +228,7 @@ return [
         'full_name' => 'اسم المشتري',
         'auction_details' => ' مزايداته',
         'image' => 'الصورة الشخصية',
+        'location' => ' الموقع',
     ],
 
 

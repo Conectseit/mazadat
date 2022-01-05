@@ -23,7 +23,7 @@ class AuthResource extends JsonResource
             'email'               => $this->email,
             'mobile'              => $this->mobile,
             'bio'                 => $this->bio,
-            'P_O_Box '            => $this->P_O_Box ,
+            'P_O_Box'             => $this->P_O_Box,
             'image'               => $this->image_path,
             'commercial_register_image' => $this->commercial_register_image_path,
             'token'               => $this->token->jwt,

@@ -39,6 +39,8 @@ class UpdateProfileRequest extends REQUEST_API_PARENT
             'bio'              => 'sometimes|string|max:255',
             'image'            => 'sometimes|image',
 
+            'latitude'         => 'sometimes',
+            'longitude'        => 'sometimes',
             'commercial_register_image'   => 'sometimes|image',
         ];
     }
