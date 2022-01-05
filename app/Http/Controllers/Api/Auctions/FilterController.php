@@ -31,10 +31,10 @@ class FilterController extends PARENT_API
 //            $query->where($name, 'like', '%' . $request['search_by_name'] . '%');
 //        }
         if ($request->has('less_price')) {
-            $query->orderBy('start_auction_price', 'DESC');
+            $query->orderBy('start_auction_price', 'ASC');
         }
         if ($request->has('high_price')) {
-            $query->orderBy('start_auction_price', 'ASC');
+            $query->orderBy('start_auction_price', 'DESC');
         }
         if ($request->has('less_bids')) {
             $query->orderBy('count_of_buyer', 'ASC');
