@@ -7,6 +7,7 @@ use App\Http\Requests\Dashboard\SellerRequest;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\City;
+use App\Models\Nationality;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -25,14 +26,19 @@ class BuyerController extends Controller
     {
         $data['latest_buyers'] = User::where('type', 'buyer')->orderBy('id', 'desc')->take(5)->get();
         $data['cities'] = City::all();
+        $data['nationalities'] = Nationality::all();
         return view('Dashboard.Buyers.create', $data);
     }
 
-    public function store(SellerRequest $request)
-    {
-        $buyer = User::create($request->except(['images'])+['is_accepted'=>'1','type'=>'buyer']);
-        return redirect()->route('buyers.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
-    }
+//    public function store(SellerRequest $request)
+//    {
+//        $request_data = $request->except(['image','commercial_register_image']);
+//        if ($request->image) $request_data['image'] = uploaded($request->image, 'user');
+//        if ($request->commercial_register_image) $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
+//
+//        $buyer = User::create($request_data)+(['is_accepted'=>'1','type'=>'buyer','country_id' => '1']);
+//        return redirect()->route('buyers.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
+//    }
 
 
     public function edit($id)

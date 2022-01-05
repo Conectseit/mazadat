@@ -220,12 +220,14 @@ return [
     'buyer' => [
         'buyer' => 'مشتري',
         'buyers' => 'المشتريين',
+        'person/company' => '(فرد/مؤسسة)',
         'latest_buyers' => 'احدث المشتريين المسجلين',
         'buyer_data' => 'بيانات المشتري ',
         'buyer_auctions' => 'جميع مزاداته',
         'show' => '  عرض التفاصيل المشتري',
         'full_name' => 'اسم المشتري',
         'auction_details' => ' مزايداته',
+        'image' => 'الصورة الشخصية',
     ],
 
 

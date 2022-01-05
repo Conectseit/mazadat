@@ -12,6 +12,7 @@ use App\Models\Auction;
 use App\Models\AuctionData;
 use App\Models\Category;
 use App\Models\Option;
+use App\Models\OptionDetail;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
@@ -36,20 +37,20 @@ class FilterController extends PARENT_API
             $query->orderBy('start_auction_price', 'ASC');
         }
         if ($request->has('less_bids')) {
-            $query->orderBy('count_of_buyer', 'DESC');
+            $query->orderBy('count_of_buyer', 'ASC');
         }
         if ($request->has('less_ending')) {
-            $query->orderBy('end_date', 'DESC');
+            $query->orderBy('end_date', 'ASC');
         }
         if($request->has('high_bids') && $request->has('high_ending')) {
-            $query->orderBy('count_of_buyer', 'desc');
-            $query->orderBy('end_date', 'desc');
+            $query->orderBy('count_of_buyer', 'DESC');
+            $query->orderBy('end_date', 'DESC');
         }
         elseif ($request->has('high_bids') && !$request->has('high_ending')){
-            $query->orderBy('count_of_buyer', 'desc');
+            $query->orderBy('count_of_buyer', 'DESC');
         }
         elseif (!$request->has('high_bids') && $request->has('high_ending')){
-            $query->orderBy('end_date', 'desc');
+            $query->orderBy('end_date', 'DESC');
         }
 //// =========== for appear ended auctions
 //        if ($request->status == 'done') {
@@ -75,7 +76,7 @@ class FilterController extends PARENT_API
 
     public function get_options_of_category(Request $request, $id)
     {
-        $category = Category::where('id', $id)->find($id);
+        $category = Category::find($id);
         if (!$category) {
             return responseJson(false, trans('api.not_found_category'), null);  //
         }
@@ -98,13 +99,15 @@ class FilterController extends PARENT_API
         }
 //        $option_details= [];
 //        $data = AuctionData::whereIn('option_details_id',$option_details);
-        $data = AuctionData::where('option_details_id', $request->option_details_id)->get();
-        foreach ($data as $auction){
-           $auctions= $auction->auction->where('status','on_progress')->get();
-        }
 
-        if ($auctions->count()>0) {
-            return responseJson(true, trans('api.category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK
+        $option_details = OptionDetail::find($request->option_details_id);
+
+//        $data = AuctionData::where('option_details_id', $request->option_details_id)->whereHas('auction', function($query){
+//            return $query->where('status','on_progress');
+//        })->get();
+
+        if ($auctions->count() > 0) {
+            return responseJson(true, trans('api.category_auctions'), CategoryAuctionsResource::collection($option_details->auctions));  //OK
 //            return responseJson(true, trans('api.category_auctions'), UserAuctionsResource::collection($data));  //OK
         }
         return responseJson(true, trans('api.there_is_no_auctions_on_this_option'), null);  //OK

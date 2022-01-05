@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-         $data['categories'] = Category::latest()->paginate(200);
+        $data['categories'] = Category::latest()->paginate(200);
 //        $data['categories'] = Category::select('id','image','created_at',
 //            'name_' . LaravelLocalization::getCurrentLocale() . ' as name',
 //            'description_' . LaravelLocalization::getCurrentLocale() . ' as description',
@@ -36,10 +36,10 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
-        $request_data = $request->except([ 'image']);
+        $request_data = $request->except(['image']);
 
-        if ($request->image) $request_data['image'] =  uploaded($request->image, 'category');
-         $category= Category::create($request_data);
+        if ($request->image) $request_data['image'] = uploaded($request->image, 'category');
+        $category = Category::create($request_data);
         return redirect()->route('categories.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
 
     }
@@ -68,35 +68,35 @@ class CategoryController extends Controller
     }
 
 
-    public function update(CategoryRequest $request, $id)
+    public function update(CategoryRequest $request, Category $category)
     {
         $request_data = $request->except('image');
 
-        if ($request->image) {
-            File::delete('public/uploads/categories/' . $request->image);
+        if ($request->hasFile('image')) {
+            if (!is_null($category->image)) unlink('uploads/categories/' . $category->image);
 
             $request_data['image'] = uploaded($request->image, 'category');
         }
 //        $category->update($request_data);
 
-        Category::find($id)->update($request_data);
-        return redirect()->route('categories.index')->with('success',  trans('messages.messages.updated_successfully'));
+        $category->update($request_data);
+        return redirect()->route('categories.index')->with('success', trans('messages.messages.updated_successfully'));
     }
 
 
-    public function destroy(Request $request)
+    public function destroy(Request $request, Category $category)
     {
         $category = Category::find($request->id);
-
         if (!$category) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, Category is not exists !!']);
         try {
-            File::delete('uploads/categories/' . $request->image);
+            if (!is_null($category->image)) unlink('uploads/categories/' . $category->image);
+//            File::delete('uploads/categories/' . $request->image);
             $category->delete();
             return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
         }
-        return redirect()->route('categories.index');
+//        return redirect()->route('categories.index');
     }
 
 

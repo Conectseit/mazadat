@@ -1,3 +1,24 @@
+
+{{--for select company--}}
+<script>
+    $('select#is_company').on('change', function(){
+        let is_company = $(this).val();
+        if (is_company)
+        {
+            optionValue = document.getElementById("option").value;
+            if (optionValue === is_company) {
+                document.getElementById("location").style.display = "block";
+            } else {
+                document.getElementById("location").style.display = "none";
+            }
+        } else {
+            document.getElementById("location").style.display = "none";
+        }
+    });
+</script>
+
+
+
 {{--    //Map//--}}
 <script>
     function initMap() {

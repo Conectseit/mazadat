@@ -99,8 +99,8 @@ return [
     'activation code'         	=> ' كودالتفعيل',
 
     'sometimes' => ':attribute مطلوب.',
-    'required_if' => ':attribute مطلوب في حال ما إذا كان :other يساوي :value.',
-    'required_unless' => ':attribute مطلوب في حال ما لم يكن :other يساوي :values.',
+    'required_if' => ':attribute مطلوب في حالة إذا كان :other هو :value.',
+    'required_unless' => ':attribute مطلوب في حالة اذا لم يكن :other هو :values.',
     'required_with' => ':attribute مطلوب إذا توفّر :values.',
     'required_with_all' => ':attribute مطلوب إذا توفّر :values.',
     'required_without' => ':attribute مطلوب إذا لم يتوفّر :values.',
@@ -194,7 +194,7 @@ return [
         'images.*' => 'صور المزاد',
 
         'passport_expiry_date'         	=> ' تاريخ انتهاء جواز السفر',
-        'is_company'         	=> 'النوع(فرد او مؤسسة)',
+        'is_company'         	=> 'النوع',
         'company'         	=> ' شركة',
         'commercial_register_image'         	=> 'صورة السجل التجاري',
         'latitude'         	=> ' الموقع',

@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class OptionDetail extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
     public function option()
     {
         return $this->belongsTo(Option::class);
     }
-    public function auction_data()
+    public function auctions()
     {
-        return $this->hasMany(AuctionData::class,'option_details_id');
+        return $this->belongsToMany(Auction::class, 'auction_data', 'option_details_id');
     }
 }

@@ -46,11 +46,9 @@
                     <div class="panel-body">
                         <div class="box-body">
                             <div class="form-group">
-                                <label
-                                    class="col-lg-3 control-label display-block"> {{ trans('messages.seller.person/company') }} </label>
+                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.seller.person/company') }} </label>
                                 <div class="col-lg-9">
-                                    <select name="is_company" onload="select(this);" onchange="select(this);"
-                                            class="select  form-control">
+                                    <select name="is_company" id="is_company" class="select form-control">
                                         <option value="" selected disabled>{{trans('messages.select')}}</option>
                                         <option  value="person">{{trans('messages.person')}}</option>
                                         <option  id="option" value="company ">{{trans('messages.company')}}</option>
@@ -118,7 +116,6 @@
                                 </div>
                             </div>
 
-
                             <div class="form-group">
                                 <label class="col-lg-3 control-label"> {{ trans('messages.password') }} </label>
                                 <div class="col-lg-9">
@@ -182,11 +179,9 @@
                                     <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview">
                             </div>
                         </div>
-
                     </div>
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
-                        <input type="submit" class="btn btn-primary"
-                               value=" {{ trans('messages.add_and_forward_to_list') }} "/>
+                        <input type="submit" class="btn btn-primary" value=" {{ trans('messages.add_and_forward_to_list') }} "/>
                         {{--                        <input type="submit" class="btn btn-success" name="back" value=" {{ trans('messages.add_and_come_back') }} " />--}}
                     </div>
                 </div>
@@ -229,33 +224,6 @@
 
 @section('scripts')
 
-    <script>
-
-        // $('select#company').on('change', function(){
-        //     console.log($(this).val());
-        //     select($(this).val());
-        // });
-        //
-        // $(window).load(function(){
-        //     select($('select#company').val());
-        // });
-
-        function select(nameSelect) {
-        // console.log(nameSelect);
-        if (nameSelect)
-        {
-            optionValue = document.getElementById("option").value;
-
-            if (optionValue == nameSelect.value) {
-                document.getElementById("location").style.display = "block";
-            } else {
-                document.getElementById("location").style.display = "none";
-            }
-        } else {
-            document.getElementById("location").style.display = "none";
-          }
-        }
-    </script>
    @include('Dashboard.layouts.parts.map')
 @stop
 @stop
