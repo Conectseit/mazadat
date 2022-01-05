@@ -19,8 +19,9 @@ return [
     'please_active_your_account_by_activation_code_first'         	=> 'من فضلك قم بتفعيل حسابك من خلال كود التفعيل المرسل علي جوالك اولا',
     'please_check_your_mobile_activation_code_has_sent'         	=> 'تم ارسال كود التفعيل علي جوالك, من فضلك قم بتفعيل حسابك ',
     'Sorry_you_cant_increase_more_your_wallet_less_than_this_value' => 'عفوا لايمكنك الزيادة لقد تعديت قيمة محفظتك',
-    'Sorry_you_should_upload_document_and_passport'    =>'عفوا يجب عليك ارسال رفع جواز السفر ووثائق رسمية اولا ',
-    'management_not_allowed_to_appear_ended_auctions'  =>'ادارة الموقع لا تسمح بظهور المزادات المنتهية حاليا',
+    'Sorry_you_should_upload_document_and_passport_first'           =>'عفوا يجب عليك  رفع صورة جواز السفر ووثائق رسمية اولا ',
+    'management_not_allowed_to_appear_ended_auctions'               =>'ادارة الموقع لا تسمح بظهور المزادات المنتهية حاليا',
+    'sorry_you_cant_make_bid_your_available_limit_less_than_this_value'               =>'عفوا لا يمكنك المزايدة الان لان القيمة المسموحة من محفظتك اقل من قيمة المزايدة ',
 
 
 

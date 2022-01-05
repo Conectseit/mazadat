@@ -67,7 +67,7 @@ class UserController extends PARENT_API
         $wallet = $user->wallet;
 //        $wallet = $user->select('wallet')->first();
         if ($request->decrement) {
-             $user->decrement('available_limit',100); // decrease 10 count
+             $user->decrement('available_limit',100); // decrease 100 count
 //            $available_limit = $user->available_limit - 1;
 //            $user->update(['available_limit' => $available_limit]);
         }

@@ -13,12 +13,6 @@ class CreateAuctionsTable extends Migration
      */
     public function up()
     {
-
-
-
-
-
-
         Schema::create('auctions', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('seller_id')->unsigned()->nullable();

@@ -15,9 +15,10 @@ class AuthResource extends JsonResource
     public function toArray($request)
     {
 //        return parent::toArray($request);
+        $name = 'name_' . app()->getLocale();
         return [
-            'nationality_id'      => $this->nationality_id,
-            'city_id'             => $this->city_id,
+            'nationality'         => $this->nationality->$name,
+            'city'                => $this->city->$name,
             'full_name'           => $this->full_name,
             'user_name'           => $this->user_name ,
             'email'               => $this->email,
