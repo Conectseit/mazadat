@@ -27,7 +27,6 @@ class AuctionController extends PARENT_API
         return responseJson(false, trans('api.not_found_auction'), null);  //
     }
 
-
     public function watch_auction(Request $request, $id)
     {
         $auction = Auction::find($id);

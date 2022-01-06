@@ -81,7 +81,10 @@
                             <label>@lang('messages.image')</label>
                             <input type="file" class="form-control image" name="image">
                         </div>
-
+                        <div class="form-group">
+                            <img src=" {{$seller->image_path}} " width=" 100px " value="{{$seller->image_path}}"
+                                 class="thumbnail image-preview">
+                        </div>
                         <div class="text-right">
                             <input type="submit" class="btn btn-success"
                                    value=" {{ trans('messages.update_and_come_back') }} "/>

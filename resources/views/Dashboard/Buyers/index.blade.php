@@ -1,6 +1,5 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.buyer.buyers'))
-
 <!-- Page header -->
 <div class="page-header page-header-default">
     @section('breadcrumb')
@@ -16,10 +15,8 @@
     @endsection
 </div>
 <!-- /page header -->
+
 @section('content')
-
-
-
 
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
@@ -37,7 +34,6 @@
             <div class="col-md-12">
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-{{--                        <h6 class="panel-title">{{ trans('messages.buyer.buyers') }}</h6>--}}
                         <div class="heading-elements">
                             <ul class="icons-list">
                                 <li><a data-action="collapse"></a></li>

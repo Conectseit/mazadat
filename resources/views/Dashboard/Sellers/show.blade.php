@@ -1,26 +1,27 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.seller.sellers'))
+<!-- Page header -->
+<div class="page-header page-header-default">
+    @section('breadcrumb')
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><a href="{{route('admin.home')}}"><i
+                            class="icon-home2 position-left"></i> @lang('messages.home')</a>
+                </li>
+                <li><a href="{{ route('sellers.index') }}"><i
+                            class="icon-admin position-left"></i> @lang('messages.seller.sellers')</a></li>
+                <li class="active">@lang('messages.seller.show')</li>
+            </ul>
+            @include('Dashboard.layouts.parts.quick-links')
+        </div>
+    @endsection
+</div>
+<!-- /page header -->
 @section('style')
     <style> #map { height: 400px;} </style>
 @endsection
 @section('content')
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
-            <div class="breadcrumb-line">
-                <ul class="breadcrumb">
-                    <li><a href="{{route('admin.home')}}"><i
-                                class="icon-home2 position-left"></i> @lang('messages.home')</a>
-                    </li>
-                    <li><a href="{{ route('sellers.index') }}"><i
-                                class="icon-admin position-left"></i> @lang('messages.seller.sellers')</a></li>
-                    <li class="active">@lang('messages.seller.show')</li>
-                </ul>
-                @include('Dashboard.layouts.parts.quick-links')
-            </div>
-        @endsection
-    </div>
-    <!-- /page header -->
+
 
     <!-- Toolbar -->
     <div class="navbar navbar-default navbar-xs content-group">
@@ -65,6 +66,28 @@
                                                 <div class="card">
                                                     <div class="card-body">
                                                         <form action="#">
+
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-form-label col-lg-3">{{ trans('messages.personal_image') }}:</label>
+                                                                        <div class="col-lg-9">
+                                                                            <img src="{{ $seller->image_path }}" alt="" class=" img-thumbnail">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group row">
+
+                                                                        <label class="col-form-label col-lg-3"><span class="badge badge-info" >{{ trans('messages.wallet') }} : </span></label>
+
+                                                                        <div class="col-lg-9">
+                                                                            <input type="text" class="form-control" value="{{ $seller->wallet}} /ريال-سعودي/" readonly>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
                                                             <div class="form-group row">
                                                                 <label class="col-form-label col-lg-3">{{ trans('messages.type') }}:</label>
                                                                 <div class="col-lg-9">
@@ -119,13 +142,6 @@
                                                                 <div class="col-lg-9">
                                                                     <input type="text" class="form-control"
                                                                            value="{{ $seller->created_at->diffForHumans() }}" readonly>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.personal_image') }}:</label>
-                                                                <div class="col-lg-9">
-                                                                    <img src="{{ $seller->image_path }}" alt="" width="100" height="100" class="img-circle">
                                                                 </div>
                                                             </div>
 

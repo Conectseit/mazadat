@@ -70,7 +70,8 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('update_my_profile', [AuthController::class, 'updateProfile']);
         Route::post('update_personal_image', [AuthController::class, 'update_personal_image']);
         Route::post('add_additional_contact', [AuthController::class, 'add_additional_contact']);
-        Route::post('change_password', [AuthController::class, 'changepassword']);
+        Route::post('change_password', [AuthController::class, 'changePassword']);
+        Route::post('forget_password', [AuthController::class, 'forget_password']);
 
 
         Route::get('update_preferred_language', [UserController::class, 'updatePreferredLanguage']);

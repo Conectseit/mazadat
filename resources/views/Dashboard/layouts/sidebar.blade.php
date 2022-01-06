@@ -46,8 +46,6 @@
 {{--            <li><a href="{{route('options.create')}}"> {{ trans('messages.add') }}</a></li>--}}
         </ul>
     </li>
-
-
     <li>
         <a href="#"><i class="icon-archive"></i> <span> {{ trans('messages.option.option_details') }} </span></a>
         <ul>

@@ -8,6 +8,7 @@ use App\Http\Controllers\SmsController;
 use App\Http\Requests\Api\ActivationCodeRequest;
 use App\Http\Requests\Api\AdditionalContactRequest;
 use App\Http\Requests\Api\ChangePasswordRequest;
+use App\Http\Requests\Api\ForgetPasswordRequest;
 use App\Http\Requests\Api\LoginRequest;
 use App\Http\Requests\Api\RegisterUserRequest;
 use App\Http\Requests\Api\UpdatePersonalImageRequest;
@@ -157,7 +158,7 @@ class AuthController extends PARENT_API
     }
 
 
-    public function changepassword(ChangePasswordRequest $request)
+    public function changePassword(ChangePasswordRequest $request)
     {
         if (auth()->check()) {
             if (\Hash::check($request->current_password, auth()->user()->password)) {
@@ -168,6 +169,18 @@ class AuthController extends PARENT_API
                 return responseJson(false, trans('api.wrong_old_password'), null); //ACCEPTED
             }
         }
+    }
+
+
+    public function forget_password(ForgetPasswordRequest $request)
+    {
+        $resetModel = PasswordReset::create(['email' => $request['email'], 'token' => $this->generateRandomString(5)]);
+        $this->sendResetLinkEmail($resetModel['email'], $resetModel['token']);
+
+        $data = ['token' =>  $resetModel['token'],];
+//        return response()->json(['message' => trans('passwords.sent'), 'token' => $resetModel['token']], JsonResponse::HTTP_OK); // 200
+        return response()->json(
+            ['status'=>'success' , 'message' => trans('passwords.sent'), 'data'=> $data], 200); //OK
     }
 
 }

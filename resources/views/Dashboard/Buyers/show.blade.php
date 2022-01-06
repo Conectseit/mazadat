@@ -1,24 +1,22 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.buyer.buyers'))
+<!-- Page header -->
+<div class="page-header page-header-default">
+    @section('breadcrumb')
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
+                </li>
+                <li><a href="{{ route('buyers.index') }}"><i
+                            class="icon-admin position-left"></i> @lang('messages.buyer.buyers')</a></li>
+                <li class="active">@lang('messages.buyer.show')</li>
+            </ul>
+            @include('Dashboard.layouts.parts.quick-links')
+        </div>
+    @endsection
+</div>
+<!-- /page header -->
 @section('content')
-
-
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
-            <div class="breadcrumb-line">
-                <ul class="breadcrumb">
-                    <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
-                    </li>
-                    <li><a href="{{ route('buyers.index') }}"><i
-                                class="icon-admin position-left"></i> @lang('messages.buyer.buyers')</a></li>
-                    <li class="active">@lang('messages.buyer.show')</li>
-                </ul>
-                @include('Dashboard.layouts.parts.quick-links')
-            </div>
-        @endsection
-    </div>
-    <!-- /page header -->
 
     <!-- Toolbar -->
     <div class="navbar navbar-default navbar-xs content-group">
@@ -71,7 +69,7 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-form-label col-lg-3">{{ trans('messages.personal_image') }}:</label>
                                                                         <div class="col-lg-9">
-                                                                            <img src="{{ $buyer->image_path }}" alt="">
+                                                                            <img src="{{ $buyer->image_path }}" alt="" class="thumbnail img-circle">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -84,6 +82,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <hr>
 
 
                                                             <div class="form-group row">

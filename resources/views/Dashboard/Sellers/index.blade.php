@@ -1,26 +1,23 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.seller.sellers'))
+<!-- Page header -->
+<div class="page-header page-header-default">
+    @section('breadcrumb')
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><a href="{{route('admin.home')}}">
+                        <i class="icon-home2 position-left"></i> @lang('messages.home')
+                    </a>
+                </li>
+                <li class="active">@lang('messages.seller.sellers')</li>
+            </ul>
+            @include('Dashboard.layouts.parts.quick-links')
+        </div>
+    @endsection
+</div>
+<!-- /page header -->
 @section('content')
-
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
-            <div class="breadcrumb-line">
-                <ul class="breadcrumb">
-                    <li><a href="{{route('admin.home')}}">
-                            <i class="icon-home2 position-left"></i> @lang('messages.home')
-                        </a>
-                    </li>
-                    <li class="active">@lang('messages.seller.sellers')</li>
-                </ul>
-                @include('Dashboard.layouts.parts.quick-links')
-            </div>
-        @endsection
-    </div>
-    <!-- /page header -->
     @include('Dashboard.layouts.parts.validation_errors')
-
-
 
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
@@ -38,7 +35,6 @@
             <div class="col-md-12">
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-{{--                        <h6 class="panel-title">{{ trans('messages.seller.sellers') }}</h6>--}}
                         <div class="heading-elements">
                             <ul class="icons-list">
                                 <li><a data-action="collapse"></a></li>
@@ -62,12 +58,11 @@
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
                                                     <th class="text-center">#</th>
+                                                    <th class="text-center">{{ trans('messages.personal_image') }}</th>
                                                     <th class="text-center">{{ trans('messages.type') }}</th>
                                                     <th class="text-center">{{ trans('messages.full_name') }}</th>
-                                                    {{--                    <th class="text-center">{{ trans('messages.user_name') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.mobile') }}</th>
                                                     <th class="text-center">{{ trans('messages.email') }}</th>
-                                                    {{--                    <th class="text-center">{{ trans('messages.city_name') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
                                                     <th class="text-center">@lang('messages.since')</th>
                                                     <th class="text-center">@lang('messages.form-actions')</th>
@@ -78,11 +73,13 @@
 
                                                     <tr id="seller-row-{{ $seller->id }}">
                                                         <td class="text-center">{{ $seller->id }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ $seller->image_path }}" data-popup="lightbox"><img src="{{ $seller->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
+                                                        </td>
                                                         <td class="text-center"> {{ $seller->is_company=='company'?trans('messages.company'):trans('messages.person')}} </td>
                                                         <td class="text-center">
                                                             <a href={{ route('sellers.show', $seller->id) }}> {{ isNullable($seller->full_name) }}</a>
                                                         </td>
-                                                        {{--                        <td class="text-center"> {{ isNullable($seller->user_name) }}</td>--}}
                                                         <td class="text-center"> {{ $seller->mobile}}</td>
                                                         <td class="text-center"> {{ $seller->email}}</td>
 
@@ -96,7 +93,6 @@
                                                             @endif
                                                         </td>
 
-                                                        {{--                        <td class="text-center"> {{ $seller->city->$name}}</td>--}}
                                                         <td class="text-center">{{isset($seller->created_at) ?$seller->created_at->diffForHumans():'---' }}</td>
                                                         <td class="text-center">
                                                             <div class="list-icons text-center">
@@ -142,12 +138,11 @@
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
                                                     <th class="text-center">#</th>
+                                                    <th class="text-center">{{ trans('messages.personal_image') }}</th>
                                                     <th class="text-center">{{ trans('messages.type') }}</th>
                                                     <th class="text-center">{{ trans('messages.full_name') }}</th>
-                                                    {{--                    <th class="text-center">{{ trans('messages.user_name') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.mobile') }}</th>
                                                     <th class="text-center">{{ trans('messages.email') }}</th>
-                                                    {{--                    <th class="text-center">{{ trans('messages.city_name') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
                                                     <th class="text-center">@lang('messages.since')</th>
                                                     <th class="text-center">@lang('messages.form-actions')</th>
@@ -158,11 +153,13 @@
 
                                                     <tr id="seller-row-{{ $seller->id }}">
                                                         <td class="text-center">{{ $seller->id }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ $seller->image_path }}" data-popup="lightbox"><img src="{{ $seller->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
+                                                        </td>
                                                         <td class="text-center"> {{ $seller->is_company=='company'?trans('messages.company'):trans('messages.person')}} </td>
                                                         <td class="text-center"><a
                                                                 href={{ route('sellers.show', $seller->id) }}> {{ isNullable($seller->full_name) }}</a>
                                                         </td>
-                                                        {{--                        <td class="text-center"> {{ isNullable($seller->user_name) }}</td>--}}
                                                         <td class="text-center"> {{ $seller->mobile}}</td>
                                                         <td class="text-center"> {{ $seller->email}}</td>
 
