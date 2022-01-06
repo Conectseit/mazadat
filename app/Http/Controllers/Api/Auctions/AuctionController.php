@@ -124,21 +124,17 @@ class AuctionController extends PARENT_API
 
 
 
-
-
-
-
-
     public function make_offer(Request $request, $id)
     {
         $user = auth()->user()->first();
             if ($auction = Auction::find($id)) {
+                $current_price=$auction->current_price;
                 if ($request->increment) {
-                    $offer= $user->increment($request,$auction->value_of_increment);
+                    $offer = $current_price + $auction->value_of_increment;
                 }
               elseif ($request->decrement) {
-
-                }
+                  $offer = $current_price - $auction->value_of_increment;
+              }
                 return responseJson(true, trans('api.updated_successfully'), $offer); //ACCEPTED
             }
             return responseJson(false, trans('api.not_found_auction'), null);  //NOT_FOUND

@@ -3,7 +3,7 @@
         <a href="#">
 {{--            <img src="{{asset('Dashboard/assets/images/placeholder.jpg')}}"--}}
             <img src="{{Auth::guard('admin')->user()->ImagePath}}"
-                         class="img-circle img-responsive" alt=""></a>
+                         class=" img-responsive" alt=""></a>
         <h6>{{Auth::guard('admin')->user()->full_name}}</h6>
         <span class="text-size-small">{{Auth::guard('admin')->user()->email}}</span>
     </div>

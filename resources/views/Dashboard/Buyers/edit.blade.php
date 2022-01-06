@@ -60,10 +60,45 @@
                     <div class="panel-body">
 
                         <div class="form-group">
-                            <input type="text" class="form-control" value="{{$buyer->full_name}}" name="full_name" placeholder="@lang('messages.full_name') ">
+                        <label class="col-lg-3 control-label">{{ trans('messages.full_name') }}</label>
+                        <div class="col-lg-9">
+                            <input type="text" name="full_name" value="{{ $buyer->full_name }}" class="form-control"
+                                   placeholder="{{ trans('messages.full_name') }}">
                         </div>
+                    </div>
 
-                        <div class="text-right">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">{{ trans('messages.user_name') }}</label>
+                        <div class="col-lg-9">
+                            <input type="text" name="user_name" value="{{ $buyer->user_name }}" class="form-control"
+                                   placeholder="{{ trans('messages.user_name') }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">{{ trans('messages.email') }}</label>
+                        <div class="col-lg-9">
+                            <input type="email" name="email" class="form-control" value="{{ $buyer->email }}"
+                                   placeholder="{{ trans('messages.email') }}" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">{{ trans('messages.mobile') }}</label>
+                        <div class="col-lg-9">
+                            <input type="text" name="mobile" value="{{ $buyer->mobile }}" class="form-control"
+                                   placeholder="{{ trans('messages.mobile') }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>@lang('messages.image')</label>
+                        <input type="file" class="form-control image" name="image">
+                    </div>
+
+
+
+
+                    <div class="text-right">
                             <input type="submit" class="btn btn-success"
                                    value=" {{ trans('messages.update_and_come_back') }} "/>
                         </div>

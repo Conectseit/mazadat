@@ -77,8 +77,6 @@ class CategoryController extends Controller
 
             $request_data['image'] = uploaded($request->image, 'category');
         }
-//        $category->update($request_data);
-
         $category->update($request_data);
         return redirect()->route('categories.index')->with('success', trans('messages.messages.updated_successfully'));
     }

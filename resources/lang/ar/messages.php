@@ -41,6 +41,7 @@ return [
 
 
 
+    'wallet' => 'رصيد المحفظة',
     'select' => 'اختر',
     'quick_links' => 'روابط سريعة',
     'cancel_delete' => 'تم الغاء الحذف',

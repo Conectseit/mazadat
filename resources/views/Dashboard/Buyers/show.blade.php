@@ -64,38 +64,111 @@
                                                     {{--                                                        <h5 class="card-title">{{ trans('messages.buyer.buyer_data') }}</h5>--}}
                                                     {{--                                                    </div>--}}
                                                     <div class="card-body">
+
                                                         <form action="#">
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-form-label col-lg-3">{{ trans('messages.personal_image') }}:</label>
+                                                                        <div class="col-lg-9">
+                                                                            <img src="{{ $buyer->image_path }}" alt="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-form-label col-lg-3">{{ trans('messages.wallet') }}:</label>
+                                                                        <div class="col-lg-9">
+                                                                            <input type="text" class="form-control" value="{{ $buyer->wallet}} /ريال-سعودي/" readonly>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.buyer.full_name') }}:</label>
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.type') }}:</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $buyer->full_name }}" readonly>
+                                                                    <input type="text" class="form-control" value="{{ $buyer->is_company=='company'?trans('messages.company'):trans('messages.person')}}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.user_name') }}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.buyer.full_name') }}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $buyer->user_name }}" readonly>
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $buyer->full_name }}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.email') }} :</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.user_name') }}
+                                                                    :</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $buyer->user_name }}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.email') }}:</label>
                                                                 <div class="col-lg-9">
                                                                     <input type="text" class="form-control" value="{{ $buyer->email }}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.mobile') }} :</label>
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.mobile') }}:</label>
                                                                 <div class="col-lg-9">
                                                                     <input type="text" class="form-control" value="{{ $buyer->mobile }}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.since') }} :</label>
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.nationality.nationality') }}:</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $buyer->created_at->diffForHumans() }}" readonly>
+                                                                    <input type="text" class="form-control" value="{{ $buyer->nationality->$name }}" readonly>
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.city.city') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control" value="{{ $buyer->city->$name }}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.since') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $buyer->created_at->diffForHumans() }}" readonly>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                            @if($buyer->is_company=='company')
+
+                                                                <div class="form-group row">
+                                                                    <label class="col-form-label col-lg-3">{{ trans('messages.commercial_register_image') }}:</label>
+                                                                    <div class="col-lg-9">
+                                                                        <img src="{{ $buyer->commercial_register_image_path }}" alt="">
+                                                                    </div>
+                                                                </div>
+{{--                                                                <div class="form-group row"><br>--}}
+{{--                                                                    <label class="col-form-label col-lg-3">{{ trans('messages.buyer.location') }}:</label>--}}
+
+{{--                                                                    <div class="col-lg-9">--}}
+{{--                                                                        <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -180px;" placeholder=" اختر المكان علي الخريطة " name="other" >--}}
+{{--                                                                        <div id="map"></div>--}}
+{{--                                                                    </div>--}}
+{{--                                                                    <div class="col-lg-6">--}}
+{{--                                                                        <input type="text" id="geo_lat"  value="{{ $buyer->latitude }}"  name="latitude" readonly="" placeholder=" latitude " class="form-control" >--}}
+{{--                                                                    </div>--}}
+{{--                                                                    <div class="col-lg-6">--}}
+{{--                                                                        <input type="text" id="geo_lng"  value="{{ $buyer->longitude }}"  name="longitude" readonly="" placeholder="longitude" class="form-control" >--}}
+{{--                                                                    </div>--}}
+{{--                                                                </div>--}}
+                                                            @endif
                                                         </form>
+
                                                     </div>
                                                 </div>
                                             </div>

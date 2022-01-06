@@ -109,6 +109,7 @@ class User extends Authenticatable implements JWTSubject
         }
         return asset('uploads/users/' . $this->image);
     }
+
     public function getCommercialRegisterImagePathAttribute()
     {
         $commercial_register_image = User::where('id', $this->id)->first()->commercial_register_image;
