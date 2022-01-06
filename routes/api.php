@@ -68,6 +68,7 @@ Route::group(['namespace' => 'Api'], function () {
         //=========== User_profile ============
         Route::get('my_profile', [AuthController::class, 'showProfile']);
         Route::post('update_my_profile', [AuthController::class, 'updateProfile']);
+        Route::post('update_personal_image', [AuthController::class, 'update_personal_image']);
         Route::post('add_additional_contact', [AuthController::class, 'add_additional_contact']);
         Route::post('change_password', [AuthController::class, 'changepassword']);
 
@@ -90,7 +91,6 @@ Route::group(['namespace' => 'Api'], function () {
         // =========== bids ============
         Route::get('my_bids', [AuctionController::class, 'my_bids']);
         Route::post('make_bid/{id}', [AuctionController::class, 'make_bid']);
-
         Route::post('make_offer/{id}', [AuctionController::class, 'make_offer']);
 
         //=========== notifications ============

@@ -10,6 +10,7 @@ use App\Http\Requests\Api\AdditionalContactRequest;
 use App\Http\Requests\Api\ChangePasswordRequest;
 use App\Http\Requests\Api\LoginRequest;
 use App\Http\Requests\Api\RegisterUserRequest;
+use App\Http\Requests\Api\UpdatePersonalImageRequest;
 use App\Http\Requests\Api\UpdateProfileRequest;
 use App\Http\Resources\Api\AuthResource;
 use App\Models\AdditionalUserContact;
@@ -114,10 +115,7 @@ class AuthController extends PARENT_API
 
     public function updateProfile(UpdateProfileRequest $request)
     {
-        $request_data = $request->except(['image']);
-        if ($request->image) {
-            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
-        }
+        $request_data = $request->except(['commercial_register_image']);
         if ($request->commercial_register_image) {
             $request_data['commercial_register_image'] = $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
         }
@@ -127,6 +125,21 @@ class AuthController extends PARENT_API
         }
         $user->update($request_data);
 //        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));
+        return responseJson(true, trans('api.request_done_successfully'), new AuthResource($user)); //ACCEPTED
+    }
+
+    public function update_personal_image(UpdatePersonalImageRequest $request)
+    {
+        $request_data = $request->except(['image']);
+        if ($request->image) {
+            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
+        }
+        $user = $request->user();
+        if (!$user) {
+            return responseJson(false, 'The user has been found but it is not a buyer...', null); //
+        }
+        $user->update($request_data);
+
         return responseJson(true, trans('api.request_done_successfully'), new AuthResource($user)); //ACCEPTED
     }
 

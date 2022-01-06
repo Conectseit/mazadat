@@ -37,7 +37,7 @@ class UpdateProfileRequest extends REQUEST_API_PARENT
             'email'            => 'sometimes|email|max:255|unique:users,email,'. auth()->user()->id,
             'P_O_Box'          => 'sometimes|string|max:255',
             'bio'              => 'sometimes|string|max:255',
-            'image'            => 'sometimes|image',
+//            'image'            => 'sometimes|image',
 
             'latitude'         => 'sometimes',
             'longitude'        => 'sometimes',
