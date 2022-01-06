@@ -14,7 +14,7 @@ class AddResetPassCodeToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('bio')->nullable()->after('user_name');
+            $table->string('reset_pass_code')->nullable()->after('activation_code');
 
         });
     }
@@ -27,7 +27,7 @@ class AddResetPassCodeToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('bio');
+            $table->dropColumn('reset_pass_code');
 
         });
     }

@@ -67,15 +67,15 @@ class UserController extends PARENT_API
         $wallet = $user->wallet;
 //        $wallet = $user->select('wallet')->first();
         if ($request->decrement) {
-             $user->decrement('available_limit',100); // decrease 100 count
+            $user->decrement('available_limit', 100); // decrease 100 count
 //            $available_limit = $user->available_limit - 1;
 //            $user->update(['available_limit' => $available_limit]);
         }
         if ($request->increment) {
-            if($available_limit >= $wallet ){
+            if ($available_limit >= $wallet) {
                 return responseJson(false, trans('api.Sorry_you_cant_increase_more_your_wallet_less_than_this_value'), null);
             }
-            $user->increment('available_limit',100);
+            $user->increment('available_limit', 100);
         }
         return responseJson(true, trans('api.updated_successfully'), $user->available_limit); //ACCEPTED
     }
@@ -83,20 +83,26 @@ class UserController extends PARENT_API
     public function my_document(Request $request)
     {
         $user = auth()->user();
-        if (!$user) {return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
+        if (!$user) {
+            return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
-         $documents=Document::where('user_id',$user->id)->get();
+        $documents = Document::where('user_id', $user->id)->get();
+        if ($documents) {
+            return responseJson(true, trans('api.request_done_successfully'), DocumntsResource::collection($documents)); //ACCEPTED
+        }
+        return responseJson(true, trans('api.there_is_no_document_for_this_user_yet'),null); //ACCEPTED
 
-        return responseJson(true, trans('api.request_done_successfully'),DocumntsResource::collection($documents)); //ACCEPTED
     }
+
     public function my_wallet(Request $request)
     {
         $user = auth()->user();
-        if (!$user) {return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
+        if (!$user) {
+            return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
-         $user->select('available_limit','wallet')->get();
+        $user->select('available_limit', 'wallet')->get();
 
-        return responseJson(true, trans('api.request_done_successfully'), ['Current Deposit'=>$user->wallet,'Available Limit'=>$user->available_limit]); //ACCEPTED
+        return responseJson(true, trans('api.request_done_successfully'), ['Current Deposit' => $user->wallet, 'Available Limit' => $user->available_limit]); //ACCEPTED
     }
 
 

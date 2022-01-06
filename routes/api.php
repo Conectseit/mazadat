@@ -33,6 +33,9 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('register', [AuthController::class, 'register']);
     Route::post('activation', [AuthController::class, 'activation']);
     Route::any('login', [AuthController::class, 'login']);
+    Route::post('forget_password', [AuthController::class, 'forget_password']);
+    Route::post('password_verify_token', [AuthController::class, 'verify']);
+    Route::post('password_reset', [AuthController::class, 'passwordReset']);
     Route::post('logout', [AuthController::class, 'logout'])->middleware('jwt.auth');
 
 //    Route::any('reset_password_page', [UserController::class, 'ResetPassword']);
@@ -71,7 +74,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('update_personal_image', [AuthController::class, 'update_personal_image']);
         Route::post('add_additional_contact', [AuthController::class, 'add_additional_contact']);
         Route::post('change_password', [AuthController::class, 'changePassword']);
-        Route::post('forget_password', [AuthController::class, 'forget_password']);
+
 
 
         Route::get('update_preferred_language', [UserController::class, 'updatePreferredLanguage']);

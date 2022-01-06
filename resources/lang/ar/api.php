@@ -13,6 +13,7 @@ return [
     'user_profile'         	=> 'حسابي',
     'activation_done'         	=> 'تم تفعيل الحساب',
     'uploaded_successfully'         	=> 'تم التحميل بنجاح ',
+    'no_document_added'         	=> 'لم يتم الاضافة ',
 
 
     'please_wait_your_account_not_activated_yet'         	=> 'من فضلك انتظر حتي يتم قبول حسابك من الادارة',

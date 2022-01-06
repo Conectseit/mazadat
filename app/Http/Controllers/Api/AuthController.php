@@ -15,12 +15,14 @@ use App\Http\Requests\Api\UpdatePersonalImageRequest;
 use App\Http\Requests\Api\UpdateProfileRequest;
 use App\Http\Resources\Api\AuthResource;
 use App\Models\AdditionalUserContact;
+use App\Models\PasswordReset;
 use App\Models\Token;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Validator;
 
@@ -152,9 +154,14 @@ class AuthController extends PARENT_API
             return responseJson(false, 'The user has been found but it is not a buyer...', null); //BAD_REQUEST
         }
         $request_data = $request->all();
+        if($request_data!=null){
+            $additional_contact = AdditionalUserContact::create($request_data + ['user_id' => $user->id]);
+            return responseJson(true, trans('api.request_done_successfully'), $additional_contact); //ACCEPTED
+        }
+        else
+            return responseJson(false, trans('api.no_document_added'), null); //ACCEPTED
+
 //        $request_data['user_id'] = auth()->user()->id;
-        $additional_contact = AdditionalUserContact::create($request_data + ['user_id' => $user->id]);
-        return responseJson(true, trans('api.request_done_successfully'), $additional_contact); //ACCEPTED
     }
 
 
@@ -182,5 +189,62 @@ class AuthController extends PARENT_API
         return response()->json(
             ['status'=>'success' , 'message' => trans('passwords.sent'), 'data'=> $data], 200); //OK
     }
+
+    public function sendResetLinkEmail($email, $token)
+    {
+        ini_set('max_execution_time', 300); //300 seconds = 5 minutes
+        $data = array('token' => $token);
+        Mail::send('mails.reset', $data, function ($message) use ($email) {
+            // dd($email);
+            $message->to($email)->subject('تطبيق  | Reset Password');
+            $message->from('elshenaweymona92@gmail.com', 'تطبيق  Mazadat');
+        });
+    }
+
+
+    public function verify(VerficationTokenRequest $request)
+    {
+
+        if (PasswordReset::where(['email' => $request['email'], 'token' => $request['token']])->first())
+        {
+            return response()->json(
+                ['status'=>'success' , 'message' => trans('api.token'), 'data'=> ""], 200); //OK
+
+        }
+        return response()->json(
+            ['status'=>'fails' , 'message' => 'يرجى التأكد من البيانات المدخلة', 'data'=>null], 400);
+
+    }
+    public function passwordReset(ResetPasswordRequest $request)
+    {
+        if (PasswordReset::where(['email' => $request['email']])->first())
+        {
+            $user = User::where('email', $request['email'])->first();
+            $user->update(['password' => $request['password']]);
+//            return response()->json(['message' => trans('crud.success.update passwordreset')], 200); //OK
+            return response()->json(
+                ['status'=>'success' , 'message' => trans('api.update password_reset'), 'data'=> ""], 200); //OK
+        }
+        return response()->json(
+            ['status'=>'fails' , 'message' => 'يرجى التأكد من البيانات المدخلة', 'data'=>null], 400);
+//        return response()->json(
+//        ['message' => 'يرجى التأكد من البيانات المدخلة'],
+//            JsonResponse::HTTP_UNAUTHORIZED
+//        ); // 401
+
+    }
+
+
+    function generateRandomString($length = 10)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
 
 }
