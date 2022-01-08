@@ -18,7 +18,6 @@
 <!-- /page header -->
 @section('content')
 
-
     @include('Dashboard.layouts.parts.validation_errors')
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
@@ -51,15 +50,14 @@
                                 <li><a href="#done_auctions" data-toggle="tab">{{ trans('messages.auction.done') }}</a></li>
                             </ul>
 
-
-
                             <div class="tab-content">
                                 <div class="tab-pane active" id="all_auctions">
                                    <div class="row">
                                        @if($auctions->count() > 0)
                                            <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
                                                <thead>
-                                               <tr style="background-color:gainsboro">                                                   <th class="text-center">#</th>
+                                               <tr style="background-color:gainsboro">
+                                                   <th class="text-center">#</th>
                                                    <th class="text-center">{{ trans('messages.image') }}</th>
                                                    <th class="text-center">{{ trans('messages.name') }}</th>
 {{--                                                   <th class="text-center">{{ trans('messages.description') }}</th>--}}

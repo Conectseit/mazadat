@@ -12,7 +12,7 @@ class NationalityController extends Controller
 
     public function index()
     {
-        $data['nationalities'] = Nationality::latest()->paginate(200);
+        $data['nationalities'] = Nationality::latest()->paginate(10);
         return view('Dashboard.Nationalities.index', $data);
     }
 

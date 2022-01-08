@@ -91,8 +91,24 @@ class UserController extends PARENT_API
             return responseJson(true, trans('api.request_done_successfully'), DocumntsResource::collection($documents)); //ACCEPTED
         }
         return responseJson(true, trans('api.there_is_no_document_for_this_user_yet'),null); //ACCEPTED
-
     }
+
+
+    public function my_passport(Request $request)
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
+        }
+        $passport_image = User::where('user_id', $user->id)->get();
+        $user->passport_image != null;
+        return responseJson(true, trans('api.there_is_no_document_for_this_user_yet'),null); //ACCEPTED
+    }
+
+
+
+
+
 
     public function my_wallet(Request $request)
     {
@@ -106,24 +122,24 @@ class UserController extends PARENT_API
     }
 
 
-    public function updatePreferredLanguage(Request $request)
-    {
-        $user = auth()->user();
-//        dd($user->preferred_language);
-        if ($user->preferred_language == 'arabic') {
-            $user->update(['preferred_language' => 'english']);
-        } else {
-            $user->update(['preferred_language' => 'arabic']);
-        }
-        return responseJson(true, trans('api.updated_successfully'), null); //ACCEPTED
-    }
+//    public function updatePreferredLanguage(Request $request)
+//    {
+//        $user = auth()->user();
+////        dd($user->preferred_language);
+//        if ($user->preferred_language == 'arabic') {
+//            $user->update(['preferred_language' => 'english']);
+//        } else {
+//            $user->update(['preferred_language' => 'arabic']);
+//        }
+//        return responseJson(true, trans('api.updated_successfully'), null); //ACCEPTED
+//    }
 
-    public function getPreferredLanguage(Request $request)
-    {
-        $preferred_language = User::select('preferred_language')->where('id', auth()->user()->id)->first();
-//        $preferred_language =  auth()->user()->select('preferred_language')->first();
-        return responseJson(true, trans('api.request_done_successfully'), $preferred_language); //ACCEPTED
-    }
+//    public function getPreferredLanguage(Request $request)
+//    {
+//        $preferred_language = User::select('preferred_language')->where('id', auth()->user()->id)->first();
+////        $preferred_language =  auth()->user()->select('preferred_language')->first();
+//        return responseJson(true, trans('api.request_done_successfully'), $preferred_language); //ACCEPTED
+//    }
 
 
 

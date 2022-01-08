@@ -1,10 +1,8 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.edit-var',['var'=>trans('messages.category.category')]))
-@section('content')
-
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
+<!-- Page header -->
+<div class="page-header page-header-default">
+    @section('breadcrumb')
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
                 <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
@@ -15,9 +13,12 @@
             </ul>
             @include('Dashboard.layouts.parts.quick-links')
         </div>
-        @endsection
-    </div>
-    <!-- /page header -->
+    @endsection
+</div>
+<!-- /page header -->
+@section('content')
+
+
 
     @include('Dashboard.layouts.parts.validation_errors')
     <div class="row" style="padding: 15px;">
@@ -63,7 +64,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>@lang('messages.auction.image')</label>
+                            <label>@lang('messages.category.image')</label>
                             <input type="file" class="form-control image " name="image">
                         </div>
                         <div class="form-group">

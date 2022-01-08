@@ -53,7 +53,8 @@
                         </td>
 
                         <td><a href={{ route('categories.show', $category->id) }}> {{ isNullable($category->$name) }}</a></td>
-                        <td> {{ isNullable($category->$description) }}</td>
+{{--                        <td> {{ isNullable(Str::limit($category->$description),10) }}</td>--}}
+                        <td> {{ isNullable(substr($category->$description,0,30)) }}...</td>
                         <td>{{isset($category->created_at) ?$category->created_at->diffForHumans():'---' }}</td>
                         <td class="text-center">
                             <div class="list-icons text-center">
@@ -87,7 +88,7 @@
             </table>
 
         @else
-            <h2> @lang('messages.no_data_found') </h2>
+            <center><h2> @lang('messages.no_data_found') </h2></center>
         @endif
     </div>
     <!-- /basic datatable -->

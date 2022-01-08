@@ -12,7 +12,7 @@ class CityController extends Controller
 
     public function index()
     {
-        $data['cities'] = City::latest()->paginate(200);
+        $data['cities'] = City::latest()->paginate(10);
         return view('Dashboard.Cities.index', $data);
     }
 
@@ -24,7 +24,7 @@ class CityController extends Controller
 
     public function store(CityRequest $request)
     {
-         $city= City::create($request->all());
+         $city= City::create($request->all()+['country_id'=>'1']);
         return redirect()->route('cities.index')->with('message', trans('messages.messages.added_successfully'));
     }
 

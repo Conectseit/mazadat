@@ -37,7 +37,7 @@
                 <tr>
                     <th>#</th>
                     <th>{{ trans('messages.name') }}</th>
-{{--                    <th>{{ trans('messages.name_en') }}</th>--}}
+                    <th>{{ trans('messages.country.country') }}</th>
                     <th>@lang('messages.since')</th>
                     <th class="text-center">@lang('messages.form-actions')</th>
                 </tr>
@@ -48,7 +48,7 @@
 
                         <td>{{ $city->id }}</td>
                         <td><a href=""> {{ isNullable($city->$name) }}</a></td>
-{{--                        <td><a href=""> {{ isNullable($city->name_en) }}</a></td>--}}
+                        <td><a href=""> {{ isNullable($city->country->$name) }}</a></td>
                         <td>{{isset($city->created_at) ?$city->created_at->diffForHumans():'---' }}</td>
                         <td class="text-center">
                             <div class="list-icons text-center">
@@ -77,7 +77,7 @@
             </table>
 
         @else
-            <h2> @lang('messages.no_data_found') </h2>
+            <center><h2> @lang('messages.no_data_found') </h2></center>
         @endif
     </div>
     <!-- /basic datatable -->

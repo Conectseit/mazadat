@@ -34,9 +34,8 @@ class CreateUsersTable extends Migration
 //=========
             $table->boolean('is_accepted')->default(0);
             $table->boolean('is_appear_name')->default(0);
-            $table->string('wallet')->nullable();
             $table->enum('gender', ['male', 'female'])->default('male');
-            $table->integer('city_id')->nullable();
+//            $table->integer('city_id')->nullable();
 
             $table->softDeletes();
             $table->rememberToken();

@@ -17,6 +17,8 @@ class Category extends Model
 //        return $this->name_.app()->getLocale();
 //    }
 
+
+
     public function getImagePathAttribute()
     {
         $image = Category::where('id', $this->id)->first()->image;

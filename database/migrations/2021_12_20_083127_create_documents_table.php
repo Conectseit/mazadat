@@ -17,7 +17,7 @@ class CreateDocumentsTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->date('expiry_date')->nullable();
+            $table->string('expiry_date')->nullable();
             $table->string('document_name')->nullable();
             $table->string('Id_type')->nullable();
             $table->string('front_side_image')->nullable();

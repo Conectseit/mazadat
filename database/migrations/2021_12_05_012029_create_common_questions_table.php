@@ -15,10 +15,10 @@ class CreateCommonQuestionsTable extends Migration
     {
         Schema::create('common_questions', function (Blueprint $table) {
             $table->id();
-            $table->string('question_ar')->nullable();
-            $table->string('question_en')->nullable();
-            $table->string('replay_ar')->nullable();
-            $table->string('replay_en')->nullable();
+            $table->text('question_ar')->nullable();
+            $table->text('question_en')->nullable();
+            $table->text('replay_ar')->nullable();
+            $table->text('replay_en')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

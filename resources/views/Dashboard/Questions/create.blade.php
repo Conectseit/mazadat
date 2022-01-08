@@ -2,13 +2,9 @@
 
 @section('title', trans('messages.create-var',['var'=>trans('messages.question.question')]))
 
-
-@section('content')
-
-
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
+<!-- Page header -->
+<div class="page-header page-header-default">
+    @section('breadcrumb')
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
                 <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
@@ -17,13 +13,14 @@
                             class="icon-admin position-left"></i> @lang('messages.question.questions')</a></li>
                 <li class="active">@lang('messages.create-var',['var'=>trans('messages.question.question')])</li>
             </ul>
-
             @include('Dashboard.layouts.parts.quick-links')
         </div>
-        @endsection
-    </div>
-    <!-- /page header -->
+    @endsection
+</div>
+<!-- /page header -->
 
+
+@section('content')
 
     @include('Dashboard.layouts.parts.validation_errors')
 
@@ -54,10 +51,10 @@
                                 <input type="text" class="form-control" value="" name="question_ar" placeholder="@lang('messages.question.question_ar') ">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="replay_ar" placeholder="@lang('messages.question.replay_ar') ">
+                                <input type="text" class="form-control" value="" name="question_en" placeholder="@lang('messages.question.question_en') ">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="question_en" placeholder="@lang('messages.question.question_en') ">
+                                <input type="text" class="form-control" value="" name="replay_ar" placeholder="@lang('messages.question.replay_ar') ">
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" value="" name="replay_en" placeholder="@lang('messages.question.replay_en') ">

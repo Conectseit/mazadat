@@ -1,50 +1,23 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.category.categories'))
-@section('content')
-
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
-            <div class="breadcrumb-line">
-                <ul class="breadcrumb">
-                    <li><a href="{{route('admin.home')}}"><i
-                                class="icon-home2 position-left"></i> @lang('messages.home')</a>
-                    </li>
-                    <li><a href="{{ route('categories.index') }}"><i
-                                class="icon-admin position-left"></i> @lang('messages.category.categories')</a></li>
-                    <li class="active">@lang('messages.category.show')</li>
-                </ul>
-                @include('Dashboard.layouts.parts.quick-links')
-            </div>
-        @endsection
-    </div>
-    <!-- /page header -->
-
-
-    <!-- Cover area -->
-    <div class="profile-cover">
-        <div class="profile-cover-img" style="background-image: url({{ $category->image_path }})"></div>
-        <div class="media">
-            <div class="media-left">
-                <a href="#" class="profile-thumb">
-                    <img src="{{ $category->image_path }}" class="img-circle" alt="">
-                </a>
-            </div>
-{{--            <div class="media-body">--}}
-{{--                <h1>{{ trans('messages.category.name') }} :--}}
-{{--                    <small class="display-block">{{ $category->$name }}</small>--}}
-{{--                </h1>--}}
-{{--            </div>--}}
-
-            <div class="media-right media-middle">
-                <ul class="list-inline list-inline-condensed no-margin-bottom text-nowrap">
-                    <li><a href="#" class="btn btn-default"><i class="icon-file-picture position-left"></i>  {{ trans('messages.category.name') }} :{{ $category->$name }}</a></li>
-{{--                    <li><a href="#" class="btn btn-default"><i class="icon-file-stats position-left"></i> {{ trans('messages.category.name') }} :</a></li>--}}
-                </ul>
-            </div>
+<!-- Page header -->
+<div class="page-header page-header-default">
+    @section('breadcrumb')
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><a href="{{route('admin.home')}}"><i
+                            class="icon-home2 position-left"></i> @lang('messages.home')</a>
+                </li>
+                <li><a href="{{ route('categories.index') }}"><i
+                            class="icon-admin position-left"></i> @lang('messages.category.categories')</a></li>
+                <li class="active">@lang('messages.category.show')</li>
+            </ul>
+            @include('Dashboard.layouts.parts.quick-links')
         </div>
-    </div>
-    <!-- /cover area -->
+    @endsection
+</div>
+<!-- /page header -->
+@section('content')
 
 
     <!-- Toolbar -->
@@ -86,20 +59,55 @@
                                         <div class="panel panel-flat timeline-content">
                                             <div class="panel-heading">
                                                 <div class="card">
-                                                    <div class="card-header header-elements-inline">
-                                                        <h3 class="card-title">{{ trans('messages.category.category_data') }}</h3>
-                                                    </div>
+{{--                                                    <div class="card-header header-elements-inline">--}}
+{{--                                                        <h3 class="card-title">{{ trans('messages.category.category_data') }}</h3>--}}
+{{--                                                    </div>--}}
                                                     <br>
                                                     <div class="card-body">
                                                         <form action="#">
+{{--                                                            <!-- Cover area -->--}}
+{{--                                                            <div class="profile-cover">--}}
+{{--                                                                <div class="profile-cover-img"--}}
+{{--                                                                                 style="background-image: url({{ $category->image_path }})"--}}
+{{--                                                                ></div>--}}
+{{--                                                                <div class="media">--}}
+{{--                                                                    <div class="media-left">--}}
+{{--                                                                        <a href="#" class="profile-thumb">--}}
+{{--                                                                            <img src="{{ $category->image_path }}" class="img-circle" alt="">--}}
+{{--                                                                        </a>--}}
+{{--                                                                    </div>--}}
+{{--                                                                    --}}{{--            <div class="media-body">--}}
+{{--                                                                    --}}{{--                <h1>{{ trans('messages.category.name') }} :--}}
+{{--                                                                    --}}{{--                    <small class="display-block">{{ $category->$name }}</small>--}}
+{{--                                                                    --}}{{--                </h1>--}}
+{{--                                                                    --}}{{--            </div>--}}
+
+{{--                                                                    <div class="media-right media-middle">--}}
+{{--                                                                        <ul class="list-inline list-inline-condensed no-margin-bottom text-nowrap">--}}
+{{--                                                                            <li><a href="#" class="btn btn-default"><i class="icon-file-picture position-left"></i>  {{ trans('messages.category.name') }} :{{ $category->$name }}</a></li>--}}
+{{--                                                                            --}}{{--                    <li><a href="#" class="btn btn-default"><i class="icon-file-stats position-left"></i> {{ trans('messages.category.name') }} :</a></li>--}}
+{{--                                                                        </ul>--}}
+{{--                                                                    </div>--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
+{{--                                                            <!-- /cover area -->--}}
+
                                                             <div class="form-group row">
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-12">
                                                                     <label class="col-form-label">{{ trans('messages.category.name') }}:</label>
                                                                     {{ $category->$name }}
                                                                 </div>
-                                                                <div class="col-md-6">
-                                                                    <label class="col-form-label">{{ trans('messages.description') }}:</label>
-                                                                    {{ $category->$description }}
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-form-label col-lg-3">{{ trans('messages.description') }}:</label>
+                                                                        <div class="col-lg-9">
+                                                                            <textarea rows="5" cols="5" name="about_app_ar" class="form-control">
+                                                                                {{ $category->$description }}
+                                                                            </textarea>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </form>

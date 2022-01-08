@@ -1,12 +1,8 @@
 @extends('Dashboard.layouts.master')
-
 @section('title', trans('messages.contact.contacts'))
-
-@section('content')
-
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
+<!-- Page header -->
+<div class="page-header page-header-default">
+    @section('breadcrumb')
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
                 <li><a href=""><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
@@ -16,9 +12,11 @@
 
             @include('Dashboard.layouts.parts.quick-links')
         </div>
-        @endsection
-    </div>
-    <!-- /page header -->
+    @endsection
+</div>
+<!-- /page header -->
+
+@section('content')
 
 
     @include('Dashboard.layouts.parts.validation_errors')

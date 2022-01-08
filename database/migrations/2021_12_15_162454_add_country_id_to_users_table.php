@@ -18,11 +18,17 @@ class AddCountryIdToUsersTable extends Migration
             $table->foreign('nationality_id')->references('id')->on('nationalities')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('country_id')->after('nationality_id')->unsigned()->nullable();
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->onUpdate('cascade');
-            $table->enum('allowed_email_messages', ['allow', 'not_allow'])->default('allow')->after('country_id');
-            $table->enum('allowed_mobile_messages', ['allow', 'not_allow'])->default('allow')->after('allowed_email_messages');
-            $table->enum('preferred_language', ['arabic', 'english'])->default('arabic')->after('allowed_mobile_messages');
+            $table->bigInteger('city_id')->after('country_id')->unsigned()->nullable();
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('preferred_language', ['arabic', 'english'])->default('arabic')->after('city_id');
             $table->enum('accept_app_terms', ['yes','no'])->default('no')->after('preferred_language');
             $table->string('P_O_Box')->nullable()->after('accept_app_terms');
+            $table->string('bio')->nullable()->after('P_O_Box');
+            $table->enum('is_active', ['deactive','active'])->default('deactive')->after('activation_code');
+            $table->string('reset_password_code')->nullable()->after('is_active');
+
+
+
 
         });
     }
@@ -37,11 +43,14 @@ class AddCountryIdToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('nationality_id');
             $table->dropColumn('country_id');
-            $table->dropColumn('allowed_email_messages');
-            $table->dropColumn('allowed_mobile_messages');
+            $table->dropColumn('city_id');
+//            $table->dropColumn('allowed_mobile_messages');
             $table->dropColumn('preferred_language');
             $table->dropColumn('accept_app_terms');
-            $table->dropColumn('P.O.Box');
+            $table->dropColumn('P_O_Box');
+            $table->dropColumn('bio');
+            $table->dropColumn('is_active');
+            $table->dropColumn('reset_password_code');
         });
     }
 }
