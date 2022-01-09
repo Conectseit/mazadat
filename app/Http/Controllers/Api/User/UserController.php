@@ -90,7 +90,7 @@ class UserController extends PARENT_API
         if ($documents) {
             return responseJson(true, trans('api.request_done_successfully'), DocumntsResource::collection($documents)); //ACCEPTED
         }
-        return responseJson(true, trans('api.there_is_no_document_for_this_user_yet'),null); //ACCEPTED
+        return responseJson(true, trans('api.there_is_no_document_for_this_user_yet'), null); //ACCEPTED
     }
 
 
@@ -100,15 +100,11 @@ class UserController extends PARENT_API
         if (!$user) {
             return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
-        $passport_image = User::where('user_id', $user->id)->get();
-        $user->passport_image != null;
-        return responseJson(true, trans('api.there_is_no_document_for_this_user_yet'),null); //ACCEPTED
+        if (is_null($user->passport_image)) {
+            return responseJson(false, trans('api.The_user_has_not_passport_yet'), null);
+        }
+        return responseJson(true, trans('api.request_done_successfully'), $user->passport_image_path); //ACCEPTED
     }
-
-
-
-
-
 
     public function my_wallet(Request $request)
     {
@@ -116,12 +112,17 @@ class UserController extends PARENT_API
         if (!$user) {
             return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
-        $user->select('available_limit', 'wallet')->get();
+//        $user->select('available_limit', 'wallet')->get();
 
         return responseJson(true, trans('api.request_done_successfully'), ['Current Deposit' => $user->wallet, 'Available Limit' => $user->available_limit]); //ACCEPTED
     }
 
 
+
+
+
+
+    //==================================================================================
 //    public function updatePreferredLanguage(Request $request)
 //    {
 //        $user = auth()->user();
@@ -140,8 +141,6 @@ class UserController extends PARENT_API
 ////        $preferred_language =  auth()->user()->select('preferred_language')->first();
 //        return responseJson(true, trans('api.request_done_successfully'), $preferred_language); //ACCEPTED
 //    }
-
-
 
 
 //    public function togglePreferredLanguage(Request $request)

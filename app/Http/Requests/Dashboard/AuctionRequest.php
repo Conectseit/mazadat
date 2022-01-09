@@ -51,9 +51,8 @@ class AuctionRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'name_ar' => 'required',
-                        'name_en' => 'required'
-
+//                        'name_ar' => 'required',
+//                        'name_en' => 'required'
                     ];
                 }
             default:

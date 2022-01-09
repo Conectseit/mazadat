@@ -83,11 +83,6 @@ class BuyerController extends Controller
             return redirect()->route('buyers.create')
                 ->with('message', trans('dash.messages.something_went_wrong_please_try_again'))->with('class', 'warning')->withInput($request->validated());
         }
-
-
-
-
-
 //            $request_data = $request->except(['image','commercial_register_image']);
 //            if ($request->image) $request_data['image'] = uploaded($request->image, 'user');
 //            if ($request->commercial_register_image) $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
@@ -106,15 +101,21 @@ class BuyerController extends Controller
         return view('Dashboard.Buyers.edit', $data);
     }
 
-    public function update(SellerRequest $request,$id, User $user)
+    public function update(SellerRequest $request,$id)
     {
+        $user = User::find($id);
+
         $request_data = $request->except('image');
         if ($request->hasFile('image')) {
-            if (!is_null($user->image)) unlink('uploads/users/' . $user->image);
+//            if (!is_null($user->image)) unlink('uploads/users/' . $user->image);
             $request_data['image'] = uploaded($request->image, 'user');
         }
-//        $seller->update($request_data);
-        User::findOrFail($id)->update($request_data);
+        if ($request->hasFile('commercial_register_image')) {
+//            if (!is_null($user->commercial_register_image)) unlink('uploads/users/' . $user->commercial_register_image);
+            $request_data['commercial_register_image'] = uploaded($request->image, 'user');
+        }
+        $user->update($request_data);
+//        User::findOrFail($id)->update($request_data);
         return redirect()->route('buyers.index')->with('success',  trans('messages.messages.updated_successfully'));
     }
 

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="119.387" height="195.221" viewBox="0 0 119.387 195.221">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f9e6c6;
+        stroke: #f9e6c6;
+      }
+    </style>
+  </defs>
+  <g id="splash-logo" transform="translate(0.5 1.377)">
+    <path id="Path_6" data-name="Path 6" class="cls-1" d="M645.556,778.939c-8.82,0-15.354-3.8-21.127-10.689v48.339C630.2,809.7,636.736,805.9,645.556,805.9H660.9V778.949H645.556Z" transform="translate(-624.43 -768.24)"/>
+    <path id="Path_7" data-name="Path 7" class="cls-1" d="M718.4,778.939H699.54v12.223A14.736,14.736,0,0,0,714.278,805.9H718.4c8.82,0,15.354,3.8,21.126,10.688V768.24C733.756,775.14,727.232,778.939,718.4,778.939Z" transform="translate(-621.14 -768.24)"/>
+    <path id="Path_8" data-name="Path 8" class="cls-1" d="M679.343,809.68h-14.6V915.72a45.234,45.234,0,0,0,3.622,17.776,47.181,47.181,0,0,0,10.208,15.145,45.546,45.546,0,0,0,16.9,10.918V820.766a11.1,11.1,0,0,0-11.1-11.1h-5.031Z" transform="translate(-622.665 -766.426)"/>
+    <path id="Path_9" data-name="Path 9" class="cls-1" d="M684.374,778.49H664.74v26.951h19.634a11.1,11.1,0,0,0,11.1-11.1V778.48h-11.1Z" transform="translate(-622.665 -767.792)"/>
+  </g>
+</svg>

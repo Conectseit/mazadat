@@ -35,10 +35,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token',];
 
     /**
      * The attributes that should be cast.
@@ -97,7 +94,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function auctionbuyers()
     {
-        return $this->hasMany(AuctionBuyer::class,'buyer_id');
+        return $this->hasMany(AuctionBuyer::class, 'buyer_id');
     }
 
 
@@ -108,6 +105,14 @@ class User extends Authenticatable implements JWTSubject
             return asset('uploads/default.png');
         }
         return asset('uploads/users/' . $this->image);
+    }
+    public function getPassportImagePathAttribute()
+    {
+        $passport_image = User::where('id', $this->id)->first()->passport_image;
+        if (!$passport_image) {
+            return asset('uploads/default.png');
+        }
+        return asset('uploads/users/' . $this->passport_image);
     }
 
     public function getCommercialRegisterImagePathAttribute()
@@ -132,8 +137,14 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 
 
+
+//====================================================================
 //    public function setImageAttribute($image)
 //    {
 //        if (isset($this->attributes['image'])) {
@@ -154,10 +165,4 @@ class User extends Authenticatable implements JWTSubject
 //            $this->attributes['image'] = 'images/avatars/' . $fileName;
 //        }
 //    }
-    public function documents()
-    {
-        return $this->hasMany(Document::class);
-    }
-
-
 }

@@ -14,7 +14,9 @@ use App\Models\AuctionBuyer;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\WatchedAuction;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AuctionController extends PARENT_API
 {
@@ -73,72 +75,77 @@ class AuctionController extends PARENT_API
 
     public function make_bid(MakeBidRequest $request, $id)
     {
-        $user = auth()->user()->first();
-        if ($user->passport_image != null && $user->documents->count() > 0) {
-            if ($auction = Auction::find($id)) {
-                $bid = AuctionBuyer::where(['auction_id' => $auction->id, 'buyer_id' => $user->id])->first();
-                if (is_null($bid)) {
-                    // =========================================
+        DB::beginTransaction();
+        try
+        {
+            $user = auth()->user();
 
-                    $auction_commission = $auction->category->auction_commission;
-                    if ($user->wallete > $auction_commission){
-                        $user_current_wallet = $user->wallete - $auction_commission;
-                        $user->update(['wallet', $user_current_wallet]);
-                    } else {
-                        return responseJson(true, trans('api.you_should_charge_your_wallet_first'), null); //OK
-                    }
-                   // =========================================
-
-                   //=================  make bid at first time ============
-                    if ($request->offer < $user->available_limit) {
-                        AuctionBuyer::create(['auction_id' => $auction->id, 'buyer_id' => $user->id, 'buyer_offer' => $request->offer]);
-                        $auction->count_of_buyer += 1;
-                        $auction->current_price = $auction->current_price + $request->offer;
-                        $auction->update();
-                        return responseJson(true, trans('api.request_done_successfully'), null); //OK
-                    } else {
-                        return responseJson(true, trans('api.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'), null); //OK
-                    }
-                    //================================================================
-
-               //=================== make bid at secend time  =================
-                } else {
-                    if($request->offer < $user->available_limit){
-                        $auction->current_price = $auction->current_price + $request->offer;
-                        $auction->update();
-                        $bid->update(['buyer_offer' => $bid->buyer_offer + $request->offer]);
-                        return responseJson(true, trans('api.updated_successfully'), null);
-                    } else{
-                        return responseJson(true, trans('api.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'), null); //OK
-                    }
-                }
-               // =======================================================
-
-
+            if(is_null($user->passport_image) && $user->documents->count() == 0)
+            {
+                return responseJson(false, trans('api.Sorry_you_should_upload_document_and_passport_first'), null);  //NOT_FOUND
             }
-            return responseJson(false, trans('api.not_found_auction'), null);  //NOT_FOUND
+
+            if(!$auction = Auction::find($id)) return responseJson(false, trans('api.not_found_auction'), null);  //NOT_FOUND
+
+            $bid = AuctionBuyer::where(['auction_id' => $auction->id, 'buyer_id' => $user->id])->first();
+
+            if($request->offer > $user->available_limit) return responseJson(true, trans('api.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'), null); //OK
+
+            if (is_null($bid))
+            {
+                $auction_commission = $auction->category->auction_commission;
+
+                if($user->wallet < $auction_commission) return responseJson(true, trans('api.you_should_charge_your_wallet_first'), null); //OK
+
+                $user_current_wallet = $user->wallet - $auction_commission;
+
+                $user->update(['wallet' => $user_current_wallet]);
+
+                //=================  make bid at first time ============
+                $user->auctionbuyers()->create(['auction_id' => $auction->id, 'buyer_offer' => $request->offer]);
+
+                $auction->update([
+                    'count_of_buyer' => $auction->count_of_buyer + 1,
+                    'current_price'  => $auction->current_price + $request->offer,
+                ]);
+                DB::commit();
+                return responseJson(true, trans('api.request_done_successfully'), null); //OK
+            }
+            //=================== make bid at second time  =================
+            $auction->update(['current_price' => $auction->current_price + $request->offer]);
+
+            $bid->update(['buyer_offer' => $auction->current_price]);
+
+            DB::commit();
+
+            return responseJson(true, trans('api.updated_successfully'));
         }
-        return responseJson(false, trans('api.Sorry_you_should_upload_document_and_passport_first'), null);  //NOT_FOUND
+        catch(Exception $e)
+        {
+            DB::rollBack();
+
+            return responseJson(false, 'Server Error 500');
+        }
     }
 
 
 
-    public function make_offer(Request $request, $id)
-    {
-        $user = auth()->user()->first();
-            if ($auction = Auction::find($id)) {
-                $current_price=$auction->current_price;
-                if ($request->increment) {
-                    $offer = $current_price + $auction->value_of_increment;
-                }
-              elseif ($request->decrement) {
-                  $offer = $current_price - $auction->value_of_increment;
-              }
-                return responseJson(true, trans('api.updated_successfully'), $offer); //ACCEPTED
-            }
-            return responseJson(false, trans('api.not_found_auction'), null);  //NOT_FOUND
-    }
-
+//    public function make_offer(Request $request, $id)
+//    {
+//        $user = auth()->user();
+//            if ($auction = Auction::find($id)) {
+//                $current_price=$auction->current_price;
+//                if ($request->increment) {
+//                    $offer = $current_price + $auction->value_of_increment;
+//                }
+//              elseif ($request->decrement) {
+//                  $offer = $current_price - $auction->value_of_increment;
+//              }
+//                return responseJson(true, trans('api.updated_successfully'), $offer); //ACCEPTED
+//            }
+//            return responseJson(false, trans('api.not_found_auction'), null);  //NOT_FOUND
+//    }
+//
 
 
 
