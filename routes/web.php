@@ -1,5 +1,8 @@
 <?php
-
+use App\Http\Controllers\front\AuctionController;
+use App\Http\Controllers\front\AuthController;
+use App\Http\Controllers\front\GeneralController;
+use App\Http\Controllers\front\HomeController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -27,7 +30,14 @@ Route::group(
     ], function () {
 
 //    Route::group(['prefix' => 'front'], function () {
-        Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('front.home');
+        Route::get('/', [HomeController::class, 'home'])->name('front.home');
+
+        Route::get('register', [AuthController::class, 'register'])->name('front.register');
+
+        Route::get('questions', [GeneralController::class, 'questions'])->name('front.questions');
+        Route::get('about_app', [GeneralController::class, 'about_app'])->name('front.about_app');
+        Route::get('category/{id}/auctions', [AuctionController::class, 'categoryAuctions'])->name('front.category_auctions');
+        Route::get('auction_details/{id}', [AuctionController::class, 'auction_details'])->name('front.auction_details');
 
 //    });
 });

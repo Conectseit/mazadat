@@ -15,13 +15,15 @@
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
     <link rel="stylesheet" href="{{asset('Front/assets/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{'Front/assets/css/owl.theme.default.css'}}">
+    <link rel="stylesheet" href="{{asset('Front/assets/css/owl.theme.default.css')}}">
 
-    <link rel="icon" href="{{'Front/assets/imgs/mini-logo.svg'}}">
+    <link rel="icon" href="{{asset('Front/assets/imgs/mini-logo.svg')}}">
 
-    <link rel="stylesheet" href="{{'Front/assets/css/splash-animation.min.css'}}">
-    <link rel="stylesheet" href="{{'Front/assets/css/style.css'}}"/>
-    <title>Mazadat</title>
+    <link rel="stylesheet" href="{{asset('Front/assets/css/splash-animation.min.css')}}">
+    <link rel="stylesheet" href="{{asset('Front/assets/css/style.css')}}"/>
+    <title>Mazadat/@yield('title')</title>
+
+
 </head>
 
 

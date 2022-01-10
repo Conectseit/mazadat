@@ -75,6 +75,11 @@ return [
     'company' => ' مؤسسة',
     'no_value' => ' لا يوجد',
 
+
+
+    'register' => 'تسجيل مستخدم جديد',
+
+
     'description_ar' => 'الوصف العربي',
     'description_en' => 'الوصف الانجليزية',
     'add_and_forward_to_list' => ' إضافة & عودة الى القائمة ',
@@ -179,6 +184,7 @@ return [
 
         'appearance_of_ended_auctions' => 'ظهور المزادات المنتهية في التطبيق',
     ],
+    'about_app' => ' عن مزادات',
 
 
     'buttons' => [
@@ -277,6 +283,11 @@ return [
 
 
     'auction' => [
+        'count_of_buyer' => 'عدد الاشخاص المزايدين',
+        'remaining_time' => 'الوقت المتبقى ',
+        'auction_details' => ' تفاصيل المزاد',
+        'make_bid' => 'حجز مكان',
+
         'auction' => 'المزاد',
         'auctions' => 'المزادات',
         'name' => 'اسم المزاد',
@@ -291,7 +302,9 @@ return [
         'users' => 'افراد فقط ',
         'delivery_charge' => 'الرسوم الابتدائية للشحن والتوصيل ',
         'start_auction_price' => ' السعر الابتدائي للمزاد ',
-        'value_of_increment' => 'قيمة المزايدة في كل مرة',
+        'current_price' => ' السعر  الحالي ',
+        'value_of_increment' => 'الحد الادنى للمزايدة',
+//        'value_of_increment' => 'قيمة المزايدة في كل مرة',
         'images' => 'صور المزاد',
         'inspection_report_image' => 'صورة تقرير الفحص',
         'seller_full_name' => 'اسم صاحب المزاد',
@@ -311,6 +324,7 @@ return [
         'auction_terms_ar' => 'الشروط والاحكام بالعربي',
         'auction_terms_en' => 'الشروط والاحكام بالانجليزي',
         'auction_terms' => 'شروط واحكام المزاد ',
+        'terms' => 'الشروط والاحكام  ',
         'basic_data' => 'البيانات الاساسيه',
         'choose_options' => ' اختر تصنيف للمزاد',
         'choose_option_details' => ' اختر تفصيل للتصنيف',

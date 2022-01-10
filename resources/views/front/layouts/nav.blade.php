@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-lg-3 col-sm-6 nav-col">
                 <a class="navbar-brand" href="{{route('front.home')}}">
-                    <img src="{{'Front/assets/imgs/logo.svg'}}" alt="logo" width="250">
+                    <img src="{{asset('Front/assets/imgs/logo.svg')}}" alt="logo" width="250">
                 </a>
             </div>
 
@@ -79,12 +79,12 @@
                             <div class="site-links">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link hvr-shutter-out-horizontal" href="about-us.html">عن
-                                            مزادات</a>
+                                        <a class="nav-link hvr-shutter-out-horizontal" href="{{route('front.about_app')}}">
+                                            {{trans('messages.about_app')}}</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link hvr-shutter-out-horizontal" href="questions.html">الاسئلة
-                                            المتكررة</a>
+                                        <a class="nav-link hvr-shutter-out-horizontal" href="{{route('front.questions')}}">
+                                            {{trans('messages.question.questions')}}</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link hvr-shutter-out-horizontal" href="#">اتصل بنا</a>
@@ -97,9 +97,7 @@
                             <div class="user-links">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link hvr-shutter-out-horizontal" href="sign-up.html">تسجيل
-                                            مستخدم
-                                            جديد</a>
+                                        <a class="nav-link hvr-shutter-out-horizontal" href="{{route('front.register')}}">  {{trans('messages.register')}}</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link hvr-shutter-out-horizontal" id="signInBtn"

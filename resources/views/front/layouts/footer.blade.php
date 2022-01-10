@@ -2,31 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-7 slog-right">
-                <img class="logo" src="{{'Front/assets/imgs/logo-text.svg'}}" alt="logo">
+                <img class="logo" src="{{asset('Front/assets/imgs/logo-text.svg')}}" alt="logo">
                 <p class="footer-text">
-                    سيت يتبيرسبايكياتيس يوندي أومنيس أستي ناتيس أيررور سيت فوليبتاتيم أكيسأنتييوم
-
-                    دولاريمكيو لايودانتيوم,توتام ريم أبيرأم,أيكيو أبسا كيواي أب أللو أنفينتوري فيرأتاتيس ايت
-
-                    كياسي أرشيتيكتو بيتاي فيتاي ديكاتا سيونت أكسبليكابو. نيمو أنيم أبسام فوليوباتاتيم كيواي
-
-                    فوليوبتاس سايت أسبيرناتشر أيوت أودايت أيوت فيوجايت, سيد كيواي كونسيكيونتشر ماجناي
-
-                    دولارس أيوس كيواي راتاشن فوليوبتاتيم سيكيواي نيسكايونت. نيكيو بوررو كيوايسكيوم
-
-                    ايست,كيواي دولوريم ايبسيوم كيوا دولار سايت أميت, كونسيكتيتيور,أديبايسكاي فيلايت, سيد
-
-                    كيواي نون نيومكيوام ايايوس موداي تيمبورا انكايديونت يوت لابوري أيت دولار ماجنام
-
-                    ألايكيوام كيوايرات فوليوبتاتيم. يوت اينايم أد مينيما فينيام, كيواس نوستريوم أكسيركايتاشيم
-
-                    يلامكوربوريس سيوسكايبيت لابورايوسام, نايساي يوت ألايكيوايد أكس أيا كوموداي
-
-                    كونسيكيواتشر؟ كيوايس أيوتيم فيل أيوم أيوري ريبريهينديرايت كيواي ان إيا فوليوبتاتي
-
-                    فيلايت ايسسي كيوم نايهايل موليستايا كونسيكيواتيو,فيلايليوم كيواي دولوريم أيوم فيوجايات كيو
-
-                    فوليوبتاس نيولا باراياتيور؟
+                    {{$about_app}}
                 </p>
                 <div class="links">
                     <a href="#">الشروط والاحكام <i class="fal fa-chevron-left"></i></a>
@@ -123,11 +101,10 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="payment-brands">
-                        <img src="{{'Front/assets/imgs/mastercard.svg'}}" alt="mastercard">
-                        <img src="{{'Front/assets/imgs/mastercard.svg'}}" alt="mastercard">
-                        <img src="{{'Front/assets/imgs/mastercard.svg'}}" alt="mastercard">
-                        <img src="{{'Front/assets/imgs/mastercard.svg'}}" alt="mastercard">
-
+                        <img src="{{asset('Front/assets/imgs/mastercard.svg')}}" alt="mastercard">
+                        <img src="{{asset('Front/assets/imgs/mastercard.svg')}}" alt="mastercard">
+                        <img src="{{asset('Front/assets/imgs/mastercard.svg')}}" alt="mastercard">
+                        <img src="{{asset('Front/assets/imgs/mastercard.svg')}}" alt="mastercard">
                     </div>
                 </div>
             </div>

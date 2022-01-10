@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -18,9 +19,11 @@ class HomeController extends Controller
 //    }
 
 
-    public function home()
-    {
-        $data['categories'] = Category::all();
-        return view('front.home',$data);
-    }
+//    public function home()
+//    {
+//        $about_app= 'about_app_'.app()->getLocale();
+//        $data['about_app'] = Setting::where('key',$about_app)->first()->value;
+//        $data['categories'] = Category::all();
+//        return view('front.home',$data);
+//    }
 }
