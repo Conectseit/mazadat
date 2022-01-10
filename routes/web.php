@@ -32,7 +32,8 @@ Route::group(
 //    Route::group(['prefix' => 'front'], function () {
         Route::get('/', [HomeController::class, 'home'])->name('front.home');
 
-        Route::get('register', [AuthController::class, 'register'])->name('front.register');
+        Route::get('show_register', [AuthController::class, 'show_register'])->name('front.show_register');
+        Route::post('register', [AuthController::class, 'register'])->name('front.register');
 
         Route::get('questions', [GeneralController::class, 'questions'])->name('front.questions');
         Route::get('about_app', [GeneralController::class, 'about_app'])->name('front.about_app');

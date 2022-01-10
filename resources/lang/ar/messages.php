@@ -77,7 +77,7 @@ return [
 
 
 
-    'register' => 'تسجيل مستخدم جديد',
+
 
 
     'description_ar' => 'الوصف العربي',
@@ -430,6 +430,29 @@ return [
         'try_access_not_found_content' => 'عفوا لا يوجد هذا العنصر',
         'sorry_this_option_added_before_select_another_one' => 'عفوا لقد قمت باضافة هذا التصنيف من قبل,اختر تصنيف اخر',
     ],
+
+
+
+
+
+    // for front
+    'register' => 'تسجيل مستخدم جديد',
+    'add_new_user' => 'تسجيل مستخدم جديد',
+    'personal_info' => 'البيانات الشخصية',
+    'enter_full_name' => 'ادخل الاسم كامل ',
+    'enter_email' => 'ادخل البريد الالكترونى',
+    'enter_mobile' => 'ادخل رقم الجوال',
+    'register_your_account' => 'تسجيل حسابك',
+    'confirm-password' => 'قم بتاكيد كلمة المرور',
+    'account_data' => 'بيانات حسابك',
+    'accept_term' => ' بضغطك على تسجيل حسابك انت توافق على الشروط والاحكام الخاص بالامارات للمزادات',
+
+
+
+
+
+
+
 ];
 
 

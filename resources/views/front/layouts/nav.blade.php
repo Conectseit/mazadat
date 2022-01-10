@@ -97,7 +97,7 @@
                             <div class="user-links">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link hvr-shutter-out-horizontal" href="{{route('front.register')}}">  {{trans('messages.register')}}</a>
+                                        <a class="nav-link hvr-shutter-out-horizontal" href="{{route('front.show_register')}}">  {{trans('messages.register')}}</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link hvr-shutter-out-horizontal" id="signInBtn"

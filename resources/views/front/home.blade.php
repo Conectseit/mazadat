@@ -10,7 +10,9 @@
                 @foreach($categories as $category)
                 <div class="col-lg-3 col-md-6">
                     <a href="{{route('front.category_auctions',$category->id)}}" class="cate-card">
-                        <i class="fal fa-city"></i>
+{{--                        <i class="fal fa-city"></i>--}}
+                        <img src="{{ $category->ImagePath }}" alt="" width="50" height="50" class="img-circle">
+
                         <h4>{{$category->$name}}</h4>
                     </a>
                 </div>

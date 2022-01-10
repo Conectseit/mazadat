@@ -12,6 +12,8 @@ class GeneralController extends Controller
     public function questions()
     {
         $data['questions'] = CommonQuestion::all();
+        $about= 'about_app_'.app()->getLocale();
+        $data['about_app'] = Setting::where('key',$about)->first()->value;
         return view('front.general.questions', $data);
     }
     public function about_app()

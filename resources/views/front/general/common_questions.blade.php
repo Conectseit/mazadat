@@ -1,5 +1,5 @@
 @extends('front.layouts.master')
-@section('title', trans('messages.question.questions'))
+@section('title', trans('messages.about_app'))
 @section('style')
     <style></style>
 @endsection
@@ -23,6 +23,7 @@
             @endforeach
         </div>
     </section>
+
 
 @stop
 

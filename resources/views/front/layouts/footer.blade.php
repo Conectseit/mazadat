@@ -75,11 +75,11 @@
                                 تابعنا على
                             </h4>
                             <div class="social">
+{{--                                <a href="{{$facebook}}"><i class="fab fa-facebook-square"></i></a>--}}
+{{--                                <a href="{{$instagram}}"><i class="fab fa-instagram"></i></a>--}}
+{{--                                <a href="{{$twitter}}"><i class="fab fa-twitter-square"></i></a>--}}
+{{--                                <a href="{{$youtube}}"><i class="fab fa-youtube"></i></a>--}}
                                 <a href="#"><i class="fab fa-google-plus-square"></i></a>
-                                <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-youtube"></i></a>
-                                <a href="#"><i class="fab fa-twitter-square"></i></a>
                             </div>
                         </div>
 

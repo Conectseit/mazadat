@@ -27,8 +27,11 @@ class AuctionDetailsResource extends JsonResource
             'start_auction_price'         => $this->start_auction_price,
             'current_price'               => $this->current_price,
             'value_of_increment'          => $this->value_of_increment,
-            'start_date'                  => $this->start_date,
+            'start_date'                  => $this->start_date->format('l m-d-Y'),
             'remaining_time'              => $this->remaining_time,
+//            'specifications'              => $this->auctiondata,
+//            'specifications'              =>  new OptionResource($this->auctiondata->option),
+
 
             'inspection_report'           => $this->inspection_report_image_path,
             'Terms & Conditions'          => $this->$auction_terms,
