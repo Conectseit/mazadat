@@ -1,23 +1,23 @@
 <?php
 
 return [
-    'logout_successfully' 	=> 'تم تسجيل الخروج',
+    'logout_successfully' 	        => 'تم تسجيل الخروج',
     'request_done_successfully' 	=> 'تم الطلب بنجاح',
     'request-deleted-successfully' 	=> 'تم الحذف بنجاح',
-    'updated_successfully' 	=> 'تم التحديث بنجاح',
-    'added_successfully' 	=> 'تم الاضافة بنجاح',
+    'updated_successfully'         	=> 'تم التحديث بنجاح',
+    'added_successfully' 	        => 'تم الاضافة بنجاح',
     'register_user_successfully' 	=> 'تم تسجيل مستخدم بنجاح',
     'login_successfully' 	        => 'تم تسجيل الدخول بنجاح',
-    'sorry_invalid_email_or_password' 	=> 'عفوا بيانات الدخول غير صحيحة',
-    'wrong_old_password' 	=> 'عفوا كلمة المرور القديمة غير صحيحة',
-    'user_profile'         	=> 'حسابي',
-    'activation_done'         	=> 'تم تفعيل الحساب',
-    'uploaded_successfully'         	=> 'تم التحميل بنجاح ',
-    'no_document_added'         	=> 'لم يتم الاضافة ',
+    'sorry_invalid_email_or_password'        	=> 'عفوا بيانات الدخول غير صحيحة',
+    'wrong_old_password' 	                    => 'عفوا كلمة المرور القديمة غير صحيحة',
+    'user_profile'                          	=> 'حسابي',
+    'activation_done'                       	=> 'تم تفعيل الحساب',
+    'uploaded_successfully'                  	=> 'تم التحميل بنجاح ',
+    'no_document_added'                       	=> 'لم يتم الاضافة ',
     'The_user_has_not_passport_yet'         	=> 'لا يوجد صورة جواز السفر من فضلك قم بتحميلها ',
 
 
-    'please_wait_your_account_not_activated_yet'         	=> 'من فضلك انتظر حتي يتم قبول حسابك من الادارة',
+    'please_wait_your_account_not_activated_yet'         	        => 'من فضلك انتظر حتي يتم قبول حسابك من الادارة',
     'please_active_your_account_by_activation_code_first'         	=> 'من فضلك قم بتفعيل حسابك من خلال كود التفعيل المرسل علي جوالك اولا',
     'please_check_your_mobile_activation_code_has_sent'         	=> 'تم ارسال كود التفعيل علي جوالك, من فضلك قم بتفعيل حسابك ',
     'Sorry_you_cant_increase_more_your_wallet_less_than_this_value' => 'عفوا لايمكنك الزيادة لقد تعديت قيمة محفظتك',
@@ -29,20 +29,21 @@ return [
 
 
 
-    'all_questions'         	=> 'الاسئلة الشائعة',
+    'all_questions'         	    => 'الاسئلة الشائعة',
     'all_notifications'         	=> ' الاشعارات',
-
     'passport_expiry_date'         	=> ' تاريخ انتهاء',
 
 
     'all_category_auctions'         	=> 'كل مزادات القسم',
-    'not_found_category'         	=> ' هذاالقسم غير موجود',
-    'not_found_auction'         	=> ' هذاالمزاد غير موجود',
+    'not_found_category'         	    => ' هذاالقسم غير موجود',
+    'not_found_auction'         	    => ' هذاالمزاد غير موجود',
+    'auction_details'                	=> ' تفاصيل المزاد',
+    'not_found_auctions'             	=> ' لا يوجد مزادات',
+    'all_categories'         	        => 'كل الأقسام',
+    'category_options'                	=> 'تصنيفات القسم',
+    'there_is_done_auctions'         	                => 'لايوجد مزادات منتهية لهذا المستخدم',
+    'there_is_on_progress_auctions'         	        => 'لايوجد مزادات حالية لهذا المستخدم',
     'there_is_no_auctions_on_this_category'         	=> ' لا يوجد مزادات في هذا القسم حتي الان',
-    'auction_details'         	=> ' تفاصيل المزاد',
-    'not_found_auctions'         	=> ' لا يوجد مزادات',
-    'all_categories'         	=> 'كل الأقسام',
-    'category_options'         	=> 'تصنيفات القسم',
 
 
 

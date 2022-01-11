@@ -30,7 +30,7 @@ class AuctionDetailsResource extends JsonResource
             'start_date'                  => $this->start_date->format('l m-d-Y'),
             'remaining_time'              => $this->remaining_time,
 //            'specifications'              => $this->auctiondata,
-//            'specifications'              =>  new OptionResource($this->auctiondata->option),
+            'specifications'              => OptionResource::collection($this->options),
 
 
             'inspection_report'           => $this->inspection_report_image_path,

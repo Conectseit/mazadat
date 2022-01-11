@@ -56,7 +56,7 @@ class AuctionController extends PARENT_API
                 if ($auctions->where('status', 'done')->count() > 0) {
                     return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'done')));  //OK
                 } else {
-                    return responseJson(true, trans('api.auction_details'), null);  //OK
+                    return responseJson(false, trans('api.there_is_done_auctions'), null);  //OK
                 }
             } else {
                 return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
@@ -66,7 +66,7 @@ class AuctionController extends PARENT_API
         if ($auctions->where('status', 'on_progress')->count() > 0) {
             return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'on_progress')));  //OK
         } else {
-            return responseJson(true, trans('api.auction_details'), null);  //OK
+            return responseJson(false, trans('api.there_is_on_progress_auctions'), null);  //OK
         }
 
 //        return responseJson(true, trans('api.auction_details'),  CategoryAuctionsResource::collection($auctions->where('status','on_progress')));  //OK

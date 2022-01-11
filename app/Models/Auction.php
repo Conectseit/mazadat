@@ -87,7 +87,14 @@ class Auction extends Model
         return \Str::limit($this->attributes['description'], 10);
     }
 
-
+    public function options()
+    {
+        return $this->belongsToMany(option::class, 'auction_data');
+    }
+    public function option_details()
+    {
+        return $this->hasMany(AuctionData::class,'option_details_id');
+    }
 
     //    public function getNameAttribute()
 //    {
