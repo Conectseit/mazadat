@@ -121,16 +121,16 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="display-block">{{ trans('messages.auction.start_date') }}:</label>
-                            <input type="datetime-local" class="form-control" value="{{$auction->start_date}}" name="start_date"
-                                   placeholder="@lang('messages.auction.start_date') ">
-                        </div>
-                        <div class="form-group">
-                            <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>
-                            <input type="datetime-local" class="form-control" value="{{$auction->end_date}}" name="end_date"
-                                   placeholder="@lang('messages.auction.end_date') ">
-                        </div>
+{{--                        <div class="form-group">--}}
+{{--                            <label class="display-block">{{ trans('messages.auction.start_date') }}:</label>--}}
+{{--                            <input type="datetime-local" class="form-control" value="{{$auction->start_date}}" name="start_date"--}}
+{{--                                   placeholder="@lang('messages.auction.start_date') ">--}}
+{{--                        </div>--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>--}}
+{{--                            <input type="datetime-local" class="form-control" value="{{$auction->end_date}}" name="end_date"--}}
+{{--                                   placeholder="@lang('messages.auction.end_date') ">--}}
+{{--                        </div>--}}
 
 
 
