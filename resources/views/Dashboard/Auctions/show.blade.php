@@ -1,8 +1,5 @@
 @extends('Dashboard.layouts.master')
-
 @section('title', trans('messages.auction.auctions'))
-
-@section('content')
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
@@ -17,6 +14,7 @@
     </div>
 @stop
 
+@section('content')
     @include('Dashboard.layouts.parts.validation_errors')
 
     <!-- Cover area -->

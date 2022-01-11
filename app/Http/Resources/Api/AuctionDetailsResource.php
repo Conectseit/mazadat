@@ -32,8 +32,8 @@ class AuctionDetailsResource extends JsonResource
             'remaining_time'              => $this->remaining_time,
             'is_watched_auction'          => auth()->guard('api')->check() ? is_watched_auction($this->id) : false,
 
-//            'specifications'              => $this->auctiondata,
-            'specifications'              => OptionResource::collection($this->options),
+//            'specifications'              => OptionResource::collection($this->options),
+            'specifications'              => OptionResource::collection($this->auctiondata),
 
 //            'inspection_report'           => $this->inspection_report_image_path,
             'Terms & Conditions'          => $this->$auction_terms,

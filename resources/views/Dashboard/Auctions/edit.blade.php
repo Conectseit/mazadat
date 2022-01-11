@@ -18,8 +18,6 @@
 <!-- /page header -->
 @section('content')
 
-
-
     <div class="row" style="padding: 15px;">
         @include('Dashboard.layouts.parts.validation_errors')
 

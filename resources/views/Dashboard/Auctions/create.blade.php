@@ -232,7 +232,6 @@
                                 <input type="file" class="form-control " name="images[]" multiple="multiple"/>
                             </div>
 
-
                             <hr>
                             <div class="form-group">
                                 <label>@lang('messages.auction.inspection_report_images')</label>

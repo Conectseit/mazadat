@@ -15,12 +15,14 @@ class OptionResource extends JsonResource
      */
     public function toArray($request)
     {
+
         $name = 'name_' . app()->getLocale();
         $value = 'value_' . app()->getLocale();
         return [
-            'id'                 => $this->id,
-            'name'               => $this->$name,
-//            'option_details'     => ($this->option_details->$value),
+//            'id'                 => $this->id,
+//            'name'               => $this->$name,
+            'option_name'                 => $this->option->$name,
+            'option_details_name'                 => $this->option_detail->$value,
         ];
     }
 }
