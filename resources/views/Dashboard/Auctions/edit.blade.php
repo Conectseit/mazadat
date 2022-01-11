@@ -185,13 +185,20 @@
 {{--                            </label>--}}
 {{--                        </div>--}}
 
+{{--                        <div class="form-group">--}}
+{{--                            <label>@lang('messages.auction.inspection_report_image')</label>--}}
+{{--                            <input type="file" class="form-control image " name="inspection_report_image">--}}
+{{--                        </div>--}}
+{{--                        <div class="form-group">--}}
+{{--                            <img src=" {{$auction->inspection_report_image_path}} " width=" 100px " value="{{$auction->inspection_report_image_path}}"--}}
+{{--                                 class="thumbnail image-preview">--}}
+{{--                        </div>--}}
+
+
+                        <hr>
                         <div class="form-group">
-                            <label>@lang('messages.auction.inspection_report_image')</label>
-                            <input type="file" class="form-control image " name="inspection_report_image">
-                        </div>
-                        <div class="form-group">
-                            <img src=" {{$auction->inspection_report_image_path}} " width=" 100px " value="{{$auction->inspection_report_image_path}}"
-                                 class="thumbnail image-preview">
+                            <label>@lang('messages.auction.inspection_report_images')</label>
+                            <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>
                         </div>
                         <div class="form-group">
                             <label>@lang('messages.auction.images')</label>

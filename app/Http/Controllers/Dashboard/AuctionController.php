@@ -9,6 +9,7 @@ use App\Models\AuctionBuyer;
 use App\Models\AuctionData;
 use App\Models\AuctionImage;
 use App\Models\Category;
+use App\Models\InspectionImage;
 use App\Models\Option;
 use App\Models\OptionDetail;
 use App\Models\Setting;
@@ -71,10 +72,10 @@ class AuctionController extends Controller
 
                 if (($end_date >= $minimum_allowed_time) && ($end_date <= $maximum_allowed_time)) {
                     //======= create auction =======
-                    $request_data = $request->except(['inspection_report_image' . 'images']);
-                    if ($request->inspection_report_image) {
-                        $request_data['inspection_report_image'] = uploaded($request->inspection_report_image, 'auction');
-                    }
+                    $request_data = $request->except(['inspection_report_images' . 'images']);
+//                    if ($request->inspection_report_image) {
+//                        $request_data['inspection_report_image'] = uploaded($request->inspection_report_image, 'auction');
+//                    }
                     $auction = Auction::create($request_data + ['is_accepted' => '1',
                             'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
                 } else {
@@ -91,9 +92,6 @@ class AuctionController extends Controller
                 $auction_images = DB::table('auction_images')->insert($data);
 
 
-
-
-
                 //======= upload auction inspection_report_images =======
                 $data = [];
                 if ($request->hasfile('inspection_report_images')) {
@@ -104,7 +102,6 @@ class AuctionController extends Controller
                 $auction_inspection_report_images = DB::table('inspection_images')->insert($data);
 
 
-
                 //======= upload auction options =======
                 $auction_options = AuctionData::Create([
                     'auction_id' => $auction->id,
@@ -112,11 +109,11 @@ class AuctionController extends Controller
                     'option_details_id' => $request->option_details_id,
                 ]);
             }
-         DB::commit();
-        } catch (Exception $e) {
-            DB::rollback();
+            DB::commit();
             return redirect()->route('auctions.index')->with('message', trans('messages.messages.added_successfully'));
 
+        } catch (Exception $e) {
+            DB::rollback();
         }
     }
 
@@ -128,6 +125,7 @@ class AuctionController extends Controller
         }
         $data['auction'] = Auction::find($id);
         $data['images'] = AuctionImage::where(['auction_id' => $id])->get();
+        $data['inspection_report_images'] = InspectionImage::where(['auction_id' => $id])->get();
         $data['auction_bids'] = AuctionBuyer::where(['auction_id' => $id])->get();
         $data['auction_option_details'] = AuctionData::where(['auction_id' => $id])->get();
         return view('Dashboard.Auctions.show', $data);
@@ -147,15 +145,15 @@ class AuctionController extends Controller
     }
 
 
-    public function update(AuctionRequest $request,$id)
+    public function update(AuctionRequest $request, $id)
     {
         $auction = Auction::find($id);
 
-        $request_data = $request->except(['images','inspection_report_image']);
-        if ($request->hasFile('inspection_report_image')) {
-            if (!is_null($auction->inspection_report_image)) unlink('uploads/auctions/' . $auction->inspection_report_image);
-            $request_data['inspection_report_image'] = uploaded($request->inspection_report_image, 'auction');
-        }
+        $request_data = $request->except(['images', 'inspection_report_images']);
+//        if ($request->hasFile('inspection_report_image')) {
+//            if (!is_null($auction->inspection_report_image)) unlink('uploads/auctions/' . $auction->inspection_report_image);
+//            $request_data['inspection_report_image'] = uploaded($request->inspection_report_image, 'auction');
+//        }
 
         $data = [];
         if ($request->hasfile('images')) {
@@ -168,6 +166,20 @@ class AuctionController extends Controller
             }
             $auction_images = DB::table('auction_images')->insert($data);
         }
+
+        $data = [];
+        if ($request->hasfile('inspection_report_images')) {
+            foreach ($auction->auctionimages as $image) {
+                unlink('uploads/auctions/' . $image->image);
+                $image->delete();
+            }
+            foreach ($request->file('inspection_report_images') as $key => $img) {
+                $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
+            }
+            $auction_inspection_images = DB::table('inspection_images')->insert($data);
+        }
+
+
         $auction = $auction->update($request_data);
         return redirect()->route('auctions.index')->with('success', trans('messages.messages.updated_successfully'));
     }

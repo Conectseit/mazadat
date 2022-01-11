@@ -301,13 +301,70 @@
                             <!-- /auction_auction_bidss -->
                         </div>
                         <div class="tab-pane fade" id="inspection_report_image">
+                            <!-- inspection_report_images -->
                             <div class="panel panel-flat">
+                                <div class="panel-heading">
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li><a data-action="collapse"></a></li>
+                                            <li><a data-action="reload"></a></li>
+                                            <li><a data-action="close"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    @if($images->count() > 0)
+                                        <table class="table datatable" id="inspection_report_images" style="font-size: 16px;">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center"><h3>{{ trans('messages.auction.images') }} : </h3></th>
+                                                <th class="text-center">@lang('messages.form-actions')</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($inspection_report_images as $image)
+                                                <tr id="image-row-{{ $image->id }}">
+                                                    <td>
+                                                        <a href="{{asset($image->ImagePath) }}" data-popup="lightbox">
+                                                            <img src="{{asset($image->ImagePath) }}" alt="" width="80" height="70" class="img-preview rounded">
+                                                        </a>
+                                                    </td>
+{{--                                                    <td class="text-center">--}}
+{{--                                                        <ul class="icons-list">--}}
+{{--                                                            <li class="dropdown">--}}
+{{--                                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>--}}
+{{--                                                                <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">--}}
+{{--                                                                    <li>--}}
+{{--                                                                        <a data-id="{{ $image->id }}" class="delete-action">--}}
+{{--                                                                            <i class="icon-database-remove"></i>@lang('messages.delete')--}}
+{{--                                                                        </a>--}}
+{{--                                                                    </li>--}}
+{{--                                                                </ul>--}}
+{{--                                                            </li>--}}
+{{--                                                        </ul>--}}
+{{--                                                    </td>--}}
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    @else
+                                        <center><h3> @lang('messages.no_data_found') </h3></center>
+                                    @endif
+                                </div>
+
+                            </div>
+                            <!-- /inspection_report_images -->
+
+
+
+
+{{--                            <div class="panel panel-flat">--}}
 {{--                                <div class="panel-body">--}}
 {{--                                    <a href="{{asset($auction->inspection_report_image_path) }}" data-popup="lightbox">--}}
 {{--                                        <img src="{{asset($auction->inspection_report_image_path) }}" alt="" width="80" height="70" class="img-preview rounded">--}}
 {{--                                    </a>--}}
 {{--                                </div>--}}
-                            </div>
+{{--                            </div>--}}
                         </div>
                         <div class="tab-pane fade" id="settings">
 

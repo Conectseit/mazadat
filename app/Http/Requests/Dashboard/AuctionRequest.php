@@ -44,7 +44,7 @@ class AuctionRequest extends FormRequest
                         'value_of_increment' => ['required','numeric'],
                         'delivery_charge' => ['required','numeric'],
                         'images.*' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
-                        'inspection_report_image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
+//                        'inspection_report_image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
                     ];
 
             }
