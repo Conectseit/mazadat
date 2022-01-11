@@ -90,6 +90,21 @@ class AuctionController extends Controller
                 }
                 $auction_images = DB::table('auction_images')->insert($data);
 
+
+
+
+
+                //======= upload auction inspection_report_images =======
+                $data = [];
+                if ($request->hasfile('inspection_report_images')) {
+                    foreach ($request->file('inspection_report_images') as $key => $img) {
+                        $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
+                    }
+                }
+                $auction_inspection_report_images = DB::table('inspection_images')->insert($data);
+
+
+
                 //======= upload auction options =======
                 $auction_options = AuctionData::Create([
                     'auction_id' => $auction->id,

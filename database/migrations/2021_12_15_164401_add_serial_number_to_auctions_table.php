@@ -18,7 +18,7 @@ class AddSerialNumberToAuctionsTable extends Migration
             $table->text('auction_terms_ar')->nullable()->after('serial_number');
             $table->text('auction_terms_en')->nullable()->after('auction_terms_ar');
             $table->string('delivery_charge')->nullable()->after('auction_terms_en');
-            $table->string('inspection_report_image')->nullable()->after('delivery_charge');
+//            $table->string('inspection_report_image')->nullable()->after('delivery_charge');
         });
     }
 
@@ -34,7 +34,7 @@ class AddSerialNumberToAuctionsTable extends Migration
             $table->dropColumn('auction_terms_ar');
             $table->dropColumn('auction_terms_en');
             $table->dropColumn('delivery_charge');
-            $table->dropColumn('inspection_report_image');
+//            $table->dropColumn('inspection_report_image');
 
         });
     }

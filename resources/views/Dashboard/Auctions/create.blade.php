@@ -183,15 +183,15 @@
                     <fieldset title="5">
                         <legend class="text-semibold">{{ trans('messages.auction.other_data') }}</legend><br><br>
                         <div class="row">
-                            <div class="form-group">
-                                <label>@lang('messages.auction.inspection_report_image')</label>
-                                <input type="file" class="form-control image " name="inspection_report_image">
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label>@lang('messages.auction.inspection_report_image')</label>--}}
+{{--                                <input type="file" class="form-control image " name="inspection_report_image">--}}
+{{--                            </div>--}}
 
-                            <div class="form-group">
-                                <img src=" {{ asset('uploads/default.png') }} " width=" 100px "
-                                     class="thumbnail image-preview">
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <img src=" {{ asset('uploads/default.png') }} " width=" 100px "--}}
+{{--                                     class="thumbnail image-preview">--}}
+{{--                            </div>--}}
 
                             <div class="form-group">
                                 <label class="display-block">{{ trans('messages.auction.who_can_see') }}:</label>
@@ -231,6 +231,15 @@
                                 <label>@lang('messages.auction.images')</label>
                                 <input type="file" class="form-control " name="images[]" multiple="multiple"/>
                             </div>
+
+
+                            <hr>
+                            <div class="form-group">
+                                <label>@lang('messages.auction.inspection_report_images')</label>
+                                <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>
+                            </div>
+
+
                         </div>
                     </fieldset>
                     <button type="submit" class="btn btn-primary stepy-finish">{{ trans('messages.add_and_forward_to_list') }}

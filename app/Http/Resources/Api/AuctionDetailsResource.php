@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api;
 
+use App\Http\Resources\Api\auction\InspectionImagesResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AuctionDetailsResource extends JsonResource
@@ -34,10 +35,10 @@ class AuctionDetailsResource extends JsonResource
 //            'specifications'              => $this->auctiondata,
             'specifications'              => OptionResource::collection($this->options),
 
-
-            'inspection_report'           => $this->inspection_report_image_path,
+//            'inspection_report'           => $this->inspection_report_image_path,
             'Terms & Conditions'          => $this->$auction_terms,
             'images'                      =>  AuctionImagesResource ::collection ($this->auctionimages),
+            'inspection_report'           =>  InspectionImagesResource ::collection ($this->inspectionimages),
         ];
     }
 }

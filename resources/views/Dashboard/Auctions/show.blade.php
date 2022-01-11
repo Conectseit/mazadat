@@ -302,11 +302,11 @@
                         </div>
                         <div class="tab-pane fade" id="inspection_report_image">
                             <div class="panel panel-flat">
-                                <div class="panel-body">
-                                    <a href="{{asset($auction->inspection_report_image_path) }}" data-popup="lightbox">
-                                        <img src="{{asset($auction->inspection_report_image_path) }}" alt="" width="80" height="70" class="img-preview rounded">
-                                    </a>
-                                </div>
+{{--                                <div class="panel-body">--}}
+{{--                                    <a href="{{asset($auction->inspection_report_image_path) }}" data-popup="lightbox">--}}
+{{--                                        <img src="{{asset($auction->inspection_report_image_path) }}" alt="" width="80" height="70" class="img-preview rounded">--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                         <div class="tab-pane fade" id="settings">

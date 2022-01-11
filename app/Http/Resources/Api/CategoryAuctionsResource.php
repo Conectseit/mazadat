@@ -28,6 +28,8 @@ class CategoryAuctionsResource extends JsonResource
             'end_date'                    => $this->end_date,
             'remaining_time'              => $this->remaining_time,
             'status'                      => $this->status,
+            'is_watched_auction'          => auth()->guard('api')->check() ? is_watched_auction($this->id) : false,
+
         ];
 
     }

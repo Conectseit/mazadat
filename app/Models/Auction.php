@@ -18,14 +18,14 @@ class Auction extends Model
         $images = $this->auctionimages;
         return isset($images[0]) ? asset('uploads/auctions/' . $images[0]->image) : asset('uploads/default.png');
     }
-    public function getInspectionReportImagePathAttribute()
-    {
-        $inspection_report_image = Auction::where('id', $this->id)->first()->inspection_report_image;
-        if (!$inspection_report_image) {
-            return asset('uploads/default.png');
-        }
-        return asset('uploads/auctions/' . $this->inspection_report_image);
-    }
+//    public function getInspectionReportImagePathAttribute()
+//    {
+//        $inspection_report_image = Auction::where('id', $this->id)->first()->inspection_report_image;
+//        if (!$inspection_report_image) {
+//            return asset('uploads/default.png');
+//        }
+//        return asset('uploads/auctions/' . $this->inspection_report_image);
+//    }
 
 
 
@@ -71,6 +71,11 @@ class Auction extends Model
         return $this->hasMany(AuctionImage::class,'auction_id');
     }
 
+    public function inspectionimages()
+    {
+        return $this->hasMany(InspectionImage::class,'auction_id');
+    }
+
     public function auctionbuyers()
     {
         return $this->hasMany(AuctionBuyer::class,'auction_id');
@@ -82,23 +87,28 @@ class Auction extends Model
     }
 
 
-    public function getDescriptionAttribute()
-    {
-        return \Str::limit($this->attributes['description'], 10);
-    }
-
     public function options()
     {
         return $this->belongsToMany(Option::class, 'auction_data');
     }
+
     public function option_details()
     {
         return $this->hasMany(AuctionData::class,'option_details_id');
     }
 
+
+
+
+
     //    public function getNameAttribute()
 //    {
 //        return $this->name_.app()->getLocale();
+//    }
+
+//    public function getDescriptionAttribute()
+//    {
+//        return \Str::limit($this->attributes['description'], 10);
 //    }
 
 

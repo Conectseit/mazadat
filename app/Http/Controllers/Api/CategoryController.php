@@ -35,20 +35,26 @@ class CategoryController extends PARENT_API
 //                }
 
 // =========== for appear ended auctions
-            if ($request->status=='done') {
+            if ($request->status == 'done') {
                 if ($appearance_of_ended_auctions == 'yes') {
-                $category_auctions = $query->where('category_id', $id)->where('status', 'done')->get();
-            }else{
+                    $category_auctions = $query->where('category_id', $id)->where('status', 'done')->get();
+
+                    if ($category_auctions->count() > 0) {
+                        return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($category_auctions));  //OK don-successfully
+                    }
+                    return responseJson(false, trans('api.there_is_no_ended_auctions_on_this_category'), null);  //
+
+                } else {
                     return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
                 }
 // ==================================
             } else
-            $category_auctions = $query->where('category_id', $id)->where('status', 'on_progress')->get();
+                $category_auctions = $query->where('category_id', $id)->where('status', 'on_progress')->get();
 
             if ($category_auctions->count() > 0) {
                 return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($category_auctions));  //OK don-successfully
             }
-            return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
+            return responseJson(false, trans('api.there_is_no_on_progress_auctions_on_this_category'), null);  //
         }
         return responseJson(false, trans('api.not_found_category'), null);  //
     }
