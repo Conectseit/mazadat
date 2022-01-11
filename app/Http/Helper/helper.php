@@ -6,6 +6,17 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 
+function is_watched_auction($id)
+{
+    $user = auth()->user();
+    $watched = \App\Models\WatchedAuction::where('auction_id', $id)->where('user_id', $user->id)->first();
+    if ($watched) {
+        return true;
+    }
+    return false;
+}
+
+
 
 function removePhoneZero($number, $country_code): string
 {
