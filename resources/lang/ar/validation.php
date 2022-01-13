@@ -187,6 +187,7 @@ return [
 
         'full_name' => 'الإسم بالكامل',
         'city_id' => 'المدينة',
+        'nationality_id' => 'الجنسية',
         'banned' => 'الحظر',
         'ban_reason' => 'سبب الحظر',
         'start_date' => 'وقت ابتداء المزاد',

@@ -46,10 +46,10 @@ Route::group(
     Route::group(['prefix' => 'dashboard'], function () {
         Route::get('/show_login', [AuthController::class, 'loginView'])->name('admin.login');
         Route::post('/login', [AuthController::class, 'login'])->name('admin.submit.login');
-        Route::any('/logout', [AuthController::class, 'logout'])->name('admin.logout');
 
 
         Route::group(['middleware' => 'CheckAuthAdmin'], function () {
+            Route::any('/logout', [AuthController::class, 'logout'])->name('admin.logout');
             Route::get('home', [HomeController::class, 'home'])->name('admin.home');
             Route::get('showProfile', [AuthController::class, 'showProfile'])->name('admin.showProfile');
             Route::put('updateProfile/{admin}', [AuthController::class, 'updateProfile'])->name('admin.updateProfile');

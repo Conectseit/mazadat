@@ -89,17 +89,20 @@ class AuctionController extends PARENT_API
 
             $bid = AuctionBuyer::where(['auction_id' => $auction->id, 'buyer_id' => $user->id])->first();
 
-            if($request->offer > $user->available_limit) return responseJson(true, trans('api.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'), null); //OK
+            if(($auction->current_price + $request->offer) > $user->available_limit) return responseJson(true, trans('api.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'), null); //OK
 
             if (is_null($bid))
             {
                 $auction_commission = $auction->category->auction_commission;
 
-                if($user->wallet < $auction_commission) return responseJson(true, trans('api.you_should_charge_your_wallet_first'), null); //OK
+                if($user->wallet < ($auction_commission  + $request->offer) ) return responseJson(true, trans('api.you_should_charge_your_wallet_first'), null); //OK
 
-                $user_current_wallet = $user->wallet - $auction_commission;
+                $user_current_wallet = $user->wallet - ($auction_commission + $request->offer);
 
                 $user->update(['wallet' => $user_current_wallet]);
+
+                $user_current_available_limit= $user->available_limit - ($auction_commission + $request->offer);
+                $user->update(['available_limit' => $user_current_available_limit]);
 
                 //=================  make bid at first time ============
                 $user->auctionbuyers()->create(['auction_id' => $auction->id, 'buyer_offer' => $request->offer]);
@@ -116,14 +119,18 @@ class AuctionController extends PARENT_API
 
             $bid->update(['buyer_offer' => $auction->current_price]);
 
-            DB::commit();
+            $user_current_wallet = $user->wallet - ($request->offer);
+            $user->update(['wallet' => $user_current_wallet]);
 
+            $user_current_available_limit= $user->available_limit - ( $request->offer);
+            $user->update(['available_limit' => $user_current_available_limit]);
+
+            DB::commit();
             return responseJson(true, trans('api.updated_successfully'));
         }
         catch(Exception $e)
         {
             DB::rollBack();
-
             return responseJson(false, 'Server Error 500');
         }
     }

@@ -87,10 +87,10 @@ class Auction extends Model
     }
 
 
-    public function options()
-    {
-        return $this->belongsToMany(Option::class, 'auction_data');
-    }
+//    public function options()
+//    {
+//        return $this->belongsToMany(Option::class, 'auction_data');
+//    }
 
 //    public function option_details()
 //    {

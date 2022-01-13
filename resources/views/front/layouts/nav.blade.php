@@ -1,6 +1,15 @@
 <main class="sign-in-form" id="signInForm">
     <div class="container">
-        <form action="">
+        @if(session()->has('error'))
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                {{ session('error') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        <form action="{{route('front.login')}}" method="post" enctype="multipart/form-data">
+                @csrf
             <h4 class="title">الدخول لحسابك</h4>
             <p>
                 من فضلك ادخل معلومات الدخول الخاصة بحسابك لتتمكن من استخدام كل خصائص الموقع وإذا لم يكن لديك حسابك؟
@@ -101,7 +110,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link hvr-shutter-out-horizontal" id="signInBtn"
-                                           href="#">الدخول</a>
+                                           href="{{route('front.show_login')}}">الدخول</a>
                                     </li>
 
                                     <li class="nav-item">

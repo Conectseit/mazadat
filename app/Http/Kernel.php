@@ -79,6 +79,8 @@ class Kernel extends HttpKernel
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
         'CheckAuthAdmin'          => \App\Http\Middleware\CheckAuthAdmin::class,
         'CheckPermission'         => \App\Http\Middleware\CheckPermission::class,
+        'checkUserAuth'           => \App\Http\Middleware\checkUserAuth::class,
+
 
     ];
 }
