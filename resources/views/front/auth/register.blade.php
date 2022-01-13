@@ -21,7 +21,7 @@
                                 <label for="full_name" class="form-label">{{trans('messages.full_name')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control" id="name" name="full_name"
+                                <input type="text" class="form-control"  name="full_name"
                                        placeholder="{{trans('messages.enter_full_name')}}">
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                                     <div class="col-xl-3 col-lg-4 col-sm-6">
                                         <select class="form-select form-control" name="country-code"
                                                 aria-label="Default select example">
-                                            <option selected disabled>اختر كود الدولة</option>
+                                            <option selected disabled> {{ trans('messages.choose_country_code')}}</option>
                                             <option >+966 المملكة العربية السعودية</option>
 {{--                                            <option value="ksa">+20 مصر</option>--}}
 {{--                                            <option value="eg">+20 مصر</option>--}}
@@ -87,10 +87,10 @@
                     </div>
 
                     <div class="inputs-group">
-                        <h5 class="group-title"> {{trans('messages.enter_user_name')}}</h5>
+                        <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="full_name" class="form-label"> {{ trans('messages.type.seller/buyer') }}</label>
+                                <label for="full_name" class="form-label"> {{ trans('messages.seller/buyer') }}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 <select class=" select form-select form-control" name="type"
@@ -148,7 +148,7 @@
 
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="P_O_Box" class="form-label">{{ trans('messages.is_appear_name')}}</label>
+                                <label for="is_appear_name" class="form-label">{{ trans('messages.is_appear_name')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 <label class="radio-inline">

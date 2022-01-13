@@ -446,10 +446,13 @@ return [
     'confirm-password' => 'قم بتاكيد كلمة المرور',
     'account_data' => 'بيانات حسابك',
     'send' => ' ارسال',
+    'seller/buyer' => ' النوع:(صاحب مزاد /مشتري)',
     'activation_code' => ' كود التفعيل',
     'register_success' => 'تم التسجيل بنجاح',
     'wrong_code' => 'عفوا كود التحقق غير صحيح',
     'activation_code_required' => 'عفوا كود التفعيل مطلوب',
+    'choose_country_code' => 'اختر كود الدولة',
+    'enter_other_user_data' => 'بيانات اساسية اخري ',
 
     'activation' => 'تفعيل حسابك من خلال كود التفعيل المرسل علي جوالك',
     'accept_term' => ' بضغطك على تسجيل حسابك انت توافق على الشروط والاحكام الخاص بالامارات للمزادات',

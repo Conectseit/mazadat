@@ -13,17 +13,15 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="image">
-                                    <img src="assets/imgs/user-img.jpg" alt="my-image">
+                                    <img src="{{auth()->user()->image_path }}" alt="my-image">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="info">
-                                    <h4 class="name">User Name</h4>
-                                    <h5 class="email">username@mail.com</h5>
+                                    <h4 class="name">{{auth()->user()->full_name }}</h4>
+                                    <h5 class="email">{{Auth::guard('web')->user()->email}} </h5>
                                     <p>
-                                        سيت يتبيرسبايكياتيس يوندي أومنيس أستي ناتيس أيررور سيت فوليبتاتيم أكيسأنتييوم
-                                        دولاريمكيو لايودانتيوم,توتام ريم أبيرأم,أيكيو أبسا كيواي أب أللو أنفينتوري
-                                        فيرأتاتيس ايت
+                                        {{auth()->user()->bio }}bio
                                     </p>
                                 </div>
                             </div>

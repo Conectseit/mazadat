@@ -46,22 +46,22 @@ class AuthController extends Controller
             }
             DB::commit();
 //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
-            return redirect()->route('front.user_activation');
+            return redirect()->route('front.show_activation');
         } catch (\Exception $e) {
-            return redirect()->route('front.user_activation');
+            return redirect()->route('front.show_activation');
         }
         }
 
-    public function activation()
+    public function show_activation()
     {
         return view('front.auth.activation');
     }
 
     public function checkCode(Request $request)
     {
-        if ($request->code == null) return back()->with('error', trans('messages.activation_code_required'));
+        if ($request->activation_code == null) return back()->with('error', trans('messages.activation_code_required'));
 
-        $user = User::where('activation_code', $request->code)->first();
+        $user = User::where('activation_code', $request->activation_code)->first();
 
         if (!$user) return back()->with('error',trans('messages.wrong_code'));
 
@@ -80,7 +80,9 @@ class AuthController extends Controller
 
         if ($user->is_active == 'deactive') {
             Auth::logout();
-            return back()->withInput($request->only('email'))->with('error', trans('api.please_active_your_account_by_activation_code_first'));
+            return redirect()->route('front.show_activation')
+                ->with('error', trans('api.please_active_your_account_by_activation_code_first'));
+//            return back()->withInput($request->only('email'))->with('error', trans('api.please_active_your_account_by_activation_code_first'));
         }
         if ($user->is_accepted == 0) {
             Auth::logout();

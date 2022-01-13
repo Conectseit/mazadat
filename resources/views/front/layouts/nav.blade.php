@@ -108,15 +108,35 @@
                                     <li class="nav-item">
                                         <a class="nav-link hvr-shutter-out-horizontal" href="{{route('front.show_register')}}">  {{trans('messages.register')}}</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link hvr-shutter-out-horizontal" id="signInBtn"
-                                           href="{{route('front.show_login')}}">الدخول</a>
-                                    </li>
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a class="nav-link hvr-shutter-out-horizontal" id="signInBtn"--}}
+{{--                                           href="{{route('front.show_login')}}">الدخول</a>--}}
+{{--                                    </li>--}}
 
                                     <li class="nav-item">
                                         <a class="nav-link hvr-shutter-out-horizontal" href="{{ isLocalized("en") }}">ENG US</a>
                                         <a class="nav-link hvr-shutter-out-horizontal" href="{{ isLocalized("ar") }}">AR </a>
                                     </li>
+
+
+
+                                    {{--when authinticate--}}
+                                    @if(auth()->check())
+
+                                        <li class="nav-item">
+                                            <a class="nav-link hvr-shutter-out-horizontal"
+                                               href="{{route('front.logout')}}">logout</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link hvr-shutter-out-horizontal"
+                                               href="{{route('front.my_profile')}}">profile</a>
+                                        </li>
+                                    @else
+                                        <li class="nav-item">
+                                            <a class="nav-link hvr-shutter-out-horizontal" id="signInBtn"
+                                               href="{{route('front.show_login')}}">الدخول</a>
+                                        </li>
+                                    @endif
 
                                 </ul>
                             </div>

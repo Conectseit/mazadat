@@ -17,7 +17,7 @@ class DocumntsResource extends JsonResource
         return [
             'expiry_date'               => $this->expiry_date,
             'document_name'             => $this->document_name,
-            'Id_type '                  => $this->Id_type ,
+            'Id_type'                  => $this->Id_type ,
             'front_side_image'          => $this->front_side_image_path,
             'back_side_image'           => $this->back_side_image_path,
 

@@ -31,7 +31,7 @@
                                 <label for="full_name" class="form-label">{{trans('messages.activation_code')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control" id="code" name="code"
+                                <input type="text" class="form-control" id="activation_code" name="activation_code"
                                        placeholder="{{trans('messages.activation_code')}}">
                             </div>
 

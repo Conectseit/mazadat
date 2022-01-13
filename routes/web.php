@@ -4,6 +4,7 @@ use App\Http\Controllers\front\AuctionController;
 use App\Http\Controllers\front\AuthController;
 use App\Http\Controllers\front\GeneralController;
 use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\UserController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -35,12 +36,15 @@ Route::group(
 //    Route::group(['prefix' => 'front'], function () {
     Route::get('/', [HomeController::class, 'home'])->name('front.home');
 
+// ============ for auth ================
     Route::get('show_register', [AuthController::class, 'show_register'])->name('front.show_register');
     Route::post('register', [AuthController::class, 'register'])->name('front.register');
-    Route::get('user_activation', [AuthController::class, 'activation'])->name('front.user_activation');
+    Route::get('show_activation', [AuthController::class, 'show_activation'])->name('front.show_activation');
     Route::post('check_code', [AuthController::class, 'checkCode'])->name('front.check_code');
     Route::get('show_login', [AuthController::class, 'show_login'])->name('front.show_login');
     Route::post('login', [AuthController::class, 'login'])->name('front.login');
+// ============ /for auth ================
+
 
     Route::get('questions', [GeneralController::class, 'questions'])->name('front.questions');
     Route::get('about_app', [GeneralController::class, 'about_app'])->name('front.about_app');
@@ -49,6 +53,7 @@ Route::group(
 
     Route::group(['middleware' => 'checkUserAuth'], function () {
         Route::any('/logout', [AuthController::class, 'logout'])->name('front.logout');
+        Route::any('my_profile', [UserController::class, 'showProfile'])->name('front.my_profile');
     });
 });
 
