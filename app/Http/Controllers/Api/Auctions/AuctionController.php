@@ -89,13 +89,13 @@ class AuctionController extends PARENT_API
 
             $bid = AuctionBuyer::where(['auction_id' => $auction->id, 'buyer_id' => $user->id])->first();
 
-            if(($auction->current_price + $request->offer) > $user->available_limit) return responseJson(true, trans('api.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'), null); //OK
+            if(($auction->current_price + $request->offer) > $user->available_limit) return responseJson(false, trans('api.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'), null); //OK
 
             if (is_null($bid))
             {
                 $auction_commission = $auction->category->auction_commission;
 
-                if($user->wallet < ($auction_commission  + $request->offer) ) return responseJson(true, trans('api.you_should_charge_your_wallet_first'), null); //OK
+                if($user->wallet < ($auction_commission  + $request->offer) ) return responseJson(false, trans('api.you_should_charge_your_wallet_first'), null); //OK
 
                 $user_current_wallet = $user->wallet - ($auction_commission + $request->offer);
 
