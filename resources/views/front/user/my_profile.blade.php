@@ -32,7 +32,7 @@
                     <div class="slogan-left">
                         <div class="row">
                             <div class="col-sm-6">
-                                <a href="edit-profile.html">تعديل الحساب</a>
+                                <a href="{{route('front.edit_profile')}}">تعديل الحساب</a>
                             </div>
                             <div class="col-sm-6">
                                 <a href="my-bids.html">مزاداتي</a>

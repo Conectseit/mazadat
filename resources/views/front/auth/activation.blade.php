@@ -1,7 +1,30 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.activation'))
 @section('style')
-    <style></style>
+    <style>
+        .box {
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            padding: 20px 10px;
+            text-align: center;
+        }
+        .box strong {
+            display: block;
+            margin-bottom: 30px;
+        }
+        .box .code {
+            border: 0px;
+            text-align: center;
+            border-bottom: 3px solid #999;
+            width: 30px;
+            margin: 0px 10px;
+            font-weight: bold;
+            font-size: 20px;
+            padding-bottom: 5px;
+        }
+
+    </style>
 @endsection
 
 @section('content')
@@ -30,10 +53,20 @@
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="full_name" class="form-label">{{trans('messages.activation_code')}}</label>
                             </div>
-                            <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control" id="activation_code" name="activation_code"
+                            <div class="col-lg-8 col-md-10">
+                                <input type="text" class="form-control d-none" id="activation_code" name="activation_code"
                                        placeholder="{{trans('messages.activation_code')}}">
+                                <div class="box">
+                                    <strong class="text-dark">{{trans('messages.activation_code')}}</strong>
+                                    <input type="text" class="code" tabindex="1" maxlength="1">
+                                    <input type="text" class="code" tabindex="2" maxlength="1">
+                                    <input type="text" class="code" tabindex="3" maxlength="1">
+                                    <input type="text" class="code" tabindex="4" maxlength="1">
+                                </div>
                             </div>
+
+
+
 
 
 {{--                            <div class="row text-center" style="padding-left: 40px;">--}}
@@ -52,7 +85,7 @@
 {{--                            </div>--}}
                         </div>
 
-                        <div class="sign-btn">
+                        <div class="sign-btn row">
                             <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.send')}}</button>
                         </div>
                     </div>
@@ -71,6 +104,27 @@
                 resizeDuration: 100,
                 fadeDuration: 300,
                 fitImagesInViewport: true,
+            });
+        });
+        var items = document.querySelectorAll('.code'),
+            lastTabIndex = 4,
+            backSpaceCode = 8;
+        items.forEach(function(item) {
+            item.addEventListener('focus', function(e) {
+                e.target.value = '';
+            });
+            item.addEventListener('keydown', function(e) {
+                let keyCode = e.keyCode,
+                    currentTabIndex = e.target.tabIndex;
+                if (keyCode !== backSpaceCode && currentTabIndex !== lastTabIndex) {
+                    document.querySelectorAll('.code').forEach(function(inpt) {
+                        if (inpt.tabIndex === currentTabIndex + 1) {
+                            setTimeout(function() {
+                                inpt.focus();
+                            }, 100);
+                        }
+                    });
+                }
             });
         });
     </script>

@@ -54,6 +54,7 @@ Route::group(
     Route::group(['middleware' => 'checkUserAuth'], function () {
         Route::any('/logout', [AuthController::class, 'logout'])->name('front.logout');
         Route::any('my_profile', [UserController::class, 'showProfile'])->name('front.my_profile');
+        Route::any('edit_profile', [UserController::class, 'editProfile'])->name('front.edit_profile');
     });
 });
 

@@ -115,27 +115,35 @@
                             </div>
                         </div>
                         <div id="location" style="display:none;">
-                            <div class="form-group">
-                                <label>@lang('messages.commercial_register_image')</label>
-                                <input type="file" class="form-control commercial_register_image" name="commercial_register_image">
+                            <div class="form-group row ">
+                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                    <label>@lang('messages.commercial_register_image')</label>
+                                </div>
+                                <div class="col-lg-8 col-sm-12 d-flex align-items-center">
+                                    <input type="file" class="form-control commercial_register_image" name="commercial_register_image" accept="image/*" onchange="readURL(this)" />
+                                </div>
+                                <div class="col-lg-2 col-sm-12 d-flex align-items-center">
+                                    <img  id="img-preview" style="width: 180px ; hight:50px" src="https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png" width="250px" />
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <label>@lang('messages.buyer.location'):</label>
                                 <div class="col-lg-12">
-                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">
+                                    <input id="searchInput" class=" form-control"  placeholder=" اختر المكان علي الخريطة " name="other">
                                     <div id="map"></div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control">
+                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control hidden d-none">
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">
+                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control hidden d-none">
                                 </div>
                             </div>
 
                         </div>
 
-                        <div class="form-group mb-4 row">
+                        <div class="form-group mb-4 mt-3 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="P_O_Box" class="form-label">{{ trans('messages.P_O_Box') }}</label>
                             </div>
@@ -214,6 +222,22 @@
                 fitImagesInViewport: true,
             });
         });
+        let noimage =
+            "https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png";
+
+        function readURL(input) {
+            console.log(input.files);
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#img-preview").attr("src", e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                $("#img-preview").attr("src", noimage);
+            }
+        }
     </script>
 
     @include('Dashboard.layouts.parts.map')

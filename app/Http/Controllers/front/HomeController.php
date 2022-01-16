@@ -11,13 +11,13 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $about= 'about_app_'.app()->getLocale();
-        $data['about_app'] = Setting::where('key',$about)->first()->value;
+//        $about= 'about_app_'.app()->getLocale();
+//        $data['about_app'] = Setting::where('key',$about)->first()->value;
 
-        $data['facebook'] = Setting::where('key','facebook_url')->first()->value;
-        $data['twitter'] = Setting::where('key','twitter_url')->first()->value;
-        $data['instagram'] = Setting::where('key','instagram_url')->first()->value;
-        $data['youtube'] = Setting::where('key','youtube_url')->first()->value;
+//        $data['facebook'] = Setting::where('key','facebook_url')->first()->value;
+//        $data['twitter'] = Setting::where('key','twitter_url')->first()->value;
+//        $data['instagram'] = Setting::where('key','instagram_url')->first()->value;
+//        $data['youtube'] = Setting::where('key','youtube_url')->first()->value;
         $data['categories'] = Category::all();
         return view('front.home',$data);
 

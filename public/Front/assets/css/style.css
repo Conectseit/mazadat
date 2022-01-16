@@ -1495,7 +1495,7 @@ footer .rights .payment-brands img:not(:last-of-type) {
   color: var(--main-color);
   font-size: 18px;
   display: block;
-  width: 60%;
+  width: 25%;
   margin: auto;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -2418,4 +2418,13 @@ a.ui-button:active,
   .my-wallet-page .payment-method .methods li {
     padding: 10px 0 10px 20px;
   }
+}
+#searchInput{
+    background-color: rgb(255, 255, 255);
+    margin-left: 0;
+    z-index: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    width: 27%;
 }

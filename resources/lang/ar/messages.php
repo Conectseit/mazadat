@@ -336,6 +336,8 @@ return [
         'category_name' => 'اسم القسم',
 
     ],
+    'terms' => 'الشروط والاحكام  ',
+    'about_mazadat' => 'تعرف اكثر علي مزادات',
 
     'city_name' => 'اسم المدينة',
     'city' => [
