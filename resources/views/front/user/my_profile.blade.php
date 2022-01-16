@@ -21,7 +21,8 @@
                                     <h4 class="name">{{auth()->user()->full_name }}</h4>
                                     <h5 class="email">{{Auth::guard('web')->user()->email}} </h5>
                                     <p>
-                                        {{auth()->user()->bio }}bio
+                                        {{trans('messages.bio')}}:
+                                        {{auth()->user()->bio }}
                                     </p>
                                 </div>
                             </div>
@@ -41,7 +42,7 @@
                                 <a href="watching.html">مشاهدة</a>
                             </div>
                             <div class="col-sm-6">
-                                <a href="#">المحفظة</a>
+                                <a href="{{route('front.my_wallet')}}">المحفظة</a>
                             </div>
                         </div>
                     </div>

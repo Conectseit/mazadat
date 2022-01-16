@@ -20,6 +20,10 @@ class SettingController extends Controller
             Setting::where('key', 'project_name_ar')->update(['value' => $request->project_name_ar]);
         if ($request->project_name_en)
             Setting::where('key', 'project_name_en')->update(['value' => $request->project_name_en]);
+        if ($request->app_description_ar)
+            Setting::where('key', 'app_description_ar')->update(['value' => $request->app_description_ar]);
+        if ($request->app_description_en)
+            Setting::where('key', 'app_description_en')->update(['value' => $request->app_description_en]);
         if ($request->mobile)
             Setting::where('key', 'mobile')->update(['value' => $request->mobile]);
         if ($request->email)

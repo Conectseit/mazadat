@@ -4,6 +4,8 @@
     <style> </style>
 @endsection
 @section('content')
+    @include('Dashboard.layouts.parts.validation_errors')
+
     <section class="categories">
         <div class="container">
             <div class="row">

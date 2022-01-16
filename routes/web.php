@@ -55,6 +55,13 @@ Route::group(
         Route::any('/logout', [AuthController::class, 'logout'])->name('front.logout');
         Route::any('my_profile', [UserController::class, 'showProfile'])->name('front.my_profile');
         Route::any('edit_profile', [UserController::class, 'editProfile'])->name('front.edit_profile');
+        Route::any('update_personal_image', [UserController::class, 'update_personal_image'])->name('front.update_personal_image');
+        Route::any('update_personal_bio', [UserController::class, 'update_personal_bio'])->name('front.update_personal_bio');
+        Route::any('update_profile', [UserController::class, 'updateProfile'])->name('front.update_profile');
+        Route::any('my_wallet', [UserController::class, 'my_wallet'])->name('front.my_wallet');
+        Route::any('cheque_payment', [UserController::class, 'cheque_payment'])->name('front.cheque_payment');
+        Route::any('online_payment', [UserController::class, 'online_payment'])->name('front.online_payment');
+        Route::any('bank_deposit', [UserController::class, 'bank_deposit'])->name('front.bank_deposit');
     });
 });
 

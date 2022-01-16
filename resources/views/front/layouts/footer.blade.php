@@ -10,6 +10,7 @@
 {{--    @inject('settings', 'App\Models\Setting')--}}
     @php($about= 'about_app_'.app()->getLocale())
     @php($terms= 'conditions_terms_'.app()->getLocale())
+    @php($app_description= 'app_description_'.app()->getLocale())
 
     <div class="container">
         <div class="row">
@@ -39,12 +40,12 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="panelsStayOpen-headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                                    {{trans('messages.about_mazadat')}}
+                                    {{ trans('messages.settings.description') }}
                                 </button>
                             </h2>
                             <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                                 <div class="accordion-body">
-                                    <strong>{{App\Models\Setting::where('key',$about)->first()->value}}</strong>
+                                    <strong>{{App\Models\Setting::where('key',$app_description)->first()->value}}</strong>
                                 </div>
                             </div>
                         </div>
