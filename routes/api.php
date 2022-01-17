@@ -73,6 +73,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('change_password', [AuthController::class, 'changePassword']);
         Route::post('add_traffic_file_number', [UserController::class, 'add_traffic_file_number']);
         Route::post('upload_passport', [UserController::class, 'upload_passport']);
+        Route::post('upload_payment_receipt', [UserController::class, 'upload_payment_receipt']);
         Route::post('add_document', [UserController::class, 'add_document']);
         Route::post('choose_available_limit', [UserController::class, 'choose_available_limit']);
         Route::any('my_wallet', [UserController::class, 'my_wallet']);

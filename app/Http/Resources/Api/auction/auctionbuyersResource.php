@@ -17,8 +17,8 @@ class auctionbuyersResource extends JsonResource
         //$name = 'name_'.app()->getLocale();
         return [
             'image'                   => $this->buyer->image_path,
-            'full_name'                   => $this->buyer->full_name,
-            'buyer_offer'                   => $this->buyer_offer,
+            'full_name'               => $this->buyer->full_name,
+            'buyer_offer'             => $this->buyer_offer,
         ];
 
     }

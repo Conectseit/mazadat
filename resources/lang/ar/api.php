@@ -15,6 +15,7 @@ return [
     'uploaded_successfully'                  	=> 'تم التحميل بنجاح ',
     'no_document_added'                       	=> 'لم يتم الاضافة ',
     'The_user_has_not_passport_yet'         	=> 'لا يوجد صورة جواز السفر من فضلك قم بتحميلها ',
+    'upload_receipt_successfully'           	=> 'تم رفع الفاتورة',
 
 
     'please_wait_your_account_not_activated_yet'         	        => 'من فضلك انتظر حتي يتم قبول حسابك من الادارة',

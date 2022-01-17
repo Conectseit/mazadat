@@ -7,8 +7,10 @@ use App\Http\Controllers\PARENT_API;
 use App\Http\Requests\Api\DocumentRequest;
 use App\Http\Requests\Api\TrafficFileNumberRequest;
 use App\Http\Requests\Api\UploadPassportRequest;
+use App\Http\Requests\Api\user\UploadPaymentReceiptRequest;
 use App\Http\Resources\Api\DocumntsResource;
 use App\Models\Document;
+use App\Models\Payment;
 use App\Models\TrafficFileNumber;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -28,6 +30,16 @@ class UserController extends PARENT_API
         }
         $user->update($request_data);
         return responseJson(true, trans('api.uploaded_successfully'), null); //ACCEPTED
+    }
+    public function upload_payment_receipt(UploadPaymentReceiptRequest $request)
+    {
+        $request_data = $request->except(['image']);
+        if ($request->image) {
+            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'payments');
+        }
+        $user = auth()->user();
+        $payment = Payment::create($request_data + ['user_id' => $user->id,'payment_type'=>'bank_deposit']);
+        return responseJson(true, trans('api.upload_receipt_successfully'), null); //ACCEPTED
     }
 
     public function add_document(DocumentRequest $request)
