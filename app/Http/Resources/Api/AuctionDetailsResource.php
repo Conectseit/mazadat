@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api;
 
+use App\Http\Resources\Api\auction\auctionbuyersResource;
 use App\Http\Resources\Api\auction\InspectionImagesResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -39,6 +40,7 @@ class AuctionDetailsResource extends JsonResource
             'Terms & Conditions'          => $this->$auction_terms,
             'images'                      =>  AuctionImagesResource ::collection ($this->auctionimages),
             'inspection_report'           =>  InspectionImagesResource ::collection ($this->inspectionimages),
+            'buyers'                      =>  auctionbuyersResource ::collection ($this->auctionbuyers),
         ];
     }
 }

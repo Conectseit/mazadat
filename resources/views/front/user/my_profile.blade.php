@@ -36,10 +36,10 @@
                                 <a href="{{route('front.edit_profile')}}">تعديل الحساب</a>
                             </div>
                             <div class="col-sm-6">
-                                <a href="my-bids.html">مزاداتي</a>
+                                <a href="{{route('front.my_bids')}}">مزاداتي</a>
                             </div>
                             <div class="col-sm-6">
-                                <a href="watching.html">مشاهدة</a>
+                                <a href="{{route('front.my_watched')}}">مشاهدة</a>
                             </div>
                             <div class="col-sm-6">
                                 <a href="{{route('front.my_wallet')}}">المحفظة</a>
