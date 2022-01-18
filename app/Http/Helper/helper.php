@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -14,6 +15,11 @@ function is_watched_auction($id)
         return true;
     }
     return false;
+}
+
+function checkIsUserWatch($auction)
+{
+    return DB::table('watched_auctions')->where(['user_id' => auth()->id(), 'auction_id' => $auction->id]);
 }
 
 

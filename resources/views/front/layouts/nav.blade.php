@@ -1,13 +1,13 @@
 <main class="sign-in-form" id="signInForm">
     <div class="container">
-{{--        @if(session()->has('error'))--}}
-{{--            <div class="alert alert-warning alert-dismissible" role="alert">--}}
-{{--                {{ session('error') }}--}}
-{{--                <button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
-{{--                    <span aria-hidden="true">&times;</span>--}}
-{{--                </button>--}}
-{{--            </div>--}}
-{{--        @endif--}}
+        {{--        @if(session()->has('error'))--}}
+        {{--            <div class="alert alert-warning alert-dismissible" role="alert">--}}
+        {{--                {{ session('error') }}--}}
+        {{--                <button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
+        {{--                    <span aria-hidden="true">&times;</span>--}}
+        {{--                </button>--}}
+        {{--            </div>--}}
+        {{--        @endif--}}
         <form action="{{route('front.login')}}" method="post" enctype="multipart/form-data">
             @csrf
             <h4 class="title">الدخول لحسابك</h4>
@@ -65,6 +65,7 @@
                 <a class="navbar-brand" href="{{route('front.home')}}">
                     <img src="{{asset('Front/assets/imgs/logo.svg')}}" alt="logo" width="250">
                 </a>
+
             </div>
 
             <div class="col-lg-3 col-sm-4 col-7 nav-col">
@@ -73,8 +74,7 @@
                     <p class="clock" id="time"></p>
                     <p class="day"><span class="name px-2" id="day_d">الثلاثاء</span><span class="number"
                                                                                            id="day_n">02</span></p>
-                    <h3 class="month-year"><span class="month px-2" id="day_m">نوفمبر</span><span class="year"
-                                                                                                  id="year_h"></span>
+                    <h3 class="month-year"><span class="month px-2" id="day_m">نوفمبر</span><span class="year" id="year_h"></span>
                     </h3>
                 </div>
             </div>
@@ -120,16 +120,25 @@
                                     {{--                                           href="{{route('front.show_login')}}">الدخول</a>--}}
                                     {{--                                    </li>--}}
 
+{{--                                    <li class="nav-item">--}}
+{{--                                        @if( app()->isLocale('en') )--}}
+{{--                                            <a class="nav-link hvr-shutter-out-horizontal"--}}
+{{--                                               href="{{ isLocalized("ar") }}">AR </a>--}}
+{{--                                        @else--}}
+{{--                                            <a class="nav-link hvr-shutter-out-horizontal"--}}
+{{--                                               href="{{ isLocalized("en") }}">ENG US</a>--}}
+{{--                                        @endif--}}
+{{--                                    </li>--}}
                                     <li class="nav-item">
-                                        @if( app()->isLocale('en') )
-                                            <a class="nav-link hvr-shutter-out-horizontal"
-                                               href="{{ isLocalized("ar") }}">AR </a>
-                                        @else
-                                            <a class="nav-link hvr-shutter-out-horizontal"
-                                               href="{{ isLocalized("en") }}">ENG US</a>
-                                        @endif
+                                            <div class="nav-link ">
+                                                <span class="bg-{{ app()->isLocale('ar') ? 'green' : 'white' }}  ">
+                                                    <a href="{{ isLocalized("ar") }}" class="arabic">@lang('messages.ar.ar')</a>
+                                                </span>
+                                                <span class="bg-{{ app()->isLocale('en') ? 'green' : 'white' }} ">
+                                                   <a href="{{ isLocalized("en") }}" class="arabic">@lang('messages.en.en')</a>
+                                                </span>
+                                            </div>
                                     </li>
-
 
                                     {{--when authinticate--}}
                                     @if(auth()->check())
@@ -140,7 +149,8 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link hvr-shutter-out-horizontal"
-                                               href="{{route('front.my_profile')}}"> <i class="fa fa-user"></i>  {{trans('messages.profile')}}</a>
+                                               href="{{route('front.my_profile')}}"> <i
+                                                    class="fa fa-user"></i> {{trans('messages.profile')}}</a>
                                         </li>
                                     @else
                                         <li class="nav-item">

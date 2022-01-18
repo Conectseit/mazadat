@@ -56,6 +56,8 @@ Route::group(
 
         Route::any('my_profile', [UserController::class, 'showProfile'])->name('front.my_profile');
         Route::get('my_bids', [AuctionController::class, 'my_bids'])->name('front.my_bids');
+        Route::get('watch_auction/{auction}', [AuctionController::class, 'watch_auction'])->name('front.watch_auction');
+
         Route::get('make_bid/{id}', [AuctionController::class, 'make_bid'])->name('front.make_bid');
         Route::get('my_watched', [AuctionController::class, 'my_watched'])->name('front.my_watched');
 

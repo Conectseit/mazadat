@@ -2,21 +2,21 @@
 @section('title', trans('messages.auction.auction_details'))
 
 @section('content')
-
-    @include('front.auctions.head')
-
+{{--    @include('front.auctions.head')--}}
     <div class="ad-details-page">
         <main class="ad-main-details">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5 d-flex align-items-center">
+                        <a class="navbar-brand" href="{{route('front.home')}}">
+                            <i class="fal fa-calendar-alt"></i>
+                        </a>
                         <h3 class="ad-title">{{ ($auction->category->$name ) }}</h3>
                     </div>
                     <div class="col-lg-5" id="mainInfo">
                         <p class="start-date">
                             <i class="fal fa-calendar-alt"></i>
-                            يبدأ فى الثلاثاء ,
-                            {{ ($auction->start_date ) }}
+                            Start_at: {{ ($auction->start_date->format('l, m/d/Y  h:s') ) }}
                         </p>
                         <p class="ticket"><i class="fal fa-ticket"></i>{{ ($auction->count_of_buyer ) }}</p>
 
@@ -52,12 +52,13 @@
         <section class="ad-info">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-5">
-                        <div class="main-image">
-                            <img src="{{$auction->first_image_path}}" alt="image">
+                    <div class="col-lg-3">
+                        <div class="main-image"   style="height: 200px;">
+                            <img src="{{$auction->first_image_path}}" alt="image" class="img-thumbnail">
                         </div>
                     </div>
-                    <div class="col-lg-7">
+
+                    <div class="col-lg-9">
                         <div class="description" id="description">
                             <h4>{{ trans('messages.description')}}:</h4>
                             <p>
@@ -128,6 +129,11 @@
                 </div>
 
                 <div class="more-imgs">
+
+
+                    <div class="terms">
+                        <h4>{{ trans('messages.auction.images')}}:</h4>
+                    </div>
                     <div class="row">
                         @foreach($images as $image)
                         <div class="col-md-3 col-6">

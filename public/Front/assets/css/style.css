@@ -2428,3 +2428,25 @@ a.ui-button:active,
     top: 0px;
     width: 27%;
 }
+
+
+/*h4{*/
+/*    text-align:center;*/
+/*}*/
+/*.container form{*/
+/*    width:250px;*/
+/*    margin:20px auto;*/
+/*}*/
+/*i{*/
+/*    cursor:pointer;*/
+/*}*/
+
+
+.language__switch-container{
+    padding-bottom: 10px;
+}
+.language-switch{
+    font-size: 70%;
+}
+
+

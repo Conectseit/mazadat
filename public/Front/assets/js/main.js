@@ -112,7 +112,7 @@ $("#viewBtn").click(function () {
 $(function () {
   $("#minus").click(function () {
     var $input = $(this).parent().find("#bidInput");
-    var count = parseInt($input.val()) - 1;
+    var count = parseInt($input.val()) - 100;
     count = count < 1 ? 1 : count;
     $input.val(count);
     $input.change();
@@ -120,7 +120,7 @@ $(function () {
   });
   $("#plus").click(function () {
     var $input = $(this).parent().find("#bidInput");
-    $input.val(parseInt($input.val()) + 1);
+    $input.val(parseInt($input.val()) + 100);
     $input.change();
     return false;
   });
