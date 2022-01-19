@@ -198,8 +198,6 @@
                                 </select>
                             </div>
                         </div>
-
-
                         <div class="sign-btn">
                             <p> {{trans('messages.accept_term')}}</p>
                             <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>

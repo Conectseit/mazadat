@@ -29,15 +29,15 @@
             <ul class="wallet-details">
                 <li>
                     <p>الهاتف:</p>
-                    <p>5588802 | 9721515615</p>
+                    <p>{{$mobile}}</p>
                 </li>
                 <li>
                     <p>فاكس:</p>
-                    <p>9721515615</p>
+                    <p>{{$fax}}</p>
                 </li>
                 <li>
                     <p>البريد الالكترونى:</p>
-                    <p>mazadat@hr.com.uae</p>
+                    <p>{{$email}}</p>
                 </li>
             </ul>
             <div class="row">
@@ -51,61 +51,39 @@
                                             <button class="accordion-button collapsed" type="button"
                                                     data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
                                                     aria-expanded="false" aria-controls="flush-collapseOne">
-                                                Gadaa
+                                                عنوان
                                             </button>
                                         </h2>
                                         <div id="flush-collapseOne" class="accordion-collapse collapse"
                                              aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero ullam
-                                                repellat cupiditate esse! Tenetur, maiores laboriosam sequi dolorem
-                                                libero voluptatum reiciendis omnis pariatur, neque consectetur aliquam
-                                                dolorum incidunt sit odit!
+                                                {{$address}}
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="flush-headingTwo">
-                                            <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
-                                                    aria-expanded="false" aria-controls="flush-collapseTwo">
-                                                El Raiyad
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                             aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero ullam
-                                                repellat cupiditate esse! Tenetur, maiores laboriosam sequi dolorem
-                                                libero voluptatum reiciendis omnis pariatur, neque consectetur aliquam
-                                                dolorum incidunt sit odit!
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="flush-headingThree">
-                                            <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-                                                    aria-expanded="false" aria-controls="flush-collapseThree">
-                                                El Raiyad
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                             aria-labelledby="flush-headingThree"
-                                             data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero ullam
-                                                repellat cupiditate esse! Tenetur, maiores laboriosam sequi dolorem
-                                                libero voluptatum reiciendis omnis pariatur, neque consectetur aliquam
-                                                dolorum incidunt sit odit!
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+
+
+{{--                                <li>--}}
+{{--                                    <div class="accordion-item">--}}
+{{--                                        <h2 class="accordion-header" id="flush-headingTwo">--}}
+{{--                                            <button class="accordion-button collapsed" type="button"--}}
+{{--                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"--}}
+{{--                                                    aria-expanded="false" aria-controls="flush-collapseTwo">--}}
+{{--                                                El Raiyad--}}
+{{--                                            </button>--}}
+{{--                                        </h2>--}}
+{{--                                        <div id="flush-collapseTwo" class="accordion-collapse collapse"--}}
+{{--                                             aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">--}}
+{{--                                            <div class="accordion-body">--}}
+{{--                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero ullam--}}
+{{--                                                repellat cupiditate esse! Tenetur, maiores laboriosam sequi dolorem--}}
+{{--                                                libero voluptatum reiciendis omnis pariatur, neque consectetur aliquam--}}
+{{--                                                dolorum incidunt sit odit!--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </li>--}}
 
                             </ul>
                         </div>

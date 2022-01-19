@@ -4,6 +4,7 @@ use App\Http\Controllers\front\AuctionController;
 use App\Http\Controllers\front\AuthController;
 use App\Http\Controllers\front\GeneralController;
 use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\PaymentController;
 use App\Http\Controllers\front\UserController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -54,22 +55,26 @@ Route::group(
     Route::group(['middleware' => 'checkUserAuth'], function () {
         Route::any('/logout', [AuthController::class, 'logout'])->name('front.logout');
 
-        Route::any('my_profile', [UserController::class, 'showProfile'])->name('front.my_profile');
+        Route::post('make_bid/{id}', [AuctionController::class, 'make_bid'])->name('front.make_bid');
         Route::get('my_bids', [AuctionController::class, 'my_bids'])->name('front.my_bids');
-        Route::get('watch_auction/{auction}', [AuctionController::class, 'watch_auction'])->name('front.watch_auction');
 
-        Route::get('make_bid/{id}', [AuctionController::class, 'make_bid'])->name('front.make_bid');
         Route::get('my_watched', [AuctionController::class, 'my_watched'])->name('front.my_watched');
+        Route::get('watch_auction/{auction}', [AuctionController::class, 'watch_auction'])->name('front.watch_auction');
+        Route::any('delete_watch_auction/{auction}', [AuctionController::class, 'delete_watch_auction'])->name('front.delete_watch_auction');
+        Route::any('cancel_bid_auction/{auction}', [AuctionController::class, 'cancel_bid_auction'])->name('front.cancel_bid_auction');
 
+
+        Route::any('my_profile', [UserController::class, 'showProfile'])->name('front.my_profile');
         Route::any('edit_profile', [UserController::class, 'editProfile'])->name('front.edit_profile');
         Route::any('update_personal_image', [UserController::class, 'update_personal_image'])->name('front.update_personal_image');
         Route::any('update_personal_bio', [UserController::class, 'update_personal_bio'])->name('front.update_personal_bio');
         Route::any('update_profile', [UserController::class, 'updateProfile'])->name('front.update_profile');
 
+        Route::any('choose_available_limit', [UserController::class, 'choose_available_limit'])->name('front.choose_available_limit');
         Route::any('my_wallet', [UserController::class, 'my_wallet'])->name('front.my_wallet');
-        Route::any('cheque_payment', [UserController::class, 'cheque_payment'])->name('front.cheque_payment');
-        Route::any('online_payment', [UserController::class, 'online_payment'])->name('front.online_payment');
-        Route::any('bank_deposit', [UserController::class, 'bank_deposit'])->name('front.bank_deposit');
+        Route::any('cheque_payment', [PaymentController::class, 'cheque_payment'])->name('front.cheque_payment');
+        Route::any('online_payment', [PaymentController::class, 'online_payment'])->name('front.online_payment');
+        Route::any('bank_deposit', [PaymentController::class, 'bank_deposit'])->name('front.bank_deposit');
     });
 });
 

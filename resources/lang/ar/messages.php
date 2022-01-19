@@ -305,7 +305,7 @@ return [
         'company' => 'مؤسسات فقط',
         'users' => 'افراد فقط ',
         'delivery_charge' => 'الرسوم الابتدائية للشحن والتوصيل ',
-        'start_auction_price' => ' السعر الابتدائي للمزاد ',
+        'start_auction_price' => ' السعر الابتدائي  ',
         'current_price' => ' السعر  الحالي ',
         'value_of_increment' => 'الحد الادنى للمزايدة',
 //        'value_of_increment' => 'قيمة المزايدة في كل مرة',
@@ -338,6 +338,9 @@ return [
         'option' => ' التصنيف',
         'option_detail' => 'تفصيل التصنيف',
         'category_name' => 'اسم القسم',
+        'remove_from_watched' => 'ازالة من مشاهداتي',
+        'start_at' => 'يبدا في',
+        'buyers' => ' المشاركات',
 
     ],
     'terms' => 'الشروط والاحكام  ',
@@ -463,6 +466,13 @@ return [
     'activation' => 'تفعيل حسابك من خلال كود التفعيل المرسل علي جوالك',
     'accept_term' => ' بضغطك على تسجيل حسابك انت توافق على الشروط والاحكام الخاص بالامارات للمزادات',
     'you_dont_have_auctions_yet' => 'لا يوجد لديك مزادات  حتي الان ',
+    'Sorry_you_should_upload_document_and_passport_first'           =>'عفوا يجب عليك  رفع صورة جواز السفر ووثائق رسمية اولا ',
+    'not_found_auction'         	    => ' هذاالمزاد غير موجود',
+    'sorry_you_cant_make_bid_your_available_limit_less_than_this_value'  =>'عفوا لا يمكنك المزايدة الان لان القيمة المسموحة من محفظتك اقل من قيمة المزايدة ',
+    'request_done_successfully' 	=> 'تم الطلب بنجاح',
+    'updated_successfully'         	=> 'تم التحديث بنجاح',
+    'you_should_charge_your_wallet_first'         	=> '  عفوا يجب شحن محفظتك أولا',
+
 
 
     'ar' => [

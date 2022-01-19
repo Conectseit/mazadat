@@ -48,7 +48,7 @@
                     <div class="col-lg-2">
                         <div class="buttons">
                             <a href="{{route('front.auction_details',$auction->id)}}" class="bid">المزايدة الان</a>
-                            <a href="#" class="remove">ازالة</a>
+                            <a href="{{route('front.delete_watch_auction',$auction->id)}}" class="remove">@lang('messages.auction.remove_from_watched')</a>
                         </div>
                     </div>
                 </div>

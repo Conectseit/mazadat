@@ -6,6 +6,8 @@
 
 @section('content')
     <section class="my-wallet-page">
+        @include('Dashboard.layouts.parts.validation_errors')
+
         <div class="container">
             <nav class="breadcrumb-nav" aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -18,7 +20,7 @@
             <div class="container">
                 <div class="balance-content">
                     <i class="fal fa-wallet"></i>
-                    <h2>3000 د.إ</h2>
+                    <h2>{{$user->wallet}} د.إ</h2>
                 </div>
 
             </div>
@@ -27,26 +29,33 @@
             <ul class="wallet-details">
                 <li>
                     <p>الإيداع الحالي:</p>
-                    <p>3000 د.إ</p>
+                    <p>{{$user->wallet}} د.إ</p>
                 </li>
                 <li>
                     <p>الحد المتاح:</p>
-                    <p>3000 د.إ</p>
+                    <p>{{$user->available_limit}} د.إ</p>
                 </li>
             </ul>
 
             <div class="limit-choice">
                 <h5 class="title">اختر الحد الخاص بك</h5>
+                <form action="{{route('front.choose_available_limit')}}" method="post">
+                    @csrf
                 <div class="bid-input">
                     <span class="minus" id="minus">
                         <i class="fal fa-minus"></i>
                     </span>
-                    <h4>د.إ</h4>
-                    <input type="number" name="bid-value" id="bidInput" value="26000" />
+                    <h4>ريال </h4>
+                    <input type="number" name="available_limit" id="bidInput" value="{{$user->available_limit}}" />
                     <span class="plus" id="plus">
                         <i class="fal fa-plus"></i>
                     </span>
                 </div>
+
+                    <button class="submit-btn btn btn-primary submit-btn"> {{trans('messages.save')}}</button>
+                </form>
+
+
             </div>
             <div class="payment-method">
                 <h5 class="title">اختر طريقة الدفع</h5>

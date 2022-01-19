@@ -7,6 +7,8 @@
         <main class="ad-main-details">
             <div class="container">
                 <div class="row">
+                    @include('Dashboard.layouts.parts.validation_errors')
+
                     <div class="col-lg-5 d-flex align-items-center">
                         <a class="navbar-brand" href="{{route('front.home')}}">
                             <i class="fal fa-calendar-alt"></i>
@@ -19,8 +21,6 @@
                             Start_at: {{ ($auction->start_date->format('l, m/d/Y  h:s') ) }}
                         </p>
                         <p class="ticket"><i class="fal fa-ticket"></i>{{ ($auction->count_of_buyer ) }}</p>
-
-
                         <div class="row">
                             <div class="col-sm-4 col-6">
                                 <p><i class="fal fa-tag"></i>{{($auction->value_of_increment)}}</p>
@@ -69,13 +69,14 @@
 {{--                            <h4>التفاصيل</h4>--}}
                         </div>
                         <div class="bid-details" id="bidDetails">
-                            <form action="">
+                            <form action="{{route('front.make_bid',$auction->id)}}" method="post">
+                                    @csrf
                                 <div class="bid-input">
                                     <span class="minus" id="minus">
                                         <i class="fal fa-minus"></i>
                                     </span>
                                     <h4>ريال سعودي</h4>
-                                    <input type="number" name="bid-value" id="bidInput" value="{{($auction->current_price)}}" />
+                                    <input type="number" name="buyer_offer" id="bidInput" value="{{($auction->current_price)}}" />
                                     <span class="plus" id="plus">
                                         <i class="fal fa-plus"></i>
                                     </span>
@@ -121,7 +122,11 @@
                                         {{$auction->$description}}
                                     </p>
                                 </div>
-                                <input type="submit" class="submit-btn" value="{{trans('messages.auction.make_bid')}}">
+
+                                <div class="sign-btn">
+                                    <button type="submit" class="btn btn-primary submit-btn">l{{trans('messages.auction.make_bid')}}</button>
+                                </div>
+{{--                                <input type="submit" class="submit-btn" value="{{trans('messages.auction.make_bid')}}">--}}
                             </form>
                         </div>
                     </div>

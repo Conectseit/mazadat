@@ -1,5 +1,5 @@
 @extends('front.layouts.master')
-@section('title', trans('messages.notification.notifications'))
+@section('title', trans('messages.auction.my_bids'))
 @section('style')
     <style></style>
 @endsection
@@ -48,7 +48,7 @@
                             <div class="col-lg-2">
                                 <div class="buttons">
                                     <a href="{{route('front.auction_details',$auction->id)}}" class="bid"> متابعة</a>
-                                    <a href="#" class="remove">الخروج</a>
+                                    <a href="{{route('front.cancel_bid_auction',$auction->id)}}" class="remove">الخروج</a>
                                 </div>
                             </div>
                         </div>
