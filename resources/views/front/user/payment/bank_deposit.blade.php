@@ -29,16 +29,24 @@
                     <div class="col-md-6">
                         <ul>
                             <li>
-                                <p>الهاتف:</p>
-                                <p>5588802 | 9721515615</p>
+                                <p>account_name:</p>
+                                <p>{{$account_name}}</p>
                             </li>
                             <li>
-                                <p>فاكس:</p>
-                                <p>9721515615</p>
+                                <p>bank_name:</p>
+                                <p>{{$bank_name}}</p>
                             </li>
                             <li>
-                                <p>البريد الالكترونى:</p>
-                                <p>mazadat@hr.com.uae</p>
+                                <p> account_number:</p>
+                                <p>{{$account_number}}</p>
+                            </li>
+                            <li>
+                                <p> branch:</p>
+                                <p>{{$branch}}</p>
+                            </li>
+                            <li>
+                                <p> iban:</p>
+                                <p>{{$iban}}</p>
                             </li>
                         </ul>
                     </div>

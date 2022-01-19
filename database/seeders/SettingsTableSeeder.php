@@ -28,9 +28,12 @@ class SettingsTableSeeder extends Seeder
             ['key' => 'fax', 'value' => '9661111111', 'created_at' => now(), ],
             ['key' => 'address', 'value' => 'جدة', 'created_at' => now(), ],
 
-            ['key' => 'account_name', 'value' => 'Mazadat', 'created_at' => now(), ],
-            ['key' => 'bank_name', 'value' => 'QNB', 'created_at' => now(), ],
-            ['key' => 'iban', 'value' => 'abcdef123456789', 'created_at' => now(), ],
+            ['key' => 'bank_name_ar', 'value' => 'بنك الرياض', 'created_at' => now(), ],
+            ['key' => 'bank_name_en', 'value' => 'Riyad Bank', 'created_at' => now(), ],
+            ['key' => 'account_name', 'value' => 'مؤسسة مزادات للتسويق', 'created_at' => now(), ],
+            ['key' => 'account_number', 'value' => '2461921249940', 'created_at' => now(), ],
+            ['key' => 'iban', 'value' => 'SA2620000002461921249940', 'created_at' => now(), ],
+            ['key' => 'branch', 'value' => 'العقيق', 'created_at' => now(), ],
 
             //social
             ['key' => 'facebook_url', 'value' => 'https://www.facebook.com/', 'created_at' => now(), ],

@@ -185,6 +185,11 @@ return [
         'min_duration_of_auction' => 'أقل مدة للمزاد',
         'hour' => 'ساعة',
         'day' => 'يوم',
+        'bank_settings' => 'اعدادات الحساب البنكي',
+        'bank_name_ar' => 'اسم البنك باللغة العربية ',
+        'bank_name_en' => 'اسم البنك باللغة العربية ',
+        'account_number' => ' رقم الحساب ',
+        'branch' => ' فرع ',
 
         'appearance_of_ended_auctions' => 'ظهور المزادات المنتهية في التطبيق',
     ],

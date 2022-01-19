@@ -19,7 +19,15 @@ class PaymentController extends Controller
 
     public function bank_deposit()
     {
-        return view('front.user.payment.bank_deposit');
+
+        $bank_name= 'bank_name_'.app()->getLocale();
+        $data['bank_name'] = Setting::where('key',$bank_name)->first()->value;
+
+        $data['account_name'] = Setting::where('key', 'account_name')->first()->value;
+        $data['account_number'] = Setting::where('key', 'account_number')->first()->value;
+        $data['branch'] = Setting::where('key', 'branch')->first()->value;
+        $data['iban'] = Setting::where('key', 'iban')->first()->value;
+        return view('front.user.payment.bank_deposit',$data);
     }
     public function online_payment()
     {

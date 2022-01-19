@@ -17,12 +17,18 @@ class BankResource extends JsonResource
     {
 
         $account_name = Setting::where('key', 'account_name')->first()->value;
-        $bank_name = Setting::where('key', 'bank_name')->first()->value;
+        $account_number = Setting::where('key', 'account_number')->first()->value;
+        $branch = Setting::where('key', 'branch')->first()->value;
+
+        $bank_name= 'bank_name_'.app()->getLocale();
+        $bank_namee = Setting::where('key',$bank_name)->first()->value;
+
         $iban = Setting::where('key', 'iban')->first()->value;
-//        $name = 'name_' . app()->getLocale();
         return [
+            'bank_name'         =>$bank_namee,
             'account_name'      =>$account_name,
-            'bank_name'         =>$bank_name,
+            'account_number'    =>$account_number,
+            'branch'            =>$branch,
             'IBAN'              =>$iban,
         ];
 
