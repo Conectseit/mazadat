@@ -462,6 +462,7 @@ return [
     'send' => ' ارسال',
     'seller/buyer' => ' النوع:(صاحب مزاد /مشتري)',
     'activation_code' => ' كود التفعيل',
+    'enter_activation_code' => 'اكتب الكود ',
     'register_success' => 'تم التسجيل بنجاح',
     'wrong_code' => 'عفوا كود التحقق غير صحيح',
     'activation_code_required' => 'عفوا كود التفعيل مطلوب',

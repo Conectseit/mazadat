@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\front;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\LoginRequest;
 use App\Http\Requests\Front\RegisterRequest;
@@ -50,7 +51,7 @@ class AuthController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('front.show_activation');
         }
-        }
+    }
 
     public function show_activation()
     {
@@ -59,11 +60,19 @@ class AuthController extends Controller
 
     public function checkCode(Request $request)
     {
-        if ($request->activation_code == null) return back()->with('error', trans('messages.activation_code_required'));
+//        if ($request->code1 == null || $request->code2 == null || $request->code3 == null || $request->code4 == null)
+//            return back()->with('error', trans('messages.activation_code_required'));
+//
+//        $code = $request->code4 . $request->code3 . $request->code2 . $request->code1;
+//
+//        $user = User::where('activation_code', $code)->first();
+
+        if ($request->activation_code == null)
+            return back()->with('error', trans('messages.activation_code_required'));
 
         $user = User::where('activation_code', $request->activation_code)->first();
 
-        if (!$user) return back()->with('error',trans('messages.wrong_code'));
+        if (!$user) return back()->with('error', trans('messages.wrong_code'));
 
         if (!$user->update(['activation_code' => null, 'is_active' => 'active'])) return back()->with('error', 'حدث خطا, حاول مره اخري');
         return redirect()->route('front.show_register')->with('success', trans('messages.register_success'));
@@ -97,10 +106,6 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->route('front.home');
     }
-
-
-
-
 
 
 }

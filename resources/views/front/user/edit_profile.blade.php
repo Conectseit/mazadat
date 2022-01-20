@@ -159,6 +159,7 @@
             </div>
         </div>
     </div>
+    <!-- bio-modal -->
 </section>
 @stop
 

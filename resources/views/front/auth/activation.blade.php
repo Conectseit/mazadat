@@ -31,7 +31,7 @@
     @include('front.auctions.head')
     <section class="sign-up-page">
         <div class="container">
-            <h4 class="title"> {{ trans('messages.activation') }}</h4>
+{{--            <h4 class="title"> {{ trans('messages.activation') }}</h4>--}}
 {{--            @include('Dashboard.layouts.parts.validation_errors')--}}
 
             @if(session()->has('error'))
@@ -54,35 +54,19 @@
                                 <label for="full_name" class="form-label">{{trans('messages.activation_code')}}</label>
                             </div>
                             <div class="col-lg-8 col-md-10">
-                                <input type="text" class="form-control d-none" id="activation_code" name="activation_code"
-                                       placeholder="{{trans('messages.activation_code')}}">
+{{--                                <input type="text" class="form-control d-none" id="activation_code" name="activation_code"--}}
+{{--                                       placeholder="{{trans('messages.activation_code')}}">--}}
                                 <div class="box">
-                                    <strong class="text-dark">{{trans('messages.activation_code')}}</strong>
-                                    <input type="text" class="code" tabindex="1" maxlength="1">
-                                    <input type="text" class="code" tabindex="2" maxlength="1">
-                                    <input type="text" class="code" tabindex="3" maxlength="1">
-                                    <input type="text" class="code" tabindex="4" maxlength="1">
+{{--                                    <strong class="text-dark">{{trans('messages.activation_code')}}</strong>--}}
+                                    <input type="text" class="code"  name="activation_code"  maxlength="4" style="width: 120px;"
+                                           placeholder="{{trans('messages.enter_activation_code')}}">
+
+                                    {{--   <input type="text" class="code"  name="code1" tabindex="1" maxlength="1">--}}
+{{--                                    <input type="text" class="code"  name="code2" tabindex="2" maxlength="1">--}}
+{{--                                    <input type="text" class="code"  name="code3" tabindex="3" maxlength="1">--}}
+{{--                                    <input type="text" class="code"  name="code4" tabindex="4" maxlength="1">--}}
                                 </div>
                             </div>
-
-
-
-
-
-{{--                            <div class="row text-center" style="padding-left: 40px;">--}}
-{{--                                <div class="col-3">--}}
-{{--                                    <input class="num" maxlength="1" style="text-align: center;font-size: 42px;" name="code0" type="text">--}}
-{{--                                </div>--}}
-{{--                                <div class="col-3">--}}
-{{--                                    <input class="num" maxlength="1" style="text-align: center;font-size: 42px;" name="code1" type="text">--}}
-{{--                                </div>--}}
-{{--                                <div class="col-3">--}}
-{{--                                    <input class="num" maxlength="1" style="text-align: center;font-size: 42px;" name="code2" type="text">--}}
-{{--                                </div>--}}
-{{--                                <div class="col-3">--}}
-{{--                                    <input class="num" maxlength="1" style="text-align: center;font-size: 42px;" name="code3" type="text">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                         </div>
 
                         <div class="sign-btn row">

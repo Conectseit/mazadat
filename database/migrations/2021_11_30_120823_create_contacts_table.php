@@ -22,7 +22,7 @@ class CreateContactsTable extends Migration
             $table->string('mobile')->nullable();
             $table->text('message')->nullable();
             $table->timestamp('read_at')->nullable();
-            $table->text('admin_reply')->text('');
+            $table->text('admin_reply')->nullable()->text('');
             $table->timestamps();
             $table->softDeletes();
 

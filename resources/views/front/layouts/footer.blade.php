@@ -4,10 +4,10 @@
         color: #d1915c;
         border: 0;
     }
-
 </style>
 <footer>
 {{--    @inject('settings', 'App\Models\Setting')--}}
+    @inject('latest_auctions', 'App\Models\Auction')
     @php($about= 'about_app_'.app()->getLocale())
     @php($terms= 'conditions_terms_'.app()->getLocale())
     @php($app_description= 'app_description_'.app()->getLocale())
@@ -92,10 +92,6 @@
 {{--                                    </div>--}}
 
 
-
-
-
-
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
@@ -122,9 +118,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
             <div class="col-lg-5">
@@ -133,7 +126,7 @@
                         <div class="ul-parent">
                             <h4 class="footer-title">
                                 <span class="sq"></span>
-                                المزادات
+                                المزادات المميزة
                             </h4>
                             <ul>
                                 <li><a href="#">المركبات والمعدات</a></li>
@@ -149,10 +142,10 @@
                                 مزادات
                             </h4>
                             <ul>
-                                <li><a href="#">عن الامارات للمزادات</a></li>
+                                <li><a href="{{route('front.about_app')}}">{{trans('messages.about_app')}}</a></li>
                                 <li><a href="#">اتصل بنا</a></li>
-                                <li><a href="#">نتائج المزاد العقاري</a></li>
-                                <li><a href="#">التسجيل</a></li>
+                                <li><a href="#">نتائج المزادات </a></li>
+                                <li><a href="{{route('front.show_register')}}">التسجيل</a></li>
                             </ul>
                         </div>
                     </div>
@@ -160,14 +153,13 @@
                         <div class="ul-parent">
                             <h4 class="footer-title">
                                 <span class="sq"></span>
-                                المزادات
+                                   احدث المزادات
                             </h4>
                             <ul>
-                                <li><a href="#">لوحات ابوظبي المميزة</a></li>
-                                <li><a href="#">لوحات رأس الخيمة المميزة</a></li>
-                                <li><a href="#">لوحات ام القيوين المميزة</a></li>
-                                <li><a href="#">لوحات الفجيرة المميزة</a></li>
-                                <li><a href="#">لوحات الشارقة المميزة</a></li>
+                                @foreach($latest_auctions ->orderBy('id', 'desc')->take(4)->get() as $auction)
+
+                                <li><a href="#">{{$auction->$name}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="ul-parent">
@@ -177,10 +169,10 @@
                             </h4>
                             <ul>
                                 <li><a href="#">هل نسيت كلمة المرور؟</a></li>
-                                <li><a href="#">الاسئلة المتكررة</a></li>
-                                <li><a href="#">التسجيل</a></li>
-                                <li><a href="#">التأمين</a></li>
-                                <li><a href="#">المزايدة</a></li>
+                                <li><a href="{{route('front.questions')}}">{{trans('messages.question.questions')}} </a></li>
+{{--                                <li><a href="#">التسجيل</a></li>--}}
+{{--                                <li><a href="#">التأمين</a></li>--}}
+{{--                                <li><a href="#">المزايدة</a></li>--}}
                             </ul>
                         </div>
                     </div>
@@ -211,9 +203,8 @@
             <div class="row">
                 <div class="col-lg-6">
                     <p>
-                        الامارات للمزادات 2004 - 2021 &copy; جميع الحقوق محفوظة
+                        مؤسسة مزادات للتسويق  - 202 &copy; جميع الحقوق محفوظة
                     </p>
-
                 </div>
                 <div class="col-lg-6">
                     <div class="payment-brands">

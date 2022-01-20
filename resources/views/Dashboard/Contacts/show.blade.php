@@ -1,12 +1,9 @@
 @extends('Dashboard.layouts.master')
 
 @section('title', trans('messages.contact.contacts'))
-
-@section('content')
-
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
+<!-- Page header -->
+<div class="page-header page-header-default">
+    @section('breadcrumb')
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
                 <li><a href=""><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
@@ -14,14 +11,15 @@
                 <li><a href="{{ route('contacts.index') }}"><i
                             class="icon-admin position-left"></i> @lang('messages.contact.contacts')</a></li>
                 <li class="active">@lang('messages.show-var',['var'=>trans('messages.contact.contacts')])</li>
-
             </ul>
 
             @include('Dashboard.layouts.parts.quick-links')
         </div>
-        @endsection
-    </div>
-    <!-- /page header -->
+    @endsection
+</div>
+<!-- /page header -->
+@section('content')
+
 
 
     @include('Dashboard.layouts.parts.validation_errors')
@@ -42,7 +40,7 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-lg-3">{{ trans('messages.contact.name') }} :</label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" value="{{ $contact->name }}" readonly>
+                                        <input type="text" class="form-control" value="{{ $contact->full_name }}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -57,14 +55,9 @@
                                         <input type="text" class="form-control" value="{{ $contact->mobile }}" readonly>
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
-                                    <label class="col-form-label col-lg-3">{{ trans('messages.contact.title') }} :</label>
-                                    <div class="col-lg-9">
-                                        <input type="text" class="form-control" value="{{ $contact->title }}" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-form-label col-lg-3">{{ trans('messages.contact.title') }} :</label>
+                                    <label class="col-form-label col-lg-3">{{ trans('messages.contact.message') }} :</label>
                                     <div class="col-lg-9">
                                         <textarea class="form-control" readonly>{{ $contact->message }}</textarea>
                                     </div>

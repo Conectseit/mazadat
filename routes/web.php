@@ -47,6 +47,8 @@ Route::group(
 // ============ /for auth ================
 
 
+    Route::post('contact_us', [GeneralController::class, 'contact_us'])->name('front.contact_us');
+
     Route::get('questions', [GeneralController::class, 'questions'])->name('front.questions');
     Route::get('about_app', [GeneralController::class, 'about_app'])->name('front.about_app');
     Route::get('category/{id}/auctions', [AuctionController::class, 'categoryAuctions'])->name('front.category_auctions');

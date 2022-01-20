@@ -65,7 +65,6 @@
                 <a class="navbar-brand" href="{{route('front.home')}}">
                     <img src="{{asset('Front/assets/imgs/logo.svg')}}" alt="logo" width="250">
                 </a>
-
             </div>
 
             <div class="col-lg-3 col-sm-4 col-7 nav-col">
@@ -74,7 +73,8 @@
                     <p class="clock" id="time"></p>
                     <p class="day"><span class="name px-2" id="day_d">الثلاثاء</span><span class="number"
                                                                                            id="day_n">02</span></p>
-                    <h3 class="month-year"><span class="month px-2" id="day_m">نوفمبر</span><span class="year" id="year_h"></span>
+                    <h3 class="month-year"><span class="month px-2" id="day_m">نوفمبر</span><span class="year"
+                                                                                                  id="year_h"></span>
                     </h3>
                 </div>
             </div>
@@ -102,7 +102,10 @@
                                             {{trans('messages.question.questions')}}</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link hvr-shutter-out-horizontal" href="#">اتصل بنا</a>
+                                        <a href="#" class="nav-link hvr-shutter-out-horizontal" data-bs-toggle="modal"
+                                           data-bs-target="#contact-modal"
+                                        >اتصل بنا</a>
+
                                     </li>
                                 </ul>
                             </div>
@@ -120,24 +123,26 @@
                                     {{--                                           href="{{route('front.show_login')}}">الدخول</a>--}}
                                     {{--                                    </li>--}}
 
-{{--                                    <li class="nav-item">--}}
-{{--                                        @if( app()->isLocale('en') )--}}
-{{--                                            <a class="nav-link hvr-shutter-out-horizontal"--}}
-{{--                                               href="{{ isLocalized("ar") }}">AR </a>--}}
-{{--                                        @else--}}
-{{--                                            <a class="nav-link hvr-shutter-out-horizontal"--}}
-{{--                                               href="{{ isLocalized("en") }}">ENG US</a>--}}
-{{--                                        @endif--}}
-{{--                                    </li>--}}
+                                    {{--                                    <li class="nav-item">--}}
+                                    {{--                                        @if( app()->isLocale('en') )--}}
+                                    {{--                                            <a class="nav-link hvr-shutter-out-horizontal"--}}
+                                    {{--                                               href="{{ isLocalized("ar") }}">AR </a>--}}
+                                    {{--                                        @else--}}
+                                    {{--                                            <a class="nav-link hvr-shutter-out-horizontal"--}}
+                                    {{--                                               href="{{ isLocalized("en") }}">ENG US</a>--}}
+                                    {{--                                        @endif--}}
+                                    {{--                                    </li>--}}
                                     <li class="nav-item">
-                                            <div class="nav-link ">
+                                        <div class="nav-link ">
                                                 <span class="bg-{{ app()->isLocale('ar') ? 'green' : 'white' }}  ">
-                                                    <a href="{{ isLocalized("ar") }}" class="arabic">@lang('messages.ar.ar')</a>
+                                                    <a href="{{ isLocalized("ar") }}"
+                                                       class="arabic">@lang('messages.ar.ar')</a>
                                                 </span>
-                                                <span class="bg-{{ app()->isLocale('en') ? 'green' : 'white' }} ">
-                                                   <a href="{{ isLocalized("en") }}" class="arabic">@lang('messages.en.en')</a>
+                                            <span class="bg-{{ app()->isLocale('en') ? 'green' : 'white' }} ">
+                                                   <a href="{{ isLocalized("en") }}"
+                                                      class="arabic">@lang('messages.en.en')</a>
                                                 </span>
-                                            </div>
+                                        </div>
                                     </li>
 
                                     {{--when authinticate--}}
@@ -166,6 +171,66 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- contact-modal -->
+        <div class="modal user-modal bio-modal fade" id="contact-modal" tabindex="-1"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form action="{{route('front.contact_us')}}" method="post">
+                        @csrf
+                        <div class="modal-header">
+                            {{--                            <h5 class="modal-title" id="exampleModalLabel">قم بتغيير سيرتك الذاتية</h5>--}}
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group mb-4 row">
+                                <div class="col-lg-10 col-md-9">
+                                    <input type="email" class="form-control"  name="full_name"
+                                           placeholder="{{trans('messages.enter_full_name')}}">
+                                </div>
+                            </div>
+                            <div class="form-group mb-4 row">
+                                <div class="col-lg-10 col-md-9">
+                                    <input type="email" class="form-control"  name="mobile"
+                                           placeholder="{{trans('messages.enter_mobile')}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="email" value="{{ old('email') }}"
+                                       class="form-control @error('email') is-invalid @enderror"
+                                       placeholder="{{trans('messages.enter_email')}}">
+                                @error('email') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror
+                            </div><br>
+{{--                            <div class="form-group mb-4 row">--}}
+{{--                                <div class="col-lg-10 col-md-9">--}}
+{{--                                    <input type="email" class="form-control"  name="email"--}}
+{{--                                           placeholder="{{trans('messages.enter_email')}}">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+                            <div class="form-group ">
+                                <div class="col-lg-10 col-md-9">
+                                      <textarea  cols="50" name="message"
+                                                placeholder="{{trans('messages.enter_message')}} ">
+
+                                     </textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary add">اضافة</button>
+                            <button type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal">الغاء
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- contact-modal -->
     </div>
 </nav>
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>

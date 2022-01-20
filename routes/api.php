@@ -42,6 +42,9 @@ Route::group(['namespace' => 'Api'], function () {
     //=========== questions ============
     Route::get('questions', [QuestionController::class, 'index']);
 
+    //=========== contact_us ============
+    Route::post('contact_us', [QuestionController::class, 'contact_us']);
+
     //=========== settings ============
 //    Route::get('settings/{key?}', [SettingController::class, 'show']);
     Route::get('our_officers', [SettingController::class, 'our_officers']);
