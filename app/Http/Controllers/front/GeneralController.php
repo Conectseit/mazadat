@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Front\user\AuthContactRequest;
 use App\Http\Requests\Front\user\ContactRequest;
 use App\Models\CommonQuestion;
 use App\Models\Contact;
@@ -28,6 +29,16 @@ class GeneralController extends Controller
     public function contact_us(ContactRequest $request)
     {
          Contact::create($request->all());
+        return back()->with('success', trans('messages.added_success'));
+    }
+
+    public function auth_contact(AuthContactRequest $request)
+    {
+        $contact = Contact::create($request->all()+[
+                'full_name'=>auth()->user()->full_name,
+                'mobile'=>auth()->user()->mobile,
+                'email'=>auth()->user()->email,
+            ]);
         return back()->with('success', trans('messages.added_success'));
     }
 }

@@ -38,6 +38,5 @@ class ContactController extends Controller
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
         }
-        return redirect()->route('cities.index');
     }
 }

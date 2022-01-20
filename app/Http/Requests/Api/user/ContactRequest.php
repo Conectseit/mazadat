@@ -5,7 +5,7 @@ namespace App\Http\Requests\Api\user;
 use App\Http\Requests\REQUEST_API_PARENT;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ContactUsRequest extends REQUEST_API_PARENT
+class ContactRequest extends REQUEST_API_PARENT
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,6 @@ class ContactUsRequest extends REQUEST_API_PARENT
     public function rules()
     {
         return [
-            'full_name'         => 'required',
-            'mobile'            => 'required',
-            'email'             => 'required|email',
             'message'           => 'required',
         ];
     }

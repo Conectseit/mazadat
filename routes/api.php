@@ -67,7 +67,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('auction/{id}', [AuctionController::class, 'auction']);
 
     Route::group(['middleware' => 'jwt.auth'], function () {
-
+        Route::post('auth_contact', [QuestionController::class, 'auth_contact']);
         //=========== User_profile ============
         Route::get('my_profile', [AuthController::class, 'showProfile']);
         Route::post('update_my_profile', [AuthController::class, 'updateProfile']);

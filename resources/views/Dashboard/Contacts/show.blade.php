@@ -10,7 +10,7 @@
                 </li>
                 <li><a href="{{ route('contacts.index') }}"><i
                             class="icon-admin position-left"></i> @lang('messages.contact.contacts')</a></li>
-                <li class="active">@lang('messages.show-var',['var'=>trans('messages.contact.contacts')])</li>
+                <li class="active">@lang('messages.show',['var'=>trans('messages.contact.contacts')])</li>
             </ul>
 
             @include('Dashboard.layouts.parts.quick-links')
@@ -72,9 +72,7 @@
                     <!-- /basic layout -->
                 </div>
             </div>
-
         </div>
-
     </div>
     <!-- /basic datatable -->
 @stop

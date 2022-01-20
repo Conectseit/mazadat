@@ -22,8 +22,8 @@
 
                     $.ajax({
                         type: 'POST',
-                        url: '{{ Url('dashboard/ajax-delete-' . $model) }}',
-                        {{--url: '{{ route('ajax-delete-' . $model) }}',--}}
+                        {{--url: '{{ Url('dashboard/ajax-delete-' . $model) }}',--}}
+                        url: '{{ route('ajax-delete-' . $model) }}',
                         {{--url: '{{ Url('/'.$model.'/'.$model.'/'.$model->id) }}',--}}
                         {{--url: '{{ route('categories.destroy',$category->id) }}',--}}
                         data: {id: id},

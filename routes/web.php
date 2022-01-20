@@ -56,6 +56,7 @@ Route::group(
 
     Route::group(['middleware' => 'checkUserAuth'], function () {
         Route::any('/logout', [AuthController::class, 'logout'])->name('front.logout');
+        Route::post('auth_contact', [GeneralController::class, 'auth_contact'])->name('front.auth_contact');
 
         Route::post('make_bid/{id}', [AuctionController::class, 'make_bid'])->name('front.make_bid');
         Route::get('my_bids', [AuctionController::class, 'my_bids'])->name('front.my_bids');

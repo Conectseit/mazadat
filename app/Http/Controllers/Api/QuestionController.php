@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PARENT_API;
+use App\Http\Requests\Api\user\ContactRequest;
 use App\Http\Requests\Api\user\ContactUsRequest;
 use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Http\Resources\Api\CategoryResource;
@@ -26,6 +27,16 @@ class QuestionController extends PARENT_API
     public function contact_us(ContactUsRequest $request)
     {
         $contact = Contact::create($request->all());
+        return responseJson(true, trans('api.message_send_successfully'),$contact );
+    }
+
+    public function auth_contact(ContactRequest $request)
+    {
+        $contact = Contact::create($request->all()+[
+            'full_name'=>auth()->user()->full_name,
+            'mobile'=>auth()->user()->mobile,
+            'email'=>auth()->user()->email,
+            ]);
         return responseJson(true, trans('api.message_send_successfully'),$contact );
     }
 

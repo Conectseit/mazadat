@@ -453,6 +453,7 @@ return [
     'register' => 'تسجيل مستخدم جديد',
     'add_new_user' => 'تسجيل مستخدم جديد',
     'personal_info' => 'البيانات الشخصية',
+    'enter_message' => '  اكتب رسالتك ',
     'enter_full_name' => 'ادخل الاسم كامل ',
     'enter_email' => 'ادخل البريد الالكترونى',
     'enter_mobile' => 'ادخل رقم الجوال',

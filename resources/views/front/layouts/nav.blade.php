@@ -101,16 +101,20 @@
                                            href="{{route('front.questions')}}">
                                             {{trans('messages.question.questions')}}</a>
                                     </li>
+                                    @if(auth()->check())
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link hvr-shutter-out-horizontal" data-bs-toggle="modal"
+                                               data-bs-target="#contact-modal1">اتصل بنا</a>
+                                        </li>
+                                    @else
                                     <li class="nav-item">
                                         <a href="#" class="nav-link hvr-shutter-out-horizontal" data-bs-toggle="modal"
-                                           data-bs-target="#contact-modal"
-                                        >اتصل بنا</a>
-
+                                           data-bs-target="#contact-modal">اتصل بنا</a>
                                     </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
-
                         <div class="col-lg-6 nav-col">
                             <div class="user-links">
                                 <ul class="navbar-nav">
@@ -171,66 +175,7 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- contact-modal -->
-        <div class="modal user-modal bio-modal fade" id="contact-modal" tabindex="-1"
-             aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <form action="{{route('front.contact_us')}}" method="post">
-                        @csrf
-                        <div class="modal-header">
-                            {{--                            <h5 class="modal-title" id="exampleModalLabel">قم بتغيير سيرتك الذاتية</h5>--}}
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-
-                            <div class="form-group mb-4 row">
-                                <div class="col-lg-10 col-md-9">
-                                    <input type="email" class="form-control"  name="full_name"
-                                           placeholder="{{trans('messages.enter_full_name')}}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-4 row">
-                                <div class="col-lg-10 col-md-9">
-                                    <input type="email" class="form-control"  name="mobile"
-                                           placeholder="{{trans('messages.enter_mobile')}}">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" name="email" value="{{ old('email') }}"
-                                       class="form-control @error('email') is-invalid @enderror"
-                                       placeholder="{{trans('messages.enter_email')}}">
-                                @error('email') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror
-                            </div><br>
-{{--                            <div class="form-group mb-4 row">--}}
-{{--                                <div class="col-lg-10 col-md-9">--}}
-{{--                                    <input type="email" class="form-control"  name="email"--}}
-{{--                                           placeholder="{{trans('messages.enter_email')}}">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-                            <div class="form-group ">
-                                <div class="col-lg-10 col-md-9">
-                                      <textarea  cols="50" name="message"
-                                                placeholder="{{trans('messages.enter_message')}} ">
-
-                                     </textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary add">اضافة</button>
-                            <button type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal">الغاء
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- contact-modal -->
+        @include('front.layouts.modal')
     </div>
 </nav>
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
