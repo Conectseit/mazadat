@@ -478,7 +478,9 @@ return [
     'sorry_you_cant_make_bid_your_available_limit_less_than_this_value'  =>'عفوا لا يمكنك المزايدة الان لان القيمة المسموحة من محفظتك اقل من قيمة المزايدة ',
     'request_done_successfully' 	=> 'تم الطلب بنجاح',
     'updated_successfully'         	=> 'تم التحديث بنجاح',
-    'you_should_charge_your_wallet_first'         	=> '  عفوا يجب شحن محفظتك أولا',
+    'you_should_charge_your_wallet_first'         	=> ' عفوا يجب شحن محفظتك أولا',
+    'amount'         	=> 'المبلغ',
+    'enter_amount_you_will_pay'         	=> 'اكتب المبلغ الذي تريد تحويله الي محفظتك',
 
 
 

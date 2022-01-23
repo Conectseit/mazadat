@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\NationalityController;
 use App\Http\Controllers\Api\NotificationController;
+use App\Http\Controllers\Api\payment\PaymentController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\User\UserController;
@@ -76,7 +77,6 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('change_password', [AuthController::class, 'changePassword']);
         Route::post('add_traffic_file_number', [UserController::class, 'add_traffic_file_number']);
         Route::post('upload_passport', [UserController::class, 'upload_passport']);
-        Route::post('upload_payment_receipt', [UserController::class, 'upload_payment_receipt']);
         Route::post('add_document', [UserController::class, 'add_document']);
         Route::post('choose_available_limit', [UserController::class, 'choose_available_limit']);
         Route::any('my_wallet', [UserController::class, 'my_wallet']);
@@ -102,6 +102,10 @@ Route::group(['namespace' => 'Api'], function () {
         //=========== notifications ============
         Route::get('notifications', [NotificationController::class, 'index']);
 
+        //=========== payment ============
+        Route::post('upload_payment_receipt', [PaymentController::class, 'upload_payment_receipt']);
+        Route::post('send_payment', [PaymentController::class, 'sendPayment']);
+        Route::get('success-payment', [PaymentController::class, 'successPayment']);
     });
 });
 

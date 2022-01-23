@@ -15,6 +15,8 @@
                 </ol>
             </nav>
         </div>
+        @include('Dashboard.layouts.parts.validation_errors')
+
         <div class="wallet-balance">
             <div class="container">
                 <div class="balance-content">
@@ -38,7 +40,16 @@
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <a href="#" class="pay-link">ادفع</a>
+                        <form action="{{ route('front.send_payment') }}" method="post">
+                            @csrf
+                            <div class="form-group">
+                             <label for="amount" class="form-label">{{trans('messages.enter_amount_you_will_pay')}}</label>
+                                <div class="">
+                                    <input type="number" class="form-control"  name="amount" placeholder="{{trans('messages.amount')}}">
+                                </div>
+                            </div>
+                            <input type="submit" class="pay-link" value="إدفع">
+                        </form>
                     </div>
                 </div>
             </div>

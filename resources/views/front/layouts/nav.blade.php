@@ -164,7 +164,7 @@
                                     @else
                                         <li class="nav-item">
                                             <a class="nav-link hvr-shutter-out-horizontal" id="signInBtn"
-                                               href="{{route('front.show_login')}}">الدخول</a>
+                                               href="{{route('front.home')}}">الدخول</a>
                                         </li>
                                     @endif
 

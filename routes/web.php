@@ -42,7 +42,7 @@ Route::group(
     Route::post('register', [AuthController::class, 'register'])->name('front.register');
     Route::get('show_activation', [AuthController::class, 'show_activation'])->name('front.show_activation');
     Route::post('check_code', [AuthController::class, 'checkCode'])->name('front.check_code');
-    Route::get('show_login', [AuthController::class, 'show_login'])->name('front.show_login');
+//    Route::get('show_login', [AuthController::class, 'show_login'])->name('front.show_login');
     Route::post('login', [AuthController::class, 'login'])->name('front.login');
 // ============ /for auth ================
 
@@ -76,8 +76,11 @@ Route::group(
         Route::any('choose_available_limit', [UserController::class, 'choose_available_limit'])->name('front.choose_available_limit');
         Route::any('my_wallet', [UserController::class, 'my_wallet'])->name('front.my_wallet');
         Route::any('cheque_payment', [PaymentController::class, 'cheque_payment'])->name('front.cheque_payment');
-        Route::any('online_payment', [PaymentController::class, 'online_payment'])->name('front.online_payment');
         Route::any('bank_deposit', [PaymentController::class, 'bank_deposit'])->name('front.bank_deposit');
+
+        Route::any('online_payment', [PaymentController::class, 'online_payment'])->name('front.online_payment');
+        Route::post('send-payment', [PaymentController::class, 'sendPayment'])->name('front.send_payment');
+        Route::get('success-payment', [PaymentController::class, 'successPayment'])->name('front.success_payment');
     });
 });
 

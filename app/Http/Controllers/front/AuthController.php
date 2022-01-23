@@ -28,7 +28,6 @@ class AuthController extends Controller
         $activation_code = random_int(0000, 9999);
         DB::beginTransaction();
         try {
-            $request_data = $request->all();
             $request_data = $request->except(['commercial_register_image']);
 
             if ($request->commercial_register_image) {

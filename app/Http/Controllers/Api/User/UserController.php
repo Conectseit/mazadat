@@ -31,16 +31,6 @@ class UserController extends PARENT_API
         $user->update($request_data);
         return responseJson(true, trans('api.uploaded_successfully'), null); //ACCEPTED
     }
-    public function upload_payment_receipt(UploadPaymentReceiptRequest $request)
-    {
-        $request_data = $request->except(['image']);
-        if ($request->image) {
-            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'payments');
-        }
-        $user = auth()->user();
-        $payment = Payment::create($request_data + ['user_id' => $user->id,'payment_type'=>'bank_deposit']);
-        return responseJson(true, trans('api.upload_receipt_successfully'), null); //ACCEPTED
-    }
 
     public function add_document(DocumentRequest $request)
     {
