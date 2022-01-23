@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SmsController;
+use App\Http\Requests\Api\user\UploadPaymentReceiptRequest;
+use App\Http\Requests\Front\user\UploadReceiptRequest;
 use App\Models\Payment;
 use App\Models\Setting;
 use App\Models\Transaction;
@@ -24,7 +27,6 @@ class PaymentController extends Controller
 
     public function bank_deposit()
     {
-
         $bank_name = 'bank_name_' . app()->getLocale();
         $data['bank_name'] = Setting::where('key', $bank_name)->first()->value;
 
@@ -32,7 +34,40 @@ class PaymentController extends Controller
         $data['account_number'] = Setting::where('key', 'account_number')->first()->value;
         $data['branch'] = Setting::where('key', 'branch')->first()->value;
         $data['iban'] = Setting::where('key', 'iban')->first()->value;
+        $data['swift_code'] = Setting::where('key', 'swift_code')->first()->value;
+        $data['routing_number'] = Setting::where('key', 'routing_number')->first()->value;
         return view('front.user.payment.bank_deposit', $data);
+    }
+
+    public  function send_sms_bank_info(Request $request)
+    {
+//        $bank_name = 'bank_name_' . app()->getLocale();
+        $data['bank_name'] = Setting::where('key', 'bank_name_ar')->first()->value;
+        $data['account_name'] = Setting::where('key', 'account_name')->first()->value;
+
+        $data['account_number'] = Setting::where('key', 'account_number')->first()->value;
+        $data['branch'] = Setting::where('key', 'branch')->first()->value;
+        $data['iban'] = Setting::where('key', 'iban')->first()->value;
+        $data['swift_code'] = Setting::where('key', 'swift_code')->first()->value;
+        $data['routing_number'] = Setting::where('key', 'routing_number')->first()->value;
+
+//        SmsController::send_sms(removePhoneZero(auth()->user()->mobile,'966'), trans('messages.bank_info', ['account_name' => $data['account_name']]));
+            return redirect()->route('front.bank_deposit')->with('success', trans('messages.message_sent_success'));
+    }
+
+
+    public function upload_receipt(UploadReceiptRequest $request)
+    {
+        $request_data = $request->except(['image']);
+        if ($request->image) {
+            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'payments');
+        }
+        $request_data['payment_type'] = 'bank_deposit';
+
+        $payment_receipt= auth()->user()->payments()->create($request_data);
+
+        auth()->user()->update(['wallet' => (int)(auth()->user()->wallet + round($request['amount']))]);
+        return back()->with('success', trans('messages.upload_receipt_successfully'));
     }
 
     public function online_payment()

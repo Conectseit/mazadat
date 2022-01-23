@@ -28,7 +28,7 @@ class UploadPaymentReceiptRequest extends REQUEST_API_PARENT
     {
         return [
             'image'     => 'required|image',
-            'amount'    => 'required|string',
+            'amount'    => 'required|numeric',
             'date'      => 'required|date',
         ];
     }

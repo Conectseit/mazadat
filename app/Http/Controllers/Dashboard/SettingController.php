@@ -47,6 +47,11 @@ class SettingController extends Controller
             Setting::where('key', 'iban')->update(['value' => $request->iban]);
         if ($request->branch)
             Setting::where('key', 'branch')->update(['value' => $request->branch]);
+        if ($request->branch)
+            Setting::where('key', 'swift_code')->update(['value' => $request->swift_code]);
+        if ($request->branch)
+            Setting::where('key', 'routing_number')->update(['value' => $request->routing_number]);
+
 
 
 

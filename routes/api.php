@@ -26,11 +26,11 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
 
 
 Route::group(['namespace' => 'Api'], function () {
+
+    //=========== auth ============
     Route::post('register', [AuthController::class, 'register']);
     Route::post('activation', [AuthController::class, 'activation']);
     Route::any('login', [AuthController::class, 'login']);
@@ -46,10 +46,8 @@ Route::group(['namespace' => 'Api'], function () {
     //=========== contact_us ============
     Route::post('contact_us', [QuestionController::class, 'contact_us']);
 
-    //=========== settings ============
-//    Route::get('settings/{key?}', [SettingController::class, 'show']);
-    Route::get('our_officers', [SettingController::class, 'our_officers']);
-    Route::get('bank', [SettingController::class, 'bank']);
+
+    //=========== general ============
     Route::get('cities', [CityController::class, 'cities']);
     Route::get('nationalities', [NationalityController::class, 'nationalities']);
     Route::get('about_app', [SettingController::class, 'about_app']);
@@ -69,6 +67,7 @@ Route::group(['namespace' => 'Api'], function () {
 
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::post('auth_contact', [QuestionController::class, 'auth_contact']);
+
         //=========== User_profile ============
         Route::get('my_profile', [AuthController::class, 'showProfile']);
         Route::post('update_my_profile', [AuthController::class, 'updateProfile']);
@@ -78,15 +77,8 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('add_traffic_file_number', [UserController::class, 'add_traffic_file_number']);
         Route::post('upload_passport', [UserController::class, 'upload_passport']);
         Route::post('add_document', [UserController::class, 'add_document']);
-        Route::post('choose_available_limit', [UserController::class, 'choose_available_limit']);
-        Route::any('my_wallet', [UserController::class, 'my_wallet']);
         Route::get('my_document', [UserController::class, 'my_document']);
         Route::get('my_passport', [UserController::class, 'my_passport']);
-
-
-
-//        Route::get('update_preferred_language', [UserController::class, 'updatePreferredLanguage']);
-//        Route::get('get_preferred_language', [UserController::class, 'getPreferredLanguage']);
 
 
 
@@ -102,7 +94,11 @@ Route::group(['namespace' => 'Api'], function () {
         //=========== notifications ============
         Route::get('notifications', [NotificationController::class, 'index']);
 
-        //=========== payment ============
+        //=========== payment ======================
+        Route::any('my_wallet', [UserController::class, 'my_wallet']);
+        Route::post('choose_available_limit', [UserController::class, 'choose_available_limit']);
+        Route::get('our_officers', [SettingController::class, 'our_officers']);
+        Route::get('bank', [SettingController::class, 'bank']);
         Route::post('upload_payment_receipt', [PaymentController::class, 'upload_payment_receipt']);
         Route::post('send_payment', [PaymentController::class, 'sendPayment']);
         Route::get('success-payment', [PaymentController::class, 'successPayment']);
@@ -114,6 +110,17 @@ Route::group(['namespace' => 'Api'], function () {
 
 
 
+
+
+
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//=========== settings ============
+//    Route::get('settings/{key?}', [SettingController::class, 'show']);
+
+
+//        Route::get('update_preferred_language', [UserController::class, 'updatePreferredLanguage']);
+//        Route::get('get_preferred_language', [UserController::class, 'getPreferredLanguage']);
 
 //Route::group([ 'namespace' => 'Api', 'prefix' => 'auth'], function ($router) {
 //    Route::post('/login', [AuthController::class, 'login']);

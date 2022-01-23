@@ -10,6 +10,30 @@
 <script src="{{asset('Front/assets/js/fa-pro.js')}}"></script>
 <script src="{{asset('Front/assets/js/main.js')}}"></script>
 
+
+
+
+
+
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+<script>
+    $(function () {
+        lightbox.option({
+            resizeDuration: 100,
+            fadeDuration: 300,
+            fitImagesInViewport: true,
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
 {{--<script>--}}
 {{--    @if(Session::has('messege'))--}}
 {{--    var type="{{Session::get('alert-type','info')}}"--}}

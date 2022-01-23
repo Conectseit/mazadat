@@ -75,12 +75,19 @@ Route::group(
 
         Route::any('choose_available_limit', [UserController::class, 'choose_available_limit'])->name('front.choose_available_limit');
         Route::any('my_wallet', [UserController::class, 'my_wallet'])->name('front.my_wallet');
+
+
+        //=========== payment ============
         Route::any('cheque_payment', [PaymentController::class, 'cheque_payment'])->name('front.cheque_payment');
         Route::any('bank_deposit', [PaymentController::class, 'bank_deposit'])->name('front.bank_deposit');
+        Route::any('send_sms_bank_info', [PaymentController::class, 'send_sms_bank_info'])->name('front.send_sms_bank_info');
+        Route::any('upload_receipt', [PaymentController::class, 'upload_receipt'])->name('front.upload_receipt');
 
         Route::any('online_payment', [PaymentController::class, 'online_payment'])->name('front.online_payment');
         Route::post('send-payment', [PaymentController::class, 'sendPayment'])->name('front.send_payment');
         Route::get('success-payment', [PaymentController::class, 'successPayment'])->name('front.success_payment');
+        //=========== /payment ============
+
     });
 });
 

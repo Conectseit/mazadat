@@ -481,6 +481,14 @@ return [
     'you_should_charge_your_wallet_first'         	=> ' عفوا يجب شحن محفظتك أولا',
     'amount'         	=> 'المبلغ',
     'enter_amount_you_will_pay'         	=> 'اكتب المبلغ الذي تريد تحويله الي محفظتك',
+    'account_name'         	=> 'اسم الحساب',
+    'account_number'         	=> ' account number',
+    'bank_name'         	=> 'اسم البنك',
+    'branch'         	=> ' الفرع',
+    'iban'         	=> ' IBAN',
+    'swift_code'         	=> ' Swift Code',
+    'routing_number'         	=> ' Routing Number',
+    'ATM_locations_near_you'         	=> ' فروع الصراف الآلي القريبة منك',
 
 
 

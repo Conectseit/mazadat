@@ -264,6 +264,22 @@
                                                class="form-control" placeholder="{{ trans('messages.settings.branch') }}">
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-4">{{ trans('messages.swift_code') }}
+                                        :</label>
+                                    <div class="col-lg-8">
+                                        <input type="text" name="swift_code" value="{{ settings('swift_code') }}"
+                                               class="form-control" placeholder="{{ trans('messages.swift_code') }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-4">{{ trans('messages.routing_number') }}
+                                        :</label>
+                                    <div class="col-lg-8">
+                                        <input type="text" name="routing_number" value="{{ settings('routing_number') }}"
+                                               class="form-control" placeholder="{{ trans('messages.routing_number') }}">
+                                    </div>
+                                </div>
 
 
                                 <legend class="font-weight-semibold text-uppercase font-size-sm"></legend>
