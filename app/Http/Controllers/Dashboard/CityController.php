@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\CityRequest;
 use App\Models\City;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -19,12 +20,14 @@ class CityController extends Controller
     public function create()
     {
         $data['latest_cities'] = City::orderBy('id', 'desc')->take(10)->get();
+        $data['countries'] = Country::all();
+
         return view('Dashboard.Cities.create', $data);
     }
 
     public function store(CityRequest $request)
     {
-         $city= City::create($request->all()+['country_id'=>'1']);
+         $city= City::create($request->all());
         return redirect()->route('cities.index')->with('message', trans('messages.messages.added_successfully'));
     }
 

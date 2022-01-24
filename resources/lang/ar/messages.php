@@ -377,6 +377,7 @@ return [
         'latest_countries' => 'احدث الدول المضافة',
         'phone_code' => 'الرقم المفتاحي للدولة',
         'flag' => 'علم الدولة',
+        'name' => ' الدولة',
     ],
 
     'question' => [

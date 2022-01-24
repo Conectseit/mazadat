@@ -44,7 +44,10 @@
                                         <select class="form-select form-control" name="country-code"
                                                 aria-label="Default select example">
                                             <option selected disabled> {{ trans('messages.choose_country_code')}}</option>
-                                            <option >+966 المملكة العربية السعودية</option>
+                                            @foreach ($countries as $country)
+                                                <option value="{{ $country->id }}"> {{ $country->$name }}{{ $country->phone_code }} </option>
+                                            @endforeach
+{{--                                            <option >+966 المملكة العربية السعودية</option>--}}
 {{--                                            <option value="ksa">+20 مصر</option>--}}
 {{--                                            <option value="eg">+20 مصر</option>--}}
                                         </select>
@@ -186,10 +189,25 @@
 
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="country_name" class="form-label"> {{ trans('messages.country.name') }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <select class=" select form-select form-control" id="country" name="country_id"
+                                        aria-label="Default select example">
+                                    <option selected disabled>{{trans('messages.select')}}</option>
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country->id }}"> {{ $country->$name }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="city_name" class="form-label"> {{ trans('messages.city_name') }}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <select class=" select form-select form-control" name="city_id"
+                                <select class=" select form-select form-control" id="cities" name="city_id"
                                         aria-label="Default select example">
                                     <option selected disabled>{{trans('messages.select')}}</option>
                                     @foreach ($cities as $city)
@@ -239,4 +257,5 @@
     </script>
 
     @include('Dashboard.layouts.parts.map')
+    @include('front.auth.ajax_get_cities')
 @endpush

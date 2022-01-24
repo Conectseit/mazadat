@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\NationalityController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\payment\PaymentController;
+
+
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\User\UserController;
@@ -64,6 +66,7 @@ Route::group(['namespace' => 'Api'], function () {
 
     //=========== auction ============
     Route::post('auction/{id}', [AuctionController::class, 'auction']);
+    Route::get('success-payment', [PaymentController::class, 'successPayment']);
 
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::post('auth_contact', [QuestionController::class, 'auth_contact']);
@@ -100,8 +103,8 @@ Route::group(['namespace' => 'Api'], function () {
         Route::get('our_officers', [SettingController::class, 'our_officers']);
         Route::get('bank', [SettingController::class, 'bank']);
         Route::post('upload_payment_receipt', [PaymentController::class, 'upload_payment_receipt']);
+
         Route::post('send_payment', [PaymentController::class, 'sendPayment']);
-        Route::get('success-payment', [PaymentController::class, 'successPayment']);
     });
 });
 

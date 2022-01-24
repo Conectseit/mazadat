@@ -2,12 +2,18 @@
 
 namespace App\Pay;
 
+use Illuminate\Support\Str;
+
 class UrwayPayment
 {
     public static function getUrwayChargeData($arr)
     {
         // the redirect url after sending request and pay;
         $redirect_url = request()->root() . '/' . app()->getLocale() . '/success-payment?orderId=' . $arr['trackid'];
+
+        $api_response_url = request()->root() . '/api/success-payment?orderId=' . $arr['trackid'];
+
+        $url = Str::contains(request()->url(),'api') ? $api_response_url : $redirect_url;
 
         return [
             'trackid'       => $arr['trackid'],
@@ -20,7 +26,7 @@ class UrwayPayment
             'country'       => "SA",
             'amount'        => $arr['amount'],
             "udf1"          => $arr['udf1'] ?? "",
-            "udf2"          => $redirect_url, //Response page URL
+            "udf2"          => $url, //Response page URL
             "udf3"          => $arr['udf3'] ?? "",
             "udf4"          => $arr['udf4'] ?? "",
             "udf5"          => $arr['udf5'] ?? "",

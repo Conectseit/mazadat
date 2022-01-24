@@ -54,7 +54,7 @@ Route::group(
     Route::get('category/{id}/auctions', [AuctionController::class, 'categoryAuctions'])->name('front.category_auctions');
     Route::get('auction_details/{id}', [AuctionController::class, 'auction_details'])->name('front.auction_details');
 
-    Route::group(['middleware' => 'checkUserAuth'], function () {
+    Route::group(['middleware' => 'checkUserAuth'], function (){
         Route::any('/logout', [AuthController::class, 'logout'])->name('front.logout');
         Route::post('auth_contact', [GeneralController::class, 'auth_contact'])->name('front.auth_contact');
 
@@ -89,5 +89,7 @@ Route::group(
         //=========== /payment ============
 
     });
+    Route::post('ajax_get_cities_by_country_id', [AuthController::class, 'get_cities_by_country_id'])->name('get_cities_by_country_id');
+
 });
 

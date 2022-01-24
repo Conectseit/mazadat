@@ -1,10 +1,9 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.country.countries'))
-@section('content')
 
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
+<!-- Page header -->
+<div class="page-header page-header-default">
+    @section('breadcrumb')
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
                 <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')
@@ -14,9 +13,11 @@
             </ul>
             @include('Dashboard.layouts.parts.quick-links')
         </div>
-        @endsection
-    </div>
-    <!-- /page header -->
+    @endsection
+</div>
+<!-- /page header -->
+
+@section('content')
     @include('Dashboard.layouts.parts.validation_errors')
 
     <!-- Basic datatable -->
@@ -35,8 +36,8 @@
                 <thead>
                 <tr>
                     <th class="text-center">#</th>
+                    <th class="text-center">{{ trans('messages.country.phone_code') }}</th>
                     <th class="text-center">{{ trans('messages.name') }}</th>
-{{--                    <th class="text-center">{{ trans('messages.name_en') }}</th>--}}
                     <th class="text-center">@lang('messages.since')</th>
                     <th class="text-center">@lang('messages.form-actions')</th>
                 </tr>
@@ -46,7 +47,9 @@
                     <tr id="country-row-{{ $country->id }}">
 
                         <td class="text-center">{{ $country->id }}</td>
+                        <td class="text-center"><a href=""> {{ isNullable($country->phone_code) }}</a></td>
                         <td class="text-center"><a href=""> {{ isNullable($country->$name) }}</a></td>
+
 {{--                        <td class="text-center"><a href=""> {{ isNullable($country->name_en) }}</a></td>--}}
                         <td class="text-center">{{isset($country->created_at) ?$country->created_at->diffForHumans():'---' }}</td>
                         <td class="text-center">

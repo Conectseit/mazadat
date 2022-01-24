@@ -6,6 +6,7 @@ use App\Http\Controllers\PARENT_API;
 use App\Http\Requests\Api\user\AmountRequest;
 use App\Http\Requests\Api\user\UploadPaymentReceiptRequest;
 use App\Models\Payment;
+use App\Models\User;
 use App\Pay\UrwayPayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,9 +35,10 @@ class PaymentController extends PARENT_API
         ]);
 
         $response = Http::post(UrwayPayment::base(), $data)->object();
-        $url = UrwayPayment::paymentUrl($response);
-        return responseJson(true, trans('api.paid_success'), $url); //ACCEPTED
 
+        $url = UrwayPayment::paymentUrl($response);
+
+        return responseJson(true, trans('api.pay'), $url); //ACCEPTED
     }
 
     public function successPayment(Request $request)
@@ -46,23 +48,24 @@ class PaymentController extends PARENT_API
         {
             $request_data = $request->only(['amount']);
 
+            $user = User::find($request['orderId']);
+
             // in case of failure
             if($request['Result'] != 'Successful')
                 return responseJson(false, trans('api.paid_fail'), null); //ACCEPTED
 
             $request_data['payment_type'] = 'online';
 
-            auth()->user()->payments()->create($request_data);
+            $user->payments()->create($request_data);
 
-            auth()->user()->update(['wallet' => (int)(auth()->user()->wallet + round($request['amount']))]);
+            $user->update(['wallet' => (int)($user->wallet + round($request['amount']))]);
 
             DB::commit();
 
             return responseJson(true, trans('api.paid_success'), null); //ACCEPTED
         } catch (\Exception $e)
         {
-            dd($e->getMessage());
-            //return back();
+            return responseJson(true, $e->getMessage(), null); //ERROR
         }
     }
 

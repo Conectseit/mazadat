@@ -32,10 +32,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 
 Route::group(
     [
@@ -116,3 +112,6 @@ Route::group(
 
 
 
+//Route::get('/', function () {
+//    return view('welcome');
+//});

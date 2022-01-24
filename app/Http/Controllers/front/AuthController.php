@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\LoginRequest;
 use App\Http\Requests\Front\RegisterRequest;
 use App\Models\City;
+use App\Models\Country;
 use App\Models\Nationality;
 use App\Models\Token;
 use App\Models\User;
@@ -19,6 +20,7 @@ class AuthController extends Controller
     public function show_register()
     {
         $data['cities'] = City::all();
+        $data['countries'] = Country::all();
         $data['nationalities'] = Nationality::all();
         return view('front.auth.register', $data);
     }
@@ -107,4 +109,14 @@ class AuthController extends Controller
     }
 
 
+
+
+    public function get_cities_by_country_id(Request $request)
+    {
+        $country = Country::find($request->country_id);
+
+        if (!$country) return response()->json(['status' => false], 500);
+
+        return response()->json(['cities' => $country->cities, 'status' => true], 200);
+    }
 }
