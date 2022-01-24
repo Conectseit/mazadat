@@ -154,7 +154,7 @@
 
                                         <li class="nav-item">
                                             <a class="nav-link hvr-shutter-out-horizontal"
-                                               href="{{route('front.logout')}}">logout</a>
+                                               href="{{route('front.logout')}}">@lang('messages.logout')</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link hvr-shutter-out-horizontal"

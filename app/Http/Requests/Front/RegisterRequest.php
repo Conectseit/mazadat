@@ -39,7 +39,9 @@ class RegisterRequest extends FormRequest
                         'user_name'   => 'required',
                         'email'       => 'required|unique:users,email',
                         'password'    => 'required|min:6|confirmed',
-                        'mobile'      => ['required', 'numeric', 'unique:users,mobile'],
+                        'mobile'           => 'required|numeric|min:9|unique:users,mobile',
+
+//                        'mobile'      => ['required', 'numeric', 'unique:users,mobile'],
                         'is_appear_name'     => 'required',
                         'nationality_id'     => 'required',
                         'city_id'            => 'required',

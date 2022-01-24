@@ -8,6 +8,6 @@ class checkUserAuth
 {
     public function handle($request, Closure $next)
     {
-        return !auth()->check() ? redirect()->to('/') : $next($request);
+        return !auth()->check() ? redirect()->to('/')->with('error', trans('messages.messages.Plz_Login_First')) : $next($request);
     }
 }

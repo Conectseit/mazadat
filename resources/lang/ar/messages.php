@@ -346,6 +346,7 @@ return [
         'remove_from_watched' => 'ازالة من مشاهداتي',
         'start_at' => 'يبدا في',
         'buyers' => ' المشاركات',
+        'inspection_report_images' => 'صور تقرير الفحص',
 
     ],
     'terms' => 'الشروط والاحكام  ',

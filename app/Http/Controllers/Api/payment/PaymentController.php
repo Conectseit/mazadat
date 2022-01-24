@@ -62,10 +62,12 @@ class PaymentController extends PARENT_API
 
             DB::commit();
 
-            return responseJson(true, trans('api.paid_success'), null); //ACCEPTED
+//            return responseJson(true, trans('api.paid_success'), null); //ACCEPTED
+            return redirect()->to(request()->root() . '/api/all_categories');
+
         } catch (\Exception $e)
         {
-            return responseJson(true, $e->getMessage(), null); //ERROR
+            return responseJson(false, $e->getMessage(), null); //ERROR
         }
     }
 

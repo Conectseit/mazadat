@@ -55,7 +55,6 @@ class PaymentController extends Controller
             return redirect()->route('front.bank_deposit')->with('success', trans('messages.message_sent_success'));
     }
 
-
     public function upload_receipt(UploadReceiptRequest $request)
     {
         $request_data = $request->except(['image']);
