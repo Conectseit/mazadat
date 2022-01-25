@@ -118,11 +118,8 @@
                                 </div>
                                 <div class="bid-description">
                                     <h5>{{ trans('messages.description')}}:</h5>
-                                    <p>
-                                        {{$auction->$description}}
-                                    </p>
+                                    <p> {{$auction->$description}}</p>
                                 </div>
-
                                 <div class="sign-btn">
                                     <button type="submit" class="btn btn-primary submit-btn">l{{trans('messages.auction.make_bid')}}</button>
                                 </div>
@@ -130,12 +127,9 @@
                             </form>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="more-imgs">
-
-
                     <div class="terms">
                         <h4>{{ trans('messages.auction.images')}}:</h4>
                     </div>

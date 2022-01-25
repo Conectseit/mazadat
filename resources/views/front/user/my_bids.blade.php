@@ -8,7 +8,6 @@
     <section class="watching-page">
         @if($auctions->count() > 0)
             <div class="container">
-
                 @foreach($auctions as $auction)
                     <div class="watching-card">
                         <div class="row">
@@ -58,12 +57,8 @@
         @else
             <center><h2> @lang('messages.you_dont_have_auctions_yet') </h2></center>
         @endif
+
     </section>
-
-
-
-
-
 
     {{--    <section class="watching-page">--}}
 {{--        <div class="container">--}}

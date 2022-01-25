@@ -4,6 +4,7 @@ use App\Http\Controllers\front\AuctionController;
 use App\Http\Controllers\front\AuthController;
 use App\Http\Controllers\front\GeneralController;
 use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\NotificationController;
 use App\Http\Controllers\front\PaymentController;
 use App\Http\Controllers\front\UserController;
 use Illuminate\Support\Facades\Route;
@@ -44,7 +45,8 @@ Route::group(
     Route::post('check_code', [AuthController::class, 'checkCode'])->name('front.check_code');
 //    Route::get('show_login', [AuthController::class, 'show_login'])->name('front.show_login');
     Route::post('login', [AuthController::class, 'login'])->name('front.login');
-// ============ /for auth ================
+// ============ // auth ================
+
 
 
     Route::post('contact_us', [GeneralController::class, 'contact_us'])->name('front.contact_us');
@@ -72,6 +74,10 @@ Route::group(
         Route::any('update_personal_image', [UserController::class, 'update_personal_image'])->name('front.update_personal_image');
         Route::any('update_personal_bio', [UserController::class, 'update_personal_bio'])->name('front.update_personal_bio');
         Route::any('update_profile', [UserController::class, 'updateProfile'])->name('front.update_profile');
+        Route::any('user_documents', [UserController::class, 'user_documents'])->name('front.user_documents');
+        Route::any('user_passport', [UserController::class, 'user_passport'])->name('front.user_passport');
+        Route::any('upload_passport', [UserController::class, 'uploadPassport'])->name('front.upload_passport');
+        Route::any('upload_documents', [UserController::class, 'uploadDocuments'])->name('front.upload_documents');
 
         Route::any('choose_available_limit', [UserController::class, 'choose_available_limit'])->name('front.choose_available_limit');
         Route::any('my_wallet', [UserController::class, 'my_wallet'])->name('front.my_wallet');
@@ -87,6 +93,9 @@ Route::group(
         Route::post('send-payment', [PaymentController::class, 'sendPayment'])->name('front.send_payment');
         Route::get('success-payment', [PaymentController::class, 'successPayment'])->name('front.success_payment');
         //=========== /payment ============
+
+        //=========== /notifications ============
+           Route::get('my_notification', [NotificationController::class, 'my_notification'])->name('front.my_notification');
 
     });
     Route::post('ajax_get_cities_by_country_id', [AuthController::class, 'get_cities_by_country_id'])->name('get_cities_by_country_id');

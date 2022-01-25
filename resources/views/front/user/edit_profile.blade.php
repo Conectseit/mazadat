@@ -26,6 +26,12 @@
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#bio-modal">
                                     تعديل السيرة الذاتية
                                 </a>
+                                <a href="{{route('front.user_documents')}}">
+                                    تعديل  user_documents
+                                </a>
+                                <a href="{{route('front.user_passport')}}">
+                                      جواز السفر
+                                </a>
                             </div>
                         </div>
                     </div>

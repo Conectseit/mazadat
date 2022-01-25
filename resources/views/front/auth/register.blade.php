@@ -40,21 +40,21 @@
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 <div class="row">
-                                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                                        <select class="form-select form-control" name="country-code"
-                                                aria-label="Default select example">
-                                            <option selected disabled> {{ trans('messages.choose_country_code')}}</option>
-                                            @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}"> {{ $country->$name }}{{ $country->phone_code }} </option>
-                                            @endforeach
+{{--                                    <div class="col-xl-3 col-lg-4 col-sm-6">--}}
+{{--                                        <select class="form-select form-control" name="country-code"--}}
+{{--                                                aria-label="Default select example">--}}
+{{--                                            <option selected disabled> {{ trans('messages.choose_country_code')}}</option>--}}
+{{--                                            @foreach ($countries as $country)--}}
+{{--                                                <option value="{{ $country->id }}"> {{ $country->$name }}{{ $country->phone_code }} </option>--}}
+{{--                                            @endforeach--}}
 {{--                                            <option >+966 المملكة العربية السعودية</option>--}}
 {{--                                            <option value="ksa">+20 مصر</option>--}}
 {{--                                            <option value="eg">+20 مصر</option>--}}
-                                        </select>
-                                    </div>
+{{--                                        </select>--}}
+{{--                                    </div>--}}
                                     <div class="col-xl-9 col-lg-8 col-sm-6">
                                         <input type="number" class="form-control" id="phone" name="mobile"
-                                               placeholder="{{trans('messages.enter_mobile')}}">
+                                               placeholder="{{trans('messages.enter_mobile')}}: 5xx xxx xxx">
                                     </div>
                                 </div>
                             </div>
@@ -187,20 +187,20 @@
                             </div>
                         </div>
 
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="country_name" class="form-label"> {{ trans('messages.country.name') }}</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <select class=" select form-select form-control" id="country" name="country_id"
-                                        aria-label="Default select example">
-                                    <option selected disabled>{{trans('messages.select')}}</option>
-                                    @foreach ($countries as $country)
-                                        <option value="{{ $country->id }}"> {{ $country->$name }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+{{--                        <div class="form-group mb-4 row">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                <label for="country_name" class="form-label"> {{ trans('messages.country.name') }}</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-10 col-md-9">--}}
+{{--                                <select class=" select form-select form-control" id="country" name="country_id"--}}
+{{--                                        aria-label="Default select example">--}}
+{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
+{{--                                    @foreach ($countries as $country)--}}
+{{--                                        <option value="{{ $country->id }}"> {{ $country->$name }} </option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">

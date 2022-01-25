@@ -106,6 +106,14 @@
                                             <a href="#" class="nav-link hvr-shutter-out-horizontal" data-bs-toggle="modal"
                                                data-bs-target="#contact-modal1">اتصل بنا</a>
                                         </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link hvr-shutter-out-horizontal"
+                                                   href="{{route('front.my_notification')}}">
+                                                    <i class="fa fa-bell"></i>
+                                                    {{trans('messages.notification.notifications')}}</a>
+                                            </li>
+
                                     @else
                                     <li class="nav-item">
                                         <a href="#" class="nav-link hvr-shutter-out-horizontal" data-bs-toggle="modal"
@@ -118,10 +126,7 @@
                         <div class="col-lg-6 nav-col">
                             <div class="user-links">
                                 <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link hvr-shutter-out-horizontal"
-                                           href="{{route('front.show_register')}}">  {{trans('messages.register')}}</a>
-                                    </li>
+
                                     {{--                                    <li class="nav-item">--}}
                                     {{--                                        <a class="nav-link hvr-shutter-out-horizontal" id="signInBtn"--}}
                                     {{--                                           href="{{route('front.show_login')}}">الدخول</a>--}}
@@ -158,10 +163,13 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link hvr-shutter-out-horizontal"
-                                               href="{{route('front.my_profile')}}"> <i
-                                                    class="fa fa-user"></i> {{trans('messages.profile')}}</a>
+                                               href="{{route('front.my_profile')}}"> <i class="fa fa-user"></i> {{trans('messages.profile')}}</a>
                                         </li>
                                     @else
+                                        <li class="nav-item">
+                                            <a class="nav-link hvr-shutter-out-horizontal"
+                                               href="{{route('front.show_register')}}">  {{trans('messages.register')}}</a>
+                                        </li>
                                         <li class="nav-item">
                                             <a class="nav-link hvr-shutter-out-horizontal" id="signInBtn"
                                                href="{{route('front.home')}}">الدخول</a>

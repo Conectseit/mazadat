@@ -6,7 +6,6 @@ return [
     'home' => 'الصفحة الرئيسية',
     'Statistics' => 'احصائيات عامة للموقع',
     'login' => 'تسجيل الدخول',
-
     'Login'                 => 'تسجيل دخول',
     'logout'                => 'تسجيل الخروج',
     'welcome'               => 'مرحبا بك يا',
@@ -101,6 +100,7 @@ return [
         'send' => 'ارسال اشعار',
         'title' => 'عنوان الاشعار',
         'text' => 'نص الاشعار',
+        'notifications' => ' الاشعارات',
     ],
 
 
@@ -475,6 +475,7 @@ return [
     'activation' => 'تفعيل حسابك من خلال كود التفعيل المرسل علي جوالك',
     'accept_term' => ' بضغطك على تسجيل حسابك انت توافق على الشروط والاحكام الخاص بالامارات للمزادات',
     'you_dont_have_auctions_yet' => 'لا يوجد لديك مزادات  حتي الان ',
+    'you_dont_have_notifications_yet' => 'لا يوجد لديك اشعارات  حتي الان ',
     'Sorry_you_should_upload_document_and_passport_first'           =>'عفوا يجب عليك  رفع صورة جواز السفر ووثائق رسمية اولا ',
     'not_found_auction'         	    => ' هذاالمزاد غير موجود',
     'sorry_you_cant_make_bid_your_available_limit_less_than_this_value'  =>'عفوا لا يمكنك المزايدة الان لان القيمة المسموحة من محفظتك اقل من قيمة المزايدة ',
@@ -491,8 +492,6 @@ return [
     'swift_code'         	=> ' Swift Code',
     'routing_number'         	=> ' Routing Number',
     'ATM_locations_near_you'         	=> ' فروع الصراف الآلي القريبة منك',
-
-
 
     'ar' => [
         'ar' => 'عربي',

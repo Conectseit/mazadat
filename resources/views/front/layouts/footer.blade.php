@@ -8,6 +8,7 @@
 <footer>
 {{--    @inject('settings', 'App\Models\Setting')--}}
     @inject('latest_auctions', 'App\Models\Auction')
+    @inject('featured_auctions', 'App\Models\Auction')
     @php($about= 'about_app_'.app()->getLocale())
     @php($terms= 'conditions_terms_'.app()->getLocale())
     @php($app_description= 'app_description_'.app()->getLocale())
@@ -129,11 +130,16 @@
                                 المزادات المميزة
                             </h4>
                             <ul>
-                                <li><a href="#">المركبات والمعدات</a></li>
-                                <li><a href="#">أرقام اتصالات المميزة</a></li>
-                                <li><a href="#">متفرقات</a></li>
-                                <li><a href="#">مزاد ابوظبي العقاري</a></li>
-                                <li><a href="#">مزاد الامارات العقاري</a></li>
+{{--                                <li><a href="#">المركبات والمعدات</a></li>--}}
+{{--                                <li><a href="#">أرقام اتصالات المميزة</a></li>--}}
+{{--                                <li><a href="#">متفرقات</a></li>--}}
+{{--                                <li><a href="#">مزاد ابوظبي العقاري</a></li>--}}
+{{--                                <li><a href="#">مزاد الامارات العقاري</a></li>--}}
+
+                                @foreach($featured_auctions->orderBy('count_of_buyer', 'desc')->take(4)->get() as $auction)
+
+                                    <li><a href="#">{{$auction->$name}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="ul-parent">

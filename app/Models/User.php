@@ -100,6 +100,10 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(AuctionBuyer::class, 'buyer_id');
     }
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'user_id');
+    }
 
 
     public function getImagePathAttribute()
