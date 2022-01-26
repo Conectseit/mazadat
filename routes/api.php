@@ -61,7 +61,7 @@ Route::group(['namespace' => 'Api'], function () {
 
     //=========== filter category ===========
     Route::post('main_filter_category/{id}/auctions', [FilterController::class,'main_filter']);
-    Route::post('filter_category/{id}/auctions', [FilterController::class,'filter_category']);
+    Route::post('filter_category/{id}/auctions', [FilterController::class,'filterCategory']);
     Route::post('get_options_of_category/{id}', [FilterController::class,'get_options_of_category']);
 
     //=========== auction ============

@@ -30,10 +30,10 @@ class AuctionController extends Controller
         {
             $user = auth()->user();
 
-//            if(is_null($user->passport_image) && $user->documents->count() == 0)
-//            {
-//                return back()->with('error', trans('messages.Sorry_you_should_upload_document_and_passport_first'));
-//            }
+            if(is_null($user->passport_image) && $user->documents->count() == 0)
+            {
+                return back()->with('error', trans('messages.Sorry_you_should_upload_document_and_passport_first'));
+            }
 
             if(!$auction = Auction::find($id))
                 return back()->with('error', trans('messages.not_found_auction'));
@@ -130,7 +130,9 @@ class AuctionController extends Controller
     public  function cancel_bid_auction (Auction $auction)
     {
         $auctionn= AuctionBuyer::where(['buyer_id' => auth()->user()->id, 'auction_id' => $auction->id]);
+        $auction->update(['current_price' => $auction->current_price - $auctionn->buyer_offer]);
         $auctionn->delete();
+
         return back();
     }
 }

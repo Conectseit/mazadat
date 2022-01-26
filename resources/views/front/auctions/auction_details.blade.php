@@ -26,7 +26,10 @@
                                 <p><i class="fal fa-tag"></i>{{($auction->value_of_increment)}}</p>
                             </div>
                             <div class="col-sm-4 col-6">
-                                <p><i class="fal fa-gavel"></i>{{($auction->start_auction_price)}} $</p>
+                                <p><i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}:{{($auction->start_auction_price)}}$</p>
+                            </div>
+                            <div class="col-sm-4 col-6">
+                                <p><i class="fal fa-gavel"></i>{{trans('messages.auction.current_price')}}:{{($auction->current_price)}}$</p>
                             </div>
                             <div class="col-sm-4">
                                 <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>
@@ -59,11 +62,13 @@
                     </div>
 
                     <div class="col-lg-9">
+
+                        <div class="details" id="details">
+                           <h4>{{$auction->$name}}</h4>
+                        </div>
                         <div class="description" id="description">
                             <h4>{{ trans('messages.description')}}:</h4>
-                            <p>
-                                {{$auction->$description}}
-                            </p>
+                            <p>{{$auction->$description}}</p>
                         </div>
                         <div class="details" id="details">
 {{--                            <h4>التفاصيل</h4>--}}
@@ -135,6 +140,23 @@
                     </div>
                     <div class="row">
                         @foreach($images as $image)
+                        <div class="col-md-3 col-6">
+                            <a href="{{$image->image_path}}" data-lightbox="roadtrip">
+                                <div class="image">
+                                    <img src="{{$image->image_path}}" alt="image">
+                                </div>
+                            </a>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="more-imgs">
+                    <div class="terms">
+                        <h4>{{ trans('messages.auction.inspection_report_images')}}:</h4>
+                    </div>
+                    <div class="row">
+                        @foreach($auction->inspectionimages as $image)
                         <div class="col-md-3 col-6">
                             <a href="{{$image->image_path}}" data-lightbox="roadtrip">
                                 <div class="image">

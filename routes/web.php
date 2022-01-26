@@ -21,12 +21,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-//
-//Auth::routes();
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::group(
@@ -50,25 +44,32 @@ Route::group(
 
 
     Route::post('contact_us', [GeneralController::class, 'contact_us'])->name('front.contact_us');
-
     Route::get('questions', [GeneralController::class, 'questions'])->name('front.questions');
     Route::get('about_app', [GeneralController::class, 'about_app'])->name('front.about_app');
+
+    // ============ // category ================
     Route::get('category/{id}/auctions', [AuctionController::class, 'categoryAuctions'])->name('front.category_auctions');
     Route::get('auction_details/{id}', [AuctionController::class, 'auction_details'])->name('front.auction_details');
+
 
     Route::group(['middleware' => 'checkUserAuth'], function (){
         Route::any('/logout', [AuthController::class, 'logout'])->name('front.logout');
         Route::post('auth_contact', [GeneralController::class, 'auth_contact'])->name('front.auth_contact');
 
+
+        // ============ // bids ================
         Route::post('make_bid/{id}', [AuctionController::class, 'make_bid'])->name('front.make_bid');
         Route::get('my_bids', [AuctionController::class, 'my_bids'])->name('front.my_bids');
-
-        Route::get('my_watched', [AuctionController::class, 'my_watched'])->name('front.my_watched');
-        Route::get('watch_auction/{auction}', [AuctionController::class, 'watch_auction'])->name('front.watch_auction');
-        Route::any('delete_watch_auction/{auction}', [AuctionController::class, 'delete_watch_auction'])->name('front.delete_watch_auction');
         Route::any('cancel_bid_auction/{auction}', [AuctionController::class, 'cancel_bid_auction'])->name('front.cancel_bid_auction');
 
 
+        // ============ // watched ================
+        Route::get('my_watched', [AuctionController::class, 'my_watched'])->name('front.my_watched');
+        Route::get('watch_auction/{auction}', [AuctionController::class, 'watch_auction'])->name('front.watch_auction');
+        Route::any('delete_watch_auction/{auction}', [AuctionController::class, 'delete_watch_auction'])->name('front.delete_watch_auction');
+
+
+        // ============ // profile ================
         Route::any('my_profile', [UserController::class, 'showProfile'])->name('front.my_profile');
         Route::any('edit_profile', [UserController::class, 'editProfile'])->name('front.edit_profile');
         Route::any('update_personal_image', [UserController::class, 'update_personal_image'])->name('front.update_personal_image');
@@ -92,7 +93,7 @@ Route::group(
         Route::any('online_payment', [PaymentController::class, 'online_payment'])->name('front.online_payment');
         Route::post('send-payment', [PaymentController::class, 'sendPayment'])->name('front.send_payment');
         Route::get('success-payment', [PaymentController::class, 'successPayment'])->name('front.success_payment');
-        //=========== /payment ============
+
 
         //=========== /notifications ============
            Route::get('my_notification', [NotificationController::class, 'my_notification'])->name('front.my_notification');
@@ -102,3 +103,17 @@ Route::group(
 
 });
 
+
+
+
+
+
+
+
+
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//
+//Auth::routes();
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

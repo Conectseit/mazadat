@@ -94,37 +94,31 @@ class FilterController extends PARENT_API
         }
         $category_options = Option::where('category_id', $id)->with('option_details')->get();
         return responseJson(true, trans('api.category_options'), CategoryOptionsResource::collection($category_options));  //OK
-//        return responseJson(true, trans('api.category_options'), CategoryOptionsResource::collection($category->options));  //OK
-
     }
 
 
-    public function filter_category(Request $request, $id)
+    public function filterCategory(Request $request, $id)
     {
         $category = Category::where('id', $id)->find($id);
         if (!$category) {
             return responseJson(false, trans('api.not_found_category'), null);  //
         }
-        $auctions = Auction::where('category_id', $id)->latest()->get();
-        if ($auctions->count() == 0) {
+
+        $auctions_count = Auction::where('category_id', $id)->latest()->count();
+
+        if ($auctions_count == 0) {
             return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
         }
-//        $option_details= [];
-//        $data = AuctionData::whereIn('option_details_id',$option_details);
 
-        $option_details = OptionDetail::find($request->option_details_id);
+        $auctions_ids = AuctionData::where('option_id', $request->option_id)->whereIn('option_details_id', $request->option_details_id)->get()->pluck('auction_id')->toArray();
 
-//        $data = AuctionData::where('option_details_id', $request->option_details_id)->whereHas('auction', function($query){
-//            return $query->where('status','on_progress');
-//        })->get();
+        $auctions = Auction::find($auctions_ids);
 
         if ($auctions->count() > 0) {
-            return responseJson(true, trans('api.category_auctions'), CategoryAuctionsResource::collection($option_details->auctions));  //OK
+            return responseJson(true, trans('api.category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK
 //            return responseJson(true, trans('api.category_auctions'), UserAuctionsResource::collection($data));  //OK
         }
         return responseJson(true, trans('api.there_is_no_auctions_on_this_option'), null);  //OK
-
-//                    $auctions = Auction::where('id')->get();
     }
 
 
@@ -169,3 +163,12 @@ class FilterController extends PARENT_API
     //    }
 
 }
+
+
+
+//$option_details= [];
+//        $data = AuctionData::whereIn('option_details_id',$option_details);
+
+//        $data = AuctionData::where('option_details_id', $request->option_details_id)->whereHas('auction', function($query){
+//            return $query->where('status','on_progress');
+//        })->get();

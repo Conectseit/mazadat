@@ -22,20 +22,26 @@
                                         <p class="start-date info-item">
                                             <i class="fal fa-calendar-alt"></i>
                                             {{--                                    يبدأ فى الثلاثاء , 16/11/2021 , 10:10--}}
-                                            start_at: {{ ($auction->start_date->format('l, m/d/Y  h s') ) }}
-
+                                            {{trans('messages.auction.start_at')}} : {{ ($auction->start_date->format('l, m/d/Y') ) }}
                                         </p>
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <p><i class="fal fa-ticket"></i>{{ ($auction->count_of_buyer ) }}</p>
+                                                <p><i class="fal fa-ticket"></i>{{trans('messages.auction.buyers')}}:{{ ($auction->count_of_buyer ) }}</p>
                                             </div>
                                             <div class="col-sm-6">
-                                                <p><i class="fal fa-tag"></i>{{($auction->value_of_increment)}}</p>
+                                                <p><i class="fal fa-tag"></i>
+                                                {{trans('messages.auction.value_of_increment')}} : {{($auction->value_of_increment)}}</p>
+
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <p><i class="fal fa-gavel"></i>{{($auction->start_auction_price)}} $</p>
+                                                <p><i class="fal fa-gavel"></i>
+                                                    {{trans('messages.auction.current_price')}}:{{($auction->current_price)}}</p>
+
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p><i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}:{{($auction->start_auction_price)}}</p>
                                             </div>
                                             <div class="col-sm-6">
                                                 <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>

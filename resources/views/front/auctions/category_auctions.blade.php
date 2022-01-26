@@ -125,7 +125,8 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <p><i class="fal fa-gavel"></i>
-                                                {{trans('messages.auction.current_price')}}:{{($auction->current_price)}}</p>
+                                                {{trans('messages.auction.current_price')}}:{{($auction->current_price)}}
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="row">

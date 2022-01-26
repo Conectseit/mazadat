@@ -38,7 +38,7 @@ class Category extends Model
     }
     public function option_details()
     {
-        return $this->hasManyThrough(OptionDetail::class,Option::class);
+        return $this->hasManyThrough(OptionDetail::class, Option::class);
     }
 
 }
