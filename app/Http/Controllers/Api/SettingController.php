@@ -35,6 +35,14 @@ class SettingController extends PARENT_API
         return responseJson(false, trans('api.Page_not_found'),null);//NOT_FOUND
     }
 
+    public function contact_us_number()
+    {
+        if ($mobile = Setting::where('key','mobile')->first()->value)
+        {
+            return responseJson(true, trans('api.request_done_successfully'), $mobile);  //OK don-successfully
+        }
+        return responseJson(false, trans('api.not_found'),null);//NOT_FOUND
+    }
     public function conditions_terms()
     {
         $conditions_terms= 'conditions_terms_'.app()->getLocale();

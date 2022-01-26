@@ -54,6 +54,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('nationalities', [NationalityController::class, 'nationalities']);
     Route::get('about_app', [SettingController::class, 'about_app']);
     Route::get('conditions_terms', [SettingController::class, 'conditions_terms']);
+    Route::get('contact_us_number', [SettingController::class, 'contact_us_number']);
 
     //=========== category ===========
     Route::get('all_categories', [CategoryController::class, 'index']);
