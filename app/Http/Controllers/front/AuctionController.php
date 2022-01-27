@@ -40,7 +40,12 @@ class AuctionController extends Controller
 
             $bid = AuctionBuyer::where(['auction_id' => $auction->id, 'buyer_id' => $user->id])->first();
 
-            if(($auction->current_price + $request->buyer_offer) > $user->available_limit)
+            if($auction->current_price > $request->buyer_offer)
+                return back()->with('error', trans('messages.sorry_you_cant_make_bid_your_offer_less_than_auction_current_price'));
+
+
+
+            if($request->buyer_offer > $user->available_limit)
                 return back()->with('error', trans('messages.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'));
 
             if (is_null($bid))
@@ -61,13 +66,14 @@ class AuctionController extends Controller
 
                 $auction->update([
                     'count_of_buyer' => $auction->count_of_buyer + 1,
-                    'current_price'  => $auction->current_price + $request->buyer_offer,
+                    'current_price'  => $request->buyer_offer,
+//                    'current_price'  => $auction->current_price + $request->buyer_offer,
                 ]);
                 DB::commit();
                 return back()->with('success', trans('messages.request_done_successfully'));
             }
             //=================== make bid at second time  =================
-            $auction->update(['current_price' => $auction->current_price + $request->buyer_offer]);
+            $auction->update(['current_price' => $request->buyer_offer]);
 
             $bid->update(['buyer_offer' => $auction->current_price]);
 
@@ -79,7 +85,6 @@ class AuctionController extends Controller
 
             DB::commit();
             return back()->with('success', trans('messages.updated_successfully'));
-
         }
         catch(Exception $e)
         {

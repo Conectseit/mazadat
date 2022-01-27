@@ -164,6 +164,19 @@ class AuctionController extends PARENT_API
 
 
 
+    public  function cancel_bid_auction( Request $request, $id)
+    {
+        $auctionn= AuctionBuyer::where(['buyer_id' => auth()->user()->id, 'auction_id' => $id])->first();
+        $auction = Auction::find($id);
+        $auction->update(['current_price' => $auction->current_price - $auctionn->buyer_offer]);
+        $auctionn->delete();
+        return responseJson(true, trans('api.request_done_successfully'), null); //OK
+    }
+
+
+
+
+
 //    public function make_offer(Request $request, $id)
 //    {
 //        $user = auth()->user();

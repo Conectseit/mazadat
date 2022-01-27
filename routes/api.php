@@ -94,6 +94,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::get('my_bids', [AuctionController::class, 'my_bids']);
         Route::post('make_bid/{id}', [AuctionController::class, 'make_bid']);
         Route::post('make_offer/{id}', [AuctionController::class, 'make_offer']);
+        Route::post('cancel_bid_auction/{id}', [AuctionController::class, 'cancel_bid_auction']);
 
         //=========== notifications ============
         Route::get('notifications', [NotificationController::class, 'index']);
