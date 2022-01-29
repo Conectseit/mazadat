@@ -132,7 +132,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div><hr>
 
                 <div class="more-imgs">
                     <div class="terms">
@@ -150,6 +150,7 @@
                         @endforeach
                     </div>
                 </div>
+                <hr>
 
                 <div class="more-imgs">
                     <div class="terms">
@@ -158,7 +159,7 @@
                     <div class="row">
                         @foreach($auction->inspectionimages as $image)
                         <div class="col-md-3 col-6">
-                            <a href="{{$image->image_path}}" data-lightbox="roadtrip">
+                            <a href="{{$image->image_path}}">
                                 <div class="image">
                                     <img src="{{$image->image_path}}" alt="image">
                                 </div>
@@ -166,7 +167,7 @@
                         </div>
                         @endforeach
                     </div>
-                </div>
+                </div><hr>
 
                 <div class="terms">
                     <h4>{{ trans('messages.auction.terms')}}:</h4>

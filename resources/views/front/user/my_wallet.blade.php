@@ -52,10 +52,8 @@
                     </span>
                 </div>
 
-                    <button class="submit-btn btn btn-primary submit-btn"> {{trans('messages.save')}}</button>
+                    <button class="submit-btn btn btn-primary submit-btn save-btn"> {{trans('messages.save')}}</button>
                 </form>
-
-
             </div>
             <div class="payment-method">
                 <h5 class="title">اختر طريقة الدفع</h5>

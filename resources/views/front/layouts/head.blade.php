@@ -24,7 +24,7 @@
 
 
 {{--//--}}
-    <link href="{{asset('Front/assets/css/lightbox.min.css" rel="stylesheet')}}"/>
+    <link href="{{asset('Front/assets/css/lightbox.min.css')}}" rel="stylesheet"/>
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 

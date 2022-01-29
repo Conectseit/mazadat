@@ -15,7 +15,7 @@ class NotificationController extends Controller
         if (is_null($user)){
             return back()->with('class', 'success')->with('message', trans('messages.messages.user_not_found'));
         }
-        if ($user->fcm != null ) {
+        if ($user->token->fcm != null ) {
             $data = ['title' => $request->title, 'text' => $request->text,];
             //  dd($data);
             $this->sendFCM($user->fcm, $data);

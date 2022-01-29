@@ -1,20 +1,17 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.buyer.buyers'))
-<!-- Page header -->
-<div class="page-header page-header-default">
-    @section('breadcrumb')
-        <div class="breadcrumb-line">
-            <ul class="breadcrumb">
-                <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')
-                    </a>
-                </li>
-                <li class="active">@lang('messages.buyer.buyers')</li>
-            </ul>
-            @include('Dashboard.layouts.parts.quick-links')
-        </div>
-    @endsection
-</div>
-<!-- /page header -->
+@section('breadcrumb')
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')
+                </a>
+            </li>
+            <li class="active">@lang('messages.buyer.buyers')</li>
+        </ul>
+        @include('Dashboard.layouts.parts.quick-links')
+    </div>
+@endsection
+
 
 @section('content')
 
@@ -50,7 +47,6 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="accepted_buyers">
-
                                     <div class="panel-body">
                                         @if($accepted_buyers->count() > 0)
                                             <table class="table datatable-basic" id="buyers" style="font-size: 16px;">
@@ -165,9 +161,6 @@
                                                             @endif
                                                         </td>
 
-
-
-
 {{--                                                        <td class="text-center">--}}
 {{--                                                            @if($buyer->is_accepted ==1)--}}
 {{--                                                                <a href="buyer/{{$buyer->id}}/not_accept/">--}}
@@ -222,8 +215,6 @@
             </div>
         </div>
         <!-- /basic pills -->
-
-
     </div>
     <!-- /basic datatable -->
 @stop

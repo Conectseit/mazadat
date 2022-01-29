@@ -9,7 +9,14 @@ class Payment extends Model
 {
     use HasFactory;
     protected $guarded = [];
-
+    public function getImagePathAttribute()
+    {
+        $image = Payment::where('id', $this->id)->first()->image;
+        if (!$image) {
+            return asset('uploads/default.png');
+        }
+        return asset('uploads/payments/' . $this->image);
+    }
 
     public function auction()
     {

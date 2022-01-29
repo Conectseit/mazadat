@@ -12,23 +12,25 @@
                 <div class="modal-body">
 
                     <div class="form-group mb-4 row">
-                        <div class="col-lg-10 col-md-9">
+                        <div class="col-lg-12 col-md-12">
                             <input type="email" class="form-control"  name="full_name"
                                    placeholder="{{trans('messages.enter_full_name')}}">
                         </div>
                     </div>
                     <div class="form-group mb-4 row">
-                        <div class="col-lg-10 col-md-9">
+                        <div class="col-lg-12 col-md-12">
                             <input type="email" class="form-control"  name="mobile"
                                    placeholder="{{trans('messages.enter_mobile')}}">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="email" value="{{ old('email') }}"
-                               class="form-control @error('email') is-invalid @enderror"
-                               placeholder="{{trans('messages.enter_email')}}">
-                        @error('email') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror
+                        <div class="col-lg-12 col-md-12">
+                            <input type="text" name="email" value="{{ old('email') }}"
+                                   class="form-control @error('email') is-invalid @enderror"
+                                   placeholder="{{trans('messages.enter_email')}}">
+                            @error('email') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror
+                        </div>
                     </div><br>
                     {{--                            <div class="form-group mb-4 row">--}}
                     {{--                                <div class="col-lg-10 col-md-9">--}}
@@ -37,11 +39,9 @@
                     {{--                                </div>--}}
                     {{--                            </div>--}}
                     <div class="form-group ">
-                        <div class="col-lg-10 col-md-9">
-                                      <textarea  cols="50" name="message"
-                                                 placeholder="{{trans('messages.enter_message')}} ">
-
-                                     </textarea>
+                        <div class="col-lg-12 col-md-12">
+                            <textarea  cols="50" name="message" placeholder="{{trans('messages.enter_message')}} ">
+                            </textarea>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
 
                     <div class="form-group ">
                         <p></p>
-                        <div class="col-lg-10 col-md-9">
+                        <div class="col-lg-12 col-md-12">
                               <textarea  cols="50" name="message" placeholder="{{trans('messages.enter_message')}}">
 
                              </textarea>

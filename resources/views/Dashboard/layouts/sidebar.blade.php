@@ -99,8 +99,14 @@
             <li><a href="{{route('permissions.create')}}"> {{ trans('messages.add') }}</a></li>
         </ul>
     </li>
-    <li>
 
+
+    <li>
+        <a href="#"><i class="icon-archive"></i> <span> {{ trans('messages.transaction.transactions') }} </span></a>
+        <ul>
+            <li><a href="{{ route('transactions.index')}}">{{ trans('messages.show') }}</a></li>
+        </ul>
+    </li>
 
     <li class="nav-item">
         <a href="{{ route('contacts.index') }}"
@@ -119,7 +125,6 @@
            class="nav-link {{ request()->route()->getName() == 'dashboard.setting.index' ? 'active' : '' }}"><i
                 class="icon-gear"></i> <span>{{ trans('messages.settings.settings') }}</span></a>
     </li>
-
 
 
 

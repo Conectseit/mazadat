@@ -18,6 +18,7 @@ use App\Http\Controllers\Dashboard\QuestionController;
 use App\Http\Controllers\Dashboard\SellerController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\SettingsController;
+use App\Http\Controllers\Dashboard\TransactionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -53,20 +54,21 @@ Route::group(
 
             Route::group(['middleware' => 'CheckPermission'], function () {
                 Route::resources([
-                    'sellers'    => SellerController::class,
-                    'buyers'     => BuyerController::class,
-                    'categories' => CategoryController::class,
-                    'options'    => OptionController::class,
+                    'sellers'        => SellerController::class,
+                    'buyers'         => BuyerController::class,
+                    'categories'     => CategoryController::class,
+                    'options'        => OptionController::class,
                     'option_details' => OptionDetailController::class,
-                    'cities'     => CityController::class,
-                    'countries'  => CountryController::class,
-                    'nationalities' => NationalityController::class,
-                    'questions'  => QuestionController::class,
-                    'contacts'   => ContactController::class,
-                    'auctions'   => AuctionController::class,
+                    'cities'         => CityController::class,
+                    'countries'      => CountryController::class,
+                    'nationalities'  => NationalityController::class,
+                    'questions'      => QuestionController::class,
+                    'contacts'       => ContactController::class,
+                    'auctions'       => AuctionController::class,
                     'auction_data'   => AuctionDataController::class,
-                    'permissions' => PermissionController::class,
-                    'admins'     => AdminController::class,
+                    'permissions'    => PermissionController::class,
+                    'admins'         => AdminController::class,
+                    'transactions'    => TransactionController::class,
 //                'settings'     => SettingsController::class,
                 ]);
 
@@ -85,6 +87,7 @@ Route::group(
                 Route::post('/ajax-delete-admin', [AdminController::class, 'destroy'])->name('ajax-delete-admin');
                 Route::post('/ajax-delete-contact', [ContactController::class, 'destroy'])->name('ajax-delete-contact');
                 Route::post('/ajax-delete-question', [QuestionController::class, 'destroy'])->name('ajax-delete-question');
+                Route::post('/ajax-delete-transaction', [TransactionController::class, 'destroy'])->name('ajax-delete-transaction');
 
                 Route::get('buyer/{id?}/accept', [BuyerController::class, 'accept'])->name('buyer/accept');
                 Route::get('buyer/{id?}/not_accept', [BuyerController::class, 'not_accept'])->name('buyer/not_accept');

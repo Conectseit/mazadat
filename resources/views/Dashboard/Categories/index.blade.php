@@ -1,8 +1,6 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.category.categories'))
-<!-- Page header -->
-<div class="page-header page-header-default">
-    @section('breadcrumb')
+@section('breadcrumb')
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
                 <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')
@@ -13,9 +11,7 @@
 
             @include('Dashboard.layouts.parts.quick-links')
         </div>
-    @endsection
-</div>
-<!-- /page header -->
+@endsection
 @section('content')
     @include('Dashboard.layouts.parts.validation_errors')
     <!-- Basic datatable -->

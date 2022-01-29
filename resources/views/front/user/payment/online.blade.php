@@ -42,13 +42,14 @@
                     <div class="col-md-6">
                         <form action="{{ route('front.send_payment') }}" method="post">
                             @csrf
-                            <div class="form-group">
+                            <div class="form-group ">
                              <label for="amount" class="form-label">{{trans('messages.enter_amount_you_will_pay')}}</label>
-                                <div class="">
+                                <div class=" my-2">
                                     <input type="number" class="form-control"  name="amount" placeholder="{{trans('messages.amount')}}">
                                 </div>
+                                <input type="submit" class="pay-link" value="إدفع">
+
                             </div>
-                            <input type="submit" class="pay-link" value="إدفع">
                         </form>
                     </div>
                 </div>

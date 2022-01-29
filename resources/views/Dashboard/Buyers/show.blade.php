@@ -1,29 +1,25 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.buyer.buyers'))
-<!-- Page header -->
-<div class="page-header page-header-default">
-    @section('breadcrumb')
-        <div class="breadcrumb-line">
-            <ul class="breadcrumb">
-                <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
-                </li>
-                <li><a href="{{ route('buyers.index') }}"><i
-                            class="icon-admin position-left"></i> @lang('messages.buyer.buyers')</a></li>
-                <li class="active">@lang('messages.buyer.show')</li>
-            </ul>
-            @include('Dashboard.layouts.parts.quick-links')
-        </div>
-    @endsection
-</div>
-<!-- /page header -->
+@section('breadcrumb')
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
+            </li>
+            <li><a href="{{ route('buyers.index') }}"><i
+                        class="icon-admin position-left"></i> @lang('messages.buyer.buyers')</a></li>
+            <li class="active">@lang('messages.buyer.show')</li>
+        </ul>
+        @include('Dashboard.layouts.parts.quick-links')
+    </div>
+@stop
+
 @section('content')
 
     <!-- Toolbar -->
     <div class="navbar navbar-default navbar-xs content-group">
         @include('Dashboard.layouts.parts.validation_errors')
         <ul class="nav navbar-nav visible-xs-block">
-            <li class="full-width text-center"><a data-toggle="collapse" data-target="#navbar-filter"><i
-                        class="icon-menu7"></i></a></li>
+            <li class="full-width text-center"><a data-toggle="collapse" data-target="#navbar-filter"><i class="icon-menu7"></i></a></li>
         </ul>
 
         <div class="navbar-collapse collapse" id="navbar-filter">
@@ -32,10 +28,10 @@
                             class="icon-menu7 position-left"></i> {{ trans('messages.buyer.buyer_data') }}</a></li>
                 <li><a href="#buyer_auctions" data-toggle="tab"><i
                             class="icon-calendar3 position-left"></i> {{ trans('messages.buyer.buyer_auctions') }}
-                        <span class="badge badge-success badge-inline position-right">{{$buyer->buyer_auctions->count()}}</span></a>
+                        <span class="badge badge-success badge-inline position-right">{{$buyer_auctions->count()}}</span></a>
                 </li>
-                <li><a href="#send_notification" data-toggle="tab"><i
-                            class="icon-bell3 position-left"></i> {{trans('messages.notification.send')}}</a></li>
+                <li><a href="#transactions" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{trans('messages.transaction.transactions')}}</a></li>
+                <li><a href="#send_notification" data-toggle="tab"><i class="icon-bell3 position-left"></i> {{trans('messages.notification.send')}}</a></li>
                 <li><a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> Settings</a></li>
             </ul>
         </div>
@@ -65,7 +61,7 @@
 
                                                         <form action="#">
                                                             <div class="row">
-                                                                <div class="col-lg-6">
+                                                                <div class="col-lg-12">
                                                                     <div class="form-group row">
                                                                         <label class="col-form-label col-lg-3">{{ trans('messages.personal_image') }}:</label>
                                                                         <div class="col-lg-9">
@@ -73,17 +69,17 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-6">
-                                                                    <div class="form-group row">
-                                                                        <label class="col-form-label col-lg-3">{{ trans('messages.wallet') }}:</label>
+                                                            </div><hr>
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <div class="form-group row"><br>
+                                                                        <label class=" col-lg-3 ">{{ trans('messages.wallet') }}:</label>
                                                                         <div class="col-lg-9">
                                                                             <input type="text" class="form-control" value="{{ $buyer->wallet}} /ريال-سعودي/" readonly>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <hr>
-
+                                                            </div><hr>
 
                                                             <div class="form-group row">
                                                                 <label class="col-form-label col-lg-3">{{ trans('messages.type') }}:</label>
@@ -92,21 +88,15 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label
-                                                                    class="col-form-label col-lg-3">{{ trans('messages.buyer.full_name') }}
-                                                                    :</label>
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.buyer.full_name') }}:</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control"
-                                                                           value="{{ $buyer->full_name }}" readonly>
+                                                                    <input type="text" class="form-control" value="{{ $buyer->full_name }}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label
-                                                                    class="col-form-label col-lg-3">{{ trans('messages.user_name') }}
-                                                                    :</label>
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.user_name') }}:</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control"
-                                                                           value="{{ $buyer->user_name }}" readonly>
+                                                                    <input type="text" class="form-control" value="{{ $buyer->user_name }}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -327,6 +317,87 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="transactions">
+
+
+                            <!-- transactions -->
+                            <div class="panel panel-flat">
+
+                                <div class="panel-heading">
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li><a data-action="collapse"></a></li>
+                                            <li><a data-action="reload"></a></li>
+                                            <li><a data-action="close"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <!-- Palette colors -->
+                                    <div class="row">
+                                        <div class="list-icons" style="padding: 10px;">
+                                            <a href="#" data-toggle="modal" data-target="#add_balance"
+                                               class="btn btn-success btn-labeled btn-labeled-left"><b><i
+                                                        class="icon-plus2"></i></b>{{ trans('messages.buyer.add_balance') }}
+                                            </a>
+{{--                                            <a href="{{route('transactions.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i--}}
+{{--                                                        class="icon-plus2"></i></b>{{ trans('messages.transaction.add') }}</a>--}}
+                                        </div>
+                                        @if($buyer->payments->count() > 0)
+                                            <table class="table datatable-basic" id="transactions" style="font-size: 16px;">
+                                                <thead>
+                                                <tr>
+                                                    <th class="text-center">#</th>
+                                                    <th class="text-center">{{ trans('messages.transaction.payment_type') }}</th>
+                                                    <th class="text-center">{{ trans('messages.transaction.amount') }}</th>
+                                                    <th class="text-center">@lang('messages.transaction.since')</th>
+                                                    <th class="text-center">@lang('messages.form-actions')</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($buyer->payments as $transaction)
+                                                    <tr id="transaction-row-{{ $transaction->id }}">
+
+                                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                                        <td class="text-center"><a href=""> {{ isNullable($transaction->payment_type) }}</a></td>
+                                                        <td class="text-center"><a href=""> {{ isNullable($transaction->amount) }}</a></td>
+                                                        <td class="text-center">{{isset($transaction->created_at) ?$transaction->created_at->format('y/m/d'):'---' }}</td>
+                                                        <td class="text-center">
+                                                            <div class="list-icons text-center">
+                                                                <div class="list-icons-item dropdown text-center">
+                                                                    <a href="#" class="list-icons-item caret-0 dropdown-toggle" data-toggle="dropdown">
+                                                                        <i class="icon-menu9"></i>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
+{{--                                                                        <li>--}}
+{{--                                                                            <a href="{{ route('transactions.edit',$transaction->id) }}"> <i--}}
+{{--                                                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>--}}
+{{--                                                                        </li>--}}
+                                                                        <li>
+                                                                            <a data-id="{{ $transaction->id }}" class="delete-action"
+                                                                               href="{{ Url('/transaction/transaction/'.$transaction->id) }}">
+                                                                                <i class="icon-database-remove"></i>@lang('messages.delete')
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+
+                                        @else
+                                            <center><h2> @lang('messages.no_data_found') </h2></center>
+                                        @endif
+                                    </div>
+                                    <!-- /palette colors -->
+                                </div>
+                            </div>
+                            <!-- /transactions -->
+
+                        </div>
                         <div class="tab-pane fade" id="settings">
 
                         </div>
@@ -334,9 +405,12 @@
                 </div>
             </div>
         </div>
+        @include('Dashboard.Buyers.add_balance_modal')
+
     </div>
 
 @stop
 
 @section('scripts')
+        @include('Dashboard.layouts.parts.ajax_delete', ['model' => 'transaction'])
 @stop

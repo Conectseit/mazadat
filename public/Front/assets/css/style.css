@@ -23,7 +23,16 @@ a,
   margin: 0;
   padding: 0;
 }
-
+a{
+    text-decoration: none;
+    color:#fff
+}
+.active-lang{
+    color: #d1915c;
+}
+.home-active h4{
+    color: #1e3c48;
+}
 *:not(i) {
   font-weight: 500 !important;
 }
@@ -61,7 +70,7 @@ body {
 
 main.categories-bar {
   background-color: var(--secondary-color);
-  padding: 40px;
+  padding: 20px;
 }
 
 main.categories-bar .categories-bar-carousel .owl-item {
@@ -1643,19 +1652,25 @@ footer .rights .payment-brands img:not(:last-of-type) {
   border: none;
 }
 
-.my-profile-page .user-modal .modal-footer .add {
+.my-profile-page .user-modal .modal-footer .add,
+#contact-modal1 .modal-footer .add,
+#contact-modal .modal-footer .add{
   padding: 12px 80px;
   margin-left: 20px;
   color: var(--main-color);
   background-color: var(--secondary-color);
 }
 
-.my-profile-page .user-modal .modal-footer .cancel {
+.my-profile-page .user-modal .modal-footer .cancel,
+#contact-modal1 .modal-footer .cancel,
+#contact-modal .modal-footer .cancel{
   padding: 12px 40px;
   background-color: var(--main-color);
 }
 
-.my-profile-page .bio-modal .modal-body textarea {
+.my-profile-page .bio-modal .modal-body textarea,
+#contact-modal1 .modal-body textarea,
+#contact-modal .modal-body textarea{
   width: 100%;
   height: 200px;
   resize: none;
@@ -2029,7 +2044,8 @@ footer .rights .payment-brands img:not(:last-of-type) {
   justify-content: flex-end;
 }
 
-.my-wallet-page .main-links a {
+.my-wallet-page .main-links a,
+.save-btn{
   width: 45%;
   display: flex;
   align-items: center;
@@ -2235,14 +2251,23 @@ footer .rights .payment-brands img:not(:last-of-type) {
   font-size: 20px;
 }
 
-.my-wallet-page .bank-form .submit-btn {
+.my-wallet-page .bank-form .submit-btn,
+.save-btn{
   background-color: var(--main-color);
   color: var(--secondary-color);
   border: none;
   width: 100%;
   padding: 20px;
 }
-
+.save-btn{
+    width: 31.5%;
+    padding: 20px;
+}
+.save-btn:hover,
+.save-btn:active{
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+}
 .ui-widget.ui-widget-content {
   border-color: var(--main-color);
   border-radius: 10px;
@@ -2352,7 +2377,7 @@ a.ui-button:active,
   background-color: var(--main-color);
   text-decoration: none;
   padding: 20px;
-  width: 80%;
+  width: auto;
   display: block;
   text-align: center;
   margin-right: auto;

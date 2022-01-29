@@ -44,11 +44,11 @@
                 <tr class="text-center" id="row_{{ $contact->id }}">
                     <td>{{ $loop->iteration }}</td>
                     <td>
-                        @if($contact->user_id)
-                            <a href="" class="text-default font-weight-semibold">{{ $contact->full_name }}</a></td>
-                    @else
+{{--                    @if($contact->user_id)--}}
+{{--                            <a href="" class="text-default font-weight-semibold">{{ $contact->full_name }}</a></td>--}}
+{{--                    @else--}}
                         {{ $contact->full_name }}
-                    @endif
+{{--                    @endif--}}
                     <td>{{ $contact->mobile }}</td>
                     <td>
                         <a data-popup="tooltip" title="{{ $contact->message }}">

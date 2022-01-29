@@ -143,14 +143,16 @@
                                     {{--                                    </li>--}}
                                     <li class="nav-item">
                                         <div class="nav-link ">
-                                                <span class="bg-{{ app()->isLocale('ar') ? 'green' : 'white' }}  ">
-                                                    <a href="{{ isLocalized("ar") }}"
-                                                       class="arabic">@lang('messages.ar.ar')</a>
-                                                </span>
-                                            <span class="bg-{{ app()->isLocale('en') ? 'green' : 'white' }} ">
-                                                   <a href="{{ isLocalized("en") }}"
-                                                      class="arabic">@lang('messages.en.en')</a>
-                                                </span>
+                                            <span class="hvr-shutter-out-horizontal   ">
+                                                    <a href="{{ isLocalized("ar") }}" class="arabic {{ app()->isLocale('ar') ? 'active-lang' : '' }}">
+                                                        @lang('messages.ar.ar')
+                                                    </a>
+                                            </span>  ||
+                                            <span class="hvr-shutter-out-horizontal  ">
+                                                   <a href="{{ isLocalized("en") }}" class="arabic {{ app()->isLocale('en') ? 'active-lang' : '' }}">
+                                                       @lang('messages.en.en')
+                                                   </a>
+                                             </span>
                                         </div>
                                     </li>
 
