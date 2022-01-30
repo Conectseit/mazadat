@@ -219,7 +219,7 @@ return [
         'seller_data' => 'بيانات صاحب المزاد',
         'seller_auctions' => 'جميع مزاداته',
         'show' => 'عرض تفاصيل صاحب المزاد',
-        'show_auction_bids' => 'عرض تفاصيل المزايدات',
+        'show_auction_bids' => 'عرض تفاصيل المزاد',
 
     ],
     'commercial_register_image' => 'صورة السجل التجاري',
@@ -474,7 +474,7 @@ return [
     'enter_message' => '  اكتب رسالتك ',
     'enter_full_name' => 'ادخل الاسم كامل ',
     'enter_email' => 'ادخل البريد الالكترونى',
-    'enter_mobile' => 'ادخل رقم الجوال',
+    'enter_mobile' => 'ادخل رقم الجوال : 966',
     'register_your_account' => 'تسجيل حسابك',
     'confirm-password' => 'قم بتاكيد كلمة المرور',
     'account_data' => 'بيانات حسابك',
@@ -487,6 +487,7 @@ return [
     'activation_code_required' => 'عفوا كود التفعيل مطلوب',
     'choose_country_code' => 'اختر كود الدولة',
     'enter_other_user_data' => 'بيانات اساسية اخري ',
+    'reset_password' => '  اعادة تعيين كلمة المرور ',
 
     'activation' => 'تفعيل حسابك من خلال كود التفعيل المرسل علي جوالك',
     'accept_term' => ' بضغطك على تسجيل حسابك انت توافق على الشروط والاحكام الخاص بالامارات للمزادات',
@@ -496,6 +497,7 @@ return [
     'Sorry_you_should_upload_document_and_passport_first'           =>'عفوا يجب عليك  رفع صورة جواز السفر ووثائق رسمية اولا ',
     'not_found_auction'         	    => ' هذاالمزاد غير موجود',
     'sorry_you_cant_make_bid_your_available_limit_less_than_this_value'  =>'عفوا لا يمكنك المزايدة الان لان القيمة المسموحة من محفظتك اقل من قيمة المزايدة ',
+    'Sorry_you_cant_increase_more_your_wallet_less_than_this_value'  =>'عفوا لا يمكنك الزيادة لان قيمة  محفظتك اقل من  هذه القيمة ',
     'request_done_successfully' 	=> 'تم الطلب بنجاح',
     'updated_successfully'         	=> 'تم التحديث بنجاح',
     'you_should_charge_your_wallet_first'         	=> ' عفوا يجب شحن محفظتك أولا',

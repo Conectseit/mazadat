@@ -43,7 +43,11 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#" class="forgot">نسيت كلمة المرور؟</a>
+
+                            <a href="#" class="forgot" data-bs-toggle="modal"
+                               data-bs-target="#forget_pass_modal">نسيت كلمة المرور؟</a>
+
+{{--                            <a href="#" class="forgot"></a>--}}
                         </div>
                     </div>
                 </div>

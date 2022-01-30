@@ -23,14 +23,14 @@
                         </p>
 {{--                        <p class="ticket"><i class="fal fa-ticket"></i>{{ ($auction->count_of_buyer ) }}</p>--}}
                         <div class="row">
-                            <div class="col-sm-4 col-6">
-                                <p><i class="fal fa-tag"></i>{{($auction->value_of_increment)}}</p>
-                            </div>
+{{--                            <div class="col-sm-4 col-6">--}}
+{{--                                <p><i class="fal fa-tag"></i>{{($auction->value_of_increment)}}</p>--}}
+{{--                            </div>--}}
                             <div class="col-sm-4 col-6">
                                 <p><i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}{{($auction->start_auction_price)}}</p>
                             </div>
                             <div class="col-sm-4 col-6">
-                                <p><i class="fal fa-gavel"></i>{{trans('messages.auction.current_price')}}:{{($auction->current_price)}}$</p>
+                                <p><i class="fal fa-gavel"></i>{{trans('messages.auction.current_price')}}:{{($auction->current_price)}}</p>
                             </div>
 {{--                            <div class="col-sm-4">--}}
 {{--                                <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>--}}

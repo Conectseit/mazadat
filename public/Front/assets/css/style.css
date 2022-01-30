@@ -1653,6 +1653,7 @@ footer .rights .payment-brands img:not(:last-of-type) {
 }
 
 .my-profile-page .user-modal .modal-footer .add,
+#forget_pass_modal .modal-footer .add,
 #contact-modal1 .modal-footer .add,
 #contact-modal .modal-footer .add{
   padding: 12px 80px;
@@ -1662,6 +1663,7 @@ footer .rights .payment-brands img:not(:last-of-type) {
 }
 
 .my-profile-page .user-modal .modal-footer .cancel,
+#forget_pass_modal .modal-footer .cancel,
 #contact-modal1 .modal-footer .cancel,
 #contact-modal .modal-footer .cancel{
   padding: 12px 40px;
@@ -1669,6 +1671,7 @@ footer .rights .payment-brands img:not(:last-of-type) {
 }
 
 .my-profile-page .bio-modal .modal-body textarea,
+#forget_pass_modal .modal-body textarea,
 #contact-modal1 .modal-body textarea,
 #contact-modal .modal-body textarea{
   width: 100%;

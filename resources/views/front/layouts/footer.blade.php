@@ -149,7 +149,7 @@
                             </h4>
                             <ul>
                                 <li><a href="{{route('front.about_app')}}">{{trans('messages.about_app')}}</a></li>
-                                <li><a href="#">اتصل بنا</a></li>
+{{--                                <li><a href="#">اتصل بنا</a></li>--}}
                                 <li><a href="#">نتائج المزادات </a></li>
                                 <li><a href="{{route('front.show_register')}}">التسجيل</a></li>
                             </ul>
@@ -174,7 +174,10 @@
                                 الدعم والمساعدة
                             </h4>
                             <ul>
-                                <li><a href="#">هل نسيت كلمة المرور؟</a></li>
+                                <li>
+                                    <a href="#" class="forgot" data-bs-toggle="modal"
+                                       data-bs-target="#forget_pass_modal">نسيت كلمة المرور؟</a>
+                                </li>
                                 <li><a href="{{route('front.questions')}}">{{trans('messages.question.questions')}} </a></li>
 {{--                                <li><a href="#">التسجيل</a></li>--}}
 {{--                                <li><a href="#">التأمين</a></li>--}}

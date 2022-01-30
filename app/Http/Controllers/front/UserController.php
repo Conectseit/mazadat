@@ -79,7 +79,7 @@ class UserController extends Controller
     public function choose_available_limit(AvailableLimitRequest$request)
     {
         $user = auth()->user();
-        if ($request->available_limit >= $user->wallet) {
+        if ($request->available_limit > $user->wallet) {
             return back()->with('error', trans('messages.Sorry_you_cant_increase_more_your_wallet_less_than_this_value'));
         }
         $user->update($request->all());

@@ -39,6 +39,8 @@ Route::group(
     Route::post('check_code', [AuthController::class, 'checkCode'])->name('front.check_code');
 //    Route::get('show_login', [AuthController::class, 'show_login'])->name('front.show_login');
     Route::post('login', [AuthController::class, 'login'])->name('front.login');
+    Route::post('forget_pass', [AuthController::class, 'forget_pass'])->name('front.forget_pass');
+
 // ============ // auth ================
 
 

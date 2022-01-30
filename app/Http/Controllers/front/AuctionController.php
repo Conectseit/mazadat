@@ -43,22 +43,22 @@ class AuctionController extends Controller
             if($auction->current_price > $request->buyer_offer)
                 return back()->with('error', trans('messages.sorry_you_cant_make_bid_your_offer_less_than_auction_current_price'));
 
-
-
             if($request->buyer_offer > $user->available_limit)
                 return back()->with('error', trans('messages.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'));
 
             if (is_null($bid))
             {
                 $auction_commission = $auction->category->auction_commission;
-
-                if($user->wallet < ($auction_commission  + $request->buyer_offer) )
+                if($user->wallet < ($auction_commission  + $request->buyer_offer))
                     return back()->with('error', trans('messages.you_should_charge_your_wallet_first'));
-                $user_current_wallet = $user->wallet - ($auction_commission + $request->buyer_offer);
+                if($user->available_limit < ($auction_commission  + $request->buyer_offer))
+                    return back()->with('error', trans('messages.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'));
+                $offer=$request->buyer_offer - $auction->current_price;
+                $user_current_wallet = $user->wallet - ($auction_commission + $offer);
 
                 $user->update(['wallet' => $user_current_wallet]);
 
-                $user_current_available_limit= $user->available_limit - ($auction_commission + $request->buyer_offer);
+                $user_current_available_limit= $user->available_limit - ($auction_commission + $offer);
                 $user->update(['available_limit' => $user_current_available_limit]);
 
                 //=================  make bid at first time ============
@@ -73,14 +73,15 @@ class AuctionController extends Controller
                 return back()->with('success', trans('messages.request_done_successfully'));
             }
             //=================== make bid at second time  =================
+            $offer=$request->buyer_offer - $auction->current_price;
             $auction->update(['current_price' => $request->buyer_offer]);
 
             $bid->update(['buyer_offer' => $auction->current_price]);
 
-            $user_current_wallet = $user->wallet - ($request->buyer_offer);
+            $user_current_wallet = $user->wallet - ($offer);
             $user->update(['wallet' => $user_current_wallet]);
 
-            $user_current_available_limit= $user->available_limit - ( $request->buyer_offer);
+            $user_current_available_limit= $user->available_limit - ( $offer);
             $user->update(['available_limit' => $user_current_available_limit]);
 
             DB::commit();

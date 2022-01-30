@@ -118,7 +118,7 @@ class FilterController extends PARENT_API
             return responseJson(true, trans('api.category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK
 //            return responseJson(true, trans('api.category_auctions'), UserAuctionsResource::collection($data));  //OK
         }
-        return responseJson(true, trans('api.there_is_no_auctions_on_this_option'), null);  //OK
+        return responseJson(false, trans('api.there_is_no_auctions_on_this_option'), null);  //OK
     }
 
 

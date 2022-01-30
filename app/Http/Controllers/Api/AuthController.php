@@ -211,6 +211,8 @@ class AuthController extends PARENT_API
     {
         if (PasswordReset::where(['email' => $request['email'], 'token' => $request['token']])->first())
         {
+//            \DB::table('password_resets')->where(['email' => $request->email ])->delete();
+
             return responseJson(true, trans('api.updated_successfully'), null); //
         }
         return responseJson(false, trans('api.wrong_code'), null); //

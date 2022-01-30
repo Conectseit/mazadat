@@ -111,6 +111,12 @@ class AuthController extends Controller
 
 
 
+    public function forget_pass(){
+
+    }
+
+
+
 
     public function get_cities_by_country_id(Request $request)
     {

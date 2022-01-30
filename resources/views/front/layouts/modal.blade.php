@@ -91,3 +91,41 @@
     </div>
 </div>
 <!-- contact-modal -->
+
+
+
+
+
+<!-- forget_pass-modal -->
+<div class="modal user-modal bio-modal fade" id="forget_pass_modal" tabindex="-1"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form action="{{route('front.forget_pass')}}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{trans('messages.reset_password')}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <div class="col-lg-12 col-md-12">
+                            <input type="text" name="email" value="{{ old('email') }}"
+                                   class="form-control @error('email') is-invalid @enderror"
+                                   placeholder="{{trans('messages.enter_email')}}">
+                            @error('email') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror
+                        </div>
+                    </div><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary add">ارسال</button>
+                    <button type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal">الغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- forget_pass-modal -->

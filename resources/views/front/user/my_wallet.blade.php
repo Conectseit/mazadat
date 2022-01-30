@@ -20,7 +20,7 @@
             <div class="container">
                 <div class="balance-content">
                     <i class="fal fa-wallet"></i>
-                    <h2>{{$user->wallet}} د.إ</h2>
+                    <h2>{{$user->wallet}} ريال- سعودي</h2>
                 </div>
 
             </div>
@@ -29,11 +29,11 @@
             <ul class="wallet-details">
                 <li>
                     <p>الإيداع الحالي:</p>
-                    <p>{{$user->wallet}} د.إ</p>
+                    <p>{{$user->wallet}} ريال- سعودي</p>
                 </li>
                 <li>
                     <p>الحد المتاح:</p>
-                    <p>{{$user->available_limit}} د.إ</p>
+                    <p>{{$user->available_limit}} ريال- سعودي</p>
                 </li>
             </ul>
 
