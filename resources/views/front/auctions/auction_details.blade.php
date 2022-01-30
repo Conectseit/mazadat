@@ -18,22 +18,23 @@
                     <div class="col-lg-5" id="mainInfo">
                         <p class="start-date">
                             <i class="fal fa-calendar-alt"></i>
-                            Start_at: {{ ($auction->start_date->format('l, m/d/Y  h:s') ) }}
+                            {{trans('messages.auction.start_at')}}: {{ ($auction->start_date->format('l, m/d/Y  h:s') ) }}
+{{--                            Start_at: {{ ($auction->start_date->format('l, m/d/Y  h:s') ) }}--}}
                         </p>
-                        <p class="ticket"><i class="fal fa-ticket"></i>{{ ($auction->count_of_buyer ) }}</p>
+{{--                        <p class="ticket"><i class="fal fa-ticket"></i>{{ ($auction->count_of_buyer ) }}</p>--}}
                         <div class="row">
                             <div class="col-sm-4 col-6">
                                 <p><i class="fal fa-tag"></i>{{($auction->value_of_increment)}}</p>
                             </div>
                             <div class="col-sm-4 col-6">
-                                <p><i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}:{{($auction->start_auction_price)}}$</p>
+                                <p><i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}{{($auction->start_auction_price)}}</p>
                             </div>
                             <div class="col-sm-4 col-6">
                                 <p><i class="fal fa-gavel"></i>{{trans('messages.auction.current_price')}}:{{($auction->current_price)}}$</p>
                             </div>
-                            <div class="col-sm-4">
-                                <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>
-                            </div>
+{{--                            <div class="col-sm-4">--}}
+{{--                                <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                     <div class="col-lg-2 d-flex align-items-center" id="bid">
@@ -64,7 +65,15 @@
                     <div class="col-lg-9">
 
                         <div class="details" id="details">
-                           <h4>{{$auction->$name}}</h4>
+                            <h4>{{$auction->$name}}</h4>
+                        </div>
+                        <div class="details" id="details">
+                            <h6>{{trans('messages.auction.buyers_count')}}:{{ ($auction->count_of_buyer ) }}</h6>
+                        </div>
+                        <div class="details" id="details">
+                            <p> {{trans('messages.auction.remaining_time')}}:<i class="fal fa-clock"></i> {{$auction->remaining_time}}</p>
+
+{{--                            <h6>{{trans('messages.auction.remaining_time')}}:{{ ($auction->remaining_time ) }}</h6>--}}
                         </div>
                         <div class="description" id="description">
                             <h4>{{ trans('messages.description')}}:</h4>

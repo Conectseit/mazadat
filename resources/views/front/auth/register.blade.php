@@ -54,7 +54,7 @@
 {{--                                    </div>--}}
                                     <div class="col-xl-9 col-lg-8 col-sm-6">
                                         <input type="number" class="form-control" id="phone" name="mobile"
-                                               placeholder="{{trans('messages.enter_mobile')}}: 5xx xxx xxx">
+                                               placeholder="{{trans('messages.enter_mobile')}}: 966 5xx xxx xxx">
                                     </div>
                                 </div>
                             </div>

@@ -64,7 +64,7 @@
                 <li><a href="#auction_bids" data-toggle="tab"><i
                             class="icon-calendar3 position-left"></i> {{ trans('messages.auction.bids') }} <span
                             class="badge badge-success badge-inline position-right">{{$auction_bids->count()}}</span></a></li>
-                <li><a href="#inspection_report_image" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{ trans('messages.auction.inspection_report_image') }}</a></li>
+                <li><a href="#inspection_report_image" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{ trans('messages.auction.inspection_report_images') }}</a></li>
                 <li><a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> Settings</a></li>
             </ul>
         </div>

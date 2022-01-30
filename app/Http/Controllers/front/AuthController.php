@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SmsController;
 use App\Http\Requests\Front\LoginRequest;
 use App\Http\Requests\Front\RegisterRequest;
 use App\Models\City;
@@ -47,7 +48,7 @@ class AuthController extends Controller
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
             }
             DB::commit();
-//            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
+            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
             return redirect()->route('front.show_activation');
         } catch (\Exception $e) {
             return redirect()->route('front.show_activation');

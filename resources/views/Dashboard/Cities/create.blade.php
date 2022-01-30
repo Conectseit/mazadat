@@ -2,23 +2,20 @@
 
 @section('title', trans('messages.create-var',['var'=>trans('messages.city.city')]))
 
-<!-- Page header -->
-<div class="page-header page-header-default">
-    @section('breadcrumb')
-        <div class="breadcrumb-line">
-            <ul class="breadcrumb">
-                <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
-                </li>
-                <li><a href="{{ route('cities.index') }}"><i
-                            class="icon-admin position-left"></i> @lang('messages.city.cities')</a></li>
-                <li class="active">@lang('messages.create-var',['var'=>trans('messages.city.city')])</li>
-            </ul>
+@section('breadcrumb')
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
+            </li>
+            <li><a href="{{ route('cities.index') }}"><i
+                        class="icon-admin position-left"></i> @lang('messages.city.cities')</a></li>
+            <li class="active">@lang('messages.create-var',['var'=>trans('messages.city.city')])</li>
+        </ul>
 
-            @include('Dashboard.layouts.parts.quick-links')
-        </div>
-    @endsection
-</div>
-<!-- /page header -->
+        @include('Dashboard.layouts.parts.quick-links')
+    </div>
+@endsection
+
 @section('content')
 
     @include('Dashboard.layouts.parts.validation_errors')
@@ -42,19 +39,19 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label display-block"> {{ trans('messages.country.name') }}: </label>
-                        <div class="col-lg-6">
-                            <select name="country_id" class="select">
+{{--                    <div class="form-group">--}}
+{{--                        <label class="col-lg-3 control-label display-block"> {{ trans('messages.country.name') }}: </label>--}}
+{{--                        <div class="col-lg-6">--}}
+{{--                            <select name="country_id" class="select">--}}
 {{--                                <optgroup label="{{ trans('messages.country.name')}}">--}}
-                                    <option selected disabled>{{trans('messages.select')}}</option>
+{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
 
-                                @foreach($countries as $country)
-                                        <option value="{{ $country->id }}"> {{ $country->$name }} </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div><br>
+{{--                                @foreach($countries as $country)--}}
+{{--                                        <option value="{{ $country->id }}"> {{ $country->$name }} </option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
+{{--                    </div><br>--}}
 
                     <div class="panel-body">
                         <div class="box-body">

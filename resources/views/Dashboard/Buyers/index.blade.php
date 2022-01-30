@@ -152,27 +152,18 @@
                                                         <td class="text-center"><a href={{ route('buyers.show', $buyer->id) }}> {{ isNullable($buyer->full_name) }}</a></td>
                                                         <td class="text-center"> {{ $buyer->mobile}}</td>
                                                         <td class="text-center"> {{ $buyer->email}}</td>
-
                                                         <td class="text-center">
                                                             @if($buyer->is_accepted ==1)
-                                                                <a href="buyer/{{$buyer->id}}/not_accept/" class="btn btn-danger btn-sm"><i class="icon-close2"> </i>{{trans('messages.not_accept')}}</a>
+                                                                <a href="buyer/{{$buyer->id}}/not_accept/">
+                                                                    <span class="badge badge-danger" >  <i class="icon-close2"> </i>  {{trans('messages.not_accept')}} </span>
+                                                                </a>
                                                             @else
-                                                                <a href="buyer/{{$buyer->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>
+                                                                <a href="buyer/{{$buyer->id}}/accept/">
+                                                                    <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.accept')}} </span>
+                                                                </a>
+                                                                {{--                                                                <a href="buyer/{{$buyer->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
                                                             @endif
                                                         </td>
-
-{{--                                                        <td class="text-center">--}}
-{{--                                                            @if($buyer->is_accepted ==1)--}}
-{{--                                                                <a href="buyer/{{$buyer->id}}/not_accept/">--}}
-{{--                                                                    <span class="badge badge-danger" >  <i class="icon-close2"> </i>  {{trans('messages.not_accept')}} </span>--}}
-{{--                                                                </a>--}}
-{{--                                                            @else--}}
-{{--                                                                <a href="buyer/{{$buyer->id}}/accept/">--}}
-{{--                                                                    <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.accept')}} </span>--}}
-{{--                                                                </a>--}}
-{{--                                                                --}}{{--                                                                <a href="buyer/{{$buyer->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
-{{--                                                            @endif--}}
-{{--                                                        </td>--}}
                                                         <td class="text-center">{{isset($buyer->created_at) ? $buyer->created_at->diffForHumans():'---' }}</td>
                                                         <td class="text-center">
                                                             <div class="list-icons text-center">
@@ -206,6 +197,98 @@
                                         @else
                                             <center><h2> @lang('messages.no_data_found') </h2></center>
                                         @endif
+
+
+
+
+
+
+
+
+
+
+
+{{--                                        @if($not_accepted_buyers->count() > 0)--}}
+{{--                                            <table class="table datatable-basic" id="buyers" style="font-size: 16px;">--}}
+{{--                                                <thead>--}}
+{{--                                                <tr style="background-color:gainsboro">--}}
+{{--                                                    --}}{{--                                                    <th class="text-center">#</th>--}}
+{{--                                                    <th class="text-center">{{ trans('messages.buyer.image') }}</th>--}}
+{{--                                                    <th class="text-center">{{ trans('messages.buyer.person/company') }}</th>--}}
+{{--                                                    <th class="text-center">{{ trans('messages.full_name') }}</th>--}}
+{{--                                                    <th class="text-center">{{ trans('messages.mobile') }}</th>--}}
+{{--                                                    <th class="text-center">{{ trans('messages.email') }}</th>--}}
+{{--                                                    <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>--}}
+{{--                                                    <th class="text-center">@lang('messages.since')</th>--}}
+{{--                                                    <th class="text-center">@lang('messages.form-actions')</th>--}}
+{{--                                                </tr>--}}
+{{--                                                </thead>--}}
+{{--                                                <tbody>--}}
+{{--                                                @foreach($not_accepted_buyers as $buyer)--}}
+{{--                                                    <tr id="buyer-row-{{ $buyer->id }}">--}}
+{{--                                                        --}}{{--                                                        <td class="text-center">{{ $buyer->id }}</td>--}}
+{{--                                                        <td class="text-center">--}}
+{{--                                                            <a href="{{ $buyer->image_path }}" data-popup="lightbox"><img src="{{ $buyer->image_path }}" alt="" width="80" height="80" class="img-circle"></a>--}}
+{{--                                                        </td>--}}
+{{--                                                        <td class="text-center"> {{ $buyer->is_company=='company'?trans('messages.company'):trans('messages.person')}} </td>--}}
+
+{{--                                                        <td class="text-center"><a href={{ route('buyers.show', $buyer->id) }}> {{ isNullable($buyer->full_name) }}</a></td>--}}
+{{--                                                        <td class="text-center"> {{ $buyer->mobile}}</td>--}}
+{{--                                                        <td class="text-center"> {{ $buyer->email}}</td>--}}
+
+{{--                                                        <td class="text-center">--}}
+{{--                                                            @if($buyer->is_accepted ==1)--}}
+{{--                                                                <a href="buyer/{{$buyer->id}}/not_accept/" class="btn btn-danger btn-sm"><i class="icon-close2"> </i>{{trans('messages.not_accept')}}</a>--}}
+{{--                                                            @else--}}
+{{--                                                                <a href="buyer/{{$buyer->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
+{{--                                                            @endif--}}
+{{--                                                        </td>--}}
+
+{{--                                                        <td class="text-center">--}}
+{{--                                                            @if($buyer->is_accepted ==1)--}}
+{{--                                                                <a href="buyer/{{$buyer->id}}/not_accept/">--}}
+{{--                                                                    <span class="badge badge-danger" >  <i class="icon-close2"> </i>  {{trans('messages.not_accept')}} </span>--}}
+{{--                                                                </a>--}}
+{{--                                                            @else--}}
+{{--                                                                <a href="buyer/{{$buyer->id}}/accept/">--}}
+{{--                                                                    <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.accept')}} </span>--}}
+{{--                                                                </a>--}}
+{{--                                                                --}}{{----}}{{--                                                                <a href="buyer/{{$buyer->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
+{{--                                                            @endif--}}
+{{--                                                        </td>--}}
+{{--                                                        <td class="text-center">{{isset($buyer->created_at) ? $buyer->created_at->diffForHumans():'---' }}</td>--}}
+{{--                                                        <td class="text-center">--}}
+{{--                                                            <div class="list-icons text-center">--}}
+{{--                                                                <div class="list-icons-item dropdown text-center">--}}
+{{--                                                                    <a href="#" class="list-icons-item caret-0 dropdown-toggle" data-toggle="dropdown">--}}
+{{--                                                                        <i class="icon-menu9"></i>--}}
+{{--                                                                    </a>--}}
+{{--                                                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">--}}
+{{--                                                                        <li>--}}
+{{--                                                                            <a href="{{ route('buyers.edit',$buyer->id) }}"> <i--}}
+{{--                                                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                        <li>--}}
+{{--                                                                            <a href="{{ route('buyers.show',$buyer->id) }}"> <i--}}
+{{--                                                                                    class="icon-eye"></i>@lang('messages.show') </a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                        <li>--}}
+{{--                                                                            <a data-id="{{ $buyer->id }}" class="delete-action"--}}
+{{--                                                                               href="{{ Url('/buyer/buyer/'.$buyer->id) }}">--}}
+{{--                                                                                <i class="icon-database-remove"></i>@lang('messages.delete')--}}
+{{--                                                                            </a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                    </ul>--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
+{{--                                                        </td>--}}
+{{--                                                    </tr>--}}
+{{--                                                @endforeach--}}
+{{--                                                </tbody>--}}
+{{--                                            </table>--}}
+{{--                                        @else--}}
+{{--                                            <center><h2> @lang('messages.no_data_found') </h2></center>--}}
+{{--                                        @endif--}}
                                     </div>
                                 </div>
                             </div>

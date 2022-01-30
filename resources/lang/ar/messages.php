@@ -347,6 +347,7 @@ return [
         'remove_from_watched' => 'ازالة من مشاهداتي',
         'start_at' => 'يبدا في',
         'buyers' => ' المشاركات',
+        'buyers_count' => 'عدد الاشخاص المزايدين حتي الان',
         'inspection_report_images' => 'صور تقرير الفحص',
 
     ],
@@ -489,6 +490,7 @@ return [
 
     'activation' => 'تفعيل حسابك من خلال كود التفعيل المرسل علي جوالك',
     'accept_term' => ' بضغطك على تسجيل حسابك انت توافق على الشروط والاحكام الخاص بالامارات للمزادات',
+    'there_is_no_auctions_on_this_category_yet' => 'لا يوجد  مزادات في هذا القسم حتي الان ',
     'you_dont_have_auctions_yet' => 'لا يوجد لديك مزادات  حتي الان ',
     'you_dont_have_notifications_yet' => 'لا يوجد لديك اشعارات  حتي الان ',
     'Sorry_you_should_upload_document_and_passport_first'           =>'عفوا يجب عليك  رفع صورة جواز السفر ووثائق رسمية اولا ',
@@ -507,6 +509,12 @@ return [
     'swift_code'         	=> ' Swift Code',
     'routing_number'         	=> ' Routing Number',
     'ATM_locations_near_you'         	=> ' فروع الصراف الآلي القريبة منك',
+    'upload_passport_success'         	=> 'تم رفع صورة جواز السفر بنجاح ',
+    '.upload_document_success'         	=> 'تم الرفع بنجاح ',
+    'user_passport'         	=> ' صورة جواز السفر ',
+    'user_documents'         	=> ' وثائق رسمية ',
+    'paid_success'         	=> 'تم اضافة رصيد الي محفظتك بنجاح ',
+    'updated_success'         	=> 'تم التعديل بنجاح ',
 
     'ar' => [
         'ar' => 'عربي',

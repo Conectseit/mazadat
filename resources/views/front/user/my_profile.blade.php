@@ -39,7 +39,7 @@
                                 <a href="{{route('front.my_bids')}}">مزاداتي</a>
                             </div>
                             <div class="col-sm-6">
-                                <a href="{{route('front.my_watched')}}">مشاهدة</a>
+                                <a href="{{route('front.my_watched')}}">مشاهداتي</a>
                             </div>
                             <div class="col-sm-6">
                                 <a href="{{route('front.my_wallet')}}">المحفظة</a>

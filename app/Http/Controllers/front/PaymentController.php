@@ -51,7 +51,7 @@ class PaymentController extends Controller
         $data['swift_code'] = Setting::where('key', 'swift_code')->first()->value;
         $data['routing_number'] = Setting::where('key', 'routing_number')->first()->value;
 
-//        SmsController::send_sms(removePhoneZero(auth()->user()->mobile,'966'), trans('messages.bank_info', ['account_name' => $data['account_name']]));
+        SmsController::send_sms(removePhoneZero(auth()->user()->mobile,'966'), trans('messages.bank_info', ['code' => $data['account_name']]));
             return redirect()->route('front.bank_deposit')->with('success', trans('messages.message_sent_success'));
     }
 

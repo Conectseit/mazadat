@@ -1,23 +1,21 @@
 @extends('Dashboard.layouts.master')
 
 @section('title', trans('messages.contact.contacts'))
-<!-- Page header -->
-<div class="page-header page-header-default">
-    @section('breadcrumb')
-        <div class="breadcrumb-line">
-            <ul class="breadcrumb">
-                <li><a href=""><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
-                </li>
-                <li><a href="{{ route('contacts.index') }}"><i
-                            class="icon-admin position-left"></i> @lang('messages.contact.contacts')</a></li>
-                <li class="active">@lang('messages.show',['var'=>trans('messages.contact.contacts')])</li>
-            </ul>
 
-            @include('Dashboard.layouts.parts.quick-links')
-        </div>
-    @endsection
-</div>
-<!-- /page header -->
+@section('breadcrumb')
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href=""><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
+            </li>
+            <li><a href="{{ route('contacts.index') }}"><i
+                        class="icon-admin position-left"></i> @lang('messages.contact.contacts')</a></li>
+            <li class="active">@lang('messages.show',['var'=>trans('messages.contact.contacts')])</li>
+        </ul>
+
+        @include('Dashboard.layouts.parts.quick-links')
+    </div>
+@endsection
+
 @section('content')
 
 

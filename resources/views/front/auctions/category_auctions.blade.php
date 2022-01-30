@@ -22,66 +22,66 @@
                                 <input class="form-control" type="search" name="search" placeholder="عن ماذا تبحث"
                                        aria-label="Search">
                             </form>
-                            <button class="filter" id="filterBtn"><i class="fal fa-filter"></i></button>
-                            <form class="filter-form" id="filterForm">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                                <button class="submit-btn">تطبيق</button>
-                            </form>
+{{--                            <button class="filter" id="filterBtn"><i class="fal fa-filter"></i></button>--}}
+{{--                            <form class="filter-form" id="filterForm">--}}
+{{--                                <select class="form-select" aria-label="Default select example">--}}
+{{--                                    <option selected>Open this select menu</option>--}}
+{{--                                    <option value="1">One</option>--}}
+{{--                                    <option value="2">Two</option>--}}
+{{--                                    <option value="3">Three</option>--}}
+{{--                                </select>--}}
+{{--                                <select class="form-select" aria-label="Default select example">--}}
+{{--                                    <option selected>Open this select menu</option>--}}
+{{--                                    <option value="1">One</option>--}}
+{{--                                    <option value="2">Two</option>--}}
+{{--                                    <option value="3">Three</option>--}}
+{{--                                </select>--}}
+{{--                                <select class="form-select" aria-label="Default select example">--}}
+{{--                                    <option selected>Open this select menu</option>--}}
+{{--                                    <option value="1">One</option>--}}
+{{--                                    <option value="2">Two</option>--}}
+{{--                                    <option value="3">Three</option>--}}
+{{--                                </select>--}}
+{{--                                <button class="submit-btn">تطبيق</button>--}}
+{{--                            </form>--}}
                             <button class="sidebar" id="controlMenuBtn"><i class="fal fa-ellipsis-v-alt"></i></button>
-                            <form class="menu-form" id="controlMenuForm">
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-6"><select class="form-select"
-                                                                           aria-label="Default select example">
-                                            <option selected>Open this select menu</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6"><select class="form-select"
-                                                                           aria-label="Default select example">
-                                            <option selected>Open this select menu</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6"><select class="form-select"
-                                                                           aria-label="Default select example">
-                                            <option selected>Open this select menu</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6"><select class="form-select"
-                                                                           aria-label="Default select example">
-                                            <option selected>Open this select menu</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </form>
-                            <button id="viewBtn"><i class="fal fa-th"></i></button>
+{{--                            <form class="menu-form" id="controlMenuForm">--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-lg-3 col-md-6"><select class="form-select"--}}
+{{--                                                                           aria-label="Default select example">--}}
+{{--                                            <option selected>Open this select menu</option>--}}
+{{--                                            <option value="1">One</option>--}}
+{{--                                            <option value="2">Two</option>--}}
+{{--                                            <option value="3">Three</option>--}}
+{{--                                        </select>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-lg-3 col-md-6"><select class="form-select"--}}
+{{--                                                                           aria-label="Default select example">--}}
+{{--                                            <option selected>Open this select menu</option>--}}
+{{--                                            <option value="1">One</option>--}}
+{{--                                            <option value="2">Two</option>--}}
+{{--                                            <option value="3">Three</option>--}}
+{{--                                        </select>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-lg-3 col-md-6"><select class="form-select"--}}
+{{--                                                                           aria-label="Default select example">--}}
+{{--                                            <option selected>Open this select menu</option>--}}
+{{--                                            <option value="1">One</option>--}}
+{{--                                            <option value="2">Two</option>--}}
+{{--                                            <option value="3">Three</option>--}}
+{{--                                        </select>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-lg-3 col-md-6"><select class="form-select"--}}
+{{--                                                                           aria-label="Default select example">--}}
+{{--                                            <option selected>Open this select menu</option>--}}
+{{--                                            <option value="1">One</option>--}}
+{{--                                            <option value="2">Two</option>--}}
+{{--                                            <option value="3">Three</option>--}}
+{{--                                        </select>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </form>--}}
+{{--                            <button id="viewBtn"><i class="fal fa-th"></i></button>--}}
                         </div>
                     </div>
                 </div>
@@ -91,6 +91,7 @@
         <section class="items">
             <div class="container">
                 <div class="row">
+                    @if($auctions->count() > 0)
                     @foreach($auctions as $auction)
 
                         <div class="col-lg-4 col-md-6" id="viewItem">
@@ -156,6 +157,10 @@
                             </div>
                         </div>
                     @endforeach
+
+                        @else
+                            <center><h2> @lang('messages.there_is_no_auctions_on_this_category_yet') </h2></center>
+                        @endif
                 </div>
         </section>
     </div>@stop

@@ -10,7 +10,7 @@
             <nav class="breadcrumb-nav" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('front.my_profile')}}">حسابى</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"> user_documents</li>
+                    <li class="breadcrumb-item active" aria-current="page"> {{trans('messages.user_documents')}}</li>
                 </ol>
             </nav>
         </div>

@@ -2,8 +2,8 @@
 
 @section('title', trans('messages.create-var',['var'=>trans('messages.question.question')]))
 
-<!-- Page header -->
-<div class="page-header page-header-default">
+{{--<!-- Page header -->--}}
+{{--<div class="page-header page-header-default">--}}
     @section('breadcrumb')
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
@@ -16,8 +16,8 @@
             @include('Dashboard.layouts.parts.quick-links')
         </div>
     @endsection
-</div>
-<!-- /page header -->
+{{--</div>--}}
+{{--<!-- /page header -->--}}
 
 
 @section('content')

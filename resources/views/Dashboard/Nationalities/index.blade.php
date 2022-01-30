@@ -1,21 +1,19 @@
 @extends('Dashboard.layouts.master')
 
 @section('title', trans('messages.nationality.nationalities'))
-<!-- Page header -->
-<div class="page-header page-header-default">
-    @section('breadcrumb')
-        <div class="breadcrumb-line">
-            <ul class="breadcrumb">
-                <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')
-                    </a>
-                </li>
-                <li class="active">@lang('messages.nationality.nationalities')</li>
-            </ul>
-            @include('Dashboard.layouts.parts.quick-links')
-        </div>
-    @endsection
-</div>
-<!-- /page header -->
+
+@section('breadcrumb')
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')
+                </a>
+            </li>
+            <li class="active">@lang('messages.nationality.nationalities')</li>
+        </ul>
+        @include('Dashboard.layouts.parts.quick-links')
+    </div>
+@endsection
+
 
 @section('content')
 
@@ -48,7 +46,7 @@
                 @foreach($nationalities as $nationality)
                     <tr id="nationality-row-{{ $nationality->id }}">
 
-                        <td class="text-center">{{ $nationality->id }}</td>
+                        <td class="text-center">{{ $loop->iteration }}</td>
                         <td class="text-center"><a href=""> {{ isNullable($nationality->$name) }}</a></td>
 {{--                        <td><a href=""> {{ isNullable($nationality->name_en) }}</a></td>--}}
                         <td class="text-center">{{isset($nationality->created_at) ?$nationality->created_at->diffForHumans():'---' }}</td>
