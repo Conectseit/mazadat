@@ -10,7 +10,7 @@ use Illuminate\Queue\SerializesModels;
 class ConfirmCode extends Mailable
 {
     use Queueable, SerializesModels;
-    private $code;
+    public $code;
 
     /**
      * Create a new message instance.
