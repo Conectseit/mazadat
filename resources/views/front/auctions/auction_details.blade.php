@@ -7,7 +7,8 @@
         <main class="ad-main-details">
             <div class="container">
                 <div class="row">
-                    @include('Dashboard.layouts.parts.validation_errors')
+                    @include('front.layouts.parts.alert')
+
 
                     <div class="col-lg-5 d-flex align-items-center">
                         <a class="navbar-brand" href="{{route('front.home')}}">

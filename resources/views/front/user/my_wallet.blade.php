@@ -6,8 +6,7 @@
 
 @section('content')
     <section class="my-wallet-page">
-        @include('Dashboard.layouts.parts.validation_errors')
-
+        @include('front.layouts.parts.alert')
         <div class="container">
             <nav class="breadcrumb-nav" aria-label="breadcrumb">
                 <ol class="breadcrumb">

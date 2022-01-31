@@ -22,7 +22,8 @@
                 </div>
             </div>
         </div>
-        @include('Dashboard.layouts.parts.validation_errors')
+        @include('front.layouts.parts.alert')
+
         <div class="container">
             <div class="wallet-details">
                 <div class="row">

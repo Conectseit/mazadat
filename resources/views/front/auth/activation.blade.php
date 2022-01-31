@@ -34,14 +34,15 @@
 {{--            <h4 class="title"> {{ trans('messages.activation') }}</h4>--}}
 {{--            @include('Dashboard.layouts.parts.validation_errors')--}}
 
-            @if(session()->has('error'))
-                <div class="alert alert-warning alert-dismissible" role="alert">
-                    {{ session('error') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
+{{--            @if(session()->has('error'))--}}
+{{--                <div class="alert alert-warning alert-dismissible" role="alert">--}}
+{{--                    {{ session('error') }}--}}
+{{--                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
+{{--                        <span aria-hidden="true">&times;</span>--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--            @endif--}}
+            @include('front.layouts.parts.alert')
 
 
             <div class="row">

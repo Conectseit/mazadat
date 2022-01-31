@@ -9,7 +9,8 @@
     <section class="sign-up-page">
         <div class="container">
             <h4 class="title"> {{ trans('messages.add_new_user') }}</h4>
-            @include('Dashboard.layouts.parts.validation_errors')
+
+            @include('front.layouts.parts.alert')
 
             <div class="row">
                 <form action="{{route('front.register')}}" method="post" enctype="multipart/form-data">

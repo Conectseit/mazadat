@@ -18,8 +18,8 @@
                         </ol>
                     </nav>
                 </div>
+        @include('front.layouts.parts.alert')
 
-        @include('Dashboard.layouts.parts.validation_errors')
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">

@@ -15,7 +15,7 @@
                 </ol>
             </nav>
         </div>
-        @include('Dashboard.layouts.parts.validation_errors')
+        @include('front.layouts.parts.alert')
 
         <div class="wallet-balance">
             <div class="container">

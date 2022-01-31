@@ -39,19 +39,19 @@
         </ul>
     </li>
 
-    <li>
-        <a href="#"><i class="icon-archive"></i> <span> {{ trans('messages.option.options') }} </span></a>
-        <ul>
-            <li><a href="{{route('options.index')}}">{{ trans('messages.all') }}</a></li>
+{{--    <li>--}}
+{{--        <a href="#"><i class="icon-archive"></i> <span> {{ trans('messages.option.options') }} </span></a>--}}
+{{--        <ul>--}}
+{{--            <li><a href="{{route('options.index')}}">{{ trans('messages.all') }}</a></li>--}}
 {{--            <li><a href="{{route('options.create')}}"> {{ trans('messages.add') }}</a></li>--}}
-        </ul>
-    </li>
-    <li>
-        <a href="#"><i class="icon-archive"></i> <span> {{ trans('messages.option.option_details') }} </span></a>
-        <ul>
-            <li><a href="{{route('option_details.index')}}">{{ trans('messages.all') }}</a></li>
-        </ul>
-    </li>
+{{--        </ul>--}}
+{{--    </li>--}}
+{{--    <li>--}}
+{{--        <a href="#"><i class="icon-archive"></i> <span> {{ trans('messages.option.option_details') }} </span></a>--}}
+{{--        <ul>--}}
+{{--            <li><a href="{{route('option_details.index')}}">{{ trans('messages.all') }}</a></li>--}}
+{{--        </ul>--}}
+{{--    </li>--}}
 
 
 
@@ -62,15 +62,15 @@
             <li><a href="{{route('nationalities.create')}}"> {{ trans('messages.add') }}</a></li>
         </ul>
     </li>
-    <li>
-    <li>
-        <a href="#"><i class="icon-archive"></i> <span> {{ trans('messages.country.countries') }} </span></a>
-        <ul>
-            <li><a href="{{route('countries.index')}}">{{ trans('messages.all') }}</a></li>
-            <li><a href="{{route('countries.create')}}"> {{ trans('messages.add') }}</a></li>
-        </ul>
-    </li>
-    <li>
+{{--    <li>--}}
+{{--    <li>--}}
+{{--        <a href="#"><i class="icon-archive"></i> <span> {{ trans('messages.country.countries') }} </span></a>--}}
+{{--        <ul>--}}
+{{--            <li><a href="{{route('countries.index')}}">{{ trans('messages.all') }}</a></li>--}}
+{{--            <li><a href="{{route('countries.create')}}"> {{ trans('messages.add') }}</a></li>--}}
+{{--        </ul>--}}
+{{--    </li>--}}
+{{--    <li>--}}
 
 
     <li>

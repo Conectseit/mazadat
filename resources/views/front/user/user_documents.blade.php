@@ -14,8 +14,8 @@
                 </ol>
             </nav>
         </div>
+        @include('front.layouts.parts.alert')
 
-        @include('Dashboard.layouts.parts.validation_errors')
         <div class="container">
             <div class="bank-form">
                 <form action="{{route('front.upload_documents')}}" method="post" enctype="multipart/form-data">
