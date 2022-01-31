@@ -123,6 +123,7 @@ class AuthController extends Controller
     public function forget_pass(ForgetPassRequest $request)
     {
         $user = User::where('email', $request->email)->first();
+
         if ($user->is_active != 'active') return back()->with('error', 'عفوا هذا الحساب غير مفعل من قبل الادارة');
 
         $code = create_rand_numbers();
@@ -130,6 +131,8 @@ class AuthController extends Controller
         $user->update(['reset_password_code' => $code]);
 
         Mail::to($request->email)->send(new ConfirmCode($code));
+
+        Log::info($code);
 //$email=$request->email;
         return redirect()->route('front.reset-code-page', $request->email);
 //        return view('front.auth.resetCodePage', compact('email'));

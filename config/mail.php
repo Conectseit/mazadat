@@ -95,10 +95,10 @@ return [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
-//    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
-//
-//    'port' => env('MAIL_PORT', 587),
-//
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+
+    'port' => env('MAIL_PORT', 587),
+
 //    'from' => [
 //        'address' => env('MAIL_FROM_ADDRESS', 'tt603502@gmail.come'),
 //        'name' => env('MAIL_FROM_NAME', 'TOOT'),
