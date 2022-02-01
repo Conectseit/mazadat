@@ -116,9 +116,9 @@
                                                 <li>
                                                     <div class="mb-3 form-check form-group">
                                                         <a href="{{route('front.accept_auction_terms',$auction->id)}}">
-
                                                         <input type="checkbox" class="form-check-input" id="accept-terms"
-                                                               value="{{ (boolean)checkIsUserAccept($auction)->count()?'check':''}}"
+                                                               value="check"
+{{--                                                               value="{{ (boolean)checkIsUserAccept($auction)->count()?'check':''}}"--}}
                                                         >
                                                         <label class="form-check-label" for="accept-terms">قبول الشروط والاحكام</label>
                                                         </a>
