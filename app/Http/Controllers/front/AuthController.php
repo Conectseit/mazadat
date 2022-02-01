@@ -118,8 +118,7 @@ class AuthController extends Controller
 
 
 
-
-
+// =========== reset password ===========================
     public function forget_pass(ForgetPassRequest $request)
     {
         $user = User::where('email', $request->email)->first();
@@ -133,7 +132,6 @@ class AuthController extends Controller
         Mail::to($request->email)->send(new ConfirmCode($code));
 
         Log::info($code);
-//$email=$request->email;
         return redirect()->route('front.reset-code-page', $request->email);
 //        return view('front.auth.resetCodePage', compact('email'));
 
@@ -155,18 +153,6 @@ class AuthController extends Controller
         auth()->login($user);
         return redirect()->route('front.change-password-page');
     }
-    public function resendCode($email)
-    {
-        $user = User::where('email', $email)->first();
-
-        $code = create_rand_numbers();
-
-        $user->update(['reset_code' => $code]);
-
-        Mail::to($email)->send(new ConfirmCode($code));
-
-        return back()->with('success', 'تم إعادة إرسال الكود بنجاح');
-    }
 
     public function changePasswordPage()
     {
@@ -183,7 +169,19 @@ class AuthController extends Controller
         return redirect()->route('front.home');
     }
 
+// =========== End reset password =================
+    public function resendCode($email)
+    {
+        $user = User::where('email', $email)->first();
 
+        $code = create_rand_numbers();
+
+        $user->update(['reset_code' => $code]);
+
+        Mail::to($email)->send(new ConfirmCode($code));
+
+        return back()->with('success', 'تم إعادة إرسال الكود بنجاح');
+    }
 
 
     public function get_cities_by_country_id(Request $request)

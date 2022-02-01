@@ -8,8 +8,6 @@
 
 
     <section class="my-profile-page edit-profile">
-
-
                 <div class="container">
                     <nav class="breadcrumb-nav" aria-label="breadcrumb">
                         <ol class="breadcrumb">

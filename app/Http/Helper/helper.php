@@ -21,6 +21,10 @@ function checkIsUserWatch($auction)
 {
     return DB::table('watched_auctions')->where(['user_id' => auth()->id(), 'auction_id' => $auction->id]);
 }
+function checkIsUserAccept($auction)
+{
+    return DB::table('accepted_auctions')->where(['user_id' => auth()->id(), 'auction_id' => $auction->id]);
+}
 
 
 function create_rand_numbers($digits = 4){ return rand(pow(10, $digits-1), pow(10, $digits)-1); }

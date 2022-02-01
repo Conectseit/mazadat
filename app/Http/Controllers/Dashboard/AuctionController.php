@@ -45,42 +45,11 @@ class AuctionController extends Controller
         DB::beginTransaction();
         try {
             $serial_number = '#' . random_int(00000, 99999);
-            $start_date = $request->start_date;
-            $end_date = $request->end_date;
-            $min_duration_of_auction = Setting::where('key', 'min_duration_of_auction')->first()->value;
-            $max_duration_of_auction = Setting::where('key', 'max_duration_of_auction')->first()->value;
-            $min_time_unit = Setting::where('key', 'min_time_unit')->first()->value;
-            $max_time_unit = Setting::where('key', 'max_time_unit')->first()->value;
-
-            if ($min_time_unit == 'hour') {
-                $min_allowed_time = Carbon::parse($start_date)->addHours($min_duration_of_auction);
-            }
-            if ($min_time_unit == 'day') {
-                $min_allowed_time = Carbon::parse($start_date)->addDays($min_duration_of_auction);
-            }
-            if ($max_time_unit == 'hour') {
-                $max_allowed_time = Carbon::parse($start_date)->addHours($max_duration_of_auction);
-            }
-            if ($max_time_unit == 'day') {
-                $max_allowed_time = Carbon::parse($start_date)->addDays($max_duration_of_auction);
-            }
-            if ($request->end_date) {
-                $end_date = date('Y-m-d H', strtotime($end_date));
-
-                $minimum_allowed_time = $min_allowed_time->toDateTimeString();
-                $maximum_allowed_time = $max_allowed_time->toDateTimeString();
-
-                if (($end_date >= $minimum_allowed_time) && ($end_date <= $maximum_allowed_time)) {
                     //======= create auction =======
                     $request_data = $request->except(['inspection_report_images' . 'images']);
-//                    if ($request->inspection_report_image) {
-//                        $request_data['inspection_report_image'] = uploaded($request->inspection_report_image, 'auction');
-//                    }
+
                     $auction = Auction::create($request_data + ['is_accepted' => '1',
                             'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
-                } else {
-                    return back()->with('error', trans(trans('messages.the end date should between') . ' ' . $min_allowed_time . ' & ' . $max_allowed_time));
-                }
 
                 //======= upload auction images =======
                 $data = [];
@@ -90,7 +59,6 @@ class AuctionController extends Controller
                     }
                 }
                 $auction_images = DB::table('auction_images')->insert($data);
-
 
                 //======= upload auction inspection_report_images =======
                 $data = [];
@@ -108,7 +76,7 @@ class AuctionController extends Controller
                     'option_id' => $request->option_id,
                     'option_details_id' => $request->option_details_id,
                 ]);
-            }
+
             DB::commit();
             return redirect()->route('auctions.index')->with('message', trans('messages.messages.added_successfully'));
 
@@ -233,6 +201,95 @@ class AuctionController extends Controller
 
         return response()->json(['option_details' => $option->option_details, 'status' => true], 200);
     }
+
+
+
+
+
+
+
+
+
+//    public function store(AuctionRequest $request)
+//    {
+//        DB::beginTransaction();
+//        try {
+//            $serial_number = '#' . random_int(00000, 99999);
+//            $start_date = $request->start_date;
+//            $end_date = $request->end_date;
+//            $min_duration_of_auction = Setting::where('key', 'min_duration_of_auction')->first()->value;
+//            $max_duration_of_auction = Setting::where('key', 'max_duration_of_auction')->first()->value;
+//            $min_time_unit = Setting::where('key', 'min_time_unit')->first()->value;
+//            $max_time_unit = Setting::where('key', 'max_time_unit')->first()->value;
+//
+//            if ($min_time_unit == 'hour') {
+//                $min_allowed_time = Carbon::parse($start_date)->addHours($min_duration_of_auction);
+//            }
+//            if ($min_time_unit == 'day') {
+//                $min_allowed_time = Carbon::parse($start_date)->addDays($min_duration_of_auction);
+//            }
+//            if ($max_time_unit == 'hour') {
+//                $max_allowed_time = Carbon::parse($start_date)->addHours($max_duration_of_auction);
+//            }
+//            if ($max_time_unit == 'day') {
+//                $max_allowed_time = Carbon::parse($start_date)->addDays($max_duration_of_auction);
+//            }
+//            if ($request->end_date) {
+//                $end_date = date('Y-m-d H', strtotime($end_date));
+//
+//                $minimum_allowed_time = $min_allowed_time->toDateTimeString();
+//                $maximum_allowed_time = $max_allowed_time->toDateTimeString();
+//
+//                if (($end_date >= $minimum_allowed_time) && ($end_date <= $maximum_allowed_time)) {
+//                    //======= create auction =======
+//                    $request_data = $request->except(['inspection_report_images' . 'images']);
+////                    if ($request->inspection_report_image) {
+////                        $request_data['inspection_report_image'] = uploaded($request->inspection_report_image, 'auction');
+////                    }
+//                    $auction = Auction::create($request_data + ['is_accepted' => '1',
+//                            'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
+//                } else {
+//                    return back()->with('error', trans(trans('messages.the end date should between') . ' ' . $min_allowed_time . ' & ' . $max_allowed_time));
+//                }
+//
+//                //======= upload auction images =======
+//                $data = [];
+//                if ($request->hasfile('images')) {
+//                    foreach ($request->file('images') as $key => $img) {
+//                        $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
+//                    }
+//                }
+//                $auction_images = DB::table('auction_images')->insert($data);
+//
+//
+//                //======= upload auction inspection_report_images =======
+//                $data = [];
+//                if ($request->hasfile('inspection_report_images')) {
+//                    foreach ($request->file('inspection_report_images') as $key => $img) {
+//                        $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
+//                    }
+//                }
+//                $auction_inspection_report_images = DB::table('inspection_images')->insert($data);
+//
+//
+//                //======= upload auction options =======
+//                $auction_options = AuctionData::Create([
+//                    'auction_id' => $auction->id,
+//                    'option_id' => $request->option_id,
+//                    'option_details_id' => $request->option_details_id,
+//                ]);
+//            }
+//            DB::commit();
+//            return redirect()->route('auctions.index')->with('message', trans('messages.messages.added_successfully'));
+//
+//        } catch (Exception $e) {
+//            DB::rollback();
+//        }
+//    }
+
+
+
+
 
 
 }

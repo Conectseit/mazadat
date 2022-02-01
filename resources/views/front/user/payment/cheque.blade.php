@@ -1,7 +1,7 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.my_profile'))
 @section('style')
-    <style></style>
+    <style> #map { height: 400px;} </style>
 @endsection
 
 @section('content')
@@ -51,7 +51,7 @@
                                             <button class="accordion-button collapsed" type="button"
                                                     data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
                                                     aria-expanded="false" aria-controls="flush-collapseOne">
-                                                عنوان
+                                                العنوان
                                             </button>
                                         </h2>
                                         <div id="flush-collapseOne" class="accordion-collapse collapse"
@@ -91,12 +91,32 @@
                 </div>
             </div>
 
+            <hr><br><br>
+
+            <div class="terms">
+                <h4>{{ trans('messages.our_address_on_map')}}:</h4>
+
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <input id="searchInput" class=" form-control"  placeholder=" اختر المكان علي الخريطة " name="other">
+                        <div id="map"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control hidden d-none">
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control hidden d-none">
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </section>
 @stop
 
 @push('scripts')
     <script>
-
+            @include('Dashboard.layouts.parts.map')
     </script>
 @endpush

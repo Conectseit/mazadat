@@ -77,6 +77,8 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Auction::class,'buyer_id');
     }
 
+
+
     public function payments()
     {
         return $this->hasMany(Payment::class);
@@ -136,6 +138,11 @@ class User extends Authenticatable implements JWTSubject
     public function auctions()
     {
         return $this->belongsToMany(Auction::class, 'watched_auctions');
+    }
+
+    public function accepted_auctions()
+    {
+        return $this->belongsToMany(Auction::class, 'accepted_auctions');
     }
 
 

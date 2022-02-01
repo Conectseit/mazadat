@@ -41,7 +41,7 @@
                 @foreach($categories as $category)
                     <tr id="category-row-{{ $category->id }}">
 
-                        <td>{{ $category->id }}</td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>
                             <a href="{{ $category->ImagePath }}" data-popup="lightbox">
                                 <img src="{{ $category->ImagePath }}" alt="" width="80" height="80" class="img-circle">

@@ -103,6 +103,13 @@
             document.getElementById('location').value = place.formatted_address;
         });
     }
+
+
+
+
+
+
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyDdCP49XcVxRLuY-4CYtxHXxnqucDvQLE8" >
 </script>

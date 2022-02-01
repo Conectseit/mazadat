@@ -349,6 +349,9 @@ return [
         'buyers' => ' المشاركات',
         'buyers_count' => 'عدد الاشخاص المزايدين حتي الان',
         'inspection_report_images' => 'صور تقرير الفحص',
+        'inspection_location_map' => 'موقع المزاد حاليا',
+        'calculate_delivery_charge' => 'حساب اجمالي تكلفة الشحن',
+        'choose_location' => 'اختر موقع توصيل المزاد',
 
     ],
     'terms' => 'الشروط والاحكام  ',
@@ -519,6 +522,8 @@ return [
     'user_documents'         	=> ' وثائق رسمية ',
     'paid_success'         	=> 'تم اضافة رصيد الي محفظتك بنجاح ',
     'updated_success'         	=> 'تم التعديل بنجاح ',
+    'message_sent_success'         	=> 'تم ارسال الرسالة بنجاح ',
+    'our_address_on_map'         	=> 'موقعنا ',
 
     'ar' => [
         'ar' => 'عربي',

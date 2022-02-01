@@ -28,7 +28,7 @@ class CreateAuctionsTable extends Migration
             $table->enum('status', ['on_progress', 'done','not_accepted'])->default('on_progress');
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
-            $table->boolean('is_accepted')->default(0);
+            $table->boolean('is_accepted')->default(0); // when user not admin  will add auction later //
             $table->enum('who_can_see',['all','users','company'])->default('all'); // خيار مشاهدة المزاد
             $table->enum('who_can_buy',['all','users','company'])->default('all'); //خيار المزايدة في المزاد
             $table->integer('count_of_buyer')->default(0);  //عدد المزايدين

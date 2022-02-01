@@ -37,7 +37,6 @@ Route::group(
     Route::post('register', [AuthController::class, 'register'])->name('front.register');
     Route::get('show_activation', [AuthController::class, 'show_activation'])->name('front.show_activation');
     Route::post('check_code', [AuthController::class, 'checkCode'])->name('front.check_code');
-//    Route::get('show_login', [AuthController::class, 'show_login'])->name('front.show_login');
     Route::post('login', [AuthController::class, 'login'])->name('front.login');
 
     Route::post('forget_pass', [AuthController::class, 'forget_pass'])->name('front.forget_pass');
@@ -80,6 +79,7 @@ Route::group(
         Route::get('watch_auction/{auction}', [AuctionController::class, 'watch_auction'])->name('front.watch_auction');
         Route::any('delete_watch_auction/{auction}', [AuctionController::class, 'delete_watch_auction'])->name('front.delete_watch_auction');
 
+        Route::get('accept_auction_terms/{auction}', [AuctionController::class, 'accept_auction_terms'])->name('front.accept_auction_terms');
 
         // ============ // profile ================
         Route::any('my_profile', [UserController::class, 'showProfile'])->name('front.my_profile');

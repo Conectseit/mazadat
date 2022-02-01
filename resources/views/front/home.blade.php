@@ -4,7 +4,7 @@
     <style> </style>
 @endsection
 @section('content')
-    @include('Dashboard.layouts.parts.validation_errors')
+    @include('front.layouts.parts.alert')
 
     <section class="categories">
         <div class="container">

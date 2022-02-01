@@ -4,6 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\auction\MakeBidRequest;
+use App\Models\AcceptedAuction;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\AuctionImage;
@@ -32,7 +33,7 @@ class AuctionController extends Controller
 
             if(is_null($user->passport_image) && $user->documents->count() == 0)
             {
-                return back()->with('error', trans('messages.Sorry_you_should_upload_document_and_passport_first'));
+                return back()->with('warning', trans('messages.Sorry_you_should_upload_document_and_passport_first'));
             }
 
             if(!$auction = Auction::find($id))
@@ -44,15 +45,16 @@ class AuctionController extends Controller
                 return back()->with('error', trans('messages.sorry_you_cant_make_bid_your_offer_less_than_auction_current_price'));
 
             if($request->buyer_offer > $user->available_limit)
-                return back()->with('error', trans('messages.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'));
+                return back()->with('warning1', trans('messages.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'));
 
             if (is_null($bid))
             {
+
                 $auction_commission = $auction->category->auction_commission;
                 if($user->wallet < ($auction_commission  + $request->buyer_offer))
-                    return back()->with('error', trans('messages.you_should_charge_your_wallet_first'));
+                    return back()->with('warning1', trans('messages.you_should_charge_your_wallet_first'));
                 if($user->available_limit < ($auction_commission  + $request->buyer_offer))
-                    return back()->with('error', trans('messages.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'));
+                    return back()->with('warning1', trans('messages.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'));
                 $offer=$request->buyer_offer - $auction->current_price;
                 $user_current_wallet = $user->wallet - ($auction_commission + $offer);
 
@@ -62,7 +64,10 @@ class AuctionController extends Controller
                 $user->update(['available_limit' => $user_current_available_limit]);
 
                 //=================  make bid at first time ============
-                $user->auctionbuyers()->create(['auction_id' => $auction->id, 'buyer_offer' => $request->buyer_offer]);
+                $user->auctionbuyers()->create(['auction_id' => $auction->id,
+                    'buyer_offer' => $request->buyer_offer,
+//                    'accept_auction_terms' => 'yes'
+                ]);
 
                 $auction->update([
                     'count_of_buyer' => $auction->count_of_buyer + 1,
@@ -132,6 +137,23 @@ class AuctionController extends Controller
         $auctionn->delete();
         return back();
     }
+
+
+    public  function accept_auction_terms (Auction $auction)
+    {
+        $check = checkIsUserAccept($auction);
+        if((boolean)$check->count())
+        {
+            $check->delete();
+            return back();
+        }
+        AcceptedAuction::create(['user_id' => auth()->user()->id, 'auction_id' => $auction->id,]);
+        return back();
+    }
+
+
+
+
 
     public  function cancel_bid_auction (Auction $auction)
     {

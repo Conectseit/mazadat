@@ -19,25 +19,41 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="info">
-                                <a href="" data-bs-toggle="modal" data-bs-target="#edit-photo-modal">
-                                    تعديل صورة الملف الشخصى
-                                </a>
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#bio-modal">
-                                    تعديل السيرة الذاتية
-                                </a>
-                                <a href="{{route('front.user_documents')}}">
-                                    تعديل  user_documents
-                                </a>
-                                <a href="{{route('front.user_passport')}}">
-                                      جواز السفر
-                                </a>
+                            <div class="slogan-left">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#edit-photo-modal">
+                                            تعديل الصورة الشخصية
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6"></div>
+            <div class="col-lg-6">
+                <div class="slogan-left">
+                    <div class="row">
+
+                        <div class="col-sm-6">
+                            <a href="{{route('front.user_documents')}}">
+                                الوثائق الرسمية
+                            </a>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#bio-modal">
+                                 السيرة الذاتية
+                            </a>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="{{route('front.user_passport')}}">
+                                جواز السفر
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="edit-form">
@@ -76,8 +92,8 @@
                                                 aria-label="Default select example">
                                             <option selected disabled>اختر كود الدولة</option>
                                             <option value="ksa">+966 المملكة العربية السعودية</option>
-{{--                                            <option value="eg">+20 مصر</option>--}}
-{{--                                            <option value="eg">+20 مصر</option>--}}
+                                            {{--                                            <option value="eg">+20 مصر</option>--}}
+                                            {{--                                            <option value="eg">+20 مصر</option>--}}
                                         </select>
                                     </div>
                                     <div class="col-xl-9 col-lg-8 col-sm-6">
@@ -105,6 +121,7 @@
         </div>
     </div>
 
+
     <!-- Modals -->
     <!-- edit-photo-modal -->
     <div class="modal user-modal edit-profile-modal fade" id="edit-photo-modal" tabindex="-1"
@@ -130,8 +147,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary add">اضافة</button>
-                        <button type="button" class="btn btn-secondary cancel"
-                                data-bs-dismiss="modal">الغاء</button>
+                        <button type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal">الغاء</button>
                     </div>
                 </form>
             </div>

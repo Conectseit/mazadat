@@ -168,9 +168,16 @@
                                                href="{{route('front.logout')}}">@lang('messages.logout')</a>
                                         </li>
                                         <li class="nav-item">
+{{--                                            <h4 class="name"> welcome {{auth()->user()->full_name }}</h4>--}}
+
                                             <a class="nav-link hvr-shutter-out-horizontal"
-                                               href="{{route('front.my_profile')}}"> <i class="fa fa-user"></i> {{trans('messages.profile')}}</a>
+                                               href="{{route('front.my_profile')}}"> <i class="fa fa-user"></i>  {{trans('messages.profile')}}</a>
                                         </li>
+{{--                                        <div class="slogan-left">--}}
+
+{{--                                            <h4 class="name">{{auth()->user()->full_name }}</h4>--}}
+{{--                                            <h5 class="email">{{Auth::guard('web')->user()->email}} </h5>--}}
+{{--                                        </div>--}}
                                     @else
                                         <li class="nav-item">
                                             <a class="nav-link hvr-shutter-out-horizontal"
@@ -180,6 +187,7 @@
                                             <a class="nav-link hvr-shutter-out-horizontal" id="signInBtn"
                                                href="{{route('front.home')}}">الدخول</a>
                                         </li>
+
                                     @endif
 
                                 </ul>

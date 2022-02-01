@@ -31,18 +31,10 @@ class Auction extends Model
 
     public function getRemainingTimeAttribute()
     {
-        if ($this->end_date) {
-            if (Carbon::parse($this->end_date) < Carbon::now()){
-                return "ended";
-            }
-            $start  = new Carbon($this->end_date);
-            $end    =  Carbon::now();
-            $diff = $start->diff($end);
-        } else {
-            $diff = 0;
-        }
+        $start  = new Carbon($this->start_date);
+        $end  = new Carbon($this->end_date);
+        $diff = $start->diff($end);
         return ' days '. $diff->d . '/' . ' hours ' . $diff->h ;
-//        return $diff->y . ' years ' . $diff->d . ' days ' . $diff->h . ' hours';
     }
 
 
@@ -109,6 +101,24 @@ class Auction extends Model
 //    public function getDescriptionAttribute()
 //    {
 //        return \Str::limit($this->attributes['description'], 10);
+//    }
+
+
+
+//    public function getRemainingTimeAttribute()
+//    {
+//        if ($this->end_date) {
+//            if (Carbon::parse($this->end_date) < Carbon::now()){
+//                return "ended";
+//            }
+//            $start  = new Carbon($this->end_date);
+//            $end    =  Carbon::now();
+//            $diff = $start->diff($end);
+//        } else {
+//            $diff = 0;
+//        }
+//        return ' days '. $diff->d . '/' . ' hours ' . $diff->h ;
+////        return $diff->y . ' years ' . $diff->d . ' days ' . $diff->h . ' hours';
 //    }
 
 

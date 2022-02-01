@@ -1,5 +1,8 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.auction.auction_details'))
+@section('style')
+    <style> #map { height: 400px;}#map1 { height: 400px;} </style>
+@endsection
 
 @section('content')
 {{--    @include('front.auctions.head')--}}
@@ -7,7 +10,7 @@
         <main class="ad-main-details">
             <div class="container">
                 <div class="row">
-                    @include('front.layouts.parts.alert')
+                    @include('front.layouts.parts.make_bid_alert')
 
 
                     <div class="col-lg-5 d-flex align-items-center">
@@ -83,6 +86,7 @@
                         <div class="details" id="details">
 {{--                            <h4>التفاصيل</h4>--}}
                         </div>
+                        <br>
                         <div class="bid-details" id="bidDetails">
                             <form action="{{route('front.make_bid',$auction->id)}}" method="post">
                                     @csrf
@@ -111,10 +115,14 @@
 {{--                                                </li>--}}
                                                 <li>
                                                     <div class="mb-3 form-check form-group">
-                                                        <input type="checkbox" class="form-check-input"
-                                                               id="accept-terms" name="accept-terms">
-                                                        <label class="form-check-label" for="accept-terms">قبول الشروط
-                                                            والاحكام</label>
+                                                        <a href="{{route('front.accept_auction_terms',$auction->id)}}">
+
+                                                        <input type="checkbox" class="form-check-input" id="accept-terms"
+                                                               value="{{ (boolean)checkIsUserAccept($auction)->count()?'check':''}}"
+                                                        >
+                                                        <label class="form-check-label" for="accept-terms">قبول الشروط والاحكام</label>
+                                                        </a>
+
                                                     </div>
                                                 </li>
                                             </ul>
@@ -185,19 +193,63 @@
                         {{$auction->$auction_terms}}
                     </p>
                 </div>
+
+
+
+{{--<hr><br><br>--}}
+
+
+{{--                <div class="terms">--}}
+{{--                    <h4>{{ trans('messages.auction.inspection_location_map')}}:</h4>--}}
+{{--                    <div class="form-group">--}}
+{{--                        <div class="col-lg-12">--}}
+{{--                            <input id="searchInput" class=" form-control"  placeholder=" اختر المكان علي الخريطة " name="other">--}}
+{{--                            <div id="map1"></div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-lg-6">--}}
+{{--                            <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control hidden d-none">--}}
+{{--                        </div>--}}
+{{--                        <div class="col-lg-6">--}}
+{{--                            <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control hidden d-none">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+                <hr><br><br>
+
+                <div class="terms">
+                    <h4>{{ trans('messages.auction.calculate_delivery_charge')}}:</h4>
+
+                    <div class="form-group">
+                        <label>@lang('messages.auction.choose_location'):</label><br>
+                        <div class="col-lg-12">
+                            <input id="searchInput" class=" form-control"  placeholder=" اختر المكان علي الخريطة " name="other">
+                            <div id="map"></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control hidden d-none">
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control hidden d-none">
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </section>
     </div>
 @stop
 
 @push('scripts')
-    <script>
-        $(function () {
-            lightbox.option({
-                resizeDuration: 100,
-                fadeDuration: 300,
-                fitImagesInViewport: true,
-            });
-        });
-    </script>
+    @include('Dashboard.layouts.parts.map')
+
+    {{--    <script>--}}
+{{--        $(function () {--}}
+{{--            lightbox.option({--}}
+{{--                resizeDuration: 100,--}}
+{{--                fadeDuration: 300,--}}
+{{--                fitImagesInViewport: true,--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
 @endpush

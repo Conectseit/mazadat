@@ -312,59 +312,59 @@
                                     <form action="{{ route('settings.update') }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('PUT') }}
-                                        <div class="form-group row">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label
-                                                        class="col-form-label col-lg-4">{{ trans('messages.settings.min_duration_of_auction') }}
-                                                        :</label>
-                                                    <div class="col-lg-8">
-                                                        <input type="number" name="min_duration_of_auction"
-                                                               value="{{ settings('min_duration_of_auction') }}"
-                                                               class="form-control"
-                                                               placeholder="{{ trans('messages.settings.min_duration_of_auction') }}">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    {{--                                                <label class="col-lg-3 control-label">{{ trans('messages.min_time_unit') }}</label>--}}
-                                                    <div class="col-lg-9">
-                                                        <select name=" min_time_unit"
-                                                                class="select-border-color border-warning">
-                                                            <option
-                                                                value="hour">{{trans('messages.settings.hour')}}</option>
-                                                            <option
-                                                                value="day">{{trans('messages.settings.day')}}</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label
-                                                        class="col-form-label col-lg-4">{{ trans('messages.settings.max_duration_of_auction') }}
-                                                        :</label>
-                                                    <div class="col-lg-8">
-                                                        <input type="number" name="max_duration_of_auction"
-                                                               value="{{ settings('max_duration_of_auction') }}"
-                                                               class="form-control"
-                                                               placeholder="{{ trans('messages.settings.min_duration_of_auction') }}">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="col-lg-9">
-                                                        <select name=" max_time_unit"
-                                                                class="select-border-color border-warning">
-                                                            <option
-                                                                value="day">{{trans('messages.settings.day')}}</option>
-                                                            <option
-                                                                value="hour">{{trans('messages.settings.hour')}}</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+{{--                                        <div class="form-group row">--}}
+{{--                                            <div class="row">--}}
+{{--                                                <div class="col-md-6">--}}
+{{--                                                    <label--}}
+{{--                                                        class="col-form-label col-lg-4">{{ trans('messages.settings.min_duration_of_auction') }}--}}
+{{--                                                        :</label>--}}
+{{--                                                    <div class="col-lg-8">--}}
+{{--                                                        <input type="number" name="min_duration_of_auction"--}}
+{{--                                                               value="{{ settings('min_duration_of_auction') }}"--}}
+{{--                                                               class="form-control"--}}
+{{--                                                               placeholder="{{ trans('messages.settings.min_duration_of_auction') }}">--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-md-6">--}}
+{{--                                                    --}}{{--                                                <label class="col-lg-3 control-label">{{ trans('messages.min_time_unit') }}</label>--}}
+{{--                                                    <div class="col-lg-9">--}}
+{{--                                                        <select name=" min_time_unit"--}}
+{{--                                                                class="select-border-color border-warning">--}}
+{{--                                                            <option--}}
+{{--                                                                value="hour">{{trans('messages.settings.hour')}}</option>--}}
+{{--                                                            <option--}}
+{{--                                                                value="day">{{trans('messages.settings.day')}}</option>--}}
+{{--                                                        </select>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="form-group row">--}}
+{{--                                            <div class="row">--}}
+{{--                                                <div class="col-md-6">--}}
+{{--                                                    <label--}}
+{{--                                                        class="col-form-label col-lg-4">{{ trans('messages.settings.max_duration_of_auction') }}--}}
+{{--                                                        :</label>--}}
+{{--                                                    <div class="col-lg-8">--}}
+{{--                                                        <input type="number" name="max_duration_of_auction"--}}
+{{--                                                               value="{{ settings('max_duration_of_auction') }}"--}}
+{{--                                                               class="form-control"--}}
+{{--                                                               placeholder="{{ trans('messages.settings.min_duration_of_auction') }}">--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-md-6">--}}
+{{--                                                    <div class="col-lg-9">--}}
+{{--                                                        <select name=" max_time_unit"--}}
+{{--                                                                class="select-border-color border-warning">--}}
+{{--                                                            <option--}}
+{{--                                                                value="day">{{trans('messages.settings.day')}}</option>--}}
+{{--                                                            <option--}}
+{{--                                                                value="hour">{{trans('messages.settings.hour')}}</option>--}}
+{{--                                                        </select>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
                                         <div class="form-group row">
                                             <label
                                                 class="col-form-label col-lg-4">{{ trans('messages.settings.appearance_of_ended_auctions') }}
