@@ -33,6 +33,11 @@ class SettingController extends Controller
         if ($request->address)
             Setting::where('key', 'address')->update(['value' => $request->address]);
 
+        if ($request->latitude)
+            Setting::where('key', 'latitude')->update(['value' => $request->latitude]);
+        if ($request->longitude)
+            Setting::where('key', 'longitude')->update(['value' => $request->longitude]);
+
 
 
         if ($request->bank_name_ar)

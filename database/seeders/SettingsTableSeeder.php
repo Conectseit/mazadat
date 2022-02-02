@@ -27,6 +27,8 @@ class SettingsTableSeeder extends Seeder
             ['key' => 'email', 'value' => 'mazadat@hr.com.uae', 'created_at' => now(), ],
             ['key' => 'fax', 'value' => '9661111111', 'created_at' => now(), ],
             ['key' => 'address', 'value' => 'جدة', 'created_at' => now(), ],
+            ['key' => 'latitude', 'value' => '46.676497319638656', 'created_at' => now(), ],
+            ['key' => 'longitude', 'value' => '24.712772003587013', 'created_at' => now(), ],
 
 
             // bank settings
@@ -47,10 +49,10 @@ class SettingsTableSeeder extends Seeder
             ['key' => 'whatsapp_phone', 'value' => '966123456789', 'created_at' => now(), ],
 
             //for auctions
-            ['key' => 'min_duration_of_auction', 'value' => '5', 'created_at' => now(), ],
-            ['key' => 'min_time_unit', 'value' => 'hour', 'created_at' => now(), ],
-            ['key' => 'max_duration_of_auction', 'value' => '10', 'created_at' => now(), ],
-            ['key' => 'max_time_unit', 'value' => 'day', 'created_at' => now(), ],
+//            ['key' => 'min_duration_of_auction', 'value' => '5', 'created_at' => now(), ],
+//            ['key' => 'min_time_unit', 'value' => 'hour', 'created_at' => now(), ],
+//            ['key' => 'max_duration_of_auction', 'value' => '10', 'created_at' => now(), ],
+//            ['key' => 'max_time_unit', 'value' => 'day', 'created_at' => now(), ],
 
             ['key' => 'appearance_of_ended_auctions', 'value' => 'no', 'created_at' => now(), ],
 
@@ -70,7 +72,7 @@ class SettingsTableSeeder extends Seeder
 //            ['key' => 'sms_username', 'value' => '', 'created_at' => now(), ],
 //            ['key' => 'sms_password', 'value' => '', 'created_at' => now(), ],
 //            ['key' => 'sms_sender', 'value' => '', 'created_at' => now(), ],
-//            ['key' => 'google_map_key', 'value' => 'AIzaSyDdCP49XcVxRLuY-4CYtxHXxnqucDvQLE8', 'created_at' => now(), ],
+            ['key' => 'google_map_key', 'value' => 'AIzaSyDdCP49XcVxRLuY-4CYtxHXxnqucDvQLE8', 'created_at' => now(), ],
 
 //            ['key' => 'auto_active_client', 'value' => 'false', 'created_at' => now(), ], // علشان المستخدمين كلهم يتعملهم active
 //            ['key' => 'distance_search_for_stores', 'value' => '100', 'created_at' => now(), ],

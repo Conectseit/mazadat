@@ -1,29 +1,13 @@
 
-{{--for select company--}}
-<script>
-    $('select#is_company').on('change', function(){
-        let is_company = $(this).val();
-        if (is_company)
-        {
-            optionValue = document.getElementById("option").value;
-            if (optionValue === is_company) {
-                document.getElementById("location").style.display = "block";
-            } else {
-                document.getElementById("location").style.display = "none";
-            }
-        } else {
-            document.getElementById("location").style.display = "none";
-        }
-    });
-</script>
-
-
-
 {{--    //Map//--}}
 <script>
     function initMap() {
-        let lat_val = 24.7135517;
-        let lng_val = 46.67529569;
+        // let lat_val = 24.7135517;
+        // let lng_val = 46.67529569;
+        $latitude={{App\Models\Setting::where('key','latitude')->first()->value}};
+        $longitude={{App\Models\Setting::where('key','longitude')->first()->value}};
+        let lat_val =$latitude;
+        let lng_val =$longitude;
         var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: lat_val, lng: lng_val},
             zoom: 13

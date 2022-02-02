@@ -1,6 +1,8 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('back.settings'))
-
+@section('style')
+    <style> #map { height: 400px;} </style>
+@endsection
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
@@ -84,6 +86,30 @@
                                                placeholder="{{ trans('messages.settings.address') }}">
                                     </div>
                                 </div>
+
+
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-4">{{ trans('messages.settings.location_on_google_maps') }}:</label>
+
+                                        <div class="col-lg-12">
+                                            <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">
+                                            <div id="map"></div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="geo_lat" name="latitude" value="{{ settings('latitude') }}
+                                                   readonly="" placeholder=" latitude" class="form-control">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="geo_lng" name="longitude" value="{{ settings('longitude') }}
+                                                   readonly="" placeholder="longitude" class="form-control">
+                                        </div>
+                                </div>
+
+
+
+
+
 
 
 {{--                                <div class="form-group row">--}}
@@ -460,6 +486,7 @@
                                     <div class="col-lg-9">
                                                 <textarea rows="4" cols="4" name="online_payment_conditions_ar" class="form-control"
                                                           placeholder="{{ trans('messages.settings.online_payment_conditions_ar') }}">{{ settings('online_payment_conditions_ar') }}
+                                                          placeholder="{{ trans('messages.settings.online_payment_conditions_ar') }}">{{ settings('online_payment_conditions_ar') }}
                                                 </textarea>
                                     </div>
                                 </div>
@@ -579,7 +606,10 @@
                     <!-- /basic layout -->
                 </div>
             </div>
-        </div>
+        </div>@section('scripts')
+
+            @include('Dashboard.Settings.app_location_map')
+        @stop
     </div>
 
 

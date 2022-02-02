@@ -161,6 +161,7 @@ return [
         'email' => 'البريد الالكتروني',
         'fax' => 'فاكس',
         'address' => 'العنوان',
+        'location_on_google_maps' => 'الموقع علي خرائط جوجل',
         'account_name' => 'اسم الحساب',
         'bank_name' => 'اسم البنك',
         'iban' => 'IBAN',
