@@ -524,6 +524,7 @@ return [
     'updated_success'         	=> 'تم التعديل بنجاح ',
     'message_sent_success'         	=> 'تم ارسال الرسالة بنجاح ',
     'our_address_on_map'         	=> 'موقعنا ',
+    'bank_info'         	=> 'معلومات الحساب البنكي هي:  ',
 
     'ar' => [
         'ar' => 'عربي',

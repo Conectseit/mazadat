@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\front;
 
+use App\Http\Controllers\BankSmsController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SmsController;
 use App\Http\Requests\Api\user\UploadPaymentReceiptRequest;
@@ -42,16 +43,18 @@ class PaymentController extends Controller
     public  function send_sms_bank_info(Request $request)
     {
 //        $bank_name = 'bank_name_' . app()->getLocale();
-        $data['bank_name'] = Setting::where('key', 'bank_name_ar')->first()->value;
-        $data['account_name'] = Setting::where('key', 'account_name')->first()->value;
+//        $data['bank_name'] = Setting::where('key', 'bank_name_ar')->first()->value;
+//        $data['account_name'] = Setting::where('key', 'account_name')->first()->value;
+//
+//        $data['account_number'] = Setting::where('key', 'account_number')->first()->value;
+//        $data['branch'] = Setting::where('key', 'branch')->first()->value;
+//        $data['iban'] = Setting::where('key', 'iban')->first()->value;
+//        $data['swift_code'] = Setting::where('key', 'swift_code')->first()->value;
+//        $data['routing_number'] = Setting::where('key', 'routing_number')->first()->value;
 
-        $data['account_number'] = Setting::where('key', 'account_number')->first()->value;
-        $data['branch'] = Setting::where('key', 'branch')->first()->value;
-        $data['iban'] = Setting::where('key', 'iban')->first()->value;
-        $data['swift_code'] = Setting::where('key', 'swift_code')->first()->value;
-        $data['routing_number'] = Setting::where('key', 'routing_number')->first()->value;
+$bank_info= Setting::where('key', 'bank_name_ar')->first()->value;
 
-        SmsController::send_sms(removePhoneZero(auth()->user()->mobile,'966'), trans('messages.bank_info', ['code' => $data['account_name']]));
+        BankSmsController::send_sms(removePhoneZero(auth()->user()->mobile,'966'), trans('messages.bank_info', ['code' =>$bank_info ]));
             return redirect()->route('front.bank_deposit')->with('success', trans('messages.message_sent_success'));
     }
 
