@@ -101,8 +101,10 @@
                                 <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_category') }} </label>
                                 <div class="col-lg-6">
                                     <select name="category_id" id="category" class="select">
-                                        <optgroup label="{{ trans('messages.auction.choose_category') }}}">
-                                            @foreach($categories as $category)
+{{--                                        <optgroup  label="{{ trans('messages.auction.choose_category') }}}">--}}
+                                            <option selected disabled>{{trans('messages.select')}}</option>
+
+                                        @foreach($categories as $category)
                                                 <option value="{{ $category->id }}"> {{ $category->$name }} </option>
                                         @endforeach
                                     </select>
@@ -114,7 +116,7 @@
                                 <div class="col-lg-6">
                                     <select name="option_id" id="options" class="select">
                                         <optgroup label="{{ trans('messages.option.options') }}">
-                                            @foreach($options as $option)
+                                        @foreach($options as $option)
                                                 <option value="{{ $option->id }}"> {{ $option->$name }} </option>
                                         @endforeach
                                     </select>
