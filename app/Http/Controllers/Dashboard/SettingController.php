@@ -75,16 +75,25 @@ class SettingController extends Controller
         if ($request->conditions_terms_en)
             Setting::where('key', 'conditions_terms_en')->update(['value' => $request->conditions_terms_en]);
 
-        if ($request->min_time_unit)
-            Setting::where('key', 'min_time_unit')->update(['value' => $request->min_time_unit]);
 
-        if ($request->min_duration_of_auction)
-            Setting::where('key', 'min_duration_of_auction')->update(['value' => $request->min_duration_of_auction]);
+        // online_payment_conditions
+        if ($request->online_payment_conditions_ar)
+            Setting::where('key', 'online_payment_conditions_ar')->update(['value' => $request->online_payment_conditions_ar]);
+        if ($request->online_payment_conditions_en)
+            Setting::where('key', 'online_payment_conditions_en')->update(['value' => $request->online_payment_conditions_en]);
 
-        if ($request->max_time_unit)
-            Setting::where('key', 'max_time_unit')->update(['value' => $request->max_time_unit]);
-        if ($request->max_duration_of_auction)
-            Setting::where('key', 'max_duration_of_auction')->update(['value' => $request->max_duration_of_auction]);
+
+
+//        if ($request->min_time_unit)
+//            Setting::where('key', 'min_time_unit')->update(['value' => $request->min_time_unit]);
+//
+//        if ($request->min_duration_of_auction)
+//            Setting::where('key', 'min_duration_of_auction')->update(['value' => $request->min_duration_of_auction]);
+//
+//        if ($request->max_time_unit)
+//            Setting::where('key', 'max_time_unit')->update(['value' => $request->max_time_unit]);
+//        if ($request->max_duration_of_auction)
+//            Setting::where('key', 'max_duration_of_auction')->update(['value' => $request->max_duration_of_auction]);
 
         if ($request->appearance_of_ended_auctions)
             Setting::where('key', 'appearance_of_ended_auctions')->update(['value' => $request->appearance_of_ended_auctions]);

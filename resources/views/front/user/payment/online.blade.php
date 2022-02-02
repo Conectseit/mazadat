@@ -33,10 +33,10 @@
                 <div class="row">
                     <div class="col-md-6">
                         <p class="text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad voluptatibus illo
-                            officiis ducimus alias vel perspiciatis esse hic dolore in atque porro iusto impedit
-                            mollitia
-                            facilis, earum voluptate placeat? Quos?
+                            @php($data= 'online_payment_conditions_'.app()->getLocale())
+
+                            {{App\Models\Setting::where('key',$data)->first()->value}}
+
                         </p>
                     </div>
                     <div class="col-md-6">

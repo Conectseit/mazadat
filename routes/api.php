@@ -103,6 +103,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::any('my_wallet', [UserController::class, 'my_wallet']);
         Route::post('choose_available_limit', [UserController::class, 'choose_available_limit']);
         Route::get('our_officers', [SettingController::class, 'our_officers']);
+        Route::get('online_payment_conditions', [SettingController::class, 'online_payment_conditions']);
         Route::get('bank', [SettingController::class, 'bank']);
         Route::post('upload_payment_receipt', [PaymentController::class, 'upload_payment_receipt']);
 

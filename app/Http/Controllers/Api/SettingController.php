@@ -24,6 +24,8 @@ class SettingController extends PARENT_API
         return responseJson(true, trans('api.all_notifications'), $notifications);  //OK don-successfully
     }
 
+
+
     public function about_app()
     {
         $about_app= 'about_app_'.app()->getLocale();
@@ -71,7 +73,16 @@ class SettingController extends PARENT_API
     }
 
 
+    public function online_payment_conditions()
+    {
+        $online_payment_conditions= 'online_payment_conditions_'.app()->getLocale();
 
+        if ($online_payment_conditions = Setting::where('key',$online_payment_conditions)->first()->value)
+        {
+            return responseJson(true, trans('api.request_done_successfully'), $online_payment_conditions);  //OK don-successfully
+        }
+        return responseJson(false, trans('api.Page_not_found'),null);//NOT_FOUND
+    }
 
 
 //

@@ -96,6 +96,7 @@ Route::group(
                 Route::get('seller/{id?}/not_accept', [SellerController::class, 'not_accept'])->name('seller/not_accept');
 
 
+                Route::get('transaction/{id?}/accept', [TransactionController::class, 'accept'])->name('transaction/accept');
 
                 Route::post('send_single_notify', [NotificationController::class, 'send_single_notify'])->name('send_single_notify');
 

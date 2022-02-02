@@ -22,6 +22,7 @@ class CreatePaymentsTable extends Migration
             $table->string('image')->nullable();   //
             $table->string('date')->nullable();
             $table->string('amount')->nullable();
+            $table->boolean('is_accepted')->default(0);
             $table->enum('payment_type', ['cash','bank_deposit','online'])->nullable();
             $table->timestamps();
             $table->softDeletes();

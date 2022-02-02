@@ -22,10 +22,22 @@
                             <div class="slogan-left">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <a href="" data-bs-toggle="modal" data-bs-target="#edit-photo-modal">
-                                            تعديل الصورة الشخصية
-                                        </a>
+{{--                                        <a href="" data-bs-toggle="modal" data-bs-target="#edit-photo-modal">--}}
+{{--                                            تعديل الصورة الشخصية--}}
+{{--                                        </a>--}}
+
+                                        <div class="col-sm-12">
+                                            <a href="" data-bs-toggle="modal" data-bs-target="#edit-photo-modal">
+                                                تعديل الصورة الشخصية
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#bio-modal">
+                                                السيرة الذاتية
+                                            </a>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -38,17 +50,17 @@
 
                         <div class="col-sm-6">
                             <a href="{{route('front.user_documents')}}">
-                                الوثائق الرسمية
+                                 اضافة وثائق رسمية
                             </a>
                         </div>
-                        <div class="col-sm-6">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#bio-modal">
-                                 السيرة الذاتية
-                            </a>
-                        </div>
+{{--                        <div class="col-sm-6">--}}
+{{--                            <a href="#" data-bs-toggle="modal" data-bs-target="#bio-modal">--}}
+{{--                                 السيرة الذاتية--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
                         <div class="col-sm-6">
                             <a href="{{route('front.user_passport')}}">
-                                جواز السفر
+                                اضافة جواز السفر
                             </a>
                         </div>
                     </div>

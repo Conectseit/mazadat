@@ -95,7 +95,11 @@
                                                     <th class="text-center">#</th>
                                                     <th class="text-center">{{ trans('messages.user_name') }}</th>
                                                     <th class="text-center">{{ trans('messages.transaction.receipt_image') }}</th>
+                                                    <th class="text-center">{{ trans('messages.transaction.amount') }}</th>
+                                                    <th class="text-center">{{ trans('messages.transaction.date') }}</th>
                                                     <th class="text-center">@lang('messages.transaction.since')</th>
+                                                    <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
+
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -110,7 +114,18 @@
                                                             <a href="{{ $transaction->image_path }}" data-popup="lightbox">
                                                                 <img src="{{ $transaction->image_path }}" alt="" width="200" height="100" class="img-thumbnail"></a>
                                                         </td>
+                                                        <td class="text-center">{{$transaction->amount}}</td>
+                                                        <td class="text-center">{{$transaction->date}}</td>
                                                         <td class="text-center">{{isset($transaction->created_at) ?$transaction->created_at->format('y/m/d'):'---' }}</td>
+                                                        <td class="text-center">
+                                                            @if($transaction->is_accepted ==0)
+{{--                                                                <a href="seller/{{$seller->id}}/not_accept/" class="btn btn-danger btn-sm"><i--}}
+{{--                                                                        class="icon-close2"></i>{{trans('messages.not_accept')}}</a>--}}
+{{--                                                            @else--}}
+                                                                <a href="transaction/{{$transaction->id}}/accept/" class="btn btn-success btn-sm"> <i
+                                                                        class="icon-check2"></i> {{trans('messages.accept')}}</a>
+                                                            @endif
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                                 </tbody>

@@ -192,6 +192,9 @@ return [
         'branch' => ' فرع ',
 
         'appearance_of_ended_auctions' => 'ظهور المزادات المنتهية في التطبيق',
+        'online_payment' => ' اعدادات الدفع الالكتروني ',
+        'online_payment_conditions_ar' => ' شروط الدفع الالكتروني باللغة العربية',
+        'online_payment_conditions_en' => ' شروط الدفع الالكتروني باللغة الانجليزية',
     ],
     'about_app' => ' عن مزادات',
 
@@ -413,7 +416,8 @@ return [
         'add' => 'اضافة جديد',
         'edit' => 'تعديل  ',
         'payment_type' => 'طريقة الدفع  ',
-        'since' => 'تاريخ التحويل',
+        'date' => 'تاريخ التحويل',
+        'since' => 'تاريخ رفع الايصال',
         'amount' => ' المبلغ المحول',
         'user_wallet' => 'الرصيد الكلي في المحفظة',
         'cash' => 'تحويلات نقدية',
@@ -517,7 +521,8 @@ return [
     'routing_number'         	=> ' Routing Number',
     'ATM_locations_near_you'         	=> ' فروع الصراف الآلي القريبة منك',
     'upload_passport_success'         	=> 'تم رفع صورة جواز السفر بنجاح ',
-    '.upload_document_success'         	=> 'تم الرفع بنجاح ',
+    'upload_document_success'         	=> 'تم الرفع بنجاح ',
+    'upload_receipt_successfully'         	=> ' تم رفع الفاتورة البنكية ,انتظر حتي يتم قبولها من الادارة',
     'user_passport'         	=> ' صورة جواز السفر ',
     'user_documents'         	=> ' وثائق رسمية ',
     'paid_success'         	=> 'تم اضافة رصيد الي محفظتك بنجاح ',
@@ -525,6 +530,7 @@ return [
     'message_sent_success'         	=> 'تم ارسال الرسالة بنجاح ',
     'our_address_on_map'         	=> 'موقعنا ',
     'bank_info'         	=> 'معلومات الحساب البنكي هي:  ',
+    'Sorry_you_should_accept_auction_terms_first'         	=> 'يجب عليك قبول شروط واحكام المزاد اولا',
 
     'ar' => [
         'ar' => 'عربي',

@@ -7,6 +7,7 @@ use App\Http\Requests\Dashboard\CityRequest;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Payment;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -48,6 +49,14 @@ class TransactionController extends Controller
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
         }
+    }
+
+
+    public function accept($id)
+    {
+        $transaction = Payment::find($id);
+        $transaction->update(['is_accepted'=> 1]);
+        return back();
     }
 
 }

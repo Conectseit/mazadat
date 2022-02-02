@@ -68,7 +68,7 @@ $bank_info= Setting::where('key', 'bank_name_ar')->first()->value;
 
         $payment_receipt= auth()->user()->payments()->create($request_data);
 
-        auth()->user()->update(['wallet' => (int)(auth()->user()->wallet + round($request['amount']))]);
+//        auth()->user()->update(['wallet' => (int)(auth()->user()->wallet + round($request['amount']))]);
         return back()->with('success', trans('messages.upload_receipt_successfully'));
     }
 
@@ -112,7 +112,8 @@ $bank_info= Setting::where('key', 'bank_name_ar')->first()->value;
 
             DB::commit();
 
-            return redirect()->to('/')->with('success', trans('messages.paid_success'));
+            return redirect()->route('front.my_wallet')->with('success', trans('messages.paid_success'));
+//            return redirect()->to('/')->with('success', trans('messages.paid_success'));
         } catch (\Exception $e)
         {
             dd($e->getMessage());

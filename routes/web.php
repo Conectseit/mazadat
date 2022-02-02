@@ -21,8 +21,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-
-
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -48,10 +46,7 @@ Route::group(
     Route::post('resetPassword',  [AuthController::class, 'resetPassword'] )->name('front.resetPassword');
 
 
-
-
 // ============ // auth ================
-
 
 
     Route::post('contact_us', [GeneralController::class, 'contact_us'])->name('front.contact_us');
@@ -106,7 +101,6 @@ Route::group(
         Route::post('send-payment', [PaymentController::class, 'sendPayment'])->name('front.send_payment');
         Route::get('success-payment', [PaymentController::class, 'successPayment'])->name('front.success_payment');
 
-
         //=========== /notifications ============
            Route::get('my_notification', [NotificationController::class, 'my_notification'])->name('front.my_notification');
 
@@ -114,11 +108,6 @@ Route::group(
     Route::post('ajax_get_cities_by_country_id', [AuthController::class, 'get_cities_by_country_id'])->name('get_cities_by_country_id');
 
 });
-
-
-
-
-
 
 
 

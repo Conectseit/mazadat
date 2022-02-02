@@ -35,6 +35,10 @@ class AuctionController extends Controller
             {
                 return back()->with('warning', trans('messages.Sorry_you_should_upload_document_and_passport_first'));
             }
+            if( $user->accepted_auctions->count() == 0)
+            {
+                return back()->with('error', trans('messages.Sorry_you_should_accept_auction_terms_first'));
+            }
 
             if(!$auction = Auction::find($id))
                 return back()->with('error', trans('messages.not_found_auction'));

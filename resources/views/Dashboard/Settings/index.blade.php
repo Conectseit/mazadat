@@ -394,6 +394,99 @@
         </div>
     </div>
 
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
+                <div class="panel-heading">
+
+                    <!-- Basic layout-->
+                    <div class="card">
+                        <div class="card-header header-elements-inline">
+                            <h5 class="card-title">{{ trans('messages.settings.description') }}</h5>
+                        </div>
+                        <br>
+                        <div class="card-body">
+                            <form action="{{ route('settings.update') }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('PUT') }}
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-3">{{ trans('messages.settings.app_description_ar') }}:</label><br>
+                                    <div class="col-lg-9">
+                                                <textarea rows="4" cols="4" name="app_description_ar" class="form-control"
+                                                          placeholder="{{ trans('messages.settings.app_description_ar') }}">{{ settings('app_description_ar') }}
+                                                </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-3">{{ trans('messages.settings.app_description_en') }}:</label><br>
+                                    <div class="col-lg-9">
+                                                <textarea rows="4" cols="4" name="app_description_en" class="form-control"
+                                                          placeholder="{{ trans('messages.settings.app_description_en') }}">{{ settings('app_description_en') }}
+                                                </textarea>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-success"><i
+                                            class="icon-paperplane mr-2"></i>{{ trans('messages.buttons.submit_back_to_list') }}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /basic layout -->
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
+                <div class="panel-heading">
+                    <!-- Basic layout-->
+                    <div class="card">
+                        <div class="card-header header-elements-inline">
+                            <h5 class="card-title">{{ trans('messages.settings.online_payment') }}</h5>
+                        </div>
+                        <br>
+                        <div class="card-body">
+                            <form action="{{ route('settings.update') }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('PUT') }}
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-3">{{ trans('messages.settings.online_payment_conditions_ar') }}:</label><br>
+                                    <div class="col-lg-9">
+                                                <textarea rows="4" cols="4" name="online_payment_conditions_ar" class="form-control"
+                                                          placeholder="{{ trans('messages.settings.online_payment_conditions_ar') }}">{{ settings('online_payment_conditions_ar') }}
+                                                </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-3">{{ trans('messages.settings.online_payment_conditions_en') }}:</label><br>
+                                    <div class="col-lg-9">
+                                                <textarea rows="4" cols="4" name="online_payment_conditions_en" class="form-control"
+                                                          placeholder="{{ trans('messages.settings.online_payment_conditions_en') }}">{{ settings('online_payment_conditions_en') }}
+                                                </textarea>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-success"><i
+                                            class="icon-paperplane mr-2"></i>{{ trans('messages.buttons.submit_back_to_list') }}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /basic layout -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
         <div class="panel-heading">
             <div class="row">
@@ -489,51 +582,6 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
-                <div class="panel-heading">
-
-                    <!-- Basic layout-->
-                    <div class="card">
-                        <div class="card-header header-elements-inline">
-                            <h5 class="card-title">{{ trans('messages.settings.description') }}</h5>
-                        </div>
-                        <br>
-                        <div class="card-body">
-                            <form action="{{ route('settings.update') }}" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('PUT') }}
-                                <div class="form-group row">
-                                    <label class="col-form-label col-lg-3">{{ trans('messages.settings.app_description_ar') }}:</label><br>
-                                    <div class="col-lg-9">
-                                                <textarea rows="4" cols="4" name="app_description_ar" class="form-control"
-                                                          placeholder="{{ trans('messages.settings.app_description_ar') }}">{{ settings('app_description_ar') }}
-                                                </textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-form-label col-lg-3">{{ trans('messages.settings.app_description_en') }}:</label><br>
-                                    <div class="col-lg-9">
-                                                <textarea rows="4" cols="4" name="app_description_en" class="form-control"
-                                                          placeholder="{{ trans('messages.settings.app_description_en') }}">{{ settings('app_description_en') }}
-                                                </textarea>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <button type="submit" class="btn btn-success"><i
-                                            class="icon-paperplane mr-2"></i>{{ trans('messages.buttons.submit_back_to_list') }}
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- /basic layout -->
-
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 

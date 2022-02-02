@@ -73,7 +73,7 @@
                                 <div class="receipt-img" id="myImg"  name="image">
                                 </div>
                                 <div class="text">
-                                    <p>رفع صورة</p>
+                                    <p>اختر صورة</p>
                                     <input type="file" id="myImgUploader"  name="image">
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                                 <input type="text" class="form-control" placeholder="التاريخ" id="datepicker"
                                        name="date" required>
                             </div>
-                            <button type="submit" class="submit-btn">ارسال الايصال</button>
+                            <button type="submit" class="submit-btn">رفع الفاتورة </button>
                         </div>
                     </div>
                 </form>
