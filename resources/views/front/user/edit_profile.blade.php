@@ -120,17 +120,17 @@
                             </div>
                         </div>
 
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="password" class="form-label">كلمة المرور</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <input type="password" class="form-control" id="password" name="password"
-                                       placeholder="{{trans('messages.enter_password')}} "
-                                       value={{ auth()->user()->password}}
-                                >
-                            </div>
-                        </div>
+{{--                        <div class="form-group mb-4 row">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                <label for="password" class="form-label">كلمة المرور</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-10 col-md-9">--}}
+{{--                                <input type="password" class="form-control" id="password" name="password"--}}
+{{--                                       placeholder="{{trans('messages.enter_password')}} "--}}
+{{--                                       value={{ auth()->user()->password}}--}}
+{{--                                >--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <button type="submit" class="btn btn-primary submit-btn">تعديل</button>
                     </div>
                 </form>
