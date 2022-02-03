@@ -93,7 +93,7 @@ class AuthController extends Controller
         Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 
         if (!auth()->user()) return back()->withInput($request->only('email'))->with('error',
-            trans('api.sorry_invalid_email_or_password'));
+            trans('messages.sorry_invalid_email_or_password'));
 
         $user = auth()->user();
 

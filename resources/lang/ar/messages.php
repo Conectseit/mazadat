@@ -485,6 +485,7 @@ return [
     'enter_mobile' => 'ادخل رقم الجوال : 966',
     'register_your_account' => 'تسجيل حسابك',
     'confirm-password' => 'قم بتاكيد كلمة المرور',
+    'sorry_invalid_email_or_password' => 'هناك خطأ في الايميل او كلمة المرور, من فضلك حاول مرة اخري ',
     'account_data' => 'بيانات حسابك',
     'send' => ' ارسال',
     'seller/buyer' => ' النوع:(صاحب مزاد /مشتري)',
