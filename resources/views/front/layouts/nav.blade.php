@@ -21,7 +21,7 @@
                     <label for="email" class="form-label">ايميل المستخدم</label>
                 </div>
                 <div class="col-sm-8">
-                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"  placeholder="ادخل الايميل">
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"  placeholder="ادخل بريدك الالكتروني">
                 </div>
             </div>
             <div class="mb-4 form-group row">
