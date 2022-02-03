@@ -18,10 +18,10 @@
             </p>
             <div class="mb-4 form-group row">
                 <div class="col-sm-2 d-flex align-items-center">
-                    <label for="email" class="form-label">اسم المستخدم</label>
+                    <label for="email" class="form-label">ايميل المستخدم</label>
                 </div>
                 <div class="col-sm-8">
-                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"  placeholder="ادخل الايميل">
                 </div>
             </div>
             <div class="mb-4 form-group row">
@@ -29,8 +29,9 @@
                     <label for="password" class="form-label">كلمة المرور</label>
                 </div>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control" name="password" id="password">
+                    <input type="password" class="form-control" name="password" id="password"  placeholder="ادخل كلمة المرور">
                 </div>
+
             </div>
             <div class="row">
                 <div class="col-sm-2"></div>
