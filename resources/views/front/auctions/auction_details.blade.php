@@ -91,12 +91,12 @@
                             <form action="{{route('front.make_bid',$auction->id)}}" method="post">
                                     @csrf
                                 <div class="bid-input">
-                                    <span class="minus" id="minus">
+                                    <span class="minus" id="minuss">
                                         <i class="fal fa-minus"></i>
                                     </span>
                                     <h4>ريال سعودي</h4>
                                     <input type="number" name="buyer_offer" id="bidInput" value="{{($auction->current_price)}}" />
-                                    <span class="plus" id="plus">
+                                    <span class="plus" id="pluss">
                                         <i class="fal fa-plus"></i>
                                     </span>
                                 </div>
@@ -115,13 +115,14 @@
 {{--                                                </li>--}}
                                                 <li>
                                                     <div class="mb-3 form-check form-group">
-                                                        <a href="{{route('front.accept_auction_terms',$auction->id)}}">
-                                                        <input type="checkbox" class="form-check-input" id="accept-terms"
-                                                               value="check"
-{{--                                                               value="{{ (boolean)checkIsUserAccept($auction)->count()?'check':''}}"--}}
+                                                        <a href="{{ route('front.accept_auction_terms',$auction->id) }}">
+{{--                                                        <a href="javascript:void(0);" id="change-terms-value">--}}
+                                                        <input  type="checkbox" class="form-check-input" id="accept-terms"
+                                                               {{ checkIsUserAccept($auction)->count()?'checked':''}}
                                                         >
-                                                        <label class="form-check-label" for="accept-terms">قبول الشروط والاحكام</label>
                                                         </a>
+
+                                                        <label class="form-check-label" for="accept-terms">قبول الشروط والاحكام</label>
 
                                                     </div>
                                                 </li>
@@ -252,4 +253,40 @@
 {{--            });--}}
 {{--        });--}}
 {{--    </script>--}}
+
+
+
+
+
+    <script>
+        $(function () {
+            let currentVal = 100;
+            $("#minuss").click(function () {
+                var $input = $(this).parent().find("#bidInput");
+                var count = parseInt($input.val()) - currentVal;
+                count = count < 1 ? 1 : count;
+                $input.val(count);
+                $input.change();
+                return false;
+            });
+            $("#pluss").click(function () {
+                var $input = $(this).parent().find("#bidInput");
+                $input.val(parseInt($input.val()) + currentVal);
+                $input.change();
+                return false;
+            });
+
+            {{--$('a#change-terms-value').on('click', function (e){--}}
+            {{--    e.preventDefault();--}}
+            {{--    $.ajax({--}}
+            {{--        method: 'GET',--}}
+            {{--        url: '{{ route('front.accept_auction_terms',$auction->id) }}',--}}
+            {{--        success: res => {--}}
+            {{--            console.log(res);--}}
+            {{--        },--}}
+            {{--        error: err => console.log(err),--}}
+            {{--    });--}}
+            {{--});--}}
+        });
+    </script>
 @endpush

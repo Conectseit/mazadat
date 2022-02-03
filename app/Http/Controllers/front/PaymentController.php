@@ -42,19 +42,34 @@ class PaymentController extends Controller
 
     public  function send_sms_bank_info(Request $request)
     {
-//        $bank_name = 'bank_name_' . app()->getLocale();
+        $bank_name = 'bank_name_' . app()->getLocale();
 //        $data['bank_name'] = Setting::where('key', 'bank_name_ar')->first()->value;
 //        $data['account_name'] = Setting::where('key', 'account_name')->first()->value;
-//
+
 //        $data['account_number'] = Setting::where('key', 'account_number')->first()->value;
 //        $data['branch'] = Setting::where('key', 'branch')->first()->value;
 //        $data['iban'] = Setting::where('key', 'iban')->first()->value;
 //        $data['swift_code'] = Setting::where('key', 'swift_code')->first()->value;
 //        $data['routing_number'] = Setting::where('key', 'routing_number')->first()->value;
 
-$bank_info= Setting::where('key', 'bank_name_ar')->first()->value;
+        $bank_info= Setting::where('key', $bank_name)->first()->value;
+        $account_name= Setting::where('key', 'account_name')->first()->value;
+        $account_number= Setting::where('key', 'account_number')->first()->value;
+        $branch= Setting::where('key', 'branch')->first()->value;
+        $iban= Setting::where('key', 'iban')->first()->value;
+        $swift_code= Setting::where('key', 'swift_code')->first()->value;
+        $routing_number= Setting::where('key', 'routing_number')->first()->value;
 
-        BankSmsController::send_sms(removePhoneZero(auth()->user()->mobile,'966'), trans('messages.bank_info', ['code' =>$bank_info ]));
+        $text = " بيانات الحساب البنكي هي : ";
+        $text .= " - Name :  " . $bank_info;
+        $text .= " - account name :  " . $account_name;
+        $text .= " - account number :  " . $account_number;
+        $text .= " - branch :  " . $branch;
+        $text .= " - IBan :  " . $iban;
+        $text .= " - swift code :  " . $swift_code;
+        $text .= " - routing number :  " . $routing_number;
+
+        SmsController::send_sms(removePhoneZero(auth()->user()->mobile,'966'), $text);
             return redirect()->route('front.bank_deposit')->with('success', trans('messages.message_sent_success'));
     }
 
