@@ -60,13 +60,13 @@ class PaymentController extends Controller
         $swift_code= Setting::where('key', 'swift_code')->first()->value;
         $routing_number= Setting::where('key', 'routing_number')->first()->value;
 
-        $text = " بيانات الحساب البنكي هي : ";
-        $text .= " - Name :  " . $bank_info;
-        $text .= " - account name :  " . $account_name;
-        $text .= " - account number :  " . $account_number;
-        $text .= " - branch :  " . $branch;
-        $text .= " - IBan :  " . $iban;
-        $text .= " - swift code :  " . $swift_code;
+        $text = " بيانات الحساب البنكي هي : "."\n";
+        $text .= " - Bank Name :  " . $bank_info."\n";
+        $text .= " - account name :  " . $account_name."\n";
+        $text .= " - account number :  " . $account_number."\n";
+        $text .= " - branch :  " . $branch."\n";
+        $text .= " - IBan :  " . $iban."\n";
+        $text .= " - swift code :  " . $swift_code."\n";
         $text .= " - routing number :  " . $routing_number;
 
         SmsController::send_sms(removePhoneZero(auth()->user()->mobile,'966'), $text);
