@@ -21,7 +21,9 @@ class updateProfileRequest extends FormRequest
 //            'city_id'          => 'sometimes|numeric|exists:cities,id',
             'mobile'           => 'sometimes|string|unique:users,mobile,'.auth()->user()->id,
             'email'            => 'sometimes|email|max:255|unique:users,email,'. auth()->user()->id,
-            'password'         => 'sometimes|string|min:6',
+//            'password'         => 'sometimes|string|min:6',
+            'password'    => 'required|min:6|confirmed',
+
 
         ];
     }
