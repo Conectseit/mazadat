@@ -10,6 +10,8 @@
 <section class="my-profile-page edit-profile">
     <div class="container">
         <div class="row">
+            @include('front.layouts.parts.alert')
+
             <div class="col-lg-6">
                 <div class="slogan-right">
                     <div class="row">
@@ -68,6 +70,7 @@
             </div>
         </div>
         <div class="row">
+
             <div class="edit-form">
                 <form action="{{route('front.update_profile')}}" method="post">
                     @csrf
@@ -123,7 +126,9 @@
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 <input type="password" class="form-control" id="password" name="password"
-                                       placeholder="{{trans('messages.enter_password')}} "  value={{ auth()->user()->password}}>
+                                       placeholder="{{trans('messages.enter_password')}} "
+                                       value={{ auth()->user()->password}}
+                                >
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary submit-btn">تعديل</button>
