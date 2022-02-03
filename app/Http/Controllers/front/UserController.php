@@ -72,10 +72,10 @@ class UserController extends Controller
     }
     public function updateProfile(updateProfileRequest $request)
     {
-        $request_data = $request->except(['password', 'password_confirmation', 'submit']);
+//        $request_data = $request->except(['password', 'password_confirmation', 'submit']);
 
         $user = auth()->user();
-        $user->update($request_data);
+        $user->update($request->all());
         return back()->with('success', trans('messages.updated_success'));
     }
     public function choose_available_limit(AvailableLimitRequest$request)
