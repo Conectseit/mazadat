@@ -18,7 +18,6 @@ class FilterController extends Controller
     public function filterCategory(FilterRequest $request, $id)
     {
         $auctions_ids = AuctionData::whereIn('option_details_id', $request->option_detail_id)->get()->pluck('auction_id')->toArray();
-
         $data['auctions'] = Auction::find($auctions_ids);
         $data['category'] = Category::find($id);
         $data['category_options'] = Option::where('category_id', $id)->with('option_details')->get();
