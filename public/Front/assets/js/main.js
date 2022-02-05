@@ -113,7 +113,7 @@ $(function () {
   $("#minus").click(function () {
     var $input = $(this).parent().find("#bidInput");
     var count = parseInt($input.val()) - 100;
-    count = count < 1 ? 1 : count;
+    count = count < 0 ? 0 : count;
     $input.val(count);
     $input.change();
     return false;

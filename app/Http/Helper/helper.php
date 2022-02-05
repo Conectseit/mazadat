@@ -23,7 +23,7 @@ function checkIsUserWatch($auction)
 }
 function checkIsUserAccept($auction)
 {
-    return DB::table('accepted_auctions')->where(['user_id' => auth()->id(), 'auction_id' => $auction->id]);
+    return DB::table('accepted_auctions')->where(['user_id' => auth()->user()->id, 'auction_id' => $auction->id]);
 }
 
 

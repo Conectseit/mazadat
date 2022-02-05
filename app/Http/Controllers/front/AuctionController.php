@@ -23,7 +23,6 @@ class AuctionController extends Controller
         return view('front.auctions.auction_details',$data);
     }
 
-
     public function make_bid(MakeBidRequest $request, $id)
     {
         DB::beginTransaction();
@@ -31,13 +30,15 @@ class AuctionController extends Controller
         {
             $user = auth()->user();
 
-            if(is_null($user->passport_image) && $user->documents->count() == 0)
-            {
-                return back()->with('warning', trans('messages.Sorry_you_should_upload_document_and_passport_first'));
-            }
+
             if( $user->accepted_auctions->count() == 0)
             {
                 return back()->with('error', trans('messages.Sorry_you_should_accept_auction_terms_first'));
+            }
+
+            if(is_null($user->passport_image) && $user->documents->count() == 0)
+            {
+                return back()->with('warning', trans('messages.Sorry_you_should_upload_document_and_passport_first'));
             }
 
             if(!$auction = Auction::find($id))
@@ -102,13 +103,12 @@ class AuctionController extends Controller
             return back();
         }
     }
-
-
-    public function categoryAuctions($id)
+    public  function cancel_bid_auction (Auction $auction)
     {
-        $data['auctions'] = Auction::where('category_id', $id)->get();
-        $data['category'] = Category::where('id', $id)->first();
-        return view('front.auctions.category_auctions',$data);
+        $auctionn= AuctionBuyer::where(['buyer_id' => auth()->user()->id, 'auction_id' => $auction->id]);
+        $auction->update(['current_price' => $auction->current_price - $auctionn->buyer_offer]);
+        $auctionn->delete();
+        return back();
     }
 
     public function my_watched()
@@ -116,12 +116,12 @@ class AuctionController extends Controller
         $data['auctions'] =  auth()->user()->auctions()->get();
         return view('front.user.my_watched_auctions', $data);
     }
+
     public function my_bids()
     {
         $data['auctions'] =  auth()->user()->bidauctions()->get();
         return view('front.user.my_bids', $data);
     }
-
 
     public  function watch_auction (Auction $auction)
     {
@@ -129,10 +129,11 @@ class AuctionController extends Controller
         if((boolean)$check->count())
         {
             $check->delete();
-            return back();
+            return response()->json(['status' => true, 'is_watched' => false]);
+//            return back();
         }
         WatchedAuction::create(['user_id' => auth()->user()->id, 'auction_id' => $auction->id,]);
-        return back();
+        return response()->json(['status' => true, 'is_watched' => true]);
     }
 
     public  function delete_watch_auction (Auction $auction)
@@ -142,29 +143,16 @@ class AuctionController extends Controller
         return back();
     }
 
-
     public  function accept_auction_terms (Auction $auction)
     {
         $check = checkIsUserAccept($auction);
-        if((boolean)$check->count())
+        if($check->count())
         {
             $check->delete();
-            return back();
+            return response()->json(['status' => true, 'is_accepted' => false]);
         }
         AcceptedAuction::create(['user_id' => auth()->user()->id, 'auction_id' => $auction->id,]);
-        return back();
+        return response()->json(['status' => true, 'is_accepted' => true]);
     }
 
-
-
-
-
-    public  function cancel_bid_auction (Auction $auction)
-    {
-        $auctionn= AuctionBuyer::where(['buyer_id' => auth()->user()->id, 'auction_id' => $auction->id]);
-        $auction->update(['current_price' => $auction->current_price - $auctionn->buyer_offer]);
-        $auctionn->delete();
-
-        return back();
-    }
 }

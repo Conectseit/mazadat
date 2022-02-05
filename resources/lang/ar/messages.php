@@ -2,10 +2,10 @@
 
 return [
 
-    'Dashboard' => 'لوحة تحكم موقع مزادات',
-    'home' => 'الصفحة الرئيسية',
-    'Statistics' => 'احصائيات عامة للموقع',
-    'login' => 'تسجيل الدخول',
+    'Dashboard'             => 'لوحة تحكم موقع مزادات',
+    'home'                  => 'الصفحة الرئيسية',
+    'Statistics'            => 'احصائيات عامة للموقع',
+    'login'                 => 'تسجيل الدخول',
     'Login'                 => 'تسجيل دخول',
     'logout'                => 'تسجيل الخروج',
     'welcome'               => 'مرحبا بك يا',
@@ -14,66 +14,65 @@ return [
     'bio'                   => ' السيرة الذاتية',
     'profile-info'          => 'البيانات الشخصية',
     'account-settings'      => 'اعدادات الحساب',
-    'online' => 'متصل ',
-    'add' => 'اضافة جديد',
-    'all' => ' الجميع',
-    'image' => ' صورة',
-    'personal_image' => ' الصورة الشخصية',
-    'name' => ' الاسم',
-    'since' => 'تاريخ الاضافة',
-    'form-actions' => 'الخيارات',
-    'form-status' => 'الحالة',
-//    'active'                => 'فعال',
+    'online'                => 'متصل ',
+    'add'                   => 'اضافة جديد',
+    'all'                   => ' الجميع',
+    'image'                 => ' صورة',
+    'personal_image'        => ' الصورة الشخصية',
+    'name'                  => ' الاسم',
+    'since'                 => 'تاريخ الاضافة',
+    'form-actions'          => 'الخيارات',
+    'form-status'           => 'الحالة',
+//    'active'              => 'فعال',
     'type'                  => 'النوع',
 
-    'activation_code_is'                  => 'كود التفعيل هو : :code',
-    'edit' => 'تعديل',
-    'delete' => 'حذف',
+    'activation_code_is'    => 'كود التفعيل هو : :code',
+    'edit'                  => 'تعديل',
+    'delete'                => 'حذف',
     'save'                  => 'حفظ',
-    'account_settings' => 'اعدادات الملف الشخصي',
+    'account_settings'      => 'اعدادات الملف الشخصي',
     'my-account'            => 'حسابي',
-    'show' => 'عرض البيانات',
-    'Yes' => 'نعم',
-    'No' => 'لا',
+    'show'                  => 'عرض البيانات',
+    'Yes'                   => 'نعم',
+    'No'                    => 'لا',
 
 
 
 
 
 
-    'wallet' => 'رصيد المحفظة',
-    'select' => 'اختر',
-    'quick_links' => 'روابط سريعة',
-    'cancel_delete' => 'تم الغاء الحذف',
-    'is_appear_name' => 'هل متاح ظهور اسم العميل ؟',
+    'wallet'                  => 'رصيد المحفظة',
+    'select'                  => 'اختر',
+    'quick_links'             => 'روابط سريعة',
+    'cancel_delete'           => 'تم الغاء الحذف',
+    'is_appear_name'          => 'هل متاح ظهور اسم العميل ؟',
     'confirm-delete-message-var' => 'هل انت متأكد من حذف هذا :var',
-    'password' => 'كلمه المرور',
-    'confirm_password' => 'تأكيد كلمة المرور',
+    'password'                => 'كلمه المرور',
+    'confirm_password'        => 'تأكيد كلمة المرور',
 
-    'name_ar' => 'الاسم العربي',
-    'name_en' => 'اسم الانجليزية',
-    'value_ar' => 'الاسم العربي',
-    'value_en' => 'اسم الانجليزية',
-    'value' => 'الاسم ',
+    'name_ar'                 => 'الاسم العربي',
+    'name_en'                 => 'اسم الانجليزية',
+    'value_ar'                => 'الاسم العربي',
+    'value_en'                => 'اسم الانجليزية',
+    'value'                   => 'الاسم ',
+    'not_accept'              => 'رفض ',
+    'accept'                  => 'قبول ',
+    'accept/not_accept'       => 'قبول / رفض',
 
-    'not_accept' => 'رفض ',
-    'accept' => 'قبول ',
-    'accept/not_accept' => 'قبول / رفض',
-
-    'full_name' => 'الاسم بالكامل',
-    'user_name' => 'اسم المستخدم',
-    'mobile' => 'رقم الجوال',
-    'email' => 'البريد الالكتروني',
-    'P_O_Box' => 'رقم البريد',
-    'gender' => 'االنوع',
-    'female' => 'أنثي',
-    'male' => 'ذكر',
-    'count' => 'عدد',
-    'deactive' => 'غير مفعل',
-    'active' => ' مفعل',
-    'person' => ' فرد',
-    'company' => ' مؤسسة',
-    'no_value' => ' لا يوجد',
+    'full_name'               => 'الاسم بالكامل',
+    'user_name'               => 'اسم المستخدم',
+    'mobile'                  => 'رقم الجوال',
+    'email'                   => 'البريد الالكتروني',
+    'P_O_Box'                 => 'رقم البريد',
+    'gender'                  => 'االنوع',
+    'female'                  => 'أنثي',
+    'male'                    => 'ذكر',
+    'count'                   => 'عدد',
+    'deactive'                => 'غير مفعل',
+    'active'                  => ' مفعل',
+    'person'                  => ' فرد',
+    'company'                 => ' مؤسسة',
+    'no_value'                => ' لا يوجد',
 
 
 
@@ -188,7 +187,7 @@ return [
         'day' => 'يوم',
         'bank_settings' => 'اعدادات الحساب البنكي',
         'bank_name_ar' => 'اسم البنك باللغة العربية ',
-        'bank_name_en' => 'اسم البنك باللغة العربية ',
+        'bank_name_en' => 'اسم البنك باللغة الإنجليزية ',
         'account_number' => ' رقم الحساب ',
         'branch' => ' فرع ',
 
@@ -252,15 +251,6 @@ return [
         'location' => ' الموقع',
         'add_balance' => ' اضافة رصيد الي محفظة هذا العميل',
     ],
-
-
-
-
-
-
-
-
-
 
 
 
@@ -430,30 +420,6 @@ return [
 
 
 
-
-
-//    ["sellers.index",
-//        "sellers.store",
-//        "sellers.edit",
-//        "ajax-delete-seller",
-//        "categories.create",
-//        "categories.update",
-//        "cities.create",
-//        "cities.store",
-//        "cities.update",
-//        "admins.create",
-//        "admins.edit",
-//        "admins.update",
-//        "ajax-delete-admin",
-//        "auctions.index",
-//        "auctions.store",
-//        "auctions.edit",
-//        "auctions.update",
-//        "settings.index"]
-
-
-
-
     'add_new_category' => 'إضافة قسم جديد',
     'latest_categories' => 'اخر الأقسام المضافة حديثا',
     'latest_sellers' => 'أصحاب المزادات المضافة حديثا',
@@ -550,3 +516,24 @@ return [
 
 
 //swal({{trans('messages.cancel_delete')}});
+
+
+
+//    ["sellers.index",
+//        "sellers.store",
+//        "sellers.edit",
+//        "ajax-delete-seller",
+//        "categories.create",
+//        "categories.update",
+//        "cities.create",
+//        "cities.store",
+//        "cities.update",
+//        "admins.create",
+//        "admins.edit",
+//        "admins.update",
+//        "ajax-delete-admin",
+//        "auctions.index",
+//        "auctions.store",
+//        "auctions.edit",
+//        "auctions.update",
+//        "settings.index"]

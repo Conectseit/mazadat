@@ -23,4 +23,6 @@ class InspectionImage extends Model
         }
         return asset('uploads/auctions/' . $this->image);
     }
+
+
 }
