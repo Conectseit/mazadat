@@ -64,7 +64,6 @@ Route::group(
 
     Route::get('auction_details/{id}', [AuctionController::class, 'auction_details'])->name('front.auction_details');
 
-
     Route::group(['middleware' => 'checkUserAuth'], function (){
         Route::any('/logout', [AuthController::class, 'logout'])->name('front.logout');
         Route::post('auth_contact', [GeneralController::class, 'auth_contact'])->name('front.auth_contact');

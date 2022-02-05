@@ -5,6 +5,7 @@
 @endsection
 @section('content')
     @include('front.layouts.parts.alert')
+    @include('front.layouts.splash')
 
     <section class="categories">
         <div class="container">

@@ -5,7 +5,7 @@
 @include('front.layouts.nav')
 @include('front.layouts.nav_categories')
 
-@include('front.layouts.splash')
+{{--@include('front.layouts.splash')--}}
 
 <body>
 <!--==========================================================================-->

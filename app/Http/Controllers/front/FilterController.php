@@ -26,7 +26,6 @@ class FilterController extends Controller
 
     public function main_filter(Request $request, $id)
     {
-        dd($request->all());
         $query = Auction::query();
         $data['category'] = Category::find($id);
         $data['category_options'] = Option::where('category_id', $id)->with('option_details')->get();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Auctions;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PARENT_API;
+use App\Http\Requests\Api\user\FilterRequest;
 use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Http\Resources\Api\CategoryOptionsResource;
 use App\Http\Resources\Api\CategoryResource;
@@ -97,7 +98,7 @@ class FilterController extends PARENT_API
     }
 
 
-    public function filterCategory(Request $request, $id)
+    public function filterCategory(FilterRequest $request, $id)
     {
         $category = Category::where('id', $id)->find($id);
         if (!$category) {
@@ -110,7 +111,8 @@ class FilterController extends PARENT_API
             return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
         }
 
-        $auctions_ids = AuctionData::where('option_id', $request->option_id)->whereIn('option_details_id', $request->option_details_id)->get()->pluck('auction_id')->toArray();
+        $auctions_ids = AuctionData::whereIn('option_details_id', $request->option_details_id)->get()->pluck('auction_id')->toArray();
+//        $auctions_ids = AuctionData::where('option_id', $request->option_id)->whereIn('option_details_id', $request->option_details_id)->get()->pluck('auction_id')->toArray();
 
         $auctions = Auction::find($auctions_ids);
 

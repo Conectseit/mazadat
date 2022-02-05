@@ -126,7 +126,10 @@
                                                         <a href="javascript:void(0);" id="change-terms-value">
                                                             <input type="checkbox" class="form-check-input"
                                                                    id="accept-terms" name="accept_auction"
-                                                                {{ checkIsUserAccept($auction)->count()?'checked':''}}>
+                                                            @if(auth()->check())
+                                                                {{ checkIsUserAccept($auction)->count()?'checked':''}}
+                                                                @endif
+                                                            >
                                                         </a>
                                                         <label class="form-check-label" for="accept-terms">قبول الشروط والاحكام</label>
                                                     </div>
