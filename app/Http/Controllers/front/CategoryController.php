@@ -23,6 +23,7 @@ class CategoryController extends Controller
             $data['auctions'] = $query->where('category_id', $id)->where('status', 'on_progress')->get();
         }
 
+
 //            $data['auctions'] = Auction::where('category_id', $id)->get();
         $data['category'] = Category::where('id', $id)->first();
         $data['category_options'] = Option::where('category_id', $id)->with('option_details')->get();

@@ -116,6 +116,8 @@ Route::group(
 
 
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/test', function () {
+//    return  view('Dashboard.Home.test-table');
+    return  view('Dashboard.layouts.master');
+
+});

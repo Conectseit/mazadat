@@ -172,7 +172,7 @@
                     <div class="terms">
                         <h4>{{ trans('messages.auction.images')}}:</h4>
                     </div>
-                    <div class="row">
+                    <div class="row" >
                         {{--                        @foreach($images as $image)--}}
                         {{--                            <div class="col-md-3 col-6">--}}
                         {{--                                <a href="{{$image->image_path}}" data-lightbox="roadtrip">--}}
@@ -183,8 +183,8 @@
                         {{--                            </div>--}}
                         {{--                        @endforeach--}}
 
-                        <div class="col-md-6 col-6">
-                            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="col-md-8 col-8">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" >
                                 <div class="carousel-indicators">
 {{--                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$auction->id}}"--}}
 {{--                                            class="active" aria-current="true" aria-label="Slide 1"></button>--}}

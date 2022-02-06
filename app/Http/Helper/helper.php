@@ -101,6 +101,45 @@ function settings($param)
 
 
 
+
+
+
+
+function displayDistance($lat, $lng)
+{
+    if(!auth()->check()) return $x = 0;
+
+    $latFrom = deg2rad($lat);
+    $lonFrom = deg2rad($lng);
+
+    $latTo = deg2rad(auth()->user()->latitude);
+    $lonTo = deg2rad(auth()->user()->longitude);
+
+    $latDelta = $latTo - $latFrom;
+    $lonDelta = $lonTo - $lonFrom;
+
+    $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
+            cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+    $x = ($angle * 6371000) / 1000;
+
+    $check = auth()->check() ? (int) $x : '0';
+
+    if(is_int($check))
+    {
+        if($check == 0) return 'بالقرب منك';
+
+        return (int)$x . ' كم ';
+    }
+
+    return null;
+}
+
+
+
+
+
+
+
 function random_colors()
 {
     $color_array = [

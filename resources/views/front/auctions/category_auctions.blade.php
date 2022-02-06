@@ -140,8 +140,8 @@
                                                 <div class="container">
                                                     <div class="input-group mb-2 mr-sm-2">
                                                         <div class="input-group-prepend">
-                                                            {{--                                                            <a href="{{route('front.watch_auction',$auction->id)}}">--}}
-                                                            <a href="javascript:void(0);" id="change-icon">
+                                                            <a href="{{route('front.watch_auction',$auction->id)}}">
+{{--                                                            <a href="javascript:void(0);" id="change-icon">--}}
                                                                 <div class="input-group-text">
                                                                     <i class="{{ checkIsUserWatch($auction)->count() ? 'fas fa-eye-slash' : 'fas fa-eye' }}"
                                                                        id="eye"></i>
@@ -157,15 +157,19 @@
                             </div>
                         </div>
                     @empty
+
                         <center><h2> @lang('messages.there_is_no_auctions_on_this_category_yet') </h2></center>
                     @endforelse
                 </div>
             </div>
         </section>
+{{--        <div class="d-flex justify-content-center">--}}
+{{--            {!! $auctions->links() !!}--}}
+{{--        </div>--}}
     </div>
 
 @stop
 
 @push('scripts')
-    @include('front.auctions.ajax')
+    @include('front.auctions.ajax-watch')
 @endpush
