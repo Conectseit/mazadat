@@ -1,13 +1,28 @@
 <main class="sign-in-form" id="signInForm">
     <div class="container">
-        {{--        @if(session()->has('error'))--}}
-        {{--            <div class="alert alert-warning alert-dismissible" role="alert">--}}
-        {{--                {{ session('error') }}--}}
-        {{--                <button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
-        {{--                    <span aria-hidden="true">&times;</span>--}}
-        {{--                </button>--}}
-        {{--            </div>--}}
-        {{--        @endif--}}
+{{--                @if(session()->has('error'))--}}
+{{--                    <div class="alert alert-warning alert-dismissible" role="alert">--}}
+{{--                        {{ session('error') }}--}}
+{{--                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
+{{--                            <span aria-hidden="true">&times;</span>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                @endif--}}
+
+
+{{--                    @if(session()->has('error'))--}}
+{{--                        <div class="alert alert-warning alert-dismissible" role="alert">--}}
+{{--                            {{ session('error') }}--}}
+{{--                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
+{{--                                <span aria-hidden="true">&times;</span>--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
+{{--                    @endif--}}
+
+
+
+
+
         <form action="{{route('front.login')}}" method="post" enctype="multipart/form-data">
             @csrf
             <h4 class="title">الدخول لحسابك</h4>
@@ -21,9 +36,29 @@
                     <label for="email" class="form-label">ايميل المستخدم</label>
                 </div>
                 <div class="col-sm-8">
-                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"  placeholder="ادخل بريدك الالكتروني">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror"
+                           id="email" name="email" aria-describedby="emailHelp"
+                           value="{{ old('email') }}" placeholder="ادخل بريدك الالكتروني">
+                    @error('email')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
+
+            <div class="form-group">
+                <input type="password" name="password"
+                       class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1"
+                       placeholder="كلمة المرور">
+                @error('password')
+                <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
+            </div>
+
+
+
+
+
+
             <div class="mb-4 form-group row">
                 <div class="col-sm-2 d-flex align-items-center">
                     <label for="password" class="form-label">كلمة المرور</label>

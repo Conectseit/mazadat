@@ -118,6 +118,11 @@ Route::group(
 
 
 
+Route::get('/mzadat', function () {
+    return view('front/splash_index');
+});
+
+
 //Route::get('/', function () {
 //    return view('welcome');
 //});
