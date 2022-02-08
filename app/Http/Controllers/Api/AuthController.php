@@ -40,22 +40,32 @@ class AuthController extends PARENT_API
 
         DB::beginTransaction();
         try {
-            $request_data = $request->except(['image', 'commercial_register_image']);
+            $request_data = $request->except(['image', 'commercial_register_image','phone_code','mobile']);
 
 //            if ($request->image) {
 //                $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
 //            }
             if ($request->commercial_register_image) {
-                $request_data['commercial_register_image'] = $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
+                 $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
             }
-            $user = User::create($request_data + ['activation_code' => $activation_code,'country_id'=>'1']);
+            if ($request->mobile) {
+                $request_data['mobile'] =$request->phone_code. $request->mobile ;
+            }
+            if ($request->is_company=='person') {
+                $user = User::create($request_data + ['activation_code' => $activation_code,'is_accepted'=>'1','type'=>'buyer']);
+            }
+            elseif ($request->is_company=='company'){
+                $user = User::create($request_data + ['activation_code' => $activation_code,'type'=>'buyer']);
+
+            }
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
-                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
+                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,'fcm'=>$request->fcm]);
             }
             DB::commit();
 
-            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
+            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+//            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
 
             return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_sent')); //OK
         } catch (\Exception $e) {

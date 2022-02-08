@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\Auctions\FilterController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CityController;
+use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\NationalityController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\payment\PaymentController;
@@ -51,6 +52,7 @@ Route::group(['namespace' => 'Api'], function () {
 
     //=========== general ============
     Route::get('cities', [CityController::class, 'cities']);
+    Route::get('countries', [CountryController::class, 'countries']);
     Route::get('nationalities', [NationalityController::class, 'nationalities']);
     Route::get('about_app', [SettingController::class, 'about_app']);
     Route::get('conditions_terms', [SettingController::class, 'conditions_terms']);

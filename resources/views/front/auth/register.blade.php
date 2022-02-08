@@ -17,15 +17,45 @@
                     @csrf
                     <div class="inputs-group">
                         <h5 class="group-title">{{trans('messages.personal_info')}}</h5>
+{{--                        <div class="form-group mb-4 row">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                <label for="full_name" class="form-label">{{trans('messages.full_name')}}</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-10 col-md-9">--}}
+{{--                                <input type="text" class="form-control"  name="full_name"--}}
+{{--                                       placeholder="{{trans('messages.enter_full_name')}}">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="full_name" class="form-label">{{trans('messages.full_name')}}</label>
+                                <label for="full_name" class="form-label">{{trans('messages.first_name')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control"  name="full_name"
-                                       placeholder="{{trans('messages.enter_full_name')}}">
+                                <input type="text" class="form-control"  name="first_name"
+                                       placeholder="{{trans('messages.enter_first_name')}}">
                             </div>
                         </div>
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="full_name" class="form-label">{{trans('messages.middle_name')}}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control"  name="middle_name"
+                                       placeholder="{{trans('messages.enter_middle_name')}}">
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="full_name" class="form-label">{{trans('messages.last_name')}}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control"  name="last_name"
+                                       placeholder="{{trans('messages.enter_last_name')}}">
+                            </div>
+                        </div>
+
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="email" class="form-label">{{trans('messages.email')}}</label>
@@ -41,18 +71,18 @@
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 <div class="row">
-{{--                                    <div class="col-xl-3 col-lg-4 col-sm-6">--}}
-{{--                                        <select class="form-select form-control" name="country-code"--}}
-{{--                                                aria-label="Default select example">--}}
-{{--                                            <option selected disabled> {{ trans('messages.choose_country_code')}}</option>--}}
-{{--                                            @foreach ($countries as $country)--}}
-{{--                                                <option value="{{ $country->id }}"> {{ $country->$name }}{{ $country->phone_code }} </option>--}}
-{{--                                            @endforeach--}}
+                                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                                        <select class="form-select form-control" name="country-code"
+                                                aria-label="Default select example">
+                                            <option selected disabled> {{ trans('messages.choose_country_code')}}</option>
+                                            @foreach ($countries as $country)
+                                                <option value="{{ $country->id }}"> {{ $country->$name }}{{ $country->phone_code }} </option>
+                                            @endforeach
 {{--                                            <option >+966 المملكة العربية السعودية</option>--}}
 {{--                                            <option value="ksa">+20 مصر</option>--}}
 {{--                                            <option value="eg">+20 مصر</option>--}}
-{{--                                        </select>--}}
-{{--                                    </div>--}}
+                                        </select>
+                                    </div>
                                     <div class="col-xl-9 col-lg-8 col-sm-6">
                                         <input type="number" class="form-control" id="phone" name="mobile"
                                                placeholder="{{trans('messages.enter_mobile')}}xxx xxx xx">
@@ -92,19 +122,19 @@
 
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="full_name" class="form-label"> {{ trans('messages.seller/buyer') }}</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <select class=" select form-select form-control" name="type"
-                                        aria-label="Default select example">
-                                    <option selected disabled>{{trans('messages.select')}}</option>
-                                    <option  value="buyer">{{trans('messages.buyer.buyer')}}</option>
-                                    <option  value="seller ">{{trans('messages.seller.seller')}}</option>
-                                </select>
-                            </div>
-                        </div>
+{{--                        <div class="form-group mb-4 row">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                <label for="full_name" class="form-label"> {{ trans('messages.seller/buyer') }}</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-10 col-md-9">--}}
+{{--                                <select class=" select form-select form-control" name="type"--}}
+{{--                                        aria-label="Default select example">--}}
+{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
+{{--                                    <option  value="buyer">{{trans('messages.buyer.buyer')}}</option>--}}
+{{--                                    <option  value="seller ">{{trans('messages.seller.seller')}}</option>--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="full_name" class="form-label"> {{ trans('messages.buyer.person/company') }}</label>
@@ -147,15 +177,15 @@
 
                         </div>
 
-                        <div class="form-group mb-4 mt-3 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="P_O_Box" class="form-label">{{ trans('messages.P_O_Box') }}</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control"
-                                       name="P_O_Box" placeholder="{{ trans('messages.P_O_Box') }}">
-                            </div>
-                        </div>
+{{--                        <div class="form-group mb-4 mt-3 row">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                <label for="P_O_Box" class="form-label">{{ trans('messages.P_O_Box') }}</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-10 col-md-9">--}}
+{{--                                <input type="text" class="form-control"--}}
+{{--                                       name="P_O_Box" placeholder="{{ trans('messages.P_O_Box') }}">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
 
                         <div class="form-group mb-4 row">
@@ -173,20 +203,20 @@
                         </div>
 
 
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="full_name" class="form-label"> {{ trans('messages.nationality.nationality') }}</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <select class=" select form-select form-control" name="nationality_id"
-                                        aria-label="Default select example">
-                                    <option selected disabled>{{trans('messages.select')}}</option>
-                                    @foreach ($nationalities as $nationality)
-                                        <option value="{{ $nationality->id }}"> {{ $nationality->$name }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+{{--                        <div class="form-group mb-4 row">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                <label for="full_name" class="form-label"> {{ trans('messages.nationality.nationality') }}</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-10 col-md-9">--}}
+{{--                                <select class=" select form-select form-control" name="nationality_id"--}}
+{{--                                        aria-label="Default select example">--}}
+{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
+{{--                                    @foreach ($nationalities as $nationality)--}}
+{{--                                        <option value="{{ $nationality->id }}"> {{ $nationality->$name }} </option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
 {{--                        <div class="form-group mb-4 row">--}}
 {{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
@@ -203,20 +233,20 @@
 {{--                            </div>--}}
 {{--                        </div>--}}
 
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="city_name" class="form-label"> {{ trans('messages.city_name') }}</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <select class=" select form-select form-control" id="cities" name="city_id"
-                                        aria-label="Default select example">
-                                    <option selected disabled>{{trans('messages.select')}}</option>
-                                    @foreach ($cities as $city)
-                                        <option value="{{ $city->id }}"> {{ $city->$name }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+{{--                        <div class="form-group mb-4 row">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                <label for="city_name" class="form-label"> {{ trans('messages.city_name') }}</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-10 col-md-9">--}}
+{{--                                <select class=" select form-select form-control" id="cities" name="city_id"--}}
+{{--                                        aria-label="Default select example">--}}
+{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
+{{--                                    @foreach ($cities as $city)--}}
+{{--                                        <option value="{{ $city->id }}"> {{ $city->$name }} </option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="sign-btn">
                             <p> {{trans('messages.accept_term')}}</p>
                             <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>
