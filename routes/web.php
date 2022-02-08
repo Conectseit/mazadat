@@ -30,7 +30,7 @@ Route::group(
     ], function () {
 
 //    Route::group(['prefix' => 'front'], function () {
-    Route::get('/', [HomeController::class, 'home'])->name('front.home');
+    Route::get('/mzadat', [HomeController::class, 'home'])->name('front.home');
 
 // ============ for auth ================
     Route::get('show_register', [AuthController::class, 'show_register'])->name('front.show_register');
@@ -118,7 +118,7 @@ Route::group(
 
 
 
-Route::get('/mzadat', function () {
+Route::get('/', function () {
     return view('front/splash_index');
 });
 
