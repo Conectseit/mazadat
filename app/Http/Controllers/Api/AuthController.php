@@ -83,7 +83,7 @@ class AuthController extends PARENT_API
 
         $user = User::where('activation_code', $request->activation_code)->first();
         if ($user) {
-            $user->update(['is_active' => 'active']);
+            $user->update(['is_active' => 'active','activation_code'=>'']);
             return responseJson(true, trans('api.activation_done'), null);  //OK
         }
         return responseJson(false, trans('api.sorry_wrong_activation_code_try_again'), null);

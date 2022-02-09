@@ -45,16 +45,14 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <input type="password" name="password"
-                       class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1"
-                       placeholder="كلمة المرور">
-                @error('password')
-                <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
-            </div>
-
-
+{{--            <div class="form-group">--}}
+{{--                <input type="password" name="password"--}}
+{{--                       class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1"--}}
+{{--                       placeholder="كلمة المرور">--}}
+{{--                @error('password')--}}
+{{--                <span class="invalid-feedback">{{ $message }}</span>--}}
+{{--                @enderror--}}
+{{--            </div>--}}
 
 
 
@@ -66,7 +64,6 @@
                 <div class="col-sm-8">
                     <input type="password" class="form-control" name="password" id="password"  placeholder="ادخل كلمة المرور">
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-sm-2"></div>

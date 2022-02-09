@@ -57,6 +57,10 @@ return [
     'accept/not_accept'    => 'accept/not accept',
 
     'full_name'            => 'full name',
+    'first_name'           => 'first name',
+    'middle_name'          => 'middle name',
+    'last_name'            => 'last name',
+
     'user_name'            => ' user name',
     'mobile'               => ' mobile',
     'email'    => ' email',
@@ -421,8 +425,11 @@ return [
     'personal_info' => ' personal info',
     'enter_message' => ' enter message ',
     'enter_full_name' => '  enter full name ',
+    'enter_first_name' => 'enter first name ',
+    'enter_middle_name' => 'enter middle name ',
+    'enter_last_name' => 'enter last name',
     'enter_email' => '  enter email',
-    'enter_mobile' => 'enter mobile : 966',
+    'enter_mobile' => 'enter mobile :',
     'register_your_account' => 'register your account',
     'enter_password' => 'enter password ',
     'confirm-password' => 'confirm password',
