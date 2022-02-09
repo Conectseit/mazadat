@@ -35,7 +35,9 @@ class RegisterRequest extends FormRequest
                         'commercial_register_image'        => 'required_if:is_company,company|image',
                         'latitude'         => 'required_if:is_company,company',
 //                        'longitude'      => 'required_if:is_company,company',
-                        'full_name'   => 'required',
+                        'first_name'   => 'required',
+                        'middle_name'   => 'sometimes',
+                        'last_name'   => 'required',
                         'user_name'   => 'required',
                         'email'       => 'required|unique:users,email',
                         'password'    => 'required|min:6|confirmed',
@@ -43,10 +45,10 @@ class RegisterRequest extends FormRequest
 
 //                        'mobile'      => ['required', 'numeric', 'unique:users,mobile'],
                         'is_appear_name'     => 'required',
-                        'nationality_id'     => 'required',
-                        'city_id'            => 'required',
-//                        'gender'           => 'required',
-                        'P_O_Box'            => 'required',
+//                        'nationality_id'     => 'required',
+//                        'city_id'            => 'required',
+////                        'gender'           => 'required',
+//                        'P_O_Box'            => 'required',
                     ];
                 }
             case 'PUT':

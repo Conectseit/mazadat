@@ -154,7 +154,7 @@
                                     @else
                                     <li class="nav-item">
                                         <a href="#" class="nav-link hvr-shutter-out-horizontal" data-bs-toggle="modal"
-                                           data-bs-target="#contact-modal">اتصل بنا</a>
+                                           data-bs-target="#contact-modal">@lang('messages.contact_us')</a>
                                     </li>
                                     @endif
                                 </ul>
@@ -218,7 +218,7 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link hvr-shutter-out-horizontal" id="signInBtn"
-                                               href="{{route('front.home')}}">الدخول</a>
+                                               href="{{route('front.home')}}">@lang('messages.login')</a>
                                         </li>
 
                                     @endif

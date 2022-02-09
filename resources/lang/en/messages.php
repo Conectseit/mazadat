@@ -41,7 +41,7 @@ return [
     'select'                    => 'Select',
     'quick_links'               => 'quick links',
     'cancel_delete'             => 'cancel delete',
-    'is_appear_name'            => 'is appear name?',
+    'is_appear_name'            => ' ? is appear name',
     'confirm-delete-message-var' => 'هل انت متأكد من حذف هذا :var',
     'password'                  => 'password',
     'confirm_password'          => 'confirm password',
@@ -490,6 +490,9 @@ return [
     'en' => [
         'en' => 'English',
     ],
+
+    'contact_us'         	=> 'Contact Us',
+
 
 
 

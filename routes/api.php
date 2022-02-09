@@ -34,7 +34,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::group(['namespace' => 'Api'], function () {
 
     //=========== auth ============
-    Route::post('register', [AuthController::class, 'register']);
+    Route::post('register_person', [AuthController::class, 'register_person']);
+    Route::post('register_company', [AuthController::class, 'register_company']);
     Route::post('activation', [AuthController::class, 'activation']);
     Route::any('login', [AuthController::class, 'login']);
     Route::post('forget_password', [AuthController::class, 'forget_password']);

@@ -55,7 +55,7 @@ class AuthController extends Controller
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
             }
             DB::commit();
-            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
+//            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
             return redirect()->route('front.show_activation');
         } catch (\Exception $e) {
             return redirect()->route('front.show_activation');

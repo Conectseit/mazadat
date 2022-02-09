@@ -10,7 +10,15 @@
         <div class="container">
             <h4 class="title"> {{ trans('messages.add_new_user') }}</h4>
 
-            @include('front.layouts.parts.alert')
+{{--            @include('front.layouts.parts.alert')--}}
+
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success! </strong>
+                    {{session('success')}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
 
             <div class="row">
                 <form action="{{route('front.register')}}" method="post" enctype="multipart/form-data">

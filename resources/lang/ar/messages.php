@@ -516,6 +516,9 @@ return [
         'en' => 'English',
     ],
 
+    'contact_us'         	=> 'اتصل بنا ',
+
+
 
 
 

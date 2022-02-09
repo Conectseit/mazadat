@@ -10,6 +10,7 @@ use App\Http\Requests\Api\AdditionalContactRequest;
 use App\Http\Requests\Api\ChangePasswordRequest;
 use App\Http\Requests\Api\ForgetPasswordRequest;
 use App\Http\Requests\Api\LoginRequest;
+use App\Http\Requests\Api\RegisterCompanyRequest;
 use App\Http\Requests\Api\RegisterUserRequest;
 use App\Http\Requests\Api\ResetPasswordRequest;
 use App\Http\Requests\Api\UpdatePersonalImageRequest;
@@ -34,30 +35,23 @@ use Validator;
 class AuthController extends PARENT_API
 {
 
-    public function register(RegisterUserRequest $request)
+    public function register_person(RegisterUserRequest $request)
     {
         $activation_code = random_int(0000, 9999);
 
         DB::beginTransaction();
         try {
-            $request_data = $request->except(['image', 'commercial_register_image','phone_code','mobile']);
+            $request_data = $request->except(['image','phone_code','mobile']);
 
 //            if ($request->image) {
 //                $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
 //            }
-            if ($request->commercial_register_image) {
-                 $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
-            }
             if ($request->mobile) {
                 $request_data['mobile'] =$request->phone_code. $request->mobile ;
             }
-            if ($request->is_company=='person') {
-                $user = User::create($request_data + ['activation_code' => $activation_code,'is_accepted'=>'1','type'=>'buyer']);
-            }
-            elseif ($request->is_company=='company'){
-                $user = User::create($request_data + ['activation_code' => $activation_code,'type'=>'buyer']);
 
-            }
+            $user = User::create($request_data + ['activation_code' => $activation_code,'is_accepted'=>'1','type'=>'buyer']);
+
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,'fcm'=>$request->fcm]);
@@ -72,6 +66,46 @@ class AuthController extends PARENT_API
             return responseJson(false, $e->getMessage());
         }
     }
+
+
+
+    public function register_company(RegisterCompanyRequest $request)
+    {
+        $activation_code = random_int(0000, 9999);
+
+        DB::beginTransaction();
+        try {
+            $request_data = $request->except(['commercial_register_image','phone_code','mobile']);
+
+//
+            if ($request->commercial_register_image) {
+                $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
+            }
+            if ($request->mobile) {
+                $request_data['mobile'] =$request->phone_code. $request->mobile ;
+            }
+
+                $user = User::create($request_data + ['activation_code' => $activation_code,'type'=>'buyer','is_appear_name'=>1,'is_company'=>'company']);
+
+            if ($user) {
+                $jwt_token = JWTAuth::fromUser($user);
+                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,'fcm'=>$request->fcm]);
+            }
+            DB::commit();
+
+//            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+//            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
+
+            return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_sent')); //OK
+        } catch (\Exception $e) {
+            return responseJson(false, $e->getMessage());
+        }
+    }
+
+
+
+
+
 
 
     public function activation(ActivationCodeRequest $request)
