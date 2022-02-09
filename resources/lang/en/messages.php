@@ -429,6 +429,7 @@ return [
     'enter_middle_name' => 'enter middle name ',
     'enter_last_name' => 'enter last name',
     'enter_email' => '  enter email',
+    'enter_user_name' => '  enter user name',
     'enter_mobile' => 'enter mobile :',
     'register_your_account' => 'register your account',
     'enter_password' => 'enter password ',

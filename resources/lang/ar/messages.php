@@ -455,6 +455,7 @@ return [
     'enter_last_name' => 'ادخل الاسم الاخير ',
     'enter_email' => 'ادخل البريد الالكترونى',
     'enter_mobile' => 'ادخل رقم الجوال : ',
+    'enter_user_name' => 'ادخل  اسم المستخدم او الاسم المستعار : ',
     'register_your_account' => 'تسجيل حسابك',
     'enter_password' => '  كلمة المرور',
     'confirm-password' => 'قم بتاكيد كلمة المرور',

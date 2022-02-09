@@ -27,14 +27,16 @@
 {{--                            </div>--}}
 {{--                        </div>--}}
 
-
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="full_name" class="form-label">{{trans('messages.first_name')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control"  name="first_name"
+                                <input type="text"   name="first_name"
+                                       class="form-control   @error('first_name') is-invalid @enderror"  value="{{ old('first_name') }}"
                                        placeholder="{{trans('messages.enter_first_name')}}">
+                                @error('first_name')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
                         </div>
                         <div class="form-group mb-4 row">
@@ -42,8 +44,11 @@
                                 <label for="full_name" class="form-label">{{trans('messages.middle_name')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control"  name="middle_name"
+                                <input type="text"   name="middle_name"
+                                       class="form-control   @error('middle_name') is-invalid @enderror"  value="{{ old('middle_name') }}"
                                        placeholder="{{trans('messages.enter_middle_name')}}">
+                                @error('middle_name')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
                         </div>
                         <div class="form-group mb-4 row">
@@ -51,8 +56,11 @@
                                 <label for="full_name" class="form-label">{{trans('messages.last_name')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control"  name="last_name"
+                                <input type="text"   name="last_name"
+                                       class="form-control   @error('last_name') is-invalid @enderror"  value="{{ old('last_name') }}"
                                        placeholder="{{trans('messages.enter_last_name')}}">
+                                @error('last_name')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
                         </div>
 
@@ -61,8 +69,11 @@
                                 <label for="email" class="form-label">{{trans('messages.email')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="email" class="form-control" id="email" name="email"
+                                <input type="email"  id="email" name="email"
+                                       class="form-control   @error('email') is-invalid @enderror"  value="{{ old('email') }}"
                                        placeholder="{{trans('messages.enter_email')}}">
+                                @error('email')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
                         </div>
                         <div class="form-group mb-4 row">
@@ -84,8 +95,12 @@
                                         </select>
                                     </div>
                                     <div class="col-xl-9 col-lg-8 col-sm-6">
-                                        <input type="number" class="form-control" id="phone" name="mobile"
+                                        <input type="number"  id="phone" name="mobile"
+                                               class="form-control   @error('mobile') is-invalid @enderror"  value="{{ old('mobile') }}"
                                                placeholder="{{trans('messages.enter_mobile')}}xxx xxx xx">
+                                        @error('mobile')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
+
                                     </div>
                                 </div>
                             </div>
@@ -96,8 +111,11 @@
                                 <label for="user_name" class="form-label">{{trans('messages.user_name')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control" id="username" name="user_name"
-                                       placeholder="ادخل اسم مستخدم">
+                                <input type="text"  id="username" name="user_name"
+                                       class="form-control   @error('user_name') is-invalid @enderror"  value="{{ old('user_name') }}"
+                                       placeholder="{{trans('messages.enter_user_name')}}">
+                                @error('user_name')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
                         </div>
                         <div class="form-group mb-4 row">
@@ -105,8 +123,11 @@
                                 <label for="password" class="form-label">{{ trans('messages.password') }}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="password" class="form-control" id="password" name="password"
-                                       placeholder="ادخل كلمة المرور">
+                                <input type="password"
+                                       class="form-control   @error('password') is-invalid @enderror"  value="{{ old('password') }}"
+                                       id="password" name="password" placeholder="{{trans('messages.enter_password')}}">
+                                @error('password')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
                         </div>
                         <div class="form-group mb-4 row">
