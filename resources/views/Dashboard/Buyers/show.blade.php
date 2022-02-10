@@ -87,12 +87,12 @@
                                                                     <input type="text" class="form-control" value="{{ $buyer->is_company=='company'?trans('messages.company'):trans('messages.person')}}" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.buyer.full_name') }}:</label>
-                                                                <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $buyer->full_name }}" readonly>
-                                                                </div>
-                                                            </div>
+{{--                                                            <div class="form-group row">--}}
+{{--                                                                <label class="col-form-label col-lg-3">{{ trans('messages.buyer.full_name') }}:</label>--}}
+{{--                                                                <div class="col-lg-9">--}}
+{{--                                                                    <input type="text" class="form-control" value="{{ $buyer->full_name }}" readonly>--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
                                                             <div class="form-group row">
                                                                 <label class="col-form-label col-lg-3">{{ trans('messages.user_name') }}:</label>
                                                                 <div class="col-lg-9">
@@ -111,18 +111,18 @@
                                                                     <input type="text" class="form-control" value="{{ $buyer->mobile }}" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.nationality.nationality') }}:</label>
-                                                                <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $buyer->nationality->$name }}" readonly>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.city.city') }}:</label>
-                                                                <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $buyer->city->$name }}" readonly>
-                                                                </div>
-                                                            </div>
+{{--                                                            <div class="form-group row">--}}
+{{--                                                                <label class="col-form-label col-lg-3">{{ trans('messages.nationality.nationality') }}:</label>--}}
+{{--                                                                <div class="col-lg-9">--}}
+{{--                                                                    <input type="text" class="form-control" value="{{ $buyer->nationality->$name }}" readonly>--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
+{{--                                                            <div class="form-group row">--}}
+{{--                                                                <label class="col-form-label col-lg-3">{{ trans('messages.city.city') }}:</label>--}}
+{{--                                                                <div class="col-lg-9">--}}
+{{--                                                                    <input type="text" class="form-control" value="{{ $buyer->city->$name }}" readonly>--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
                                                             <div class="form-group row">
                                                                 <label class="col-form-label col-lg-3">{{ trans('messages.since') }}:</label>
                                                                 <div class="col-lg-9">

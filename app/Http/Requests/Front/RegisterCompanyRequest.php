@@ -4,7 +4,7 @@ namespace App\Http\Requests\Front;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class RegisterCompanyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,21 +31,31 @@ class RegisterRequest extends FormRequest
                 }
             case 'POST': {
                     return [
-                        'first_name'   => 'required',
-                        'middle_name'   => 'sometimes',
-                        'last_name'   => 'required',
+//                        'is_company'       => 'required|in:person,company',
+//                        'commercial_register_image'        => 'required_if:is_company,company|image',
+                        'commercial_register_image'        => 'required_|image',
+                        'latitude'         => 'required',
+//                        'longitude'      => 'required_if:is_company,company',
+//                        'first_name'   => 'required',
+//                        'middle_name'   => 'sometimes',
+//                        'last_name'   => 'required',
                         'user_name'   => 'required',
                         'email'       => 'required|unique:users,email',
                         'password'    => 'required|min:6|confirmed',
                         'mobile'           => 'required|numeric|min:9|unique:users,mobile',
-                        'is_appear_name'     => 'required',
 
+//                        'mobile'      => ['required', 'numeric', 'unique:users,mobile'],
+//                        'is_appear_name'     => 'required',
+//                        'nationality_id'     => 'required',
+//                        'city_id'            => 'required',
+////                        'gender'           => 'required',
+//                        'P_O_Box'            => 'required',
                     ];
                 }
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'full_name'   => 'sometimes',
+//                        'full_name'   => 'sometimes',
                         'user_name'   => 'sometimes',
                     ];
                 }

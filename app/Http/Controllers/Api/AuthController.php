@@ -104,10 +104,6 @@ class AuthController extends PARENT_API
 
 
 
-
-
-
-
     public function activation(ActivationCodeRequest $request)
     {
 //        $user = User::where(['mobile' => $request->mobile])->first();

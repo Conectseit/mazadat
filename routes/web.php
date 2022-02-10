@@ -34,7 +34,15 @@ Route::group(
 
 // ============ for auth ================
     Route::get('show_register', [AuthController::class, 'show_register'])->name('front.show_register');
-    Route::post('register', [AuthController::class, 'register'])->name('front.register');
+
+    Route::get('show_register_person', [AuthController::class, 'show_register_person'])->name('front.show_register_person');
+    Route::post('register_person', [AuthController::class, 'register_person'])->name('front.register_person');
+
+
+    // ============ register_company ================
+    Route::get('show_register_company', [AuthController::class, 'show_register_company'])->name('front.show_register_company');
+    Route::post('register_company', [AuthController::class, 'register_company'])->name('front.register_company');
+
     Route::get('show_activation', [AuthController::class, 'show_activation'])->name('front.show_activation');
     Route::post('check_code', [AuthController::class, 'checkCode'])->name('front.check_code');
     Route::post('login', [AuthController::class, 'login'])->name('front.login');

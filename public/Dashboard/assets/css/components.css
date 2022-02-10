@@ -20404,3 +20404,10 @@ label.display-block {
     padding-bottom: 10px;
   }
 }
+
+.navigation li + li {
+    margin-top: 1px;
+    font-size: large;
+    font-family:Digital-7;
+    /*font-family:"fantasy";*/
+}

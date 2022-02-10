@@ -114,8 +114,6 @@ Route::group(
     });
 });
 
-
-
 Route::get('/test', function () {
 //    return  view('Dashboard.Home.test-table');
     return  view('Dashboard.layouts.master');

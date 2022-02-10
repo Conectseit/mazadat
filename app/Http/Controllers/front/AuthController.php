@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SmsController;
 use App\Http\Requests\Front\LoginRequest;
+use App\Http\Requests\Front\RegisterCompanyRequest;
 use App\Http\Requests\Front\RegisterRequest;
 use App\Http\Requests\Front\user\ForgetPassRequest;
 use App\Http\Requests\Front\user\resetPasswordRequest;
@@ -25,15 +26,55 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
+
     public function show_register()
     {
-        $data['cities'] = City::all();
+        return view('front.auth.register');
+    }
+    public function show_register_person()
+    {
         $data['countries'] = Country::all();
-        $data['nationalities'] = Nationality::all();
-        return view('front.auth.register', $data);
+        return view('front.auth.register_person', $data);
+    }
+    public function register_person(RegisterRequest $request)
+    {
+        $activation_code = random_int(0000, 9999);
+        DB::beginTransaction();
+        try {
+            $request_data = $request->except(['mobile']);
+            $user = User::where('mobile', $request->mobile)->first();
+            if ($user) return back()->withInput($request->only('mobile'))->with('error', 'عفوا رقم الجوال مسجل من قبل');
+
+            $user = User::where('email', $request->email)->first();
+            if ($user) return back()->withInput($request->only('email'))->with('error', 'عفوا الايميل  مسجل من قبل');
+
+
+            if ($request->mobile) {
+                $request_data['mobile'] =$request->phone_code. $request->mobile ;
+            }
+            $user = User::create($request_data + ['activation_code' => $activation_code, 'is_accepted'=>'1','type'=>'buyer','accept_app_terms'=>'yes']);
+            if ($user) {
+                $jwt_token = JWTAuth::fromUser($user);
+                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
+            }
+            DB::commit();
+//            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
+            return redirect()->route('front.show_activation');
+        } catch (\Exception $e) {
+            return redirect()->route('front.show_activation');
+        }
     }
 
-    public function register(RegisterRequest $request)
+
+    public function show_register_company()
+    {
+//        $data['cities'] = City::all();
+        $data['countries'] = Country::all();
+//        $data['nationalities'] = Nationality::all();
+        return view('front.auth.register_company', $data);
+    }
+
+    public function register_company(RegisterCompanyRequest $request)
     {
         $activation_code = random_int(0000, 9999);
         DB::beginTransaction();
@@ -49,7 +90,8 @@ class AuthController extends Controller
             $user = User::where('email', $request->email)->first();
             if ($user) return back()->withInput($request->only('email'))->with('error', 'عفوا الايميل  مسجل من قبل');
 
-            $user = User::create($request_data + ['activation_code' => $activation_code, 'country_id' => '1']);
+            $user = User::create($request_data + ['activation_code' => $activation_code,'type'=>'buyer','is_appear_name'=>1,'is_company'=>'company','accept_app_terms'=>'yes']);
+
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
@@ -62,6 +104,7 @@ class AuthController extends Controller
         }
     }
 
+
     public function show_activation()
     {
         return view('front.auth.activation');
@@ -69,13 +112,6 @@ class AuthController extends Controller
 
     public function checkCode(Request $request)
     {
-//        if ($request->code1 == null || $request->code2 == null || $request->code3 == null || $request->code4 == null)
-//            return back()->with('error', trans('messages.activation_code_required'));
-//
-//        $code = $request->code4 . $request->code3 . $request->code2 . $request->code1;
-//
-//        $user = User::where('activation_code', $code)->first();
-
         if ($request->activation_code == null)
             return back()->with('error', trans('messages.activation_code_required'));
 
@@ -84,7 +120,7 @@ class AuthController extends Controller
         if (!$user) return back()->with('error', trans('messages.wrong_code'));
 
         if (!$user->update(['activation_code' => null, 'is_active' => 'active'])) return back()->with('error', 'حدث خطا, حاول مره اخري');
-        return redirect()->route('front.show_register')->with('success', trans('messages.register_success'));
+        return redirect()->route('front.home')->with('success', trans('messages.register_success_welcome_in_our_website'));
     }
 
 
@@ -194,3 +230,17 @@ class AuthController extends Controller
         return response()->json(['cities' => $country->cities, 'status' => true], 200);
     }
 }
+
+
+
+
+// ======= test =======
+//public function checkCode(Request $request)
+//{
+////        if ($request->code1 == null || $request->code2 == null || $request->code3 == null || $request->code4 == null)
+////            return back()->with('error', trans('messages.activation_code_required'));
+////
+////        $code = $request->code4 . $request->code3 . $request->code2 . $request->code1;
+////
+////        $user = User::where('activation_code', $code)->first();
+//}

@@ -41,7 +41,7 @@ return [
     'select'                    => 'Select',
     'quick_links'               => 'quick links',
     'cancel_delete'             => 'cancel delete',
-    'is_appear_name'            => ' ? is appear name',
+    'is_appear_name'            => ' ? hidden  user name',
     'confirm-delete-message-var' => 'هل انت متأكد من حذف هذا :var',
     'password'                  => 'password',
     'confirm_password'          => 'confirm password',
@@ -492,6 +492,14 @@ return [
     ],
 
     'contact_us'         	=> 'Contact Us',
+    'register_person'         	=> ' Register Person ',
+    'register_company'         	=> ' Register Company',
+    'enter_company_name'         	=> 'enter company name ',
+    'company_name'         	        => ' Company Name ',
+    'company_location'         	=> 'Company Location',
+
+    'pass_terms'         	=> 'Not : password must less than 6 characters',
+    'register_success_welcome_in_our_website'     	=> 'register success_welcome_in_our_website',
 
 
 

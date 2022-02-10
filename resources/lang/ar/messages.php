@@ -45,7 +45,7 @@ return [
     'select'                  => 'اختر',
     'quick_links'             => 'روابط سريعة',
     'cancel_delete'           => 'تم الغاء الحذف',
-    'is_appear_name'          => 'هل متاح ظهور اسم العميل ؟',
+    'is_appear_name'          => '  اخفاءاسم العميل ؟',
     'confirm-delete-message-var' => 'هل انت متأكد من حذف هذا :var',
     'password'                => 'كلمه المرور',
     'confirm_password'        => 'تأكيد كلمة المرور',
@@ -517,6 +517,13 @@ return [
     ],
 
     'contact_us'         	=> 'اتصل بنا ',
+    'register_person'         	=> ' تسجيل شخص ',
+    'register_company'         	=> ' تسجيل مؤسسة ',
+    'enter_company_name'         	=> ' اكتب اسم المؤسسة ',
+    'company_name'         	=> ' اسم المؤسسة ',
+    'company_location'         	=> ' موقع المؤسسة ',
+    'pass_terms'         	=> 'ملحوظة : كلمة المرور يجب ان لا تقل عن 6احرف او ارقام ',
+    'register_success_welcome_in_our_website'         	=> 'تم تسجيل حسابك بنجاح اهلا بك في موقعنا',
 
 
 
