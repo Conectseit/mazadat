@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\AuctionDataController;
+use App\Http\Controllers\Dashboard\CompanyController;
 use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\NationalityController;
 use App\Http\Controllers\Dashboard\NotificationController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Dashboard\BuyerController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\CityController;
 use App\Http\Controllers\Dashboard\ContactController;
+use App\Http\Controllers\Dashboard\PersonController;
 use App\Http\Controllers\Dashboard\QuestionController;
 use App\Http\Controllers\Dashboard\SellerController;
 use App\Http\Controllers\Dashboard\SettingController;
@@ -54,6 +56,8 @@ Route::group(
 
             Route::group(['middleware' => 'CheckPermission'], function () {
                 Route::resources([
+                    'persons'        => PersonController::class,
+                    'companies'      => CompanyController::class,
                     'sellers'        => SellerController::class,
                     'buyers'         => BuyerController::class,
                     'categories'     => CategoryController::class,
@@ -72,6 +76,8 @@ Route::group(
 //                'settings'     => SettingsController::class,
                 ]);
 
+                Route::post('/ajax-delete-person', [SellerController::class, 'destroy'])->name('ajax-delete-person');
+                Route::post('/ajax-delete-company', [SellerController::class, 'destroy'])->name('ajax-delete-company');
                 Route::post('/ajax-delete-seller', [SellerController::class, 'destroy'])->name('ajax-delete-seller');
                 Route::post('/ajax-delete-buyer', [BuyerController::class, 'destroy'])->name('ajax-delete-buyer');
                 Route::post('/ajax-delete-category', [CategoryController::class, 'destroy'])->name('ajax-delete-category');

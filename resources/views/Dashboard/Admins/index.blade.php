@@ -2,29 +2,24 @@
 
 @section('title', trans('messages.admin.admins'))
 
+    @section('breadcrumb')
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><a href="{{route('admin.home')}}"><i
+                            class="icon-home2 position-left"></i> @lang('messages.home')
+                    </a>
+                </li>
+                <li class="active">@lang('messages.admin.admins')</li>
+            </ul>
+
+            @include('Dashboard.layouts.parts.quick-links')
+        </div>
+    @endsection
+
+
 @section('content')
 
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
-            <div class="breadcrumb-line">
-                <ul class="breadcrumb">
-                    <li><a href="{{route('admin.home')}}"><i
-                                class="icon-home2 position-left"></i> @lang('messages.home')
-                        </a>
-                    </li>
-                    <li class="active">@lang('messages.admin.admins')</li>
-                </ul>
-
-                @include('Dashboard.layouts.parts.quick-links')
-            </div>
-        @endsection
-    </div>
-    <!-- /page header -->
-
-
     @include('Dashboard.layouts.parts.validation_errors')
-
 
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">

@@ -37,7 +37,7 @@ class AuthController extends Controller
         return view('front.auth.register_person', $data);
     }
     public function register_person(RegisterRequest $request)
-    {dd($request->all());
+    {
         $activation_code = random_int(0000, 9999);
         DB::beginTransaction();
         try {

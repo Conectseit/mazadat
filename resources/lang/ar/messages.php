@@ -73,8 +73,8 @@ return [
     'count'                   => 'عدد',
     'deactive'                => 'غير مفعل',
     'active'                  => ' مفعل',
-    'person'                  => ' فرد',
-    'company'                 => ' مؤسسة',
+//    'person'                  => ' فرد',
+//    'company'                 => ' مؤسسة',
     'no_value'                => ' لا يوجد',
 
 
@@ -254,6 +254,28 @@ return [
         'location' => ' الموقع',
         'add_balance' => ' اضافة رصيد الي محفظة هذا العميل',
     ],
+
+
+
+
+    'user' => [
+        'user' => 'عميل',
+        'users' => 'العملاء/ المستخدمين',
+
+    ],
+
+    'person' => [
+        'person' => 'فرد',
+        'persons' => 'افراد',
+        'add_new_person' => 'اضافة عميل جديد',
+    ],
+    'company' => [
+        'company' => 'مؤسسة',
+        'companies' => 'مؤسسات',
+        'add_new_company' => 'اضافة مؤسسة جديد',
+    ],
+
+
 
 
 

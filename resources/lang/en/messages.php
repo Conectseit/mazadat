@@ -71,8 +71,8 @@ return [
     'count'    => 'count',
     'deactive' => 'de active',
     'active'   => ' active',
-    'person'   => ' person',
-    'company'  => ' company',
+//    'person'   => ' person',
+//    'company'  => ' company',
     'no_value' => '  no value',
 
 
@@ -228,6 +228,26 @@ return [
         'image' => 'personal image',
         'location' => 'location',
         'add_balance' => ' add balance to user wallet',
+    ],
+
+
+
+
+    'user' => [
+        'user' => 'عميل',
+        'users' => 'العملاء/ المستخدمين',
+
+    ],
+
+    'person' => [
+        'person' => 'فرد',
+        'persons' => 'افراد',
+        'add_new_person' => 'اضافة عميل جديد',
+    ],
+    'company' => [
+        'company' => 'مؤسسة',
+        'companies' => 'مؤسسات',
+        'add_new_company' => 'اضافة مؤسسة جديد',
     ],
 
 
