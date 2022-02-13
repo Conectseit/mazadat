@@ -490,7 +490,8 @@ return [
     'en' => [
         'en' => 'English',
     ],
-
+    'login_as_visitor'         	=> ' الدخول كزائر ',
+    'already_has_account'         	=> 'لديك حساب بالفعل ؟',
     'contact_us'         	=> 'Contact Us',
     'register_person'         	=> ' Register Person ',
     'register_company'         	=> ' Register Company',

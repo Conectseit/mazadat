@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Http;
 
 class Firebase
 {
+    // For mobile;
+
     public static function send($data)
     {
         $push = new PushNotification('fcm');
@@ -22,13 +24,6 @@ class Firebase
         return $res->feedback;
     }
 
-    public static function createWebCurl($to, $data)
-    {
-        $fields = array('to' => $to, 'notification' => self::getWebData($data));
-
-        return Http::withToken(env('FCM_SERVER_KEY'))->post(self::url(), $fields);
-    }
-
     private static function setPushNotificationData($data)
     {
         return ['data' => $data, 'notification' => $data, 'priority' => 'high'];
@@ -39,11 +34,20 @@ class Firebase
         return [
             'title'                 => $data['title'],
             'body'                  => $data['text'],
-            'notificationable_type' => $data['type'],
-            'notificationable_id'   => $data['type_id'],
+            'notificationable_type' => $data['type'] ?? 'dash',
+            'notificationable_id'   => $data['type_id'] ?? 0,
             'sound'                 => 'default',
 //            'click_action'          => 'FCM_PLUGIN_ACTIVITY',
         ];
+    }
+
+    // For web;
+
+    public static function createWebCurl($to, $data)
+    {
+        $fields = array('to' => $to, 'notification' => self::getWebData($data));
+
+        return Http::withToken(env('FCM_SERVER_KEY'))->post(self::url(), $fields);
     }
 
     private static function url()

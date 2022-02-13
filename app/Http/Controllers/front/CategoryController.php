@@ -20,7 +20,7 @@ class CategoryController extends Controller
             if ($request->has('search_by_auction_name')) {
                 $query->where($name, 'like', '%' . $request['search_by_auction_name'] . '%');
             }
-            $data['auctions'] = $query->where('category_id', $id)->where('status', 'on_progress')->get();
+            $data['auctions'] = $query->where('category_id', $id)->where('status', 'on_progress')->paginate('2');
         }
 
 

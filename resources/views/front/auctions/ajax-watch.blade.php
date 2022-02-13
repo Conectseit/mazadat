@@ -2,7 +2,7 @@
 <script>
     $(function () {
 // ============= for make watch ==================================
-        $('a#change-icon').on('click', function (e) {
+        $('a#change-icon-{{$auction->id}}').on('click', function (e) {
             e.preventDefault();
             let icon = $('#eye');
             console.log(1);
@@ -10,11 +10,14 @@
                 method: 'GET',
                 url: '{{route('front.watch_auction',$auction->id)}}',
                 success: res => {
-                    if(res.is_watched) {
+                    if(res.is_watched='true') {
                         // console.log('kk');
-                        icon.addclass("fa-eye");
+                        icon.removeClass("fas fa-eye");
+                        icon.addClass("fas fa-eye-slash");
+
                     } else {
-                        icon.hasClass("fa-eye-slash");
+                        icon.removeClass("fas fa-eye-slash");
+                        icon.addClass("fas fa-eye");
                     }
                 },
                 error: err => console.log(err),

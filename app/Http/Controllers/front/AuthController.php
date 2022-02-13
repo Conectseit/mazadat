@@ -37,7 +37,7 @@ class AuthController extends Controller
         return view('front.auth.register_person', $data);
     }
     public function register_person(RegisterRequest $request)
-    {
+    {dd($request->all());
         $activation_code = random_int(0000, 9999);
         DB::beginTransaction();
         try {
@@ -55,7 +55,11 @@ class AuthController extends Controller
             $user = User::create($request_data + ['activation_code' => $activation_code, 'is_accepted'=>'1','type'=>'buyer','accept_app_terms'=>'yes']);
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
-                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
+                Token::create([
+                    'jwt' => $jwt_token,
+                    'user_id' => $user->id,
+                    'fcm_web_token'=>$request->fcm_web_token
+                ]);
             }
             DB::commit();
 //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
@@ -94,7 +98,8 @@ class AuthController extends Controller
 
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
-                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
+                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,'fcm_web_token'=>$request->fcm_web_token
+                ]);
             }
             DB::commit();
 //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
@@ -123,6 +128,14 @@ class AuthController extends Controller
         return redirect()->route('front.home')->with('success', trans('messages.register_success_welcome_in_our_website'));
     }
 
+
+
+
+
+    public function show_login()
+    {
+        return view('front.auth.login');
+    }
 
     public function login(LoginRequest $request)
     {

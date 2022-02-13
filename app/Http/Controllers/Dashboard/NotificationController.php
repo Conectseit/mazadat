@@ -18,19 +18,17 @@ class NotificationController extends Controller
             return back()->with('class', 'success')->with('message', trans('messages.messages.user_not_found'));
         }
         if ($user->token->fcm != null ) {
-            $data = ['title' => $request->title, 'body' => $request->text, 'icon' => ''];
-//            $res = Firebase::send([
-//                'title' => $request->title,
-//                'text' => $request->text,
-//                'fcm_tokens' => $user->token->fcm,
-//                'type' => 'dash',
-//                'type_id' => 0,
-//            ]);
+            Firebase::send([
+                'title'      => $request->title,
+                'text'       => $request->text,
+                'fcm_tokens' => $user->token->fcm
+            ]);
 
-            $res = Firebase::createWebCurl($user->token->fcm, $data);
-
-            dd($res);
-            //$this->sendFCM($user->fcm, $data);
+            Firebase::createWebCurl($user->token->web_fcm, [
+                'title' => $request->title,
+                'body' => $request->text,
+                'icon' => ''
+            ]);
         }
         Notification::create($request->all() + ['user_id' => $request->user_id]);
 //        Notification::create([

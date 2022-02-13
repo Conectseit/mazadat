@@ -20,9 +20,6 @@
 {{--                    @endif--}}
 
 
-
-
-
         <form action="{{route('front.login')}}" method="post" enctype="multipart/form-data">
             @csrf
             <h4 class="title">الدخول لحسابك</h4>
@@ -217,8 +214,10 @@
                                                href="{{route('front.show_register')}}">  {{trans('messages.register')}}</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link hvr-shutter-out-horizontal" id="signInBtn"
-                                               href="{{route('front.home')}}">@lang('messages.login')</a>
+                                            <a class="nav-link hvr-shutter-out-horizontal"
+                                               id="signInBtn" href="{{route('front.home')}}"
+{{--                                                href="{{route('front.show_login')}}"--}}
+                                            >@lang('messages.login')</a>
                                         </li>
 
                                     @endif

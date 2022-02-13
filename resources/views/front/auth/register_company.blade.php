@@ -27,6 +27,8 @@
                         <h5 class="group-title">{{trans('messages.personal_info')}}</h5>
 
                         <div class="form-group mb-4 row">
+                            <input type="hidden" name="fcm_web_token" value="">
+
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="user_name" class="form-label">{{trans('messages.company_name')}}</label>
                             </div>
@@ -109,32 +111,7 @@
 
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
-{{--                        <div class="form-group mb-4 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label for="full_name" class="form-label"> {{ trans('messages.seller/buyer') }}</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-{{--                                <select class=" select form-select form-control" name="type"--}}
-{{--                                        aria-label="Default select example">--}}
-{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
-{{--                                    <option  value="buyer">{{trans('messages.buyer.buyer')}}</option>--}}
-{{--                                    <option  value="seller ">{{trans('messages.seller.seller')}}</option>--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="form-group mb-4 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label for="full_name" class="form-label"> {{ trans('messages.buyer.person/company') }}</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-{{--                                <select class=" select form-select form-control" name="is_company" id="is_company"--}}
-{{--                                        aria-label="Default select example">--}}
-{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
-{{--                                    <option  value="person">{{trans('messages.person')}}</option>--}}
-{{--                                    <option  id="option" value="company ">{{trans('messages.company')}}</option>--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+
                         <div id="location" style="display:block;">
                             <div class="form-group row ">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
@@ -163,6 +140,131 @@
                             </div>
 
                         </div>
+                        <div class="sign-btn">
+                            <p> {{trans('messages.accept_term')}}</p>
+                            <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+@stop
+
+
+@section('js')
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
+    <script>
+        $(document).ready(function(){
+            const messaging = firebase.messaging();
+
+            messaging.getToken()
+                .then(currentToken => {
+                    if (currentToken){
+                        console.log(currentToken);
+                        $('input[name=fcm_web_token]').val(currentToken);
+                    } else {
+                        console.log('No Instance ID token available. Request permission to generate one.');
+                    }
+                })
+                .catch(err => console.log('An error occurred while retrieving token. ', err));
+        });
+    </script>
+@stop
+
+
+
+
+@push('scripts')
+    <script>
+        $(function () {
+            lightbox.option({
+                resizeDuration: 100,
+                fadeDuration: 300,
+                fitImagesInViewport: true,
+            });
+        });
+        let noimage =
+            "https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png";
+
+        function readURL(input) {
+            console.log(input.files);
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#img-preview").attr("src", e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                $("#img-preview").attr("src", noimage);
+            }
+        }
+    </script>
+
+    @include('Dashboard.layouts.parts.map')
+    @include('front.auth.ajax_get_cities')
+@endpush
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{--                        <div class="form-group mb-4 row">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                <label for="full_name" class="form-label"> {{ trans('messages.seller/buyer') }}</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-10 col-md-9">--}}
+{{--                                <select class=" select form-select form-control" name="type"--}}
+{{--                                        aria-label="Default select example">--}}
+{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
+{{--                                    <option  value="buyer">{{trans('messages.buyer.buyer')}}</option>--}}
+{{--                                    <option  value="seller ">{{trans('messages.seller.seller')}}</option>--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="form-group mb-4 row">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                <label for="full_name" class="form-label"> {{ trans('messages.buyer.person/company') }}</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-10 col-md-9">--}}
+{{--                                <select class=" select form-select form-control" name="is_company" id="is_company"--}}
+{{--                                        aria-label="Default select example">--}}
+{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
+{{--                                    <option  value="person">{{trans('messages.person')}}</option>--}}
+{{--                                    <option  id="option" value="company ">{{trans('messages.company')}}</option>--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+
+
+
+
+
+
 
 {{--                        <div class="form-group mb-4 mt-3 row">--}}
 {{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
@@ -234,46 +336,3 @@
 {{--                                </select>--}}
 {{--                            </div>--}}
 {{--                        </div>--}}
-                        <div class="sign-btn">
-                            <p> {{trans('messages.accept_term')}}</p>
-                            <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </section>
-
-@stop
-
-@push('scripts')
-    <script>
-        $(function () {
-            lightbox.option({
-                resizeDuration: 100,
-                fadeDuration: 300,
-                fitImagesInViewport: true,
-            });
-        });
-        let noimage =
-            "https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png";
-
-        function readURL(input) {
-            console.log(input.files);
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $("#img-preview").attr("src", e.target.result);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            } else {
-                $("#img-preview").attr("src", noimage);
-            }
-        }
-    </script>
-
-    @include('Dashboard.layouts.parts.map')
-    @include('front.auth.ajax_get_cities')
-@endpush

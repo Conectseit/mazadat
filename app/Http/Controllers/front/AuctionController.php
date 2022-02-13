@@ -129,12 +129,11 @@ class AuctionController extends Controller
         if((boolean)$check->count())
         {
             $check->delete();
-//            return response()->json(['status' => true, 'is_watched' => false]);
-            return back();
+            return response()->json(['status' => true, 'is_watched' => false]);
+//            return back();
         }
         WatchedAuction::create(['user_id' => auth()->user()->id, 'auction_id' => $auction->id,]);
-//        return response()->json(['status' => true, 'is_watched' => true]);
-        return back();
+        return response()->json(['status' => true, 'is_watched' => true]);
 
     }
 

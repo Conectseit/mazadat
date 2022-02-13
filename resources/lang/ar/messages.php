@@ -516,6 +516,8 @@ return [
         'en' => 'English',
     ],
 
+    'login_as_visitor'         	=> ' الدخول كزائر ',
+    'already_has_account'         	=> 'لديك حساب بالفعل ؟',
     'contact_us'         	=> 'اتصل بنا ',
     'register_person'         	=> ' تسجيل شخص ',
     'register_company'         	=> ' تسجيل مؤسسة ',
