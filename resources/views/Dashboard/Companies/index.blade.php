@@ -21,7 +21,7 @@
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
        <br> <div class="list-icons" style="padding-right: 10px;">
             <a href="{{route('companies.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i
-                        class="icon-plus2"></i></b>{{ trans('messages.add_new_company') }}</a>
+                        class="icon-plus2"></i></b>{{ trans('messages.company.add_new_company') }}</a>
         </div>
         <div class="panel-heading">
             @include('Dashboard.layouts.parts.table-header', ['collection' => $companies, 'name' => 'companies', 'icon' => 'company'])
@@ -155,7 +155,7 @@
                                                         <td class="text-center">
                                                             <a href="{{ $company->image_path }}" data-popup="lightbox"><img src="{{ $company->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                         </td>
-                                                        <td class="text-center"> {{ $company->is_company=='company'?trans('messages.company'):trans('messages.person')}} </td>
+                                                        <td class="text-center"> {{ $company->is_company=='company'?trans('messages.company.company'):trans('messages.person.person')}} </td>
                                                         <td class="text-center"><a
                                                                 href={{ route('companies.show', $company->id) }}> {{ isNullable($company->full_name) }}</a>
                                                         </td>
