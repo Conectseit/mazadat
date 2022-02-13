@@ -3,9 +3,9 @@
 @section('style')
     <style>
         .save-btn {
-            width: 70.5%;
-            padding: 40px;
-            margin: 16px;
+            width: 55.5%;
+            padding: 24px;
+            margin: 12px;
         }
         #z{padding-right: 370px;}
 
