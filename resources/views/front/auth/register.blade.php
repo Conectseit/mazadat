@@ -3,9 +3,9 @@
 @section('style')
     <style>
         .save-btn {
-            width: 28.5%;
-            padding: 44px;
-            margin: 27px;
+            width: 70.5%;
+            padding: 40px;
+            margin: 16px;
         }
         #z{padding-right: 370px;}
 
@@ -31,13 +31,12 @@
                             <a href="{{route('front.show_register_company')}}">{{trans('messages.register_company')}}<br></a>
                         </div>
                     </div>
-                    <div id="z">
-                        <h5 class="title">
-                            <a href="{{route('front.home')}}">{{trans('messages.login_as_visitor')}}</a>
+{{--                    <div id="z">--}}
+{{--                        <h5 class="title">--}}
+{{--                            <a href="{{route('front.home')}}">{{trans('messages.login_as_visitor')}}</a>--}}
 {{--                            <a href="{{route('front.show_login')}}">{{trans('messages.already_has_account')}}<br></a>--}}
-                        </h5>
-
-                    </div>
+{{--                        </h5>--}}
+{{--                    </div>--}}
 
                 </div>
 
