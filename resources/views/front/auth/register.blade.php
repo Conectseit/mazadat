@@ -16,7 +16,7 @@
     @include('front.auctions.head')
     <section class="my-wallet-page">
         <div class="container">
-            <h3 class="title">اهلا بك في موقع مزادات ....</h3><br>
+            <h3 class="title">اهلا بك في موقع مزادات ....</h3><br><br>
 
 
             <div class="">
@@ -41,7 +41,7 @@
                 </div>
 
             </div>
-
+            <br><br>
 
 
 

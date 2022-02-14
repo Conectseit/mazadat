@@ -24,7 +24,7 @@ class NotificationController extends Controller
                 'fcm_tokens' => $user->token->fcm
             ]);
 
-            Firebase::createWebCurl($user->token->web_fcm, [
+            Firebase::createWebCurl($user->token->fcm_web_token, [
                 'title' => $request->title,
                 'body' => $request->text,
                 'icon' => ''

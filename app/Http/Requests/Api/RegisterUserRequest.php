@@ -36,7 +36,7 @@ class RegisterUserRequest extends REQUEST_API_PARENT
             'mobile'           => 'required|numeric|min:9|unique:users,mobile',
             'password'         => 'required|string|min:6|confirmed',
             'is_appear_name'   => 'required|in:0,1',
-            'fcm'              => 'required',
+//            'fcm'              => 'required',
 
 
 

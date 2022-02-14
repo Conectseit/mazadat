@@ -34,7 +34,7 @@ class RegisterCompanyRequest extends REQUEST_API_PARENT
             'phone_code'       => 'required',
             'mobile'           => 'required|numeric|min:9|unique:users,mobile',
             'password'         => 'required|string|min:6|confirmed',
-            'fcm'              => 'required',
+//            'fcm'              => 'required',
         ];
     }
 }

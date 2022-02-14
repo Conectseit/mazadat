@@ -41,7 +41,9 @@ class AuthController extends Controller
         $activation_code = random_int(0000, 9999);
         DB::beginTransaction();
         try {
-            $request_data = $request->except(['mobile']);
+//            $request_data = $request->except(['mobile']);
+            $request_data = $request->except(['image','phone_code','mobile']);
+
             $user = User::where('mobile', $request->mobile)->first();
             if ($user) return back()->withInput($request->only('mobile'))->with('error', 'عفوا رقم الجوال مسجل من قبل');
 
@@ -62,6 +64,8 @@ class AuthController extends Controller
                 ]);
             }
             DB::commit();
+//            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+
 //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
             return redirect()->route('front.show_activation');
         } catch (\Exception $e) {
@@ -140,9 +144,11 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+        Auth::attempt(['user_name'=>$request->user_name, 'password' => $request->password]);
 
-        if (!auth()->user()) return back()->withInput($request->only('email'))->with('error',
-            trans('messages.sorry_invalid_email_or_password'));
+        if (!auth()->user()) return back()
+//            ->withInput($request->only('email'))
+            ->with('error', trans('messages.sorry_invalid_email_or_password'));
 
         $user = auth()->user();
 
@@ -173,7 +179,7 @@ class AuthController extends Controller
     {
         $user = User::where('email', $request->email)->first();
 
-        if ($user->is_active != 'active') return back()->with('error', 'عفوا هذا الحساب غير مفعل من قبل الادارة');
+//        if ($user->is_active != 'active') return back()->with('error', 'عفوا هذا الحساب غير مفعل من قبل الادارة');
 
         $code = create_rand_numbers();
 
