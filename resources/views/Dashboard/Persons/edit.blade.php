@@ -24,7 +24,8 @@
                   enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-{{--                <input type="hidden" name="person_id" value="{{$person->id}}"/>--}}
+                <input type="hidden" name="person_id" value="{{$person->id}}"/>
+
                 <div class="panel panel-flat">
                     <div class="panel-heading">
                         <h3 class="panel-title">{{ trans('messages.person.edit') }} </h3>

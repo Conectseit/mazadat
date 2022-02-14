@@ -76,10 +76,10 @@ Route::group(
 //                'settings'     => SettingsController::class,
                 ]);
 
-                Route::post('/ajax-delete-person', [SellerController::class, 'destroy'])->name('ajax-delete-person');
-                Route::post('/ajax-delete-company', [SellerController::class, 'destroy'])->name('ajax-delete-company');
-                Route::post('/ajax-delete-seller', [SellerController::class, 'destroy'])->name('ajax-delete-seller');
-                Route::post('/ajax-delete-buyer', [BuyerController::class, 'destroy'])->name('ajax-delete-buyer');
+                Route::post('/ajax-delete-person', [PersonController::class, 'destroy'])->name('ajax-delete-person');
+                Route::post('/ajax-delete-company', [CompanyController::class, 'destroy'])->name('ajax-delete-company');
+//                Route::post('/ajax-delete-seller', [SellerController::class, 'destroy'])->name('ajax-delete-seller');
+//                Route::post('/ajax-delete-buyer', [BuyerController::class, 'destroy'])->name('ajax-delete-buyer');
                 Route::post('/ajax-delete-category', [CategoryController::class, 'destroy'])->name('ajax-delete-category');
                 Route::post('/ajax-delete-option', [OptionController::class, 'destroy'])->name('ajax-delete-option');
                 Route::post('/ajax-delete-option_detail', [OptionDetailController::class, 'destroy'])->name('ajax-delete-option_detail');

@@ -267,7 +267,8 @@ return [
     'person' => [
         'person' => 'فرد',
         'persons' => 'افراد',
-        'add_new_person' => 'اضافة عميل جديد',
+        'image' => 'صورة العميل',
+        'add_new_person' => 'اضافة فرد جديد',
         'edit' => 'تعديل فرد : ',
     ],
     'company' => [
@@ -275,8 +276,8 @@ return [
         'companies' => 'مؤسسات',
         'add_new_company' => 'اضافة مؤسسة جديد',
     ],
-    'company' => 'مؤسسة',
-    'person' => 'فرد',
+//    'company' => 'مؤسسة',
+//    'person' => 'فرد',
 
 
 

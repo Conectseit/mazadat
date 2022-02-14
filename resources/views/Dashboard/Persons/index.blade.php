@@ -16,10 +16,10 @@
 
 @section('content')
 
-    @include('Dashboard.layouts.parts.validation_errors')
-
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
+        @include('Dashboard.layouts.parts.validation_errors')
+
         <div class="panel-heading">
             @include('Dashboard.layouts.parts.table-header', ['collection' => $persons, 'name' => 'persons', 'icon' => 'person'])
         </div>
@@ -77,7 +77,7 @@
                     </tbody>
                 </table>
             @else
-                <h2> @lang('messages.no_data_found') </h2>
+                <center><h2> @lang('messages.no_data_found') </h2></center>
             @endif
         </div>
     </div>

@@ -8,6 +8,7 @@ use App\Http\Requests\Dashboard\users\PersonRequest;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\City;
+use App\Models\Country;
 use App\Models\Nationality;
 use App\Models\Token;
 use App\Models\User;
@@ -26,55 +27,33 @@ class PersonController extends Controller
 
     public function create()
     {
-        $data['latest_persons'] = User::where('type', 'person')->orderBy('id', 'desc')->take(5)->get();
+        $data['latest_persons'] = User::where('is_company', 'person')->orderBy('id', 'desc')->take(5)->get();
+        $data['countries'] = Country::all();
         $data['cities'] = City::all();
         $data['nationalities'] = Nationality::all();
-        return view('Dashboard.Buyers.create', $data);
+        return view('Dashboard.Persons.create', $data);
     }
 
-    public function store(SellerRequest $request)
+
+    public function store(PersonRequest $request)
     {
         DB::beginTransaction();
         try {
-            $person = new User();
-            $person->type = 'person';
-            $person->is_company = $request->is_company;
-            $person->is_accepted = 1;
-            $person->is_active = 'active';
-            if ($request->image) {
-                $person->image =  uploaded($request->image,'user');
+            $country = Country::where('id',$request->country_id)->first();
+
+            $request_data = $request->except(['image','mobile']);
+            if ($request->image) $request_data['image'] = uploaded($request->image, 'user');
+            if ($request->mobile) {
+                $request_data['mobile'] =$country->phone_code. $request->mobile ;
             }
-            if ($request->commercial_register_image) {
-                $person->commercial_register_image =  uploaded($request->commercial_register_image,'user');
-            }
-            if ($request->latitude) {
-                $person->latitude = $request->latitude;
-            }
-            if ($request->longitude) {
-                $person->longitude = $request->longitude;
-            }
-            $person->full_name = $request->full_name;
-            $person->user_name = $request->user_name;
-            $person->email = $request->email;
-            $person->mobile = $request->mobile;
-            $person->P_O_Box = $request->P_O_Box;
-            $person->password = $request->password;
-            $person->gender = $request->gender;
-            $person->is_appear_name = $request->is_appear_name;
-            $person->nationality_id = $request->nationality_id;
-            $person->country_id = 1;
-            $person->city_id = $request->city_id;
-            $person->save();
+            $person = User::create($request_data+['type' => 'buyer','is_company' => 'person', 'is_accepted' =>1, 'is_active' => 'active',
+//                    'mobile' => $country->phone_code.$request->mobile
+                ]);
 
             if ($person) {
                 $jwt_token = JWTAuth::fromUser($person);
                 Token::create(['jwt' => $jwt_token, 'user_id' => $person->id,]);
             }
-//            $token = new Token();
-//            $token->user_id = $person->id;
-//            $token->jwt='';
-//            $token->save();
-
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();
@@ -82,12 +61,10 @@ class PersonController extends Controller
             return redirect()->route('persons.create')
                 ->with('message', trans('dash.messages.something_went_wrong_please_try_again'))->with('class', 'warning')->withInput($request->validated());
         }
-//            $request_data = $request->except(['image','commercial_register_image']);
-//            if ($request->image) $request_data['image'] = uploaded($request->image, 'user');
-//            if ($request->commercial_register_image) $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
-//        $person = User::create($request_data)+(['is_accepted'=>'1','type'=>'person','country_id' => '1']);
         return redirect()->route('persons.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
     }
+
+
 
 
     public function edit($id)
@@ -103,9 +80,7 @@ class PersonController extends Controller
     public function update(PersonRequest $request,User $user)
     {
 //        $user = User::find($id);
-        $user = User::find($request->id);
-
-
+        $user = User::find($request->person_id);
         $request_data = $request->except('image');
         if ($request->hasFile('image')) {
             if (!is_null($user->image)) unlink('uploads/users/' . $user->image);
@@ -129,14 +104,13 @@ class PersonController extends Controller
     }
 
 
-
-    public function destroy(Request $request)
+    public function destroy(Request $request, User $user)
     {
-        $person = User::find($request->id);
-
-        if (!$person) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, Buyer is not exists !!']);
+        $user = User::find($request->id);
+        if (!$user) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, user is not exists !!']);
         try {
-            $person->delete();
+            if (!is_null($user->image)) unlink('uploads/users/' . $user->image);
+            $user->delete();
             return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
@@ -144,5 +118,67 @@ class PersonController extends Controller
     }
 
 
-
 }
+
+//    public function destroy(Request $request)
+//    {
+//        $person = User::find($request->id);
+//
+//        if (!$person) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, Buyer is not exists !!']);
+//        try {
+//            $person->delete();
+//            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
+//        } catch (Exception $e) {
+//            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
+//        }
+//    }
+
+
+//    public function store(PersonRequest $request)
+//    {
+//        DB::beginTransaction();
+//        try {
+//            $country = Country::where('id',$request->country_id)->first();
+//            $person = new User();
+//            $person->type = 'buyer';
+//            $person->is_company = 'person';
+//            $person->is_accepted = 1;
+//            $person->is_active = 'active';
+//            if ($request->image) {
+//                $person->image =  uploaded($request->image,'user');
+//            }
+//
+//            $person->first_name = $request->first_name;
+//            $person->user_name = $request->user_name;
+//            $person->email = $request->email;
+//            $person->mobile = $country->phone_code.$request->mobile;
+//            $person->password = $request->password;
+////            $person->gender = $request->gender;
+//            $person->is_appear_name = $request->is_appear_name;
+//            $person->nationality_id = $request->nationality_id;
+//            $person->country_id = $request->country_id;
+//            $person->city_id = $request->city_id;
+//            $person->save();
+//
+//            if ($person) {
+//                $jwt_token = JWTAuth::fromUser($person);
+//                Token::create(['jwt' => $jwt_token, 'user_id' => $person->id,]);
+//            }
+////            $token = new Token();
+////            $token->user_id = $person->id;
+////            $token->jwt='';
+////            $token->save();
+//
+//            DB::commit();
+//        } catch (Exception $e) {
+//            DB::rollback();
+//
+//            return redirect()->route('persons.create')
+//                ->with('message', trans('dash.messages.something_went_wrong_please_try_again'))->with('class', 'warning')->withInput($request->validated());
+//        }
+////            $request_data = $request->except(['image','commercial_register_image']);
+////            if ($request->image) $request_data['image'] = uploaded($request->image, 'user');
+////            if ($request->commercial_register_image) $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
+////        $person = User::create($request_data)+(['is_accepted'=>'1','type'=>'person','country_id' => '1']);
+//        return redirect()->route('persons.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
+//    }

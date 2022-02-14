@@ -32,6 +32,7 @@ class PersonRequest extends FormRequest
             case 'POST': {
                     return [
                         'first_name'   => 'required',
+                        'middle_name'   => 'sometimes',
                         'last_name'   => 'required',
                         'user_name'   => 'required',
                         'email'       => 'required|unique:users,email',
@@ -40,9 +41,10 @@ class PersonRequest extends FormRequest
                         'mobile'      => ['required', 'numeric', 'unique:users,mobile'],
                         'is_appear_name' => 'required',
                         'nationality_id'     => 'required',
+                        'country_id'     => 'required',
                         'city_id'     => 'required',
-                        'gender'      => 'required',
-                        'P_O_Box'      => 'required',
+//                        'gender'      => 'required',
+//                        'P_O_Box'      => 'required',
                     ];
                 }
             case 'PUT':
@@ -51,7 +53,13 @@ class PersonRequest extends FormRequest
                         'first_name'   => 'sometimes',
                         'last_name'   => 'sometimes',
                         'user_name'   => 'sometimes',
-                        'mobile'      => ['sometimes', 'numeric', 'unique:users,mobile'],
+                        'mobile'=>'sometimes|numeric|unique:users,mobile,'.$this->person,
+                        'email'=>'sometimes|email|unique:users,email,'.$this->person,
+                        // 'gender'=>'sometimes|in:male,female',
+                        'password'=>'sometimes|confirmed',
+//                        'city_id'=>'sometimes|numeric|exists:city,id',
+//                        'address'=>'sometimes',
+                        'image'=>'nullable',
 
                     ];
                 }
