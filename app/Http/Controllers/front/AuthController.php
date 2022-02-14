@@ -190,7 +190,6 @@ class AuthController extends Controller
         Log::info($code);
         return redirect()->route('front.reset-code-page', $request->email);
 //        return view('front.auth.resetCodePage', compact('email'));
-
     }
 
 
