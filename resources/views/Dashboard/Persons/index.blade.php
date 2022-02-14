@@ -1,7 +1,5 @@
 @extends('Dashboard.layouts.master')
-
 @section('title', trans('messages.person.persons'))
-
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
@@ -11,7 +9,6 @@
             </li>
             <li class="active">@lang('messages.person.persons')</li>
         </ul>
-
         @include('Dashboard.layouts.parts.quick-links')
     </div>
 @endsection
@@ -32,65 +29,56 @@
                         class="icon-plus2"></i></b>{{ trans('messages.person.add_new_person') }}</a>
         </div>
         <div class="panel-body">
-        @if($persons->count() > 0)
-            <table class="table datatable-basic" id="persons" style="font-size: 16px;">
-                <thead>
-                <tr style="background-color:gainsboro">
-                    <th>#</th>
-                    <th>{{ trans('messages.full_name') }}</th>
-                    <th>{{ trans('messages.mobile') }}</th>
-                    <th>{{ trans('messages.email') }}</th>
-                    <th>@lang('messages.since')</th>
-                    <th class="text-center">@lang('messages.form-actions')</th>
-                </tr>
-                </thead>
-
-
-                <tbody>
-                @foreach($persons as $person)
-                    <tr id="person-row-{{ $person->id }}">
-
-                        <td>{{ $loop->iteration }}</td>
-
-                        <td><a href={{ route('persons.show', $person->id) }}> {{ isNullable($person->full_name) }}</a>
-                        </td>
-                        <td> {{ $person->mobile}}</td>
-                        <td> {{ $person->email}}</td>
-
-
-                        <td>{{isset($person->created_at) ?$person->created_at->diffForHumans():'---' }}</td>
-
-                        <td class="text-center">
-                            <ul class="icons-list">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="icon-menu9"></i>
-                                    </a>
-
-                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
-                                        <li>
-                                            <a href="{{ route('persons.edit',$person->id) }}"> <i
-                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>
-                                        </li>
-                                        <li>
-                                            <a data-id="{{ $person->id }}" class="delete-action"
-                                               href="{{ Url('/person/person/'.$person->id) }}">
-                                                <i class="icon-database-remove"></i>@lang('messages.delete')
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </td>
-
+            @if($persons->count() > 0)
+                <table class="table datatable-basic" id="persons" style="font-size: 16px;">
+                    <thead>
+                    <tr style="background-color:gainsboro">
+                        <th>#</th>
+                        <th>{{ trans('messages.full_name') }}</th>
+                        <th>{{ trans('messages.mobile') }}</th>
+                        <th>{{ trans('messages.email') }}</th>
+                        <th>@lang('messages.since')</th>
+                        <th class="text-center">@lang('messages.form-actions')</th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
-
-        @else
-            <h2> @lang('messages.no_data_found') </h2>
-        @endif
+                    </thead>
+                    <tbody>
+                    @foreach($persons as $person)
+                        <tr id="person-row-{{ $person->id }}">
+                            <td>{{ $loop->iteration }}</td>
+                            <td>
+                                <a href={{ route('persons.show', $person->id) }}> {{ isNullable($person->full_name) }}</a>
+                            </td>
+                            <td> {{ $person->mobile}}</td>
+                            <td> {{ $person->email}}</td>
+                            <td>{{isset($person->created_at) ?$person->created_at->diffForHumans():'---' }}</td>
+                            <td class="text-center">
+                                <ul class="icons-list">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="icon-menu9"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
+                                            <li>
+                                                <a href="{{ route('persons.edit',$person->id) }}"> <i
+                                                        class="icon-database-edit2"></i>@lang('messages.edit') </a>
+                                            </li>
+                                            <li>
+                                                <a data-id="{{ $person->id }}" class="delete-action"
+                                                   href="{{ Url('/person/person/'.$person->id) }}">
+                                                    <i class="icon-database-remove"></i>@lang('messages.delete')
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @else
+                <h2> @lang('messages.no_data_found') </h2>
+            @endif
         </div>
     </div>
     <!-- /basic datatable -->

@@ -233,22 +233,7 @@ return [
 
 
 
-    'user' => [
-        'user' => 'عميل',
-        'users' => 'العملاء/ المستخدمين',
 
-    ],
-
-    'person' => [
-        'person' => 'فرد',
-        'persons' => 'افراد',
-        'add_new_person' => 'اضافة عميل جديد',
-    ],
-    'company' => [
-        'company' => 'مؤسسة',
-        'companies' => 'مؤسسات',
-        'add_new_company' => 'اضافة مؤسسة جديد',
-    ],
 
 
     //======= contacts========

@@ -257,7 +257,7 @@ return [
 
 
 
-
+// ==== eng
     'user' => [
         'user' => 'عميل',
         'users' => 'العملاء/ المستخدمين',
@@ -268,12 +268,17 @@ return [
         'person' => 'فرد',
         'persons' => 'افراد',
         'add_new_person' => 'اضافة عميل جديد',
+        'edit' => 'تعديل فرد : ',
     ],
     'company' => [
         'company' => 'مؤسسة',
         'companies' => 'مؤسسات',
         'add_new_company' => 'اضافة مؤسسة جديد',
     ],
+    'company' => 'مؤسسة',
+    'person' => 'فرد',
+
+
 
 
 

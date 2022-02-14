@@ -54,7 +54,7 @@ class AuthController extends PARENT_API
 
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
-                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,'fcm'=>$request->fcm]);
+                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id]);
             }
             DB::commit();
 
@@ -134,7 +134,7 @@ class AuthController extends PARENT_API
             if ($user->is_accepted == 0) {
                 return responseJson(false, trans('api.please_wait_your_account_not_activated_yet'), null);
             }
-            auth()->user()->token->update(['jwt' => $token]);
+            auth()->user()->token->update(['jwt' => $token,'fcm'=>$request->fcm]);
             return responseJson(true, trans('api.login_successfully'), new AuthResource(auth()->user()));  //OK
         } catch (\Exception $e) {
             return responseJson('500', $e->getMessage(), null);

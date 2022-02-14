@@ -16,23 +16,23 @@
         </ul>
     </li>
 
-{{--    <li>--}}
-{{--        --}}{{--        <a href="#"><i class="icon-stack2"></i> <span>{{ trans('messages.users') }}</span></a>--}}
-{{--        <a href="#"><i class="icon-people"></i> <span>{{ trans('messages.seller.sellers') }}</span></a>--}}
-{{--        <ul>--}}
-{{--            <li><a href="{{route('sellers.index')}}">{{ trans('messages.all') }}</a></li>--}}
-{{--            <li><a href="{{route('sellers.create')}}">{{ trans('messages.add') }}</a></li>--}}
+    <li>
+                <a href="#"><i class="icon-stack2"></i> <span>{{ trans('messages.users') }}</span></a>
+        <a href="#"><i class="icon-people"></i> <span>{{ trans('messages.seller.sellers') }}</span></a>
+        <ul>
+            <li><a href="{{route('sellers.index')}}">{{ trans('messages.all') }}</a></li>
+            <li><a href="{{route('sellers.create')}}">{{ trans('messages.add') }}</a></li>
 
-{{--        </ul>--}}
-{{--    </li>--}}
-{{--    <li>--}}
-{{--        <a href="#"><i class="icon-people"></i> <span>{{ trans('messages.buyer.buyers') }}</span></a>--}}
-{{--        <ul>--}}
-{{--            <li><a href="{{route('buyers.index')}}">{{ trans('messages.all') }}</a></li>--}}
-{{--            <li><a href="{{route('buyers.create')}}">{{ trans('messages.add') }}</a></li>--}}
+        </ul>
+    </li>
+    <li>
+        <a href="#"><i class="icon-people"></i> <span>{{ trans('messages.buyer.buyers') }}</span></a>
+        <ul>
+            <li><a href="{{route('buyers.index')}}">{{ trans('messages.all') }}</a></li>
+            <li><a href="{{route('buyers.create')}}">{{ trans('messages.add') }}</a></li>
 
-{{--        </ul>--}}
-{{--    </li>--}}
+        </ul>
+    </li>
     <li>
         <a href="#"><i class="icon-stack2"></i> <span>{{ trans('messages.auction.auctions') }}</span></a>
         <ul>
