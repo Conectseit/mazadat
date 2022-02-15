@@ -28,7 +28,7 @@ class CompanyResource extends JsonResource
             'user_name'                   => $this->user_name ,
             'email'                       => $this->email,
             'mobile'                      => $this->mobile,
-            'image_logo'                  => $this->image_path,
+            'image'                       => $this->image_path,
             'nationality_name'        => isset($this->nationality)?$this->nationality->$name:'null',
             'nationality_id'          => isset($this->nationality)?$this->nationality->id:'null',
             'city_name'               => isset($this->city)?$this->city->$name:'null',

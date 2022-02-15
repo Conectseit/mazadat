@@ -62,7 +62,10 @@ class CompanyController extends Controller
 
     public function update_company_profile(UpdateCompanyProfileRequest $request)
     {
-        $request_data = $request->except(['image','commercial_register_image','company_authorization_image']);
+        $request_data = $request->except(['image','commercial_register_image','company_authorization_image','phone_code','mobile']);
+        if ($request->mobile) {
+            $request_data['mobile'] =$request->phone_code. $request->mobile ;
+        }
         if ($request->image) {
             $request_data['image'] = uploaded($request->image, 'user');
         }

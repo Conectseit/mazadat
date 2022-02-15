@@ -60,9 +60,13 @@ class PersonController extends Controller
 
     public function update_person_profile(UpdatePersonProfileRequest $request)
     {
-        $request_data = $request->except(['image']);
+
+        $request_data = $request->except(['image','phone_code','mobile']);
+        if ($request->mobile) {
+            $request_data['mobile'] =$request->phone_code. $request->mobile ;
+        }
         if ($request->image) {
-            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
+            $request_data['image']  = uploaded($request->image, 'user');
         }
         $user = $request->user();
         if (!$user) {
