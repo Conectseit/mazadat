@@ -34,6 +34,8 @@
                     <thead>
                     <tr style="background-color:gainsboro">
                         <th>#</th>
+                        <th class="text-center">{{ trans('messages.person.image') }}</th>
+
                         <th>{{ trans('messages.full_name') }}</th>
                         <th>{{ trans('messages.mobile') }}</th>
                         <th>{{ trans('messages.email') }}</th>
@@ -45,6 +47,9 @@
                     @foreach($persons as $person)
                         <tr id="person-row-{{ $person->id }}">
                             <td>{{ $loop->iteration }}</td>
+                            <td class="text-center">
+                                <a href="{{ $person->image_path }}" data-popup="lightbox"><img src="{{ $person->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
+                            </td>
                             <td>
                                 <a href={{ route('persons.show', $person->id) }}> {{ isNullable($person->full_name) }}</a>
                             </td>
@@ -58,6 +63,10 @@
                                             <i class="icon-menu9"></i>
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
+                                            <li>
+                                                <a href="{{ route('persons.show',$person->id) }}"> <i
+                                                        class="icon-eye"></i>@lang('messages.show') </a>
+                                            </li>
                                             <li>
                                                 <a href="{{ route('persons.edit',$person->id) }}"> <i
                                                         class="icon-database-edit2"></i>@lang('messages.edit') </a>

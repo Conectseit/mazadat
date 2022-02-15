@@ -33,6 +33,7 @@ class AuthResource extends JsonResource
 //            'P_O_Box'             => $this->P_O_Box,
             'image'               => $this->image_path,
             'commercial_register_image' => $this->commercial_register_image_path,
+            'is_completed'         => $this->is_completed,
             'token'               => $this->token->jwt,
         ];
 

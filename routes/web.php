@@ -30,14 +30,14 @@ Route::group(
     ], function () {
 
 //    Route::group(['prefix' => 'front'], function () {
-    Route::get('/mzadat', [HomeController::class, 'home'])->name('front.home');
+    Route::get('/home', [HomeController::class, 'home'])->name('front.home');
 
 // ============ for auth ================
     Route::get('show_register', [AuthController::class, 'show_register'])->name('front.show_register');
 
+// ============ register_person ================
     Route::get('show_register_person', [AuthController::class, 'show_register_person'])->name('front.show_register_person');
     Route::post('register_person', [AuthController::class, 'register_person'])->name('front.register_person');
-
 
     // ============ register_company ================
     Route::get('show_register_company', [AuthController::class, 'show_register_company'])->name('front.show_register_company');
@@ -45,7 +45,7 @@ Route::group(
 
     Route::get('show_activation', [AuthController::class, 'show_activation'])->name('front.show_activation');
     Route::post('check_code', [AuthController::class, 'checkCode'])->name('front.check_code');
-    Route::get('show_login', [AuthController::class, 'show_login'])->name('front.show_login');
+//    Route::get('show_login', [AuthController::class, 'show_login'])->name('front.show_login');
     Route::post('login', [AuthController::class, 'login'])->name('front.login');
 
     Route::post('forget_pass', [AuthController::class, 'forget_pass'])->name('front.forget_pass');
@@ -55,8 +55,6 @@ Route::group(
 
     Route::get('change-password-page',  [AuthController::class, 'changePasswordPage'] )->name('front.change-password-page');
     Route::post('resetPassword',  [AuthController::class, 'resetPassword'] )->name('front.resetPassword');
-
-
 // ============ // auth ================
 
 

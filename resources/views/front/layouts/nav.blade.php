@@ -33,7 +33,7 @@
                     <label for="email" class="form-label">ايميل المستخدم</label>
                 </div>
                 <div class="col-sm-8">
-                    <input type="email" class="form-control @error('email') is-invalid @enderror"
+                    <input type="text" class="form-control @error('email') is-invalid @enderror"
                            id="email" name="email" aria-describedby="emailHelp"
                            value="{{ old('email') }}" placeholder="ادخل بريدك الالكتروني">
                     @error('email')

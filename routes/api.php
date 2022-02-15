@@ -76,9 +76,12 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('auth_contact', [QuestionController::class, 'auth_contact']);
 
         //=========== User_profile ============
-        Route::get('my_profile', [AuthController::class, 'showProfile']);
-        Route::post('update_my_profile', [AuthController::class, 'updateProfile']);
+        Route::get('person_profile', [AuthController::class, 'person_profile']);
+        Route::post('update_person_profile', [AuthController::class, 'update_person_profile']);
         Route::post('update_personal_image', [AuthController::class, 'update_personal_image']);
+
+
+
         Route::post('add_additional_contact', [AuthController::class, 'add_additional_contact']);
         Route::post('change_password', [AuthController::class, 'changePassword']);
         Route::post('add_traffic_file_number', [UserController::class, 'add_traffic_file_number']);

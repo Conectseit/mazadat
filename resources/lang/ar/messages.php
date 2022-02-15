@@ -267,6 +267,7 @@ return [
     'person' => [
         'person' => 'فرد',
         'persons' => 'افراد',
+        'person_data' => 'بيانات العميل',
         'image' => 'صورة العميل',
         'add_new_person' => 'اضافة فرد جديد',
         'edit' => 'تعديل فرد : ',

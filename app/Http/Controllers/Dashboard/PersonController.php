@@ -99,8 +99,8 @@ class PersonController extends Controller
             return redirect()->route('persons.index')->with('class', 'danger')->with('message', trans('messages.messages.try_access_not_found_content'));
         }
         $data['person'] = User::find($id);
-        $data['person_auctions'] = AuctionBuyer::where('person_id',$id)->get();
-        return view('Dashboard.Buyers.show', $data);
+//        $data['person_auctions'] = AuctionBuyer::where('buyer_id',$id)->get();
+        return view('Dashboard.Persons.show', $data);
     }
 
 
@@ -119,6 +119,18 @@ class PersonController extends Controller
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 //    public function destroy(Request $request)
 //    {

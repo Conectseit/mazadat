@@ -144,7 +144,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         Auth::attempt(['email' => $request->email, 'password' => $request->password]);
-        Auth::attempt(['user_name'=>$request->user_name, 'password' => $request->password]);
+//        Auth::attempt(['user_name'=>$request->text, 'password' => $request->password]);
 
         if (!auth()->user()) return back()
 //            ->withInput($request->only('email'))

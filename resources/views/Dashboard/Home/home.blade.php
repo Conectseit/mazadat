@@ -42,7 +42,7 @@
                 @foreach (models(true) as $color => $model)
                     <div class="col-lg-2" style="float: {{ floating('right', 'left') }};">
                         <div class="panel bg-{{ $color }}-400">
-                            <div class="panel-body">
+                            <div class="panel-body" >
                                 <h3 class="no-margin"> {{trans('messages.count')}} ({{ model_count($model) ?? 0 }}) </h3>
                                <a href="{{route(Str::plural($model). '.'.'index')}}">
                                      @lang('messages.'.$model. '.' .Str::plural($model))</a>

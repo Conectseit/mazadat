@@ -16,6 +16,7 @@ use App\Http\Requests\Api\ResetPasswordRequest;
 use App\Http\Requests\Api\UpdatePersonalImageRequest;
 use App\Http\Requests\Api\UpdateProfileRequest;
 use App\Http\Requests\Api\VerficationTokenRequest;
+use App\Http\Resources\Api\auth\PersonResource;
 use App\Http\Resources\Api\AuthResource;
 use App\Models\AdditionalUserContact;
 use App\Models\PasswordReset;
@@ -61,7 +62,8 @@ class AuthController extends PARENT_API
 //            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
 //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
 
-            return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_sent')); //OK
+            return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_sent'),$activation_code); //OK
+
         } catch (\Exception $e) {
             return responseJson(false, $e->getMessage());
         }
@@ -96,7 +98,7 @@ class AuthController extends PARENT_API
 //            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
 //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
 
-            return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_sent')); //OK
+            return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_sent'),$activation_code); //OK
         } catch (\Exception $e) {
             return responseJson(false, $e->getMessage());
         }
@@ -150,16 +152,18 @@ class AuthController extends PARENT_API
     }
 
 
-    public function showProfile()
+    public function person_profile()
     {
         $user = auth()->user();
         if (!$user) {
             return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
-        return responseJson(true, trans('api.user_profile'), new AuthResource($user));  //OK
+        return responseJson(true, trans('api.user_profile'), new PersonResource($user));  //OK
     }
 
-    public function updateProfile(UpdateProfileRequest $request)
+
+
+    public function update_person_profile(UpdateProfileRequest $request)
     {
         $request_data = $request->except(['commercial_register_image']);
         if ($request->commercial_register_image) {
@@ -171,7 +175,7 @@ class AuthController extends PARENT_API
         }
         $user->update($request_data);
 //        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));
-        return responseJson(true, trans('api.request_done_successfully'), new AuthResource($user)); //ACCEPTED
+        return responseJson(true, trans('api.request_done_successfully'), new PersonResource($user)); //ACCEPTED
     }
 
     public function update_personal_image(UpdatePersonalImageRequest $request)

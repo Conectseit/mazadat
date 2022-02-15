@@ -58,8 +58,6 @@ Route::group(
                 Route::resources([
                     'persons'        => PersonController::class,
                     'companies'      => CompanyController::class,
-                    'sellers'        => SellerController::class,
-                    'buyers'         => BuyerController::class,
                     'categories'     => CategoryController::class,
                     'options'        => OptionController::class,
                     'option_details' => OptionDetailController::class,
@@ -74,6 +72,8 @@ Route::group(
                     'admins'         => AdminController::class,
                     'transactions'    => TransactionController::class,
 //                'settings'     => SettingsController::class,
+////               'sellers'        => SellerController::class,
+//                 'buyers'         => BuyerController::class,
                 ]);
 
                 Route::post('/ajax-delete-person', [PersonController::class, 'destroy'])->name('ajax-delete-person');
