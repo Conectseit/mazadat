@@ -33,11 +33,11 @@ class CompanyResource extends JsonResource
             'nationality_id'          => isset($this->nationality)?$this->nationality->id:'null',
             'city_name'               => isset($this->city)?$this->city->$name:'null',
             'city_id'                 => isset($this->city)?$this->city->id:'null',
-            'block'                   => $this->block,
-            'street'                  => $this->street,
-            'block_num'               => $this->block_num,
-            'delivery_time'           => $this->delivery_time,
-            'signs'                   => $this->signs,
+//            'block'                   => $this->block,
+//            'street'                  => $this->street,
+//            'block_num'               => $this->block_num,
+//            'delivery_time'           => $this->delivery_time,
+//            'signs'                   => $this->signs,
             'P_O_Box'                 => $this->P_O_Box,
 
         ];

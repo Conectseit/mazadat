@@ -38,6 +38,10 @@ class UpdateCompanyProfileRequest extends REQUEST_API_PARENT
             'longitude'        => 'sometimes',
             'commercial_register_image'   => 'sometimes|image',
             'company_authorization_image'   => 'sometimes|image',
+
+            'nationality_id'        => 'required|numeric|exists:nationalities,id',
+            'city_id'               => 'required|numeric|exists:cities,id',
+            'P_O_Box'               => 'required',
         ];
     }
 

@@ -84,6 +84,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('complete_person_profile', [PersonController::class, 'completePersonProfile']);
 //        Route::post('update_personal_image', [AuthController::class, 'update_personal_image']);
         Route::post('cities_by_country_id', [CityController::class, 'cities_by_country_id']);
+
         //=========== Company_profile ============
         Route::get('company_profile', [CompanyController::class, 'company_profile']);
         Route::post('update_company_profile', [CompanyController::class, 'update_company_profile']);
