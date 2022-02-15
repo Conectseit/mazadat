@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\Auctions\FilterController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CityController;
+use App\Http\Controllers\Api\company\CompanyController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\NationalityController;
 use App\Http\Controllers\Api\NotificationController;
@@ -35,8 +36,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::group(['namespace' => 'Api'], function () {
 
     //=========== auth ============
-    Route::post('register_person', [AuthController::class, 'register_person']);
-    Route::post('register_company', [AuthController::class, 'register_company']);
+    Route::post('register_person', [PersonController::class, 'register_person']);
+    Route::post('register_company', [CompanyController::class, 'register_company']);
     Route::post('activation', [AuthController::class, 'activation']);
     Route::any('login', [AuthController::class, 'login']);
     Route::post('forget_password', [AuthController::class, 'forget_password']);
@@ -77,13 +78,16 @@ Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::post('auth_contact', [QuestionController::class, 'auth_contact']);
 
-        //=========== User_profile ============
+        //=========== Person_profile ============
         Route::get('person_profile', [PersonController::class, 'person_profile']);
         Route::post('update_person_profile', [PersonController::class, 'update_person_profile']);
         Route::post('complete_person_profile', [PersonController::class, 'completePersonProfile']);
 //        Route::post('update_personal_image', [AuthController::class, 'update_personal_image']);
         Route::post('cities_by_country_id', [CityController::class, 'cities_by_country_id']);
-
+        //=========== Company_profile ============
+        Route::get('company_profile', [CompanyController::class, 'company_profile']);
+        Route::post('update_company_profile', [CompanyController::class, 'update_company_profile']);
+        Route::post('complete_company_profile', [CompanyController::class, 'complete_company_Profile']);
 
 
         Route::post('add_additional_contact', [AuthController::class, 'add_additional_contact']);

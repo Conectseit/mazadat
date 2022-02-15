@@ -25,7 +25,8 @@ class RegisterCompanyRequest extends REQUEST_API_PARENT
     public function rules()
     {
         return [
-            'commercial_register_image'        => 'required|image',
+            'commercial_register_image'          => 'required|image',
+            'company_authorization_image'        => 'required|image',
             'latitude'         => 'required|numeric',
             'longitude'        => 'required_if:is_company,company|numeric',
             'user_name'        => 'required|string|between:2,200',

@@ -5,11 +5,50 @@ namespace App\Http\Controllers\Api\person;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\person\CompletePersonProfileRequest;
 use App\Http\Requests\Api\person\UpdatePersonProfileRequest;
+use App\Http\Requests\Api\RegisterUserRequest;
 use App\Http\Resources\Api\auth\PersonResource;
+use App\Models\Token;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class PersonController extends Controller
 {
+
+    public function register_person(RegisterUserRequest $request)
+    {
+        $activation_code = random_int(0000, 9999);
+
+        DB::beginTransaction();
+        try {
+            $request_data = $request->except(['image','phone_code','mobile']);
+
+//            if ($request->image) {
+//                $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
+//            }
+            if ($request->mobile) {
+                $request_data['mobile'] =$request->phone_code. $request->mobile ;
+            }
+
+            $user = User::create($request_data + ['activation_code' => $activation_code,'is_accepted'=>'1','type'=>'buyer']);
+
+            if ($user) {
+                $jwt_token = JWTAuth::fromUser($user);
+                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id]);
+            }
+            DB::commit();
+
+//            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+//            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
+
+            return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_sent'),$activation_code); //OK
+
+        } catch (\Exception $e) {
+            return responseJson(false, $e->getMessage());
+        }
+    }
+
     public function person_profile()
     {
         $user = auth()->user();
@@ -42,7 +81,7 @@ class PersonController extends Controller
         if (!$user) {
             return responseJson(false, 'The user not found...', null); //
         }
-        $user->update($request->all());
+        $user->update($request->all()+['is_completed'=>1]);
 //        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));
         return responseJson(true, trans('api.request_done_successfully'), new PersonResource($user)); //ACCEPTED
     }

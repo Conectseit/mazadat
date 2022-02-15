@@ -4,7 +4,7 @@ namespace App\Http\Resources\Api\auth;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PersonResource extends JsonResource
+class CompanyResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,15 +18,17 @@ class PersonResource extends JsonResource
         $name = 'name_' . app()->getLocale();
         return [
 //            'type'                => $this->type,
-            'is_company'           => $this->is_company,
-            'is_completed'         => $this->is_completed,
-            'first_name'           => $this->first_name,
-            'middle_name'          => $this->middle_name,
-            'last_name'            => $this->last_name,
-            'user_name'            => $this->user_name ,
-            'email'                => $this->email,
-            'mobile'               => $this->mobile,
-            'image'                   => $this->image_path,
+            'is_company'                  => $this->is_company,
+            'is_completed'                => $this->is_completed,
+
+            'commercial_register_image'   => $this->commercial_register_image_path,
+            'company_authorization_image' => $this->company_authorization_image_path,
+            'latitude'                    => $this->latitude ,
+            'longitude'                   => $this->longitude ,
+            'user_name'                   => $this->user_name ,
+            'email'                       => $this->email,
+            'mobile'                      => $this->mobile,
+            'image_logo'                  => $this->image_path,
             'nationality_name'        => isset($this->nationality)?$this->nationality->$name:'null',
             'nationality_id'          => isset($this->nationality)?$this->nationality->id:'null',
             'city_name'               => isset($this->city)?$this->city->$name:'null',
@@ -37,12 +39,6 @@ class PersonResource extends JsonResource
             'delivery_time'           => $this->delivery_time,
             'signs'                   => $this->signs,
             'P_O_Box'                 => $this->P_O_Box,
-
-
-//            'nationality_id'      => $this->nationality->id,
-//            'city'                => $this->city->$name,
-//            'city_id'             => $this->city->id,
-//            'token'               => $this->token->jwt,
 
         ];
 

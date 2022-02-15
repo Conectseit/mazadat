@@ -137,6 +137,14 @@ class User extends Authenticatable implements JWTSubject
         }
         return asset('uploads/users/' . $this->commercial_register_image);
     }
+    public function getCompanyAuthorizationImagePathAttribute()
+    {
+        $company_authorization_image = User::where('id', $this->id)->first()->company_authorization_image;
+        if (!$company_authorization_image) {
+            return asset('uploads/default.png');
+        }
+        return asset('uploads/users/' . $this->company_authorization_image);
+    }
 
 
     public function auctions()
