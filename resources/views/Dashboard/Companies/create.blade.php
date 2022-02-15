@@ -1,5 +1,5 @@
 @extends('Dashboard.layouts.master')
-@section('title', trans('messages.create-var',['var'=>trans('messages.seller.seller')]))
+@section('title', trans('messages.create-var',['var'=>trans('messages.company.company')]))
 @section('style')
     <style> #map { height: 400px;} </style>
 @endsection
@@ -9,9 +9,9 @@
         <ul class="breadcrumb">
             <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
             </li>
-            <li><a href="{{ route('sellers.index') }}"><i
-                        class="icon-admin position-left"></i> @lang('messages.seller.sellers')</a></li>
-            <li class="active">@lang('messages.create-var',['var'=>trans('messages.seller.seller')])</li>
+            <li><a href="{{ route('companies.index') }}"><i
+                        class="icon-admin position-left"></i> @lang('messages.company.companies')</a></li>
+            <li class="active">@lang('messages.create-var',['var'=>trans('messages.company.company')])</li>
         </ul>
         @include('Dashboard.layouts.parts.quick-links')
     </div>
@@ -25,12 +25,12 @@
         <div class="col-md-6">
 
             <!-- Basic layout-->
-            <form action="{{ route('sellers.store') }}" class="form-horizontal" method="post"
+            <form action="{{ route('companies.store') }}" class="form-horizontal" method="post"
                   enctype="multipart/form-data">
                 @csrf
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-                        <h5 class="panel-title">{{ trans('messages.add_new_seller') }}</h5>
+                        <h5 class="panel-title">{{ trans('messages.add_new_company') }}</h5>
                         <div class="heading-elements">
                             <ul class="icons-list">
                                 <li><a data-action="collapse"></a></li>
@@ -42,16 +42,16 @@
 
                     <div class="panel-body">
                         <div class="box-body">
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.seller.person/company') }} </label>
-                                <div class="col-lg-9">
-                                    <select name="is_company" id="is_company" class="select form-control">
-                                        <option value="" selected disabled>{{trans('messages.select')}}</option>
-                                        <option  value="person">{{trans('messages.person')}}</option>
-                                        <option  id="option" value="company ">{{trans('messages.company')}}</option>
-                                    </select>
-                                </div>
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.company.person/company') }} </label>--}}
+{{--                                <div class="col-lg-9">--}}
+{{--                                    <select name="is_company" id="is_company" class="select form-control">--}}
+{{--                                        <option value="" selected disabled>{{trans('messages.select')}}</option>--}}
+{{--                                        <option  value="person">{{trans('messages.person')}}</option>--}}
+{{--                                        <option  id="option" value="company ">{{trans('messages.company')}}</option>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div id="location" style="display:none;">
 {{--                                <div class="form-group">--}}
 {{--                                    <label>@lang('messages.commercial_register_image')--}}
@@ -64,7 +64,7 @@
                                     <input type="file" class="form-control commercial_register_image" name="commercial_register_image">
                                 </div>
                                 <div class="form-group">
-                                    <label>@lang('messages.seller.location'):</label>
+                                    <label>@lang('messages.company.location'):</label>
                                     <div class="col-lg-12">
                                         <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">
                                         <div id="map"></div>
@@ -171,7 +171,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>@lang('messages.seller.image'):</label>
+                                <label>@lang('messages.company.image'):</label>
                                     <input type="file" class="form-control image " name="image">
                                     <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview">
                             </div>
@@ -190,7 +190,7 @@
         <div class="col-md-6">
             <div class="panel panel-flat">
                 <div class="panel-heading">
-                    <h5 class="panel-title"> {{ trans('messages.latest_sellers') }} </h5>
+                    <h5 class="panel-title"> {{ trans('messages.latest_companies') }} </h5>
                     <div class="heading-elements">
                         <ul class="icons-list">
                             <li><a data-action="collapse"></a></li>
@@ -206,10 +206,10 @@
                             <th> {{ trans('messages.full_name') }} </th>
                             <th> {{ trans('messages.user_name') }} </th>
                         </tr>
-                        @forelse($latest_sellers as $seller)
+                        @forelse($latest_companies as $company)
                             <tr>
-                                <td> {{ $seller->full_name }} </td>
-                                <td>{{ $seller->user_name }}</td>
+                                <td> {{ $company->full_name }} </td>
+                                <td>{{ $company->user_name }}</td>
                             </tr>
                         @empty
                         @endforelse
@@ -219,11 +219,11 @@
         </div>
     </div>
 
+
+@stop
 @section('scripts')
 
-   @include('Dashboard.layouts.parts.map')
+    @include('Dashboard.layouts.parts.map')
 @stop
-@stop
-
 
 

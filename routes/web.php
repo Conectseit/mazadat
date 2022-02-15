@@ -1,28 +1,28 @@
 <?php
-//
-//use App\Http\Controllers\front\AuctionController;
-//use App\Http\Controllers\front\AuthController;
-//use App\Http\Controllers\front\CategoryController;
-//use App\Http\Controllers\front\FilterController;
-//use App\Http\Controllers\front\GeneralController;
-//use App\Http\Controllers\front\HomeController;
-//use App\Http\Controllers\front\NotificationController;
-//use App\Http\Controllers\front\PaymentController;
-//use App\Http\Controllers\front\UserController;
-//use Illuminate\Support\Facades\Route;
-//use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-//
-///*
-//|--------------------------------------------------------------------------
-//| Web Routes
-//|--------------------------------------------------------------------------
-//|
-//| Here is where you can register web routes for your application. These
-//| routes are loaded by the RouteServiceProvider within a group which
-//| contains the "web" middleware group. Now create something great!
-//|
-//*/
-//
+
+use App\Http\Controllers\front\AuctionController;
+use App\Http\Controllers\front\AuthController;
+use App\Http\Controllers\front\CategoryController;
+use App\Http\Controllers\front\FilterController;
+use App\Http\Controllers\front\GeneralController;
+use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\NotificationController;
+use App\Http\Controllers\front\PaymentController;
+use App\Http\Controllers\front\UserController;
+use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
 //Route::group(
 //    [
 //        'prefix' => LaravelLocalization::setLocale(),
@@ -121,16 +121,16 @@
 //    Route::post('ajax_get_cities_by_country_id', [AuthController::class, 'get_cities_by_country_id'])->name('get_cities_by_country_id');
 //
 //});
-//
-//
+
+
+Route::get('/', function () {
+    return view('front/splash_index');
+});
+
+
 //Route::get('/', function () {
-//    return view('front/splash_index');
+//    return view('welcome');
 //});
 //
-//
-////Route::get('/', function () {
-////    return view('welcome');
-////});
-////
-////Auth::routes();
-////Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Auth::routes();
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
