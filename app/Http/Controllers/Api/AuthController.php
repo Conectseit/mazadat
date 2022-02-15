@@ -10,6 +10,7 @@ use App\Http\Requests\Api\AdditionalContactRequest;
 use App\Http\Requests\Api\ChangePasswordRequest;
 use App\Http\Requests\Api\ForgetPasswordRequest;
 use App\Http\Requests\Api\LoginRequest;
+use App\Http\Requests\Api\person\UpdatePersonProfileRequest;
 use App\Http\Requests\Api\RegisterCompanyRequest;
 use App\Http\Requests\Api\RegisterUserRequest;
 use App\Http\Requests\Api\ResetPasswordRequest;
@@ -152,46 +153,25 @@ class AuthController extends PARENT_API
     }
 
 
-    public function person_profile()
-    {
-        $user = auth()->user();
-        if (!$user) {
-            return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
-        }
-        return responseJson(true, trans('api.user_profile'), new PersonResource($user));  //OK
-    }
 
 
 
-    public function update_person_profile(UpdateProfileRequest $request)
-    {
-        $request_data = $request->except(['commercial_register_image']);
-        if ($request->commercial_register_image) {
-            $request_data['commercial_register_image'] = $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
-        }
-        $user = $request->user();
-        if (!$user) {
-            return responseJson(false, 'The user has been found but it is not a buyer...', null); //
-        }
-        $user->update($request_data);
-//        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));
-        return responseJson(true, trans('api.request_done_successfully'), new PersonResource($user)); //ACCEPTED
-    }
 
-    public function update_personal_image(UpdatePersonalImageRequest $request)
-    {
-        $request_data = $request->except(['image']);
-        if ($request->image) {
-            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
-        }
-        $user = $request->user();
-        if (!$user) {
-            return responseJson(false, 'The user has been found but it is not a buyer...', null); //
-        }
-        $user->update($request_data);
-
-        return responseJson(true, trans('api.request_done_successfully'), new AuthResource($user)); //ACCEPTED
-    }
+//
+//    public function update_personal_image(UpdatePersonalImageRequest $request)
+//    {
+//        $request_data = $request->except(['image']);
+//        if ($request->image) {
+//            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
+//        }
+//        $user = $request->user();
+//        if (!$user) {
+//            return responseJson(false, 'The user has been found but it is not a buyer...', null); //
+//        }
+//        $user->update($request_data);
+//
+//        return responseJson(true, trans('api.request_done_successfully'), new AuthResource($user)); //ACCEPTED
+//    }
 
 
     public function add_additional_contact(AdditionalContactRequest $request)

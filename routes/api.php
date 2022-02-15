@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\payment\PaymentController;
 
 
+use App\Http\Controllers\Api\person\PersonController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\User\UserController;
@@ -77,8 +78,9 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('auth_contact', [QuestionController::class, 'auth_contact']);
 
         //=========== User_profile ============
-        Route::get('person_profile', [AuthController::class, 'person_profile']);
-        Route::post('update_person_profile', [AuthController::class, 'update_person_profile']);
+        Route::get('person_profile', [PersonController::class, 'person_profile']);
+        Route::post('update_person_profile', [PersonController::class, 'update_person_profile']);
+        Route::post('complete_person_profile', [PersonController::class, 'completePersonProfile']);
 //        Route::post('update_personal_image', [AuthController::class, 'update_personal_image']);
         Route::post('cities_by_country_id', [CityController::class, 'cities_by_country_id']);
 
