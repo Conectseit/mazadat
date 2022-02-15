@@ -52,7 +52,8 @@ Route::group(['namespace' => 'Api'], function () {
 
 
     //=========== general ============
-    Route::get('cities', [CityController::class, 'cities']);
+//    Route::get('cities', [CityController::class, 'cities']);
+
     Route::get('countries', [CountryController::class, 'countries']);
     Route::get('nationalities', [NationalityController::class, 'nationalities']);
     Route::get('about_app', [SettingController::class, 'about_app']);
@@ -78,7 +79,8 @@ Route::group(['namespace' => 'Api'], function () {
         //=========== User_profile ============
         Route::get('person_profile', [AuthController::class, 'person_profile']);
         Route::post('update_person_profile', [AuthController::class, 'update_person_profile']);
-        Route::post('update_personal_image', [AuthController::class, 'update_personal_image']);
+//        Route::post('update_personal_image', [AuthController::class, 'update_personal_image']);
+        Route::post('cities_by_country_id', [CityController::class, 'cities_by_country_id']);
 
 
 
