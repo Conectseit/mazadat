@@ -153,6 +153,11 @@
                                     <input type="file" class="form-control image " name="image">
                                     <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview">
                             </div>
+
+                            <div class="form-group">
+                                <label>@lang('messages.company.company_authorization_image')</label>
+                                <input type="file" class="form-control " name="company_authorization_image">
+                            </div>
                         </div>
                     </div>
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
