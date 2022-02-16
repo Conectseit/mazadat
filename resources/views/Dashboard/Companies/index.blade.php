@@ -117,32 +117,6 @@
                                                                     </ul>
                                                                 </li>
                                                             </ul>
-
-                                                            {{--                                                            <div class="list-icons text-center">--}}
-{{--                                                                <div class="list-icons-item dropdown text-center">--}}
-{{--                                                                    <a href="#" class="list-icons-item caret-0 dropdown-toggle"--}}
-{{--                                                                       data-toggle="dropdown">--}}
-{{--                                                                        <i class="icon-menu9"></i>--}}
-{{--                                                                    </a>--}}
-
-{{--                                                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">--}}
-{{--                                                                        <li>--}}
-{{--                                                                            <a href="{{ route('companies.edit',$company->id) }}"> <i--}}
-{{--                                                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>--}}
-{{--                                                                        </li>--}}
-{{--                                                                        <li>--}}
-{{--                                                                            <a href="{{ route('companies.show',$company->id) }}"> <i--}}
-{{--                                                                                    class="icon-eye"></i>@lang('messages.show') </a>--}}
-{{--                                                                        </li>--}}
-{{--                                                                        <li>--}}
-{{--                                                                            <a data-id="{{ $company->id }}" class="delete-action"--}}
-{{--                                                                               href="{{ Url('/company/company/'.$company->id) }}">--}}
-{{--                                                                                <i class="icon-database-remove"></i>@lang('messages.delete')--}}
-{{--                                                                            </a>--}}
-{{--                                                                        </li>--}}
-{{--                                                                    </ul>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -162,9 +136,8 @@
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
                                                     <th class="text-center">#</th>
-                                                    <th class="text-center">{{ trans('messages.personal_image') }}</th>
-                                                    <th class="text-center">{{ trans('messages.type') }}</th>
-                                                    <th class="text-center">{{ trans('messages.full_name') }}</th>
+                                                    <th class="text-center">{{ trans('messages.company.image') }}</th>
+                                                    <th class="text-center">{{ trans('messages.company.user_name') }}</th>
                                                     <th class="text-center">{{ trans('messages.mobile') }}</th>
                                                     <th class="text-center">{{ trans('messages.email') }}</th>
                                                     <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
@@ -180,9 +153,9 @@
                                                         <td class="text-center">
                                                             <a href="{{ $company->image_path }}" data-popup="lightbox"><img src="{{ $company->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                         </td>
-                                                        <td class="text-center"> {{ $company->is_company=='company'?trans('messages.company.company'):trans('messages.person.person')}} </td>
+{{--                                                        <td class="text-center"> {{ $company->is_company=='company'?trans('messages.company.company'):trans('messages.person.person')}} </td>--}}
                                                         <td class="text-center"><a
-                                                                href={{ route('companies.show', $company->id) }}> {{ isNullable($company->full_name) }}</a>
+                                                                href={{ route('companies.show', $company->id) }}> {{ isNullable($company->user_name) }}</a>
                                                         </td>
                                                         <td class="text-center"> {{ $company->mobile}}</td>
                                                         <td class="text-center"> {{ $company->email}}</td>
@@ -224,35 +197,6 @@
                                                                     </ul>
                                                                 </li>
                                                             </ul>
-
-
-
-
-{{--                                                            <div class="list-icons text-center">--}}
-{{--                                                                <div class="list-icons-item dropdown text-center">--}}
-{{--                                                                    <a href="#" class="list-icons-item caret-0 dropdown-toggle"--}}
-{{--                                                                       data-toggle="dropdown">--}}
-{{--                                                                        <i class="icon-menu9"></i>--}}
-{{--                                                                    </a>--}}
-
-{{--                                                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">--}}
-{{--                                                                        <li>--}}
-{{--                                                                            <a href="{{ route('companies.edit',$company->id) }}"> <i--}}
-{{--                                                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>--}}
-{{--                                                                        </li>--}}
-{{--                                                                        <li>--}}
-{{--                                                                            <a href="{{ route('companies.show',$company->id) }}"> <i--}}
-{{--                                                                                    class="icon-eye"></i>@lang('messages.show') </a>--}}
-{{--                                                                        </li>--}}
-{{--                                                                        <li>--}}
-{{--                                                                            <a data-id="{{ $company->id }}" class="delete-action"--}}
-{{--                                                                               href="{{ Url('/company/company/'.$company->id) }}">--}}
-{{--                                                                                <i class="icon-database-remove"></i>@lang('messages.delete')--}}
-{{--                                                                            </a>--}}
-{{--                                                                        </li>--}}
-{{--                                                                    </ul>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
                                                         </td>
                                                     </tr>
                                                 @endforeach

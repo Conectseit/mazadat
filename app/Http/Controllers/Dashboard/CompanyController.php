@@ -76,37 +76,34 @@ class CompanyController extends Controller
     public function edit($id)
     {
         if (!User::find($id)) {
-            return redirect()->route('persons.index')->with('danger', trans('dash.messages.try_2_access_not_found_content'));
+            return redirect()->route('companies.index')->with('danger', trans('dash.messages.try_2_access_not_found_content'));
         }
-//        $data['latest_persons'] = User::where('type', 'person')->orderBy('id', 'desc')->take(5)->get();
-        $data['person'] = User::find($id);
-        return view('Dashboard.Persons.edit', $data);
+//        $data['latest_companies'] = User::where('type', 'person')->orderBy('id', 'desc')->take(5)->get();
+        $data['company'] = User::find($id);
+        return view('Dashboard.Companies.edit', $data);
     }
 
-    public function update(PersonRequest $request,User $user)
+    public function update(CompanyRequest $request,User $user)
     {
-//        $user = User::find($id);
-        $user = User::find($request->person_id);
+        $user = User::find($request->company_id);
         $request_data = $request->except('image');
         if ($request->hasFile('image')) {
             if (!is_null($user->image)) unlink('uploads/users/' . $user->image);
             $request_data['image'] = uploaded($request->image, 'user');
         }
-
         $user->update($request_data);
-//        User::findOrFail($id)->update($request_data);
-        return redirect()->route('persons.index')->with('success',  trans('messages.messages.updated_successfully'));
+        return redirect()->route('companies.index')->with('success',  trans('messages.messages.updated_successfully'));
     }
 
 
     public function show($id)
     {
         if (!User::find($id)) {
-            return redirect()->route('persons.index')->with('class', 'danger')->with('message', trans('messages.messages.try_access_not_found_content'));
+            return redirect()->route('companies.index')->with('class', 'danger')->with('message', trans('messages.messages.try_access_not_found_content'));
         }
-        $data['person'] = User::find($id);
-//        $data['person_auctions'] = AuctionBuyer::where('buyer_id',$id)->get();
-        return view('Dashboard.Persons.show', $data);
+        $data['company'] = User::find($id);
+        $data['company_auctions'] = AuctionBuyer::where('buyer_id',$id)->get();
+        return view('Dashboard.Companies.show', $data);
     }
 
 
@@ -129,17 +126,36 @@ class CompanyController extends Controller
 
 
 
-//    public function accept($id)
-//    {
-//        $buyer = User::findOrFail($id);
-//        $buyer->update(['is_accepted'=> 1]);
-//        return back();
-//    }
-//    public function not_accept($id)
-//    {
-//        $buyer = User::findOrFail($id);
-//        $buyer->update(['is_accepted'=> 0]);
-//        return back();
-//    }
+    public function accept($id)
+    {
+        $company = User::findOrFail($id);
+        $company->update(['is_accepted'=> 1]);
+        return back();
+    }
+    public function not_accept($id)
+    {
+        $company = User::findOrFail($id);
+        $company->update(['is_accepted'=> 0]);
+        return back();
+    }
+
+
+    public function activation(Request $request)
+    {
+
+        $company = User::findOrFail($request->company_id);
+
+        if($company->active == 1){
+            $company->active = 0;
+        } else {
+            $company->active = 1;
+        }
+
+        return response()->json([
+            'data' => [
+                'success' => $company->save(),
+            ]
+        ]);
+    }
 
 }

@@ -50,8 +50,10 @@ class CompanyRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'user_name'   => 'sometimes',
-                        'mobile'=>'sometimes|numeric|unique:users,mobile,'.$this->person,
-                        'email'=>'sometimes|email|unique:users,email,'.$this->person,
+                        'mobile'=>'sometimes|numeric|unique:users,mobile,'.$this->company,
+                        'email'=>'sometimes|email|unique:users,email,'.$this->company,
+
+                        // 'gender'=>'sometimes|in:male,female',
                         // 'gender'=>'sometimes|in:male,female',
                         'password'=>'sometimes|confirmed',
 //                        'city_id'=>'sometimes|numeric|exists:city,id',
