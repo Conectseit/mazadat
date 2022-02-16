@@ -31,6 +31,8 @@ class CompanyResource extends JsonResource
             'image'                       => $this->image_path,
             'nationality_name'        => isset($this->nationality)?$this->nationality->$name:'null',
             'nationality_id'          => isset($this->nationality)?$this->nationality->id:'null',
+            'country_name'            => isset($this->country)?$this->country->$name:'null',
+            'country_id'              => isset($this->country)?$this->country->id:'null',
             'city_name'               => isset($this->city)?$this->city->$name:'null',
             'city_id'                 => isset($this->city)?$this->city->id:'null',
 //            'block'                   => $this->block,

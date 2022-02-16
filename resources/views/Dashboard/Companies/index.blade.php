@@ -56,9 +56,9 @@
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
                                                     <th class="text-center">#</th>
-                                                    <th class="text-center">{{ trans('messages.personal_image') }}</th>
-                                                    <th class="text-center">{{ trans('messages.type') }}</th>
-                                                    <th class="text-center">{{ trans('messages.user_name') }}</th>
+                                                    <th class="text-center">{{ trans('messages.company.image') }}</th>
+{{--                                                    <th class="text-center">{{ trans('messages.type') }}</th>--}}
+                                                    <th class="text-center">{{ trans('messages.company.user_name') }}</th>
                                                     <th class="text-center">{{ trans('messages.mobile') }}</th>
                                                     <th class="text-center">{{ trans('messages.email') }}</th>
                                                     <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
@@ -74,7 +74,7 @@
                                                         <td class="text-center">
                                                             <a href="{{ $company->image_path }}" data-popup="lightbox"><img src="{{ $company->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                         </td>
-                                                        <td class="text-center"> {{ $company->is_company=='company'?trans('messages.company.company'):trans('messages.person.person')}} </td>
+{{--                                                        <td class="text-center"> {{ $company->is_company=='company'?trans('messages.company.company'):trans('messages.person.person')}} </td>--}}
                                                         <td class="text-center">
                                                             <a href={{ route('companies.show', $company->id) }}> {{ isNullable($company->user_name) }}</a>
                                                         </td>

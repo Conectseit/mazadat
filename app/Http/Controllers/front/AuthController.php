@@ -90,7 +90,7 @@ class AuthController extends Controller
             $request_data = $request->except(['commercial_register_image']);
 
             if ($request->commercial_register_image) {
-                $request_data['commercial_register_image'] = $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
+                $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
             }
             $user = User::where('mobile', $request->mobile)->first();
             if ($user) return back()->withInput($request->only('mobile'))->with('error', 'عفوا رقم الجوال مسجل من قبل');

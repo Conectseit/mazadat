@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\SellerRequest;
+use App\Http\Requests\Dashboard\users\CompanyRequest;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\City;
@@ -36,18 +37,24 @@ class CompanyController extends Controller
     }
 
 
-    public function store(PersonRequest $request)
+    public function store(CompanyRequest $request)
     {
         DB::beginTransaction();
         try {
             $country = Country::where('id',$request->country_id)->first();
 
-            $request_data = $request->except(['image','mobile']);
+            $request_data = $request->except(['image','commercial_register_image', 'company_authorization_image','mobile']);
+            if ($request->commercial_register_image) {
+                $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
+            }
+            if ($request->company_authorization_image) {
+                $request_data['company_authorization_image'] = uploaded($request->company_authorization_image, 'user');
+            }
             if ($request->image) $request_data['image'] = uploaded($request->image, 'user');
             if ($request->mobile) {
                 $request_data['mobile'] =$country->phone_code. $request->mobile ;
             }
-            $person = User::create($request_data+['type' => 'buyer','is_company' => 'person', 'is_accepted' =>1, 'is_active' => 'active',
+            $person = User::create($request_data+['type' => 'buyer','is_appear_name'=>1,'is_company'=>'company','accept_app_terms'=>'yes', 'is_accepted' =>1, 'is_active' => 'active',
 //                    'mobile' => $country->phone_code.$request->mobile
                 ]);
             if ($person) {

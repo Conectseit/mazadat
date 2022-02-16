@@ -275,6 +275,10 @@ return [
     'company' => [
         'company' => 'مؤسسة',
         'companies' => 'مؤسسات',
+        'user_name' => 'اسم المؤسسة',
+        'image' => 'شعار المؤسسة',
+        'location' => 'موقع المؤسسة',
+        'latest_companies' => 'احدث المؤسسات المسجلة لدينا',
         'add_new_company' => 'اضافة مؤسسة جديد',
     ],
 //    'company' => 'مؤسسة',

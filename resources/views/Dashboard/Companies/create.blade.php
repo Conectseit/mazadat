@@ -22,7 +22,7 @@
     @include('Dashboard.layouts.parts.validation_errors')
 
     <div class="row" style="padding: 15px;">
-        <div class="col-md-6">
+        <div class="col-md-7">
 
             <!-- Basic layout-->
             <form action="{{ route('companies.store') }}" class="form-horizontal" method="post"
@@ -30,7 +30,7 @@
                 @csrf
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-                        <h5 class="panel-title">{{ trans('messages.add_new_company') }}</h5>
+                        <h3 class="panel-title">{{ trans('messages.company.add_new_company') }}</h3>
                         <div class="heading-elements">
                             <ul class="icons-list">
                                 <li><a data-action="collapse"></a></li>
@@ -42,31 +42,19 @@
 
                     <div class="panel-body">
                         <div class="box-body">
-{{--                            <div class="form-group">--}}
-{{--                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.company.person/company') }} </label>--}}
-{{--                                <div class="col-lg-9">--}}
-{{--                                    <select name="is_company" id="is_company" class="select form-control">--}}
-{{--                                        <option value="" selected disabled>{{trans('messages.select')}}</option>--}}
-{{--                                        <option  value="person">{{trans('messages.person')}}</option>--}}
-{{--                                        <option  id="option" value="company ">{{trans('messages.company')}}</option>--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-                            <div id="location" style="display:none;">
+
+                            <div id="location" style="display:block;">
 {{--                                <div class="form-group">--}}
 {{--                                    <label>@lang('messages.commercial_register_image')--}}
 {{--                                        <input type="file" class="col-lg-3 control-label display-block  " name="commercial_register_image">--}}
 {{--                                        <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview">--}}
 {{--                                    </label>--}}
 {{--                                </div><br>--}}
-                                <div class="form-group">
-                                    <label>@lang('messages.commercial_register_image')</label>
-                                    <input type="file" class="form-control commercial_register_image" name="commercial_register_image">
-                                </div>
+
                                 <div class="form-group">
                                     <label>@lang('messages.company.location'):</label>
                                     <div class="col-lg-12">
-                                        <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">
+{{--                                        <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">--}}
                                         <div id="map"></div>
                                     </div>
                                     <div class="col-lg-6">
@@ -76,18 +64,17 @@
                                         <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label>@lang('messages.commercial_register_image')</label>
+                                    <input type="file" class="form-control commercial_register_image" name="commercial_register_image">
+                                </div>
 
                             </div>
+
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">{{ trans('messages.full_name') }}</label>
+                                <label class="col-lg-3 control-label">{{ trans('messages.company.user_name') }}</label>
                                 <div class="col-lg-9">
-                                    <input type="text" class="form-control" value="" name="full_name" placeholder="@lang('messages.full_name') ">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">{{ trans('messages.user_name') }}</label>
-                                <div class="col-lg-9">
-                                    <input type="text" class="form-control" value="" name="user_name" placeholder="@lang('messages.user_name') ">
+                                    <input type="text" class="form-control" value="" name="user_name" placeholder="@lang('messages.company.user_name') ">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -128,32 +115,11 @@
                                            placeholder=" {{ trans('messages.confirm_password') }} "/>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">{{ trans('messages.gender') }}</label>
-                                <div class="col-lg-9">
-                                    <select name=" gender" class="select border-warning">
-                                        <option value="male">{{trans('messages.male')}}</option>
-                                        <option value="female">{{trans('messages.female')}}</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label display-block">{{ trans('messages.is_appear_name')}}:</label>
-                                <label class="radio-inline">
-                                    <input type="radio"  value="1" class="styled" name="is_appear_name" checked="checked">{{trans('messages.Yes')}}
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" value="0" class="styled" name="is_appear_name">{{trans('messages.No')}}
-                                </label>
-                            </div>
-
-
                             <div class="form-group">
                                 <label class="col-lg-3 control-label display-block"> {{ trans('messages.nationality.nationality') }} </label>
                                 <div class="col-lg-9">
                                     <select name="nationality_id" class="select form-control">
+                                        <option selected disabled>{{trans('messages.select')}}</option>
                                         @foreach ($nationalities as $nationality)
                                             <option value="{{ $nationality->id }}"> {{ $nationality->$name }} </option>
                                         @endforeach
@@ -161,9 +127,21 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.country.country') }} </label>
+                                <div class="col-lg-9">
+                                    <select name="country_id" class="select form-control"  id="country">
+                                        <option selected disabled>{{trans('messages.select')}}</option>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}"> {{ $country->$name }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-lg-3 control-label display-block"> {{ trans('messages.city_name') }} </label>
                                 <div class="col-lg-9">
-                                    <select name="city_id" class="select form-control">
+                                    <select name="city_id" class="select form-control"  id="cities">
+                                        <option selected disabled>{{trans('messages.select')}}</option>
                                         @foreach ($cities as $city)
                                             <option value="{{ $city->id }}"> {{ $city->$name }} </option>
                                         @endforeach
@@ -179,7 +157,6 @@
                     </div>
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
                         <input type="submit" class="btn btn-primary" value=" {{ trans('messages.add_and_forward_to_list') }} "/>
-                        {{--                        <input type="submit" class="btn btn-success" name="back" value=" {{ trans('messages.add_and_come_back') }} " />--}}
                     </div>
                 </div>
             </form>
@@ -187,10 +164,10 @@
         </div>
 
 
-        <div class="col-md-6">
+        <div class="col-md-5">
             <div class="panel panel-flat">
                 <div class="panel-heading">
-                    <h5 class="panel-title"> {{ trans('messages.latest_companies') }} </h5>
+                    <h5 class="panel-title"> {{ trans('messages.company.latest_companies') }} </h5>
                     <div class="heading-elements">
                         <ul class="icons-list">
                             <li><a data-action="collapse"></a></li>
@@ -203,12 +180,14 @@
                 <div class="panel-body">
                     <table class="table table-bordered table-hover">
                         <tr class="text-center">
-                            <th> {{ trans('messages.full_name') }} </th>
-                            <th> {{ trans('messages.user_name') }} </th>
+                            <th> {{ trans('messages.company.image') }} </th>
+                            <th> {{ trans('messages.company.user_name') }} </th>
                         </tr>
                         @forelse($latest_companies as $company)
                             <tr>
-                                <td> {{ $company->full_name }} </td>
+                                <td class="text-center">
+                                    <a href="{{ $company->image_path }}" data-popup="lightbox"><img src="{{ $company->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
+                                </td>
                                 <td>{{ $company->user_name }}</td>
                             </tr>
                         @empty
@@ -222,7 +201,7 @@
 
 @stop
 @section('scripts')
-
+    @include('front.auth.ajax_get_cities')
     @include('Dashboard.layouts.parts.map')
 @stop
 
