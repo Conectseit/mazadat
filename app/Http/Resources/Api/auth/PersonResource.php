@@ -25,6 +25,7 @@ class PersonResource extends JsonResource
             'last_name'            => $this->last_name,
             'user_name'            => $this->user_name ,
             'email'                => $this->email,
+            'is_appear_name'       => $this->is_appear_name,
             'phone_code'           => $this->country->phone_code,
             'mobile'               => $this->mobile,
             'image'                   => $this->image_path,

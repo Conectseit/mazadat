@@ -54,83 +54,81 @@ class CompanyController extends Controller
             if ($request->mobile) {
                 $request_data['mobile'] =$country->phone_code. $request->mobile ;
             }
-            $person = User::create($request_data+['type' => 'buyer','is_appear_name'=>1,'is_company'=>'company','accept_app_terms'=>'yes', 'is_accepted' =>1, 'is_active' => 'active',
+
+            $company = User::create($request_data+['type' => 'buyer','is_appear_name'=>1,'is_company'=>'company','accept_app_terms'=>'yes', 'is_accepted' =>1, 'is_active' => 'active', 'is_completed' =>1
 //                    'mobile' => $country->phone_code.$request->mobile
                 ]);
-            if ($person) {
-                $jwt_token = JWTAuth::fromUser($person);
-                Token::create(['jwt' => $jwt_token, 'user_id' => $person->id,]);
+            if ($company) {
+                $jwt_token = JWTAuth::fromUser($company);
+                Token::create(['jwt' => $jwt_token, 'user_id' => $company->id,]);
             }
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();
 
-            return redirect()->route('persons.create')
+            return redirect()->route('companies.create')
                 ->with('message', trans('dash.messages.something_went_wrong_please_try_again'))->with('class', 'warning')->withInput($request->validated());
         }
-        return redirect()->route('persons.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
+        return redirect()->route('companies.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
     }
 
 
-//
-//
-//    public function edit($id)
-//    {
-//        if (!User::find($id)) {
-//            return redirect()->route('buyers.index')->with('danger', trans('dash.messages.try_2_access_not_found_content'));
-//        }
-//        $data['latest_buyers'] = User::where('type', 'buyer')->orderBy('id', 'desc')->take(5)->get();
-//        $data['buyer'] = User::find($id);
-//        return view('Dashboard.Buyers.edit', $data);
-//    }
-//
-//    public function update(SellerRequest $request,$id)
-//    {
+    public function edit($id)
+    {
+        if (!User::find($id)) {
+            return redirect()->route('persons.index')->with('danger', trans('dash.messages.try_2_access_not_found_content'));
+        }
+//        $data['latest_persons'] = User::where('type', 'person')->orderBy('id', 'desc')->take(5)->get();
+        $data['person'] = User::find($id);
+        return view('Dashboard.Persons.edit', $data);
+    }
+
+    public function update(PersonRequest $request,User $user)
+    {
 //        $user = User::find($id);
-//
-//        $request_data = $request->except('image');
-//        if ($request->hasFile('image')) {
-////            if (!is_null($user->image)) unlink('uploads/users/' . $user->image);
-//            $request_data['image'] = uploaded($request->image, 'user');
-//        }
-//        if ($request->hasFile('commercial_register_image')) {
-////            if (!is_null($user->commercial_register_image)) unlink('uploads/users/' . $user->commercial_register_image);
-//            $request_data['commercial_register_image'] = uploaded($request->image, 'user');
-//        }
-//        $user->update($request_data);
-////        User::findOrFail($id)->update($request_data);
-//        return redirect()->route('buyers.index')->with('success',  trans('messages.messages.updated_successfully'));
-//    }
-//
-//
-//    public function show($id)
-//    {
-//        if (!User::find($id)) {
-//            return redirect()->route('buyers.index')->with('class', 'danger')->with('message', trans('messages.messages.try_access_not_found_content'));
-//        }
-//        $data['buyer'] = User::find($id);
-//        $data['buyer_auctions'] = AuctionBuyer::where('buyer_id',$id)->get();
-//        return view('Dashboard.Buyers.show', $data);
-//    }
-//
-//
-//
-//    public function destroy(Request $request)
-//    {
-//        $buyer = User::find($request->id);
-//
-//        if (!$buyer) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, Buyer is not exists !!']);
-//        try {
-//            $buyer->delete();
-//            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
-//        } catch (Exception $e) {
-//            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
-//        }
-//    }
-//
-//
-//
-//
+        $user = User::find($request->person_id);
+        $request_data = $request->except('image');
+        if ($request->hasFile('image')) {
+            if (!is_null($user->image)) unlink('uploads/users/' . $user->image);
+            $request_data['image'] = uploaded($request->image, 'user');
+        }
+
+        $user->update($request_data);
+//        User::findOrFail($id)->update($request_data);
+        return redirect()->route('persons.index')->with('success',  trans('messages.messages.updated_successfully'));
+    }
+
+
+    public function show($id)
+    {
+        if (!User::find($id)) {
+            return redirect()->route('persons.index')->with('class', 'danger')->with('message', trans('messages.messages.try_access_not_found_content'));
+        }
+        $data['person'] = User::find($id);
+//        $data['person_auctions'] = AuctionBuyer::where('buyer_id',$id)->get();
+        return view('Dashboard.Persons.show', $data);
+    }
+
+
+    public function destroy(Request $request, User $user)
+    {
+        $user = User::find($request->id);
+        if (!$user) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, user is not exists !!']);
+        try {
+            if (!is_null($user->image)) unlink('uploads/users/' . $user->image);
+            if (!is_null($user->commercial_register_image)) unlink('uploads/users/' . $user->commercial_register_image);
+            if (!is_null($user->company_authorization_image)) unlink('uploads/users/' . $user->company_authorization_image);
+            $user->delete();
+            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
+        } catch (Exception $e) {
+            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
+        }
+    }
+
+
+
+
+
 //    public function accept($id)
 //    {
 //        $buyer = User::findOrFail($id);

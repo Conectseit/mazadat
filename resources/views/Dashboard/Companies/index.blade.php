@@ -93,21 +93,20 @@
 
                                                         <td class="text-center">{{isset($company->created_at) ?$company->created_at->diffForHumans():'---' }}</td>
                                                         <td class="text-center">
-                                                            <div class="list-icons text-center">
-                                                                <div class="list-icons-item dropdown text-center">
-                                                                    <a href="#" class="list-icons-item caret-0 dropdown-toggle"
-                                                                       data-toggle="dropdown">
+
+                                                            <ul class="icons-list">
+                                                                <li class="dropdown">
+                                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                                                         <i class="icon-menu9"></i>
                                                                     </a>
-
                                                                     <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
-                                                                        <li>
-                                                                            <a href="{{ route('companies.edit',$company->id) }}"> <i
-                                                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>
-                                                                        </li>
                                                                         <li>
                                                                             <a href="{{ route('companies.show',$company->id) }}"> <i
                                                                                     class="icon-eye"></i>@lang('messages.show') </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="{{ route('companies.edit',$company->id) }}"> <i
+                                                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>
                                                                         </li>
                                                                         <li>
                                                                             <a data-id="{{ $company->id }}" class="delete-action"
@@ -116,8 +115,34 @@
                                                                             </a>
                                                                         </li>
                                                                     </ul>
-                                                                </div>
-                                                            </div>
+                                                                </li>
+                                                            </ul>
+
+                                                            {{--                                                            <div class="list-icons text-center">--}}
+{{--                                                                <div class="list-icons-item dropdown text-center">--}}
+{{--                                                                    <a href="#" class="list-icons-item caret-0 dropdown-toggle"--}}
+{{--                                                                       data-toggle="dropdown">--}}
+{{--                                                                        <i class="icon-menu9"></i>--}}
+{{--                                                                    </a>--}}
+
+{{--                                                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">--}}
+{{--                                                                        <li>--}}
+{{--                                                                            <a href="{{ route('companies.edit',$company->id) }}"> <i--}}
+{{--                                                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                        <li>--}}
+{{--                                                                            <a href="{{ route('companies.show',$company->id) }}"> <i--}}
+{{--                                                                                    class="icon-eye"></i>@lang('messages.show') </a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                        <li>--}}
+{{--                                                                            <a data-id="{{ $company->id }}" class="delete-action"--}}
+{{--                                                                               href="{{ Url('/company/company/'.$company->id) }}">--}}
+{{--                                                                                <i class="icon-database-remove"></i>@lang('messages.delete')--}}
+{{--                                                                            </a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                    </ul>--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -175,21 +200,20 @@
                                                         {{--                        <td class="text-center"> {{ $company->city->$name}}</td>--}}
                                                         <td class="text-center">{{isset($company->created_at) ?$company->created_at->diffForHumans():'---' }}</td>
                                                         <td class="text-center">
-                                                            <div class="list-icons text-center">
-                                                                <div class="list-icons-item dropdown text-center">
-                                                                    <a href="#" class="list-icons-item caret-0 dropdown-toggle"
-                                                                       data-toggle="dropdown">
+
+                                                            <ul class="icons-list">
+                                                                <li class="dropdown">
+                                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                                                         <i class="icon-menu9"></i>
                                                                     </a>
-
                                                                     <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
-                                                                        <li>
-                                                                            <a href="{{ route('companies.edit',$company->id) }}"> <i
-                                                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>
-                                                                        </li>
                                                                         <li>
                                                                             <a href="{{ route('companies.show',$company->id) }}"> <i
                                                                                     class="icon-eye"></i>@lang('messages.show') </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="{{ route('companies.edit',$company->id) }}"> <i
+                                                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>
                                                                         </li>
                                                                         <li>
                                                                             <a data-id="{{ $company->id }}" class="delete-action"
@@ -198,8 +222,37 @@
                                                                             </a>
                                                                         </li>
                                                                     </ul>
-                                                                </div>
-                                                            </div>
+                                                                </li>
+                                                            </ul>
+
+
+
+
+{{--                                                            <div class="list-icons text-center">--}}
+{{--                                                                <div class="list-icons-item dropdown text-center">--}}
+{{--                                                                    <a href="#" class="list-icons-item caret-0 dropdown-toggle"--}}
+{{--                                                                       data-toggle="dropdown">--}}
+{{--                                                                        <i class="icon-menu9"></i>--}}
+{{--                                                                    </a>--}}
+
+{{--                                                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">--}}
+{{--                                                                        <li>--}}
+{{--                                                                            <a href="{{ route('companies.edit',$company->id) }}"> <i--}}
+{{--                                                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                        <li>--}}
+{{--                                                                            <a href="{{ route('companies.show',$company->id) }}"> <i--}}
+{{--                                                                                    class="icon-eye"></i>@lang('messages.show') </a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                        <li>--}}
+{{--                                                                            <a data-id="{{ $company->id }}" class="delete-action"--}}
+{{--                                                                               href="{{ Url('/company/company/'.$company->id) }}">--}}
+{{--                                                                                <i class="icon-database-remove"></i>@lang('messages.delete')--}}
+{{--                                                                            </a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                    </ul>--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
                                                         </td>
                                                     </tr>
                                                 @endforeach
