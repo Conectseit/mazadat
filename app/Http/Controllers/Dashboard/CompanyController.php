@@ -95,7 +95,6 @@ class CompanyController extends Controller
         return redirect()->route('companies.index')->with('success',  trans('messages.messages.updated_successfully'));
     }
 
-
     public function show($id)
     {
         if (!User::find($id)) {
