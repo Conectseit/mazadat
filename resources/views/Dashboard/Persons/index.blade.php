@@ -39,6 +39,8 @@
                         <th>{{ trans('messages.full_name') }}</th>
                         <th>{{ trans('messages.mobile') }}</th>
                         <th>{{ trans('messages.email') }}</th>
+                        <th class="text-center">{{ trans('messages.ban/not') }}</th>
+
                         <th>@lang('messages.since')</th>
                         <th class="text-center">@lang('messages.form-actions')</th>
                     </tr>
@@ -55,6 +57,29 @@
                             </td>
                             <td> {{ $person->mobile}}</td>
                             <td> {{ $person->email}}</td>
+
+{{--                            <td class="text-center">--}}
+{{--                                    <a href="javascript:void(0);" id="change-ban-value" class="btn btn-danger btn-sm">--}}
+{{--                                        <i class="icon-close2"></i>{{trans('messages.ban')}}</a>--}}
+
+{{--                                <a href="javascript:void(0);" id="ban{{$person->id}}">--}}
+{{--                                    <div class="input-group-text">--}}
+{{--                                        <i class="{{ $person->ban==0 ? 'btn btn-danger btn-sm' : 'btn btn-success btn-sm' }}"--}}
+{{--                                           id="">{{trans('messages.ban')}}</i>--}}
+{{--                                    </div>--}}
+{{--                                </a>--}}
+{{--                            </td>--}}
+
+
+                            <td class="text-center">
+                                @if($person->ban ==1)
+                                    <a href="person/{{$person->id}}/not_ban/" class="btn btn-danger btn-sm"><i
+                                            class="icon-close2"></i>{{trans('messages.not_ban')}}</a>
+                                @else
+                                    <a href="person/{{$person->id}}/ban/" class="btn btn-success btn-sm"> <i
+                                            class="icon-check2"></i> {{trans('messages.ban')}}</a>
+                                @endif
+                            </td>
                             <td>{{isset($person->created_at) ?$person->created_at->diffForHumans():'---' }}</td>
                             <td class="text-center">
                                 <ul class="icons-list">

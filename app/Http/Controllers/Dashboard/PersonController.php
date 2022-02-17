@@ -117,6 +117,19 @@ class PersonController extends Controller
         }
     }
 
+    public function ban($id)
+    {
+        $company = User::findOrFail($id);
+        $company->update(['ban'=> 1]);
+        return back();
+    }
+    public function not_ban($id)
+    {
+        $company = User::findOrFail($id);
+        $company->update(['ban'=> 0]);
+        return back();
+    }
+
 
 }
 

@@ -97,6 +97,11 @@
 //                Route::get('company/{id?}/accept', [CompanyController::class, 'accept'])->name('company/accept');
 //                Route::get('company/{id?}/not_accept', [CompanyController::class, 'not_accept'])->name('company/not_accept');
 //
+//                Route::get('person/{id?}/ban', [PersonController::class, 'ban'])->name('person/ban');
+//                Route::get('person/{id?}/not_ban', [PersonController::class, 'not_ban'])->name('person/not_ban');
+//
+//
+//
 ////                Route::get('seller/{id?}/accept', [SellerController::class, 'accept'])->name('seller/accept');
 ////                Route::get('seller/{id?}/not_accept', [SellerController::class, 'not_accept'])->name('seller/not_accept');
 //
