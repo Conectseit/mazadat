@@ -23,13 +23,12 @@ class NotificationController extends Controller
                 'text'       => $request->text,
                 'fcm_tokens' => $user->token->fcm
             ]);
-
-            Firebase::createWebCurl($user->token->fcm_web_token, [
-                'title' => $request->title,
-                'body' => $request->text,
-                'icon' => 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
-            ]);
         }
+        Firebase::createWebCurl($user->token->fcm_web_token, [
+            'title' => $request->title,
+            'body' => $request->text,
+            'icon' => 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
+        ]);
         Notification::create($request->all() + ['user_id' => $request->user_id]);
 //        Notification::create([
 ////            'user_id' => $request->user_id,
