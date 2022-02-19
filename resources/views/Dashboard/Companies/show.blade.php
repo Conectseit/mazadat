@@ -312,8 +312,8 @@
                                               method="post" enctype="multipart/form-data" style="border:1px solid grey;padding:20px 30px">
                                             @csrf
                                             <input type="hidden" name="user_id" value="{{ $company->id }}"/>
-{{--                                            <label> {{ trans('messages.notification.title') }} </label>--}}
-{{--                                            <input type="text" class="form-control" name="title"/><br>--}}
+                                            <label> {{ trans('messages.notification.title') }} </label>
+                                            <input type="text" class="form-control" name="title"/><br>
                                             <label> {{ trans('messages.notification.text') }} </label>
                                             <textarea class="form-control" name="text"></textarea><br>
                                             <div style="text-align: center;">
