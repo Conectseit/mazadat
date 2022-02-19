@@ -27,7 +27,7 @@ class NotificationController extends Controller
             Firebase::createWebCurl($user->token->fcm_web_token, [
                 'title' => $request->title,
                 'body' => $request->text,
-                'icon' => ''
+                'icon' => 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
             ]);
         }
         Notification::create($request->all() + ['user_id' => $request->user_id]);
