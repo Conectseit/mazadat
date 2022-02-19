@@ -116,7 +116,7 @@
                                 <label for="password" class="form-label">{{ trans('messages.password') }}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="hidden" name="fcm_web_token" value="">
+{{--                                <input type="hidden" name="fcm_web_token" value="">--}}
 
                                 <input type="password"
                                        class="form-control   @error('password') is-invalid @enderror"  value="{{ old('password') }}"
@@ -166,27 +166,68 @@
 
 @stop
 
-@section('js')
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
-    <script>
-        $(document).ready(function(){
-            const messaging = firebase.messaging();
+{{--@section('js')--}}
+{{--    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>--}}
+{{--    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>--}}
+{{--    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>--}}
+{{--    <script>--}}
+{{--        $(document).ready(function(){--}}
+{{--            const messaging = firebase.messaging();--}}
 
-            messaging.getToken()
-                .then(currentToken => {
-                    if (currentToken){
-                        console.log(currentToken);
-                        $('input[name=fcm_web_token]').val(currentToken);
-                    } else {
-                        console.log('No Instance ID token available. Request permission to generate one.');
-                    }
-                })
-                .catch(err => console.log('An error occurred while retrieving token. ', err));
-        });
-    </script>
-@stop
+{{--            messaging.getToken()--}}
+{{--                .then(currentToken => {--}}
+{{--                    if (currentToken){--}}
+{{--                        console.log(currentToken);--}}
+{{--                        $('input[name=fcm_web_token]').val(currentToken);--}}
+{{--                    } else {--}}
+{{--                        console.log('No Instance ID token available. Request permission to generate one.');--}}
+{{--                    }--}}
+{{--                })--}}
+{{--                .catch(err => console.log('An error occurred while retrieving token. ', err));--}}
+{{--        });--}}
+{{--    </script>--}}
+{{--@stop--}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

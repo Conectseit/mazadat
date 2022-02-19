@@ -35,7 +35,8 @@ class AuctionController extends Controller
         $data['categories'] = Category::with('options')->get();
         $data['options'] = Option::all();
         $data['option_details'] = OptionDetail::all();
-        $data['users'] = User::where('type', 'seller')->get();
+        $data['users'] = User::all();
+//        $data['users'] = User::where('type', 'seller')->get();
         return view('Dashboard.Auctions.create', $data);
     }
 
@@ -76,6 +77,14 @@ class AuctionController extends Controller
                     'option_id' => $request->option_id,
                     'option_details_id' => $request->option_details_id,
                 ]);
+
+
+
+//            activity()
+////                ->performedOn($anEloquentModel)
+//                ->causedBy(auth()->user())
+////                ->withProperties(['customProperty' => 'customValue'])
+//                ->log('Look, I logged something');
 
             DB::commit();
             return redirect()->route('auctions.index')->with('message', trans('messages.messages.added_successfully'));

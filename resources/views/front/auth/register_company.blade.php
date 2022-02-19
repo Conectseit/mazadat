@@ -3,28 +3,40 @@
 @section('style')
     <style> #map { height: 400px;} </style>
 @endsection
-
 @section('content')
     @include('front.auctions.head')
     <section class="sign-up-page">
         <div class="container">
             <h4 class="title"> {{ trans('messages.register_company') }}</h4>
 
-            @include('front.layouts.parts.alert')
+{{--            @include('front.layouts.parts.alert')--}}
 
-            @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Success! </strong>
-                    {{session('success')}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
+{{--            @if(session('success'))--}}
+{{--                <div class="alert alert-success alert-dismissible fade show" role="alert">--}}
+{{--                    <strong>Success! </strong>--}}
+{{--                    {{session('success')}}--}}
+{{--                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>--}}
+{{--                </div>--}}
+{{--            @endif--}}
 
             <div class="row">
                 <form action="{{route('front.register_company')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="inputs-group">
                         <h5 class="group-title">{{trans('messages.personal_info')}}</h5>
+
+
+{{--                        <div class="form-group row ">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                <label>@lang('messages.company_authorization_image')</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-8 col-sm-12 d-flex align-items-center">--}}
+{{--                                <input type="file" class="form-control company_authorization_image" name="company_authorization_image" accept="image/*" onchange="readURL(this)" />--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-2 col-sm-12 d-flex align-items-center">--}}
+{{--                                <img  id="img-preview" style="width: 180px ; hight:50px" src="https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png" width="250px" />--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <div class="form-group mb-4 row">
                             <input type="hidden" name="fcm_web_token" value="">
@@ -113,6 +125,7 @@
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
 
                         <div id="location" style="display:block;">
+
                             <div class="form-group row ">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                     <label>@lang('messages.commercial_register_image')</label>
@@ -123,7 +136,6 @@
                                 <div class="col-lg-2 col-sm-12 d-flex align-items-center">
                                     <img  id="img-preview" style="width: 180px ; hight:50px" src="https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png" width="250px" />
                                 </div>
-
                             </div>
                             <div class="form-group">
                                 <label>@lang('messages.company_location'):</label>
@@ -154,30 +166,6 @@
 @stop
 
 
-@section('js')
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
-    <script>
-        $(document).ready(function(){
-            const messaging = firebase.messaging();
-
-            messaging.getToken()
-                .then(currentToken => {
-                    if (currentToken){
-                        console.log(currentToken);
-                        $('input[name=fcm_web_token]').val(currentToken);
-                    } else {
-                        console.log('No Instance ID token available. Request permission to generate one.');
-                    }
-                })
-                .catch(err => console.log('An error occurred while retrieving token. ', err));
-        });
-    </script>
-@stop
-
-
-
 
 @push('scripts')
     <script>
@@ -188,8 +176,7 @@
                 fitImagesInViewport: true,
             });
         });
-        let noimage =
-            "https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png";
+        let noimage = "https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png";
 
         function readURL(input) {
             console.log(input.files);
@@ -209,6 +196,42 @@
     @include('Dashboard.layouts.parts.map')
     @include('front.auth.ajax_get_cities')
 @endpush
+
+
+
+
+
+
+
+
+
+
+
+{{--@section('js')--}}
+{{--    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>--}}
+{{--    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>--}}
+{{--    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>--}}
+{{--    <script>--}}
+{{--        $(document).ready(function(){--}}
+{{--            const messaging = firebase.messaging();--}}
+
+{{--            messaging.getToken()--}}
+{{--                .then(currentToken => {--}}
+{{--                    if (currentToken){--}}
+{{--                        console.log(currentToken);--}}
+{{--                        $('input[name=fcm_web_token]').val(currentToken);--}}
+{{--                    } else {--}}
+{{--                        console.log('No Instance ID token available. Request permission to generate one.');--}}
+{{--                    }--}}
+{{--                })--}}
+{{--                .catch(err => console.log('An error occurred while retrieving token. ', err));--}}
+{{--        });--}}
+{{--    </script>--}}
+{{--@stop--}}
+
+
+
+
 
 
 

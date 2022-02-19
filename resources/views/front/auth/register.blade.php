@@ -77,19 +77,6 @@
 
 @stop
 
-{{--@push('scripts')--}}
-{{--    <script>--}}
-{{--        messaging.getToken()--}}
-{{--            .then(currentToken => {--}}
-{{--                if (currentToken){--}}
-{{--                    $('input[name=fcm_web_token]').val(currentToken);--}}
-{{--                } else {--}}
-{{--                    console.log('No Instance ID token available. Request permission to generate one.');--}}
-{{--                }--}}
-{{--            })--}}
-{{--            .catch(err => console.log('An error occurred while retrieving token. ', err));--}}
-{{--    </script>--}}
-{{--@endpush--}}
 
 
 

@@ -8,7 +8,18 @@
     @include('front.layouts.splash')
 
     <section class="categories">
+
         <div class="container">
+            <div class="row">
+                <div class="" >
+                    <a href="{{route('front.add_auction')}}" class="add-auction"><b><i class="icon-plus2"></i></b>{{ trans('messages.auction.add') }}</a>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="" >
+                    <a href="{{route('front.company_auctions')}}" class="add-auction"><b><i class="icon-plus2"></i></b>{{ trans('messages.company.auctions') }}</a>
+                </div>
+            </div><br>
             <div class="row">
                 @foreach($categories as $category)
                 <div class="col-lg-3 col-md-6">

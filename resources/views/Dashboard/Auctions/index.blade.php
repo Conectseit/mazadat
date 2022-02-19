@@ -54,7 +54,8 @@
                                            <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
                                                <thead>
                                                <tr style="background-color:gainsboro">
-                                                   <th class="text-center">#</th>
+                                                   <th class="text-center">Serial number</th>
+                                                   <th class="text-center">قسم</th>
                                                    <th class="text-center">{{ trans('messages.image') }}</th>
                                                    <th class="text-center">{{ trans('messages.name') }}</th>
 {{--                                                   <th class="text-center">{{ trans('messages.description') }}</th>--}}
@@ -73,7 +74,8 @@
                                                @foreach($auctions as $auction)
                                                    <tr id="auction-row-{{ $auction->id }}">
 
-                                                       <td class="text-center">{{ $auction->id }}</td>
+                                                       <td class="text-center">{{ $auction->serial_number }}</td>
+                                                       <td class="text-center">{{ $auction->category->$name }}</td>
                                                        <td class="text-center">
                                                            <a href="{{ $auction->first_image_path }}" data-popup="lightbox"><img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                        </td>
@@ -132,7 +134,9 @@
                                     @if($on_progress_auctions->count() > 0)
                                         <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
                                             <thead>
-                                            <tr style="background-color:gainsboro">                                                  <th class="text-center">#</th>
+                                            <tr style="background-color:gainsboro">
+                                                <th class="text-center">Serial number</th>
+                                                <th class="text-center">قسم</th>
                                                 <th class="text-center">{{ trans('messages.image') }}</th>
                                                 <th class="text-center">{{ trans('messages.name') }}</th>
                                                 <th class="text-center">{{ trans('messages.auction.start_auction_price') }}</th>
@@ -145,7 +149,8 @@
                                             <tbody>
                                             @foreach($on_progress_auctions as $auction)
                                                 <tr id="auction-row-{{ $auction->id }}">
-                                                    <td class="text-center">{{ $auction->id }}</td>
+                                                    <td class="text-center">{{ $auction->serial_number }}</td>
+                                                    <td class="text-center">{{ $auction->category->$name }}</td>
                                                     <td class="text-center">
                                                         <a href="{{ $auction->first_image_path }}" data-popup="lightbox">
                                                             <img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle">
@@ -197,7 +202,9 @@
                                     @if($done_auctions->count() > 0)
                                         <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
                                             <thead>
-                                            <tr style="background-color:gainsboro">                                                  <th class="text-center">#</th>
+                                            <tr style="background-color:gainsboro">
+                                                <th class="text-center">Serial number</th>
+                                                <th class="text-center">قسم</th>
                                                 <th class="text-center">{{ trans('messages.image') }}</th>
                                                 <th class="text-center">{{ trans('messages.name') }}</th>
                                                 <th class="text-center">{{ trans('messages.auction.start_auction_price') }}</th>
@@ -210,7 +217,8 @@
                                             @foreach($done_auctions as $auction)
 
                                                 <tr id="auction-row-{{ $auction->id }}">
-                                                    <td class="text-center">{{ $auction->id }}</td>
+                                                    <td class="text-center">{{ $auction->serial_number }}</td>
+                                                    <td class="text-center">{{ $auction->category->$name }}</td>
                                                     <td class="text-center">
                                                         <a href="{{ $auction->first_image_path }}" data-popup="lightbox">
                                                             <img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle">

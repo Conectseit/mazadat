@@ -123,6 +123,7 @@ class AuctionController extends Controller
         return view('front.user.my_bids', $data);
     }
 
+
     public  function watch_auction (Auction $auction)
     {
         $check = checkIsUserWatch($auction);
@@ -155,5 +156,11 @@ class AuctionController extends Controller
         AcceptedAuction::create(['user_id' => auth()->user()->id, 'auction_id' => $auction->id,]);
         return response()->json(['status' => true, 'is_accepted' => true]);
     }
+
+    public function add_auction()
+    {
+        return view('front.user.add_auction');
+    }
+
 
 }

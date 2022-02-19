@@ -1,23 +1,23 @@
 <main class="sign-in-form" id="signInForm">
     <div class="container">
-{{--                @if(session()->has('error'))--}}
-{{--                    <div class="alert alert-warning alert-dismissible" role="alert">--}}
-{{--                        {{ session('error') }}--}}
-{{--                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
-{{--                            <span aria-hidden="true">&times;</span>--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-{{--                @endif--}}
+                @if(session()->has('error'))
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
 
 
-{{--                    @if(session()->has('error'))--}}
-{{--                        <div class="alert alert-warning alert-dismissible" role="alert">--}}
-{{--                            {{ session('error') }}--}}
-{{--                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
-{{--                                <span aria-hidden="true">&times;</span>--}}
-{{--                            </button>--}}
-{{--                        </div>--}}
-{{--                    @endif--}}
+                    @if(session()->has('error'))
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
 
 
         <form action="{{route('front.login')}}" method="post" enctype="multipart/form-data">
@@ -33,6 +33,8 @@
                     <label for="email" class="form-label">ايميل المستخدم</label>
                 </div>
                 <div class="col-sm-8">
+                    <input type="hidden" name="fcm_web_token" value="">
+
                     <input type="text" class="form-control @error('email') is-invalid @enderror"
                            id="email" name="email" aria-describedby="emailHelp"
                            value="{{ old('email') }}" placeholder="ادخل بريدك الالكتروني">
@@ -42,14 +44,14 @@
                 </div>
             </div>
 
-{{--            <div class="form-group">--}}
-{{--                <input type="password" name="password"--}}
-{{--                       class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1"--}}
-{{--                       placeholder="كلمة المرور">--}}
-{{--                @error('password')--}}
-{{--                <span class="invalid-feedback">{{ $message }}</span>--}}
-{{--                @enderror--}}
-{{--            </div>--}}
+            <div class="form-group">
+                <input type="password" name="password"
+                       class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1"
+                       placeholder="كلمة المرور">
+                @error('password')
+                <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
+            </div>
 
 
 
@@ -77,7 +79,7 @@
                             <a href="#" class="forgot" data-bs-toggle="modal"
                                data-bs-target="#forget_pass_modal">نسيت كلمة المرور؟</a>
 
-{{--                            <a href="#" class="forgot"></a>--}}
+                            <a href="#" class="forgot"></a>
                         </div>
                     </div>
                 </div>
@@ -215,8 +217,8 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link hvr-shutter-out-horizontal"
-                                               id="signInBtn" href="{{route('front.home')}}"
-{{--                                                href="{{route('front.show_login')}}"--}}
+{{--                                               id="signInBtn" href="{{route('front.home')}}"--}}
+                                                href="{{route('front.show_login')}}"
                                             >@lang('messages.login')</a>
                                         </li>
 

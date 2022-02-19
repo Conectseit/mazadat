@@ -132,19 +132,17 @@ class AuthController extends Controller
         return redirect()->route('front.home')->with('success', trans('messages.register_success_welcome_in_our_website'));
     }
 
-
-
-
-
     public function show_login()
     {
-        return view('front.auth.login');
+        $data['countries'] = Country::all();
+        return view('front.auth.login',$data);
     }
 
     public function login(LoginRequest $request)
     {
-        Auth::attempt(['email' => $request->email, 'password' => $request->password]);
-//        Auth::attempt(['user_name'=>$request->text, 'password' => $request->password]);
+        $col = self::is_email($request->email) ? 'email' : 'user_name';
+
+        Auth::attempt([$col => $request->email, 'password' => $request->password]);
 
         if (!auth()->user()) return back()
 //            ->withInput($request->only('email'))
@@ -246,6 +244,12 @@ class AuthController extends Controller
         if (!$country) return response()->json(['status' => false], 500);
 
         return response()->json(['cities' => $country->cities, 'status' => true], 200);
+    }
+
+    public function is_email($value)
+    {
+//        return preg_match('/^([a-zA-Z0-9_.]*)@.*\.com$/i', $value);
+        return preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i', $value);
     }
 }
 

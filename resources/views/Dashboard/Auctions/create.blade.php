@@ -42,9 +42,11 @@
                                     class="col-lg-3 control-label display-block"> {{ trans('messages.auction.seller_full_name') }} </label>
                                 <div class="col-md-6">
                                     <select name="seller_id" class="select">
-                                        <optgroup label="{{ trans('messages.auction.seller_full_name') }}">
+                                        <option selected disabled>{{trans('messages.select')}}</option>
+
+{{--                                        <optgroup label="{{ trans('messages.auction.seller_full_name') }}">--}}
                                             @foreach ($users as $user)
-                                                <option value="{{ $user->id }}"> {{ $user->full_name }} </option>
+                                                <option value="{{ $user->id }}"> {{ $user->user_name }} </option>
                                         @endforeach
                                     </select>
                                 </div>

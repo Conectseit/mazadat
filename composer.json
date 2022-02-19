@@ -17,6 +17,7 @@
         "laravelcollective/html": "^6.2",
         "mcamara/laravel-localization": "^1.6",
         "mckenziearts/laravel-notify": "^2.2",
+        "spatie/laravel-activitylog": "^3.17",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {

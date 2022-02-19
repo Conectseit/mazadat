@@ -33,8 +33,10 @@ class RegisterCompanyRequest extends FormRequest
                     return [
 //                        'is_company'       => 'required|in:person,company',
 //                        'commercial_register_image'        => 'required_if:is_company,company|image',
-                        'commercial_register_image'        => 'required_|image',
+                        'commercial_register_image'        => 'required|image',
+                        'company_authorization_image'        => 'required|image',
                         'latitude'         => 'required',
+                        'longitude'         => 'required',
 //                        'longitude'      => 'required_if:is_company,company',
 //                        'first_name'   => 'required',
 //                        'middle_name'   => 'sometimes',
