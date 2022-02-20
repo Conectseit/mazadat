@@ -12,7 +12,7 @@
         </ul>
         @include('Dashboard.layouts.parts.quick-links')
     </div>
-@endsection
+@stop
 
 @section('content')
     @include('Dashboard.layouts.parts.validation_errors')
@@ -55,7 +55,7 @@
                                             <table class="table datatable-basic" id="company" style="font-size: 16px;">
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
-                                                    <th class="text-center">#</th>
+{{--                                                    <th class="text-center">#</th>--}}
                                                     <th class="text-center">{{ trans('messages.company.image') }}</th>
 {{--                                                    <th class="text-center">{{ trans('messages.type') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.company.user_name') }}</th>
@@ -70,7 +70,7 @@
                                                 @foreach($accepted_companies as $company)
 
                                                     <tr id="company-row-{{ $company->id }}">
-                                                        <td class="text-center">({{ $loop->iteration }})</td>
+{{--                                                        <td class="text-center">({{ $loop->iteration }})</td>--}}
                                                         <td class="text-center">
                                                             <a href="{{ $company->image_path }}" data-popup="lightbox"><img src="{{ $company->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                         </td>
@@ -138,7 +138,7 @@
                                             <table class="table datatable-basic" id="company" style="font-size: 16px;">
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
-                                                    <th class="text-center">#</th>
+{{--                                                    <th class="text-center">#</th>--}}
                                                     <th class="text-center">{{ trans('messages.company.image') }}</th>
                                                     {{--                                                    <th class="text-center">{{ trans('messages.type') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.company.user_name') }}</th>
@@ -153,7 +153,7 @@
                                                 @foreach($not_accepted_companies as $company)
 
                                                     <tr id="company-row-{{ $company->id }}">
-                                                        <td class="text-center">({{ $loop->iteration }})</td>
+{{--                                                        <td class="text-center">({{ $loop->iteration }})</td>--}}
                                                         <td class="text-center">
                                                             <a href="{{ $company->image_path }}" data-popup="lightbox"><img src="{{ $company->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                         </td>
