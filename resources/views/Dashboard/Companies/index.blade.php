@@ -129,7 +129,10 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="not_accepted_companies">
+
+
+                                <div class="tab-pane active" id="not_accepted_companies">
+
                                     <div class="panel-body">
                                         @if($not_accepted_companies->count() > 0)
                                             <table class="table datatable-basic" id="company" style="font-size: 16px;">
@@ -137,6 +140,7 @@
                                                 <tr style="background-color:gainsboro">
                                                     <th class="text-center">#</th>
                                                     <th class="text-center">{{ trans('messages.company.image') }}</th>
+                                                    {{--                                                    <th class="text-center">{{ trans('messages.type') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.company.user_name') }}</th>
                                                     <th class="text-center">{{ trans('messages.mobile') }}</th>
                                                     <th class="text-center">{{ trans('messages.email') }}</th>
@@ -149,13 +153,13 @@
                                                 @foreach($not_accepted_companies as $company)
 
                                                     <tr id="company-row-{{ $company->id }}">
-                                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                                        <td class="text-center">({{ $loop->iteration }})</td>
                                                         <td class="text-center">
                                                             <a href="{{ $company->image_path }}" data-popup="lightbox"><img src="{{ $company->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                         </td>
-{{--                                                        <td class="text-center"> {{ $company->is_company=='company'?trans('messages.company.company'):trans('messages.person.person')}} </td>--}}
-                                                        <td class="text-center"><a
-                                                                href={{ route('companies.show', $company->id) }}> {{ isNullable($company->user_name) }}</a>
+                                                        {{--                                                        <td class="text-center"> {{ $company->is_company=='company'?trans('messages.company.company'):trans('messages.person.person')}} </td>--}}
+                                                        <td class="text-center">
+                                                            <a href={{ route('companies.show', $company->id) }}> {{ isNullable($company->user_name) }}</a>
                                                         </td>
                                                         <td class="text-center"> {{ $company->mobile}}</td>
                                                         <td class="text-center"> {{ $company->email}}</td>
@@ -170,7 +174,6 @@
                                                             @endif
                                                         </td>
 
-                                                        {{--                        <td class="text-center"> {{ $company->city->$name}}</td>--}}
                                                         <td class="text-center">{{isset($company->created_at) ?$company->created_at->diffForHumans():'---' }}</td>
                                                         <td class="text-center">
 
@@ -205,9 +208,91 @@
 
                                         @else
                                             <center><h2> @lang('messages.no_data_found') </h2></center>
+
                                         @endif
                                     </div>
                                 </div>
+
+
+                                {{--                                <div class="tab-pane" id="not_accepted_companies">--}}
+{{--                                    <div class="panel-body">--}}
+{{--                                        @if($not_accepted_companies->count() > 0)--}}
+{{--                                            <table class="table datatable-basic" id="company" style="font-size: 16px;">--}}
+{{--                                                <thead>--}}
+{{--                                                <tr style="background-color:gainsboro">--}}
+{{--                                                    <th class="text-center">#</th>--}}
+{{--                                                    <th class="text-center">{{ trans('messages.company.image') }}</th>--}}
+{{--                                                    <th class="text-center">{{ trans('messages.company.user_name') }}</th>--}}
+{{--                                                    <th class="text-center">{{ trans('messages.mobile') }}</th>--}}
+{{--                                                    <th class="text-center">{{ trans('messages.email') }}</th>--}}
+{{--                                                    <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>--}}
+{{--                                                    <th class="text-center">@lang('messages.since')</th>--}}
+{{--                                                    <th class="text-center">@lang('messages.form-actions')</th>--}}
+{{--                                                </tr>--}}
+{{--                                                </thead>--}}
+{{--                                                <tbody>--}}
+{{--                                                @foreach($not_accepted_companies as $company)--}}
+
+{{--                                                    <tr id="company-row-{{ $company->id }}">--}}
+{{--                                                        <td class="text-center">{{ $loop->iteration }}</td>--}}
+{{--                                                        <td class="text-center">--}}
+{{--                                                            <a href="{{ $company->image_path }}" data-popup="lightbox"><img src="{{ $company->image_path }}" alt="" width="80" height="80" class="img-circle"></a>--}}
+{{--                                                        </td>--}}
+{{--                                                        <td class="text-center"> {{ $company->is_company=='company'?trans('messages.company.company'):trans('messages.person.person')}} </td>--}}
+{{--                                                        <td class="text-center"><a--}}
+{{--                                                                href={{ route('companies.show', $company->id) }}> {{ isNullable($company->user_name) }}</a>--}}
+{{--                                                        </td>--}}
+{{--                                                        <td class="text-center"> {{ $company->mobile}}</td>--}}
+{{--                                                        <td class="text-center"> {{ $company->email}}</td>--}}
+
+{{--                                                        <td class="text-center">--}}
+{{--                                                            @if($company->is_accepted ==1)--}}
+{{--                                                                <a href="company/{{$company->id}}/not_accept/" class="btn btn-danger btn-sm"><i--}}
+{{--                                                                        class="icon-close2"></i>{{trans('messages.not_accept')}}</a>--}}
+{{--                                                            @else--}}
+{{--                                                                <a href="company/{{$company->id}}/accept/" class="btn btn-success btn-sm"> <i--}}
+{{--                                                                        class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
+{{--                                                            @endif--}}
+{{--                                                        </td>--}}
+
+{{--                                                        --}}{{--                        <td class="text-center"> {{ $company->city->$name}}</td>--}}
+{{--                                                        <td class="text-center">{{isset($company->created_at) ?$company->created_at->diffForHumans():'---' }}</td>--}}
+{{--                                                        <td class="text-center">--}}
+
+{{--                                                            <ul class="icons-list">--}}
+{{--                                                                <li class="dropdown">--}}
+{{--                                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
+{{--                                                                        <i class="icon-menu9"></i>--}}
+{{--                                                                    </a>--}}
+{{--                                                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">--}}
+{{--                                                                        <li>--}}
+{{--                                                                            <a href="{{ route('companies.show',$company->id) }}"> <i--}}
+{{--                                                                                    class="icon-eye"></i>@lang('messages.show') </a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                        <li>--}}
+{{--                                                                            <a href="{{ route('companies.edit',$company->id) }}"> <i--}}
+{{--                                                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                        <li>--}}
+{{--                                                                            <a data-id="{{ $company->id }}" class="delete-action"--}}
+{{--                                                                               href="{{ Url('/company/company/'.$company->id) }}">--}}
+{{--                                                                                <i class="icon-database-remove"></i>@lang('messages.delete')--}}
+{{--                                                                            </a>--}}
+{{--                                                                        </li>--}}
+{{--                                                                    </ul>--}}
+{{--                                                                </li>--}}
+{{--                                                            </ul>--}}
+{{--                                                        </td>--}}
+{{--                                                    </tr>--}}
+{{--                                                @endforeach--}}
+{{--                                                </tbody>--}}
+{{--                                            </table>--}}
+
+{{--                                        @else--}}
+{{--                                            <center><h2> @lang('messages.no_data_found') </h2></center>--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </div>
