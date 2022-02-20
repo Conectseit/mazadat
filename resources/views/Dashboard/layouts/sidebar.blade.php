@@ -114,6 +114,15 @@
 
 
     <li>
+        <a href="#"><i class="icon-people"></i> <span>{{ trans('messages.activity.activities') }}</span></a>
+        <ul>
+            <li><a href="{{route('activities.index')}}">{{ trans('messages.all') }}</a></li>
+
+        </ul>
+    </li>
+
+
+    <li>
         <a href="#"><i class="icon-archive"></i> <span> {{ trans('messages.transaction.transactions') }} </span></a>
         <ul>
             <li><a href="{{ route('transactions.index')}}">{{ trans('messages.show') }}</a></li>

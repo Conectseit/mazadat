@@ -70,7 +70,6 @@ class AuctionController extends Controller
                 }
                 $auction_inspection_report_images = DB::table('inspection_images')->insert($data);
 
-
                 //======= upload auction options =======
                 $auction_options = AuctionData::Create([
                     'auction_id' => $auction->id,
@@ -78,14 +77,12 @@ class AuctionController extends Controller
                     'option_details_id' => $request->option_details_id,
                 ]);
 
+            $name='name_' . app()->getLocale();
 
-
-//            activity()
-////                ->performedOn($anEloquentModel)
-//                ->causedBy(auth()->user())
-////                ->withProperties(['customProperty' => 'customValue'])
-//                ->log('Look, I logged something');
-
+            activity()
+                ->performedOn($auction)
+                ->causedBy(auth()->guard('admin')->user())
+                ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة مزاد'.($auction->$name));
             DB::commit();
             return redirect()->route('auctions.index')->with('message', trans('messages.messages.added_successfully'));
 

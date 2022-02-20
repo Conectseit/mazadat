@@ -144,7 +144,7 @@
                                                             <a href="javascript:void(0);" id="change-icon-{{$auction->id}}">
                                                                 <div class="input-group-text">
                                                                     <i class="{{ checkIsUserWatch($auction)->count() ? 'fas fa-eye-slash' : 'fas fa-eye' }}"
-                                                                       id="eye"></i>
+                                                                       id="eye-{{$auction->id}}"></i>
                                                                 </div>
                                                             </a>
                                                         </div>

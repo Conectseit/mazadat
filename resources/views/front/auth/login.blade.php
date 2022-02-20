@@ -22,13 +22,13 @@
                         </p><br>
                         <div class="mb-4 form-group row">
                             <div class="col-sm-2 d-flex align-items-center">
-                                <label for="email" class="form-label">ايميل المستخدم</label>
+                                <label for="email" class="form-label">اسم المستخدم او البريد الالكتروني</label>
                             </div>
                             <div class="col-sm-8">
                                  <input type="hidden" name="fcm_web_token" value="">
                                 <input type="text" class="form-control @error('email') is-invalid @enderror"
                                        id="email" name="email" aria-describedby="emailHelp"
-                                       value="{{ old('email') }}" placeholder="ادخل بريدك الالكتروني">
+                                       value="{{ old('email') }}" placeholder="ادخل بريدك الالكتروني او اسم المستخدم">
                                 @error('email')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror

@@ -120,16 +120,16 @@
                                                                     <input type="text" class="form-control" value="{{ $person->mobile }}" readonly>
                                                                 </div>
                                                             </div>
-{{--                                                            <div class="form-group row">--}}
-{{--                                                                <label class="col-form-label col-lg-3">{{ trans('messages.nationality.nationality') }}:</label>--}}
-{{--                                                                <div class="col-lg-9">--}}
-{{--                                                                    <input type="text" class="form-control" value="{{ $person->nationality->$name }}" readonly>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.nationality.nationality') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control" value="{{ isset($person->nationality)?$person->nationality->$name:'' }}" readonly>
+                                                                </div>
+                                                            </div>
                                                             <div class="form-group row">
                                                                 <label class="col-form-label col-lg-3">{{ trans('messages.city.city') }}:</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $person->city->$name }}" readonly>
+                                                                    <input type="text" class="form-control" value="{{ isset($person->city)?$person->city->$name :''}}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">

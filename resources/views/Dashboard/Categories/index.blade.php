@@ -11,7 +11,7 @@
 
             @include('Dashboard.layouts.parts.quick-links')
         </div>
-@endsection
+@stop
 @section('content')
     @include('Dashboard.layouts.parts.validation_errors')
     <!-- Basic datatable -->
@@ -84,7 +84,7 @@
             </table>
 
         @else
-            <center><h2> @lang('messages.no_data_found') </h2></center>
+            <div style="text-align: center;"><h2> @lang('messages.no_data_found') </h2></div>
         @endif
     </div>
     <!-- /basic datatable -->

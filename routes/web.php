@@ -3,11 +3,13 @@
 use App\Http\Controllers\front\AuctionController;
 use App\Http\Controllers\front\AuthController;
 use App\Http\Controllers\front\CategoryController;
+use App\Http\Controllers\front\company\CompanyController;
 use App\Http\Controllers\front\FilterController;
 use App\Http\Controllers\front\GeneralController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\NotificationController;
 use App\Http\Controllers\front\PaymentController;
+use App\Http\Controllers\front\person\PersonController;
 use App\Http\Controllers\front\UserController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -36,12 +38,12 @@ Route::group(
     Route::get('show_register', [AuthController::class, 'show_register'])->name('front.show_register');
 
 // ============ register_person ================
-    Route::get('show_register_person', [AuthController::class, 'show_register_person'])->name('front.show_register_person');
-    Route::post('register_person', [AuthController::class, 'register_person'])->name('front.register_person');
+    Route::get('show_register_person', [PersonController::class, 'show_register_person'])->name('front.show_register_person');
+    Route::post('register_person', [PersonController::class, 'register_person'])->name('front.register_person');
 
     // ============ register_company ================
-    Route::get('show_register_company', [AuthController::class, 'show_register_company'])->name('front.show_register_company');
-    Route::post('register_company', [AuthController::class, 'register_company'])->name('front.register_company');
+    Route::get('show_register_company', [CompanyController::class, 'show_register_company'])->name('front.show_register_company');
+    Route::post('register_company', [CompanyController::class, 'register_company'])->name('front.register_company');
 
     Route::get('show_activation', [AuthController::class, 'show_activation'])->name('front.show_activation');
     Route::post('check_code', [AuthController::class, 'checkCode'])->name('front.check_code');

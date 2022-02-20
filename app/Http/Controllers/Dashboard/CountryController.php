@@ -25,6 +25,11 @@ class CountryController extends Controller
     public function store(CountryRequest $request)
     {
          $country= Country::create($request->all());
+        $name='name_' . app()->getLocale();
+        activity()
+            ->performedOn($country)
+            ->causedBy(auth()->guard('admin')->user())
+            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة دولة'.($country->$name));
         return redirect()->route('countries.index')->with('message', trans('messages.messages.added_successfully'));
     }
 
