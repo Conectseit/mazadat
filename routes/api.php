@@ -72,6 +72,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('get_options_of_category/{id}', [FilterController::class,'get_options_of_category']);
 
     //=========== auction ============
+    Route::post('add_auction', [AuctionController::class, 'add_auction']);
     Route::post('auction/{id}', [AuctionController::class, 'auction']);
     Route::get('success-payment', [PaymentController::class, 'successPayment']);
 

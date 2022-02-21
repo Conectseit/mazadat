@@ -325,6 +325,8 @@ return [
         'inspection_location_map' => 'inspection location map',
         'calculate_delivery_charge' => 'calculate delivery charge',
         'choose_location' => 'choose location',
+        'allowed_take_photo' => 'allowed take photo',
+
 
     ],
     'terms' => 'terms & conditions ',

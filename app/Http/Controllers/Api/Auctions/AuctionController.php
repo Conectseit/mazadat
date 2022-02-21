@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Auctions;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PARENT_API;
+use App\Http\Requests\Api\auction\AddAuctionRequest;
 use App\Http\Requests\Api\MakeBidRequest;
 use App\Http\Resources\Api\AuctionDetailsResource;
 use App\Http\Resources\Api\AuctionResource;
@@ -172,6 +173,67 @@ class AuctionController extends PARENT_API
         $auctionn->delete();
         return responseJson(true, trans('api.request_done_successfully'), null); //OK
     }
+
+
+
+
+
+
+
+
+    public function add_auction(AddAuctionRequest $request)
+    {
+//        dd($request->all());
+        DB::beginTransaction();
+        try {
+            $serial_number = '#' . random_int(00000, 99999);
+            //======= create auction =======
+            $request_data = $request->except(['inspection_report_images' . 'images']);
+
+            $auction = Auction::create($request_data + ['seller_id'=>auth()->user()->id,
+                    'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
+
+            //======= upload auction images =======
+            $data = [];
+            if ($request->hasfile('images')) {
+                foreach ($request->file('images') as $key => $img) {
+                    $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
+                }
+            }
+            $auction_images = DB::table('auction_images')->insert($data);
+
+            //======= upload auction inspection_report_images =======
+            $data = [];
+            if ($request->hasfile('inspection_report_images')) {
+                foreach ($request->file('inspection_report_images') as $key => $img) {
+                    $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
+                }
+            }
+            $auction_inspection_report_images = DB::table('inspection_images')->insert($data);
+
+            //======= upload auction options =======
+//            $auction_options = AuctionData::Create([
+//                'auction_id' => $auction->id,
+//                'option_id' => $request->option_id,
+//                'option_details_id' => $request->option_details_id,
+//            ]);
+
+
+            DB::commit();
+            return responseJson(true, trans('api.added_your_auction_successfully_wait_until_admin_accept_it'), null); //OK
+
+        } catch (Exception $e) {
+            DB::rollback();
+            return responseJson(false, $e->getMessage());
+        }
+
+    }
+
+
+
+
+
+
 
 
 

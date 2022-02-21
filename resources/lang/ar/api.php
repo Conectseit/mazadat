@@ -47,6 +47,9 @@ return [
     'there_is_no_auctions_on_this_category'         	=> ' لا يوجد مزادات في هذا القسم حتي الان',
 
 
+    'added_your_auction_successfully_wait_until_admin_accept_it'         	=> ' تم رفع مزادك بنجاح , انتظر حتي يتم قبوله من ادارة الموقع',
+
+
 
 
 

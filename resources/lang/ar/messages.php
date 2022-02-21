@@ -298,6 +298,8 @@ return [
 //    'person' => 'فرد',
 
 
+    'enter_name_ar' => 'ادخل اسم المزاد باللغة العربية',
+    'enter_name_en' => 'ادخل اسم المزاد باللغة الانجليزية',
 
 
 
@@ -395,6 +397,7 @@ return [
         'inspection_location_map' => 'موقع المزاد حاليا',
         'calculate_delivery_charge' => 'حساب اجمالي تكلفة الشحن',
         'choose_location' => 'اختر موقع توصيل المزاد',
+        'allowed_take_photo' => 'امكانية طلب التصوير للمزاد',
 
     ],
     'terms' => 'الشروط والاحكام  ',
@@ -503,7 +506,7 @@ return [
     'enter_mobile' => 'ادخل رقم الجوال : ',
     'enter_user_name' => 'ادخل  اسم المستخدم او الاسم المستعار : ',
     'register_your_account' => 'تسجيل حسابك',
-    'enter_password' => '  كلمة المرور',
+    'enter_password' => 'كلمة المرور',
     'confirm-password' => 'قم بتاكيد كلمة المرور',
     'sorry_invalid_email_or_password' => 'هناك خطأ في الايميل او كلمة المرور, من فضلك حاول مرة اخري ',
     'account_data' => 'بيانات حسابك',
