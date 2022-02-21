@@ -7,9 +7,11 @@ use App\Http\Controllers\PARENT_API;
 use App\Http\Requests\Api\AuctionsStatusRequest;
 use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Http\Resources\Api\CategoryResource;
+use App\Http\Resources\Api\CompaniesResource;
 use App\Models\Auction;
 use App\Models\Category;
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CategoryController extends PARENT_API
@@ -17,8 +19,12 @@ class CategoryController extends PARENT_API
     public function index()
     {
         $categories = Category::all();
-        return responseJson(true, trans('api.all_categories'), CategoryResource::collection($categories));  //OK don-successfully
+        if ($categories->count() > 0) {
+            return responseJson(true, trans('api.all_categories'), CategoryResource::collection($categories));  //OK don-successfully
+        }
+        return responseJson(false, trans('api.there_is_no_category_yet'), null);  //
     }
+
 
     public function categoryAuctions(Request $request, $id)
     {
@@ -57,5 +63,15 @@ class CategoryController extends PARENT_API
             return responseJson(false, trans('api.there_is_no_on_progress_auctions_on_this_category'), null);  //
         }
         return responseJson(false, trans('api.not_found_category'), null);  //
+    }
+
+
+    public function all_companies()
+    {
+        $companies = User::where('is_company','company')->get();
+        if ($companies->count() > 0) {
+            return responseJson(true, trans('api.all_companies'), CompaniesResource::collection($companies));  //OK don-successfully
+        }
+        return responseJson(false, trans('api.there_is_no_companies_yet'), null);
     }
 }

@@ -177,10 +177,6 @@ class AuctionController extends PARENT_API
 
 
 
-
-
-
-
     public function add_auction(AddAuctionRequest $request)
     {
 //        dd($request->all());
@@ -228,10 +224,6 @@ class AuctionController extends PARENT_API
         }
 
     }
-
-
-
-
 
 
 
