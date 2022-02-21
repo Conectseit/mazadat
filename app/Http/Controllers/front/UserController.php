@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Front\ComplteProfileRequest;
 use App\Http\Requests\Front\updatePersonalBioRequest;
 use App\Http\Requests\Front\updatePersonalImageRequest;
 use App\Http\Requests\Front\updateProfileRequest;
 use App\Http\Requests\Front\user\AvailableLimitRequest;
 use App\Http\Requests\Front\user\UploadDocumentRequest;
 use App\Http\Requests\Front\user\UploadPassportRequest;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Document;
+use App\Models\Nationality;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -20,10 +24,7 @@ class UserController extends Controller
         $data['user'] = User::where('id', auth()->user()->id)->first();
         return view('front.user.my_profile', $data);
     }
-    public function editProfile()
-    {
-        return view('front.user.edit_profile');
-    }
+
     public function user_documents()
     {
         return view('front.user.user_documents');
@@ -64,7 +65,24 @@ class UserController extends Controller
         return back()->with('success', trans('messages.upload_document_success'));
     }
 
-    public function update_personal_bio(updatePersonalBioRequest $request)
+//    public function update_personal_bio(updatePersonalBioRequest $request)
+//    {
+//        $user = auth()->user();
+//        $user->update($request->all());
+//        return back()->with('success', trans('messages.updated_success'));
+//    }
+
+
+
+
+    public function editProfile()
+    {
+        $data['nationalities'] = Nationality::all();
+        $data['cities'] = City::all();
+        $data['countries'] = Country::all();
+        return view('front.user.edit_profile',$data);
+    }
+    public function completeProfile(ComplteProfileRequest $request)
     {
         $user = auth()->user();
         $user->update($request->all());
@@ -78,6 +96,17 @@ class UserController extends Controller
         $user->update($request->all());
         return back()->with('success', trans('messages.updated_success'));
     }
+
+
+
+
+
+
+
+
+
+
+
     public function choose_available_limit(AvailableLimitRequest$request)
     {
         $user = auth()->user();

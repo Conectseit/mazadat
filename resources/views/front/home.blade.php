@@ -12,7 +12,7 @@
         <div class="container">
             <div class="row">
                 <div class="" >
-                    <a href="{{route('front.add_auction')}}" class="add-auction"><b><i class="icon-plus2"></i></b>{{ trans('messages.auction.add') }}</a>
+                    <a href="{{route('front.show_add_auction')}}" class="add-auction"><b><i class="icon-plus2"></i></b>{{ trans('messages.auction.add') }}</a>
                 </div>
             </div><br>
             <div class="row">

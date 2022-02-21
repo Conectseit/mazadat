@@ -159,7 +159,7 @@ class AuctionController extends Controller
 
     public function add_auction()
     {
-        return view('front.user.add_auction');
+        return view('front.auctions.add_auction');
     }
 
 

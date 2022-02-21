@@ -262,7 +262,6 @@ return [
         'activities' => 'نشاطات المشرفين',
         'description' => 'وصف النشاط',
         'admin_name' => 'اسم المشرف الذي قام بالنشاط',
-
     ],
 
     'user' => [
@@ -291,8 +290,10 @@ return [
         'latest_companies' => 'احدث المؤسسات المسجلة لدينا',
         'add_new_company' => 'اضافة مؤسسة جديد',
         'edit' => 'تعديل مؤسسة : ',
-
     ],
+
+    'please_complete_your_data' => 'من فضلك اكمل بيانات التسجيل',
+
 //    'company' => 'مؤسسة',
 //    'person' => 'فرد',
 

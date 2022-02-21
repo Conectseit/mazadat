@@ -6,7 +6,9 @@
 
 @section('content')
     <section class="my-profile-page">
+
         <div class="container">
+
             <div class="row">
                 <div class="col-lg-6">
                     <div class="slogan-right">
@@ -20,10 +22,10 @@
                                 <div class="info">
                                     <h4 class="name">{{auth()->user()->full_name }}</h4>
                                     <h5 class="email">{{Auth::guard('web')->user()->email}} </h5>
-                                    <p>
-                                        {{trans('messages.bio')}}:
-                                        {{auth()->user()->bio }}
-                                    </p>
+{{--                                    <p>--}}
+{{--                                        {{trans('messages.bio')}}:--}}
+{{--                                        {{auth()->user()->bio }}--}}
+{{--                                    </p>--}}
                                 </div>
                             </div>
                         </div>
