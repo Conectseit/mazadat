@@ -1,6 +1,6 @@
 
 <main class="categories-bar">
-{{--    @inject('categories', 'App\Models\Category')--}}
+    @inject('categories', 'App\Models\Category')
     <div class="container">
         <div class="owl-carousel categories-bar-carousel owl-theme">
 {{--            <div class="item">--}}
@@ -27,3 +27,4 @@
         </div>
     </div>
 </main>
+

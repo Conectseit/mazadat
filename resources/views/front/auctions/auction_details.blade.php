@@ -2,8 +2,142 @@
 @section('title', trans('messages.auction.auction_details'))
 @section('style')
     <style>
-        #map {height: 400px;}
-        #map1 {height: 400px;}
+        #map {
+            height: 400px;
+        }
+
+        #map1 {
+            height: 400px;
+        }
+
+        #countdown {
+            width: 356px;
+            height: 112px;
+            text-align: center;
+            background: #222;
+            background-image: -webkit-linear-gradient(top, #222, #333, #333, #222);
+            background-image: -moz-linear-gradient(top, #222, #333, #333, #222);
+            background-image: -ms-linear-gradient(top, #222, #333, #333, #222);
+            background-image: -o-linear-gradient(top, #222, #333, #333, #222);
+            border: 1px solid #111;
+            border-radius: 5px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+            margin: auto;
+            padding: 24px 0;
+            /*position: absolute;*/
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        #countdown:before {
+            content: "";
+            width: 8px;
+            height: 65px;
+            background: #444;
+            background-image: -webkit-linear-gradient(top, #555, #444, #444, #555);
+            background-image: -moz-linear-gradient(top, #555, #444, #444, #555);
+            background-image: -ms-linear-gradient(top, #555, #444, #444, #555);
+            background-image: -o-linear-gradient(top, #555, #444, #444, #555);
+            border: 1px solid #111;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+            display: block;
+            position: absolute;
+            top: 48px;
+            left: -10px;
+        }
+
+        #countdown:after {
+            content: "";
+            width: 8px;
+            height: 65px;
+            background: #444;
+            background-image: -webkit-linear-gradient(top, #555, #444, #444, #555);
+            background-image: -moz-linear-gradient(top, #555, #444, #444, #555);
+            background-image: -ms-linear-gradient(top, #555, #444, #444, #555);
+            background-image: -o-linear-gradient(top, #555, #444, #444, #555);
+            border: 1px solid #111;
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+            display: block;
+            position: absolute;
+            top: 48px;
+            right: -10px;
+        }
+
+        #countdown #tiles {
+            position: relative;
+            z-index: 1;
+        }
+
+        #countdown #tiles > span {
+            width: 53px;
+            max-width: 53px;
+            font: bold 48px 'Droid Sans', Arial, sans-serif;
+            text-align: center;
+            color: #111;
+            background-color: #ddd;
+            background-image: -webkit-linear-gradient(top, #bbb, #eee);
+            background-image: -moz-linear-gradient(top, #bbb, #eee);
+            background-image: -ms-linear-gradient(top, #bbb, #eee);
+            background-image: -o-linear-gradient(top, #bbb, #eee);
+            border-top: 1px solid #fff;
+            border-radius: 3px;
+            box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.7);
+            margin: 0 7px;
+            padding: 3px 0;
+            display: inline-block;
+            position: relative;
+        }
+
+        #countdown #tiles > span:before {
+            content: "";
+            width: 100%;
+            height: 13px;
+            background: #111;
+            display: block;
+            padding: 0 3px;
+            position: absolute;
+            top: 41%;
+            left: -3px;
+            z-index: -1;
+        }
+
+        #countdown #tiles > span:after {
+            content: "";
+            width: 100%;
+            height: 1px;
+            background: #eee;
+            border-top: 1px solid #333;
+            display: block;
+            position: absolute;
+            top: 48%;
+            left: 0;
+        }
+
+        #countdown .labels {
+            width: 100%;
+            height: 25px;
+            text-align: center;
+            position: absolute;
+            bottom: 8px;
+        }
+
+        #countdown .labels li {
+            width: 102px;
+            font: bold 15px 'Droid Sans', Arial, sans-serif;
+            color: #f47321;
+            text-shadow: 1px 1px 0px #000;
+            text-align: center;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        .carousel-item img {
+            height: 400px;
+        }
     </style>
 @endsection
 
@@ -25,6 +159,7 @@
                     <div class="col-lg-5" id="mainInfo">
                         <p class="start-date">
                             <i class="fal fa-calendar-alt"></i>
+
                             {{trans('messages.auction.start_at')}}
                             : {{ ($auction->start_date->format('l, m/d/Y  h:s') ) }}
                             {{--                            Start_at: {{ ($auction->start_date->format('l, m/d/Y  h:s') ) }}--}}
@@ -48,6 +183,7 @@
                             {{--                            </div>--}}
                         </div>
                     </div>
+
                     <div class="col-lg-2 d-flex align-items-center" id="bid">
                         <a href="#" class="bid-btn">Bid Now</a>
                     </div>
@@ -73,7 +209,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-9">
+                    <div class="col-lg-6">
 
                         <div class="details" id="details">
                             <h4>{{$auction->$name}}</h4>
@@ -82,8 +218,13 @@
                             <h6>{{trans('messages.auction.buyers_count')}}:{{ ($auction->count_of_buyer ) }}</h6>
                         </div>
                         <div class="details" id="details">
-                            <p> {{trans('messages.auction.remaining_time')}}:<i
-                                    class="fal fa-clock"></i> {{$auction->remaining_time}}</p>
+                            <p> {{trans('messages.auction.remaining_time')}}:<i class="fal fa-clock"></i></p>
+                            <div class="details" id="details">
+                                {{--                            <h4>التفاصيل</h4>--}}
+                                <p>{{$auction->remaining_time}}</p>
+
+                            </div>
+
                             {{--                            <h6>{{trans('messages.auction.remaining_time')}}:{{ ($auction->remaining_time ) }}</h6>--}}
                         </div>
                         <div class="description" id="description">
@@ -92,7 +233,9 @@
                         </div>
                         <div class="details" id="details">
                             {{--                            <h4>التفاصيل</h4>--}}
+
                         </div>
+
                         <br>
                         <div class="bid-details" id="bidDetails">
                             <form action="{{route('front.make_bid',$auction->id)}}" method="post">
@@ -131,7 +274,8 @@
                                                                 @endif
                                                             >
                                                         </a>
-                                                        <label class="form-check-label" for="accept-terms">قبول الشروط والاحكام</label>
+                                                        <label class="form-check-label" for="accept-terms">قبول الشروط
+                                                            والاحكام</label>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -165,6 +309,20 @@
                             </form>
                         </div>
                     </div>
+                    <div class="col-lg-3 my-auto">
+                        <h5 class="text-center mx-auto my-1">{{trans('messages.auction.remaining_time')}}
+                            :<i class="fal fa-clock"></i></h5>
+                        <div id="countdown">
+                            <div id='tiles'></div>
+                            <div class="labels">
+                                <li>Days</li>
+                                <li>Hours</li>
+                                <li>Mins</li>
+                                <li>Secs</li>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <hr>
 
@@ -172,7 +330,7 @@
                     <div class="terms">
                         <h4>{{ trans('messages.auction.images')}}:</h4>
                     </div>
-                    <div class="row" >
+                    <div class="row">
                         {{--                        @foreach($images as $image)--}}
                         {{--                            <div class="col-md-3 col-6">--}}
                         {{--                                <a href="{{$image->image_path}}" data-lightbox="roadtrip">--}}
@@ -183,92 +341,86 @@
                         {{--                            </div>--}}
                         {{--                        @endforeach--}}
 
-                        <div class="col-md-8 col-8">
-                            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" >
-                                <div class="carousel-indicators">
-{{--                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$auction->id}}"--}}
-{{--                                            class="active" aria-current="true" aria-label="Slide 1"></button>--}}
-                                    @foreach($images as $image)
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$image->id}}"
-                                                class="active" aria-current="true" aria-label="Slide 2"></button>
-                                    @endforeach
+                        <div class="col-md-10 col-10 mx-auto">
 
+                            <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel"
+                                 data-bs-interval="3000">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"
+                                            class="active"></button>
+                                    <button type="button" data-bs-target="#carouselExample"
+                                            data-bs-slide-to="1"></button>
+                                    <button type="button" data-bs-target="#carouselExample"
+                                            data-bs-slide-to="2"></button>
                                 </div>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <a href="{{$auction->first_image_path}}" >
-                                            <img src="{{$auction->first_image_path}}" class="d-block w-100" alt="...">
-                                        </a></div>
+                                        <img class="d-block w-100"
+                                             src="https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide1.jpg"
+                                             alt="First slide">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Social Facilities Center</h5>
+                                            <p>University Campus</p>
+                                        </div>
+                                    </div>
                                     @foreach($images as $image)
                                         <div class="carousel-item">
-                                            <a href="{{$image->image_path}}" >
-                                                <img src="{{$image->image_path}}" class="d-block w-100" alt="...">
+
+                                            <a href="{{$image->image_path}}" data-lightbox="roadtrip">
+
+                                                <img class="d-block w-100" src="{{$image->image_path}}" alt="image">
                                             </a>
+
+                                            {{--                                        <img class="d-block w-100" src="https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide3.jpg" alt="Third slide">--}}
+                                            {{--                                        <div class="carousel-caption d-none d-md-block">--}}
+                                            {{--                                            <h5>Faculty of Engineering</h5>--}}
+                                            {{--                                            <p>University Campus</p>--}}
+                                            {{--                                        </div>--}}
                                         </div>
                                     @endforeach
-
                                 </div>
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button"
+                                        data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <button class="carousel-control-next" data-bs-target="#carouselExample" type="button"
+                                        data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
                             </div>
-
                         </div>
-                    </div>
-                </div><hr>
 
+                    </div>
+                </div>
+
+                <hr>
                 <div class="more-imgs">
                     <div class="terms">
                         <h4>{{ trans('messages.auction.inspection_report_images')}}:</h4>
                     </div>
                     <div class="row">
                         @foreach($auction->inspectionimages as $image)
-                        <div class="col-md-3 col-6">
-                            <a href="{{$image->image_path}}">
-                                <div class="image">
-                                    <img src="{{$image->image_path}}" alt="image">
-                                </div>
-                            </a>
-                        </div>
+                            <div class="col-md-3 col-6">
+                                <a href="{{$image->image_path}}">
+                                    <div class="image">
+                                        <img src="{{$image->image_path}}" alt="image">
+                                    </div>
+                                </a>
+                            </div>
                         @endforeach
                     </div>
                 </div>
                 <hr>
-
                 <div class="terms">
                     <h4>{{ trans('messages.auction.terms')}}:</h4>
                     <p>
                         {{$auction->$auction_terms}}
                     </p>
                 </div>
-
-
-                {{--<hr><br><br>--}}
-
-
-                {{--                <div class="terms">--}}
-                {{--                    <h4>{{ trans('messages.auction.inspection_location_map')}}:</h4>--}}
-                {{--                    <div class="form-group">--}}
-                {{--                        <div class="col-lg-12">--}}
-                {{--                            <input id="searchInput" class=" form-control"  placeholder=" اختر المكان علي الخريطة " name="other">--}}
-                {{--                            <div id="map1"></div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="col-lg-6">--}}
-                {{--                            <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control hidden d-none">--}}
-                {{--                        </div>--}}
-                {{--                        <div class="col-lg-6">--}}
-                {{--                            <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control hidden d-none">--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
                 <hr>
+
 
                 <div class="terms">
                     <h4>{{ trans('messages.auction.calculate_delivery_charge')}}:</h4>
@@ -292,13 +444,37 @@
 
                 </div>
             </div>
+
+
+            {{--<hr><br><br>--}}
+
+
+            {{--                <div class="terms">--}}
+            {{--                    <h4>{{ trans('messages.auction.inspection_location_map')}}:</h4>--}}
+            {{--                    <div class="form-group">--}}
+            {{--                        <div class="col-lg-12">--}}
+            {{--                            <input id="searchInput" class=" form-control"  placeholder=" اختر المكان علي الخريطة " name="other">--}}
+            {{--                            <div id="map1"></div>--}}
+            {{--                        </div>--}}
+            {{--                        <div class="col-lg-6">--}}
+            {{--                            <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control hidden d-none">--}}
+            {{--                        </div>--}}
+            {{--                        <div class="col-lg-6">--}}
+            {{--                            <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control hidden d-none">--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+
+            {{--            </div>--}}
         </section>
     </div>
 @stop
-
+{{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>--}}
 @push('scripts')
     @include('Dashboard.layouts.parts.map')
     @include('front.auctions.ajax')
+    @include('front.auctions.counter')
+
 @endpush
 
 
@@ -348,4 +524,44 @@
 {{--            </div>--}}
 {{--        </div>--}}
 {{--    </div>--}}
+{{--</div>--}}
+
+
+{{--slider--}}
+
+
+{{--<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" >--}}
+{{--    <div class="carousel-indicators">--}}
+{{--        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$auction->id}}"--}}
+{{--                class="active" aria-current="true" aria-label="Slide 1"></button>--}}
+{{--        @foreach($images as $image)--}}
+{{--            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$image->id}}"--}}
+{{--                    class="active" aria-current="true" aria-label="Slide 2"></button>--}}
+{{--        @endforeach--}}
+
+{{--    </div>--}}
+{{--    <div class="carousel-inner">--}}
+{{--        <div class="carousel-item active">--}}
+{{--            <a href="{{$auction->first_image_path}}" >--}}
+{{--                <img src="{{$auction->first_image_path}}" class="d-block w-100" alt="...">--}}
+{{--            </a></div>--}}
+{{--        @foreach($images as $image)--}}
+{{--            <div class="carousel-item">--}}
+{{--                <a href="{{$image->image_path}}" >--}}
+{{--                    <img src="{{$image->image_path}}" class="d-block w-100" alt="...">--}}
+{{--                </a>--}}
+{{--            </div>--}}
+{{--        @endforeach--}}
+
+{{--    </div>--}}
+{{--    <button class="carousel-control-prev" type="button"--}}
+{{--            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">--}}
+{{--        <span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
+{{--        <span class="visually-hidden">Previous</span>--}}
+{{--    </button>--}}
+{{--    <button class="carousel-control-next" type="button"--}}
+{{--            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">--}}
+{{--        <span class="carousel-control-next-icon" aria-hidden="true"></span>--}}
+{{--        <span class="visually-hidden">Next</span>--}}
+{{--    </button>--}}
 {{--</div>--}}

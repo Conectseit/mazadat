@@ -66,6 +66,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('all_categories', [CategoryController::class, 'index']);
     Route::post('category/{id}/auctions', [CategoryController::class, 'categoryAuctions']);
     Route::any('all_companies', [CategoryController::class, 'all_companies']);
+    Route::any('company/{id}/auctions', [CategoryController::class, 'companyAuctions']);
 
 
     //=========== filter category ===========

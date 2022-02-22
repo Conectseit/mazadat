@@ -285,6 +285,7 @@ return [
         'image' => 'شعار المؤسسة',
         'company_data' => 'بيانات المؤسسة',
         'company_auctions' => 'مزادات المؤسسة',
+        'companies_auctions' => 'مزادات الشركات',
         'company_authorization_image' => 'صورة التفويض من المؤسسة',
         'location' => 'موقع المؤسسة',
         'latest_companies' => 'احدث المؤسسات المسجلة لدينا',
