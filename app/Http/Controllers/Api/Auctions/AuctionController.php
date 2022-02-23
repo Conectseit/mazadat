@@ -48,20 +48,20 @@ class AuctionController extends PARENT_API
 
     public function watched_auctions(Request $request)
     {
-        $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
+//        $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
         $auctions = $request->user()->auctions;
 
 //   =========== for appear ended auctions
         if ($request->status == 'done') {
-            if ($appearance_of_ended_auctions == 'yes') {
+//            if ($appearance_of_ended_auctions == 'yes') {
                 if ($auctions->where('status', 'done')->count() > 0) {
                     return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'done')));  //OK
                 } else {
                     return responseJson(false, trans('api.there_is_done_auctions'), null);  //OK
                 }
-            } else {
-                return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
-            }
+//            } else {
+//                return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
+//            }
 // ==================================
         }
         if ($auctions->where('status', 'on_progress')->count() > 0) {
@@ -138,20 +138,20 @@ class AuctionController extends PARENT_API
 
     public function my_bids(Request $request)
     {
-        $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
+//        $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
         $auctions = $request->user()->bidauctions;
 
 //   =========== for appear ended auctions
         if ($request->status == 'done') {
-            if ($appearance_of_ended_auctions == 'yes') {
+//            if ($appearance_of_ended_auctions == 'yes') {
                 if ($auctions->where('status', 'done')->count() > 0) {
                     return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'done')));  //OK
                 } else {
                     return responseJson(false, trans('api.there_is_done_auctions'), null);  //OK
                 }
-            } else {
-                return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
-            }
+//            } else {
+//                return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
+//            }
 // ==================================
         }
         if ($auctions->where('status', 'on_progress')->count() > 0) {
@@ -162,6 +162,8 @@ class AuctionController extends PARENT_API
 
 //        return responseJson(true, trans('api.auction_details'),  CategoryAuctionsResource::collection($auctions->where('status','on_progress')));  //OK
     }
+
+
 
 
 

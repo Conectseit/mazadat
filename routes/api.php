@@ -54,15 +54,13 @@ Route::group(['namespace' => 'Api'], function () {
 
 
     //=========== general ============
-//    Route::get('cities', [CityController::class, 'cities']);
-
     Route::get('countries', [CountryController::class, 'countries']);
     Route::get('nationalities', [NationalityController::class, 'nationalities']);
     Route::get('about_app', [SettingController::class, 'about_app']);
     Route::get('conditions_terms', [SettingController::class, 'conditions_terms']);
     Route::get('contact_us_number', [SettingController::class, 'contact_us_number']);
 
-    //=========== category ===========
+    //===========  hoooome category ===========
     Route::get('all_categories', [CategoryController::class, 'index']);
     Route::post('category/{id}/auctions', [CategoryController::class, 'categoryAuctions']);
     Route::any('all_companies', [CategoryController::class, 'all_companies']);
@@ -75,33 +73,30 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('get_options_of_category/{id}', [FilterController::class,'get_options_of_category']);
 
     //=========== auction ============
-    Route::post('add_auction', [AuctionController::class, 'add_auction']);
     Route::post('auction/{id}', [AuctionController::class, 'auction']);
     Route::get('success-payment', [PaymentController::class, 'successPayment']);
 
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::post('auth_contact', [QuestionController::class, 'auth_contact']);
+        Route::post('add_auction', [AuctionController::class, 'add_auction']);
+        Route::post('my_auctions', [UserController::class, 'my_auctions']); // مزاداتي
+
 
         //=========== Person_profile ============
         Route::get('person_profile', [PersonController::class, 'person_profile']);
         Route::post('update_person_profile', [PersonController::class, 'update_person_profile']);
         Route::post('complete_person_profile', [PersonController::class, 'completePersonProfile']);
-//        Route::post('update_personal_image', [AuthController::class, 'update_personal_image']);
         Route::post('cities_by_country_id', [CityController::class, 'cities_by_country_id']);
 
         //=========== Company_profile ============
         Route::get('company_profile', [CompanyController::class, 'company_profile']);
         Route::post('update_company_profile', [CompanyController::class, 'update_company_profile']);
-//        Route::post('complete_company_profile', [CompanyController::class, 'complete_company_Profile']);
 
 
-        Route::post('add_additional_contact', [AuthController::class, 'add_additional_contact']);
         Route::post('change_password', [AuthController::class, 'changePassword']);
-        Route::post('add_traffic_file_number', [UserController::class, 'add_traffic_file_number']);
-        Route::post('upload_passport', [UserController::class, 'upload_passport']);
-        Route::post('add_document', [UserController::class, 'add_document']);
-        Route::get('my_document', [UserController::class, 'my_document']);
-        Route::get('my_passport', [UserController::class, 'my_passport']);
+
+
+
 
 
 
@@ -134,7 +129,17 @@ Route::group(['namespace' => 'Api'], function () {
 
 
 
+//        Route::get('cities', [CityController::class, 'cities']);
+//        Route::post('add_traffic_file_number', [UserController::class, 'add_traffic_file_number']);
+//        Route::post('upload_passport', [UserController::class, 'upload_passport']);
+//        Route::post('add_document', [UserController::class, 'add_document']);
+//        Route::get('my_document', [UserController::class, 'my_document']);
+//        Route::get('my_passport', [UserController::class, 'my_passport']);
+//        Route::post('update_personal_image', [AuthController::class, 'update_personal_image']);
 
+//        Route::post('complete_company_profile', [CompanyController::class, 'complete_company_Profile']);
+
+//Route::post('add_additional_contact', [AuthController::class, 'add_additional_contact']);
 
 
 

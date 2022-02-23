@@ -21,7 +21,7 @@ class FilterController extends PARENT_API
 {
     public function main_filter(Request $request, $id)
     {
-        $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
+//        $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
 //        $name = 'name_' . app()->getLocale();
         $query = Auction::query();
 
