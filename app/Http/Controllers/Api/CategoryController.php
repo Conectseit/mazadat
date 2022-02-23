@@ -90,7 +90,7 @@ class CategoryController extends PARENT_API
                     $company_auctions = $query->where('seller_id', $id)->where('status', 'done')->get();
 
                     if ($company_auctions->count() > 0) {
-                        $data['data'] =[
+                        $data =[
                             'company_name'=> $company_data->user_name,
                             'company_logo'=> $company_data->image_path,
                             'company_auctions' => CompanyAuctionsResource::collection($company_auctions),
@@ -109,7 +109,7 @@ class CategoryController extends PARENT_API
 
             if ($company_auctions->count() > 0) {
 
-                $data['data'] =[
+                $data =[
                     'company_name'=> $company_data->user_name,
                     'company_logo'=> $company_data->image_path,
                     'company_auctions' => CompanyAuctionsResource::collection($company_auctions),
