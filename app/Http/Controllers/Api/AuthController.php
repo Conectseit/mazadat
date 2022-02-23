@@ -78,44 +78,6 @@ class AuthController extends PARENT_API
 
 
 
-
-
-
-//
-//    public function update_personal_image(UpdatePersonalImageRequest $request)
-//    {
-//        $request_data = $request->except(['image']);
-//        if ($request->image) {
-//            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
-//        }
-//        $user = $request->user();
-//        if (!$user) {
-//            return responseJson(false, 'The user has been found but it is not a buyer...', null); //
-//        }
-//        $user->update($request_data);
-//
-//        return responseJson(true, trans('api.request_done_successfully'), new AuthResource($user)); //ACCEPTED
-//    }
-
-
-    public function add_additional_contact(AdditionalContactRequest $request)
-    {
-        $user = auth()->user();
-        if (!$user) {
-            return responseJson(false, 'The user has been found but it is not a buyer...', null); //BAD_REQUEST
-        }
-        $request_data = $request->all();
-        if($request_data!=null){
-            $additional_contact = AdditionalUserContact::create($request_data + ['user_id' => $user->id]);
-            return responseJson(true, trans('api.added_successfully'), $additional_contact); //ACCEPTED
-        }
-        else
-            return responseJson(false, trans('api.no_document_added'), null); //ACCEPTED
-
-//        $request_data['user_id'] = auth()->user()->id;
-    }
-
-
     public function changePassword(ChangePasswordRequest $request)
     {
         if (auth()->check()) {
@@ -129,7 +91,7 @@ class AuthController extends PARENT_API
         }
     }
 
-
+// ====================== forget_password ============================
     public function forget_password(ForgetPasswordRequest $request)
     {
         $token = $this->generateRandomString(5);
@@ -192,3 +154,46 @@ class AuthController extends PARENT_API
 
 
 }
+
+
+
+
+
+
+
+//
+//    public function update_personal_image(UpdatePersonalImageRequest $request)
+//    {
+//        $request_data = $request->except(['image']);
+//        if ($request->image) {
+//            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
+//        }
+//        $user = $request->user();
+//        if (!$user) {
+//            return responseJson(false, 'The user has been found but it is not a buyer...', null); //
+//        }
+//        $user->update($request_data);
+//
+//        return responseJson(true, trans('api.request_done_successfully'), new AuthResource($user)); //ACCEPTED
+//    }
+
+
+
+
+
+//public function add_additional_contact(AdditionalContactRequest $request)
+//{
+//    $user = auth()->user();
+//    if (!$user) {
+//        return responseJson(false, 'The user has been found but it is not a buyer...', null); //BAD_REQUEST
+//    }
+//    $request_data = $request->all();
+//    if($request_data!=null){
+//        $additional_contact = AdditionalUserContact::create($request_data + ['user_id' => $user->id]);
+//        return responseJson(true, trans('api.added_successfully'), $additional_contact); //ACCEPTED
+//    }
+//    else
+//        return responseJson(false, trans('api.no_document_added'), null); //ACCEPTED
+//
+////        $request_data['user_id'] = auth()->user()->id;
+//}

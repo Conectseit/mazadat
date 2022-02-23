@@ -7,13 +7,9 @@ use App\Http\Controllers\PARENT_API;
 use App\Http\Requests\Api\auction\AddAuctionRequest;
 use App\Http\Requests\Api\MakeBidRequest;
 use App\Http\Resources\Api\AuctionDetailsResource;
-use App\Http\Resources\Api\AuctionResource;
 use App\Http\Resources\Api\CategoryAuctionsResource;
-use App\Http\Resources\Api\UserAuctionsResource;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
-use App\Models\Setting;
-use App\Models\User;
 use App\Models\WatchedAuction;
 use Exception;
 use Illuminate\Http\Request;
@@ -181,7 +177,6 @@ class AuctionController extends PARENT_API
 
     public function add_auction(AddAuctionRequest $request)
     {
-//        dd($request->all());
         DB::beginTransaction();
         try {
             $serial_number = '#' . random_int(00000, 99999);

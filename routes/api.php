@@ -66,21 +66,23 @@ Route::group(['namespace' => 'Api'], function () {
     Route::any('all_companies', [CategoryController::class, 'all_companies']);
     Route::any('company/{id}/auctions', [CategoryController::class, 'companyAuctions']);
 
+    //=========== auction ============
+    Route::post('auction/{id}', [AuctionController::class, 'auction']);
 
     //=========== filter category ===========
     Route::post('main_filter_category/{id}/auctions', [FilterController::class,'main_filter']);
     Route::post('filter_category/{id}/auctions', [FilterController::class,'filterCategory']);
     Route::post('get_options_of_category/{id}', [FilterController::class,'get_options_of_category']);
 
-    //=========== auction ============
-    Route::post('auction/{id}', [AuctionController::class, 'auction']);
+
+
     Route::get('success-payment', [PaymentController::class, 'successPayment']);
 
+
+
+// ========================== for authentication ============================
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::post('auth_contact', [QuestionController::class, 'auth_contact']);
-        Route::post('add_auction', [AuctionController::class, 'add_auction']);
-        Route::post('my_auctions', [UserController::class, 'my_auctions']); // مزاداتي
-
 
         //=========== Person_profile ============
         Route::get('person_profile', [PersonController::class, 'person_profile']);
@@ -96,13 +98,12 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('change_password', [AuthController::class, 'changePassword']);
 
 
-
-
-
-
         // =========== auctions ============
         Route::post('watched_auctions', [AuctionController::class, 'watched_auctions']);
         Route::post('make_auction/{id}/watch', [AuctionController::class, 'watch_auction']);
+
+        Route::post('add_auction', [AuctionController::class, 'add_auction']);
+        Route::post('my_auctions', [UserController::class, 'my_auctions']); // مزاداتي
 
         // =========== bids ============
         Route::get('my_bids', [AuctionController::class, 'my_bids']);
@@ -139,7 +140,7 @@ Route::group(['namespace' => 'Api'], function () {
 
 //        Route::post('complete_company_profile', [CompanyController::class, 'complete_company_Profile']);
 
-//Route::post('add_additional_contact', [AuthController::class, 'add_additional_contact']);
+//        Route::post('add_additional_contact', [AuthController::class, 'add_additional_contact']);
 
 
 

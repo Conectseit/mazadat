@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Http;
 
 class PaymentController extends PARENT_API
 {
-
+// الايباع البنكي =======================
     public function upload_payment_receipt(UploadPaymentReceiptRequest $request)
     {
         $request_data = $request->except(['image']);

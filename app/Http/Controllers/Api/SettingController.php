@@ -63,6 +63,8 @@ class SettingController extends PARENT_API
         }
         return responseJson(false, trans('api.Page_not_found'),null);//NOT_FOUND
     }
+
+
     public function bank()
     {
         if ($bank = Setting::all())

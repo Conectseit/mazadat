@@ -81,13 +81,22 @@ class PersonController extends Controller
     public function completePersonProfile(CompletePersonProfileRequest $request)
     {
 
+        $request_data = $request->except(['passport_image']);
+        if ($request->mobile) {
+            $request_data['mobile'] =$request->phone_code. $request->mobile ;
+        }
+        if ($request->passport_image) {
+            $request_data['passport_image']  = uploaded($request->passport_image, 'user');
+        }
+
         $user = $request->user();
         if (!$user) {
             return responseJson(false, 'The user not found...', null); //
         }
-        $user->update($request->all()+['is_completed'=>1]);
+        $user->update($request_data);
+//        $user->update($request_data+['is_completed'=>1]);
 //        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));
-        return responseJson(true, trans('api.request_done_successfully'), new PersonResource($user)); //ACCEPTED
+        return responseJson(true, trans('api.request_done_successfully_wait_until_admin_accept_you'), new PersonResource($user)); //ACCEPTED
     }
 
 }

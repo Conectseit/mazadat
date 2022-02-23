@@ -17,25 +17,36 @@ class AuthResource extends JsonResource
 //        return parent::toArray($request);
         $name = 'name_' . app()->getLocale();
         return [
-//            'type'                => $this->type,
-            'is_company'          => $this->is_company,
-//            'nationality'         => $this->nationality->$name,
-//            'nationality_id'      => $this->nationality->id,
-//            'city'                => $this->city->$name,
-//            'city_id'             => $this->city->id,
-            'first_name'          => $this->first_name,
-            'middle_name'          => $this->middle_name,
-            'last_name'          => $this->last_name,
+//            'first_name'          => $this->first_name,
+//            'middle_name'         => $this->middle_name,
+//            'last_name'           => $this->last_name,
+//
+//            'latitude'                     => isset($this->latitude)?$this->latitude:null,
+//            'longitude'                    => isset($this->longitude)?$this->longitude:null,
+//            'commercial_register_image'    => isset($this->commercial_register_image_path)?$this->commercial_register_image_path:null,
+//            'company_authorization_image'  => isset($this->company_authorization_image_path)?$this->company_authorization_image_path:null,
+
+            'image'               => $this->image_path,
             'user_name'           => $this->user_name ,
             'email'               => $this->email,
-            'mobile'              => $this->mobile,
-//            'bio'                 => $this->bio,
-//            'P_O_Box'             => $this->P_O_Box,
-            'image'               => $this->image_path,
-            'commercial_register_image' => $this->commercial_register_image_path,
-            'is_completed'         => $this->is_completed,
+            'mobile'              => ltrim($this->mobile,$this->country->phone_code),
+            'is_company'          => $this->is_company,
+            'is_completed'        => $this->is_completed,
+            'is_active'           => $this->is_active,
             'token'               => $this->token->jwt,
+
         ];
 
     }
 }
+
+
+
+//            'mobile'              => $this->mobile,
+//            'type'                => $this->type,
+//            'nationality'         => $this->nationality->$name,
+//            'nationality_id'      => $this->nationality->id,
+//            'city'                => $this->city->$name,
+//            'city_id'             => $this->city->id,
+//            'bio'                 => $this->bio,
+//            'P_O_Box'             => $this->P_O_Box,
