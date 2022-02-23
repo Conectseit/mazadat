@@ -34,7 +34,15 @@ class AddIsComplatedToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('fcm_web_token');
+            $table->dropColumn('ban');
+            $table->dropColumn('unique_company');
+            $table->dropColumn('company_authorization_image');
+            $table->dropColumn('is_completed');
+            $table->dropColumn('block');
+            $table->dropColumn('street');
+            $table->dropColumn('block_num');
+            $table->dropColumn('signs');
+            $table->dropColumn('delivery_time');
 
         });
     }

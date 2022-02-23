@@ -29,7 +29,10 @@ class AddLatitudeToAuctionsTable extends Migration
     public function down()
     {
         Schema::table('auctions', function (Blueprint $table) {
-            //
+            $table->dropColumn('latitude');
+            $table->dropColumn('longitude');
+            $table->dropColumn('allowed_take_photo');
+
         });
     }
 }

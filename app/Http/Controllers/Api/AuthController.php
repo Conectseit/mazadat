@@ -51,21 +51,42 @@ class AuthController extends PARENT_API
     public function login(LoginRequest $request)
     {
         try {
-            if (!$token = JWTAuth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $col = self::is_email($request->email) ? 'email' : 'user_name';
+
+            if (!$token = JWTAuth::attempt([$col => $request->email, 'password' => $request->password])) {
                 return responseJson(false, trans('api.sorry_invalid_email_or_password'), null);
             }
             $user = auth()->user();
+            if ($user->ban == 1) {
+                return responseJson(false, trans('api.sorry_your_account_is_baned_from_admin_contact_with_customer_service_team'), null);
+            }
             if ($user->is_active == 'deactive') {
                 return responseJson(false, trans('api.please_active_your_account_by_activation_code_first'), null);
             }
             if ($user->is_accepted == 0) {
-                return responseJson(false, trans('api.please_wait_your_account_not_activated_yet'), null);
+                return responseJson(false, trans('api.please_wait_until_admin_accept_your_data_yet'), null);
             }
+
+//            if ($user->is_completed == 0) {
+//                return responseJson(false, trans('api.please_complete_your_account_first'), null);
+//            }
+
+//
+//            if ($user->is_verified == 0) {
+//                return responseJson(false, trans('api.please_wait_your_account_not_verified_to_participate_yet'), null);
+//            }
+
             auth()->user()->token->update(['jwt' => $token,'fcm'=>$request->fcm]);
             return responseJson(true, trans('api.login_successfully'), new AuthResource(auth()->user()));  //OK
         } catch (\Exception $e) {
             return responseJson('500', $e->getMessage(), null);
         }
+    }
+
+    public function is_email($value)
+    {
+//        return preg_match('/^([a-zA-Z0-9_.]*)@.*\.com$/i', $value);
+        return preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i', $value);
     }
 
 

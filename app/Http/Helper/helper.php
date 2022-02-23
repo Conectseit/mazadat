@@ -17,6 +17,13 @@ function is_watched_auction($id)
     return false;
 }
 
+
+// function is_email($value)
+//{
+////        return preg_match('/^([a-zA-Z0-9_.]*)@.*\.com$/i', $value);
+//    return preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i', $value);
+//}
+
 function checkIsUserWatch($auction)
 {
     return DB::table('watched_auctions')->where(['user_id' => auth()->id(), 'auction_id' => $auction->id]);

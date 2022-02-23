@@ -34,7 +34,7 @@ class CompanyController extends Controller
                 $request_data['mobile'] =$request->phone_code. $request->mobile ;
             }
 
-            $user = User::create($request_data + ['activation_code' => $activation_code,'type'=>'buyer','is_appear_name'=>1,'is_company'=>'company']);
+            $user = User::create($request_data + ['activation_code' => $activation_code,'type'=>'buyer','is_appear_name'=>1,'is_company'=>'company','accept_app_terms'=>'yes']);
 
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
@@ -84,6 +84,9 @@ class CompanyController extends Controller
 //        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));
         return responseJson(true, trans('api.request_done_successfully'), new CompanyResource($user)); //ACCEPTED
     }
+
+
+
 
 
 //    public function complete_company_Profile(CompletePersonProfileRequest $request)

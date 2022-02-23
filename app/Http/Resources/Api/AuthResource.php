@@ -33,6 +33,9 @@ class AuthResource extends JsonResource
             'is_company'          => $this->is_company,
             'is_completed'        => $this->is_completed,
             'is_active'           => $this->is_active,
+            'is_accepted'         => $this->is_accepted,
+            'is_verified'         => $this->is_verified,
+            'ban'                 => $this->ban,
             'token'               => $this->token->jwt,
 
         ];

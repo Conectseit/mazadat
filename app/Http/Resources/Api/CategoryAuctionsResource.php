@@ -18,7 +18,7 @@ class CategoryAuctionsResource extends JsonResource
         return [
             'id'                          => $this->id,
             'serial_number'               => $this->serial_number,
-            'name_ar'                     => $this->$name,
+            'name'                        => $this->$name,
             'image'                       => $this->first_image_path,
             'count_of_buyer'              => $this->count_of_buyer,
             'start_auction_price'         => $this->start_auction_price,

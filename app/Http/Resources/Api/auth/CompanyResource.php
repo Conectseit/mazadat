@@ -20,6 +20,10 @@ class CompanyResource extends JsonResource
 //            'type'                => $this->type,
             'is_company'                  => $this->is_company,
             'is_completed'                => $this->is_completed,
+//            'is_active'                   => $this->is_active,
+//            'is_accepted'                 => $this->is_accepted,
+//            'is_verified'                 => $this->is_verified,
+//            'ban'                         => $this->ban,
 
             'commercial_register_image'   => $this->commercial_register_image_path,
             'company_authorization_image' => $this->company_authorization_image_path,
@@ -37,14 +41,15 @@ class CompanyResource extends JsonResource
             'country_id'              => isset($this->country)?$this->country->id:null,
             'city_name'               => isset($this->city)?$this->city->$name:null,
             'city_id'                 => isset($this->city)?$this->city->id:null,
-//            'block'                   => $this->block,
-//            'street'                  => $this->street,
-//            'block_num'               => $this->block_num,
-//            'delivery_time'           => $this->delivery_time,
-//            'signs'                   => $this->signs,
             'P_O_Box'                 => $this->P_O_Box,
 
         ];
 
     }
 }
+
+//            'block'                   => $this->block,
+//            'street'                  => $this->street,
+//            'block_num'               => $this->block_num,
+//            'delivery_time'           => $this->delivery_time,
+//            'signs'                   => $this->signs,
