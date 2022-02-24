@@ -61,6 +61,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('contact_us_number', [SettingController::class, 'contact_us_number']);
 
     //===========  hoooome category ===========
+    Route::get('all_advertisements', [AdvertisementController::class, 'index']);
     Route::get('all_categories', [CategoryController::class, 'index']);
     Route::post('category/{id}/auctions', [CategoryController::class, 'categoryAuctions']);
     Route::any('all_companies', [CategoryController::class, 'all_companies']);

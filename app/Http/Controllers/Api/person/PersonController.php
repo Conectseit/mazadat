@@ -52,8 +52,13 @@ class PersonController extends Controller
     public function person_profile()
     {
         $user = auth()->user();
+
+
         if (!$user) {
             return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
+        }
+        if ($user->ban == 1) {
+            return responseJson(true, trans('api.user_profile'), new PersonResource($user));  //OK
         }
         return responseJson(true, trans('api.user_profile'), new PersonResource($user));  //OK
     }

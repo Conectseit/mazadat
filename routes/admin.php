@@ -2,6 +2,7 @@
 //
 //use App\Http\Controllers\Dashboard\ActivityController;
 //use App\Http\Controllers\Dashboard\AdminController;
+//use App\Http\Controllers\Dashboard\AdvertisementController;
 //use App\Http\Controllers\Dashboard\AuctionDataController;
 //use App\Http\Controllers\Dashboard\CompanyController;
 //use App\Http\Controllers\Dashboard\CountryController;
@@ -70,15 +71,12 @@
 //                    'admins'         => AdminController::class,
 //                    'activities'     => ActivityController::class,
 //                    'transactions'   => TransactionController::class,
-////                'settings'     => SettingsController::class,
-//////               'sellers'        => SellerController::class,
-////                 'buyers'         => BuyerController::class,
+//                    'advertisements' => AdvertisementController::class,
+//
 //                ]);
 //
 //                Route::post('/ajax-delete-person', [PersonController::class, 'destroy'])->name('ajax-delete-person');
 //                Route::post('/ajax-delete-company', [CompanyController::class, 'destroy'])->name('ajax-delete-company');
-////                Route::post('/ajax-delete-seller', [SellerController::class, 'destroy'])->name('ajax-delete-seller');
-////                Route::post('/ajax-delete-buyer', [BuyerController::class, 'destroy'])->name('ajax-delete-buyer');
 //                Route::post('/ajax-delete-category', [CategoryController::class, 'destroy'])->name('ajax-delete-category');
 //                Route::post('/ajax-delete-option', [OptionController::class, 'destroy'])->name('ajax-delete-option');
 //                Route::post('/ajax-delete-option_detail', [OptionDetailController::class, 'destroy'])->name('ajax-delete-option_detail');
@@ -94,17 +92,13 @@
 //                Route::post('/ajax-delete-contact', [ContactController::class, 'destroy'])->name('ajax-delete-contact');
 //                Route::post('/ajax-delete-question', [QuestionController::class, 'destroy'])->name('ajax-delete-question');
 //                Route::post('/ajax-delete-transaction', [TransactionController::class, 'destroy'])->name('ajax-delete-transaction');
+//                Route::post('/ajax-delete-advertisement', [AdvertisementController::class, 'destroy'])->name('ajax-delete-advertisement');
 //
 //                Route::get('company/{id?}/accept', [CompanyController::class, 'accept'])->name('company/accept');
 //                Route::get('company/{id?}/not_accept', [CompanyController::class, 'not_accept'])->name('company/not_accept');
 //
 //                Route::get('person/{id?}/ban', [PersonController::class, 'ban'])->name('person/ban');
 //                Route::get('person/{id?}/not_ban', [PersonController::class, 'not_ban'])->name('person/not_ban');
-//
-//
-//
-////                Route::get('seller/{id?}/accept', [SellerController::class, 'accept'])->name('seller/accept');
-////                Route::get('seller/{id?}/not_accept', [SellerController::class, 'not_accept'])->name('seller/not_accept');
 //
 //
 //                Route::get('transaction/{id?}/accept', [TransactionController::class, 'accept'])->name('transaction/accept');
@@ -130,3 +124,15 @@
 //    return  view('Dashboard.layouts.master');
 //
 //});
+//
+//
+//
+////                'settings'     => SettingsController::class,
+//////               'sellers'        => SellerController::class,
+////                 'buyers'         => BuyerController::class,
+//
+////                Route::get('seller/{id?}/accept', [SellerController::class, 'accept'])->name('seller/accept');
+////                Route::get('seller/{id?}/not_accept', [SellerController::class, 'not_accept'])->name('seller/not_accept');
+//
+////                Route::post('/ajax-delete-seller', [SellerController::class, 'destroy'])->name('ajax-delete-seller');
+////                Route::post('/ajax-delete-buyer', [BuyerController::class, 'destroy'])->name('ajax-delete-buyer');

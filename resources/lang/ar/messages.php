@@ -264,6 +264,15 @@ return [
         'admin_name' => 'اسم المشرف الذي قام بالنشاط',
     ],
 
+    'advertisement' => [
+        'advertisement' => 'اعلان',
+        'advertisements' => 'الاعلانات',
+        'last_advertisements' => 'اخر الاعلانات المضافة',
+        'add' => 'اضافة اعلان جديد',
+        'edit' => 'تعديل اعلان ',
+
+    ],
+
     'user' => [
         'user' => 'عميل',
         'users' => 'العملاء/ المستخدمين',

@@ -51,6 +51,14 @@
         </ul>
     </li>
 
+    <li>
+        <a href="#"><i class="icon-archive"></i> <span> {{ trans('messages.advertisement.advertisements') }} </span></a>
+        <ul>
+            <li><a href="{{route('advertisements.index')}}">{{ trans('messages.all') }}</a></li>
+            <li><a href="{{route('advertisements.create')}}"> {{ trans('messages.add') }}</a></li>
+        </ul>
+    </li>
+
 {{--    <li>--}}
 {{--        <a href="#"><i class="icon-archive"></i> <span> {{ trans('messages.option.options') }} </span></a>--}}
 {{--        <ul>--}}
