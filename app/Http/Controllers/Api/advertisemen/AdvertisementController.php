@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class AdvertisementController extends Controller
 {
-    public function advertisements()
+    public function index()
     {
         $advertisements = Advertisement::all();
         return responseJson(true, trans('api.all_advertisements'),AdvertisementResource::collection($advertisements) );  //OK don-successfully

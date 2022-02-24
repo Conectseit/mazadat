@@ -43,6 +43,8 @@ class CompanyResource extends JsonResource
             'city_id'                 => isset($this->city)?$this->city->id:null,
             'P_O_Box'                 => $this->P_O_Box,
             'ban'                     => $this->ban,
+            'is_verified'             => $this->is_verified,
+
 
 
         ];

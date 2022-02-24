@@ -28,27 +28,57 @@
                 <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>
             </div>
             <div class="carousel-inner">
+
+
+{{--                <div class="carousel-item active">--}}
+{{--                    <img src="{{$advertises->count() > 0 ? $advertises->first()->ImagePath : asset('public/uploads/default.png') }}" class="d-block w-100" height="150" alt="...">--}}
+{{--                </div>--}}
+
+{{--                @foreach($advertises as $advertise)--}}
+{{--                    @if(!$loop->first)--}}
+{{--                        <div class="carousel-item">--}}
+{{--                            <img src="{{ $advertise->ImagePath }}" Class="d-block w-100" height="150" alt="...">--}}
+{{--                        </div>--}}
+{{--                    @endif--}}
+{{--                @endforeach--}}
+
+
+
+
+
+
+
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide1.jpg" alt="First slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Social Facilities Center</h5>
-                        <p>University Campus</p>
-                    </div>
+                    <img class="d-block w-100" src="
+{{--                    https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide1.jpg" --}}
+                    {{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/default.png') }}"
+                         alt="First slide">
+{{--                    <div class="carousel-caption d-none d-md-block">--}}
+{{--                        <h5>Social Facilities Center</h5>--}}
+{{--                        <p>University Campus</p>--}}
+{{--                    </div>--}}
                 </div>
+
+                @foreach($advertisements as $advertisement)
+                    @if(!$loop->first)
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide2.jpg" alt="Second slide">
+
+                    <a href="{{ $advertisement->ImagePath }}" data-popup="lightbox">
+                        <img  class="d-block w-100" src="{{ $advertisement->ImagePath }}"  alt="Second slide">
+                    </a>
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Anastasios G. Leventis</h5>
-                        <p>University House</p>
+                        <h5>{{ isNullable($advertisement->$name) }}</h5>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide3.jpg" alt="Third slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Faculty of Engineering</h5>
-                        <p>University Campus</p>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
+{{--                <div class="carousel-item">--}}
+{{--                    <img class="d-block w-100" src="https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide3.jpg" alt="Third slide">--}}
+{{--                    <div class="carousel-caption d-none d-md-block">--}}
+{{--                        <h5>Faculty of Engineering</h5>--}}
+{{--                        <p>University Campus</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
             <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

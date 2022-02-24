@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\advertisemen\AdvertisementController;
 use App\Http\Controllers\Api\Auctions\AuctionController;
 use App\Http\Controllers\Api\Auctions\FilterController;
 use App\Http\Controllers\Api\AuthController;
