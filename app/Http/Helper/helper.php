@@ -18,11 +18,6 @@ function is_watched_auction($id)
 }
 
 
-// function is_email($value)
-//{
-////        return preg_match('/^([a-zA-Z0-9_.]*)@.*\.com$/i', $value);
-//    return preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i', $value);
-//}
 
 function checkIsUserWatch($auction)
 {
@@ -74,8 +69,9 @@ function cruds()
 
 function model_count($model, $withDeleted = false)
 {
-    if($model == 'seller') return \App\Models\User::where('type', 'seller')->count();
+    if($model == 'company') return \App\Models\User::where('is_company', 'company')->count();
     elseif ($model == 'buyer') return \App\Models\User::where('type', 'buyer')->count();
+    elseif ($model == 'question') return \App\Models\CommonQuestion::count();
         else
     $mo = "App\\Models\\".ucwords($model);
     return $mo::count();
@@ -170,10 +166,10 @@ function models($withColors = false)
     {
         return [
             'teal'    => 'admin',
-//            'blue'    => 'seller',
+            'blue'    => 'company',
 //            'pink'    => 'buyer',
             'green'   => 'auction',
-//            'orange'  => 'question',
+            'orange'  => 'question',
             'grey'    => 'category',
             'yellow'  => 'contact',
             'violet'  => 'nationality',

@@ -20,7 +20,12 @@
                 <div class="panel panel-body login-form" style=" box-shadow: 4px 2px 5px #aaa; border-radius:  20px;">
                     <div class="text-center">
 
-                        <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
+                        <div class="icon-object border-slate-300 text-slate-300">
+
+                            <img src=" {{ asset('uploads/mazadat_logo.jpg') }} " width=" 200px"
+                                 class="img-circle">
+{{--                            <i class="icon-reading"></i>--}}
+                        </div>
                         <h5 class="content-group">Login to your account <small class="display-block">Your
                                 credentials</small></h5>
                     </div>
@@ -74,7 +79,7 @@
             <!-- /form with validation -->
 
 
-            <div class="footer text-muted text-center">
+            <div class="footer text-muted text-center" >
                 <h2>&copy; {{ date('Y') }}. developed by <a href="" arget="_blank">Connect</a></h2>
             </div>
             <!-- /footer -->

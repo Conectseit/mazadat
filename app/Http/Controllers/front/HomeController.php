@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
 use App\Models\Category;
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,6 +18,15 @@ class HomeController extends Controller
         $data['advertisements'] = Advertisement::all();
         return view('front.home',$data);
     }
+
+    public function all_companies()
+    {
+        $data['companies'] = User::where('is_company', 'company')->get();
+        return view('front.company.all_companies',$data);
+    }
+
+
+
 }
 
 

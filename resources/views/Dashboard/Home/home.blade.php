@@ -28,7 +28,7 @@
             </li>
         </ul>
     </div>
-@endsection
+@stop
 <!-- /page header -->
 @section('content')
 
@@ -53,6 +53,19 @@
                         </div>
                     </div>
                 @endforeach
+                    <div class="col-lg-2" style="float: {{ floating('right', 'left') }};">
+                        <div class="panel bg-green-400">
+                            <div class="panel-body" >
+                                <h3 class="no-margin"> {{trans('messages.count')}} (0) </h3>
+                                <a href="{{route('persons.index')}}">
+                                    @lang('messages.person.persons'))</a>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="chart" id="members-online"></div>
+                            </div>
+                        </div>
+                    </div>
+
             </div>
         </div>
     </div>
