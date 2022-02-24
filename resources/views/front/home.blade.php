@@ -29,34 +29,18 @@
             </div>
             <div class="carousel-inner">
 
-
-{{--                <div class="carousel-item active">--}}
-{{--                    <img src="{{$advertises->count() > 0 ? $advertises->first()->ImagePath : asset('public/uploads/default.png') }}" class="d-block w-100" height="150" alt="...">--}}
-{{--                </div>--}}
-
-{{--                @foreach($advertises as $advertise)--}}
-{{--                    @if(!$loop->first)--}}
-{{--                        <div class="carousel-item">--}}
-{{--                            <img src="{{ $advertise->ImagePath }}" Class="d-block w-100" height="150" alt="...">--}}
-{{--                        </div>--}}
-{{--                    @endif--}}
-{{--                @endforeach--}}
-
-
-
-
-
-
-
                 <div class="carousel-item active">
+                    <a href="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}" data-popup="lightbox">
                     <img class="d-block w-100" src="
 {{--                    https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide1.jpg" --}}
-                    {{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/default.png') }}"
+                    {{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
                          alt="First slide">
-{{--                    <div class="carousel-caption d-none d-md-block">--}}
-{{--                        <h5>Social Facilities Center</h5>--}}
+                    </a>
+
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{$advertisements->count() > 0 ? $advertisements->first()->$name : 'mazadat' }}</h5>
 {{--                        <p>University Campus</p>--}}
-{{--                    </div>--}}
+                    </div>
                 </div>
 
                 @foreach($advertisements as $advertisement)

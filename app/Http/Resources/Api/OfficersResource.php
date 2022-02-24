@@ -20,12 +20,16 @@ class OfficersResource extends JsonResource
         $email = Setting::where('key', 'email')->first()->value;
         $fax = Setting::where('key', 'fax')->first()->value;
         $address = Setting::where('key', 'address')->first()->value;
+        $latitude = Setting::where('key', 'latitude')->first()->value;
+        $longitude = Setting::where('key', 'longitude')->first()->value;
 //        $name = 'name_' . app()->getLocale();
         return [
             'Mobile'      =>$mobile,
             'Email'       =>$email,
             'Fax'         =>$fax,
             'Address'     =>$address,
+            'latitude'    =>$latitude,
+            'longitude'   =>$longitude,
         ];
 
     }
