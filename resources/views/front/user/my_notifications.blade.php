@@ -1,5 +1,5 @@
 @extends('front.layouts.master')
-@section('title', trans('messages.user_passport'))
+@section('title', trans('messages.notification.notifications'))
 @section('style')
     <style></style>
 @endsection

@@ -8,6 +8,7 @@
     <section class="sign-up-page">
         @include('front.layouts.parts.alert')
 
+
         <div class="container">
             <h4 class="title"> {{ trans('messages.login') }}</h4>
             <div class="row">
@@ -19,7 +20,7 @@
                             من فضلك ادخل معلومات الدخول الخاصة بحسابك لتتمكن من استخدام كل خصائص الموقع وإذا لم يكن لديك حسابك؟
                             يمكنك
                             تسجيل مستخدم جديد مجانأ
-                        </p><br>
+                        </p><br><br>
                         <div class="mb-4 form-group row">
                             <div class="col-sm-2 d-flex align-items-center">
                                 <label for="email" class="form-label">اسم المستخدم او البريد الالكتروني</label>
@@ -43,8 +44,13 @@
                                 <input type="password" class="form-control" name="password" id="password"  placeholder="ادخل كلمة المرور">
                             </div>
                         </div>
+
                         <div class="mb-4 form-group row">
-                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4">
+{{--                                {!! NoCaptcha::renderJs() !!}--}}
+{{--                                {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
+{{--                                {!! NoCaptcha::display() !!}--}}
+                            </div>
                             <div class="col-sm-4">
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" class="form-check-input" name="remember" id="remember">

@@ -31,14 +31,16 @@ class RegisterRequest extends FormRequest
                 }
             case 'POST': {
                     return [
-                        'first_name'   => 'required',
-                        'middle_name'   => 'sometimes',
+                        'first_name'  => 'required',
+                        'middle_name' => 'sometimes',
                         'last_name'   => 'required',
-                        'user_name'   => 'required',
+                        'user_name'   => 'required|unique:users',
                         'email'       => 'required|unique:users,email',
                         'password'    => 'required|min:6|confirmed',
-                        'mobile'           => 'required|numeric|min:9|unique:users,mobile',
-                        'is_appear_name'     => 'required',
+                        'mobile'               => 'required|numeric|min:9|unique:users,mobile',
+                        'is_appear_name'       => 'required',
+                        'g-recaptcha-response' => 'required|captcha'
+
 
                     ];
                 }

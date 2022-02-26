@@ -29,9 +29,14 @@
                     </div>
 
                     <div class="col-lg-9">
-                        <div class="details" id="details">
-                            <h4>{{$category->user_name}}</h4>
-                        </div>
+
+
+                        <a href="{{route('front.company_auctions',$category->id)}}" class="image">
+                            <div class="details" id="details">
+                                <h4>{{$category->user_name}}</h4>
+                            </div>
+                        </a>
+
                     </div>
 
             </div>
@@ -39,7 +44,6 @@
             </div>
 
     </section>
-    @include('front.layouts.splash')
 
 @stop
 

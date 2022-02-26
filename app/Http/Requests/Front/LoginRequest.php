@@ -14,9 +14,14 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'    => 'required|string',
-//            'text'    => 'sometimes',
-            'password' => 'required|string'
+            'email'                => 'required|string',
+            'password'             => 'required|string',
+//            'g-recaptcha-response' => 'required|captcha'
+
         ];
+
+
     }
+
+
 }

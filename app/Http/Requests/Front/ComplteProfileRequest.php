@@ -24,8 +24,6 @@ class ComplteProfileRequest extends FormRequest
             'signs'                 => 'required',
             'P_O_Box'               => 'required',
 
-
-
         ];
     }
 }

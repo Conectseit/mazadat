@@ -33,6 +33,21 @@ Route::group(
 
 //    Route::group(['prefix' => 'front'], function () {
     Route::get('/home', [HomeController::class, 'home'])->name('front.home');
+    Route::get('all_companies', [HomeController::class, 'all_companies'])->name('front.all_companies');
+    Route::get('company/{id}/auctions', [HomeController::class, 'companyAuctions'])->name('front.company_auctions');
+
+
+    // ============ // category ================
+    Route::get('category/{id}/auctions', [CategoryController::class, 'categoryAuctions'])->name('front.category_auctions');
+//    Route::post('search/{id}', [CategoryController::class, 'search'])->name('front.search');
+    Route::post('main_filter_category/{id}/auctions', [FilterController::class,'main_filter'])->name('front.main_filter');
+    Route::post('filter_category/{id}/auctions', [FilterController::class,'filterCategory'])->name('front.filter_category');
+    Route::get('auction_details/{id}', [AuctionController::class, 'auction_details'])->name('front.auction_details');
+
+
+
+
+
 
 // ============ for auth ================
     Route::get('show_register', [AuthController::class, 'show_register'])->name('front.show_register');
@@ -64,16 +79,8 @@ Route::group(
     Route::get('questions', [GeneralController::class, 'questions'])->name('front.questions');
     Route::get('about_app', [GeneralController::class, 'about_app'])->name('front.about_app');
 
-    // ============ // category ================
-    Route::get('category/{id}/auctions', [CategoryController::class, 'categoryAuctions'])->name('front.category_auctions');
-//    Route::post('search/{id}', [CategoryController::class, 'search'])->name('front.search');
-    Route::post('main_filter_category/{id}/auctions', [FilterController::class,'main_filter'])->name('front.main_filter');
-    Route::post('filter_category/{id}/auctions', [FilterController::class,'filterCategory'])->name('front.filter_category');
 
 
-    Route::get('auction_details/{id}', [AuctionController::class, 'auction_details'])->name('front.auction_details');
-
-    Route::get('company_auctions', [HomeController::class, 'all_companies'])->name('front.company_auctions');
 
 
     Route::group(['middleware' => 'checkUserAuth'], function (){
@@ -102,14 +109,9 @@ Route::group(
         // ============ // profile ================
         Route::any('my_profile', [UserController::class, 'showProfile'])->name('front.my_profile');
         Route::any('edit_profile', [UserController::class, 'editProfile'])->name('front.edit_profile');
-        Route::any('update_personal_image', [UserController::class, 'update_personal_image'])->name('front.update_personal_image');
-//        Route::any('update_personal_bio', [UserController::class, 'update_personal_bio'])->name('front.update_personal_bio');
+
         Route::any('update_profile', [UserController::class, 'updateProfile'])->name('front.update_profile');
         Route::any('complete_profile', [UserController::class, 'completeProfile'])->name('front.complete_profile');
-        Route::any('user_documents', [UserController::class, 'user_documents'])->name('front.user_documents');
-        Route::any('user_passport', [UserController::class, 'user_passport'])->name('front.user_passport');
-        Route::any('upload_passport', [UserController::class, 'uploadPassport'])->name('front.upload_passport');
-        Route::any('upload_documents', [UserController::class, 'uploadDocuments'])->name('front.upload_documents');
 
         Route::any('choose_available_limit', [UserController::class, 'choose_available_limit'])->name('front.choose_available_limit');
         Route::any('my_wallet', [UserController::class, 'my_wallet'])->name('front.my_wallet');
@@ -137,6 +139,23 @@ Route::group(
 Route::get('/', function () {
     return view('front/splash_index');
 });
+
+
+
+
+
+
+
+
+//        Route::any('update_personal_image', [UserController::class, 'update_personal_image'])->name('front.update_personal_image');
+//        Route::any('update_personal_bio', [UserController::class, 'update_personal_bio'])->name('front.update_personal_bio');
+
+//        Route::any('user_documents', [UserController::class, 'user_documents'])->name('front.user_documents');
+//        Route::any('user_passport', [UserController::class, 'user_passport'])->name('front.user_passport');
+//        Route::any('upload_passport', [UserController::class, 'uploadPassport'])->name('front.upload_passport');
+//        Route::any('upload_documents', [UserController::class, 'uploadDocuments'])->name('front.upload_documents');
+
+
 
 
 //Route::get('/', function () {

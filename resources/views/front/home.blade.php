@@ -82,7 +82,7 @@
                 <div class=" d-flex justify-content-between" >
                     <a href="{{route('front.show_add_auction')}}" class="add-auction btn "><b>  <i class="fal fa-plus-circle"></i>  </b>{{ trans('messages.auction.add') }}</a>
 
-                    <a href="{{route('front.company_auctions')}}" class="add-auction btn"><b>  <i class="fal fa-gavel"></i>  </b>{{ trans('messages.company.companies_auctions') }}</a>
+                    <a href="{{route('front.all_companies')}}" class="add-auction btn"><b>  <i class="fal fa-gavel"></i>  </b>{{ trans('messages.company.companies_auctions') }}</a>
                 </div>
             </div><br>
             <div class="row">

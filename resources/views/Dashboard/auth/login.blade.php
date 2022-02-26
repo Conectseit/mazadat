@@ -79,7 +79,7 @@
             <!-- /form with validation -->
 
 
-            <div class="footer text-muted text-center" >
+            <div class=" text-muted text-center mt-10" >
                 <h2>&copy; {{ date('Y') }}. developed by <a href="" arget="_blank">Connect</a></h2>
             </div>
             <!-- /footer -->

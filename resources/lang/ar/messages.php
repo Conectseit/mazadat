@@ -258,6 +258,8 @@ return [
 
 
 // ==== eng
+    'auctions_of'=>' مزادات شركة',
+
     'activity' => [
         'activities' => 'نشاطات المشرفين',
         'description' => 'وصف النشاط',
@@ -278,7 +280,6 @@ return [
         'users' => 'العملاء/ المستخدمين',
 
     ],
-
     'person' => [
         'person' => 'فرد',
         'persons' => 'افراد',

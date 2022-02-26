@@ -9,164 +9,12 @@
 
     <div class="container">
 
-        <div class="row">
-            @include('front.layouts.parts.alert')
-
-            <div class="col-lg-6">
-                <div class="slogan-right">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="image">
-                                <img src={{Auth::guard('web')->user()->ImagePath}} alt="my-image">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="slogan-left">
-                                <div class="row">
-                                    <div class="col-sm-6">
-{{--                                        <a href="" data-bs-toggle="modal" data-bs-target="#edit-photo-modal">--}}
-{{--                                            تعديل الصورة الشخصية--}}
-{{--                                        </a>--}}
-
-                                        <div class="col-sm-12">
-                                            <a href="" data-bs-toggle="modal" data-bs-target="#edit-photo-modal">
-                                                تعديل الصورة الشخصية
-                                            </a>
-                                        </div>
-{{--                                        <div class="col-sm-12">--}}
-{{--                                            <a href="#" data-bs-toggle="modal" data-bs-target="#bio-modal">--}}
-{{--                                                تعديل البيانات الشخصية--}}
-{{--                                            </a>--}}
-{{--                                        </div>--}}
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-{{--            <div class="col-lg-6">--}}
-{{--                <div class="slogan-left">--}}
-{{--                    <div class="row">--}}
-
-{{--                        <div class="col-sm-6">--}}
-{{--                            <a href="{{route('front.user_documents')}}">--}}
-{{--                                 اضافة وثائق رسمية--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-6">--}}
-{{--                            <a href="#" data-bs-toggle="modal" data-bs-target="#bio-modal">--}}
-{{--                                 السيرة الذاتية--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-sm-6">--}}
-{{--                            <a href="{{route('front.user_passport')}}">--}}
-{{--                                اضافة جواز السفر--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-        </div>
+        @include('front.layouts.parts.alert')
 
 
-        @if(auth()->user()->is_completed==1)
+        @if(auth()->user()->is_completed==0)
             <h3>{{ trans('messages.please_complete_your_data')}}</h3>
         @endif
-
-        <div class="row">
-            <div class="edit-form">
-                <form action="{{route('front.complete_profile')}}" method="post">
-                    @csrf
-                    <div class="inputs-group">
-                        <h5 class="group-title">{{ trans('messages.please_complete_your_data')}}</h5>
-                            <div class="form-group mb-4 row">
-                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label for="full_name" class="form-label"> {{ trans('messages.nationality.nationality') }}</label>
-                                </div>
-                                <div class="col-lg-10 col-md-9">
-                                    <select class=" select form-select form-control" name="nationality_id"
-                                            aria-label="Default select example">
-                                        <option selected disabled>{{trans('messages.select')}}</option>
-                                        @foreach ($nationalities as $nationality)
-                                            <option value="{{ $nationality->id }}"> {{ $nationality->$name }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group mb-4 row">
-                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label for="city_name" class="form-label"> {{ trans('messages.city_name') }}</label>
-                                </div>
-                                <div class="col-lg-10 col-md-9">
-                                    <select class=" select form-select form-control" id="cities" name="city_id"
-                                            aria-label="Default select example">
-                                        <option selected disabled>{{trans('messages.select')}}</option>
-                                        @foreach ($cities as $city)
-                                            <option value="{{ $city->id }}"> {{ $city->$name }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        @if(auth()->user()->is_company=='company')
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="block" class="form-label"> block</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control" id="name" name="block_id"
-                                       placeholder="{{trans('messages.block')}}"   value={{ auth()->user()->block}}>
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="block" class="form-label"> street</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control" id="name" name="street_id"
-                                       placeholder="{{trans('messages.street')}}"   value={{ auth()->user()->street}}>
-                            </div>
-                        </div>
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="block" class="form-label"> block_num</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control" id="name" name="block_num_id"
-                                       placeholder="{{trans('messages.block_num')}}"   value={{ auth()->user()->block_num}}>
-                            </div>
-                        </div>
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="block" class="form-label"> signs</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control" id="name" name="signs_id"
-                                       placeholder="{{trans('messages.signs')}}"   value={{ auth()->user()->signs}}>
-                            </div>
-                        </div>
-
-                        @endif
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="block" class="form-label"> P_O_Box</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <input type="text" class="form-control" id="name" name="P_O_Box_id"
-                                       placeholder="{{trans('messages.P_O_Box')}}"   value={{ auth()->user()->P_O_Box}}>
-                            </div>
-                        </div>
-
-
-                        <button type="submit" class="btn btn-primary submit-btn">تعديل</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
 
 
         <div class="row">
@@ -234,8 +82,8 @@
                                                 aria-label="Default select example">
                                             <option selected disabled>اختر كود الدولة</option>
                                             <option value="ksa">+966 المملكة العربية السعودية</option>
-                                                                                        <option value="eg">+20 مصر</option>
-                                                                                        <option value="eg">+20 مصر</option>
+                                            <option value="eg">+20 مصر</option>
+                                            <option value="eg">+20 مصر</option>
                                         </select>
                                     </div>
                                     <div class="col-xl-9 col-lg-8 col-sm-6">
@@ -272,40 +120,240 @@
                 </form>
             </div>
         </div>
+
+
+
+
+        <div class="row">
+            <div class="edit-form">
+                <form action="{{route('front.complete_profile')}}" method="post">
+                    @csrf
+                    <div class="inputs-group">
+                        <h5 class="group-title">{{ trans('messages.please_complete_your_data')}}</h5>
+                            <div class="form-group mb-4 row">
+                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                    <label for="full_name" class="form-label"> {{ trans('messages.nationality.nationality') }}</label>
+                                </div>
+                                <div class="col-lg-10 col-md-9">
+                                    <select class=" select form-select form-control" name="nationality_id"
+                                            aria-label="Default select example">
+                                        <option selected disabled>{{trans('messages.select')}}</option>
+                                        @foreach ($nationalities as $nationality)
+                                            <option value="{{ $nationality->id }}"> {{ $nationality->$name }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-4 row">
+                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                    <label for="city_name" class="form-label"> {{ trans('messages.city_name') }}</label>
+                                </div>
+                                <div class="col-lg-10 col-md-9">
+                                    <select class=" select form-select form-control" id="cities" name="city_id"
+                                            aria-label="Default select example">
+                                        <option selected disabled>{{trans('messages.select')}}</option>
+                                        @foreach ($cities as $city)
+                                            <option value="{{ $city->id }}"> {{ $city->$name }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        @if(auth()->user()->is_company=='person')
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="block" class="form-label"> block</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" id="name" name="block_id"
+                                       placeholder="{{trans('messages.block')}}"   value={{ auth()->user()->block}}>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="block" class="form-label"> street</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" id="name" name="street_id"
+                                       placeholder="{{trans('messages.street')}}"   value={{ auth()->user()->street}}>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="block" class="form-label"> block_num</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" id="name" name="block_num_id"
+                                       placeholder="{{trans('messages.block_num')}}"   value={{ auth()->user()->block_num}}>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="block" class="form-label"> signs</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" id="name" name="signs_id"
+                                       placeholder="{{trans('messages.signs')}}"   value={{ auth()->user()->signs}}>
+                            </div>
+                        </div>
+
+                        @endif
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="block" class="form-label"> P_O_Box</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" id="name" name="P_O_Box_id"
+                                       placeholder="{{trans('messages.P_O_Box')}}"   value={{ auth()->user()->P_O_Box}}>
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary submit-btn">تعديل</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
     </div>
 
 
     <!-- Modals -->
     <!-- edit-photo-modal -->
-    <div class="modal user-modal edit-profile-modal fade" id="edit-photo-modal" tabindex="-1"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
+{{--    <div class="modal user-modal edit-profile-modal fade" id="edit-photo-modal" tabindex="-1"--}}
+{{--         aria-labelledby="exampleModalLabel" aria-hidden="true">--}}
+{{--        <div class="modal-dialog modal-dialog-centered modal-lg">--}}
+{{--            <div class="modal-content">--}}
 
-                <form action="{{route('front.update_personal_image')}}" method="post" enctype="multipart/form-data">
-                        @csrf
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">قم باضافة صورة لحسابك</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="upload-images">
-                            <div class="upload-input user-img" id="myImg">
-                                <input type="file" id="myImgUploader" name="image">
-                                <div class="text" id="uploadText"  name="image">
-                                    <p id="uploadText">قم بسحب وافلات الصورة هنا او اضغط للتصفح</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary add">اضافة</button>
-                        <button type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal">الغاء</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+{{--                <form action="" method="post" enctype="multipart/form-data">--}}
+{{--                <form action="{{route('front.update_personal_image')}}" method="post" enctype="multipart/form-data">--}}
+{{--                        @csrf--}}
+{{--                    <div class="modal-header">--}}
+{{--                        <h5 class="modal-title" id="exampleModalLabel">قم باضافة صورة لحسابك</h5>--}}
+{{--                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
+{{--                    </div>--}}
+{{--                    <div class="modal-body">--}}
+{{--                        <div class="upload-images">--}}
+{{--                            <div class="upload-input user-img" id="myImg">--}}
+{{--                                <input type="file" id="myImgUploader" name="image">--}}
+{{--                                <div class="text" id="uploadText"  name="image">--}}
+{{--                                    <p id="uploadText">قم بسحب وافلات الصورة هنا او اضغط للتصفح</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="modal-footer">--}}
+{{--                        <button type="submit" class="btn btn-primary add">اضافة</button>--}}
+{{--                        <button type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal">الغاء</button>--}}
+{{--                    </div>--}}
+{{--                </form>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+
+
+</section>
+@stop
+
+@push('scripts')
+    <script>
+
+    </script>
+@endpush
+
+
+
+
+
+
+
+
+
+
+
+
+{{--<div class="row">--}}
+
+{{--    <div class="col-lg-6">--}}
+{{--        <div class="slogan-right">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-sm-6">--}}
+{{--                    <div class="image">--}}
+{{--                        <img src={{Auth::guard('web')->user()->ImagePath}} alt="my-image">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-sm-6">--}}
+{{--                    <div class="slogan-left">--}}
+{{--                        <div class="row">--}}
+{{--                            <div class="col-sm-6">--}}
+{{--                                --}}{{--                                        <a href="" data-bs-toggle="modal" data-bs-target="#edit-photo-modal">--}}
+{{--                                --}}{{--                                            تعديل الصورة الشخصية--}}
+{{--                                --}}{{--                                        </a>--}}
+
+{{--                                <div class="col-sm-12">--}}
+{{--                                    <a href="" data-bs-toggle="modal" data-bs-target="#edit-photo-modal">--}}
+{{--                                        تعديل الصورة الشخصية--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                                --}}{{--                                        <div class="col-sm-12">--}}
+{{--                                --}}{{--                                            <a href="#" data-bs-toggle="modal" data-bs-target="#bio-modal">--}}
+{{--                                --}}{{--                                                تعديل البيانات الشخصية--}}
+{{--                                --}}{{--                                            </a>--}}
+{{--                                --}}{{--                                        </div>--}}
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--    --}}{{--            <div class="col-lg-6">--}}
+{{--    --}}{{--                <div class="slogan-left">--}}
+{{--    --}}{{--                    <div class="row">--}}
+
+{{--    --}}{{--                        <div class="col-sm-6">--}}
+{{--    --}}{{--                            <a href="{{route('front.user_documents')}}">--}}
+{{--    --}}{{--                                 اضافة وثائق رسمية--}}
+{{--    --}}{{--                            </a>--}}
+{{--    --}}{{--                        </div>--}}
+{{--    --}}{{--                        <div class="col-sm-6">--}}
+{{--    --}}{{--                            <a href="#" data-bs-toggle="modal" data-bs-target="#bio-modal">--}}
+{{--    --}}{{--                                 السيرة الذاتية--}}
+{{--    --}}{{--                            </a>--}}
+{{--    --}}{{--                        </div>--}}
+{{--    --}}{{--                        <div class="col-sm-6">--}}
+{{--    --}}{{--                            <a href="{{route('front.user_passport')}}">--}}
+{{--    --}}{{--                                اضافة جواز السفر--}}
+{{--    --}}{{--                            </a>--}}
+{{--    --}}{{--                        </div>--}}
+{{--    --}}{{--                    </div>--}}
+{{--    --}}{{--                </div>--}}
+{{--    --}}{{--            </div>--}}
+{{--</div>--}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {{--    <!-- bio-modal -->--}}
 {{--    <div class="modal user-modal bio-modal fade" id="bio-modal" tabindex="-1" aria-labelledby="exampleModalLabel"--}}
@@ -398,11 +446,3 @@
 {{--        </div>--}}
 {{--    </div>--}}
 {{--    <!-- bio-modal -->--}}
-</section>
-@stop
-
-@push('scripts')
-    <script>
-
-    </script>
-@endpush

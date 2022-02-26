@@ -79,6 +79,12 @@ class AuthController extends Controller
             Auth::logout();
             return back()->withInput($request->only('email'))->with('error', trans('api.please_wait_your_account_not_activated_yet'));
         }
+
+        if ($user->is_completed == 0 ) {
+            return redirect()->route('front.edit_profile')
+                ->with('error', trans('api.please_complete_your_account_first'));
+        }
+
         $jwt_token = JWTAuth::fromUser($user);
         auth()->user()->token->update(['jwt' => $jwt_token,'fcm_web_token'=>$request->fcm_web_token]);
 

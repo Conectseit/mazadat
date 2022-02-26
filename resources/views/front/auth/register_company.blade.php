@@ -26,17 +26,17 @@
                         <h5 class="group-title">{{trans('messages.personal_info')}}</h5>
 
 
-{{--                        <div class="form-group row ">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label>@lang('messages.company_authorization_image')</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-8 col-sm-12 d-flex align-items-center">--}}
-{{--                                <input type="file" class="form-control company_authorization_image" name="company_authorization_image" accept="image/*" onchange="readURL(this)" />--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-2 col-sm-12 d-flex align-items-center">--}}
-{{--                                <img  id="img-preview" style="width: 180px ; hight:50px" src="https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png" width="250px" />--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        <div class="form-group mb-4  row ">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label>@lang('messages.company_authorization_image')</label>
+                            </div>
+                            <div class="col-lg-8 col-sm-12 d-flex align-items-center">
+                                <input type="file" class="form-control company_authorization_image" name="company_authorization_image" accept="image/*" onchange="readURL(this)" />
+                            </div>
+                            <div class="col-lg-2 col-sm-12 d-flex align-items-center">
+                                <img  id="img-preview" style="width: 180px ; hight:50px" src="https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png" width="250px" />
+                            </div>
+                        </div>
 
                         <div class="form-group mb-4 row">
                             <input type="hidden" name="fcm_web_token" value="">
@@ -78,9 +78,7 @@
                                             @foreach ($countries as $country)
                                                 <option value="{{ $country->id }}"> {{ $country->$name }}{{ $country->phone_code }} </option>
                                             @endforeach
-{{--                                            <option >+966 المملكة العربية السعودية</option>--}}
-{{--                                            <option value="ksa">+20 مصر</option>--}}
-{{--                                            <option value="eg">+20 مصر</option>--}}
+
                                         </select>
                                     </div>
                                     <div class="col-xl-9 col-lg-8 col-sm-6">
@@ -124,7 +122,7 @@
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
 
-                        <div id="location" style="display:block;">
+{{--                        <div id="location" style="display:block;">--}}
 
                             <div class="form-group row ">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
@@ -150,8 +148,17 @@
                                     <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control hidden d-none">
                                 </div>
                             </div>
+{{--                        </div>--}}
+                            <div class="form-group mt-5 row">
+                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                </div>
+                                <div class="col-lg-10 col-md-9">
+                                    {!! NoCaptcha::renderJs() !!}
+                                    {{--                                {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
+                                    {!! NoCaptcha::display() !!}
+                                </div>
+                            </div>
 
-                        </div>
                         <div class="sign-btn">
                             <p> {{trans('messages.accept_term')}}</p>
                             <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>
@@ -359,3 +366,7 @@
 {{--                                </select>--}}
 {{--                            </div>--}}
 {{--                        </div>--}}
+
+{{--                                            <option >+966 المملكة العربية السعودية</option>--}}
+{{--                                            <option value="ksa">+20 مصر</option>--}}
+{{--                                            <option value="eg">+20 مصر</option>--}}

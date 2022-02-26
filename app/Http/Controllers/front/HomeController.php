@@ -4,6 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
+use App\Models\Auction;
 use App\Models\Category;
 use App\Models\Setting;
 use App\Models\User;
@@ -24,6 +25,19 @@ class HomeController extends Controller
         $data['companies'] = User::where('is_company', 'company')->get();
         return view('front.company.all_companies',$data);
     }
+    public function companyAuctions(Request $request, $id)
+    {
+        $data['company'] = User::where('id', $id)->first();
+        if ($data['company']) {
+            $data['auctions'] =Auction::where('seller_id', $id)->where('status', 'on_progress')->paginate('2');
+        }
+
+        return view('front.company.company_auctions',$data);
+
+    }
+
+
+
 
 
 
