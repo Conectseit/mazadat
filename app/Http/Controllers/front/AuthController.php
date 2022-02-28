@@ -103,6 +103,7 @@ class AuthController extends Controller
 // =========== reset password ===========================
     public function forget_pass(ForgetPassRequest $request)
     {
+
         $user = User::where('email', $request->email)->first();
 
         if (!$user) {

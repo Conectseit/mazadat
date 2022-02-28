@@ -14,7 +14,7 @@ class ForgetPassRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'             => 'required|email',
+            'email'             => 'required',
             ];
     }
 }
