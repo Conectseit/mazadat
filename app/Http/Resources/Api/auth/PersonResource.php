@@ -42,6 +42,7 @@ class PersonResource extends JsonResource
             'delivery_time'           => $this->delivery_time,
             'signs'                   => $this->signs,
             'P_O_Box'                 => $this->P_O_Box,
+            'identity'                => $this->passport_image_path,
             'ban'                     => $this->ban,
             'is_verified'             => $this->is_verified,
 
