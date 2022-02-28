@@ -14,7 +14,7 @@ class AddIsUniqueToAuctions extends Migration
     public function up()
     {
         Schema::table('auctions', function (Blueprint $table) {
-            $table->dropColumn('inspection_report_image');
+//            $table->dropColumn('inspection_report_image');
             $table->boolean('is_unique')->default(0)->after('current_price');
 
         });
@@ -28,7 +28,7 @@ class AddIsUniqueToAuctions extends Migration
     public function down()
     {
         Schema::table('auctions', function (Blueprint $table) {
-            $table->string('inspection_report_image');
+//            $table->string('inspection_report_image');
             $table->dropColumn('is_unique');
 
         });
