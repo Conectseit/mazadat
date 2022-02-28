@@ -105,6 +105,10 @@ class AuthController extends Controller
     {
         $user = User::where('email', $request->email)->first();
 
+        if (!$user) {
+            return back()->with('error', trans('messages.invalid_email'));
+        }
+
 //        if ($user->is_active != 'active') return back()->with('error', 'عفوا هذا الحساب غير مفعل من قبل الادارة');
 
         $code = create_rand_numbers();
