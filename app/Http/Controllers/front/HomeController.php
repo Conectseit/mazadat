@@ -29,7 +29,8 @@ class HomeController extends Controller
     {
         $data['company'] = User::where('id', $id)->first();
         if ($data['company']) {
-            $data['auctions'] =Auction::where('seller_id', $id)->where('status', 'on_progress')->where('is_accepted',1)->paginate('20');
+            $data['on_progress_auctions'] =Auction::where('seller_id', $id)->where('status', 'on_progress')->where('is_accepted',1)->paginate('20');
+            $data['ended_auctions'] =Auction::where('seller_id', $id)->where('status', 'done')->where('is_accepted',1)->paginate('20');
         }
 
         return view('front.company.company_auctions',$data);

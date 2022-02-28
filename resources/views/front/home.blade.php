@@ -17,11 +17,12 @@
             color: #fff;
             font-size: 20px;
             background: #d1915c;
-            width: 389px;
+            width: 357px;
         }
 
         .carousel-item img {
-            height: 320px;
+            height: 350px;
+            border: 1px solid;
         }
 
         .category-items-page .items .card.gallery-card .card-body
@@ -32,15 +33,15 @@
             position: static;
         }
         .category-items-page .items .card.gallery-card {
-            border: 10px solid transparent;
+            border: 0px solid transparent;
             transition: .3s ease-in-out;
+            border-radius: 30px;
         }
         .category-items-page .items .card.gallery-card:hover {
             border: 10px solid #1e3c48;
             opacity: .9;
         }
     /*    */
-
 
     </style>
 @endsection
