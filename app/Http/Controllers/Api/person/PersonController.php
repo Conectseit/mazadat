@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\person;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SmsController;
 use App\Http\Requests\Api\person\CompletePersonProfileRequest;
 use App\Http\Requests\Api\person\UpdatePersonProfileRequest;
 use App\Http\Requests\Api\RegisterUserRequest;
