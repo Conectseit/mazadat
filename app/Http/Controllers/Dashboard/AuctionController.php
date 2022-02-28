@@ -24,8 +24,9 @@ class AuctionController extends Controller
     public function index()
     {
         $data['auctions'] = Auction::latest()->paginate(200);
-        $data['on_progress_auctions'] = Auction::where('status', 'on_progress')->latest()->paginate(200);
-        $data['done_auctions'] = Auction::where('status', 'done')->latest()->paginate(200);
+        $data['on_progress_auctions'] = Auction::where('status', 'on_progress')->where('is_accepted', 1)->latest()->paginate(200);
+        $data['done_auctions'] = Auction::where('status', 'done')->where('is_accepted', 1)->latest()->paginate(200);
+        $data['not_accepted_auctions'] = Auction::where('is_accepted', 0)->latest()->paginate(200);
         return view('Dashboard.Auctions.index', $data);
     }
 
@@ -207,6 +208,35 @@ class AuctionController extends Controller
 
         return response()->json(['option_details' => $option->option_details, 'status' => true], 200);
     }
+
+
+
+    public function accept($id)
+    {
+        $auction = Auction::findOrFail($id);
+        $auction->update(['is_accepted'=> 1]);
+        return back();
+    }
+    public function not_accept($id)
+    {
+        $auction = Auction::findOrFail($id);
+        $auction->update(['is_accepted'=> 0]);
+        return back();
+    }
+
+    public function unique($id)
+    {
+        $auction = Auction::findOrFail($id);
+        $auction->update(['is_unique'=> 1]);
+        return back();
+    }
+    public function not_unique($id)
+    {
+        $auction = Auction::findOrFail($id);
+        $auction->update(['is_unique'=> 0]);
+        return back();
+    }
+
 
 
 

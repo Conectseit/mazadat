@@ -31,7 +31,7 @@
                                 <label>@lang('messages.company_authorization_image')</label>
                             </div>
                             <div class="col-lg-8 col-sm-12 d-flex align-items-center">
-                                <input type="file" class="form-control company_authorization_image" name="company_authorization_image" accept="image/*" onchange="readURL(this)" />
+                                <input type="file" class="form-control " name="company_authorization_image" accept="image/*" onchange="readURL(this)" />
                             </div>
                             <div class="col-lg-2 col-sm-12 d-flex align-items-center">
                                 <img  id="img-preview" style="width: 180px ; hight:50px" src="https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png" width="250px" />

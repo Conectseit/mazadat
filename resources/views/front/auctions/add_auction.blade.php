@@ -17,22 +17,20 @@
                 <form action="{{route('front.add_auction')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="inputs-group">
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="email" class="form-label">{{ trans('messages.auction.choose_category')}}</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <select class="form-select form-control" name="category_id"
-                                        aria-label="Default select example">
-                                    <option selected disabled> {{ trans('messages.auction.choose_category')}}</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}"> {{ $category->$name }} </option>
-                                    @endforeach
-                                </select>
-
-
-                            </div>
-                        </div>
+{{--                        <div class="form-group mb-4 row">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                <label for="email" class="form-label">{{ trans('messages.auction.choose_category')}}</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-10 col-md-9">--}}
+{{--                                <select class="form-select form-control" name="category_id"--}}
+{{--                                        aria-label="Default select example">--}}
+{{--                                    <option selected disabled> {{ trans('messages.auction.choose_category')}}</option>--}}
+{{--                                    @foreach ($categories as $category)--}}
+{{--                                        <option value="{{ $category->id }}"> {{ $category->$name }} </option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="email" class="form-label">{{trans('messages.name_ar')}}</label>
@@ -145,25 +143,29 @@
 
                     </div>
 
-{{--                    <div class="inputs-group">--}}
-{{--                        <h5 class="group-title"> {{ trans('messages.auction.options') }}</h5>--}}
-{{--                        <div class="form-group mb-4 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label for="email"--}}
-{{--                                       class="form-label">{{ trans('messages.auction.auction_terms_ar') }}</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    <div class="inputs-group">
+                        <h5 class="group-title"> {{ trans('messages.auction.options') }}</h5>
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="email" class="form-label">{{ trans('messages.auction.choose_category')}}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <select class="form-select form-control" name="category_id"
+                                        aria-label="Default select example">
+                                    <option selected disabled> {{ trans('messages.auction.choose_category')}}</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"> {{ $category->$name }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
 
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
 
                         {{--                        <div id="location" style="display:block;">--}}
-
                         <div class="form-group">
                             <label>@lang('messages.auction.images')</label>
                             <input type="file" class="form-control " name="images[]" multiple="multiple"/>

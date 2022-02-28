@@ -37,13 +37,13 @@ Route::group(
     Route::get('company/{id}/auctions', [HomeController::class, 'companyAuctions'])->name('front.company_auctions');
 
 
+
     // ============ // category ================
     Route::get('category/{id}/auctions', [CategoryController::class, 'categoryAuctions'])->name('front.category_auctions');
 //    Route::post('search/{id}', [CategoryController::class, 'search'])->name('front.search');
     Route::post('main_filter_category/{id}/auctions', [FilterController::class,'main_filter'])->name('front.main_filter');
     Route::post('filter_category/{id}/auctions', [FilterController::class,'filterCategory'])->name('front.filter_category');
     Route::get('auction_details/{id}', [AuctionController::class, 'auction_details'])->name('front.auction_details');
-
 
 
 
@@ -105,13 +105,15 @@ Route::group(
         // ============ // auctions ================
         Route::get('show_add_auction', [AuctionController::class, 'show_add_auction'])->name('front.show_add_auction');
         Route::post('add_auction', [AuctionController::class, 'add_auction'])->name('front.add_auction');
+        Route::get('my_auctions', [AuctionController::class, 'my_auctions'])->name('front.my_auctions');
+
 
         // ============ // profile ================
         Route::any('my_profile', [UserController::class, 'showProfile'])->name('front.my_profile');
         Route::any('edit_profile', [UserController::class, 'editProfile'])->name('front.edit_profile');
 
         Route::any('update_profile', [UserController::class, 'updateProfile'])->name('front.update_profile');
-        Route::any('complete_profile', [UserController::class, 'completeProfile'])->name('front.complete_profile');
+        Route::post('complete_profile', [UserController::class, 'completeProfile'])->name('front.complete_profile');
 
         Route::any('choose_available_limit', [UserController::class, 'choose_available_limit'])->name('front.choose_available_limit');
         Route::any('my_wallet', [UserController::class, 'my_wallet'])->name('front.my_wallet');

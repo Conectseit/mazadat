@@ -15,14 +15,15 @@ class ComplteProfileRequest extends FormRequest
     {
         return [
 
-            'nationality_id'        => 'required|numeric|exists:nationalities,id',
-            'city_id'               => 'required|numeric|exists:cities,id',
-            'block'                 => 'required',
-            'street'                => 'required',
-            'block_num'             => 'required',
-            'delivery_time'         => 'required|in:am,pm',
-            'signs'                 => 'required',
-            'P_O_Box'               => 'required',
+            'nationality_id'        => 'sometimes|numeric|exists:nationalities,id',
+            'city_id'               => 'sometimes|numeric|exists:cities,id',
+            'block'                 => 'sometimes|string',
+            'street'                => 'sometimes|string',
+            'block_num'             => 'sometimes|numeric',
+//            'delivery_time'         => 'sometimes|in:am,pm',
+            'signs'                 => 'sometimes',
+            'P_O_Box'               => 'sometimes',
+            'passport_image'        => 'sometimes|image',
 
         ];
     }

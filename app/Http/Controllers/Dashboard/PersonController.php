@@ -131,6 +131,21 @@ class PersonController extends Controller
     }
 
 
+
+    public function verified($id)
+    {
+        $company = User::findOrFail($id);
+        $company->update(['is_verified'=> 1]);
+        return back();
+    }
+    public function not_verified($id)
+    {
+        $company = User::findOrFail($id);
+        $company->update(['is_verified'=> 0]);
+        return back();
+    }
+
+
 }
 
 

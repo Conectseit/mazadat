@@ -214,4 +214,13 @@ class AuctionController extends Controller
 
 
 
+    public function my_auctions()
+    {
+        $data['auctions'] =  auth()->user()->seller_auctions()->get();
+        return view('front.user.my_auctions', $data);
+    }
+
+
+
+
 }

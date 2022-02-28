@@ -136,7 +136,8 @@
 {{--                                <li><a href="#">مزاد ابوظبي العقاري</a></li>--}}
 {{--                                <li><a href="#">مزاد الامارات العقاري</a></li>--}}
 
-                                @foreach($featured_auctions->orderBy('count_of_buyer', 'desc')->take(4)->get() as $auction)
+                                @foreach($featured_auctions->where('is_unique', 1)->latest()->take(4)->get() as $auction)
+{{--                                @foreach($featured_auctions->orderBy('count_of_buyer', 'desc')->take(4)->get() as $auction)--}}
 
                                     <li><a href="#">{{$auction->$name}}</a></li>
                                 @endforeach

@@ -40,6 +40,7 @@
                         <th>{{ trans('messages.mobile') }}</th>
                         <th>{{ trans('messages.email') }}</th>
                         <th class="text-center">{{ trans('messages.ban/not') }}</th>
+{{--                        <th class="text-center">{{ trans('messages.verified/not') }}</th>--}}
 
                         <th>@lang('messages.since')</th>
                         <th class="text-center">@lang('messages.form-actions')</th>
@@ -80,6 +81,12 @@
                                             class="icon-check2"></i> {{trans('messages.ban')}}</a>
                                 @endif
                             </td>
+
+
+
+
+
+
                             <td>{{isset($person->created_at) ?$person->created_at->diffForHumans():'---' }}</td>
                             <td class="text-center">
                                 <ul class="icons-list">

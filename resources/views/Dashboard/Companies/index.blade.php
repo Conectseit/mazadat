@@ -62,6 +62,7 @@
                                                     <th class="text-center">{{ trans('messages.mobile') }}</th>
                                                     <th class="text-center">{{ trans('messages.email') }}</th>
                                                     <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
+                                                    <th class="text-center">{{ trans('messages.unique') }}</th>
                                                     <th class="text-center">@lang('messages.since')</th>
                                                     <th class="text-center">@lang('messages.form-actions')</th>
                                                 </tr>
@@ -88,6 +89,18 @@
                                                             @else
                                                                 <a href="company/{{$company->id}}/accept/" class="btn btn-success btn-sm"> <i
                                                                         class="icon-check2"></i> {{trans('messages.accept')}}</a>
+                                                            @endif
+                                                        </td>
+
+
+                                                        <td class="text-center">
+                                                            @if($company->unique_company ==0)
+                                                                <a href="company/{{$company->id}}/unique/" class="btn btn-success btn-sm"> <i
+                                                                        class="icon-check2"></i> {{trans('messages.unique')}}</a>
+                                                            @else
+
+                                                                <a href="company/{{$company->id}}/not_unique/" class="btn btn-danger btn-sm"><i
+                                                                        class="icon-close2"></i>{{trans('messages.not_unique')}}</a>
                                                             @endif
                                                         </td>
 
@@ -131,7 +144,7 @@
                                 </div>
 
 
-                                <div class="tab-pane active" id="not_accepted_companies">
+                                <div class="tab-pane " id="not_accepted_companies">
 
                                     <div class="panel-body">
                                         @if($not_accepted_companies->count() > 0)

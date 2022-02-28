@@ -2,7 +2,7 @@
 @section('title', trans('messages.home'))
 @section('style')
     <style>
-        .add-auction.btn{
+        .add-auction.btn {
             text-align: center;
             border: 1px solid #fff;
             padding: 8px;
@@ -10,17 +10,45 @@
             font-size: 20px;
             background: #1e3c48;
         }
-        .carousel-item img{
-            height: 320px;
-            padding-top:20px;
+        .count-auction.btn {
+            text-align: center;
+            /*border: 1px solid #fff;*/
+            padding: 8px;
+            color: #fff;
+            font-size: 20px;
+            background: #d1915c;
+            width: 389px;
         }
+
+        .carousel-item img {
+            height: 320px;
+        }
+
+        .category-items-page .items .card.gallery-card .card-body
+        {background: #1e3c48;}
+        /*//*/
+        .category-items-page .items .card.gallery-card .card-title {
+            text-align: center;
+            position: static;
+        }
+        .category-items-page .items .card.gallery-card {
+            border: 10px solid transparent;
+            transition: .3s ease-in-out;
+        }
+        .category-items-page .items .card.gallery-card:hover {
+            border: 10px solid #1e3c48;
+            opacity: .9;
+        }
+    /*    */
+
+
     </style>
 @endsection
 
 
 @section('content')
     @include('front.layouts.parts.alert')
-    <div class="p-1">
+    <div class="mt-0">
         <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="3000">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></button>
@@ -30,39 +58,40 @@
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
-                    <a href="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}" data-popup="lightbox">
-                    <img class="d-block w-100" src="
+                    <a href="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
+                       data-popup="lightbox">
+                        <img class="d-block w-100" src="
 {{--                    https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide1.jpg" --}}
-                    {{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
-                         alt="First slide">
+                        {{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
+                             alt="First slide">
                     </a>
 
                     <div class="carousel-caption d-none d-md-block">
                         <h5>{{$advertisements->count() > 0 ? $advertisements->first()->$name : 'mazadat' }}</h5>
-{{--                        <p>University Campus</p>--}}
+                        {{--                        <p>University Campus</p>--}}
                     </div>
                 </div>
 
                 @foreach($advertisements as $advertisement)
                     @if(!$loop->first)
-                <div class="carousel-item">
+                        <div class="carousel-item">
 
-                    <a href="{{ $advertisement->ImagePath }}" data-popup="lightbox">
-                        <img  class="d-block w-100" src="{{ $advertisement->ImagePath }}"  alt="Second slide">
-                    </a>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>{{ isNullable($advertisement->$name) }}</h5>
-                    </div>
-                </div>
+                            <a href="{{ $advertisement->ImagePath }}" data-popup="lightbox">
+                                <img class="d-block w-100" src="{{ $advertisement->ImagePath }}" alt="Second slide">
+                            </a>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ isNullable($advertisement->$name) }}</h5>
+                            </div>
+                        </div>
                     @endif
                 @endforeach
-{{--                <div class="carousel-item">--}}
-{{--                    <img class="d-block w-100" src="https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide3.jpg" alt="Third slide">--}}
-{{--                    <div class="carousel-caption d-none d-md-block">--}}
-{{--                        <h5>Faculty of Engineering</h5>--}}
-{{--                        <p>University Campus</p>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                {{--                <div class="carousel-item">--}}
+                {{--                    <img class="d-block w-100" src="https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide3.jpg" alt="Third slide">--}}
+                {{--                    <div class="carousel-caption d-none d-md-block">--}}
+                {{--                        <h5>Faculty of Engineering</h5>--}}
+                {{--                        <p>University Campus</p>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
             </div>
             <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -75,30 +104,79 @@
         </div>
     </div>
 
-    <section class="categories">
 
-        <div class="container">
-            <div class="row">
-                <div class=" d-flex justify-content-between" >
-                    <a href="{{route('front.show_add_auction')}}" class="add-auction btn "><b>  <i class="fal fa-plus-circle"></i>  </b>{{ trans('messages.auction.add') }}</a>
 
-                    <a href="{{route('front.all_companies')}}" class="add-auction btn"><b>  <i class="fal fa-gavel"></i>  </b>{{ trans('messages.company.companies_auctions') }}</a>
+    {{--        <section class="categories">--}}
+
+    {{--        <div class="container">--}}
+    {{--            <div class="row">--}}
+    {{--                <div class=" d-flex justify-content-between" >--}}
+    {{--                    <a href="{{route('front.show_add_auction')}}" class="add-auction btn "><b>  <i class="fal fa-plus-circle"></i>  </b>{{ trans('messages.auction.add') }}</a>--}}
+
+    {{--                    <a href="{{route('front.all_companies')}}" class="add-auction btn"><b>  <i class="fal fa-gavel"></i>  </b>{{ trans('messages.company.companies_auctions') }}</a>--}}
+    {{--                </div>--}}
+    {{--            </div><br>--}}
+    {{--            <div class="row">--}}
+    {{--                @foreach($categories as $category)--}}
+    {{--                <div class="col-lg-3 col-md-6">--}}
+    {{--                    <a href="{{route('front.category_auctions',$category->id)}}" class="cate-card">--}}
+    {{--                        <i class="fal fa-city"></i>--}}
+    {{--                        <img src="{{ $category->ImagePath }}" alt="" width="50" height="50" class="img-circle ">--}}
+
+    {{--                        <h4>{{$category->$name}}</h4>--}}
+    {{--                    </a>--}}
+    {{--                </div>--}}
+    {{--                @endforeach--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </section>--}}
+
+
+    <div class="category-items-page">
+        <section class="items">
+            <div class="container">
+
+
+                <div class="row">
+                    <div class=" d-flex justify-content-between">
+                        <div  class="count-auction btn ">  {{ trans('messages.auction_on_progress') }} (5)</div>
+                        <div  class="count-auction btn ">  {{ trans('messages.auction_ended') }} (3)</div>
+                        <div  class="count-auction btn ">  {{ trans('messages.auction_selled') }} (15)</div>
+                    </div>
                 </div>
-            </div><br>
-            <div class="row">
-                @foreach($categories as $category)
-                <div class="col-lg-3 col-md-6">
-                    <a href="{{route('front.category_auctions',$category->id)}}" class="cate-card">
-{{--                        <i class="fal fa-city"></i>--}}
-                        <img src="{{ $category->ImagePath }}" alt="" width="50" height="50" class="img-circle">
+                <br>
+                <div class="row">
+                    <div class=" d-flex justify-content-between">
+                        <a href="{{route('front.show_add_auction')}}" class="add-auction btn "><b> <i
+                                    class="fal fa-plus-circle"></i> </b>{{ trans('messages.auction.add') }}</a>
 
-                        <h4>{{$category->$name}}</h4>
-                    </a>
+                        <a href="{{route('front.all_companies')}}" class="add-auction btn"><b> <i
+                                    class="fal fa-gavel"></i> </b>{{ trans('messages.company.companies_auctions') }}</a>
+                    </div>
                 </div>
-                @endforeach
+                <br>
+                <div class="row">
+
+                    @foreach($categories as $category)
+                        <div class="col-lg-4 col-md-6" id="viewItem">
+                            <div class="card gallery-card" id="itemCard" style="background: url({{ $category->ImagePath }}) center center no-repeat">
+                                <a href="{{route('front.category_auctions',$category->id)}}" class="image">
+                                    <div class="overlay">
+
+                                    </div>
+{{--                                    <img src="{{ $category->ImagePath }}" alt="card-img">--}}
+                                </a>
+                                <div class="card-body">
+                                    <h3 class="card-title">{{$category->$name}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
+
     @include('front.layouts.splash')
 
 @stop

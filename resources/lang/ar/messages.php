@@ -259,6 +259,20 @@ return [
 
 // ==== eng
     'auctions_of'=>' مزادات شركة',
+    'auction_on_progress'=>' عدد المزادات القائمة ',
+    'auction_ended'=>' عدد المزادات المنتهية  ',
+    'auction_selled'=>' عدد المزادات المباعه عن طريق مزادات   ',
+    'block'=>'الحي  ',
+    'street'=>'الشارع ',
+    'block_num'=>'رقم المبني',
+    'signs'=>'أقرب علامة مميزه',
+    'not_ban'=>'الغاء الحظر',
+    'ban'=>' حظر',
+    'unique'=>' مميز',
+    'not_unique'=>' غير مميز',
+    'verified'=>' تمت مراجعة الحساب',
+    'not_verified'=>' بيانات غير مكتملة',
+    'please_complete_your_address_details'=>'بيانات اساسيية اخري',
 
     'activity' => [
         'activities' => 'نشاطات المشرفين',
@@ -559,7 +573,7 @@ return [
     'upload_passport_success'         	=> 'تم رفع صورة جواز السفر بنجاح ',
     'upload_document_success'         	=> 'تم الرفع بنجاح ',
     'upload_receipt_successfully'         	=> ' تم رفع الفاتورة البنكية ,انتظر حتي يتم قبولها من الادارة',
-    'user_passport'         	=> ' صورة جواز السفر ',
+    'passport_image'         	=> ' صورة جواز السفر ',
     'user_documents'         	=> ' وثائق رسمية ',
     'paid_success'         	=> 'تم اضافة رصيد الي محفظتك بنجاح ',
     'updated_success'         	=> 'تم التعديل بنجاح ',

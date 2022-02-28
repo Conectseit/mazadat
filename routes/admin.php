@@ -94,11 +94,25 @@ Route::group(
                 Route::post('/ajax-delete-transaction', [TransactionController::class, 'destroy'])->name('ajax-delete-transaction');
                 Route::post('/ajax-delete-advertisement', [AdvertisementController::class, 'destroy'])->name('ajax-delete-advertisement');
 
+                Route::get('company/{id?}/unique', [CompanyController::class, 'unique'])->name('company/unique');
+                Route::get('company/{id?}/not_unique', [CompanyController::class, 'not_unique'])->name('company/not_unique');
                 Route::get('company/{id?}/accept', [CompanyController::class, 'accept'])->name('company/accept');
                 Route::get('company/{id?}/not_accept', [CompanyController::class, 'not_accept'])->name('company/not_accept');
 
+
+                Route::get('auction/{id?}/accept', [AuctionController::class, 'accept'])->name('auction/accept');
+                Route::get('auction/{id?}/not_accept', [AuctionController::class, 'not_accept'])->name('auction/not_accept');
+
+                Route::get('auction/{id?}/unique', [AuctionController::class, 'unique'])->name('auction/unique');
+                Route::get('auction/{id?}/not_unique', [AuctionController::class, 'not_unique'])->name('auction/not_unique');
+
+
+
                 Route::get('person/{id?}/ban', [PersonController::class, 'ban'])->name('person/ban');
                 Route::get('person/{id?}/not_ban', [PersonController::class, 'not_ban'])->name('person/not_ban');
+
+                Route::get('persons/person/{id?}/verified', [PersonController::class, 'verified'])->name('person/verified');
+                Route::get('persons/person/{id?}/not_verified', [PersonController::class, 'not_verified'])->name('person/not_verified');
 
 
                 Route::get('transaction/{id?}/accept', [TransactionController::class, 'accept'])->name('transaction/accept');

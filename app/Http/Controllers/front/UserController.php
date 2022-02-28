@@ -25,45 +25,47 @@ class UserController extends Controller
         return view('front.user.my_profile', $data);
     }
 
-    public function user_documents()
-    {
-        return view('front.user.user_documents');
-    }
-    public function user_passport()
-    {
-        return view('front.user.user_passport');
-    }
-    public function update_personal_image(updatePersonalImageRequest $request)
-    {
-        $request_data = $request->except(['image']);
-        if ($request->image) {
-            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
-        }
-        $user = auth()->user();
-        $user->update($request_data);
-        return back()->with('success', trans('messages.updated_success'));
-    }
 
-    public function uploadPassport(uploadPassportRequest $request)
-    {
-        $request_data = $request->except(['passport_image']);
-        if ($request->passport_image) {
-            $request_data['passport_image'] = $request_data['passport_image'] = uploaded($request->passport_image, 'user');
-        }
-        $user = auth()->user();
-        $user->update($request_data);
-        return back()->with('success', trans('messages.upload_passport_success'));
-    }
-    public function uploadDocuments(UploadDocumentRequest $request)
-    {
-        $request_data = $request->except(['front_side_image', 'back_side_image']);
-        if ($request->front_side_image) {
-            $request_data['front_side_image'] = $request_data['front_side_image'] = uploaded($request->front_side_image, 'user');
-        }
-        $user = auth()->user();
-        $document = Document::create($request_data + ['user_id' => $user->id]);
-        return back()->with('success', trans('messages.upload_document_success'));
-    }
+
+//    public function user_documents()
+//    {
+//        return view('front.user.user_documents');
+//    }
+//    public function user_passport()
+//    {
+//        return view('front.user.user_passport');
+//    }
+//    public function update_personal_image(updatePersonalImageRequest $request)
+//    {
+//        $request_data = $request->except(['image']);
+//        if ($request->image) {
+//            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
+//        }
+//        $user = auth()->user();
+//        $user->update($request_data);
+//        return back()->with('success', trans('messages.updated_success'));
+//    }
+
+//    public function uploadPassport(uploadPassportRequest $request)
+//    {
+//        $request_data = $request->except(['passport_image']);
+//        if ($request->passport_image) {
+//            $request_data['passport_image'] = $request_data['passport_image'] = uploaded($request->passport_image, 'user');
+//        }
+//        $user = auth()->user();
+//        $user->update($request_data);
+//        return back()->with('success', trans('messages.upload_passport_success'));
+//    }
+//    public function uploadDocuments(UploadDocumentRequest $request)
+//    {
+//        $request_data = $request->except(['front_side_image', 'back_side_image']);
+//        if ($request->front_side_image) {
+//            $request_data['front_side_image'] = $request_data['front_side_image'] = uploaded($request->front_side_image, 'user');
+//        }
+//        $user = auth()->user();
+//        $document = Document::create($request_data + ['user_id' => $user->id]);
+//        return back()->with('success', trans('messages.upload_document_success'));
+//    }
 
 //    public function update_personal_bio(updatePersonalBioRequest $request)
 //    {
@@ -79,15 +81,25 @@ class UserController extends Controller
     {
         $data['nationalities'] = Nationality::all();
         $data['cities'] = City::all();
+//        $data['cities'] = City::where('country_id',auth()->user()->country_id)->get();
         $data['countries'] = Country::all();
         return view('front.user.edit_profile',$data);
     }
+
+
     public function completeProfile(ComplteProfileRequest $request)
     {
+
         $user = auth()->user();
-        $user->update($request->all());
-        return back()->with('success', trans('messages.updated_success'));
+        $request_data = $request->except(['passport_image']);
+
+        if ($request->passport_image) {
+            $request_data['passport_image']  = uploaded($request->passport_image, 'user');
+        }
+        $user->update($request_data+['is_completed'=>1]);
+        return back()->with('success', trans('messages.updated_success_wait_until_admin_accept_it'));
     }
+
     public function updateProfile(updateProfileRequest $request)
     {
 //        $request_data = $request->except(['password', 'password_confirmation', 'submit']);
@@ -122,5 +134,14 @@ class UserController extends Controller
         $data['user'] = User::where('id', auth()->user()->id)->first();
         return view('front.user.my_wallet', $data);
     }
+
+
+
+
+
+
+
+
+
 
 }

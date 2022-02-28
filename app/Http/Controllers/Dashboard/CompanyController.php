@@ -125,10 +125,28 @@ class CompanyController extends Controller
 
 
 
+    public function unique($id)
+    {
+
+        $company = User::findOrFail($id);
+        $company->update(['unique_company'=> 1]);
+        return back();
+    }
+
+    public function not_unique($id)
+    {
+        $company = User::findOrFail($id);
+        $company->update(['unique_company'=> 0]);
+        return back();
+    }
+
+
+
+
     public function accept($id)
     {
         $company = User::findOrFail($id);
-        $company->update(['is_accepted'=> 1]);
+        $company->update(['is_accepted'=> 1,'is_verified'=> 1]);
         return back();
     }
     public function not_accept($id)
