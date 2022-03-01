@@ -42,7 +42,9 @@ class Auction extends Model
         $start  = new Carbon($this->start_date);
         $end  = new Carbon($this->end_date);
         $diff = $start->diff($end);
-        return ' days '. $diff->d . '/' . ' hours ' . $diff->h ;
+
+         return ' days '. $diff->d . '/' . ' hours ' . $diff->h ;
+//        return ['days' => $diff->d, 'minutes' => $diff->m, 'seconds' => $diff->s];
     }
 
 

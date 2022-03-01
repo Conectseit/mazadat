@@ -21,23 +21,24 @@
 
             <div class="">
                 <div class="row">
-                    <div class="col-md-6" id="zz">
-                        <div class="submit-btn btn btn-primary submit-btn save-btn">
+                    <div class="col-md-6" >
+                        <div class="submit-btn btn btn-primary submit-btn save-btn mx-auto">
                             <a href="{{route('front.show_register_person')}}">{{trans('messages.register_person')}}</a>
                         </div>
                     </div>
-                    <div class="col-md-6" id="zzz">
-                        <div class="submit-btn btn btn-primary submit-btn save-btn">
+                    <div class="col-md-6" >
+                        <div class="submit-btn btn btn-primary submit-btn save-btn mx-auto">
                             <a href="{{route('front.show_register_company')}}">{{trans('messages.register_company')}}<br></a>
                         </div>
                     </div>
-{{--                    <div id="z">--}}
-{{--                        <h5 class="title">--}}
-{{--                            <a href="{{route('front.home')}}">{{trans('messages.login_as_visitor')}}</a>--}}
-{{--                            <a href="{{route('front.show_login')}}">{{trans('messages.already_has_account')}}<br></a>--}}
-{{--                        </h5>--}}
-{{--                    </div>--}}
 
+
+                </div>
+                <div class="row d-flex align-items-center my-2">
+                    <h5 class="title text-center">
+                        <a class="text-dark" href="{{route('front.home')}}">{{trans('messages.login_as_visitor')}}</a> |
+                        <a class="text-dark" href="{{route('front.show_login')}}">{{trans('messages.already_has_account')}}<br></a>
+                    </h5>
                 </div>
 
             </div>

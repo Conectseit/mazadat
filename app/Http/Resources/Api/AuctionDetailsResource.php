@@ -31,6 +31,10 @@ class AuctionDetailsResource extends JsonResource
             'value_of_increment'          =>(int) $this->value_of_increment,
             'start_date'                  => $this->start_date->format('l m-d-Y'),
             'remaining_time'              => $this->remaining_time,
+            'is_unique'                   => $this->is_unique,
+            'latitude'                    => $this->latitude,
+            'longitude'                   => $this->longitude,
+
             'is_watched_auction'          => auth()->guard('api')->check() ? is_watched_auction($this->id) : false,
 
 //            'specifications'              => OptionResource::collection($this->options),

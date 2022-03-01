@@ -19,6 +19,8 @@ class CompaniesResource extends JsonResource
             'id'       => $this->id,
             'name'     => $this->user_name,
             'image'    => $this->image_path,
+            'unique_company '         => $this->unique_company ,
+
         ];
 
     }

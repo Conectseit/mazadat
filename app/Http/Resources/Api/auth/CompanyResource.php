@@ -44,6 +44,7 @@ class CompanyResource extends JsonResource
             'P_O_Box'                 => $this->P_O_Box,
             'ban'                     => $this->ban,
             'is_verified'             => $this->is_verified,
+            'unique_company '         => $this->unique_company ,
 
 
 

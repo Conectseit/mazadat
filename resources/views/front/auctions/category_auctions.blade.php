@@ -3,24 +3,24 @@
 
 @section('style')
     <style>
-        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-            color: #fff;
-            background-color: #1e3c48;
-            border-color: #1e3c48 #1e3c48 #1e3c48;
-        }
+        /*.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {*/
+        /*    color: #fff;*/
+        /*    background-color: #1e3c48;*/
+        /*    border-color: #1e3c48 #1e3c48 #1e3c48;*/
+        /*}*/
 
-        .nav-tabs {
-            border-bottom: 1px solid #1e3c48;
-            margin-top: -2px;
-        }
+        /*.nav-tabs {*/
+        /*    border-bottom: 1px solid #1e3c48;*/
+        /*    margin-top: -2px;*/
+        /*}*/
 
-        .nav-tabs {
-            border-bottom: 1px solid transparent;
-        }
+        /*.nav-tabs {*/
+        /*    border-bottom: 1px solid transparent;*/
+        /*}*/
 
-        .nav-link {
-            color: #1e3c48;
-        }
+        /*.nav-link {*/
+        /*    color: #1e3c48;*/
+        /*}*/
 
     </style>
 @endsection

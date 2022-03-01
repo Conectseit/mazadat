@@ -10,130 +10,6 @@
             height: 400px;
         }
 
-        #countdown {
-            width: 356px;
-            height: 112px;
-            text-align: center;
-            background: #222;
-            background-image: -webkit-linear-gradient(top, #222, #333, #333, #222);
-            background-image: -moz-linear-gradient(top, #222, #333, #333, #222);
-            background-image: -ms-linear-gradient(top, #222, #333, #333, #222);
-            background-image: -o-linear-gradient(top, #222, #333, #333, #222);
-            border: 1px solid #111;
-            border-radius: 5px;
-            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
-            margin: auto;
-            padding: 24px 0;
-            /*position: absolute;*/
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-
-        #countdown:before {
-            content: "";
-            width: 8px;
-            height: 65px;
-            background: #444;
-            background-image: -webkit-linear-gradient(top, #555, #444, #444, #555);
-            background-image: -moz-linear-gradient(top, #555, #444, #444, #555);
-            background-image: -ms-linear-gradient(top, #555, #444, #444, #555);
-            background-image: -o-linear-gradient(top, #555, #444, #444, #555);
-            border: 1px solid #111;
-            border-top-left-radius: 6px;
-            border-bottom-left-radius: 6px;
-            display: block;
-            position: absolute;
-            top: 48px;
-            left: -10px;
-        }
-
-        #countdown:after {
-            content: "";
-            width: 8px;
-            height: 65px;
-            background: #444;
-            background-image: -webkit-linear-gradient(top, #555, #444, #444, #555);
-            background-image: -moz-linear-gradient(top, #555, #444, #444, #555);
-            background-image: -ms-linear-gradient(top, #555, #444, #444, #555);
-            background-image: -o-linear-gradient(top, #555, #444, #444, #555);
-            border: 1px solid #111;
-            border-top-right-radius: 6px;
-            border-bottom-right-radius: 6px;
-            display: block;
-            position: absolute;
-            top: 48px;
-            right: -10px;
-        }
-
-        #countdown #tiles {
-            position: relative;
-            z-index: 1;
-        }
-
-        #countdown #tiles > span {
-            width: 53px;
-            max-width: 53px;
-            font: bold 48px 'Droid Sans', Arial, sans-serif;
-            text-align: center;
-            color: #111;
-            background-color: #ddd;
-            background-image: -webkit-linear-gradient(top, #bbb, #eee);
-            background-image: -moz-linear-gradient(top, #bbb, #eee);
-            background-image: -ms-linear-gradient(top, #bbb, #eee);
-            background-image: -o-linear-gradient(top, #bbb, #eee);
-            border-top: 1px solid #fff;
-            border-radius: 3px;
-            box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.7);
-            margin: 0 7px;
-            padding: 3px 0;
-            display: inline-block;
-            position: relative;
-        }
-
-        #countdown #tiles > span:before {
-            content: "";
-            width: 100%;
-            height: 13px;
-            background: #111;
-            display: block;
-            padding: 0 3px;
-            position: absolute;
-            top: 41%;
-            left: -3px;
-            z-index: -1;
-        }
-
-        #countdown #tiles > span:after {
-            content: "";
-            width: 100%;
-            height: 1px;
-            background: #eee;
-            border-top: 1px solid #333;
-            display: block;
-            position: absolute;
-            top: 48%;
-            left: 0;
-        }
-
-        #countdown .labels {
-            width: 100%;
-            height: 25px;
-            text-align: center;
-            position: absolute;
-            bottom: 8px;
-        }
-
-        #countdown .labels li {
-            width: 102px;
-            font: bold 15px 'Droid Sans', Arial, sans-serif;
-            color: #f47321;
-            text-shadow: 1px 1px 0px #000;
-            text-align: center;
-            text-transform: uppercase;
-            display: inline-block;
-        }
 
         .carousel-item img {
             height: 400px;
@@ -150,38 +26,57 @@
                     @include('front.layouts.parts.make_bid_alert')
 
 
-                    <div class="col-lg-5 d-flex align-items-center">
+                    <div class="col-lg-2 d-flex align-items-center">
                         <a class="navbar-brand" href="{{route('front.home')}}">
                             <i class="fal fa-calendar-alt"></i>
                         </a>
                         <h3 class="ad-title">{{ ($auction->category->$name ) }}</h3>
                     </div>
-                    <div class="col-lg-5" id="mainInfo">
-                        <p class="start-date">
-                            <i class="fal fa-calendar-alt"></i>
+                    <div class="col-lg-8 mx-auto" id="mainInfo">
 
-                            {{trans('messages.auction.start_at')}}
-                            : {{ ($auction->start_date->format('l, m/d/Y  h:s') ) }}
-                            {{--                            Start_at: {{ ($auction->start_date->format('l, m/d/Y  h:s') ) }}--}}
-                        </p>
-                        {{--                        <p class="ticket"><i class="fal fa-ticket"></i>{{ ($auction->count_of_buyer ) }}</p>--}}
-                        <div class="row">
-                            {{--                            <div class="col-sm-4 col-6">--}}
-                            {{--                                <p><i class="fal fa-tag"></i>{{($auction->value_of_increment)}}</p>--}}
-                            {{--                            </div>--}}
-                            <div class="col-sm-4 col-6">
-                                <p>
-                                    <i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}{{($auction->start_auction_price)}}
-                                </p>
+                        <div class="my-auto">
+                            <h5 class="text-center mx-auto my-1">{{trans('messages.auction.remaining_time')}}
+                                :<i class="fal fa-clock"></i></h5>
+                            <div id="countdown">
+                                <div id='tiles'></div>
+                                <div class="labels">
+                                    <li>Days</li>
+                                    <li>Hours</li>
+                                    <li>Mins</li>
+                                    <li>Secs</li>
+                                </div>
                             </div>
-                            <div class="col-sm-4 col-6">
-                                <p><i class="fal fa-gavel"></i>{{trans('messages.auction.current_price')}}
-                                    :{{($auction->current_price)}}</p>
-                            </div>
-                            {{--                            <div class="col-sm-4">--}}
-                            {{--                                <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>--}}
-                            {{--                            </div>--}}
                         </div>
+
+
+
+
+
+{{--                        <p class="start-date">--}}
+{{--                            <i class="fal fa-calendar-alt"></i>--}}
+
+{{--                            {{trans('messages.auction.start_at')}}--}}
+{{--                            : {{ ($auction->start_date->format('l, m/d/Y  h:s') ) }}--}}
+{{--                            --}}{{--                            Start_at: {{ ($auction->start_date->format('l, m/d/Y  h:s') ) }}--}}
+{{--                        </p>--}}
+{{--                        --}}{{--                        <p class="ticket"><i class="fal fa-ticket"></i>{{ ($auction->count_of_buyer ) }}</p>--}}
+{{--                        <div class="row">--}}
+{{--                            --}}{{--                            <div class="col-sm-4 col-6">--}}
+{{--                            --}}{{--                                <p><i class="fal fa-tag"></i>{{($auction->value_of_increment)}}</p>--}}
+{{--                            --}}{{--                            </div>--}}
+{{--                            <div class="col-sm-4 col-6">--}}
+{{--                                <p>--}}
+{{--                                    <i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}{{($auction->start_auction_price)}}--}}
+{{--                                </p>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-sm-4 col-6">--}}
+{{--                                <p><i class="fal fa-gavel"></i>{{trans('messages.auction.current_price')}}--}}
+{{--                                    :{{($auction->current_price)}}</p>--}}
+{{--                            </div>--}}
+{{--                            --}}{{--                            <div class="col-sm-4">--}}
+{{--                            --}}{{--                                <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>--}}
+{{--                            --}}{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
 
                     <div class="col-lg-2 d-flex align-items-center" id="bid">
@@ -309,19 +204,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-lg-3 my-auto">
-                        <h5 class="text-center mx-auto my-1">{{trans('messages.auction.remaining_time')}}
-                            :<i class="fal fa-clock"></i></h5>
-                        <div id="countdown">
-                            <div id='tiles'></div>
-                            <div class="labels">
-                                <li>Days</li>
-                                <li>Hours</li>
-                                <li>Mins</li>
-                                <li>Secs</li>
-                            </div>
-                        </div>
-                    </div>
+
 
                 </div>
                 <hr>
@@ -474,6 +357,7 @@
     @include('Dashboard.layouts.parts.map')
     @include('front.auctions.ajax')
     @include('front.auctions.counter')
+{{--    @include('front.auctions.counter', ['auction' => $auction])--}}
 
 @endpush
 

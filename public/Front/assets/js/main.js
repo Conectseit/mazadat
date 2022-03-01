@@ -67,18 +67,25 @@ $(document).ready(function () {
 $(document).ready(function () {
   $("#searchBtn").click(function () {
     $("#searchForm").slideToggle();
+    $("#filterForm").slideUp();
+    $("#controlMenuForm").slideUp();
+
   });
 });
 
 $(document).ready(function () {
   $("#filterBtn").click(function () {
-    $("#filterForm").slideToggle();
+      $("#searchForm").slideUp();
+      $("#filterForm").slideToggle();
+      $("#controlMenuForm").slideUp();
   });
 });
 
 $(document).ready(function () {
   $("#controlMenuBtn").click(function () {
-    $("#controlMenuForm").slideToggle();
+      $("#searchForm").slideUp();
+      $("#filterForm").slideUp();
+      $("#controlMenuForm").slideToggle();
   });
 });
 

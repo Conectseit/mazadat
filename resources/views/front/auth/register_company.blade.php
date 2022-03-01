@@ -34,7 +34,7 @@
                                 <input type="file" class="form-control " name="company_authorization_image" accept="image/*" onchange="readURL(this)" />
                             </div>
                             <div class="col-lg-2 col-sm-12 d-flex align-items-center">
-                                <img  id="img-preview" style="width: 180px ; hight:50px" src="https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png" width="250px" />
+                                <img  id="img-preview" style="width: 180px ; height:90px" src="https://assets.wasalt.com/others/icons/villas-for-sale-in-makkah.jpeg" width="250px" />
                             </div>
                         </div>
 
@@ -129,10 +129,10 @@
                                     <label>@lang('messages.commercial_register_image')</label>
                                 </div>
                                 <div class="col-lg-8 col-sm-12 d-flex align-items-center">
-                                    <input type="file" class="form-control commercial_register_image" name="commercial_register_image" accept="image/*" onchange="readURL(this)" />
+                                    <input type="file" class="form-control commercial_register_image" name="commercial_register_image" accept="image/*" onchange="readURL2(this)" />
                                 </div>
                                 <div class="col-lg-2 col-sm-12 d-flex align-items-center">
-                                    <img  id="img-preview" style="width: 180px ; hight:50px" src="https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png" width="250px" />
+                                    <img  id="img-preview2" style="width: 180px ; height:90px" src="https://assets.wasalt.com/others/icons/villas-for-sale-in-makkah.jpeg" width="250px" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -149,18 +149,19 @@
                                 </div>
                             </div>
 {{--                        </div>--}}
-                            <div class="form-group mt-5 row">
-                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                </div>
-                                <div class="col-lg-10 col-md-9">
+                            <div class="form-group mt-5 row d-lg-flex d-sm-block">
+
+                                <div class="col-lg-3 col-md-5">
                                     {!! NoCaptcha::renderJs() !!}
                                     {{--                                {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
                                     {!! NoCaptcha::display() !!}
                                 </div>
+                                <div class="col-lg-9 col-md-7 my-auto">
+                                    <p> {{trans('messages.accept_term')}}</p>
+                                </div>
                             </div>
 
                         <div class="sign-btn">
-                            <p> {{trans('messages.accept_term')}}</p>
                             <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>
                         </div>
                     </div>
@@ -183,7 +184,7 @@
                 fitImagesInViewport: true,
             });
         });
-        let noimage = "https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png";
+        let noimage = "https://assets.wasalt.com/others/icons/villas-for-sale-in-makkah.jpeg";
 
         function readURL(input) {
             console.log(input.files);
@@ -195,7 +196,22 @@
 
                 reader.readAsDataURL(input.files[0]);
             } else {
-                $("#img-preview").attr("src", noimage);
+                $("#img-preview").attr("src", "https://assets.wasalt.com/others/icons/villas-for-sale-in-makkah.jpeg");
+
+            }
+        }
+        function readURL2(input) {
+            console.log(input.files);
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#img-preview2").attr("src", e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+
+                $("#img-preview2").attr("src", "https://assets.wasalt.com/others/icons/villas-for-sale-in-makkah.jpeg");
             }
         }
     </script>
