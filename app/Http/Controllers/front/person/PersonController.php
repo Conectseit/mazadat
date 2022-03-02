@@ -26,29 +26,17 @@ class PersonController extends Controller
         DB::beginTransaction();
         try {
             $request_data = $request->except(['image','phone_code','mobile']);
-
-
             $country=Country::where('phone_code',$request->phone_code)->first();
-//            $user = User::where('mobile', $request->mobile)->first();
-//            if ($user) return back()->withInput($request->only('mobile'))->with('error', 'عفوا رقم الجوال مسجل من قبل');
-//
-//            $user = User::where('email', $request->email)->first();
-//            if ($user) return back()->withInput($request->only('email'))->with('error', 'عفوا الايميل  مسجل من قبل');
-
-
             if ($request->mobile) {
                 $request_data['mobile'] =$request->phone_code. $request->mobile ;
             }
             $user = User::create($request_data + ['activation_code' => $activation_code, 'is_accepted'=>'1','type'=>'buyer','accept_app_terms'=>'yes','country_id'=>$country->id]);
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
-                Token::create([
-                    'jwt' => $jwt_token,
-                    'user_id' => $user->id,
-                ]);
+                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
             }
             DB::commit();
-            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+//            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
 
 //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
             return redirect()->route('front.show_activation');
@@ -57,3 +45,12 @@ class PersonController extends Controller
         }
     }
 }
+
+
+
+
+//            $user = User::where('mobile', $request->mobile)->first();
+//            if ($user) return back()->withInput($request->only('mobile'))->with('error', 'عفوا رقم الجوال مسجل من قبل');
+//
+//            $user = User::where('email', $request->email)->first();
+//            if ($user) return back()->withInput($request->only('email'))->with('error', 'عفوا الايميل  مسجل من قبل');

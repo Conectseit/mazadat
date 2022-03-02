@@ -36,14 +36,19 @@ class AddAuctionRequest extends REQUEST_API_PARENT
             'auction_terms_en'  => 'required',
             'latitude'          => 'required',
             'longitude'         => 'required',
+
+            'start_auction_price'        => ['required','numeric'],
+            'value_of_increment'         => ['required','numeric'],
+            'allowed_take_photo'         => 'required|in:0,1',
+            'images.*'                   => 'sometimes',
+            'option_id.*'                => 'required',
+            'option_details_id.*'        => 'required',
+            'inspection_report_images.*' => 'sometimes',
+
+
+//            'inspection_report_images.*' => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
 //            'start_date'        => 'required',
 //            'end_date'          => 'required',
-            'start_auction_price'   => ['required','numeric'],
-            'value_of_increment'    => ['required','numeric'],
-            'allowed_take_photo'    => 'required|in:0,1',
-            'images.*'              => 'image',
-//            'inspection_report_images.*' => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
-
         ];
     }
 

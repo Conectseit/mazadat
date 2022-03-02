@@ -51,9 +51,6 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('logout', [AuthController::class, 'logout'])->middleware('jwt.auth');
 
 
-
-
-
     //=========== general ============
     Route::get('countries', [CountryController::class, 'countries']);
     Route::get('nationalities', [NationalityController::class, 'nationalities']);
@@ -65,7 +62,6 @@ Route::group(['namespace' => 'Api'], function () {
 
     //=========== contact_us ============
     Route::post('contact_us', [QuestionController::class, 'contact_us']);
-
 
 
     //===========  hoooome  ===========
@@ -84,9 +80,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('get_options_of_category/{id}', [FilterController::class,'get_options_of_category']);
 
 
-
     Route::get('success-payment', [PaymentController::class, 'successPayment']);
-
 
 
 // ========================== for authentication ============================

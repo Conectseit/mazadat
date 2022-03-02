@@ -9,7 +9,7 @@
         <div class="container">
             <h4 class="title"> {{ trans('messages.register_company') }}</h4>
 
-{{--            @include('front.layouts.parts.alert')--}}
+            @include('front.layouts.parts.alert')
 
 {{--            @if(session('success'))--}}
 {{--                <div class="alert alert-success alert-dismissible fade show" role="alert">--}}
@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="form-group mb-4 row">
-                            <input type="hidden" name="fcm_web_token" value="">
+{{--                            <input type="hidden" name="fcm_web_token" value="">--}}
 
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="user_name" class="form-label">{{trans('messages.company_name')}}</label>
@@ -100,8 +100,8 @@
                                 <label for="password" class="form-label">{{ trans('messages.password') }}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="password"
-                                       class="form-control   @error('password') is-invalid @enderror"  value="{{ old('password') }}"
+                                <input type="password" class="form-control
+                                @error('password') is-invalid @enderror"  value="{{ old('password') }}"
                                        id="password" name="password" placeholder="{{trans('messages.enter_password')}}">
                                 @error('password')<span style="color: #e81414;">{{ $message }}</span>@enderror
 

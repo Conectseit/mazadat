@@ -37,7 +37,8 @@ class RegisterCompanyRequest extends FormRequest
                         'g-recaptcha-response'             => 'required|captcha',
                         'latitude'    => 'required',
                         'longitude'   => 'required',
-                        'user_name'   => 'required|unique:users',
+                        'user_name'   => 'required|string|between:2,200|unique:users',
+
                         'email'       => 'required|unique:users,email',
                         'password'    => 'required|min:6|confirmed',
                         'mobile'      => 'required|numeric|min:9|unique:users,mobile',

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Api;
+namespace App\Http\Requests\Api\person;
 
 use App\Http\Requests\REQUEST_API_PARENT;
 use Illuminate\Foundation\Http\FormRequest;

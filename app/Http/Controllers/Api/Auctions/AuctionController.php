@@ -10,6 +10,7 @@ use App\Http\Resources\Api\AuctionDetailsResource;
 use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
+use App\Models\AuctionData;
 use App\Models\WatchedAuction;
 use Exception;
 use Illuminate\Http\Request;
@@ -204,12 +205,23 @@ class AuctionController extends PARENT_API
             }
             $auction_inspection_report_images = DB::table('inspection_images')->insert($data);
 
-            //======= upload auction options =======
-//            $auction_options = AuctionData::Create([
-//                'auction_id' => $auction->id,
-//                'option_id' => $request->option_id,
-//                'option_details_id' => $request->option_details_id,
-//            ]);
+//            //======= upload auction options =======
+//            $data = [];
+//                foreach ($request->option_details_id as $option_detail_id) {
+//                    $data[$option_detail_id] = [
+//                        'auction_id'        => $auction->id,
+//                        'option_details_id' => $request->option_details_id,
+//                    ];
+//                }
+//                 DB::table('auction_data')->insert($data);
+//
+
+
+            $auction_options = AuctionData::Create([
+                'auction_id'        => $auction->id,
+                'option_id'         => $request->option_id,
+                'option_details_id' => $request->option_details_id,
+            ]);
 
 
             DB::commit();
