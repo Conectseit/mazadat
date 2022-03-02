@@ -37,9 +37,7 @@ class CompletePersonProfileRequest extends REQUEST_API_PARENT
             'signs'                 => 'required',
             'P_O_Box'               => 'required',
 //            'passport_image'        => 'sometimes',
-            'passport_image'        => 'required_if:passport_image,null',
-
-
+            'passport_image'        => 'required_if:passport_image,Null',
 
         ];
     }
