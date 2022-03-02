@@ -36,7 +36,10 @@ class CompletePersonProfileRequest extends REQUEST_API_PARENT
             'delivery_time'         => 'required|in:am,pm',
             'signs'                 => 'required',
             'P_O_Box'               => 'required',
-            'passport_image'        => 'sometimes',
+//            'passport_image'        => 'sometimes',
+            'passport_image'        => 'required_if:passport_image,null',
+
+
 
         ];
     }
