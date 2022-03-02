@@ -591,7 +591,7 @@ return [
     ],
 
     'login_as_visitor'         	=> ' الدخول كزائر ',
-    'already_has_account'         	=> 'لديك حساب بالفعل ؟',
+    'already_has_account'         	=> 'لديك حساب بالفعل ,دخول ؟',
     'contact_us'         	=> 'اتصل بنا ',
     'register_person'         	=> ' تسجيل شخص ',
     'register_company'         	=> ' تسجيل مؤسسة ',

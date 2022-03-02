@@ -10,10 +10,11 @@ use App\Http\Requests\Api\ChangePasswordRequest;
 use App\Http\Requests\Api\ForgetPasswordRequest;
 use App\Http\Requests\Api\LoginRequest;
 use App\Http\Requests\Api\ResetPasswordRequest;
+use App\Http\Requests\Api\user\AddAddressRequest;
 use App\Http\Requests\Api\VerficationTokenRequest;
+use App\Http\Resources\Api\auth\AdditionalAddressResource;
 use App\Http\Resources\Api\auth\PersonResource;
 use App\Http\Resources\Api\AuthResource;
-use App\Models\AdditionalUserContact;
 use App\Models\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -29,6 +30,31 @@ use Validator;
 
 class AuthController extends PARENT_API
 {
+
+
+    public function addAddress(AddAddressRequest $request)
+    {
+        $user = $request->user();
+        if (!$user) {
+            return responseJson(false, 'The user not found...', null); //
+        }
+        $user->update($request->all());
+        return responseJson(true, trans('api.request_done_successfully'), null);
+    }
+
+    public function additionalAddress(Request $request)
+    {
+        $user = $request->user();
+        if (!$user) {
+            return responseJson(false, 'The user not found...', null); //
+        }
+        return responseJson(true, trans('api.additional_address'), new AdditionalAddressResource($user));  //OK
+
+    }
+
+
+
+
 
 
     public function activation(ActivationCodeRequest $request)

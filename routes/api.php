@@ -41,17 +41,17 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('register_company', [CompanyController::class, 'register_company']);
     Route::post('activation', [AuthController::class, 'activation']);
     Route::any('login', [AuthController::class, 'login']);
+
+
     Route::post('forget_password', [AuthController::class, 'forget_password']);
     Route::post('password_verify_token', [AuthController::class, 'verify']);
     Route::post('password_reset', [AuthController::class, 'passwordReset']);
+
+
     Route::post('logout', [AuthController::class, 'logout'])->middleware('jwt.auth');
 
 
-    //=========== questions ============
-    Route::get('questions', [QuestionController::class, 'index']);
 
-    //=========== contact_us ============
-    Route::post('contact_us', [QuestionController::class, 'contact_us']);
 
 
     //=========== general ============
@@ -60,8 +60,15 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('about_app', [SettingController::class, 'about_app']);
     Route::get('conditions_terms', [SettingController::class, 'conditions_terms']);
     Route::get('contact_us_number', [SettingController::class, 'contact_us_number']);
+    //=========== questions ============
+    Route::get('questions', [QuestionController::class, 'index']);
 
-    //===========  hoooome category ===========
+    //=========== contact_us ============
+    Route::post('contact_us', [QuestionController::class, 'contact_us']);
+
+
+
+    //===========  hoooome  ===========
     Route::get('all_advertisements', [AdvertisementController::class, 'index']);
     Route::get('all_categories', [CategoryController::class, 'index']);
     Route::post('category/{id}/auctions', [CategoryController::class, 'categoryAuctions']);
@@ -98,6 +105,8 @@ Route::group(['namespace' => 'Api'], function () {
 
 
         Route::post('change_password', [AuthController::class, 'changePassword']);
+        Route::post('add_address', [AuthController::class, 'addAddress']);
+        Route::get('additional_address', [AuthController::class, 'additionalAddress']);
 
 
         // =========== auctions ============
@@ -119,9 +128,11 @@ Route::group(['namespace' => 'Api'], function () {
         //=========== payment ======================
         Route::any('my_wallet', [UserController::class, 'my_wallet']);
         Route::post('choose_available_limit', [UserController::class, 'choose_available_limit']);
+
         Route::get('our_officers', [SettingController::class, 'our_officers']);
         Route::get('online_payment_conditions', [SettingController::class, 'online_payment_conditions']);
         Route::get('bank', [SettingController::class, 'bank']);
+
         Route::post('upload_payment_receipt', [PaymentController::class, 'upload_payment_receipt']);
 
         Route::post('send_payment', [PaymentController::class, 'sendPayment']);

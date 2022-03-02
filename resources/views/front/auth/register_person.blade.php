@@ -144,7 +144,7 @@
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="is_appear_name" class="form-label">{{ trans('messages.is_appear_name')}}</label>
                             </div>
-                            <div class="col-lg-10 col-md-9">
+                            <div class="col-lg-7 col-md-6">
                                 <label class="radio-inline">
                                     <input type="radio"  value="1" class="styled" name="is_appear_name" checked="checked">{{trans('messages.Yes')}}
                                 </label>
@@ -152,18 +152,29 @@
                                     <input type="radio" value="0" class="styled" name="is_appear_name">{{trans('messages.No')}}
                                 </label>
                             </div>
-                        </div>
 
-
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                            </div>
-                            <div class="col-lg-10 col-md-9">
+                            <div class="col-lg-3 col-md-3">
                                 {!! NoCaptcha::renderJs() !!}
                                 {{--                                {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
                                 {!! NoCaptcha::display() !!}
                             </div>
                         </div>
+
+
+{{--                        <div class="form-group mb-4 row">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-10 col-md-9">--}}
+{{--                                {!! NoCaptcha::renderJs() !!}--}}
+{{--                                --}}{{--                                {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
+{{--                                {!! NoCaptcha::display() !!}--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+
+
+
+
                         <div class="sign-btn">
                             <p> {{trans('messages.accept_term')}}</p>
                             <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>

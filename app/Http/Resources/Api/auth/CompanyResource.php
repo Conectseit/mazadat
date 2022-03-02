@@ -53,8 +53,3 @@ class CompanyResource extends JsonResource
     }
 }
 
-//            'block'                   => $this->block,
-//            'street'                  => $this->street,
-//            'block_num'               => $this->block_num,
-//            'delivery_time'           => $this->delivery_time,
-//            'signs'                   => $this->signs,

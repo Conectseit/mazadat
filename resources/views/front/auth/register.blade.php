@@ -9,6 +9,12 @@
         }
         #z{padding-right: 370px;}
 
+        .my-2 {
+            margin-top: .5rem !important;
+            margin-bottom: .5rem !important;
+            padding-top: 56px;
+        }
+
     </style>
 @endsection
 
@@ -31,15 +37,14 @@
                             <a href="{{route('front.show_register_company')}}">{{trans('messages.register_company')}}<br></a>
                         </div>
                     </div>
-
-
                 </div>
                 <div class="row d-flex align-items-center my-2">
                     <h5 class="title text-center">
                         <a class="text-dark" href="{{route('front.home')}}">{{trans('messages.login_as_visitor')}}</a> |
-                        <a class="text-dark" href="{{route('front.show_login')}}">{{trans('messages.already_has_account')}}<br></a>
+                        <a class="text-primary" href="{{route('front.show_login')}}">{{trans('messages.already_has_account')}}<br></a>
                     </h5>
                 </div>
+
 
             </div>
             <br><br>

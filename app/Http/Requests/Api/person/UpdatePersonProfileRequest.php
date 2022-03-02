@@ -30,7 +30,8 @@ class UpdatePersonProfileRequest extends REQUEST_API_PARENT
             'first_name'       => 'sometimes|string|max:255',
             'middle_name'      => 'sometimes|string|max:255',
             'last_name'        => 'sometimes|string|max:255',
-            'user_name'        => 'sometimes|string|max:255',
+            'user_name'        => 'sometimes|string|max:255|unique:users,user_name,'.auth()->user()->id,
+
             'country_id'       => 'sometimes|numeric|exists:countries,id',
             'phone_code'       => 'sometimes',
             'is_appear_name'   => 'sometimes|in:0,1',

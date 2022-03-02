@@ -28,13 +28,16 @@
 
                         <div class="form-group mb-4  row ">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label>@lang('messages.company_authorization_image')</label>
+                                <label>@lang('messages.company.company_authorization_image')</label>
                             </div>
                             <div class="col-lg-8 col-sm-12 d-flex align-items-center">
                                 <input type="file" class="form-control " name="company_authorization_image" accept="image/*" onchange="readURL(this)" />
                             </div>
                             <div class="col-lg-2 col-sm-12 d-flex align-items-center">
-                                <img  id="img-preview" style="width: 180px ; height:90px" src="https://assets.wasalt.com/others/icons/villas-for-sale-in-makkah.jpeg" width="250px" />
+                                <img  id="img-preview" style="width: 180px ; height:90px" src={{ asset('uploads/images.jpg') }}
+{{--                                "https://assets.wasalt.com/others/icons/villas-for-sale-in-makkah.jpeg"--}}
+
+                                      width="250px" />
                             </div>
                         </div>
 
@@ -86,8 +89,6 @@
                                                class="form-control   @error('mobile') is-invalid @enderror"  value="{{ old('mobile') }}"
                                                placeholder="{{trans('messages.enter_mobile')}}xxx xxx xx">
                                         @error('mobile')<span style="color: #e81414;">{{ $message }}</span>@enderror
-
-
                                     </div>
                                 </div>
                             </div>
@@ -124,6 +125,7 @@
 
 {{--                        <div id="location" style="display:block;">--}}
 
+
                             <div class="form-group row ">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                     <label>@lang('messages.commercial_register_image')</label>
@@ -132,7 +134,8 @@
                                     <input type="file" class="form-control commercial_register_image" name="commercial_register_image" accept="image/*" onchange="readURL2(this)" />
                                 </div>
                                 <div class="col-lg-2 col-sm-12 d-flex align-items-center">
-                                    <img  id="img-preview2" style="width: 180px ; height:90px" src="https://assets.wasalt.com/others/icons/villas-for-sale-in-makkah.jpeg" width="250px" />
+                                    <img  id="img-preview2" style="width: 180px ; height:90px" src="{{ asset('uploads/images.jpg') }}"
+                                          width="250px" />
                                 </div>
                             </div>
                             <div class="form-group">

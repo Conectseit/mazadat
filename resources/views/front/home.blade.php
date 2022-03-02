@@ -138,14 +138,14 @@
             <div class="container">
 
 
-                <div class="row">
-                    <div class=" d-flex justify-content-between">
-                        <div  class="count-auction btn ">  {{ trans('messages.auction_on_progress') }} (5)</div>
-                        <div  class="count-auction btn ">  {{ trans('messages.auction_ended') }} (3)</div>
-                        <div  class="count-auction btn ">  {{ trans('messages.auction_selled') }} (15)</div>
-                    </div>
-                </div>
-                <br>
+{{--                <div class="row">--}}
+{{--                    <div class=" d-flex justify-content-between">--}}
+{{--                        <div  class="count-auction btn ">  {{ trans('messages.auction_on_progress') }} (5)</div>--}}
+{{--                        <div  class="count-auction btn ">  {{ trans('messages.auction_ended') }} (3)</div>--}}
+{{--                        <div  class="count-auction btn ">  {{ trans('messages.auction_selled') }} (15)</div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <br>--}}
                 <div class="row">
                     <div class=" d-flex justify-content-between">
                         <a href="{{route('front.show_add_auction')}}" class="add-auction btn "><b> <i
