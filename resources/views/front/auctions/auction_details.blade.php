@@ -2,18 +2,9 @@
 @section('title', trans('messages.auction.auction_details'))
 @section('style')
     <style>
-        #map {
-            height: 400px;
-        }
+        #map {height: 400px;}
 
-        #map1 {
-            height: 400px;
-        }
-
-
-        .carousel-item img {
-            height: 400px;
-        }
+        .carousel-item img {height: 400px;}
     </style>
 @endsection
 
@@ -26,27 +17,42 @@
                     @include('front.layouts.parts.make_bid_alert')
 
 
-                    <div class="col-lg-2 d-flex align-items-center">
-                        <a class="navbar-brand" href="{{route('front.home')}}">
-                            <i class="fal fa-calendar-alt"></i>
-                        </a>
-                        <h3 class="ad-title">{{ ($auction->category->$name ) }}</h3>
-                    </div>
-                    <div class="col-lg-8 mx-auto" id="mainInfo">
-
-                        <div class="my-auto">
-                            <h5 class="text-center mx-auto my-1">{{trans('messages.auction.remaining_time')}}
-                                :<i class="fal fa-clock"></i></h5>
-                            <div id="countdown">
-                                <div id='tiles'></div>
-                                <div class="labels">
-                                    <li>Days</li>
-                                    <li>Hours</li>
-                                    <li>Mins</li>
-                                    <li>Secs</li>
-                                </div>
+                    <div class="col-lg-8 d-flex align-items-center">
+                        <h5 class="text-center mx-auto my-1">{{trans('messages.auction.remaining_time')}}
+                            :<i class="fal fa-clock"></i></h5>
+                        <div id="countdown">
+                            <div id='tiles'></div>
+                            <div class="labels">
+                                <li>Days</li>
+                                <li>Hours</li>
+                                <li>Mins</li>
+                                <li>Secs</li>
                             </div>
                         </div>
+                    </div>
+
+
+{{--                    <div class="col-lg-2 d-flex align-items-center">--}}
+{{--                        <a class="navbar-brand" href="{{route('front.home')}}">--}}
+{{--                            <i class="fal fa-calendar-alt"></i>--}}
+{{--                        </a>--}}
+{{--                        <h3 class="ad-title">{{ ($auction->category->$name ) }}</h3>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-8 mx-auto" id="mainInfo">--}}
+
+{{--                        <div class="my-auto">--}}
+{{--                            <h5 class="text-center mx-auto my-1">{{trans('messages.auction.remaining_time')}}--}}
+{{--                                :<i class="fal fa-clock"></i></h5>--}}
+{{--                            <div id="countdown">--}}
+{{--                                <div id='tiles'></div>--}}
+{{--                                <div class="labels">--}}
+{{--                                    <li>Days</li>--}}
+{{--                                    <li>Hours</li>--}}
+{{--                                    <li>Mins</li>--}}
+{{--                                    <li>Secs</li>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
 
 
@@ -77,7 +83,7 @@
 {{--                            --}}{{--                                <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>--}}
 {{--                            --}}{{--                            </div>--}}
 {{--                        </div>--}}
-                    </div>
+{{--                    //</div>--}}
 
                     <div class="col-lg-2 d-flex align-items-center" id="bid">
                         <a href="#" class="bid-btn">Bid Now</a>
@@ -104,7 +110,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-9">
 
                         <div class="details" id="details">
                             <h4>{{$auction->$name}}</h4>
@@ -116,7 +122,7 @@
                             <p> {{trans('messages.auction.remaining_time')}}:<i class="fal fa-clock"></i></p>
                             <div class="details" id="details">
                                 {{--                            <h4>التفاصيل</h4>--}}
-                                <p>{{$auction->remaining_time}}</p>
+{{--                                <p>{{$auction->remaining_time}}</p>--}}55
 
                             </div>
 
@@ -180,7 +186,7 @@
                                                 <li>
                                                     <p>
                                                         <i class="far fa-clock"></i> {{ trans('messages.auction.remaining_time')}}
-                                                        :{{$auction->remaining_time}}
+{{--                                                        :{{$auction->remaining_time}}--}}remaining_time
                                                     </p>
                                                 </li>
                                                 <li>
@@ -204,8 +210,6 @@
                             </form>
                         </div>
                     </div>
-
-
                 </div>
                 <hr>
 
@@ -356,8 +360,8 @@
 @push('scripts')
     @include('Dashboard.layouts.parts.map')
     @include('front.auctions.ajax')
-    @include('front.auctions.counter')
-{{--    @include('front.auctions.counter', ['auction' => $auction])--}}
+{{--    @include('front.auctions.counter')--}}
+    @include('front.auctions.counter', ['auction' => $auction])
 
 @endpush
 

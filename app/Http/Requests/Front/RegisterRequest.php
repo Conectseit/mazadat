@@ -34,7 +34,7 @@ class RegisterRequest extends FormRequest
                         'first_name'  => 'required',
                         'middle_name' => 'sometimes',
                         'last_name'   => 'required',
-                        'user_name'   => 'required|string|between:2,200|unique:users',
+                        'user_name'   => 'required|string|between:2,200|unique:users,user_name',
 
                         'email'       => 'required|unique:users,email',
                         'password'    => 'required|min:6|confirmed',

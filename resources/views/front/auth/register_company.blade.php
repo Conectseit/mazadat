@@ -31,7 +31,7 @@
                                 <label>@lang('messages.company.company_authorization_image')</label>
                             </div>
                             <div class="col-lg-8 col-sm-12 d-flex align-items-center">
-                                <input type="file" class="form-control " name="company_authorization_image" accept="image/*" onchange="readURL(this)" />
+                                <input type="file" class="form-control company_authorization_image " name="company_authorization_image" accept="image/*" onchange="readURL(this)" />
                             </div>
                             <div class="col-lg-2 col-sm-12 d-flex align-items-center">
                                 <img  id="img-preview" style="width: 180px ; height:90px" src={{ asset('uploads/images.jpg') }}
@@ -75,7 +75,7 @@
                             <div class="col-lg-10 col-md-9">
                                 <div class="row">
                                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                                        <select class="form-select form-control" name="country-code"
+                                        <select class="form-select form-control" name="country_id"
                                                 aria-label="Default select example">
                                             <option selected disabled> {{ trans('messages.choose_country_code')}}</option>
                                             @foreach ($countries as $country)
@@ -124,8 +124,6 @@
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
 
 {{--                        <div id="location" style="display:block;">--}}
-
-
                             <div class="form-group row ">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                     <label>@lang('messages.commercial_register_image')</label>
@@ -152,17 +150,17 @@
                                 </div>
                             </div>
 {{--                        </div>--}}
-                            <div class="form-group mt-5 row d-lg-flex d-sm-block">
+{{--                            <div class="form-group mt-5 row d-lg-flex d-sm-block">--}}
 
-                                <div class="col-lg-3 col-md-5">
-                                    {!! NoCaptcha::renderJs() !!}
-                                    {{--                                {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
-                                    {!! NoCaptcha::display() !!}
-                                </div>
-                                <div class="col-lg-9 col-md-7 my-auto">
-                                    <p> {{trans('messages.accept_term')}}</p>
-                                </div>
-                            </div>
+{{--                                <div class="col-lg-3 col-md-5">--}}
+{{--                                    {!! NoCaptcha::renderJs() !!}--}}
+{{--                                    --}}{{--                                {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
+{{--                                    {!! NoCaptcha::display() !!}--}}
+{{--                                </div>--}}
+{{--                                <div class="col-lg-9 col-md-7 my-auto">--}}
+{{--                                    <p> {{trans('messages.accept_term')}}</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                         <div class="sign-btn">
                             <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>

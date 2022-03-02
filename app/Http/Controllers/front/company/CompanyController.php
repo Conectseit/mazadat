@@ -23,33 +23,31 @@ class CompanyController extends Controller
 
     public function register_company(RegisterCompanyRequest $request)
     {
-
-
         $activation_code = random_int(0000, 9999);
         DB::beginTransaction();
         try {
             $request_data = $request->except(['phone_code','mobile','commercial_register_image','company_authorization_image']);
-            $country=Country::where('phone_code',$request->phone_code)->first();
+            $country=Country::find($request->country_id);
 
-            if ($request->commercial_register_image) {
+            if(!$country) return back()->with('error','عفوا كود الدولة غير صحيح');
+
+            if ($request->hasFile('commercial_register_image')) {
                 $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
             }
-            if ($request->company_authorization_image) {
+            if ($request->hasFile('company_authorization_image')) {
                 $request_data['company_authorization_image'] = uploaded($request->company_authorization_image, 'user');
             }
 
             if ($request->mobile) {
                 $request_data['mobile'] =$request->phone_code. $request->mobile ;
             }
-
-            $user = User::create($request_data + ['activation_code' => $activation_code,'type'=>'buyer','is_appear_name'=>1,'is_company'=>'company','accept_app_terms'=>'yes','country_id'=>$country->id]);
-
-            if ($user) {
-                $jwt_token = JWTAuth::fromUser($user);
-                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,
-//                    'fcm_web_token'=>$request->fcm_web_token
-                ]);
-            }
+            $user = User::create($request_data + ['activation_code' => $activation_code,'type'=>'buyer','is_appear_name'=>1,'is_company'=>'company','accept_app_terms'=>'yes',]);
+//            if ($user) {
+//                $jwt_token = JWTAuth::fromUser($user);
+//                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,
+////                    'fcm_web_token'=>$request->fcm_web_token
+//                ]);
+//            }
             DB::commit();
 //            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
             return redirect()->route('front.show_activation');

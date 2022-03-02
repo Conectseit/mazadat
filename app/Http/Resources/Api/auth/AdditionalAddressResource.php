@@ -16,8 +16,8 @@ class AdditionalAddressResource extends JsonResource
     {
         return [
 
-            'person_latitude'      => isset($this->person_latitude)?(int)$this->person_latitude:null,
-            'person_longitude'      => isset($this->person_longitude)?(int)$this->person_longitude:null,
+            'person_latitude'      => isset($this->person_latitude)?(float)$this->person_latitude:null,
+            'person_longitude'      => isset($this->person_longitude)?(float)$this->person_longitude:null,
 
         ];
 

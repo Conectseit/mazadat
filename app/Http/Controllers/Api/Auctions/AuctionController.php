@@ -188,13 +188,13 @@ class AuctionController extends PARENT_API
                     'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
 
             //======= upload auction images =======
-            $data = [];
+            $_data = [];
             if ($request->hasfile('images')) {
                 foreach ($request->file('images') as $key => $img) {
-                    $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
+                    $_data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
                 }
             }
-            $auction_images = DB::table('auction_images')->insert($data);
+            $auction_images = DB::table('auction_images')->insert($_data);
 
             //======= upload auction inspection_report_images =======
             $data = [];
@@ -206,22 +206,25 @@ class AuctionController extends PARENT_API
             $auction_inspection_report_images = DB::table('inspection_images')->insert($data);
 
 //            //======= upload auction options =======
-//            $data = [];
-//                foreach ($request->option_details_id as $option_detail_id) {
-//                    $data[$option_detail_id] = [
-//                        'auction_id'        => $auction->id,
-//                        'option_details_id' => $request->option_details_id,
-//                    ];
-//                }
-//                 DB::table('auction_data')->insert($data);
-//
+            $dataa = [];
+            if(is_array($request->option_details_id))
+            {
+                foreach ($request->option_details_id as $option_detail_id) {
+                    $dataa[$option_detail_id] = [
+                        'auction_id'        => $auction->id,
+                        'option_details_id' => $option_detail_id // <==== arrrray ??,
+                    ];
+                }
+            }
+
+            if(count($dataa) > 0) DB::table('auction_data')->insert($dataa);
 
 
-            $auction_options = AuctionData::Create([
-                'auction_id'        => $auction->id,
-                'option_id'         => $request->option_id,
-                'option_details_id' => $request->option_details_id,
-            ]);
+//            $auction_options = AuctionData::Create([
+//                'auction_id'        => $auction->id,
+//                'option_id'         => $request->option_id,
+//                'option_details_id' => $request->option_details_id,
+//            ]);
 
 
             DB::commit();
