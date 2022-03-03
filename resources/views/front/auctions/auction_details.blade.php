@@ -23,14 +23,19 @@
                         <div id="countdown">
                             <div id='tiles'></div>
                             <div class="labels">
-                                <li>Days</li>
+                                <li id="days">Days</li>
                                 <li>Hours</li>
                                 <li>Mins</li>
                                 <li>Secs</li>
+
+{{--                                <li>Days</li>--}}
+{{--                                <li>Hours</li>--}}
+{{--                                <li>Mins</li>--}}
+{{--                                <li>Secs</li>--}}
                             </div>
                         </div>
+                        <span class="test-time">{{ __('Test Ends after') }} <span id="Timerapp"></span></span>
                     </div>
-
 
 {{--                    <div class="col-lg-2 d-flex align-items-center">--}}
 {{--                        <a class="navbar-brand" href="{{route('front.home')}}">--}}
@@ -453,3 +458,7 @@
 {{--        <span class="visually-hidden">Next</span>--}}
 {{--    </button>--}}
 {{--</div>--}}
+
+
+
+

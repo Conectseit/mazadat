@@ -26,7 +26,7 @@ class CompanyController extends Controller
         $activation_code = random_int(0000, 9999);
         DB::beginTransaction();
         try {
-            $request_data = $request->except(['phone_code','mobile','commercial_register_image','company_authorization_image']);
+            $request_data = $request->except(['mobile','commercial_register_image','company_authorization_image']);
             $country=Country::find($request->country_id);
 
             if(!$country) return back()->with('error','عفوا كود الدولة غير صحيح');
@@ -39,7 +39,7 @@ class CompanyController extends Controller
             }
 
             if ($request->mobile) {
-                $request_data['mobile'] =$request->phone_code. $request->mobile ;
+                $request_data['mobile'] =$country->phone_code. $request->mobile ;
             }
             $user = User::create($request_data + ['activation_code' => $activation_code,'type'=>'buyer','is_appear_name'=>1,'is_company'=>'company','accept_app_terms'=>'yes',]);
 //            if ($user) {

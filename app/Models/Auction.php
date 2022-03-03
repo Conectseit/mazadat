@@ -13,6 +13,8 @@ class Auction extends Model
 
     protected $dates = ['start_date'];
 
+    protected $appends = ['remaining_time'];
+
     public function getFirstImagePathAttribute()
     {
         $images = $this->auctionimages;
@@ -39,13 +41,19 @@ class Auction extends Model
 
     public function getRemainingTimeAttribute()
     {
-        $start  = new Carbon($this->start_date);
-        $end  = new Carbon($this->end_date);
+        $start  = Carbon::parse($this->start_date);
+        $end  = Carbon::parse($this->end_date);
         $diff = $start->diff($end);
+         return ' days '. $diff->d . '/' . ' hours ' . $diff->h ;
 
-//         return ' days '. $diff->d . '/' . ' hours ' . $diff->h ;
-        return ['days' => $diff->d, 'hours' => $diff->h,'minutes' => $diff->m, 'seconds' => $diff->s];
+//        return ['days' => $diff->d, 'hours' => $diff->h,'minutes' => $diff->m, 'seconds' => $diff->s];
     }
+
+
+
+
+
+
 
 
     public function seller()

@@ -187,7 +187,7 @@
 
                                                 <div class="col-sm-6">
                                                     <p><i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}
-                                                        :{{$auction->remaining_time}}</p>
+{{--                                                        :{{$auction->remaining_time}}</p>--}}
                                                 </div>
                                                 @if(auth()->check())
                                                     <div class="col-sm-6">
@@ -271,7 +271,8 @@
 
                                                 <div class="col-sm-6">
                                                     <p><i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}
-                                                        :{{$auction->remaining_time}}</p>
+{{--                                                        :{{$auction->remaining_time}}--}}
+                                                    </p>
                                                 </div>
                                                 @if(auth()->check())
                                                     <div class="col-sm-6">
