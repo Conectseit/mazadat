@@ -138,7 +138,7 @@
                                         <input type="text" id="geo_lng" name="longitude" readonly=""
                                                placeholder="longitude" class="form-control hidden d-none">
                                     </div>
-                                </div>
+                                </div><br>
                             @endif
 
 
@@ -447,6 +447,7 @@
             readURL(this);
         });
     </script>
+    @include('Dashboard.layouts.parts.map')
 
 @endpush
 
