@@ -87,8 +87,7 @@ class AuthController extends PARENT_API
                 return responseJson(false, trans('api.sorry_your_account_is_baned_from_admin_contact_with_customer_service_team'), null);
             }
             if ($user->is_active == 'deactive') {
-                return responseJson(true, trans('api.please_active_your_account_by_activation_code_first'), new AuthResource(auth()->user()));  //OK
-
+                return responseJson(false, trans('api.please_active_your_account_by_activation_code_first'), new AuthResource(auth()->user()));  //OK
             }
             if ($user->is_accepted == 0) {
                 return responseJson(false, trans('api.please_wait_until_admin_accept_your_data_yet'), null);

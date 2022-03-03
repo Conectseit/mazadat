@@ -113,28 +113,51 @@
                                 </div>
                             </div><br>
 
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_options') }} </label>
-                                <div class="col-lg-6">
-                                    <select name="option_id" id="options" class="select">
-                                        <optgroup label="{{ trans('messages.option.options') }}">
-                                        @foreach($options as $option)
-                                                <option value="{{ $option->id }}"> {{ $option->$name }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div><br>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_option_details') }} </label>
-                                <div class="col-lg-6">
-                                    <select name="option_details_id" id="option_details" class="select">
-                                        <optgroup label="{{ trans('messages.auction.choose_option_details') }}">
-                                            @foreach($option_details as $option_detail)
-                                                <option value="{{ $option_detail->id }}"> {{ $option_detail->$value }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div><br><br>
+{{--                            <div class="form-group">--}}
+{{--                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_options') }} </label>--}}
+{{--                                <div class="col-lg-6">--}}
+{{--                                    <select name="option_id" id="options" class="select">--}}
+{{--                                        <optgroup label="{{ trans('messages.option.options') }}">--}}
+{{--                                        @foreach($options as $option)--}}
+{{--                                                <option value="{{ $option->id }}"> {{ $option->$name }} </option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div><br>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_option_details') }} </label>--}}
+{{--                                <div class="col-lg-6">--}}
+{{--                                    <select name="option_details_id" id="option_details" class="select">--}}
+{{--                                        <optgroup label="{{ trans('messages.auction.choose_option_details') }}">--}}
+{{--                                            @foreach($option_details as $option_detail)--}}
+{{--                                                <option value="{{ $option_detail->id }}"> {{ $option_detail->$value }} </option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+
+
+{{--                            <label for="dino-select">Choose a dinosaur:</label>--}}
+{{--                            <select id="dino-select" multiple>--}}
+{{--                                <optgroup label="Theropods">--}}
+{{--                                    <option>Tyrannosaurus</option>--}}
+{{--                                    <option>Velociraptor</option>--}}
+{{--                                    <option>Deinonychus</option>--}}
+{{--                                </optgroup>--}}
+{{--                                <optgroup label="Sauropods">--}}
+{{--                                    <option>Diplodocus</option>--}}
+{{--                                    <option>Saltasaurus</option>--}}
+{{--                                    <option>Apatosaurus</option>--}}
+{{--                                </optgroup>--}}
+{{--                            </select>--}}
+
+
+
+
+{{--          // ////////////////////////////////////////////////                 --}}
+
+                            <br><br>
 {{--                            <div class="form-group">--}}
 {{--                                <label--}}
 {{--                                    class="col-lg-3 control-label display-block"> {{ trans('messages.option.option_details') }} </label>--}}

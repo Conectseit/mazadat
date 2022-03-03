@@ -3,7 +3,6 @@
 @include('front.layouts.head')
 @yield('style')
 @include('front.layouts.nav')
-@include('front.layouts.nav_categories')
 
 {{--@include('front.layouts.splash')--}}
 

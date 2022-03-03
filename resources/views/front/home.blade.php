@@ -48,6 +48,7 @@
 
 
 @section('content')
+    @include('front.layouts.nav_home')
     @include('front.layouts.parts.alert')
     <div class="mt-0">
         <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="3000">

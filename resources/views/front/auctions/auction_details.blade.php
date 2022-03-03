@@ -18,23 +18,26 @@
 
 
                     <div class="col-lg-8 d-flex align-items-center">
-                        <h5 class="text-center mx-auto my-1">{{trans('messages.auction.remaining_time')}}
-                            :<i class="fal fa-clock"></i></h5>
+                        <h5 class="text-center mx-auto my-1">{{__('messages.auction.remaining_time')}}
+                            :<i class="fal fa-clock"></i>
+                            <span class="test-time"> <span id="Timerapp"></span></span>
+
+                        </h5>
                         <div id="countdown">
-                            <div id='tiles'></div>
+{{--                            <div id='tiles'></div>--}}
                             <div class="labels">
-                                <li id="days">Days</li>
+                                <li>Days</li>
                                 <li>Hours</li>
                                 <li>Mins</li>
                                 <li>Secs</li>
-
-{{--                                <li>Days</li>--}}
-{{--                                <li>Hours</li>--}}
-{{--                                <li>Mins</li>--}}
-{{--                                <li>Secs</li>--}}
+                            </div>
+                            <div class="labels">
+                                <li id="days"></li>
+                                <li id="hours"></li>
+                                <li id="minutes"></li>
+                                <li id="seconds"></li>
                             </div>
                         </div>
-                        <span class="test-time">{{ __('Test Ends after') }} <span id="Timerapp"></span></span>
                     </div>
 
 {{--                    <div class="col-lg-2 d-flex align-items-center">--}}
