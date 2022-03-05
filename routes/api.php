@@ -40,7 +40,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('register_person', [PersonController::class, 'register_person']);
     Route::post('register_company', [CompanyController::class, 'register_company']);
     Route::post('activation', [AuthController::class, 'activation']);
-//    Route::post('resend-sms', [AuthController::class, 'resendSms']);
+    Route::post('resend-sms', [AuthController::class, 'resendSms']);
     Route::any('login', [AuthController::class, 'login']);
 
 

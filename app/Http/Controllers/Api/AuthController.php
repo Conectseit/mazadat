@@ -11,6 +11,7 @@ use App\Http\Requests\Api\ForgetPasswordRequest;
 use App\Http\Requests\Api\LoginRequest;
 use App\Http\Requests\Api\ResetPasswordRequest;
 use App\Http\Requests\Api\user\AddAddressRequest;
+use App\Http\Requests\Api\user\ResendSmsRequest;
 use App\Http\Requests\Api\VerficationTokenRequest;
 use App\Http\Resources\Api\auth\AdditionalAddressResource;
 use App\Http\Resources\Api\auth\PersonResource;
@@ -33,25 +34,24 @@ class AuthController extends PARENT_API
 
 
 
+    public function resendSms(ResendSmsRequest $request)
+    {
+
+        $user = User::where('mobile', $request->mobile)->first();
+        if (!$user) {
+            return responseJson(false, 'The user not found...', null); //
+        }
+        $activation_code = create_rand_numbers();
+
+        $user->update(['activation_code' => $activation_code]);
+
+//    SmsController::send_sms(($mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+
+        return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_Resend'),$activation_code); //OK
 
 
 
-
-//    public function resendSms(AddAddressRequest $request)
-//    {
-//
-//        $user = User::where('mobile', $mobile)->first();
-//
-//        $activation_code = create_rand_numbers();
-//
-//        $user->update(['activation_code' => $activation_code]);
-//
-////    SmsController::send_sms(($mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
-//
-//        return responseJson(true, trans('api.تم إعادة إرسال الكود بنجاح'), null);
-//
-//
-//    }
+    }
 
 
 
