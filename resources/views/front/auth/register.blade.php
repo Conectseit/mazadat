@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-    @include('front.auctions.head')
+    @include('front.auctions.parts.head')
     <section class="my-wallet-page">
         <div class="container">
             <h3 class="title">اهلا بك في موقع مزادات ....</h3><br><br>

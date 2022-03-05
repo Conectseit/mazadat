@@ -1,25 +1,15 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.add_auction'))
 @section('style')
-{{--    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">--}}
     <style> #map {
             height: 400px;
         }
 
-        /*.dropzone {*/
-        /*    background: white;*/
-        /*    border-radius: 5px;*/
-        /*    border: 2px dashed rgb(0, 135, 247);*/
-        /*    border-image: none;*/
-        /*    max-width: 500px;*/
-        /*    margin-left: auto;*/
-        /*    margin-right: auto;*/
-        /*}*/
     </style>
 @endsection
 
 @section('content')
-    @include('front.auctions.head')
+    @include('front.auctions.parts.head')
     <section class="sign-up-page">
         @include('front.layouts.parts.alert')
 
@@ -136,6 +126,33 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="email" class="form-label">{{trans('messages.auction.start_auction_price')}}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="number" id="start_auction_price" name="start_auction_price"
+                                       class="form-control   @error('start_auction_price') is-invalid @enderror"
+                                       value="{{ old('start_auction_price') }}"
+                                       placeholder="{{trans('messages.enter_start_auction_price')}}">
+                                @error('start_auction_price')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="email" class="form-label">{{trans('messages.auction.value_of_increment')}}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="number" id="value_of_increment" name="value_of_increment"
+                                       class="form-control   @error('value_of_increment') is-invalid @enderror"
+                                       value="{{ old('value_of_increment') }}"
+                                       placeholder="{{trans('messages.enter_value_of_increment')}}">
+                                @error('value_of_increment')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
+                            </div>
+                        </div>
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label  class="form-label">{{trans('messages.auction.allowed_take_photo')}}</label>
@@ -162,7 +179,7 @@
                                 <label for="email" class="form-label">{{ trans('messages.auction.choose_category')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <select class="form-select form-control" name="category_id"
+                                <select class="form-select form-control"  id="category" name="category_id"
                                         aria-label="Default select example">
                                     <option selected disabled> {{ trans('messages.auction.choose_category')}}</option>
                                     @foreach ($categories as $category)
@@ -171,40 +188,70 @@
                                 </select>
                             </div>
                         </div>
+
+
+
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="email" class="form-label">{{ trans('messages.option.options') }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+{{--                                <select class="form-select form-control" name="option_id" id="options"--}}
+{{--                                        aria-label="Default select example">--}}
+{{--                                    <option selected disabled> {{ trans('messages.option.options') }}</option>--}}
+{{--                                    @foreach ($options as $option)--}}
+{{--                                        <option value="{{ $option->id }}"> {{ $option->$name }} </option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+<div class="select-inputs-options"></div>
+{{--                                @foreach ($options as $key => $option)--}}
+{{--                                <select class="form-select form-control"  id="options" name="option_ids[]" multiple aria-label="Default select example">--}}
+{{--                                    <option value="{{ $option->id }}">{{ $option->$name }}</option>--}}
+{{--                                    <optgroup class="form-select form-control" id="options" label="{{ $option->$name }}" value="{{ $option->id }}">--}}
+{{--                                        <option>Diplodocus</option>--}}
+{{--                                        <option>Saltasaurus</option>--}}
+{{--                                    </optgroup>--}}
+{{--                                </select>--}}
+{{--                                @endforeach--}}
+
+
+                            </div>
+                        </div>
+
+
+
+{{--                        <label for="dino-select">Choose a dinosaur:</label>--}}
+{{--                        <select id="dino-select" multiple>--}}
+{{--                            <optgroup label="Theropods">--}}
+{{--                                <option>Tyrannosaurus</option>--}}
+{{--                                <option>Velociraptor</option>--}}
+{{--                                <option>Deinonychus</option>--}}
+{{--                            </optgroup>--}}
+{{--                            <optgroup label="Sauropods">--}}
+{{--                                <option>Diplodocus</option>--}}
+{{--                                <option>Saltasaurus</option>--}}
+{{--                                <option>Apatosaurus</option>--}}
+{{--                            </optgroup>--}}
+{{--                        </select>--}}
                     </div>
 
 
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
 
-                        {{--                        <div id="location" style="display:block;">--}}
-{{--                        <div class="form-group">--}}
-{{--                            <label>@lang('messages.auction.images')</label>--}}
-{{--                            <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
-{{--                        </div>--}}
+                        <div class="form-group">
+                            <label>@lang('messages.auction.images')</label>
+                            <input type="file" class="form-control " name="images[]" multiple="multiple"/>
+                        </div>
 
                         <hr>
-{{--                        <div class="form-group">--}}
-{{--                            <label>@lang('messages.auction.inspection_report_images')</label>--}}
-{{--                            <input type="file" class="form-control " name="inspection_report_images[]"--}}
-{{--                                   multiple="multiple"/>--}}
-{{--                        </div>--}}
-                        <br>
+                        <div class="form-group">
+                            <label>@lang('messages.auction.inspection_report_images')</label>
+                            <input type="file" class="form-control " name="inspection_report_images[]"
+                                   multiple="multiple"/>
+                        </div><br>
 
 
-
-
-                        <section>
-                            <div id="dropzone">
-                                <form class="dropzone needsclick" id="demo-upload" action="/upload">
-                                    <div class="dz-message needsclick">
-                                        Drop files here or click to upload.<br>
-                                        <span class="note needsclick">(This is just a demo dropzone. Selected
-        files are <strong>not</strong> actually uploaded.)</span>
-                                    </div>
-                                </form>
-                            </div>
-                        </section>
 
 
                         <div class="form-group">
@@ -223,11 +270,10 @@
                             </div>
                         </div>
 
-                        {{--                        </div>--}}
                         <div class="sign-btn">
                             <p> {{trans('messages.wait')}}</p>
                             <button type="submit"
-                                    class="btn btn-primary submit-btn">{{trans('messages.add_auction')}}</button>
+                                    class="btn btn-primary submit-btn">{{trans('messages.auction.add')}}</button>
                         </div>
                     </div>
                 </form>
@@ -239,66 +285,7 @@
 
 @push('scripts')
     @include('Dashboard.layouts.parts.map')
-{{--    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>--}}
-{{--<script>--}}
-{{--    var dropzone = new Dropzone('#demo-upload', {--}}
-{{--        previewTemplate: document.querySelector('#preview-template').innerHTML,--}}
-{{--        parallelUploads: 2,--}}
-{{--        thumbnailHeight: 120,--}}
-{{--        thumbnailWidth: 120,--}}
-{{--        maxFilesize: 3,--}}
-{{--        filesizeBase: 1000,--}}
-{{--        thumbnail: function(file, dataUrl) {--}}
-{{--            if (file.previewElement) {--}}
-{{--                file.previewElement.classList.remove("dz-file-preview");--}}
-{{--                var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");--}}
-{{--                for (var i = 0; i < images.length; i++) {--}}
-{{--                    var thumbnailElement = images[i];--}}
-{{--                    thumbnailElement.alt = file.name;--}}
-{{--                    thumbnailElement.src = dataUrl;--}}
-{{--                }--}}
-{{--                setTimeout(function() { file.previewElement.classList.add("dz-image-preview"); }, 1);--}}
-{{--            }--}}
-{{--        }--}}
-
-{{--    });--}}
-{{--    var minSteps = 6,--}}
-{{--        maxSteps = 60,--}}
-{{--        timeBetweenSteps = 100,--}}
-{{--        bytesPerStep = 100000;--}}
-
-{{--    dropzone.uploadFiles = function(files) {--}}
-{{--        var self = this;--}}
-
-{{--        for (var i = 0; i < files.length; i++) {--}}
-
-{{--            var file = files[i];--}}
-{{--            totalSteps = Math.round(Math.min(maxSteps, Math.max(minSteps, file.size / bytesPerStep)));--}}
-
-{{--            for (var step = 0; step < totalSteps; step++) {--}}
-{{--                var duration = timeBetweenSteps * (step + 1);--}}
-{{--                setTimeout(function(file, totalSteps, step) {--}}
-{{--                    return function() {--}}
-{{--                        file.upload = {--}}
-{{--                            progress: 100 * (step + 1) / totalSteps,--}}
-{{--                            total: file.size,--}}
-{{--                            bytesSent: (step + 1) * file.size / totalSteps--}}
-{{--                        };--}}
-
-{{--                        self.emit('uploadprogress', file, file.upload.progress, file.upload.bytesSent);--}}
-{{--                        if (file.upload.progress == 100) {--}}
-{{--                            file.status = Dropzone.SUCCESS;--}}
-{{--                            self.emit("success", file, 'success', null);--}}
-{{--                            self.emit("complete", file);--}}
-{{--                            self.processQueue();--}}
-{{--                            //document.getElementsByClassName("dz-success-mark").style.opacity = "1";--}}
-{{--                        }--}}
-{{--                    };--}}
-{{--                }(file, totalSteps, step), duration);--}}
-{{--            }--}}
-{{--        }--}}
-{{--    }--}}
-{{--</script>--}}
+    @include('front.auctions.parts.ajax_get_options')
 
 @endpush
 

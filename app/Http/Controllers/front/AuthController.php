@@ -32,10 +32,9 @@ class AuthController extends Controller
         return view('front.auth.register');
     }
 
-
-    public function show_activation()
+    public function show_activation($mobile)
     {
-        return view('front.auth.activation');
+        return view('front.auth.activation', compact('mobile'));
     }
 
     public function checkCode(Request $request)
@@ -50,6 +49,22 @@ class AuthController extends Controller
         if (!$user->update(['activation_code' => null, 'is_active' => 'active'])) return back()->with('error', 'حدث خطا, حاول مره اخري');
         return redirect()->route('front.show_login')->with('success', trans('messages.register_success_welcome_in_our_website'));
     }
+
+    public function resendSms($mobile)
+    {
+
+        $user = User::where('mobile', $mobile)->first();
+
+        $activation_code = create_rand_numbers();
+
+        $user->update(['activation_code' => $activation_code]);
+
+//    SmsController::send_sms(($mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+
+        return back()->with('success', 'تم إعادة إرسال الكود بنجاح');
+    }
+
+
 
     public function show_login()
     {
@@ -100,74 +115,9 @@ class AuthController extends Controller
 
 
 
-// =========== reset password ===========================
-    public function forget_pass(ForgetPassRequest $request)
-    {
-
-        $user = User::where('email', $request->email)->first();
-
-        if (!$user) {
-            return back()->with('error', trans('messages.invalid_email'));
-        }
-
-//        if ($user->is_active != 'active') return back()->with('error', 'عفوا هذا الحساب غير مفعل من قبل الادارة');
-
-        $code = create_rand_numbers();
-
-        $user->update(['reset_password_code' => $code]);
-
-        Mail::to($request->email)->send(new ConfirmCode($code));
-
-        Log::info($code);
-        return redirect()->route('front.reset-code-page', $request->email);
-//        return view('front.auth.resetCodePage', compact('email'));
-    }
 
 
-    public function resetCodePage($email)
-    {
-        return view('front.auth.resetCodePage', compact('email'));
-    }
-    public function checkResetCode(Request $request)
-    {
-        if (!$request->code) return back()->withInput($request->only('mobile'))->with('error', 'عفوا كود التفعيل مطلوب');
 
-        $user = User::where('reset_password_code', $request->code)->first();
-
-        if (!$user) return back()->withInput($request->only('mobile'))->with('error', 'عفوا الكود التحقق غير صحيح');
-
-        auth()->login($user);
-        return redirect()->route('front.change-password-page');
-    }
-
-    public function changePasswordPage()
-    {
-        return view('front.auth.changePass');
-    }
-
-    public function resetPassword(resetPasswordRequest $request)
-    {
-        $user = auth()->user();
-        $user->update(['password' => $request->password]);
-
-        auth()->logout();
-
-        return redirect()->route('front.home');
-    }
-
-// =========== End reset password =================
-    public function resendCode($email)
-    {
-        $user = User::where('email', $email)->first();
-
-        $code = create_rand_numbers();
-
-        $user->update(['reset_code' => $code]);
-
-        Mail::to($email)->send(new ConfirmCode($code));
-
-        return back()->with('success', 'تم إعادة إرسال الكود بنجاح');
-    }
 
 
     public function get_cities_by_country_id(Request $request)
@@ -186,16 +136,3 @@ class AuthController extends Controller
     }
 }
 
-
-
-
-// ======= test =======
-//public function checkCode(Request $request)
-//{
-////        if ($request->code1 == null || $request->code2 == null || $request->code3 == null || $request->code4 == null)
-////            return back()->with('error', trans('messages.activation_code_required'));
-////
-////        $code = $request->code4 . $request->code3 . $request->code2 . $request->code1;
-////
-////        $user = User::where('activation_code', $code)->first();
-//}

@@ -28,6 +28,9 @@ class CategoryController extends Controller
         $data['category'] = Category::where('id', $id)->first();
         $data['category_options'] = Option::where('category_id', $id)->with('option_details')->get();
 
+
+
+
         return view('front.auctions.category_auctions',$data);
     }
 

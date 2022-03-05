@@ -24,10 +24,7 @@ class AddAuctionRequest extends FormRequest
     public function rules()
     {
         switch ($this->method()) {
-            case 'GET':
-            case 'DELETE': {
-                    return [];
-                }
+
             case 'POST': {
                     return [
                         'name_ar' => 'required',
@@ -39,11 +36,14 @@ class AddAuctionRequest extends FormRequest
                         'auction_terms_en' => 'required',
 //                        'start_date' => 'required',
 //                        'end_date' => 'required',
-//                        'start_auction_price'   => ['required','numeric'],
-//                        'value_of_increment' => ['required','numeric'],
+                        'start_auction_price'   => ['required','numeric'],
+                        'value_of_increment' => ['required','numeric'],
 //                        'delivery_charge' => ['required','numeric'],
-//                        'images.*' => 'image',
-//                        'inspection_report_image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
+                        'option_ids.*' => ['required'],
+                        'images' => ['required'],
+                        'images.*' => ['required','mimes:png,jpg,jpeg'],
+                        'inspection_report_images' => ['required'],
+                        'inspection_report_images.*' => ['required','mimes:png,jpg,jpeg'],
                     ];
 
             }

@@ -34,7 +34,7 @@ class Category extends Model
     }
     public function options()
     {
-        return $this->hasMany(Option::class);
+        return $this->hasMany(Option::class)->with('option_details');
     }
     public function option_details()
     {

@@ -5,6 +5,7 @@ use App\Http\Controllers\front\AuthController;
 use App\Http\Controllers\front\CategoryController;
 use App\Http\Controllers\front\company\CompanyController;
 use App\Http\Controllers\front\FilterController;
+use App\Http\Controllers\front\ForgetPassController;
 use App\Http\Controllers\front\GeneralController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\NotificationController;
@@ -60,18 +61,18 @@ Route::group(
     Route::get('show_register_company', [CompanyController::class, 'show_register_company'])->name('front.show_register_company');
     Route::post('register_company', [CompanyController::class, 'register_company'])->name('front.register_company');
 
-    Route::get('show_activation', [AuthController::class, 'show_activation'])->name('front.show_activation');
+    Route::get('show_activation/{mobile}', [AuthController::class, 'show_activation'])->name('front.show_activation');
     Route::post('check_code', [AuthController::class, 'checkCode'])->name('front.check_code');
+    Route::get('resend-sms/{mobile}', [AuthController::class, 'resendSms'])->name('front.resend-sms');
+//    Route::post('resend-code', [AuthController::class, 'resendCode'])->name('front.resend-code');
     Route::get('show_login', [AuthController::class, 'show_login'])->name('front.show_login');
     Route::post('login', [AuthController::class, 'login'])->name('front.login');
 
-    Route::post('forget_pass', [AuthController::class, 'forget_pass'])->name('front.forget_pass');
-    // send reset code
-    Route::get('reset-code-page/{email}',  [AuthController::class, 'resetCodePage'] )->name('front.reset-code-page');
-    Route::post('check-reset-code',  [AuthController::class, 'checkResetCode'] )->name('front.check-reset-code');
-
-    Route::get('change-password-page',  [AuthController::class, 'changePasswordPage'] )->name('front.change-password-page');
-    Route::post('resetPassword',  [AuthController::class, 'resetPassword'] )->name('front.resetPassword');
+    Route::post('forget_pass', [ForgetPassController::class, 'forget_pass'])->name('front.forget_pass');
+    Route::get('reset-code-page/{email}',  [ForgetPassController::class, 'resetCodePage'] )->name('front.reset-code-page');
+    Route::post('check-reset-code',  [ForgetPassController::class, 'checkResetCode'] )->name('front.check-reset-code');
+    Route::get('change-password-page',  [ForgetPassController::class, 'changePasswordPage'] )->name('front.change-password-page');
+    Route::post('resetPassword',  [ForgetPassController::class, 'resetPassword'] )->name('front.resetPassword');
 // ============ // auth ================
 
 
@@ -106,6 +107,7 @@ Route::group(
         Route::get('show_add_auction', [AuctionController::class, 'show_add_auction'])->name('front.show_add_auction');
         Route::post('add_auction', [AuctionController::class, 'add_auction'])->name('front.add_auction');
         Route::get('my_auctions', [AuctionController::class, 'my_auctions'])->name('front.my_auctions');
+        Route::post('ajax/get-options-by-category-id', [AuctionController::class, 'get_options_by_category_id'])->name('front.ajax_get_options_by_category_id');
 
 
         // ============ // profile ================
@@ -114,6 +116,7 @@ Route::group(
 
         Route::any('update_profile', [UserController::class, 'updateProfile'])->name('front.update_profile');
         Route::post('complete_profile', [UserController::class, 'completeProfile'])->name('front.complete_profile');
+        Route::any('add_address', [UserController::class, 'addAddress'])->name('front.add_address');
 
         Route::any('choose_available_limit', [UserController::class, 'choose_available_limit'])->name('front.choose_available_limit');
         Route::any('my_wallet', [UserController::class, 'my_wallet'])->name('front.my_wallet');

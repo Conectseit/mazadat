@@ -28,7 +28,7 @@
 @endsection
 
 @section('content')
-    @include('front.auctions.head')
+    @include('front.auctions.parts.head')
     <section class="sign-up-page">
         <div class="container">
 {{--            <h4 class="title"> {{ trans('messages.activation') }}</h4>--}}
@@ -73,6 +73,8 @@
                         <div class="sign-btn row">
                             <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.send')}}</button>
                         </div>
+                        <p class="mt-5">لم يصلك كود التفعيل؟ <a href="{{ route('front.resend-sms',$mobile) }}" class="create text-orange">ارسل مرة أخرى</a></p>
+
                     </div>
                 </form>
             </div>

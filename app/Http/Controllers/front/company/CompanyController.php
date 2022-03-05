@@ -50,9 +50,10 @@ class CompanyController extends Controller
 //            }
             DB::commit();
 //            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
-            return redirect()->route('front.show_activation');
+            return redirect()->route('front.show_activation', $request_data['mobile']);
+
         } catch (\Exception $e) {
-            return redirect()->route('front.show_activation');
+            return back();
         }
     }
 

@@ -22,7 +22,7 @@
 
         .carousel-item img {
             height: 350px;
-            border: 1px solid;
+            /*border: 1px solid;*/
         }
 
         .category-items-page .items .card.gallery-card .card-body
@@ -48,7 +48,7 @@
 
 
 @section('content')
-    @include('front.layouts.nav_home')
+    @include('front.layouts.parts.nav_home')
     @include('front.layouts.parts.alert')
     <div class="mt-0">
         <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="3000">
@@ -149,9 +149,10 @@
 {{--                <br>--}}
                 <div class="row">
                     <div class=" d-flex justify-content-between">
+                        @if(auth()->check())
                         <a href="{{route('front.show_add_auction')}}" class="add-auction btn "><b> <i
                                     class="fal fa-plus-circle"></i> </b>{{ trans('messages.auction.add') }}</a>
-
+                        @endif
                         <a href="{{route('front.all_companies')}}" class="add-auction btn"><b> <i
                                     class="fal fa-gavel"></i> </b>{{ trans('messages.company.companies_auctions') }}</a>
                     </div>

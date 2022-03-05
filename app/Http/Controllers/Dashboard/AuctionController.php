@@ -103,6 +103,7 @@ class AuctionController extends Controller
         $data['inspection_report_images'] = InspectionImage::where(['auction_id' => $id])->get();
         $data['auction_bids'] = AuctionBuyer::where(['auction_id' => $id])->get();
         $data['auction_option_details'] = AuctionData::where(['auction_id' => $id])->get();
+
         return view('Dashboard.Auctions.show', $data);
     }
 
@@ -193,11 +194,7 @@ class AuctionController extends Controller
 
     public function get_options_by_category_id(Request $request)
     {
-        $category = Category::find($request->category_id);
-
-        if (!$category) return response()->json(['status' => false], 500);
-
-        return response()->json(['options' => $category->options, 'status' => true], 200);
+        return Option::getOptionsByCategoryId($request);
     }
 
     public function get_option_details_by_option_id(Request $request)

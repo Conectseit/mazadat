@@ -10,6 +10,7 @@ use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\AuctionImage;
 use App\Models\Category;
+use App\Models\Option;
 use App\Models\User;
 use App\Models\WatchedAuction;
 use Illuminate\Http\Request;
@@ -104,6 +105,12 @@ class AuctionController extends Controller
             return back();
         }
     }
+
+    public function get_options_by_category_id(Request $request)
+    {
+        return Option::getOptionsByCategoryId($request);
+    }
+
     public  function cancel_bid_auction (Auction $auction)
     {
         $auctionn= AuctionBuyer::where(['buyer_id' => auth()->user()->id, 'auction_id' => $auction->id]);
@@ -161,20 +168,21 @@ class AuctionController extends Controller
     public function show_add_auction()
     {
         $data['categories'] = Category::all();
+        $data['options'] = Option::all();
         return view('front.auctions.add_auction',$data);
     }
 
     public function add_auction(AddAuctionRequest $request)
     {
-        dd($request->all());
         DB::beginTransaction();
         try {
             $serial_number = '#' . random_int(00000, 99999);
             //======= create auction =======
             $request_data = $request->except(['inspection_report_images' . 'images']);
 
-            $auction = Auction::create($request_data + [
+            $auction = Auction::create($request_data + ['seller_id'=>auth()->user()->id,
                     'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
+
 
             //======= upload auction images =======
             $data = [];
@@ -186,22 +194,26 @@ class AuctionController extends Controller
             $auction_images = DB::table('auction_images')->insert($data);
 
             //======= upload auction inspection_report_images =======
-            $data = [];
+            $dataa = [];
             if ($request->hasfile('inspection_report_images')) {
                 foreach ($request->file('inspection_report_images') as $key => $img) {
-                    $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
+                    $dataa[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
                 }
             }
-            $auction_inspection_report_images = DB::table('inspection_images')->insert($data);
+            $auction_inspection_report_images = DB::table('inspection_images')->insert($dataa);
 
             //======= upload auction options =======
-//            $auction_options = AuctionData::Create([
-//                'auction_id' => $auction->id,
-//                'option_id' => $request->option_id,
-//                'option_details_id' => $request->option_details_id,
-//            ]);
-
-
+            $options = [];
+            if(is_array($request->option_ids))
+            {
+                foreach ($request->option_ids as $option_detail_id) {
+                    $options[$option_detail_id] = [
+                        'auction_id'        => $auction->id,
+                        'option_details_id' => $option_detail_id // <==== arrrray ??,
+                    ];
+                }
+            }
+            if(count($options) > 0) DB::table('auction_data')->insert($options);
 
             DB::commit();
             return back()->with('success', trans('messages.added_successfully'));
@@ -216,7 +228,10 @@ class AuctionController extends Controller
 
     public function my_auctions()
     {
-        $data['auctions'] =  auth()->user()->seller_auctions()->get();
+//        $data['auctions'] =  auth()->user()->seller_auctions()->get();
+        $data['on_progress_auctions'] = auth()->user()->seller_auctions()->where(['status'=> 'on_progress','is_accepted'=>1])->paginate('20');
+        $data['pending_auctions'] = auth()->user()->seller_auctions()->where('status', 'on_progress')->where('is_accepted',0)->paginate('20');
+        $data['ended_auctions'] = auth()->user()->seller_auctions()->where('status', 'done')->where('is_accepted',1)->paginate('20');
         return view('front.user.my_auctions', $data);
     }
 

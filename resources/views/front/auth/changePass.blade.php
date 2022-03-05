@@ -28,7 +28,7 @@
 @endsection
 
 @section('content')
-    @include('front.auctions.head')
+    @include('front.auctions.parts.head')
     <section class="sign-up-page">
         <div class="container">
 {{--            <h4 class="title"> {{ trans('messages.activation') }}</h4>--}}

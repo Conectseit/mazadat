@@ -109,6 +109,7 @@ Route::group(['namespace' => 'Api'], function () {
 
         Route::post('add_auction', [AuctionController::class, 'add_auction']);
         Route::post('my_auctions', [UserController::class, 'my_auctions']); // مزاداتي
+        Route::get('my_pending_auctions', [UserController::class, 'my_pending_auctions']); //
 
         // =========== bids ============
         Route::get('my_bids', [AuctionController::class, 'my_bids']);

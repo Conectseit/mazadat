@@ -1,5 +1,5 @@
 <main class="categories-bar">
-    @inject('categories', 'App\Models\Category')
+    @inject('auctions', 'App\Models\Auction')
     <div class="container">
         <div class="owl-carousel categories-bar-carousel owl-theme">
 
@@ -9,13 +9,13 @@
             {{--                </a>--}}
             {{--            </div>--}}
             <div class="item">
-                <h6>{{ trans('messages.auction_on_progress') }}55</h6>
+                <i class="fal fa-ticket" ><h6>{{ trans('messages.auction.on_progress') }}:({{$auctions->where(['status'=>'on_progress'])->count()}})</h6></i>
             </div>
             <div class="item">
-                <h6>{{ trans('messages.auction_ended') }}55</h6>
+                <h6>{{ trans('messages.auction.done') }}:({{$auctions->where(['status'=>'done'])->count()}})</h6>
             </div>
             <div class="item">
-                <h6> {{ trans('messages.auction_selled') }}55</h6>
+                <h6> {{ trans('messages.auction.selled') }} ؟؟ </h6>
             </div>
         </div>
     </div>

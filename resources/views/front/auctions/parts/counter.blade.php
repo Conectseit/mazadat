@@ -20,15 +20,31 @@
         // Output the result in an element with id="demo"
         document.getElementById("Timerapp").innerHTML = days+"d "+hours + "h " + minutes + "m " + seconds + "s ";
 
-        document.getElementById("days").innerHTML = days+"d ";
-        document.getElementById("hours").innerHTML = hours+"h ";
-        document.getElementById("minutes").innerHTML = minutes+"m ";
-        document.getElementById("seconds").innerHTML = seconds+"s ";
+        document.getElementById("days").innerHTML = days ;
+        document.getElementById("hours").innerHTML = hours ;
+        document.getElementById("minutes").innerHTML = minutes ;
+        document.getElementById("seconds").innerHTML = seconds ;
         // If the count down is over, write some text
         if (distance < 0) {
             clearInterval(x);
             document.getElementById("Timerapp").innerHTML = "EXPIRED";
+        } if (days < 0) {
+            clearInterval(x);
+            document.getElementById("days").innerHTML =0;
         }
+        if (hours < 0) {
+            clearInterval(x);
+            document.getElementById("hours").innerHTML =0;
+        }
+        if (minutes < 0) {
+            clearInterval(x);
+            document.getElementById("minutes").innerHTML =0;
+        }
+        if (seconds < 0) {
+            clearInterval(x);
+            document.getElementById("seconds").innerHTML =0;
+        }
+
     }, 1000);
 
 </script>

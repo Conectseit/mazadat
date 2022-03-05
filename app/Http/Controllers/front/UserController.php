@@ -7,6 +7,7 @@ use App\Http\Requests\Front\ComplteProfileRequest;
 use App\Http\Requests\Front\updatePersonalBioRequest;
 use App\Http\Requests\Front\updatePersonalImageRequest;
 use App\Http\Requests\Front\updateProfileRequest;
+use App\Http\Requests\Front\user\AdditionalAddressRequest;
 use App\Http\Requests\Front\user\AvailableLimitRequest;
 use App\Http\Requests\Front\user\UploadDocumentRequest;
 use App\Http\Requests\Front\user\UploadPassportRequest;
@@ -52,10 +53,16 @@ class UserController extends Controller
     public function updateProfile(updateProfileRequest $request)
     {
 //        $request_data = $request->except(['password', 'password_confirmation', 'submit']);
-        $request_data = $request->except(['image','phone_code','mobile']);
+        $request_data = $request->except(['image','phone_code','mobile','commercial_register_image','company_authorization_image']);
 
         if ($request->image) {
             $request_data['image']  = uploaded($request->image, 'user');
+        }
+        if ($request->hasFile('commercial_register_image')) {
+            $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
+        }
+        if ($request->hasFile('company_authorization_image')) {
+            $request_data['company_authorization_image'] = uploaded($request->company_authorization_image, 'user');
         }
         if ($request->mobile) {
             $request_data['mobile'] =$request->phone_code. $request->mobile ;
@@ -63,6 +70,21 @@ class UserController extends Controller
 
         $user = auth()->user();
         $user->update($request_data);
+        return back()->with('success', trans('messages.updated_success'));
+    }
+
+
+
+
+
+
+
+
+    public function addAddress(AdditionalAddressRequest $request)
+    {
+        dd('kk');
+        $user = auth()->user();
+        $user->update($request->all());
         return back()->with('success', trans('messages.updated_success'));
     }
 

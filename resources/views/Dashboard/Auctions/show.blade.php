@@ -172,7 +172,7 @@
                                             @foreach($auction_option_details as $option_detail)
                                                 <tr id="auction_option_detail-row-{{ $option_detail->id }}">
                                                     <td>{{ $option_detail->id }}</td>
-                                                    <td class="text-center">{{isNullable( $option_detail->option->$name) }}</td>
+                                                    <td class="text-center">{{isNullable( $option_detail->option_detail->option->$name) }}</td>
                                                     <td class="text-center">{{( $option_detail->option_detail->$value) }}</td>
                                                     <td class="text-center">
                                                         <div class="list-icons text-center">

@@ -4,7 +4,7 @@
     <style> #map { height: 400px;} </style>
 @endsection
 @section('content')
-    @include('front.auctions.head')
+    @include('front.auctions.parts.head')
     <section class="sign-up-page">
         <div class="container">
             <h4 class="title"> {{ trans('messages.register_company') }}</h4>
@@ -154,7 +154,7 @@
 
 {{--                                <div class="col-lg-3 col-md-5">--}}
 {{--                                    {!! NoCaptcha::renderJs() !!}--}}
-{{--                                    --}}{{--                                {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
+{{--                                                                    {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
 {{--                                    {!! NoCaptcha::display() !!}--}}
 {{--                                </div>--}}
 {{--                                <div class="col-lg-9 col-md-7 my-auto">--}}
@@ -163,6 +163,12 @@
 {{--                            </div>--}}
 
                         <div class="sign-btn">
+                            <div class="col-lg-10 col-md-9">
+                                {!! NoCaptcha::renderJs() !!}
+{{--                                {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
+                                {!! NoCaptcha::display() !!}
+                            </div>
+                            <p> {{trans('messages.accept_term')}}</p>
                             <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>
                         </div>
                     </div>

@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    @include('front.auctions.head')
+    @include('front.auctions.parts.head')
     <section class="sign-up-page">
         @include('front.layouts.parts.alert')
 
@@ -72,7 +72,7 @@
                 </form>
             </div>
         </div>
-        @include('front.layouts.modal')
+        @include('front.layouts.parts.modal')
 
     </section>
 

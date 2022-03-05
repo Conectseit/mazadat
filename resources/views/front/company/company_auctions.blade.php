@@ -2,33 +2,14 @@
 @section('title', trans('messages.home'))
 @section('style')
     <style>
-        /*.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {*/
-        /*    color: #fff;*/
-        /*    background-color: #1e3c48;*/
-        /*    border-color: #1e3c48 #1e3c48 #1e3c48;*/
-        /*}*/
 
-        /*.nav-tabs {*/
-        /*    border-bottom: 1px solid #1e3c48;*/
-        /*    margin-top: -2px;*/
-        /*}*/
-
-        /*.nav-tabs {*/
-        /*    border-bottom: 1px solid transparent;*/
-        /*}*/
-
-        /*.nav-link {*/
-        /*    color: #1e3c48;*/
-        /*}*/
-
-        /*a.back:hover {*/
-        /*    color: #fff;*/
-        /*}*/
     </style>
 @endsection
 
 
 @section('content')
+    @include('front.layouts.parts.nav_categories')
+
     @include('front.layouts.parts.alert')
     <div class="category-items-page">
         <main class="category-control">
@@ -60,9 +41,7 @@
                                 type="button" role="tab" aria-controls="profile"
                                 aria-selected="false">{{ trans('messages.auction.done') }}</button>
                     </li>
-                    {{--                        <li class="nav-item" role="presentation">--}}
-                    {{--                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>--}}
-                    {{--                        </li>--}}
+
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>
@@ -116,7 +95,7 @@
                                                 <div class="col-sm-6">
                                                     <p>
                                                         <i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}
-                                                        :{{$auction->remaining_time}}</p>
+                                                        :{{$auction->remaining_time['days']}}</p>
                                                 </div>
                                                 @if(auth()->check())
                                                     <div class="col-sm-6">
@@ -140,7 +119,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @include('front.auctions.ajax-watch', ['auction' => $auction])
+                                @include('front.auctions.parts.ajax-watch', ['auction' => $auction])
 
                             @empty
 
@@ -201,7 +180,7 @@
                                                 <div class="col-sm-6">
                                                     <p>
                                                         <i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}
-                                                        :{{$auction->remaining_time}}</p>
+                                                        :{{$auction->remaining_time['days']}}</p>
                                                 </div>
                                                 @if(auth()->check())
                                                     <div class="col-sm-6">
@@ -225,7 +204,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @include('front.auctions.ajax-watch', ['auction' => $auction])
+                                @include('front.auctions.parts.ajax-watch', ['auction' => $auction])
 
                             @empty
 

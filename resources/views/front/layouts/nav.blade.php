@@ -1,98 +1,98 @@
-<main class="sign-in-form" id="signInForm">
-    <div class="container">
-                @if(session()->has('error'))
-                    <div class="alert alert-warning alert-dismissible" role="alert">
-                        {{ session('error') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
+{{--<main class="sign-in-form" id="signInForm">--}}
+{{--    <div class="container">--}}
+{{--                @if(session()->has('error'))--}}
+{{--                    <div class="alert alert-warning alert-dismissible" role="alert">--}}
+{{--                        {{ session('error') }}--}}
+{{--                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
+{{--                            <span aria-hidden="true">&times;</span>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                @endif--}}
 
 
-                    @if(session()->has('error'))
-                        <div class="alert alert-warning alert-dismissible" role="alert">
-                            {{ session('error') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
+{{--                    @if(session()->has('error'))--}}
+{{--                        <div class="alert alert-warning alert-dismissible" role="alert">--}}
+{{--                            {{ session('error') }}--}}
+{{--                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
+{{--                                <span aria-hidden="true">&times;</span>--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
+{{--                    @endif--}}
 
 
-        <form action="{{route('front.login')}}" method="post" enctype="multipart/form-data">
-            @csrf
-            <h4 class="title">الدخول لحسابك</h4>
-            <p>
-                من فضلك ادخل معلومات الدخول الخاصة بحسابك لتتمكن من استخدام كل خصائص الموقع وإذا لم يكن لديك حسابك؟
-                يمكنك
-                تسجيل مستخدم جديد مجانأ
-            </p>
-            <div class="mb-4 form-group row">
-                <div class="col-sm-2 d-flex align-items-center">
-                    <label for="email" class="form-label">ايميل المستخدم</label>
-                </div>
-                <div class="col-sm-8">
-                    <input type="hidden" name="fcm_web_token" value="">
+{{--        <form action="{{route('front.login')}}" method="post" enctype="multipart/form-data">--}}
+{{--            @csrf--}}
+{{--            <h4 class="title">الدخول لحسابك</h4>--}}
+{{--            <p>--}}
+{{--                من فضلك ادخل معلومات الدخول الخاصة بحسابك لتتمكن من استخدام كل خصائص الموقع وإذا لم يكن لديك حسابك؟--}}
+{{--                يمكنك--}}
+{{--                تسجيل مستخدم جديد مجانأ--}}
+{{--            </p>--}}
+{{--            <div class="mb-4 form-group row">--}}
+{{--                <div class="col-sm-2 d-flex align-items-center">--}}
+{{--                    <label for="email" class="form-label">ايميل المستخدم</label>--}}
+{{--                </div>--}}
+{{--                <div class="col-sm-8">--}}
+{{--                    <input type="hidden" name="fcm_web_token" value="">--}}
 
-                    <input type="text" class="form-control @error('email') is-invalid @enderror"
-                           id="email" name="email" aria-describedby="emailHelp"
-                           value="{{ old('email') }}" placeholder="ادخل بريدك الالكتروني">
-                    @error('email')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
+{{--                    <input type="text" class="form-control @error('email') is-invalid @enderror"--}}
+{{--                           id="email" name="email" aria-describedby="emailHelp"--}}
+{{--                           value="{{ old('email') }}" placeholder="ادخل بريدك الالكتروني">--}}
+{{--                    @error('email')--}}
+{{--                    <span class="invalid-feedback">{{ $message }}</span>--}}
+{{--                    @enderror--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div class="form-group">
-                <input type="password" name="password"
-                       class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1"
-                       placeholder="كلمة المرور">
-                @error('password')
-                <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
-            </div>
-
-
+{{--            <div class="form-group">--}}
+{{--                <input type="password" name="password"--}}
+{{--                       class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1"--}}
+{{--                       placeholder="كلمة المرور">--}}
+{{--                @error('password')--}}
+{{--                <span class="invalid-feedback">{{ $message }}</span>--}}
+{{--                @enderror--}}
+{{--            </div>--}}
 
 
-            <div class="mb-4 form-group row">
-                <div class="col-sm-2 d-flex align-items-center">
-                    <label for="password" class="form-label">كلمة المرور</label>
-                </div>
-                <div class="col-sm-8">
-                    <input type="password" class="form-control" name="password" id="password"  placeholder="ادخل كلمة المرور">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-8">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" name="remember" id="remember">
-                                <label class="form-check-label" for="remember">تذكرنى؟</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
 
-                            <a href="#" class="forgot" data-bs-toggle="modal"
-                               data-bs-target="#forget_pass_modal">نسيت كلمة المرور؟</a>
 
-                            <a href="#" class="forgot"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-8">
-                    <button type="submit" class="btn btn-primary submit-btn">الدخول</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</main>
+{{--            <div class="mb-4 form-group row">--}}
+{{--                <div class="col-sm-2 d-flex align-items-center">--}}
+{{--                    <label for="password" class="form-label">كلمة المرور</label>--}}
+{{--                </div>--}}
+{{--                <div class="col-sm-8">--}}
+{{--                    <input type="password" class="form-control" name="password" id="password"  placeholder="ادخل كلمة المرور">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-sm-2"></div>--}}
+{{--                <div class="col-sm-8">--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-sm-6">--}}
+{{--                            <div class="mb-3 form-check">--}}
+{{--                                <input type="checkbox" class="form-check-input" name="remember" id="remember">--}}
+{{--                                <label class="form-check-label" for="remember">تذكرنى؟</label>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-sm-6">--}}
+
+{{--                            <a href="#" class="forgot" data-bs-toggle="modal"--}}
+{{--                               data-bs-target="#forget_pass_modal">نسيت كلمة المرور؟</a>--}}
+
+{{--                            <a href="#" class="forgot"></a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-sm-2"></div>--}}
+{{--                <div class="col-sm-8">--}}
+{{--                    <button type="submit" class="btn btn-primary submit-btn">الدخول</button>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </form>--}}
+{{--    </div>--}}
+{{--</main>--}}
 
 <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
     <div class="container">
@@ -231,7 +231,7 @@
                 </div>
             </div>
         </div>
-        @include('front.layouts.modal')
+        @include('front.layouts.parts.modal')
     </div>
 </nav>
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>

@@ -10,6 +10,15 @@ class Option extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public static function getOptionsByCategoryId($request)
+    {
+        $category = Category::find($request->category_id);
+
+        if (!$category) return response()->json(['status' => false], 500);
+
+        return response()->json(['options' => $category->options, 'status' => true]);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

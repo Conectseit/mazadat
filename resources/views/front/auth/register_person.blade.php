@@ -4,12 +4,12 @@
 @endsection
 
 @section('content')
-    @include('front.auctions.head')
+    @include('front.auctions.parts.head')
     <section class="sign-up-page">
         <div class="container">
             <h4 class="title"> {{ trans('messages.add_new_user') }}</h4>
 
-{{--            @include('front.layouts.parts.alert')--}}
+            @include('front.layouts.parts.alert')
 
 {{--            @if(session('success'))--}}
 {{--                <div class="alert alert-success alert-dismissible fade show" role="alert">--}}
@@ -152,31 +152,22 @@
                                     <input type="radio" value="0" class="styled" name="is_appear_name">{{trans('messages.No')}}
                                 </label>
                             </div>
-
-                            <div class="col-lg-3 col-md-3">
-                                {!! NoCaptcha::renderJs() !!}
-                                {{--                                {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
-                                {!! NoCaptcha::display() !!}
-                            </div>
                         </div>
 
 
-{{--                        <div class="form-group mb-4 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-{{--                                {!! NoCaptcha::renderJs() !!}--}}
-{{--                                --}}{{--                                {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
-{{--                                {!! NoCaptcha::display() !!}--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        <div class="form-group mt-5 row d-lg-flex d-sm-block">
 
-
-
-
+                            <div class="col-lg-3 col-md-5">
+                                {!! NoCaptcha::renderJs() !!}
+                                {{--                                                                    {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
+                                {!! NoCaptcha::display() !!}
+                            </div>
+                            <div class="col-lg-9 col-md-8 my-auto">
+                                <p> {{trans('messages.accept_term')}}</p>
+                            </div>
+                        </div>
 
                         <div class="sign-btn">
-                            <p> {{trans('messages.accept_term')}}</p>
                             <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>
                         </div>
                     </div>

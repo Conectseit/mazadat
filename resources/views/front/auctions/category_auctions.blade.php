@@ -27,7 +27,7 @@
 
 
 @section('content')
-    @include('front.layouts.nav_categories')
+    @include('front.layouts.parts.nav_categories')
 
     {{--    @include('front.auctions.head')--}}
     <div class="category-items-page">
@@ -122,9 +122,6 @@
         <section class="items">
             <div class="container">
 
-
-
-
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
@@ -156,7 +153,7 @@
                                                 <i class="fal fa-calendar-alt"></i>
                                                 {{trans('messages.auction.start_at')}}
                                                 {{--                                    يبدأ فى الثلاثاء , 16/11/2021 , 10:10--}}
-                                                : {{ ($auction->start_date->format('l, m/d/Y') ) }}
+                                                : {{isset($auction->start_date)? ($auction->start_date->format('l, m/d/Y') ):''}}
 
                                             </p>
                                             <div class="row">
@@ -185,7 +182,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-
                                                 <div class="col-sm-6">
                                                     <p><i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}
                                                         :{{$auction->remaining_time['days']}}</p>
@@ -211,7 +207,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @include('front.auctions.ajax-watch', ['auction' => $auction])
+                                @include('front.auctions.parts.ajax-watch', ['auction' => $auction])
                             @empty
 
                                 <center><h2> @lang('messages.there_is_no_auctions_on_this_category_yet') </h2></center>
@@ -296,7 +292,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @include('front.auctions.ajax-watch', ['auction' => $auction])
+                                @include('front.auctions.parts.ajax-watch', ['auction' => $auction])
                             @empty
 
                                 <center><h2> @lang('messages.there_is_no_auctions_on_this_category_yet') </h2></center>

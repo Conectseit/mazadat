@@ -92,7 +92,7 @@
 
 {{--                                                       <td class="text-center">{{($auction->start_date) }}</td>--}}
 {{--                                                       <td class="text-center">{{($auction->end_date) }}</td>--}}
-                                                       <td class="text-center">{{($auction->remaining_time) }}</td>
+                                                       <td class="text-center">{{$auction->remaining_time['days']}}</td>
                                                        {{--                                                    {{ Carbon\Carbon::now()->toDateTimeString() }}--}}
 
                                                        <td class="text-center">
@@ -187,7 +187,7 @@
                                                     <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable($auction->$name) }}</a></td>
                                                     <td class="text-center"> {{ ($auction->start_auction_price ) }}</a></td>
                                                     <td class="text-center"> {{ ($auction->value_of_increment ) }}</a></td>
-                                                    <td class="text-center">{{($auction->remaining_time) }}</td>
+                                                    <td class="text-center">{{$auction->remaining_time['days']}}</td>
                                                     <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
                                                     <td class="text-center">
                                                         <div class="list-icons text-center">
