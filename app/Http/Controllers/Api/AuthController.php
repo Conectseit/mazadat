@@ -32,6 +32,32 @@ class AuthController extends PARENT_API
 {
 
 
+
+
+
+
+
+//    public function resendSms(AddAddressRequest $request)
+//    {
+//
+//        $user = User::where('mobile', $mobile)->first();
+//
+//        $activation_code = create_rand_numbers();
+//
+//        $user->update(['activation_code' => $activation_code]);
+//
+////    SmsController::send_sms(($mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+//
+//        return responseJson(true, trans('api.تم إعادة إرسال الكود بنجاح'), null);
+//
+//
+//    }
+
+
+
+
+
+
     public function addAddress(AddAddressRequest $request)
     {
         $user = $request->user();

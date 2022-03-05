@@ -86,7 +86,7 @@ class AuthController extends Controller
 
         if ($user->is_active == 'deactive') {
             Auth::logout();
-            return redirect()->route('front.show_activation')
+            return redirect()->route('front.show_activation',$user->mobile)
                 ->with('error', trans('api.please_active_your_account_by_activation_code_first'));
 //            return back()->withInput($request->only('email'))->with('error', trans('api.please_active_your_account_by_activation_code_first'));
         }

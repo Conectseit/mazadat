@@ -26,6 +26,8 @@
 
 
 @section('content')
+    @include('front.layouts.parts.nav_categories')
+
     @include('front.layouts.parts.alert')
 
 

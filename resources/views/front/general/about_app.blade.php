@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+    @include('front.layouts.parts.nav_categories')
+
     <section class="about-us-page">
         <div class="container">
             <div class="text">

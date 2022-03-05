@@ -42,12 +42,12 @@ class CompanyController extends Controller
                 $request_data['mobile'] =$country->phone_code. $request->mobile ;
             }
             $user = User::create($request_data + ['activation_code' => $activation_code,'type'=>'buyer','is_appear_name'=>1,'is_company'=>'company','accept_app_terms'=>'yes',]);
-//            if ($user) {
-//                $jwt_token = JWTAuth::fromUser($user);
-//                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,
-////                    'fcm_web_token'=>$request->fcm_web_token
-//                ]);
-//            }
+            if ($user) {
+                $jwt_token = JWTAuth::fromUser($user);
+                Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,
+//                    'fcm_web_token'=>$request->fcm_web_token
+                ]);
+            }
             DB::commit();
 //            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
             return redirect()->route('front.show_activation', $request_data['mobile']);
