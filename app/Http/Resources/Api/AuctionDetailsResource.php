@@ -31,7 +31,7 @@ class AuctionDetailsResource extends JsonResource
             'value_of_increment'          =>(int) $this->value_of_increment,
             'start_date'                  => $this->start_date->format('l m-d-Y'),
             'remaining_time'              => $this->remaining_time,
-            'delivery_charge '            => $this->delivery_charge ,
+            'delivery_charge'            => $this->delivery_charge ,
             'is_unique'                   => $this->is_unique,
             'latitude'                    => $this->latitude,
             'longitude'                   => $this->longitude,

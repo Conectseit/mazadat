@@ -1,6 +1,8 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.company.companies'))
-
+@section('style')
+    <style> #map { height: 400px;} </style>
+@endsection
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
@@ -15,9 +17,7 @@
     </div>
 @endsection
 
-@section('style')
-    <style> #map { height: 400px;} </style>
-@endsection
+
 @section('content')
 
 

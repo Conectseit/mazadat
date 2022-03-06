@@ -1,6 +1,8 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.person.persons'))
-
+@section('style')
+    <style> #map { height: 400px;} </style>
+@endsection
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
@@ -29,15 +31,16 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#person_data" data-toggle="tab"><i
                             class="icon-menu7 position-left"></i> {{ trans('messages.person.person_data') }}</a></li>
-{{--                <li><a href="#person_auctions" data-toggle="tab"><i--}}
+                <li class=""><a href="#other_data" data-toggle="tab"><i class="icon-menu7 position-left"></i> {{ trans('messages.person.address_data') }}</a></li>
+                <li><a href="#add_address" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{trans('messages.person.additional_address')}}</a></li>
+
+                {{--                <li><a href="#person_auctions" data-toggle="tab"><i--}}
 {{--                            class="icon-calendar3 position-left"></i> {{ trans('messages.person.person_auctions') }}--}}
 {{--                        <span class="badge badge-success badge-inline position-right">11--}}
 {{--                            {{$person->person_auctions->count()}}--}}
 {{--                        </span></a>--}}
 {{--                </li>--}}
-                <li><a href="#send_notification" data-toggle="tab"><i
-                            class="icon-bell3 position-left"></i> {{trans('messages.notification.send')}}</a></li>
-                <li><a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> Settings</a></li>
+                <li><a href="#send_notification" data-toggle="tab"><i class="icon-bell3 position-left"></i> {{trans('messages.notification.send')}}</a></li>
             </ul>
         </div>
     </div>
@@ -121,6 +124,38 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.since') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $person->created_at->diffForHumans() }}" readonly>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /sales stats -->
+                                </div>
+                            </div>
+                            <!-- /person_data -->
+                        </div>
+
+
+                        <div class="tab-pane fade in " id="other_data">
+                            <!-- person_data -->
+                            <div class="timeline timeline-left content-group">
+                                <div class="timeline-container">
+                                    <!-- Sales stats -->
+                                    <div class="timeline-row">
+                                        <div class="panel panel-flat timeline-content">
+                                            <div class="panel-heading">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <form action="#">
+
+                                                            <div class="form-group row">
                                                                 <label class="col-form-label col-lg-3">{{ trans('messages.nationality.nationality') }}:</label>
                                                                 <div class="col-lg-9">
                                                                     <input type="text" class="form-control" value="{{ isset($person->nationality)?$person->nationality->$name:'' }}" readonly>
@@ -133,21 +168,57 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.since') }}:</label>
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.person.block') }}:</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control"
-                                                                           value="{{ $person->created_at->diffForHumans() }}" readonly>
+                                                                    <input type="text" class="form-control" value="{{ isset($person->block )?$person->block :''}}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.person.street') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control" value="{{ isset($person->street )?$person->street :''}}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.person.block_num') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control" value="{{ isset($person->block_num )?$person->block_num :''}}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.person.signs') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control" value="{{ isset($person->signs )?$person->signs :''}}" readonly>
+                                                                </div>
+                                                            </div>
+{{--                                                            <div class="form-group row">--}}
+{{--                                                                <label class="col-form-label col-lg-3">{{ trans('messages.since') }}:</label>--}}
+{{--                                                                <div class="col-lg-9">--}}
+{{--                                                                    <input type="text" class="form-control"--}}
+{{--                                                                           value="{{ $person->created_at->diffForHumans() }}" readonly>--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
+
+
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-form-label col-lg-3">{{ trans('messages.person.identity') }}:</label>
+                                                                        <div class="col-lg-9">
+                                                                            <img src="{{ $person->passport_image_path }}" alt="" class=" img-thumbnail">
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group row">
 
-                                                                    @if($person->is_verified ==0)
-                                                                        <a href="person/{{$person->id}}/not_verified/" class="btn btn-danger btn-sm"><i
-                                                                                class="icon-close2"></i>{{trans('messages.not_verified')}}</a>
-                                                                        <a href="person/{{$person->id}}/verified/" class="btn btn-success btn-sm"> <i
-                                                                                class="icon-check2"></i> {{trans('messages.verified')}}</a>
-                                                                    @endif
+                                                                @if($person->is_verified ==0)
+                                                                    <a href="person/{{$person->id}}/not_verified/" class="btn btn-danger btn-sm"><i
+                                                                            class="icon-close2"></i>{{trans('messages.not_verified')}}</a>
+                                                                    <a href="person/{{$person->id}}/verified/" class="btn btn-success btn-sm"> <i
+                                                                            class="icon-check2"></i> {{trans('messages.verified')}}</a>
+                                                                @endif
                                                             </div>
 
 
@@ -171,6 +242,8 @@
                             </div>
                             <!-- /person_data -->
                         </div>
+
+
 {{--                        <div class="tab-pane fade" id="person_auctions">--}}
 {{--                            <!-- Seller_auctions -->--}}
 {{--                            <div class="panel panel-flat">--}}
@@ -315,8 +388,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="settings">
+                        <div class="tab-pane fade" id="add_address">
+......................
+                            <div class="form-group row"><br>
+                                <label class="col-form-label col-lg-3">{{ trans('messages.person.location') }}:</label>
 
+                                <div class="col-lg-9">
+                                    {{--                                                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -180px;" placeholder=" اختر المكان علي الخريطة " name="other" >--}}
+                                    <div id="map"></div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" id="geo_lat"  value="{{ $person->latitude }}"  name="latitude" readonly="" placeholder=" latitude " class="form-control" >
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" id="geo_lng"  value="{{ $person->longitude }}"  name="longitude" readonly="" placeholder="longitude" class="form-control" >
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -327,4 +414,23 @@
 @stop
 
 @section('scripts')
+
+    <script>
+        function initMap() {
+            let lat_val = {{ $person->latitude }};
+            let lng_val = {{ $person->longitude }};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: lat_val, lng: lng_val},
+                zoom: 13
+            });
+
+
+            var marker = new google.maps.Marker({ position: {lat: lat_val, lng: lng_val}, map: map, draggable :true });
+
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks" >
+    </script>
+
 @stop
