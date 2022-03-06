@@ -43,6 +43,8 @@ class AuctionRequest extends FormRequest
                         'start_auction_price'   => ['required','numeric'],
                         'value_of_increment' => ['required','numeric'],
                         'delivery_charge' => ['required','numeric'],
+                        'latitude'         => 'required|numeric',
+                        'longitude'        => 'required|numeric',
                         'images.*' => 'image',
 //                        'inspection_report_image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
                     ];

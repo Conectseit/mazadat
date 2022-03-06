@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\front;
 
+use App\Firebase\Firebase;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\auction\AddAuctionRequest;
 use App\Http\Requests\Front\auction\MakeBidRequest;
@@ -10,6 +11,7 @@ use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\AuctionImage;
 use App\Models\Category;
+use App\Models\Notification;
 use App\Models\Option;
 use App\Models\User;
 use App\Models\WatchedAuction;
@@ -32,19 +34,20 @@ class AuctionController extends Controller
         {
             $user = auth()->user();
 
-
             if( $user->accepted_auctions->count() == 0)
             {
                 return back()->with('error', trans('messages.Sorry_you_should_accept_auction_terms_first'));
             }
 
-            if(is_null($user->passport_image) && $user->documents->count() == 0)
-            {
-                return back()->with('warning', trans('messages.Sorry_you_should_upload_document_and_passport_first'));
-            }
+//            if(is_null($user->passport_image) && $user->documents->count() == 0)
+//            {
+//                return back()->with('warning', trans('messages.Sorry_you_should_upload_document_and_passport_first'));
+//            }
 
             if(!$auction = Auction::find($id))
                 return back()->with('error', trans('messages.not_found_auction'));
+
+
 
             $bid = AuctionBuyer::where(['auction_id' => $auction->id, 'buyer_id' => $user->id])->first();
 
@@ -60,8 +63,12 @@ class AuctionController extends Controller
                 $auction_commission = $auction->category->auction_commission;
                 if($user->wallet < ($auction_commission  + $request->buyer_offer))
                     return back()->with('warning1', trans('messages.you_should_charge_your_wallet_first'));
+
+
                 if($user->available_limit < ($auction_commission  + $request->buyer_offer))
                     return back()->with('warning1', trans('messages.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'));
+
+
                 $offer=$request->buyer_offer - $auction->current_price;
                 $user_current_wallet = $user->wallet - ($auction_commission + $offer);
 
@@ -97,6 +104,23 @@ class AuctionController extends Controller
             $user->update(['available_limit' => $user_current_available_limit]);
 
             DB::commit();
+
+
+
+//            $users = AuctionBuyer::where('auction_id' , $auction->id)->get();
+//
+//            foreach ($users->buyer as $user){
+//                if ($user->token->fcm != null ) {
+//                    Firebase::send([
+//                        'title'      => 'kk',
+//                        'text'       => 'ooo',
+//                        'fcm_tokens' => $user->token->fcm
+//                    ]);
+//                }
+//
+//            }
+
+
             return back()->with('success', trans('messages.updated_successfully'));
         }
         catch(Exception $e)
@@ -234,6 +258,7 @@ class AuctionController extends Controller
         $data['ended_auctions'] = auth()->user()->seller_auctions()->where('status', 'done')->where('is_accepted',1)->paginate('20');
         return view('front.user.my_auctions', $data);
     }
+
 
 
 

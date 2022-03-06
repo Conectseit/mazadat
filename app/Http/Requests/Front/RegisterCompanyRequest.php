@@ -34,7 +34,7 @@ class RegisterCompanyRequest extends FormRequest
 
                         'commercial_register_image'        => 'required|image',
                         'company_authorization_image'      => 'required|image',
-//                        'g-recaptcha-response'             => 'required|captcha',
+                        'g-recaptcha-response'             => 'required|captcha',
                         'latitude'    => 'required',
                         'longitude'   => 'required',
                         'user_name'   => 'required|string|between:2,200|unique:users,user_name',

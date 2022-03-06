@@ -1,5 +1,8 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.auction.auctions'))
+@section('style')
+    <style> #map { height: 400px;} </style>
+@endsection
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
@@ -61,10 +64,13 @@
                 <li><a href="#auction_images" data-toggle="tab"><i
                             class="icon-calendar3 position-left"></i> {{ trans('messages.auction.images') }} <span
                             class="badge badge-success badge-inline position-right">{{$images->count()}}</span></a></li>
+                <li><a href="#inspection_report_image" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{ trans('messages.auction.inspection_report_images') }}</a></li>
+
+                <li><a href="#location" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{ trans('messages.auction.location') }}</a></li>
+
                 <li><a href="#auction_bids" data-toggle="tab"><i
                             class="icon-calendar3 position-left"></i> {{ trans('messages.auction.bids') }} <span
                             class="badge badge-success badge-inline position-right">{{$auction_bids->count()}}</span></a></li>
-                <li><a href="#inspection_report_image" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{ trans('messages.auction.inspection_report_images') }}</a></li>
                 <li><a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> Settings</a></li>
             </ul>
         </div>
@@ -172,8 +178,8 @@
                                             @foreach($auction_option_details as $option_detail)
                                                 <tr id="auction_option_detail-row-{{ $option_detail->id }}">
                                                     <td>{{ $option_detail->id }}</td>
-                                                    <td class="text-center">{{isNullable( $option_detail->option_detail->option->$name) }}</td>
-                                                    <td class="text-center">{{( $option_detail->option_detail->$value) }}</td>
+                                                    <td class="text-center">{{isset( $option_detail->option_detail)?$option_detail->option_detail->option->$name:'' }}</td>
+                                                    <td class="text-center">{{isset( $option_detail->option_detail)?$option_detail->option_detail->$value:'' }}</td>
                                                     <td class="text-center">
                                                         <div class="list-icons text-center">
                                                             <div class="list-icons-item dropdown text-center">
@@ -256,6 +262,116 @@
                             </div>
                             <!-- /auction_images -->
                         </div>
+                        <div class="tab-pane fade" id="inspection_report_image">
+                            <!-- inspection_report_images -->
+                            <div class="panel panel-flat">
+                                <div class="panel-heading">
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li><a data-action="collapse"></a></li>
+                                            <li><a data-action="reload"></a></li>
+                                            <li><a data-action="close"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    @if($images->count() > 0)
+                                        <table class="table datatable" id="inspection_report_images" style="font-size: 16px;">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center"><h3>{{ trans('messages.auction.images') }} : </h3></th>
+                                                <th class="text-center">@lang('messages.form-actions')</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($inspection_report_images as $image)
+                                                <tr id="image-row-{{ $image->id }}">
+                                                    <td>
+                                                        <a href="{{asset($image->ImagePath) }}" data-popup="lightbox">
+                                                            <img src="{{asset($image->ImagePath) }}" alt="" width="80" height="70" class="img-preview rounded">
+                                                        </a>
+                                                    </td>
+                                                    {{--                                                    <td class="text-center">--}}
+                                                    {{--                                                        <ul class="icons-list">--}}
+                                                    {{--                                                            <li class="dropdown">--}}
+                                                    {{--                                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>--}}
+                                                    {{--                                                                <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">--}}
+                                                    {{--                                                                    <li>--}}
+                                                    {{--                                                                        <a data-id="{{ $image->id }}" class="delete-action">--}}
+                                                    {{--                                                                            <i class="icon-database-remove"></i>@lang('messages.delete')--}}
+                                                    {{--                                                                        </a>--}}
+                                                    {{--                                                                    </li>--}}
+                                                    {{--                                                                </ul>--}}
+                                                    {{--                                                            </li>--}}
+                                                    {{--                                                        </ul>--}}
+                                                    {{--                                                    </td>--}}
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    @else
+                                        <center><h3> @lang('messages.no_data_found') </h3></center>
+                                    @endif
+                                </div>
+
+                            </div>
+                            <!-- /inspection_report_images -->
+
+
+
+
+                            {{--                            <div class="panel panel-flat">--}}
+                            {{--                                <div class="panel-body">--}}
+                            {{--                                    <a href="{{asset($auction->inspection_report_image_path) }}" data-popup="lightbox">--}}
+                            {{--                                        <img src="{{asset($auction->inspection_report_image_path) }}" alt="" width="80" height="70" class="img-preview rounded">--}}
+                            {{--                                    </a>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+                        </div>
+
+                        <div class="tab-pane fade" id="location">
+                            <!-- inspection_report_images -->
+                            <div class="panel panel-flat">
+                                <div class="panel-heading">
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li><a data-action="collapse"></a></li>
+                                            <li><a data-action="reload"></a></li>
+                                            <li><a data-action="close"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="form-group row"><br>
+                                        <label class="col-form-label col-lg-3">{{ trans('messages.auction.location') }}:</label>
+
+                                        <div class="col-lg-9">
+                                            {{--                                                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -180px;" placeholder=" اختر المكان علي الخريطة " name="other" >--}}
+                                            <div id="map"></div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="geo_lat"  value="{{ $auction->latitude }}"  name="latitude" readonly="" placeholder=" latitude " class="form-control" >
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="geo_lng"  value="{{ $auction->longitude }}"  name="longitude" readonly="" placeholder="longitude" class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /inspection_report_images -->
+
+
+
+
+                            {{--                            <div class="panel panel-flat">--}}
+                            {{--                                <div class="panel-body">--}}
+                            {{--                                    <a href="{{asset($auction->inspection_report_image_path) }}" data-popup="lightbox">--}}
+                            {{--                                        <img src="{{asset($auction->inspection_report_image_path) }}" alt="" width="80" height="70" class="img-preview rounded">--}}
+                            {{--                                    </a>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+                        </div>
                         <div class="tab-pane fade" id="auction_bids">
                             <!-- auction_bids -->
                             <div class="panel panel-flat">
@@ -298,72 +414,7 @@
                             </div>
                             <!-- /auction_auction_bidss -->
                         </div>
-                        <div class="tab-pane fade" id="inspection_report_image">
-                            <!-- inspection_report_images -->
-                            <div class="panel panel-flat">
-                                <div class="panel-heading">
-                                    <div class="heading-elements">
-                                        <ul class="icons-list">
-                                            <li><a data-action="collapse"></a></li>
-                                            <li><a data-action="reload"></a></li>
-                                            <li><a data-action="close"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="panel-body">
-                                    @if($images->count() > 0)
-                                        <table class="table datatable" id="inspection_report_images" style="font-size: 16px;">
-                                            <thead>
-                                            <tr>
-                                                <th class="text-center"><h3>{{ trans('messages.auction.images') }} : </h3></th>
-                                                <th class="text-center">@lang('messages.form-actions')</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($inspection_report_images as $image)
-                                                <tr id="image-row-{{ $image->id }}">
-                                                    <td>
-                                                        <a href="{{asset($image->ImagePath) }}" data-popup="lightbox">
-                                                            <img src="{{asset($image->ImagePath) }}" alt="" width="80" height="70" class="img-preview rounded">
-                                                        </a>
-                                                    </td>
-{{--                                                    <td class="text-center">--}}
-{{--                                                        <ul class="icons-list">--}}
-{{--                                                            <li class="dropdown">--}}
-{{--                                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>--}}
-{{--                                                                <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">--}}
-{{--                                                                    <li>--}}
-{{--                                                                        <a data-id="{{ $image->id }}" class="delete-action">--}}
-{{--                                                                            <i class="icon-database-remove"></i>@lang('messages.delete')--}}
-{{--                                                                        </a>--}}
-{{--                                                                    </li>--}}
-{{--                                                                </ul>--}}
-{{--                                                            </li>--}}
-{{--                                                        </ul>--}}
-{{--                                                    </td>--}}
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
-                                    @else
-                                        <center><h3> @lang('messages.no_data_found') </h3></center>
-                                    @endif
-                                </div>
 
-                            </div>
-                            <!-- /inspection_report_images -->
-
-
-
-
-{{--                            <div class="panel panel-flat">--}}
-{{--                                <div class="panel-body">--}}
-{{--                                    <a href="{{asset($auction->inspection_report_image_path) }}" data-popup="lightbox">--}}
-{{--                                        <img src="{{asset($auction->inspection_report_image_path) }}" alt="" width="80" height="70" class="img-preview rounded">--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-                        </div>
                         <div class="tab-pane fade" id="settings">
 
                         </div>

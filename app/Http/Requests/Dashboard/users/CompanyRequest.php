@@ -34,7 +34,7 @@ class CompanyRequest extends FormRequest
                         'commercial_register_image'          => 'required|image',
                         'company_authorization_image'        => 'required|image',
                         'latitude'         => 'required|numeric',
-                        'longitude'        => 'required_if:is_company,company|numeric',
+                        'longitude'        => 'required|numeric',
                         'user_name'        => 'required|string|between:2,200',
                         'email'            => 'required|email|max:100|unique:users,email',
                         'country_id'       => 'required|numeric|exists:countries,id',
@@ -78,6 +78,8 @@ class CompanyRequest extends FormRequest
 //            'mobile' => ' يرجي ادخال رقم الجوال',
 //            'is_appear_name' => ' يرجي ادخال هل الاسم ظاهر او مختفي',
 //            'gender' => ' يرجي ادخال النوع ',
+
         ];
     }
 }
+//'longitude'        => 'required_if:is_company,company|numeric',

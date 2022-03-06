@@ -22,7 +22,7 @@ class HomeController extends Controller
 
     public function all_companies()
     {
-        $data['companies'] = User::where('is_company', 'company')->get();
+        $data['companies'] = User::where(['is_company'=>'company','type'=>'seller'])->get();
         return view('front.company.all_companies',$data);
     }
     public function companyAuctions(Request $request, $id)

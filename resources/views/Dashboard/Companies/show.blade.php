@@ -160,7 +160,7 @@
                                                                 <label class="col-form-label col-lg-3">{{ trans('messages.company.location') }}:</label>
 
                                                                 <div class="col-lg-9">
-                                                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -180px;" placeholder=" اختر المكان علي الخريطة " name="other" >
+{{--                                                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -180px;" placeholder=" اختر المكان علي الخريطة " name="other" >--}}
                                                                     <div id="map"></div>
                                                                 </div>
                                                                 <div class="col-lg-6">

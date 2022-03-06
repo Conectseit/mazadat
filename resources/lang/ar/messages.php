@@ -316,7 +316,8 @@ return [
     ],
 
     'please_complete_your_data' => 'من فضلك اكمل بيانات التسجيل',
-    'additional_address' => 'اضافة عنوان اضافي',
+    'additional_address' => ' عنوان اضافي',
+    'location' => ' عنوان المستخدم ',
 
 //    'company' => 'مؤسسة',
 //    'person' => 'فرد',
@@ -373,7 +374,7 @@ return [
         'all_auctions' => 'جميع المزادات',
         'done' => 'المزادات المنتهية',
         'on_progress' => 'المزادات الحالية',
-        'not_accepted' => 'المزادات المرفوضة',
+        'not_accepted' => ' لم يتم قبولهم بعد',
         'pending' => 'المزادات قيد انتظار القبول من الادارة',
         'selled' => 'المزادات المباعه من خلال موقعنا  ',
         'auction_data' => 'بيانات المزاد ',
@@ -381,7 +382,7 @@ return [
         'who_can_buy' => 'خيار مشاهدة المزاد ',
         'company' => 'مؤسسات فقط',
         'users' => 'افراد فقط ',
-        'delivery_charge' => 'الرسوم الابتدائية للشحن والتوصيل ',
+        'delivery_charge' => 'رسوم الشحن والتوصيل ',
         'start_auction_price' => ' السعر الابتدائي  ',
         'current_price' => ' السعر  الحالي ',
         'value_of_increment' => 'الحد الادنى للمزايدة',
@@ -602,6 +603,7 @@ return [
     'company_location'         	=> ' موقع المؤسسة ',
     'pass_terms'         	=> 'ملحوظة : كلمة المرور يجب ان لا تقل عن 6احرف او ارقام ',
     'register_success_welcome_in_our_website'         	=> 'تم تسجيل حسابك بنجاح اهلا بك في موقعنا',
+    'wait'         	=> 'انتظر حتي يتم مراجعة بيانات مزادك من خلال ادارة الموقع',
 
 
 

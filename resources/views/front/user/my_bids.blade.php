@@ -44,7 +44,7 @@
                                                 <p><i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}:{{($auction->start_auction_price)}}</p>
                                             </div>
                                             <div class="col-sm-6">
-                                                <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>
+{{--                                                <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>--}}
                                             </div>
                                         </div>
                                     </div>

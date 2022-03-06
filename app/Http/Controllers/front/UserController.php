@@ -53,8 +53,15 @@ class UserController extends Controller
     public function updateProfile(updateProfileRequest $request)
     {
 //        $request_data = $request->except(['password', 'password_confirmation', 'submit']);
-        $request_data = $request->except(['image','phone_code','mobile','commercial_register_image','company_authorization_image']);
-
+        $request_data = $request->except(['phone_code','mobile','commercial_register_image','company_authorization_image','image']);
+        if ($request->mobile) {
+            $request_data['mobile'] =$request->phone_code. $request->mobile ;
+        }
+//        if ($request->mobile) {
+//            $country=Country::find($request->country_id);
+//
+//            $request_data['mobile'] =$country->phone_code. $request->mobile ;
+//        }
         if ($request->image) {
             $request_data['image']  = uploaded($request->image, 'user');
         }
@@ -64,12 +71,11 @@ class UserController extends Controller
         if ($request->hasFile('company_authorization_image')) {
             $request_data['company_authorization_image'] = uploaded($request->company_authorization_image, 'user');
         }
-        if ($request->mobile) {
-            $request_data['mobile'] =$request->phone_code. $request->mobile ;
-        }
 
         $user = auth()->user();
-        $user->update($request_data);
+        $user->update($request_data );
+//        $user->update($request_data + ['country_id'=>$country->id]);
+
         return back()->with('success', trans('messages.updated_success'));
     }
 
@@ -82,7 +88,6 @@ class UserController extends Controller
 
     public function addAddress(AdditionalAddressRequest $request)
     {
-        dd('kk');
         $user = auth()->user();
         $user->update($request->all());
         return back()->with('success', trans('messages.updated_success'));

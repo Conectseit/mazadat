@@ -116,19 +116,37 @@
 
 
 
-                                <div class="form-group mb-4 row">
-                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                        <label for="block" class="form-label"> @lang('messages.passport_image')</label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-9">
-                                        <input type="file" class="form-control image " name="passport_image">
+{{--                                <div class="form-group mb-4 row">--}}
+{{--                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                        <label for="block" class="form-label"> @lang('messages.passport_image')</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-lg-10 col-md-9">--}}
+{{--                                        <input type="file" class="form-control image " name="passport_image">--}}
 
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <img src=" {{auth()->user()->passport_image_path}} " width=" 100px "--}}
+{{--                                         value="{{auth()->user()->passport_image_path}}"--}}
+{{--                                         class="thumbnail image-preview">--}}
+{{--                                </div>--}}
+
+
+
+
+                                <div class="form-group mb-4  row ">
+                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                        <label>@lang('messages.passport_image')</label>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <img src=" {{auth()->user()->passport_image_path}} " width=" 100px "
-                                         value="{{auth()->user()->passport_image_path}}"
-                                         class="thumbnail image-preview">
+                                    <div class="col-lg-8 col-sm-12 d-flex align-items-center">
+                                        <input type="file" class="form-control passport_image"
+                                               name="passport_image" accept="image/*"
+                                               onchange="readURL3(this)"/>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 d-flex align-items-center">
+                                        <img id="img-preview3" style="width: 180px ; height:90px"
+                                             src="{{ auth()->user()->passport_image_path}}" width="250px"/>
+                                    </div>
                                 </div>
 
                             @endif

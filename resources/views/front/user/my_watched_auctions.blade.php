@@ -39,7 +39,7 @@
                                         <p><i class="fal fa-gavel"></i>{{($auction->start_auction_price)}} $</p>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>
+{{--                                        <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>--}}
                                     </div>
                                 </div>
                             </div>

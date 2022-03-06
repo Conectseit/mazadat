@@ -1,5 +1,8 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.create-var',['var'=>trans('messages.auction.auction')]))
+@section('style')
+    <style> #map { height: 400px;} </style>
+@endsection
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
@@ -252,6 +255,20 @@
                                 <label>@lang('messages.auction.inspection_report_images')</label>
                                 <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>
                             </div>
+                            <hr>
+                            <div class="form-group">
+                                <label>@lang('messages.auction.location'):</label>
+                                <div class="col-lg-12">
+{{--                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">--}}
+                                    <div id="map"></div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">
+                                </div>
+                            </div>
 
 
                         </div>
@@ -301,4 +318,6 @@
 @stop
 @section('scripts')
     @include('Dashboard.layouts.parts.ajax_get_options')
+    @include('Dashboard.layouts.parts.map')
+
 @endsection
