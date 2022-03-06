@@ -84,9 +84,6 @@
 
 
 
-
-
-
                             <td>{{isset($person->created_at) ?$person->created_at->diffForHumans():'---' }}</td>
                             <td class="text-center">
                                 <ul class="icons-list">
