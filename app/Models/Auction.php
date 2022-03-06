@@ -11,7 +11,7 @@ class Auction extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    protected $dates = ['start_date'];
+    protected $dates = ['start_date','end_date'];
 
     protected $appends = ['remaining_time'];
 
