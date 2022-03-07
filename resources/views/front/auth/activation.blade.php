@@ -71,9 +71,9 @@
                         </div>
 
                         <div class="sign-btn row">
-                            <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.send')}}</button>
+                            <button type="submit" id="resend-code-btn" class="btn btn-primary submit-btn">{{trans('messages.send')}}</button>
                         </div>
-                        <p class="mt-5">لم يصلك كود التفعيل؟ <a href="{{ route('front.resend-sms',$mobile) }}" class="create text-orange">ارسل مرة أخرى</a></p>
+                        <p class="mt-5">لم يصلك كود التفعيل؟ <a id="resend-code-btn" href="{{ route('front.resend-sms',$mobile) }}" class="create text-orange">ارسل مرة أخرى</a></p>
 
                     </div>
                 </form>
@@ -91,6 +91,9 @@
                 resizeDuration: 100,
                 fadeDuration: 300,
                 fitImagesInViewport: true,
+            });
+            $('button#resend-code-btn').on('click', function(){
+
             });
         });
         var items = document.querySelectorAll('.code'),

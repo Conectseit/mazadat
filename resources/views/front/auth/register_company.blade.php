@@ -20,7 +20,7 @@
 {{--            @endif--}}
 
             <div class="row">
-                <form action="{{route('front.register_company')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('front.register_company')}}" method="post" id="submitted-form" enctype="multipart/form-data">
                     @csrf
                     <div class="inputs-group">
                         <h5 class="group-title">{{trans('messages.personal_info')}}</h5>
@@ -169,7 +169,7 @@
                                 {!! NoCaptcha::display() !!}
                             </div>
                             <p> {{trans('messages.accept_term')}}</p>
-                            <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>
+                            <button type="submit" id="save-form-btn" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>
                         </div>
                     </div>
                 </form>
@@ -223,7 +223,8 @@
         }
     </script>
 
-    @include('Dashboard.layouts.parts.map')
+{{--    @include('Dashboard.layouts.parts.map')--}}
+    @include('front.layouts.parts.map')
     @include('front.auth.ajax_get_cities')
 @endpush
 
