@@ -18,8 +18,8 @@
     @include('Dashboard.layouts.parts.validation_errors')
 
     <!-- Basic datatable -->
-    <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
-       <br> <div class="list-icons" style="padding-right: 10px;">
+    <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;"><br>
+        <div class="list-icons" style="padding-right: 10px;">
             <a href="{{route('companies.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i
                         class="icon-plus2"></i></b>{{ trans('messages.company.add_new_company') }}</a>
         </div>

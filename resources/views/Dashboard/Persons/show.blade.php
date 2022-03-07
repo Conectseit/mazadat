@@ -389,21 +389,38 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="add_address">
-......................
-                            <div class="form-group row"><br>
-                                <label class="col-form-label col-lg-3">{{ trans('messages.person.location') }}:</label>
+                            <div class="panel panel-flat">
+                                <div class="panel-heading">
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li><a data-action="collapse"></a></li>
+                                            <li><a data-action="reload"></a></li>
+                                            <li><a data-action="close"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <h6 class="content-group-sm text-semibold">{{ trans('messages.person.location') }}:</h6>
+                                    <div class="form-group row"><br>
+{{--                                        <label class="col-form-label col-lg-3">{{ trans('messages.person.location') }}:</label>--}}
 
-                                <div class="col-lg-9">
-                                    {{--                                                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -180px;" placeholder=" اختر المكان علي الخريطة " name="other" >--}}
-                                    <div id="map"></div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="text" id="geo_lat"  value="{{ $person->latitude }}"  name="latitude" readonly="" placeholder=" latitude " class="form-control" >
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="text" id="geo_lng"  value="{{ $person->longitude }}"  name="longitude" readonly="" placeholder="longitude" class="form-control" >
+                                        <div class="col-lg-9">
+                                            {{--                                                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -180px;" placeholder=" اختر المكان علي الخريطة " name="other" >--}}
+                                            <div id="map"></div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="geo_lat"  value="{{ $person->latitude }}"  name="latitude" readonly="" placeholder=" latitude " class="form-control" >
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="geo_lng"  value="{{ $person->longitude }}"  name="longitude" readonly="" placeholder="longitude" class="form-control" >
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -423,8 +440,6 @@
                 center: {lat: lat_val, lng: lng_val},
                 zoom: 13
             });
-
-
             var marker = new google.maps.Marker({ position: {lat: lat_val, lng: lng_val}, map: map, draggable :true });
 
         }

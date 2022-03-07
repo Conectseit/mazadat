@@ -39,11 +39,20 @@ class Auction extends Model
 
 
 
+//    public function getRemainingTimeAttribute()
+//    {
+//        $start  = Carbon::parse($this->start_date);
+//        $end  = Carbon::parse($this->end_date);
+//        $diff = $start->diff($end);
+////         return ' days '. $diff->d . '/' . ' hours ' . $diff->h ;
+//
+//        return ['days' => $diff->d, 'hours' => $diff->h,'minutes' => $diff->m, 'seconds' => $diff->s];
+//    }
     public function getRemainingTimeAttribute()
     {
-        $start  = Carbon::parse($this->start_date);
+        $now  = Carbon::now();
         $end  = Carbon::parse($this->end_date);
-        $diff = $start->diff($end);
+        $diff = $now->diff($end);
 //         return ' days '. $diff->d . '/' . ' hours ' . $diff->h ;
 
         return ['days' => $diff->d, 'hours' => $diff->h,'minutes' => $diff->m, 'seconds' => $diff->s];

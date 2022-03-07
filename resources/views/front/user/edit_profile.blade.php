@@ -219,7 +219,6 @@
             @include('front.user.add_address_form')
             @endif
 
-
         </div>
     </section>
 @stop
@@ -228,7 +227,8 @@
 
 
     @include('front.user.script_edit')
-    @include('Dashboard.layouts.parts.map')
+    @include('front.layouts.parts.map')
+{{--    @include('front.auth.ajax_get_cities')--}}
 
 @endpush
 

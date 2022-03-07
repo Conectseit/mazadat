@@ -247,6 +247,9 @@
                             </div>
                         @endforeach
                     </div>
+
+
+
                 </div><hr>
                 <div class="terms">
                     <h4>{{ trans('messages.auction.terms')}}:</h4>

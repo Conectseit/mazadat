@@ -22,6 +22,9 @@ class PersonController extends Controller
     public function index()
     {
         $data['persons'] = User::where('is_company', 'person')->get();
+        $data['accepted_persons'] = User::where(['is_company'=> 'person','is_accepted'=>1,'is_verified'=>1])->get();
+        $data['not_accepted_persons'] = User::where(['is_company'=> 'person','is_verified'=>0])->get();
+
         return view('Dashboard.Persons.index', $data);
     }
 
@@ -46,7 +49,7 @@ class PersonController extends Controller
             if ($request->mobile) {
                 $request_data['mobile'] =$country->phone_code. $request->mobile ;
             }
-            $person = User::create($request_data+['type' => 'buyer','is_company' => 'person', 'is_accepted' =>1, 'is_active' => 'active',
+            $person = User::create($request_data+['type' => 'buyer','is_company' => 'person', 'is_accepted' =>1, 'is_active' => 'active','is_verified'=>1
 //                    'mobile' => $country->phone_code.$request->mobile
                 ]);
 
@@ -54,6 +57,19 @@ class PersonController extends Controller
                 $jwt_token = JWTAuth::fromUser($person);
                 Token::create(['jwt' => $jwt_token, 'user_id' => $person->id,]);
             }
+
+
+
+            // ===========================================================
+            $name='name_' . app()->getLocale();
+            activity()
+                ->performedOn($person)
+                ->causedBy(auth()->guard('admin')->user())
+                ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة مستخدم'.($person->full_name));
+// ===========================================================
+
+
+
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();
@@ -89,6 +105,17 @@ class PersonController extends Controller
 
         $user->update($request_data);
 //        User::findOrFail($id)->update($request_data);
+
+
+
+// ===========================================================
+        $name='name_' . app()->getLocale();
+        activity()
+            ->performedOn($user)
+            ->causedBy(auth()->guard('admin')->user())
+            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بتعديل مستخدم'.($user->full_name));
+// ===========================================================
+
         return redirect()->route('persons.index')->with('success',  trans('messages.messages.updated_successfully'));
     }
 
@@ -111,6 +138,16 @@ class PersonController extends Controller
         try {
             if (!is_null($user->image)) unlink('uploads/users/' . $user->image);
             $user->delete();
+
+            // ===========================================================
+            $name='name_' . app()->getLocale();
+            activity()
+                ->performedOn($user)
+                ->causedBy(auth()->guard('admin')->user())
+                ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بحذف مستخدم'.($user->full_name));
+// ===========================================================
+
+
             return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);

@@ -36,7 +36,7 @@ class AuctionController extends Controller
         $data['categories'] = Category::with('options')->get();
         $data['options'] = Option::all();
         $data['option_details'] = OptionDetail::all();
-        $data['users'] = User::all();
+        $data['users'] = User::where('is_verified', 1)->get();
 //        $data['users'] = User::where('type', 'seller')->get();
         return view('Dashboard.Auctions.create', $data);
     }
@@ -78,12 +78,16 @@ class AuctionController extends Controller
                     'option_details_id' => $request->option_details_id,
                 ]);
 
-            $name='name_' . app()->getLocale();
 
+// ===========================================================
+            $name='name_' . app()->getLocale();
             activity()
                 ->performedOn($auction)
                 ->causedBy(auth()->guard('admin')->user())
                 ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة مزاد'.($auction->$name));
+// ===========================================================
+
+
             DB::commit();
             return redirect()->route('auctions.index')->with('message', trans('messages.messages.added_successfully'));
 

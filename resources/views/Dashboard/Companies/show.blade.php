@@ -70,7 +70,7 @@
                                                             <div class="row">
                                                                 <div class="col-lg-6">
                                                                     <div class="form-group row">
-                                                                        <label class="col-form-label col-lg-3">{{ trans('messages.personal_image') }}:</label>
+                                                                        <label class="col-form-label col-lg-3">{{ trans('messages.company.image') }}:</label>
                                                                         <div class="col-lg-9">
                                                                             <img src="{{ $company->image_path }}" alt="" class=" img-thumbnail">
                                                                         </div>

@@ -2614,10 +2614,40 @@ a.ui-button:active,
     text-transform: uppercase;
     display: inline-block;
 }
+.owl-carousel{
+    position: relative;
+}
+.owl-carousel .owl-dots.disabled, .owl-carousel .owl-nav.disabled {
+    display: block;
+}
+.fa.fa-home{
+    font-size: 39px;
+}
+.owl-carousel .owl-stage-outer{
+    padding: 0 35px;
+}
+.owl-carousel .owl-next, .owl-carousel .owl-prev {
+    display: block;
+    position: absolute;
+    right: -15px;
+    top: -18px;
+    margin: auto    ;
 
+}
+.owl-carousel .owl-next{
+    left: -15px;
+    right: auto;
+}
 
+.owl-carousel .owl-next span, .owl-carousel .owl-prev span {
+    font-size: 44px;
+    color: #fff;
+    padding: 4px 9px;
+    background: #eeeeee47;
+}
 
-
-
+a:hover {
+    color: #1e3c48;
+}
 
 

@@ -136,7 +136,7 @@ Route::group(
            Route::get('my_notification', [NotificationController::class, 'my_notification'])->name('front.my_notification');
 
     });
-    Route::post('ajax_get_cities_by_country_id', [AuthController::class, 'get_cities_by_country_id'])->name('get_cities_by_country_id');
+//    Route::post('ajax_get_cities_by_country_id', [AuthController::class, 'get_cities_by_country_id'])->name('get_cities_by_country_id');
 
 });
 

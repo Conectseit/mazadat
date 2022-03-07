@@ -31,8 +31,8 @@ class UserController extends Controller
     public function editProfile()
     {
         $data['nationalities'] = Nationality::all();
-        $data['cities'] = City::all();
-//        $data['cities'] = City::where('country_id',auth()->user()->country_id)->get();
+//        $data['cities'] = City::all();
+        $data['cities'] = City::where('country_id',auth()->user()->country_id)->get();
         $data['countries'] = Country::all();
         return view('front.user.edit_profile',$data);
     }
@@ -83,9 +83,6 @@ class UserController extends Controller
 
 
 
-
-
-
     public function addAddress(AdditionalAddressRequest $request)
     {
         $user = auth()->user();
@@ -94,7 +91,7 @@ class UserController extends Controller
     }
 
 
-
+// =============== user wallete ===========================================
     public function choose_available_limit(AvailableLimitRequest$request)
     {
         $user = auth()->user();

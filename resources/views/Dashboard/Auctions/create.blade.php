@@ -304,7 +304,7 @@
                         </tr>
                         @forelse($latest_auctions as $auction)
                             <tr>
-                                <td> {{ $auction->$name }} </td>
+                                <td> {{ substr($auction->$name,0,30) }} </td>
                                 <td><img src="{{ $auction->first_image_path }}" style="height:50px;"/></td>
                             </tr>
                         @empty

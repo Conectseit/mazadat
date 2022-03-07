@@ -1,12 +1,13 @@
-<main class="categories-bar">
+<main class="categories-bar row">
     @inject('categories', 'App\Models\Category')
-    <div class="container">
+    <div class="item col-lg-2 text-center">
+        <a class="home-active" href="{{route('front.home')}}">
+            <i class="fa fa-home "><h4 class="px-2"></h4> </i>
+        </a>
+    </div>
+    <div class="container col-lg-10">
         <div class="owl-carousel categories-bar-carousel owl-theme">
-            <div class="item">
-                <a class="home-active" href="{{route('front.home')}}">
-                    <i class="fa fa-home"><h4 class="px-2"></h4> </i>
-                </a>
-            </div>
+
             @foreach( App\Models\Category::all() as $category)
                 <div class="item">
                     <a href="{{route('front.category_auctions',$category->id)}}">
@@ -18,7 +19,7 @@
                     </a>
                 </div>
             @endforeach
-        </div>
+             </div>
     </div>
 </main>
 

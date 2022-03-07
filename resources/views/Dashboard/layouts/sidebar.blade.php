@@ -36,7 +36,7 @@
     <li>
         <a href="#"><i class="icon-stack2"></i> <span>{{ trans('messages.auction.auctions') }}</span></a>
         <ul>
-            <li><a href="{{route('auctions.index')}}">{{ trans('messages.auction.auctions') }}</a></li>
+            <li><a href="{{route('auctions.index')}}">{{ trans('messages.all') }}</a></li>
             <li><a href="{{route('auctions.create')}}">{{ trans('messages.add') }}</a></li>
 
         </ul>

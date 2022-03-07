@@ -14,8 +14,8 @@ class AdditionalAddressRequest extends FormRequest
     public function rules()
     {
         return [
-            'person_latitude'     => 'required',
-            'person_longitude'     => 'required',
+            'latitude'      => 'required',
+            'longitude'     => 'required',
             ];
     }
 }

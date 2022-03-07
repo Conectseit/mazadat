@@ -1,7 +1,7 @@
 <div class="row">
     <div class=" d-flex justify-content-between">
-        <a href="" class="add-auction btn "><b> <i
-                    class="fal fa-plus-circle"></i> </b>{{ trans('messages.additional_address') }}</a>
+        <div  class="add-auction btn "><b> <i
+                    class="fal fa-plus-circle"></i> </b>{{ trans('messages.additional_address') }}</div>
     </div>
 
 
@@ -18,13 +18,23 @@
                                 <div id="add_map"></div>
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" id="lat" name="person_latitude" readonly=""
+                                <input type="text" id="lat" name="latitude" readonly="" value="{{ auth()->user()->latitude }}"
                                        placeholder=" latitude" class="form-control hidden d-none">
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" id="lng" name="person_longitude" readonly=""
+                                <input type="text" id="lng" name="longitude" readonly="" value="{{ auth()->user()->longitude }}"
                                        placeholder="longitude" class="form-control hidden d-none">
                             </div><br>
+
+{{--                            <div class="col-lg-6">--}}
+{{--                                <input type="text" id="lat" name="person_latitude" readonly=""--}}
+{{--                                       placeholder=" latitude" class="form-control hidden d-none">--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-6">--}}
+{{--                                <input type="text" id="lng" name="person_longitude" readonly=""--}}
+{{--                                       placeholder="longitude" class="form-control hidden d-none">--}}
+{{--                            </div><br>--}}
+
                         </div><br>
 
                     <button type="submit" class="btn btn-primary submit-btn">اضافة</button>

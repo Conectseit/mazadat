@@ -83,4 +83,5 @@ return [
 	'invalid-transaction-info'		=> 'عفوا عملية الدفع هذه غير موجوده',
 	'you-must-renew-your-subscribe' => 'عفوا يجب عليك تجديد إشتراكك اولا قبل الحذف',
 	'sorry-you-reach-the-max-num-of-ads' => 'عفوا تم تعدي الحد الاقصي المسموح بيه خلال الباقة الحالية',
+	'please_complete_your_account_first' => ' من فضلك اكمل بيانات التسجيل اولا',
 ];

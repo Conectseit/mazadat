@@ -16,11 +16,7 @@
                     @csrf
                     <div class="inputs-group">
                         <h4 class="title" style="color: #d1915c;">الدخول لحسابك</h4>
-                        <p>
-                            من فضلك ادخل معلومات الدخول الخاصة بحسابك لتتمكن من استخدام كل خصائص الموقع وإذا لم يكن لديك حسابك؟
-                            يمكنك
-                            تسجيل مستخدم جديد مجانأ
-                        </p><br><br>
+                        <p class="mb-5">{{ __('messages.plz_log') }}</p>
                         <div class="mb-4 form-group row">
                             <div class="col-sm-2 d-flex align-items-center">
                                 <label for="email" class="form-label">اسم المستخدم او البريد الالكتروني</label>

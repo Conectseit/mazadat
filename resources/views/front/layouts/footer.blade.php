@@ -127,7 +127,7 @@
                         <div class="ul-parent">
                             <h4 class="footer-title">
                                 <span class="sq"></span>
-                                المزادات المميزة
+                               {{trans('messages.auction.unique')}}
                             </h4>
                             <ul>
 {{--                                <li><a href="#">المركبات والمعدات</a></li>--}}
@@ -152,7 +152,7 @@
                                 <li><a href="{{route('front.about_app')}}">{{trans('messages.about_app')}}</a></li>
 {{--                                <li><a href="#">اتصل بنا</a></li>--}}
 {{--                                <li><a href="#">نتائج المزادات </a></li>--}}
-                                <li><a href="{{route('front.show_register')}}">التسجيل</a></li>
+                                <li><a href="{{route('front.show_register')}}">{{trans('messages.register')}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -160,7 +160,7 @@
                         <div class="ul-parent">
                             <h4 class="footer-title">
                                 <span class="sq"></span>
-                                   احدث المزادات
+                                {{trans('messages.auction.latest_auctions')}}
                             </h4>
                             <ul>
                                 @foreach($latest_auctions ->orderBy('id', 'desc')->take(4)->get() as $auction)
@@ -172,12 +172,12 @@
                         <div class="ul-parent">
                             <h4 class="footer-title">
                                 <span class="sq"></span>
-                                الدعم والمساعدة
+                                {{trans('messages.support&help')}}
                             </h4>
                             <ul>
                                 <li>
                                     <a href="#" class="forgot" data-bs-toggle="modal"
-                                       data-bs-target="#forget_pass_modal">نسيت كلمة المرور؟</a>
+                                       data-bs-target="#forget_pass_modal"> {{trans('messages.forget_pass')}}</a>
                                 </li>
                                 <li><a href="{{route('front.questions')}}">{{trans('messages.question.questions')}} </a></li>
 {{--                                <li><a href="#">التسجيل</a></li>--}}
@@ -190,7 +190,7 @@
                         <div class="ul-parent">
                             <h4 class="footer-title">
                                 <span class="sq"></span>
-                                تابعنا على
+                                {{trans('messages.follow_us')}}
                             </h4>
                             <div class="social">
                                 <a href="{{App\Models\Setting::where('key','facebook_url')->first()->value}}"><i class="fab fa-facebook-square"></i></a>
