@@ -162,7 +162,10 @@
                                 {{--                                                                    {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
                                 {!! NoCaptcha::display() !!}
                             </div>
-                            <div class="col-lg-9 col-md-8 my-auto">
+                            <div class="col-lg-3 col-md-3">
+
+                            </div>
+                            <div class="col-lg-6 col-md-4 my-auto">
                                 <p> {{trans('messages.accept_term')}}</p>
                             </div>
                         </div>
