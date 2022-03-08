@@ -82,7 +82,8 @@ class UserController extends PARENT_API
         $auctions = $request->user()->seller_auctions;
 
 
-        if ($auctions->where('status', 'on_progress')->where('is_accepted',0)->count() > 0) {
+        if ($auctions->where('status', 'on_progress')->where('is_accepted',0)->count() > 0)
+        {
             return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'on_progress')->where('is_accepted',0)));  //OK
         } else {
             return responseJson(false, trans('api.there_is_pending_auctions'), null);  //OK

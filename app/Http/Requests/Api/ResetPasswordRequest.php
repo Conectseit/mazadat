@@ -26,7 +26,7 @@ class ResetPasswordRequest extends REQUEST_API_PARENT
     public function rules()
     {
         return [
-            'email' => 'required|exists:users,email',
+//            'email' => 'required|exists:users,email',
             //'token' => 'required|exists:password_resets,token',
             'password' => 'required',
         ];

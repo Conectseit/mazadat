@@ -179,6 +179,11 @@ class AuthController extends PARENT_API
         return responseJson(true, trans('api.send_token'), $data); //
     }
 
+
+
+
+
+
     public function sendResetLinkEmail($email, $token)
     {
         ini_set('max_execution_time', 300); //300 seconds = 5 minutes
@@ -192,7 +197,8 @@ class AuthController extends PARENT_API
 
     public function verify(VerficationTokenRequest $request)
     {
-        if (PasswordReset::where(['email' => $request['email'], 'token' => $request['token']])->first())
+//        if (PasswordReset::where(['email' => $request['email'], 'token' => $request['token']])->first())
+        if (PasswordReset::where([ 'token' => $request['token']])->first())
         {
 //            \DB::table('password_resets')->where(['email' => $request->email ])->delete();
 
@@ -203,11 +209,12 @@ class AuthController extends PARENT_API
     }
     public function passwordReset(ResetPasswordRequest $request)
     {
-        if (PasswordReset::where(['email' => $request['email']])->first())
+        if ( PasswordReset::where(['email' => $request['email']])->first())
         {
             $user = User::where('email', $request['email'])->first();
             $user->update(['password' => $request['password']]);
             return responseJson(true, trans('api.updated_successfully'), null); //
+
         }
         return responseJson(false, trans('api.wrong_'), null); //
 
