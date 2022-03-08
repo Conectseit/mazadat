@@ -12,7 +12,7 @@
         <div class="container">
             <h4 class="title"> {{ trans('messages.login') }}</h4>
             <div class="row">
-                <form action="{{route('front.login')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('front.login')}}" method="post" id="submitted-form" enctype="multipart/form-data">
                     @csrf
                     <div class="inputs-group">
                         <h4 class="title" style="color: #d1915c;">الدخول لحسابك</h4>
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="sign-btn">
-                            <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.login')}}</button>
+                            <button type="submit"  id="save-form-btn" class="btn btn-primary submit-btn">{{trans('messages.login')}}</button>
                         </div>
 
                     </div>

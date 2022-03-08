@@ -59,7 +59,7 @@
                                 <select name="seller_id" class="select form-control">
                                     <optgroup label="{{ trans('messages.auction.seller_full_name') }}">
 
-                                        @foreach ($sellers as $seller)
+                                        @foreach ($users as $seller )
                                             <option
                                                 {{ $auction->seller_id == $seller->id ? 'selected' : '' }} value="{{ $seller->id }}"> {{ $seller->full_name}} </option>
                                     @endforeach
@@ -117,18 +117,15 @@
                             </div>
                         </div>
 
-{{--                        <div class="form-group">--}}
-{{--                            <label class="display-block">{{ trans('messages.auction.start_date') }}:</label>--}}
-{{--                            <input type="datetime-local" class="form-control" value="{{$auction->start_date}}" name="start_date"--}}
-{{--                                   placeholder="@lang('messages.auction.start_date') ">--}}
-{{--                        </div>--}}
-{{--                        <div class="form-group">--}}
-{{--                            <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>--}}
-{{--                            <input type="datetime-local" class="form-control" value="{{$auction->end_date}}" name="end_date"--}}
-{{--                                   placeholder="@lang('messages.auction.end_date') ">--}}
-{{--                        </div>--}}
-
-
+                        <div class="form-group">
+                            <label class="display-block">{{ trans('messages.auction.start_date') }}:</label>
+                            <input type="datetime-local" class="form-control" value="{{$auction->start_date}}" name="start_date" placeholder="@lang('messages.auction.start_date') ">
+                        </div>
+                        <div class="form-group">
+                            <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>
+                            <input type="datetime-local" class="form-control" value="{{$auction->end_date}}" name="end_date"
+                                   placeholder="@lang('messages.auction.end_date') ">
+                        </div>
 
                         <div class="form-group">
                             <label class="col-lg-3 control-label"> {{ trans('messages.auction.auction_terms_ar') }} </label>
@@ -216,8 +213,6 @@
 
 
         </div>
-
-
     </div>
 
 

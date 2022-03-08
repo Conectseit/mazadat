@@ -34,7 +34,9 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                <form action="{{ route('auctions.store') }}"  method="post" class =" stepy-basic wizard-form steps-validation"
+                <form action="{{ route('auctions.store') }}"  method="post"
+                      id="submitted-form"
+                      class =" stepy-basic wizard-form steps-validation"
                 enctype="multipart/form-data">
                     @csrf
                     <fieldset title="1">
@@ -273,7 +275,7 @@
 
                         </div>
                     </fieldset>
-                    <button type="submit" class="btn btn-primary stepy-finish">{{ trans('messages.add_and_forward_to_list') }}
+                    <button type="submit" class="btn btn-primary stepy-finish" id="save-form-btn">{{ trans('messages.add_and_forward_to_list') }}
                         <i class="icon-check position-right"></i></button>
                 </form>
                 </div>

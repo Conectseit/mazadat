@@ -18,6 +18,18 @@
             }
             reader.readAsDataURL(this.files[0]);
         }
+
+
+
+
+        // ======================== saveBtn disabled ============
+        let saveBtn = $('#save-form-btn');
+        let registerForm = $('#submitted-form');
+
+        registerForm.on('submit', function(e){
+            saveBtn.attr('disabled', 'true');
+        });
+// ====================================
     });
 
 </script>

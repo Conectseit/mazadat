@@ -15,14 +15,14 @@
                                 <label for="name" class="form-label">{{trans('messages.location')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <div id="add_map"></div>
+                                <div id="map"></div>
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" id="lat" name="latitude" readonly="" value="{{ auth()->user()->latitude }}"
+                                <input type="text" id="lat" name="latitude" readonly="" value="{{ isset(auth()->user()->latitude)?auth()->user()->latitude:'' }}"
                                        placeholder=" latitude" class="form-control hidden d-none">
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" id="lng" name="longitude" readonly="" value="{{ auth()->user()->longitude }}"
+                                <input type="text" id="lng" name="longitude" readonly="" value=" {{ isset(auth()->user()->longitude)?auth()->user()->longitude:'' }}"
                                        placeholder="longitude" class="form-control hidden d-none">
                             </div><br>
 

@@ -20,7 +20,7 @@ class updateProfileRequest extends FormRequest
             'last_name'        => 'sometimes|string|max:255',
             'user_name'        => 'sometimes|string|max:255|unique:users,user_name,'.auth()->user()->id,
             'country_id'       => 'sometimes|numeric|exists:countries,id',
-            'phone_code'       => 'sometimes',
+//            'phone_code'       => 'sometimes',
             'is_appear_name'   => 'sometimes|in:0,1',
             'mobile'           => 'sometimes|string|min:9|max:255|unique:users,mobile,'.auth()->user()->id,
             'email'            => 'sometimes|email|max:255|unique:users,email,'. auth()->user()->id,

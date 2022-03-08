@@ -74,7 +74,6 @@
                             <button type="submit" id="resend-code-btn" class="btn btn-primary submit-btn">{{trans('messages.send')}}</button>
                         </div>
                         <p class="mt-5">لم يصلك كود التفعيل؟ <a id="resend-code-btn" href="{{ route('front.resend-sms',$mobile) }}" class="create text-orange">ارسل مرة أخرى</a></p>
-
                     </div>
                 </form>
             </div>
@@ -85,6 +84,7 @@
 @stop
 
 @push('scripts')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(function () {
             lightbox.option({
@@ -92,8 +92,35 @@
                 fadeDuration: 300,
                 fitImagesInViewport: true,
             });
-            $('button#resend-code-btn').on('click', function(){
-
+            $('a#resend-code-btn').on('click', function(e){
+                e.preventDefault();
+                let href = $(this).attr('href');
+                let timerInterval
+                Swal.fire({
+                    // title: 'Auto close alert!',
+                    // html: 'I will close in <b></b> milliseconds.',
+                    html: 'سيتم اعادة ارسال كود التفعيل <b></b> بعد ثانيتين.',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        $.ajax({
+                            method: 'GET',
+                            url: href,
+                            success: res => console.log(res),
+                            error: err => console.log(err),
+                        });
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log('I was closed by the timer')
+                    }
+                });
             });
         });
         var items = document.querySelectorAll('.code'),

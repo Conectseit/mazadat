@@ -2,6 +2,17 @@
 @section('title', trans('messages.home'))
 @section('style')
     <style>
+
+        .statistics.btn {
+            text-align: center;
+            border: 1px solid #fff;
+            padding: 8px;
+            color: #fff;
+            font-size: 12px;
+            background: #1e3c48;
+        }
+
+
         .add-auction.btn {
             text-align: center;
             border: 1px solid #fff;

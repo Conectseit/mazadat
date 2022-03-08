@@ -301,7 +301,7 @@ return [
         'edit' => 'تعديل فرد : ',
         'full_name' => 'الاسم بالكامل ',
         'identity' => 'صورة هوية رسمية ',
-        'address_data' => 'بيانات العنوان ',
+        'address_data' => 'بيانات اخري ',
         'block' => 'الحي ',
         'street' => 'الشارع ',
         'block_num' => 'رقم المبني ',

@@ -9,6 +9,7 @@ use App\Http\Requests\Front\auction\MakeBidRequest;
 use App\Models\AcceptedAuction;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
+use App\Models\AuctionData;
 use App\Models\AuctionImage;
 use App\Models\Category;
 use App\Models\Notification;
@@ -24,6 +25,7 @@ class AuctionController extends Controller
     {
         $data['auction'] = Auction::where('id', $id)->first();
         $data['images'] = AuctionImage::where(['auction_id' => $id])->get();
+//        $data['options'] = AuctionData::where(['auction_id' => $id])->get();
         return view('front.auctions.auction_details',$data);
     }
 
@@ -198,6 +200,7 @@ class AuctionController extends Controller
 
     public function add_auction(AddAuctionRequest $request)
     {
+
         DB::beginTransaction();
         try {
             $serial_number = '#' . random_int(00000, 99999);
@@ -240,8 +243,7 @@ class AuctionController extends Controller
             if(count($options) > 0) DB::table('auction_data')->insert($options);
 
             DB::commit();
-            return back()->with('success', trans('messages.added_successfully'));
-
+            return back()->with('success', trans('messages.messages.added_successfully'));
 
         } catch (Exception $e) {
             DB::rollback();

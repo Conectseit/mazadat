@@ -167,6 +167,14 @@
                                                                     <input type="text" class="form-control" value="{{ isset($person->city)?$person->city->$name :''}}" readonly>
                                                                 </div>
                                                             </div>
+
+
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{trans('messages.P_O_Box')}}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control" value="{{ isset($person->P_O_Box )?$person->P_O_Box :''}}" readonly>
+                                                                </div>
+                                                            </div>
                                                             <div class="form-group row">
                                                                 <label class="col-form-label col-lg-3">{{ trans('messages.person.block') }}:</label>
                                                                 <div class="col-lg-9">
@@ -191,13 +199,6 @@
                                                                     <input type="text" class="form-control" value="{{ isset($person->signs )?$person->signs :''}}" readonly>
                                                                 </div>
                                                             </div>
-{{--                                                            <div class="form-group row">--}}
-{{--                                                                <label class="col-form-label col-lg-3">{{ trans('messages.since') }}:</label>--}}
-{{--                                                                <div class="col-lg-9">--}}
-{{--                                                                    <input type="text" class="form-control"--}}
-{{--                                                                           value="{{ $person->created_at->diffForHumans() }}" readonly>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
 
 
                                                             <div class="row">

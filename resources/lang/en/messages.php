@@ -510,6 +510,41 @@ return [
     'register_success_welcome_in_our_website'     	=> 'register success_welcome_in_our_website',
 
 
+    'person' => [
+        'person' => 'فرد',
+        'persons' => 'افراد',
+        'person_data' => 'بيانات العميل',
+        'image' => 'صورة العميل',
+        'add_new_person' => 'اضافة فرد جديد',
+        'edit' => 'تعديل فرد : ',
+        'full_name' => 'الاسم بالكامل ',
+        'identity' => 'صورة هوية رسمية ',
+        'address_data' => 'بيانات العنوان ',
+        'block' => 'الحي ',
+        'street' => 'الشارع ',
+        'block_num' => 'رقم المبني ',
+        'signs' => 'أقرب علامة مميزه ',
+        'additional_address' => 'العنوان الاضافي',
+        'location' => 'الموقع ',
+        'verified' => 'تم مراجعة حسابهم ',
+        'not_verified' => 'لم يتم مراجعة حسابهم بعد ',
+    ],
+    'company' => [
+        'company' => 'مؤسسة',
+        'companies' => 'مؤسسات',
+        'user_name' => 'اسم المؤسسة',
+        'image' => 'شعار المؤسسة',
+        'company_data' => 'بيانات المؤسسة',
+        'company_auctions' => 'مزادات المؤسسة',
+        'companies_auctions' => 'مزادات الشركات',
+        'company_authorization_image' => 'صورة التفويض من المؤسسة',
+        'location' => 'موقع المؤسسة',
+        'latest_companies' => 'احدث المؤسسات المسجلة لدينا',
+        'add_new_company' => 'اضافة مؤسسة جديد',
+        'edit' => 'تعديل مؤسسة : ',
+        'show' => 'عرض التفاصيل',
+    ],
+
 
 
 

@@ -14,7 +14,8 @@
                                             aria-label="Default select example">
                                         {{--                                        <option selected disabled>{{trans('messages.select')}}</option>--}}
                                         <option selected
-                                                disabled>{{ isset(auth()->user()->nationality)? auth()->user()->nationality->$name :  trans('messages.select') }}</option>
+                                                disabled>{{ isset(auth()->user()->nationality)? auth()->user()->nationality->$name :  trans('messages.select') }}
+                                        </option>
 
                                         {{--                                        <option selected disabled>{{ auth()->user()->nationality->$name }}</option>--}}
 
@@ -54,6 +55,8 @@
                                            placeholder="{{trans('messages.P_O_Box')}}"
                                            value={{ auth()->user()->P_O_Box}}>
                                 </div>
+                                @error('P_O_Box')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
                             @if(auth()->user()->is_company=='person')
                                 <div class="form-group mb-4 row">
@@ -65,6 +68,8 @@
                                                placeholder="{{trans('messages.block')}}"
                                                value={{ auth()->user()->block}}>
                                     </div>
+                                    @error('block')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                                 </div>
 
                                 <div class="form-group mb-4 row">
@@ -76,6 +81,8 @@
                                                placeholder="{{trans('messages.street')}}"
                                                value={{ auth()->user()->street}}>
                                     </div>
+                                    @error('street')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                                 </div>
                                 <div class="form-group mb-4 row">
                                     <div class="col-lg-2 col-md-3 d-flex align-items-center">
@@ -86,6 +93,8 @@
                                                placeholder="{{trans('messages.block_num')}}"
                                                value={{ auth()->user()->block_num}}>
                                     </div>
+                                    @error('block_num')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                                 </div>
                                 <div class="form-group mb-4 row">
                                     <div class="col-lg-2 col-md-3 d-flex align-items-center">
@@ -96,6 +105,8 @@
                                                placeholder="{{trans('messages.signs')}}"
                                                value={{ auth()->user()->signs}}>
                                     </div>
+                                    @error('signs')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                                 </div>
 
 
@@ -147,6 +158,8 @@
                                         <img id="img-preview3" style="width: 180px ; height:90px"
                                              src="{{ auth()->user()->passport_image_path}}" width="250px"/>
                                     </div>
+                                    @error('passport_image')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                                 </div>
 
                             @endif

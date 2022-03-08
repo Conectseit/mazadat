@@ -120,7 +120,9 @@ class AuctionController extends Controller
         $data['latest_auctions'] = Auction::orderBy('id', 'desc')->take(10)->get();
         $data['auction'] = Auction::find($id);
         $data['categories'] = Category::all();
-        $data['sellers'] = User::where('type', 'seller')->get();
+//        $data['sellers'] = User::where('type', 'seller')->get();
+        $data['users'] = User::where('is_verified', 1)->get();
+
         return view('Dashboard.Auctions.edit', $data);
     }
 

@@ -25,7 +25,7 @@
         <div class="col-md-6">
 
             <!-- Basic layout-->
-            <form action="{{ route('cities.store') }}" class="form-horizontal" method="post"
+            <form action="{{ route('cities.store') }}" class="form-horizontal" method="post" id="submitted-form"
                   enctype="multipart/form-data">
                 @csrf
                 <div class="panel panel-flat">
@@ -69,7 +69,7 @@
 
 
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
-                        <input type="submit" class="btn btn-primary"
+                        <input type="submit" class="btn btn-primary" id="save-form-btn"
                                value=" {{ trans('messages.add_and_forward_to_list') }} "/>
 {{--                        <input type="submit" class="btn btn-success" name="messages"--}}
 {{--                               value=" {{ trans('messages.add_and_come_messages') }} "/>--}}

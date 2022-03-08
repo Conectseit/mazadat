@@ -248,9 +248,32 @@
                         @endforeach
                     </div>
 
+                </div><hr>
 
+
+                <div class="more-imgs">
+                    <div class="terms">
+                        <h4>{{ trans('messages.auction.options')}}:</h4>
+                    </div>
+                    <div class="row">
+                        @foreach($auction->auctiondata as $option)
+
+                            <div class="col-md-3 col-6">
+{{--                                <p>{{$option->$name}}</p>--}}
+{{--                                <p>{{$option->option_detail->option->$name}}</p>--}}
+{{--                                <p>{{$option->option_detail->$value}}</p>--}}
+
+                                <div class="description" id="description">
+                                    <h5>{{$option->option_detail->option->$name}}:</h5>
+                                    <p>{{$option->option_detail->$value}}</p>
+                                </div><br>
+                            </div>
+                        @endforeach
+                    </div>
 
                 </div><hr>
+
+
                 <div class="terms">
                     <h4>{{ trans('messages.auction.terms')}}:</h4>
                     <p>{{$auction->$auction_terms}}</p>
@@ -265,7 +288,7 @@
     </div>
 @stop
 @push('scripts')
-    @include('Dashboard.layouts.parts.map')
+    @include('front.layouts.parts.map')
     @include('front.auctions.parts.ajax')
     @include('front.auctions.parts.counter', ['auction' => $auction])
 

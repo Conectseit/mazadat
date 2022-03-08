@@ -1,11 +1,7 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.add_auction'))
 @section('style')
-    <style> #map {
-            height: 400px;
-        }
-
-    </style>
+    <style> #map {height: 400px;}</style>
 @endsection
 
 @section('content')
@@ -16,7 +12,7 @@
         <div class="container">
             <h4 class="title"> {{ trans('messages.auction.add') }}</h4>
             <div class="row">
-                <form action="{{route('front.add_auction')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('front.add_auction')}}" method="post"  id="submitted-form" enctype="multipart/form-data">
                     @csrf
                     <div class="inputs-group">
 {{--                        <div class="form-group mb-4 row">--}}
@@ -73,8 +69,9 @@
                                           value="{{ old('description_ar') }}"
                                           placeholder="{{trans('messages.enter_description_ar')}}">
                                 </textarea>
-
+                                @error('description_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
+
                         </div>
 
                         <div class="form-group mb-4 row">
@@ -87,7 +84,7 @@
                                           value="{{ old('description_en') }}"
                                           placeholder="{{trans('messages.enter_description_en')}}">
                                 </textarea>
-
+                                @error('description_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                         </div>
 
@@ -107,8 +104,11 @@
                                           cols="100"
                                           value="{{ old('auction_terms_ar') }}"
                                           placeholder="{{trans('messages.enter_auction_terms_ar')}}">
+
                                 </textarea>
+                                @error('auction_terms_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
+
                         </div>
 
                         <div class="form-group mb-4 row">
@@ -123,7 +123,9 @@
                                           value="{{ old('auction_terms_en') }}"
                                           placeholder="{{trans('messages.enter_auction_terms_en')}}">
                                 </textarea>
+                                @error('auction_terms_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
+
                         </div>
 
 
@@ -135,7 +137,7 @@
                                 <input type="number" id="start_auction_price" name="start_auction_price"
                                        class="form-control   @error('start_auction_price') is-invalid @enderror"
                                        value="{{ old('start_auction_price') }}"
-                                       placeholder="{{trans('messages.enter_start_auction_price')}}">
+                                       placeholder="{{trans('messages.auction.start_auction_price')}}">
                                 @error('start_auction_price')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
                             </div>
@@ -148,7 +150,7 @@
                                 <input type="number" id="value_of_increment" name="value_of_increment"
                                        class="form-control   @error('value_of_increment') is-invalid @enderror"
                                        value="{{ old('value_of_increment') }}"
-                                       placeholder="{{trans('messages.enter_value_of_increment')}}">
+                                       placeholder="{{trans('messages.auction.value_of_increment')}}">
                                 @error('value_of_increment')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
                             </div>
@@ -168,8 +170,6 @@
                                 </label>
                             </div>
                         </div>
-
-
                     </div>
 
                     <div class="inputs-group">
@@ -187,6 +187,8 @@
                                     @endforeach
                                 </select>
                             </div>
+                            @error('category_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                         </div>
 
 
@@ -203,7 +205,7 @@
 {{--                                        <option value="{{ $option->id }}"> {{ $option->$name }} </option>--}}
 {{--                                    @endforeach--}}
 {{--                                </select>--}}
-<div class="select-inputs-options"></div>
+                                <div class="select-inputs-options"></div>
 {{--                                @foreach ($options as $key => $option)--}}
 {{--                                <select class="form-select form-control"  id="options" name="option_ids[]" multiple aria-label="Default select example">--}}
 {{--                                    <option value="{{ $option->id }}">{{ $option->$name }}</option>--}}
@@ -251,9 +253,6 @@
                                    multiple="multiple"/>
                         </div><br>
 
-
-
-
                         <div class="form-group">
                             <label>@lang('messages.auction.location'):</label>
                             <div class="col-lg-12">
@@ -272,7 +271,7 @@
 
                         <div class="sign-btn">
                             <p> {{trans('messages.wait')}}</p>
-                            <button type="submit"
+                            <button type="submit" id="save-form-btn"
                                     class="btn btn-primary submit-btn">{{trans('messages.auction.add')}}</button>
                         </div>
                     </div>
@@ -284,7 +283,7 @@
 @stop
 
 @push('scripts')
-    @include('Dashboard.layouts.parts.map')
+    @include('front.layouts.parts.map')
     @include('front.auctions.parts.ajax_get_options')
 
 @endpush

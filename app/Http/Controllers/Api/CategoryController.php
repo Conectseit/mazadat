@@ -65,6 +65,34 @@ class CategoryController extends PARENT_API
         return responseJson(false, trans('api.not_found_category'), null);  //
     }
 
+
+
+
+
+
+
+
+    public function uniqueAuctions()
+    {
+        $featured_auctions= Auction:: where('is_unique', 1)->latest()->get();
+
+           if ($featured_auctions->count() > 0) {
+               return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($featured_auctions));
+           }
+            return responseJson(false, trans('api.there_is_no_unique_auctions_on_this_category'), null);  //
+
+    }
+
+
+
+
+
+
+
+
+
+
+
     public function all_companies()
     {
         $companies = User::where('is_company','company')->get();

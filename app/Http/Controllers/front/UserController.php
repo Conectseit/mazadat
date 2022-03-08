@@ -57,8 +57,15 @@ class UserController extends Controller
         if ($request->mobile) {
             $request_data['mobile'] =$request->phone_code. $request->mobile ;
         }
+        if ($request->phone_code) {
+            $country=Country::where('phone_code',$request->phone_code)->first();
+            $request_data['country_id'] =$country->id ;
+        }
+
+
+
 //        if ($request->mobile) {
-//            $country=Country::find($request->country_id);
+//            $country=Country::find(auth()->user()->country_id);
 //
 //            $request_data['mobile'] =$country->phone_code. $request->mobile ;
 //        }

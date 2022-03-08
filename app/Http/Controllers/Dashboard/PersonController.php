@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SmsController;
 use App\Http\Requests\Dashboard\SellerRequest;
 use App\Http\Requests\Dashboard\users\PersonRequest;
 use App\Models\Auction;
@@ -171,14 +172,18 @@ class PersonController extends Controller
 
     public function verified($id)
     {
-        $company = User::findOrFail($id);
-        $company->update(['is_verified'=> 1]);
+        $person = User::findOrFail($id);
+        $person->update(['is_verified'=> 1]);
+        SmsController::send_sms(($person->mobile), trans('messages.activation_code_is', ['code' => 'تم الموافقة علي بيانات حسابك من ادارة الموقع']));
+
         return back();
     }
     public function not_verified($id)
     {
-        $company = User::findOrFail($id);
-        $company->update(['is_verified'=> 0]);
+        $person = User::findOrFail($id);
+        $person->update(['is_verified'=> 0]);
+//        SmsController::send_sms(($person->mobile), trans('messages.activation_code_is', ['code' => 'هناك خطأ في تكملة بيانات حسابك من فضلك ارسلها مرة اخري']));
+
         return back();
     }
 

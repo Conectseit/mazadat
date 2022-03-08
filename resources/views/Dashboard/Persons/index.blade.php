@@ -59,11 +59,11 @@
                                             <table class="table datatable-basic" id="persons" style="font-size: 16px;">
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
-                                                    <th>#</th>
+{{--                                                    <th>#</th>--}}
                                                     <th class="text-center">{{ trans('messages.person.image') }}</th>
 
                                                     <th>{{ trans('messages.full_name') }}</th>
-                                                    <th>{{ trans('messages.mobile') }}</th>
+{{--                                                    <th>{{ trans('messages.mobile') }}</th>--}}
                                                     <th>{{ trans('messages.email') }}</th>
                                                     <th class="text-center">{{ trans('messages.ban/not') }}</th>
                                                     {{--                        <th class="text-center">{{ trans('messages.verified/not') }}</th>--}}
@@ -75,14 +75,14 @@
                                                 <tbody>
                                                 @foreach($accepted_persons as $person)
                                                     <tr id="person-row-{{ $person->id }}">
-                                                        <td>{{ $loop->iteration }}</td>
+{{--                                                        <td>{{ $loop->iteration }}</td>--}}
                                                         <td class="text-center">
                                                             <a href="{{ $person->image_path }}" data-popup="lightbox"><img src="{{ $person->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                         </td>
                                                         <td>
                                                             <a href={{ route('persons.show', $person->id) }}> {{ isNullable($person->full_name) }}</a>
                                                         </td>
-                                                        <td> {{ $person->mobile}}</td>
+{{--                                                        <td> {{ $person->mobile}}</td>--}}
                                                         <td> {{ $person->email}}</td>
 
                                                         {{--                            <td class="text-center">--}}
@@ -153,11 +153,11 @@
                                             <table class="table datatable-basic" id="persons" style="font-size: 16px;">
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
-                                                    <th>#</th>
+{{--                                                    <th>#</th>--}}
                                                     <th class="text-center">{{ trans('messages.person.image') }}</th>
 
                                                     <th>{{ trans('messages.full_name') }}</th>
-                                                    <th>{{ trans('messages.mobile') }}</th>
+{{--                                                    <th>{{ trans('messages.mobile') }}</th>--}}
                                                     <th>{{ trans('messages.email') }}</th>
                                                     <th class="text-center">{{ trans('messages.ban/not') }}</th>
                                                     {{--                        <th class="text-center">{{ trans('messages.verified/not') }}</th>--}}
@@ -169,14 +169,14 @@
                                                 <tbody>
                                                 @foreach($not_accepted_persons as $person)
                                                     <tr id="person-row-{{ $person->id }}">
-                                                        <td>{{ $loop->iteration }}</td>
+{{--                                                        <td>{{ $loop->iteration }}</td>--}}
                                                         <td class="text-center">
                                                             <a href="{{ $person->image_path }}" data-popup="lightbox"><img src="{{ $person->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                         </td>
                                                         <td>
                                                             <a href={{ route('persons.show', $person->id) }}> {{ isNullable($person->full_name) }}</a>
                                                         </td>
-                                                        <td> {{ $person->mobile}}</td>
+{{--                                                        <td> {{ $person->mobile}}</td>--}}
                                                         <td> {{ $person->email}}</td>
 
                                                         {{--                            <td class="text-center">--}}

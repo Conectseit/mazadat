@@ -59,7 +59,7 @@
                                                     <th class="text-center">{{ trans('messages.company.image') }}</th>
 {{--                                                    <th class="text-center">{{ trans('messages.type') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.company.user_name') }}</th>
-                                                    <th class="text-center">{{ trans('messages.mobile') }}</th>
+{{--                                                    <th class="text-center">{{ trans('messages.mobile') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.email') }}</th>
                                                     <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
                                                     <th class="text-center">{{ trans('messages.unique') }}</th>
@@ -79,7 +79,7 @@
                                                         <td class="text-center">
                                                             <a href={{ route('companies.show', $company->id) }}> {{ isNullable($company->user_name) }}</a>
                                                         </td>
-                                                        <td class="text-center"> {{ $company->mobile}}</td>
+{{--                                                        <td class="text-center"> {{ $company->mobile}}</td>--}}
                                                         <td class="text-center"> {{ $company->email}}</td>
 
                                                         <td class="text-center">
@@ -155,7 +155,7 @@
                                                     <th class="text-center">{{ trans('messages.company.image') }}</th>
                                                     {{--                                                    <th class="text-center">{{ trans('messages.type') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.company.user_name') }}</th>
-                                                    <th class="text-center">{{ trans('messages.mobile') }}</th>
+{{--                                                    <th class="text-center">{{ trans('messages.mobile') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.email') }}</th>
                                                     <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
                                                     <th class="text-center">@lang('messages.since')</th>
@@ -174,7 +174,7 @@
                                                         <td class="text-center">
                                                             <a href={{ route('companies.show', $company->id) }}> {{ isNullable($company->user_name) }}</a>
                                                         </td>
-                                                        <td class="text-center"> {{ $company->mobile}}</td>
+{{--                                                        <td class="text-center"> {{ $company->mobile}}</td>--}}
                                                         <td class="text-center"> {{ $company->email}}</td>
 
                                                         <td class="text-center">

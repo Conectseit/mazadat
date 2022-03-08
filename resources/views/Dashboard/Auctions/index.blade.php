@@ -63,7 +63,7 @@
 {{--                                                   <th class="text-center">{{ trans('messages.auction.seller_full_name') }}</th>--}}
 {{--                                                   <th class="text-center">{{ trans('messages.auction.category_name') }}</th>--}}
                                                    <th class="text-center">{{ trans('messages.auction.start_auction_price') }}</th>
-                                                   <th class="text-center">{{ trans('messages.auction.value_of_increment') }}</th>
+{{--                                                   <th class="text-center">{{ trans('messages.auction.value_of_increment') }}</th>--}}
 {{--                                                   <th class="text-center">{{ trans('messages.auction.start_date') }}</th>--}}
 {{--                                                   <th class="text-center">{{ trans('messages.auction.end_date') }}</th>--}}
                                                    <th class="text-center">{{ trans('messages.auction.remaining_days') }}</th>
@@ -89,7 +89,7 @@
 {{--                                                       --}}{{--                                                    <td class="text-center"> {{ $auction->category['name_' . app()->getLocale()] }}</a></td>--}}
 {{--                                                       <td class="text-center"> {{ $auction->category->$name }}</a></td>--}}
                                                        <td class="text-center"> {{ ($auction->start_auction_price ) }}</a></td>
-                                                       <td class="text-center"> {{ ($auction->value_of_increment ) }}</a></td>
+{{--                                                       <td class="text-center"> {{ ($auction->value_of_increment ) }}</a></td>--}}
 
 {{--                                                       <td class="text-center">{{($auction->start_date) }}</td>--}}
 {{--                                                       <td class="text-center">{{($auction->end_date) }}</td>--}}
@@ -261,7 +261,7 @@
                                                 <th class="text-center">{{ trans('messages.image') }}</th>
                                                 <th class="text-center">{{ trans('messages.name') }}</th>
                                                 <th class="text-center">{{ trans('messages.auction.start_auction_price') }}</th>
-                                                <th class="text-center">{{ trans('messages.auction.value_of_increment') }}</th>
+{{--                                                <th class="text-center">{{ trans('messages.auction.value_of_increment') }}</th>--}}
                                                 <th class="text-center">{{ trans('messages.auction.remaining_days') }}</th>
                                                 <th class="text-center">@lang('messages.since')</th>
                                                 <th class="text-center">@lang('messages.form-actions')</th>
@@ -279,7 +279,7 @@
                                                     </td>
                                                     <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable($auction->$name) }}</a></td>
                                                     <td class="text-center"> {{ ($auction->start_auction_price ) }}</a></td>
-                                                    <td class="text-center"> {{ ($auction->value_of_increment ) }}</a></td>
+{{--                                                    <td class="text-center"> {{ ($auction->value_of_increment ) }}</a></td>--}}
                                                     <td class="text-center">{{$auction->remaining_time['days']}}</td>
                                                     <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
                                                     <td class="text-center">
@@ -329,7 +329,7 @@
                                                 <th class="text-center">{{ trans('messages.image') }}</th>
                                                 <th class="text-center">{{ trans('messages.name') }}</th>
                                                 <th class="text-center">{{ trans('messages.auction.start_auction_price') }}</th>
-                                                <th class="text-center">{{ trans('messages.auction.value_of_increment') }}</th>
+{{--                                                <th class="text-center">{{ trans('messages.auction.value_of_increment') }}</th>--}}
                                                 <th class="text-center">@lang('messages.since')</th>
                                                 <th class="text-center">@lang('messages.form-actions')</th>
                                             </tr>
@@ -347,7 +347,7 @@
                                                     </td>
                                                     <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable($auction->$name) }}</a></td>
                                                     <td class="text-center"> {{ ($auction->start_auction_price ) }}</a></td>
-                                                    <td class="text-center"> {{ ($auction->value_of_increment ) }}</a></td>
+{{--                                                    <td class="text-center"> {{ ($auction->value_of_increment ) }}</a></td>--}}
                                                     <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
                                                     <td class="text-center">
                                                         <div class="list-icons text-center">
@@ -405,5 +405,3 @@
 @section('scripts')
     @include('Dashboard.layouts.parts.ajax_delete', ['model' => 'auction'])
 @stop
-
-

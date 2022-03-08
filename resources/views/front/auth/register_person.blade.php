@@ -11,16 +11,8 @@
 
             @include('front.layouts.parts.alert')
 
-{{--            @if(session('success'))--}}
-{{--                <div class="alert alert-success alert-dismissible fade show" role="alert">--}}
-{{--                    <strong>Success! </strong>--}}
-{{--                    {{session('success')}}--}}
-{{--                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>--}}
-{{--                </div>--}}
-{{--            @endif--}}
-
             <div class="row">
-                <form action="{{route('front.register_person')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('front.register_person')}}" method="post"  id="submitted-form" enctype="multipart/form-data">
                     @csrf
                     <div class="inputs-group">
                         <h5 class="group-title">{{trans('messages.personal_info')}}</h5>
@@ -155,22 +147,16 @@
                         </div>
 
 
-                        <div class="form-group mt-5 row d-lg-flex d-sm-block">
-
-                            <div class="col-lg-3 col-md-5">
+                        <div class="sign-btn">
+                            <div class="col-lg-10 col-md-9">
                                 {!! NoCaptcha::renderJs() !!}
-                                {{--                                                                    {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
+                                {{--                                {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
                                 {!! NoCaptcha::display() !!}
                             </div>
-                            <div class="col-lg-2 col-md-2">
-                            </div>
-                            <div class="col-lg-7 col-md-5 my-auto">
-                                <p> {{trans('messages.accept_term')}}</p>
-                            </div>
-                        </div>
+                            @error('g-recaptcha-response')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
-                        <div class="sign-btn">
-                            <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>
+                            <p> {{trans('messages.accept_term')}}</p>
+                            <button type="submit" id="save-form-btn" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>
                         </div>
                     </div>
                 </form>
@@ -180,169 +166,3 @@
     </section>
 
 @stop
-
-{{--@section('js')--}}
-{{--    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>--}}
-{{--    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>--}}
-{{--    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>--}}
-{{--    <script>--}}
-{{--        $(document).ready(function(){--}}
-{{--            const messaging = firebase.messaging();--}}
-
-{{--            messaging.getToken()--}}
-{{--                .then(currentToken => {--}}
-{{--                    if (currentToken){--}}
-{{--                        console.log(currentToken);--}}
-{{--                        $('input[name=fcm_web_token]').val(currentToken);--}}
-{{--                    } else {--}}
-{{--                        console.log('No Instance ID token available. Request permission to generate one.');--}}
-{{--                    }--}}
-{{--                })--}}
-{{--                .catch(err => console.log('An error occurred while retrieving token. ', err));--}}
-{{--        });--}}
-{{--    </script>--}}
-{{--@stop--}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{--                        <div class="form-group mb-4 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label for="full_name" class="form-label"> {{ trans('messages.nationality.nationality') }}</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-{{--                                <select class=" select form-select form-control" name="nationality_id"--}}
-{{--                                        aria-label="Default select example">--}}
-{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
-{{--                                    @foreach ($nationalities as $nationality)--}}
-{{--                                        <option value="{{ $nationality->id }}"> {{ $nationality->$name }} </option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="form-group mb-4 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label for="country_name" class="form-label"> {{ trans('messages.country.name') }}</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-{{--                                <select class=" select form-select form-control" id="country" name="country_id"--}}
-{{--                                        aria-label="Default select example">--}}
-{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
-{{--                                    @foreach ($countries as $country)--}}
-{{--                                        <option value="{{ $country->id }}"> {{ $country->$name }} </option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="form-group mb-4 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label for="city_name" class="form-label"> {{ trans('messages.city_name') }}</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-{{--                                <select class=" select form-select form-control" id="cities" name="city_id"--}}
-{{--                                        aria-label="Default select example">--}}
-{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
-{{--                                    @foreach ($cities as $city)--}}
-{{--                                        <option value="{{ $city->id }}"> {{ $city->$name }} </option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-
-
-
-
-
-
-{{--                        <div class="form-group mb-4 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label for="full_name" class="form-label"> {{ trans('messages.seller/buyer') }}</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-{{--                                <select class=" select form-select form-control" name="type"--}}
-{{--                                        aria-label="Default select example">--}}
-{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
-{{--                                    <option  value="buyer">{{trans('messages.buyer.buyer')}}</option>--}}
-{{--                                    <option  value="seller ">{{trans('messages.seller.seller')}}</option>--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="form-group mb-4 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label for="full_name" class="form-label"> {{ trans('messages.buyer.person/company') }}</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-{{--                                <select class=" select form-select form-control" name="is_company" id="is_company"--}}
-{{--                                        aria-label="Default select example">--}}
-{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
-{{--                                    <option  value="person">{{trans('messages.person')}}</option>--}}
-{{--                                    <option  id="option" value="company ">{{trans('messages.company')}}</option>--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div id="location" style="display:none;">--}}
-{{--                            <div class="form-group row ">--}}
-{{--                                <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                    <label>@lang('messages.commercial_register_image')</label>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-8 col-sm-12 d-flex align-items-center">--}}
-{{--                                    <input type="file" class="form-control commercial_register_image" name="commercial_register_image" accept="image/*" onchange="readURL(this)" />--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-2 col-sm-12 d-flex align-items-center">--}}
-{{--                                    <img  id="img-preview" style="width: 180px ; hight:50px" src="https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png" width="250px" />--}}
-{{--                                </div>--}}
-
-{{--                            </div>--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label>@lang('messages.buyer.location'):</label>--}}
-{{--                                <div class="col-lg-12">--}}
-{{--                                    <input id="searchInput" class=" form-control"  placeholder=" اختر المكان علي الخريطة " name="other">--}}
-{{--                                    <div id="map"></div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-6">--}}
-{{--                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control hidden d-none">--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-6">--}}
-{{--                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control hidden d-none">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-
-{{--                        </div>--}}
-
-{{--                        <div class="form-group mb-4 mt-3 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label for="P_O_Box" class="form-label">{{ trans('messages.P_O_Box') }}</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-{{--                                <input type="text" class="form-control"--}}
-{{--                                       name="P_O_Box" placeholder="{{ trans('messages.P_O_Box') }}">--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-
-{{--                        <div class="form-group mb-4 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label for="full_name" class="form-label">{{trans('messages.full_name')}}</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-{{--                                <input type="text" class="form-control"  name="full_name"--}}
-{{--                                       placeholder="{{trans('messages.enter_full_name')}}">--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
