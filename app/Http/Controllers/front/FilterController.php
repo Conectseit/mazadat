@@ -18,13 +18,11 @@ class FilterController extends Controller
     public function filterCategory(FilterRequest $request, $id)
     {
         $auctions_ids = AuctionData::whereIn('option_details_id', $request->option_detail_id)->get()->pluck('auction_id')->toArray();
-        $data['auctions'] = Auction::find($auctions_ids);
+//        $data['auctions'] = Auction::find($auctions_ids);
+        $data['on_progress_auctions'] = Auction::find($auctions_ids)->where('status', 'on_progress')->where('is_accepted',1);
+        $data['done_auctions'] = Auction::find($auctions_ids)->where('status', 'done')->where('is_accepted',1);
         $data['category'] = Category::find($id);
         $data['category_options'] = Option::where('category_id', $id)->with('option_details')->get();
-
-
-
-
 
 
         return view('front.auctions.category_auctions',$data);

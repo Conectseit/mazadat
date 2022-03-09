@@ -36,8 +36,8 @@ class AuctionDetailsResource extends JsonResource
             'delivery_charge'             => $this->delivery_charge ,
             'is_unique'                   => $this->is_unique,
             'status'                      => $this->status,
-            'latitude'                    => $this->latitude,
-            'longitude'                   => $this->longitude,
+            'latitude'                    =>(float) $this->latitude,
+            'longitude'                   => (float)$this->longitude,
 
             'is_watched_auction'          => auth()->guard('api')->check() ? is_watched_auction($this->id) : false,
 
