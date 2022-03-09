@@ -532,6 +532,7 @@ return [
 
 
 
+    'updated_success' => 'تم التحديث بنجاح',
 
 
     // for front
