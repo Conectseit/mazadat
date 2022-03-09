@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+    @include('front.layouts.parts.nav_categories')
+    @include('front.layouts.parts.alert')
     <section class="watching-page">
         @if($auctions->count() > 0)
             <div class="container">

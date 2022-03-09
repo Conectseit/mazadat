@@ -6,6 +6,7 @@
 
 @section('content')
     @include('front.layouts.parts.nav_categories')
+    @include('front.layouts.parts.alert')
 
     <section class="watching-page">
         <div class="container">

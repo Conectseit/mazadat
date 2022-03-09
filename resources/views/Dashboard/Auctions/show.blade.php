@@ -67,10 +67,12 @@
                 <li><a href="#inspection_report_image" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{ trans('messages.auction.inspection_report_images') }}</a></li>
 
                 <li><a href="#location" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{ trans('messages.auction.location') }}</a></li>
-
+                @if($auction->is_accepted ==1)
                 <li><a href="#auction_bids" data-toggle="tab"><i
                             class="icon-calendar3 position-left"></i> {{ trans('messages.auction.bids') }} <span
-                            class="badge badge-success badge-inline position-right">{{$auction_bids->count()}}</span></a></li>
+                            class="badge badge-success badge-inline position-right">{{$auction_bids->count()}}</span></a>
+                </li>
+                @endif
                 <li><a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> Settings</a></li>
             </ul>
         </div>
@@ -133,11 +135,18 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.auction.delivery_charge') }}:</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text"  value="{{ $auction->delivery_charge  }}" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
                                                         <label class="col-form-label col-lg-4">{{ trans('messages.since') }}:</label>
                                                         <div class="col-lg-8">
                                                             <input type="text"  value="{{ $auction->created_at->diffforHumans() }}" class="form-control" readonly>
                                                         </div>
                                                     </div>
+
                                                 </div>
                                             </div>
                                             <!-- /basic layout -->

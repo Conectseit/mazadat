@@ -25,7 +25,7 @@
             <div class=" d-flex justify-content-between">
 
                 <div  class=" statistics btn"><b><i class="fal fa-gavel"></i>
-                    </b>{{ trans('messages.auction.on_progress') }}:({{$auctions->where(['status'=>'on_progress'])->count()}})</div>
+                    </b>{{ trans('messages.auction.on_progress') }}:({{$auctions->where(['status'=>'on_progress','is_accepted'=>1])->count()}})</div>
                 <div  class=" statistics btn"><b><i class="fal fa-gavel"></i>
                     </b>{{ trans('messages.auction.done') }}:({{$auctions->where(['status'=>'done'])->count()}})</div>
                 <div  class=" statistics btn"><b><i class="fal fa-gavel"></i>

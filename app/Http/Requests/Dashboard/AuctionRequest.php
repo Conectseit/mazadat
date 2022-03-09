@@ -55,6 +55,8 @@ class AuctionRequest extends FormRequest
                     return [
 //                        'name_ar' => 'required',
 //                        'name_en' => 'required'
+                        'start_date' => 'required',
+                        'end_date' => 'required',
                     ];
                 }
             default:

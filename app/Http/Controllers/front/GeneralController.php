@@ -29,7 +29,7 @@ class GeneralController extends Controller
     public function contact_us(ContactRequest $request)
     {
          Contact::create($request->all());
-        return back()->with('success', trans('messages.added_success'));
+        return back()->with('success', trans('messages.messages.send_successfully'));
     }
 
     public function auth_contact(AuthContactRequest $request)
@@ -39,6 +39,6 @@ class GeneralController extends Controller
                 'mobile'=>auth()->user()->mobile,
                 'email'=>auth()->user()->email,
             ]);
-        return back()->with('success', trans('messages.added_success'));
+        return back()->with('success', trans('messages.messages.send_successfully'));
     }
 }

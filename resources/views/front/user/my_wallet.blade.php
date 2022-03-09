@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+    @include('front.layouts.parts.nav_categories')
+    @include('front.layouts.parts.alert')
     <section class="my-wallet-page">
         @include('front.layouts.parts.alert')
         <div class="container">

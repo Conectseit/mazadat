@@ -1,5 +1,5 @@
 <h5 class="panel-title" dir="{{ direction() }}" style="float: {{ floating('right', 'left') }};">
-    @lang('messages.'.str()->singular($name).'.'.$name) ({{ $collection->count() }})
+        كل  @lang('messages.'.str()->singular($name).'.'.$name) ({{ $collection->count() }})
 </h5>
 <ul class="breadcrumb-elements" dir="{{ direction() }}" style="float: {{ floating('left', 'right') }};">
     <li class="dropdown">

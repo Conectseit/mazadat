@@ -182,10 +182,10 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-sm-6">
-                                                    <p><i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}
-                                                        :{{$auction->remaining_time['days']}}</p>
-                                                </div>
+{{--                                                <div class="col-sm-6">--}}
+{{--                                                    <p><i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}--}}
+{{--                                                        :{{$auction->remaining_time['days']}}</p>--}}
+{{--                                                </div>--}}
                                                 @if(auth()->check())
                                                     <div class="col-sm-6">
                                                         <div class="container">
@@ -266,11 +266,11 @@
                                             </div>
                                             <div class="row">
 
-                                                <div class="col-sm-6">
-                                                    <p><i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}
-                                                        :{{$auction->remaining_time['days']}}
-                                                    </p>
-                                                </div>
+{{--                                                <div class="col-sm-6">--}}
+{{--                                                    <p><i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}--}}
+{{--                                                        :{{$auction->remaining_time['days']}}--}}
+{{--                                                    </p>--}}
+{{--                                                </div>--}}
                                                 @if(auth()->check())
                                                     <div class="col-sm-6">
                                                         <div class="container">

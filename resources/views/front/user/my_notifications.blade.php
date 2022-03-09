@@ -6,6 +6,8 @@
 
 @section('content')
 
+    @include('front.layouts.parts.nav_categories')
+    @include('front.layouts.parts.alert')
 
     <section class="notifications-page">
         @if($notifications->count() > 0)

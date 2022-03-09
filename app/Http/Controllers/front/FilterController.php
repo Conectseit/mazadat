@@ -21,6 +21,12 @@ class FilterController extends Controller
         $data['auctions'] = Auction::find($auctions_ids);
         $data['category'] = Category::find($id);
         $data['category_options'] = Option::where('category_id', $id)->with('option_details')->get();
+
+
+
+
+
+
         return view('front.auctions.category_auctions',$data);
     }
 

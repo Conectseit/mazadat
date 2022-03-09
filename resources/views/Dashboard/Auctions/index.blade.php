@@ -66,8 +66,8 @@
 {{--                                                   <th class="text-center">{{ trans('messages.auction.value_of_increment') }}</th>--}}
 {{--                                                   <th class="text-center">{{ trans('messages.auction.start_date') }}</th>--}}
 {{--                                                   <th class="text-center">{{ trans('messages.auction.end_date') }}</th>--}}
-                                                   <th class="text-center">{{ trans('messages.auction.remaining_days') }}</th>
-{{--                                                   <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>--}}
+{{--                                                   <th class="text-center">{{ trans('messages.auction.remaining_days') }}</th>--}}
+                                                   <th class="text-center">{{ trans('messages.not_accept') }}</th>
 {{--                                                   <th class="text-center">{{ trans('messages.unique') }}</th>--}}
 
                                                    <th class="text-center">@lang('messages.since')</th>
@@ -83,7 +83,7 @@
                                                        <td class="text-center">
                                                            <a href="{{ $auction->first_image_path }}" data-popup="lightbox"><img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                        </td>
-                                                       <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable($auction->$name) }}</a></td>
+                                                       <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
 {{--                                                       <td class="text-center"> {{ isNullable($auction->$description) }}</td>--}}
 {{--                                                       <td class="text-center"> {{ ($auction->seller->full_name) }}</a></td>--}}
 {{--                                                       --}}{{--                                                    <td class="text-center"> {{ $auction->category['name_' . app()->getLocale()] }}</a></td>--}}
@@ -93,21 +93,21 @@
 
 {{--                                                       <td class="text-center">{{($auction->start_date) }}</td>--}}
 {{--                                                       <td class="text-center">{{($auction->end_date) }}</td>--}}
-                                                       <td class="text-center">{{$auction->remaining_time['days']}}</td>
+{{--                                                       <td class="text-center">{{$auction->remaining_time['days']}}</td>--}}
                                                        {{--                                                    {{ Carbon\Carbon::now()->toDateTimeString() }}--}}
 
-{{--                                                       <td class="text-center">--}}
-{{--                                                           @if($auction->is_accepted ==1)--}}
-{{--                                                               <a href="auction/{{$auction->id}}/not_accept/">--}}
-{{--                                                                   <span class="badge badge-danger" >  <i class="icon-close2"> </i>  {{trans('messages.not_accept')}} </span>--}}
-{{--                                                               </a>--}}
+                                                       <td class="text-center">
+                                                           @if($auction->is_accepted ==1)
+                                                               <a href="auction/{{$auction->id}}/not_accept/">
+                                                                   <span class="badge badge-danger" >  <i class="icon-close2"> </i>  {{trans('messages.not_accept')}} </span>
+                                                               </a>
 {{--                                                           @else--}}
 {{--                                                               <a href="auction/{{$auction->id}}/accept/">--}}
 {{--                                                                   <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.accept')}} </span>--}}
 {{--                                                               </a>--}}
-{{--                                                               --}}{{--                                                                <a href="buyer/{{$auction->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
-{{--                                                           @endif--}}
-{{--                                                       </td>--}}
+{{--                                                                <a href="buyer/{{$auction->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
+                                                           @endif
+                                                       </td>
 {{--                                                       <td class="text-center">--}}
 {{--                                                           @if($auction->is_unique ==0)--}}
 {{--                                                               <a href="auction/{{$auction->id}}/unique/">--}}
@@ -185,7 +185,7 @@
                                                        <td class="text-center">
                                                            <a href="{{ $auction->first_image_path }}" data-popup="lightbox"><img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                        </td>
-                                                       <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable($auction->$name) }}</a></td>
+                                                       <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
                                                        <td class="text-center">
                                                            @if($auction->is_accepted ==1)
                                                                <a href="auction/{{$auction->id}}/not_accept/">
@@ -277,7 +277,7 @@
                                                             <img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle">
                                                         </a>
                                                     </td>
-                                                    <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable($auction->$name) }}</a></td>
+                                                    <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
                                                     <td class="text-center"> {{ ($auction->start_auction_price ) }}</a></td>
 {{--                                                    <td class="text-center"> {{ ($auction->value_of_increment ) }}</a></td>--}}
                                                     <td class="text-center">{{$auction->remaining_time['days']}}</td>
@@ -345,7 +345,7 @@
                                                             <img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle">
                                                         </a>
                                                     </td>
-                                                    <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable($auction->$name) }}</a></td>
+                                                    <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
                                                     <td class="text-center"> {{ ($auction->start_auction_price ) }}</a></td>
 {{--                                                    <td class="text-center"> {{ ($auction->value_of_increment ) }}</a></td>--}}
                                                     <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
