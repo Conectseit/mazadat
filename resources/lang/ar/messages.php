@@ -607,10 +607,10 @@ return [
     ],
 
     'login_as_visitor'         	=> ' الدخول كزائر ',
-    'already_has_account'         	=> 'لديك حساب بالفعل ,دخول ؟',
+    'already_has_account'         	=> ' , تسجيل الدخول ؟',
     'contact_us'         	=> 'اتصل بنا ',
-    'register_person'         	=> ' تسجيل شخص ',
-    'register_company'         	=> ' تسجيل مؤسسة ',
+    'register_person'         	=> ' تسجيل مستخدين (أفراد) ',
+    'register_company'         	=> ' تسجيل مؤسسات (شركات) ',
     'enter_company_name'         	=> ' اكتب اسم المؤسسة ',
     'company_name'         	=> ' اسم المؤسسة ',
     'company_location'         	=> ' موقع المؤسسة ',

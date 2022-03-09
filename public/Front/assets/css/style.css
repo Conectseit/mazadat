@@ -2647,7 +2647,12 @@ a.ui-button:active,
 }
 
 a:hover {
+    /*color: #fff;*/
     color: #1e3c48;
 }
+/*a, .fa .fa-home:hover {*/
+/*    color: #1e3c48;*/
+/*}*/
+
 
 

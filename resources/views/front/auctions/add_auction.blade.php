@@ -1,5 +1,5 @@
 @extends('front.layouts.master')
-@section('title', trans('messages.add_auction'))
+@section('title', trans('messages.auction.add'))
 @section('style')
     <style> #map {height: 400px;}</style>
 @endsection
@@ -15,26 +15,13 @@
                 <form action="{{route('front.add_auction')}}" method="post"  id="submitted-form" enctype="multipart/form-data">
                     @csrf
                     <div class="inputs-group">
-{{--                        <div class="form-group mb-4 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label for="email" class="form-label">{{ trans('messages.auction.choose_category')}}</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-{{--                                <select class="form-select form-control" name="category_id"--}}
-{{--                                        aria-label="Default select example">--}}
-{{--                                    <option selected disabled> {{ trans('messages.auction.choose_category')}}</option>--}}
-{{--                                    @foreach ($categories as $category)--}}
-{{--                                        <option value="{{ $category->id }}"> {{ $category->$name }} </option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="email" class="form-label">{{trans('messages.name_ar')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="name_ar" id="name_ar" name="name_ar"
+                                <input type="text" id="name_ar" name="name_ar"
                                        class="form-control   @error('name_ar') is-invalid @enderror"
                                        value="{{ old('name_ar') }}"
                                        placeholder="{{trans('messages.enter_name_ar')}}">
@@ -49,7 +36,7 @@
                                 <label for="email" class="form-label">{{trans('messages.name_en')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="name_en" id="name_en" name="name_en"
+                                <input type="text" id="name_en" name="name_en"
                                        class="form-control   @error('name_en') is-invalid @enderror"
                                        value="{{ old('name_en') }}"
                                        placeholder="{{trans('messages.enter_name_en')}}">
@@ -64,9 +51,11 @@
                                 <label for="email" class="form-label">{{trans('messages.description_ar')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <textarea name="description_ar"
+                                <textarea name="description_ar" type="text"
                                           class="form-control @error('description_ar') is-invalid @enderror" cols="100"
-                                          value="{{ old('description_ar') }}"
+{{--                                          {{{ Input::old('description_ar') }}}--}}
+                                          {{ old('description_ar') }}
+{{--                                      value="{{{ Request::old('description_ar') }}}"--}}
                                           placeholder="{{trans('messages.enter_description_ar')}}">
                                 </textarea>
                                 @error('description_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
@@ -219,22 +208,6 @@
 
                             </div>
                         </div>
-
-
-
-{{--                        <label for="dino-select">Choose a dinosaur:</label>--}}
-{{--                        <select id="dino-select" multiple>--}}
-{{--                            <optgroup label="Theropods">--}}
-{{--                                <option>Tyrannosaurus</option>--}}
-{{--                                <option>Velociraptor</option>--}}
-{{--                                <option>Deinonychus</option>--}}
-{{--                            </optgroup>--}}
-{{--                            <optgroup label="Sauropods">--}}
-{{--                                <option>Diplodocus</option>--}}
-{{--                                <option>Saltasaurus</option>--}}
-{{--                                <option>Apatosaurus</option>--}}
-{{--                            </optgroup>--}}
-{{--                        </select>--}}
                     </div>
 
 

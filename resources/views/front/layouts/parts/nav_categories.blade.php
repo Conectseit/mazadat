@@ -1,6 +1,6 @@
 <main class="categories-bar row">
     @inject('categories', 'App\Models\Category')
-    <div class="item col-lg-2 text-center">
+    <div class="item col-lg-2 text-center" >
         <a class="home-active" href="{{route('front.home')}}">
             <i class="fa fa-home "><h4 class="px-2"></h4> </i>
         </a>
