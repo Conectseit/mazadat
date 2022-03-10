@@ -634,6 +634,11 @@ return [
     => 'عفوا لا يمكنك المزايدة بهذه القيمة',
 
 
+    'added_successfully_wait_until_admin_accept_your_auction' => 'انتظر حتي يتم قبول مزادك من ادارة الموقع',
+    'Sorry_you_should_complete_all_data_for_auction_first' => 'يجب اكمال بيانات المزاد اولا وادخال وقت الابتداء والانتهاء للمزاد ومصاريف الشحن',
+
+
+
 
 
 

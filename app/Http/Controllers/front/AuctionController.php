@@ -253,7 +253,7 @@ class AuctionController extends Controller
             Notification::sendNewAuctionNotification($auction->id);
 
             DB::commit();
-            return back()->with('success', trans('messages.messages.added_successfully_wait_until_admin_accept_your_auction'));
+            return back()->with('success', trans('messages.added_successfully_wait_until_admin_accept_your_auction'));
 
         } catch (Exception $e) {
             DB::rollback();
