@@ -378,7 +378,7 @@ return [
         'count_of_buyer' => 'عدد الاشخاص المزايدين',
         'remaining_time' => 'الوقت المتبقى ',
         'auction_details' => ' تفاصيل المزاد',
-        'make_bid' => 'حجز مكان',
+        'make_bid' => 'أرسل مزايدتك',
 
         'auction' => 'المزاد',
         'auctions' => 'المزادات',
