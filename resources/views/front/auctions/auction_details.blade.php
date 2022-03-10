@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="details" id="details">
                                     <p>
-                                        <i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}{{($auction->start_auction_price)}}
+                                        <i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}:{{($auction->start_auction_price)}}
                                     </p>
                                 </div>
 
@@ -121,7 +121,7 @@
                                         :{{($auction->value_of_increment)}}</p>
 
                                     <p class="ticket"><i
-                                            class="fal fa-ticket"></i> {{trans('messages.auction.buyers_count')}}{{ ($auction->count_of_buyer ) }}
+                                            class="fal fa-ticket"></i> {{trans('messages.auction.buyers_count')}}:{{ ($auction->count_of_buyer ) }}
                                     </p>
                                 </div>
                             </div>
