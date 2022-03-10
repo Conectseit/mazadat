@@ -32,6 +32,10 @@ class PersonController extends Controller
                 $request_data['mobile'] =$request->phone_code. $request->mobile ;
             }
 
+            if (User::where('mobile', $request_data['mobile'])->first()) {
+                return responseJson(false, 'قيمة الجوال مستخدمة من قبل', null);  //
+            }
+
             $user = User::create($request_data + ['activation_code' => $activation_code,'is_accepted'=>1,'type'=>'buyer','is_company'=>'person','accept_app_terms'=>'yes']);
 
             if ($user) {

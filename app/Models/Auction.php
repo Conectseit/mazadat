@@ -81,6 +81,16 @@ class Auction extends Model
         return ['days' => $diff->d, 'hours' => $diff->h,'minutes' => $diff->m, 'seconds' => $diff->s];
     }
 
+//    public function getEndTimeAttribute()
+//    {
+//
+////        $end  = Carbon::parse($this->end_date);
+//        return [
+//            'days' =>Carbon::parse($this->end_date->d())
+////            'hours' => $end->h,'minutes' => $end->m, 'seconds' => $end->s
+//        ];
+//    }
+
 
 
 
