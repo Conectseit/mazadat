@@ -39,9 +39,12 @@
                         </div>
 
                     </div>
+
+                    @if(auth()->user()->id != $auction->seller_id)
                     <div class="col-lg-2 d-flex align-items-center" id="bid">
                         <a href="#" class="bid-btn">Bid Now</a>
                     </div>
+                    @endif
                     @endif
                     <div class="col-lg-4 d-flex align-items-center justify-content-end" id="bidMainInfo">
                         <div class="current-price">

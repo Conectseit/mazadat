@@ -52,6 +52,7 @@ class UserController extends Controller
 
     public function updateProfile(updateProfileRequest $request)
     {
+
 //        $request_data = $request->except(['password', 'password_confirmation', 'submit']);
         $request_data = $request->except(['phone_code','mobile','commercial_register_image','company_authorization_image','image']);
         if ($request->mobile) {
@@ -61,8 +62,6 @@ class UserController extends Controller
             $country=Country::where('phone_code',$request->phone_code)->first();
             $request_data['country_id'] =$country->id ;
         }
-
-
 
 //        if ($request->mobile) {
 //            $country=Country::find(auth()->user()->country_id);
@@ -79,8 +78,7 @@ class UserController extends Controller
             $request_data['company_authorization_image'] = uploaded($request->company_authorization_image, 'user');
         }
 
-        $user = auth()->user();
-        $user->update($request_data );
+        auth()->user()->update($request_data);
 //        $user->update($request_data + ['country_id'=>$country->id]);
 
         return back()->with('success', trans('messages.updated_success'));
@@ -117,60 +115,8 @@ class UserController extends Controller
 
 
 
-
-
-
-
-
-
-
 }
 
 
 
-//    public function user_documents()
-//    {
-//        return view('front.user.user_documents');
-//    }
-//    public function user_passport()
-//    {
-//        return view('front.user.user_passport');
-//    }
-//    public function update_personal_image(updatePersonalImageRequest $request)
-//    {
-//        $request_data = $request->except(['image']);
-//        if ($request->image) {
-//            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
-//        }
-//        $user = auth()->user();
-//        $user->update($request_data);
-//        return back()->with('success', trans('messages.updated_success'));
-//    }
 
-//    public function uploadPassport(uploadPassportRequest $request)
-//    {
-//        $request_data = $request->except(['passport_image']);
-//        if ($request->passport_image) {
-//            $request_data['passport_image'] = $request_data['passport_image'] = uploaded($request->passport_image, 'user');
-//        }
-//        $user = auth()->user();
-//        $user->update($request_data);
-//        return back()->with('success', trans('messages.upload_passport_success'));
-//    }
-//    public function uploadDocuments(UploadDocumentRequest $request)
-//    {
-//        $request_data = $request->except(['front_side_image', 'back_side_image']);
-//        if ($request->front_side_image) {
-//            $request_data['front_side_image'] = $request_data['front_side_image'] = uploaded($request->front_side_image, 'user');
-//        }
-//        $user = auth()->user();
-//        $document = Document::create($request_data + ['user_id' => $user->id]);
-//        return back()->with('success', trans('messages.upload_document_success'));
-//    }
-
-//    public function update_personal_bio(updatePersonalBioRequest $request)
-//    {
-//        $user = auth()->user();
-//        $user->update($request->all());
-//        return back()->with('success', trans('messages.updated_success'));
-//    }

@@ -46,7 +46,8 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-    public function getJWTIdentifier() {
+    public function getJWTIdentifier()
+    {
         return $this->getKey();
     }
 
@@ -55,9 +56,11 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return array
      */
-    public function getJWTCustomClaims() {
+    public function getJWTCustomClaims()
+    {
         return [];
     }
+
     public function token()
     {
         return $this->hasOne('App\Models\Token');
@@ -67,49 +70,53 @@ class User extends Authenticatable implements JWTSubject
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
     public function getFullNameAttribute()
     {
-        return $this->first_name .' '. $this->last_name;
+        return $this->first_name . ' ' . $this->last_name;
     }
 
     public function seller_auctions()
     {
-        return $this->hasMany(Auction::class,'seller_id');
-    }
-    public function buyer_auctions()
-    {
-        return $this->hasMany(Auction::class,'buyer_id');
+        return $this->hasMany(Auction::class, 'seller_id');
     }
 
+    public function buyer_auctions()
+    {
+        return $this->hasMany(Auction::class, 'buyer_id');
+    }
 
 
     public function payments()
     {
         return $this->hasMany(Payment::class);
     }
+
     public function country()
     {
-        return $this->belongsTo(Country::class,'country_id');
+        return $this->belongsTo(Country::class, 'country_id');
     }
+
     public function city()
     {
-        return $this->belongsTo(City::class,'city_id');
+        return $this->belongsTo(City::class, 'city_id');
     }
 
     public function nationality()
     {
-        return $this->belongsTo(Nationality::class,'nationality_id');
+        return $this->belongsTo(Nationality::class, 'nationality_id');
     }
 
     public function additional_contacts()
     {
-        return $this->hasMany(AdditionalUserContact::class,'user_id');
+        return $this->hasMany(AdditionalUserContact::class, 'user_id');
     }
 
     public function auctionbuyers()
     {
         return $this->hasMany(AuctionBuyer::class, 'buyer_id');
     }
+
     public function notifications()
     {
         return $this->hasMany(Notification::class, 'user_id');
@@ -124,6 +131,7 @@ class User extends Authenticatable implements JWTSubject
         }
         return asset('uploads/users/' . $this->image);
     }
+
     public function getPassportImagePathAttribute()
     {
         $passport_image = User::where('id', $this->id)->first()->passport_image;
@@ -141,6 +149,7 @@ class User extends Authenticatable implements JWTSubject
         }
         return asset('uploads/users/' . $this->commercial_register_image);
     }
+
     public function getCompanyAuthorizationImagePathAttribute()
     {
         $company_authorization_image = User::where('id', $this->id)->first()->company_authorization_image;
@@ -164,7 +173,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function bidauctions()
     {
-        return $this->belongsToMany(Auction::class, 'auction_buyers','buyer_id');
+        return $this->belongsToMany(Auction::class, 'auction_buyers', 'buyer_id');
     }
 
 

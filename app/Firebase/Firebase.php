@@ -35,6 +35,7 @@ class Firebase
             'title'                 => $data['title'],
             'body'                  => $data['text'],
             'notificationable_type' => $data['type'] ?? 'dash',
+            'auction_id'            => $data['auction_id'] ?? 0,
             'notificationable_id'   => $data['type_id'] ?? 0,
             'sound'                 => 'default',
 //            'click_action'          => 'FCM_PLUGIN_ACTIVITY',

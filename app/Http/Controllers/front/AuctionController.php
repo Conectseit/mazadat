@@ -36,19 +36,27 @@ class AuctionController extends Controller
         {
             $user = auth()->user();
 
-            if( $user->accepted_auctions->count() == 0)
+            if( $user->is_verified == 0)
             {
+                return back()->with('error', trans('messages.Sorry_you_should_wait_until_admin_accept_you'));
+            }
+            if(!$auction = Auction::find($id))
+                return back()->with('error', trans('messages.not_found_auction'));
+
+
+            $accept=AcceptedAuction::where(['user_id'=>$user->id,'auction_id'=>$auction->id])->first();
+            if (!$accept) {
                 return back()->with('error', trans('messages.Sorry_you_should_accept_auction_terms_first'));
             }
+
+//            if( $user->accepted_auctions->count() == 0)
+//            {
+//            }
 
 //            if(is_null($user->passport_image) && $user->documents->count() == 0)
 //            {
 //                return back()->with('warning', trans('messages.Sorry_you_should_upload_document_and_passport_first'));
 //            }
-
-            if(!$auction = Auction::find($id))
-                return back()->with('error', trans('messages.not_found_auction'));
-
 
 
             $bid = AuctionBuyer::where(['auction_id' => $auction->id, 'buyer_id' => $user->id])->first();
@@ -58,6 +66,7 @@ class AuctionController extends Controller
 
             if($request->buyer_offer > $user->available_limit)
                 return back()->with('warning1', trans('messages.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'));
+
 
             if (is_null($bid))
             {
@@ -242,8 +251,10 @@ class AuctionController extends Controller
             }
             if(count($options) > 0) DB::table('auction_data')->insert($options);
 
+            Notification::sendNewAuctionNotification($auction->id);
+
             DB::commit();
-            return back()->with('success', trans('messages.messages.added_successfully'));
+            return back()->with('success', trans('messages.messages.added_successfully_wait_until_admin_accept_your_auction'));
 
         } catch (Exception $e) {
             DB::rollback();

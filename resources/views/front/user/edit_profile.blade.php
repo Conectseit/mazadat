@@ -113,25 +113,20 @@
                                         <div class="col-xl-3 col-lg-4 col-sm-6" >
 
                                             <select class="form-select form-control" name="phone_code" aria-label="Default select example">
-                                                <option selected
-                                                        disabled >{{ isset(auth()->user()->country)? auth()->user()->country->$name :  trans('messages.choose_country_code') }}</option>
-                                                {{--                                            <option selected disabled> {{ trans('messages.choose_country_code')}}</option>--}}
+{{--                                                <option selected disabled >إختر فيمة</option>--}}
+                                                    <option selected disabled> {{ trans('messages.choose_country_code')}}</option>
                                                 @foreach ($countries as $country)
-                                                    <option value="{{ $country->phone_code }}"> {{ $country->$name }}{{ $country->phone_code }} </option>
+                                                    <option {{ $country->phone_code == auth()->user()->country->phone_code ? 'selected' : '' }} value="{{ $country->phone_code }}"> {{ $country->$name }}{{ $country->phone_code }} </option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="col-xl-9 col-lg-8 col-sm-6">
-                                            <input type="text" maxlength="14" id="mobile" name="mobile"
+                                            <input type="text" maxlength="12" id="mobile" name="mobile"
                                                    class="form-control   @error('mobile') is-invalid @enderror"
                                                    placeholder="{{trans('messages.enter_mobile')}}xxx xxx xx"
-                                                   value={{ltrim( auth()->user()->mobile,auth()->user()->country->phone_code)}}>
-
-
+                                                   value={{explode(auth()->user()->country->phone_code,auth()->user()->mobile)[1]}}>
                                             @error('mobile')<span style="color: #e81414;">{{ $message }}</span>@enderror
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>

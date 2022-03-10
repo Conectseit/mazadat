@@ -40,7 +40,7 @@ class PersonController extends Controller
             }
             DB::commit();
 
-//            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
 //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
 
             return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_sent'),$activation_code); //OK

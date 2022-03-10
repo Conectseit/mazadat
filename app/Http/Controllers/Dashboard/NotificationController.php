@@ -21,6 +21,7 @@ class NotificationController extends Controller
             Firebase::send([
                 'title'      => $request->title,
                 'text'       => $request->text,
+                'auction_id' => $request->auction_id,
                 'fcm_tokens' => $user->token->fcm
             ]);
         }
