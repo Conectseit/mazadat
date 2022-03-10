@@ -69,6 +69,21 @@ class Auction extends Model
 
 
 
+
+
+
+    public function getRemainingTimeAttribute()
+    {
+        $now  = Carbon::now();
+        $end  = Carbon::parse($this->end_date);
+        $diff = $end->diff($now);
+
+        return ['days' => $diff->d, 'hours' => $diff->h,'minutes' => $diff->m, 'seconds' => $diff->s];
+    }
+
+
+
+
     public function seller()
     {
         return $this->belongsTo('App\Models\User', 'seller_id')->withDefault(['full_name' => 'لا يوجد']);
