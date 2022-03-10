@@ -147,7 +147,7 @@
 
                                 <div class="form-group mb-4  row ">
                                     <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                        <label>@lang('messages.passport_image')</label>
+                                        <label>@lang('messages.identity')</label>
                                     </div>
                                     <div class="col-lg-8 col-sm-12 d-flex align-items-center">
                                         <input type="file" class="form-control passport_image"
