@@ -25,8 +25,8 @@ class updateProfileRequest extends FormRequest
             'mobile'           => '|numeric|digits_between:12,12|unique:users,mobile,'.auth()->user()->id,
             'email'            => 'sometimes|email|max:255|unique:users,email,'. auth()->user()->id,
             'image'            => 'sometimes|image',
-            'password'         => 'required|min:6|confirmed',
-//            'password'         => 'nullable|min:6|confirmed',
+//            'password'         => 'required|min:6|confirmed',
+            'password'         => 'nullable|min:6|confirmed',
 
         ];
     }

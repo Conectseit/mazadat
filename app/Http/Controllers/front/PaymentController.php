@@ -23,6 +23,8 @@ class PaymentController extends Controller
         $data['email'] = Setting::where('key', 'email')->first()->value;
         $data['fax'] = Setting::where('key', 'fax')->first()->value;
         $data['address'] = Setting::where('key', 'address')->first()->value;
+        $data['latitude'] = Setting::where('key', 'latitude')->first()->value;
+        $data['longitude'] = Setting::where('key', 'longitude')->first()->value;
         return view('front.user.payment.cheque', $data);
     }
 
@@ -68,8 +70,10 @@ class PaymentController extends Controller
         $text .= " - IBan :  " . $iban."\n";
         $text .= " - swift code :  " . $swift_code."\n";
         $text .= " - routing number :  " . $routing_number;
+        dd(auth()->user()->mobile);
+        SmsController::send_sms(auth()->user()->mobile, $text);
 
-        SmsController::send_sms(removePhoneZero(auth()->user()->mobile,'966'), $text);
+//        SmsController::send_sms(removePhoneZero(auth()->user()->mobile,'966'), $text);
             return redirect()->route('front.bank_deposit')->with('success', trans('messages.message_sent_success'));
     }
 

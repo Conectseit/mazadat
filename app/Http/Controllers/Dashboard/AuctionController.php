@@ -132,6 +132,7 @@ class AuctionController extends Controller
 
     public function update(AuctionRequest $request, $id)
     {
+
         $auction = Auction::find($id);
 
         $request_data = $request->except(['images', 'inspection_report_images']);

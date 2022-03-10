@@ -17,6 +17,7 @@ use App\Models\Document;
 use App\Models\Nationality;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class UserController extends Controller
 {
@@ -54,7 +55,7 @@ class UserController extends Controller
     {
 
 //        $request_data = $request->except(['password', 'password_confirmation', 'submit']);
-        $request_data = $request->except(['phone_code','mobile','commercial_register_image','company_authorization_image','image']);
+        $request_data = $request->except([ 'password', 'password_confirmation','phone_code','mobile','commercial_register_image','company_authorization_image','image']);
         if ($request->mobile) {
             $request_data['mobile'] =$request->phone_code. $request->mobile ;
         }
@@ -76,6 +77,11 @@ class UserController extends Controller
         }
         if ($request->hasFile('company_authorization_image')) {
             $request_data['company_authorization_image'] = uploaded($request->company_authorization_image, 'user');
+        }
+
+        if(!is_null($request->password))
+        {
+            $request_data['password'] = $request->password;
         }
 
         auth()->user()->update($request_data);

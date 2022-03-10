@@ -33,9 +33,14 @@ class RegisterCompanyRequest extends REQUEST_API_PARENT
             'email'            => 'required|email|max:100|unique:users,email',
             'country_id'       => 'required|numeric|exists:countries,id',
             'phone_code'       => 'required',
-            'mobile'           => 'required|numeric|min:9|unique:users,mobile',
+            'mobile'           => ['required', 'numeric', 'min:9', 'unique:users,mobile'],
             'password'         => 'required|string|min:6|confirmed',
 //            'fcm'              => 'required',
         ];
+    }
+
+    public function getValidatorInstance()
+    {
+        // here
     }
 }

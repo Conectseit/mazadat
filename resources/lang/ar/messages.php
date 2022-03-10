@@ -627,6 +627,10 @@ return [
                             تسجيل مستخدم جديد مجانأ',
 
     'updated_success_wait_until_admin_accept_it'         	=> 'تم التعديل ,, انتظر حتي يتم مراجعة البيانات وقبولها من ادارة الموقع',
+    'Sorry_you_should_wait_until_admin_accept_you'         	=> 'يجب انتظار قبول حسابك من الادارة اولا ',
+    'bid_done_successfully'         	=> 'تمت المزايدة بنجاح',
+    'sorry_you_cant_make_bid_your_offer_must_bigger_than_auction_current_price'
+    => 'عفوا لا يمكنك المزايدة بهذه القيمة',
 
 
 
