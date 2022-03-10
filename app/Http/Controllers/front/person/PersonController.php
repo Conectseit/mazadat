@@ -30,6 +30,13 @@ class PersonController extends Controller
             if ($request->mobile) {
                 $request_data['mobile'] =$request->phone_code. $request->mobile ;
             }
+
+            if (User::where('mobile', $request_data['mobile'])->first()) {
+
+                return back()->with('error', 'قيمة الجوال مستخدمة من قبل');
+            }
+
+
             $user = User::create($request_data + ['activation_code' => $activation_code, 'is_accepted'=>'1','type'=>'buyer','accept_app_terms'=>'yes','country_id'=>$country->id]);
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);

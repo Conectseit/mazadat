@@ -9,10 +9,8 @@
         <div class="container">
             <h4 class="title"> {{ trans('messages.register_company') }}</h4>
 
-{{--            @include('front.layouts.parts.alert')--}}
-
-
-
+            @include('front.layouts.parts.alert')
+            
             <div class="row">
                 <form action="{{route('front.register_company')}}" method="post" id="submitted-form" enctype="multipart/form-data">
                     @csrf

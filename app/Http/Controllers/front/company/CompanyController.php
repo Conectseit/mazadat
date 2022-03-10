@@ -41,6 +41,12 @@ class CompanyController extends Controller
             if ($request->mobile) {
                 $request_data['mobile'] =$country->phone_code. $request->mobile ;
             }
+
+            if (User::where('mobile', $request_data['mobile'])->first()) {
+
+                return back()->with('error', 'قيمة الجوال مستخدمة من قبل');
+            }
+
             $user = User::create($request_data + ['activation_code' => $activation_code,'type'=>'buyer','is_appear_name'=>1,'is_company'=>'company','accept_app_terms'=>'yes',]);
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
