@@ -2,49 +2,57 @@
 @section('title', trans('messages.auction.auction_details'))
 @section('style')
     <style>
-        #map {height: 400px;
-        border: solid 1px;
-        padding-right: 20px;}
-        .carousel-item img {height: 400px; border: solid 1px;}
+        #map {
+            height: 400px;
+            border: solid 1px;
+            padding-right: 20px;
+        }
+
+        .carousel-item img {
+            height: 400px;
+            border: solid 1px;
+        }
     </style>
 @endsection
 
 @section('content')
-        @include('front.layouts.parts.nav_categories')
+    @include('front.layouts.parts.nav_categories')
     <div class="ad-details-page">
         <main class="ad-main-details">
             <div class="container">
                 <div class="row">
                     @include('front.layouts.parts.make_bid_alert')
                     @if($auction->status!=='done')
-                    <div class="col-lg-8 d-flex align-items-center">
-                        <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-right"></i> </a>
-                        <h5 class="text-center mx-auto my-1">{{__('messages.auction.remaining_time')}}
-                            :<i class="fal fa-clock"></i>
-                        </h5>
-                        <div id="countdown" style="margin-right: -141px;">
-{{--                            <div id='tiles'></div>--}}
-                            <div class="labels">
-                                <li>Days</li>
-                                <li>Hours</li>
-                                <li>Mins</li>
-                                <li>Secs</li>
+                        <div class="col-lg-8 d-flex align-items-center">
+                            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
+                                    class="fal fa-arrow-circle-right"></i> </a>
+                            <h5 class="text-center mx-auto my-1">{{__('messages.auction.remaining_time')}}
+                                :<i class="fal fa-clock"></i>
+                            </h5>
+                            <div id="countdown" style="margin-right: -141px;">
+                                {{--                            <div id='tiles'></div>--}}
+                                <div class="labels">
+                                    <li>Days</li>
+                                    <li>Hours</li>
+                                    <li>Mins</li>
+                                    <li>Secs</li>
+                                </div>
+                                <div class="labels">
+                                    <li id="days"></li>
+                                    <li id="hours"></li>
+                                    <li id="minutes"></li>
+                                    <li id="seconds"></li>
+                                </div>
                             </div>
-                            <div class="labels">
-                                <li id="days"></li>
-                                <li id="hours"></li>
-                                <li id="minutes"></li>
-                                <li id="seconds"></li>
-                            </div>
+
                         </div>
-
-                    </div>
-
-                    @if(auth()->user()->id != $auction->seller_id)
-                    <div class="col-lg-2 d-flex align-items-center" id="bid">
-                        <a href="#" class="bid-btn">Bid Now</a>
-                    </div>
-                    @endif
+                        @if(auth()->check())
+                            @if(auth()->user()->id != $auction->seller_id)
+                                <div class="col-lg-2 d-flex align-items-center" id="bid">
+                                    <a href="#" class="bid-btn">Bid Now</a>
+                                </div>
+                            @endif
+                        @endif
                     @endif
                     <div class="col-lg-4 d-flex align-items-center justify-content-end" id="bidMainInfo">
                         <div class="current-price">
@@ -74,7 +82,7 @@
                             <div class="col-lg-6">
 
                                 <div class="details" id="details">
-                                      <h4>{{$auction->$name}}  </h4>
+                                    <h4>{{$auction->$name}}  </h4>
                                 </div>
                                 <div class="details" id="details">
                                     <p class="start-date">
@@ -85,8 +93,8 @@
                                     </p>
                                 </div>
                                 <div class="details" id="details">
-                                    <p> <i class="fal fa-clock"></i> {{trans('messages.auction.remaining_time')}}:
-{{--                                        {{ ($auction->remaining_time['days'] ) }}--}}
+                                    <p><i class="fal fa-clock"></i> {{trans('messages.auction.remaining_time')}}:
+                                        {{--                                        {{ ($auction->remaining_time['days'] ) }}--}}
                                         <span class="test-time"> <span id="Timerapp"></span></span>
 
                                     </p>
@@ -94,8 +102,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="details" id="details">
-                                     <h5>{{trans('messages.auction.delivery_charge')}} :
-                                         {{($auction->delivery_charge)}}</h5>
+                                    <h5>{{trans('messages.auction.delivery_charge')}} :
+                                        {{($auction->delivery_charge)}}</h5>
 
                                 </div>
                                 <div class="details" id="details">
@@ -105,12 +113,16 @@
                                 </div>
 
                                 <div class="details" id="details">
-                                    <p><i class="fal fa-gavel"></i>{{trans('messages.auction.current_price')}}:{{($auction->current_price)}}</p>
+                                    <p><i class="fal fa-gavel"></i>{{trans('messages.auction.current_price')}}
+                                        :{{($auction->current_price)}}</p>
                                 </div>
                                 <div class="details" id="details">
-                                    <p><i class="fal fa-tag"></i>{{trans('messages.auction.value_of_increment')}} :{{($auction->value_of_increment)}}</p>
+                                    <p><i class="fal fa-tag"></i>{{trans('messages.auction.value_of_increment')}}
+                                        :{{($auction->value_of_increment)}}</p>
 
-                                    <p class="ticket"><i class="fal fa-ticket"></i> {{trans('messages.auction.buyers_count')}}{{ ($auction->count_of_buyer ) }}</p>
+                                    <p class="ticket"><i
+                                            class="fal fa-ticket"></i> {{trans('messages.auction.buyers_count')}}{{ ($auction->count_of_buyer ) }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +130,8 @@
                         <div class="description" id="description">
                             <h4>{{ trans('messages.description')}}:</h4>
                             <p>{{$auction->$description}}</p>
-                        </div><br>
+                        </div>
+                        <br>
                         <div class="bid-details" id="bidDetails">
                             <form action="{{route('front.make_bid',$auction->id)}}" method="post">
                                 @csrf
@@ -154,12 +167,12 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <ul>
-{{--                                                <li>--}}
-{{--                                                    <p>--}}
-{{--                                                        <i class="far fa-clock"></i> {{ trans('messages.auction.remaining_time')}}--}}
-{{--                                                        :{{$auction->remaining_time['days']}}--}}
-{{--                                                    </p>--}}
-{{--                                                </li>--}}
+                                                {{--                                                <li>--}}
+                                                {{--                                                    <p>--}}
+                                                {{--                                                        <i class="far fa-clock"></i> {{ trans('messages.auction.remaining_time')}}--}}
+                                                {{--                                                        :{{$auction->remaining_time['days']}}--}}
+                                                {{--                                                    </p>--}}
+                                                {{--                                                </li>--}}
                                                 <li>
                                                     <p class="ticket"><i
                                                             class="far fa-ticket"></i>{{ trans('messages.auction.count_of_buyer')}}
@@ -180,7 +193,8 @@
                             </form>
                         </div>
                     </div>
-                </div><hr>
+                </div>
+                <hr>
 
                 <div class="more">
                     <div class="terms">
@@ -203,13 +217,13 @@
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <img class="d-block w-100"
-{{--                                             src="https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide1.jpg"--}}
+                                             {{--                                             src="https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide1.jpg"--}}
                                              src="{{$auction->first_image_path}}"
                                              alt="First slide">
-{{--                                        <div class="carousel-caption d-none d-md-block">--}}
-{{--                                            <h5>Social Facilities Center</h5>--}}
-{{--                                            <p>University Campus</p>--}}
-{{--                                        </div>--}}
+                                        {{--                                        <div class="carousel-caption d-none d-md-block">--}}
+                                        {{--                                            <h5>Social Facilities Center</h5>--}}
+                                        {{--                                            <p>University Campus</p>--}}
+                                        {{--                                        </div>--}}
                                     </div>
                                     @foreach($images as $image)
                                         <div class="carousel-item">
@@ -251,7 +265,8 @@
                         @endforeach
                     </div>
 
-                </div><hr>
+                </div>
+                <hr>
 
 
                 <div class="more-imgs">
@@ -262,28 +277,31 @@
                         @foreach($auction->auctiondata as $option)
 
                             <div class="col-md-3 col-6">
-{{--                                <p>{{$option->$name}}</p>--}}
-{{--                                <p>{{$option->option_detail->option->$name}}</p>--}}
-{{--                                <p>{{$option->option_detail->$value}}</p>--}}
+                                {{--                                <p>{{$option->$name}}</p>--}}
+                                {{--                                <p>{{$option->option_detail->option->$name}}</p>--}}
+                                {{--                                <p>{{$option->option_detail->$value}}</p>--}}
 
                                 <div class="description" id="description">
                                     <h5>{{$option->option_detail->option->$name}}:</h5>
                                     <p>{{$option->option_detail->$value}}</p>
-                                </div><br>
+                                </div>
+                                <br>
                             </div>
                         @endforeach
                     </div>
 
-                </div><hr>
+                </div>
+                <hr>
 
 
                 <div class="terms">
                     <h4>{{ trans('messages.auction.terms')}}:</h4>
                     <p>{{$auction->$auction_terms}}</p>
-                </div><hr>
+                </div>
+                <hr>
                 <div class="terms">
                     <h4>{{ trans('messages.auction.location')}}:</h4>
-                    <div id="map" class="m-6" ></div>
+                    <div id="map" class="m-6"></div>
                 </div>
             </div>
 
