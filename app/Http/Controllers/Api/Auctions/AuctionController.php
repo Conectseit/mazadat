@@ -77,11 +77,11 @@ class AuctionController extends PARENT_API
         try
         {
             $user = auth()->user();
-            if( $user->is_verified == 0)
-            {
-            return responseJson(false, trans('api.Sorry_you_should_wait_until_admin_accept_you'), null);  //NOT_FOUND
-
-            }
+//            if( $user->is_verified == 0)
+//            {
+//            return responseJson(false, trans('api.Sorry_you_should_wait_until_admin_accept_you'), null);  //NOT_FOUND
+//
+//            }
 
 //            if(is_null($user->passport_image) && $user->documents->count() == 0)
 //            {

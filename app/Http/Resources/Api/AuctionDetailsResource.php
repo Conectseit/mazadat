@@ -36,6 +36,7 @@ class AuctionDetailsResource extends JsonResource
             'delivery_charge'             => $this->delivery_charge ,
             'is_unique'                   => $this->is_unique,
             'status'                      => $this->status,
+            'seller_id'                   => $this->seller_id,
             'latitude'                    =>(float) $this->latitude,
             'longitude'                   => (float)$this->longitude,
 

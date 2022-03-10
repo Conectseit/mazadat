@@ -26,6 +26,7 @@ class AuthResource extends JsonResource
 //            'commercial_register_image'    => isset($this->commercial_register_image_path)?$this->commercial_register_image_path:null,
 //            'company_authorization_image'  => isset($this->company_authorization_image_path)?$this->company_authorization_image_path:null,
 
+            'id'                  => $this->id,
             'image'               => $this->image_path,
             'user_name'           => $this->user_name ,
             'email'               => $this->email,
