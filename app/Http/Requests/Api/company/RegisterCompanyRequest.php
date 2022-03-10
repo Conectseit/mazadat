@@ -39,8 +39,8 @@ class RegisterCompanyRequest extends REQUEST_API_PARENT
         ];
     }
 
-    public function getValidatorInstance()
-    {
-        // here
-    }
+//    public function getValidatorInstance()
+//    {
+//        // here
+//    }
 }
