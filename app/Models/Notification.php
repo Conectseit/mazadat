@@ -43,8 +43,9 @@ class Notification extends Model
 
         // save the notification;
         Notification::create([
-            'title' => $title,
-            'text'  => $text,
+            'title'    => $title,
+            'text'     => $text,
+            'is_seen'  => $auction_id,
         ]);
     }
 }

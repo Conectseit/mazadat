@@ -18,7 +18,9 @@ class NotificationController extends PARENT_API
     public function index()
     {
         $user = auth('api')->user();
-        $notifications = Notification::where('user_id',$user->id)->get();
+        $notifications = Notification::all();
+//        $notifications = Notification::where('user_id',$user->id)->get();
+
         if ($notifications->count() <= 0) {
             return responseJson(false, trans('api.there_is_no_notifications_yet'), null);  //OK
         }

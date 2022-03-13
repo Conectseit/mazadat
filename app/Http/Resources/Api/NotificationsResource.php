@@ -18,7 +18,8 @@ class NotificationsResource extends JsonResource
         return [
             'title'         => $this->title,
             'text'          => $this->text,
-            'is_seen'       => $this->is_seen,
+            'auction_id'    => $this->is_seen,
+//            'is_seen'       => $this->is_seen,
             'send_at'       => $this->created_at->diffForHumans(),
         ];
 
