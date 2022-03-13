@@ -146,7 +146,7 @@
                                                     <th class="text-center">#</th>
                                                     <th class="text-center">{{ trans('messages.user_name') }}</th>
                                                     <th class="text-center">{{ trans('messages.transaction.amount') }}</th>
-                                                    <th class="text-center">@lang('messages.transaction.since')</th>
+                                                    <th class="text-center">@lang('messages.transaction.date')</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -155,7 +155,10 @@
 
                                                         <td class="text-center">{{ $loop->iteration }}</td>
                                                         <td class="text-center">
-                                                            <a href={{ route('buyers.show', $transaction->user->id) }}> {{ isNullable($transaction->user->full_name) }}</a>
+{{--                                                            <a href=--}}
+{{--                                                                {{ route('buyers.show', $transaction->user->id) }}>{{ isNullable($transaction->user->full_name) }}--}}
+{{--                                                            </a>--}}
+                                                            <a href=""> {{ isNullable($transaction->user->full_name) }}</a>
                                                         </td>                                                        <td class="text-center"><a href=""> {{ isNullable($transaction->amount) }}</a></td>
                                                         <td class="text-center">{{isset($transaction->created_at) ?$transaction->created_at->format('y/m/d'):'---' }}</td>
                                                     </tr>

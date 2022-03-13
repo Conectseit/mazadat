@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SmsController;
 use App\Http\Requests\Dashboard\SellerRequest;
 use App\Http\Requests\Dashboard\users\PersonRequest;
+use App\Http\Requests\Dashboard\users\WalletRequest;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Nationality;
+use App\Models\Payment;
 use App\Models\Token;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -165,6 +167,21 @@ class PersonController extends Controller
     {
         $company = User::findOrFail($id);
         $company->update(['ban'=> 0]);
+        return back();
+    }
+
+    public function add_balance(WalletRequest $request,$id)
+    {
+        $person = User::findOrFail($id);
+
+        $person->update(['wallet'=> $request->wallet +$person->wallet]);
+
+            Payment::Create([
+                    'user_id'     => $person->id,
+                    'date'        => $person->updated_at,
+                    'amount'      => $request->wallet,
+                    'payment_type'=> 'cash'
+                ]);
         return back();
     }
 

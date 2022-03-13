@@ -96,17 +96,7 @@
                     <fieldset title="3">
                         <legend class="text-semibold">{{ trans('messages.auction.options') }}</legend>
                         <div class="row">
-{{--                            <div class="form-group">--}}
-{{--                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_category') }} </label>--}}
-{{--                                <div class="col-lg-6">--}}
-{{--                                    <select id="category" name="category_id" class="select>--}}
-{{--                                        <optgroup label="{{ trans('messages.auction.choose_category') }}">--}}
-{{--                                            @foreach ($categories as $category)--}}
-{{--                                                <option value="{{ $category->id }}"> {{ $category->$name }} </option>--}}
-{{--                                            @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div><br>--}}
+
 
                             <div class="form-group">
                                 <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_category') }} </label>
@@ -122,26 +112,12 @@
                                 </div>
                             </div><br>
 
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_options') }} </label>
-                                <div class="col-lg-6">
-                                    <select name="option_id" id="options" class="select">
-                                        <optgroup label="{{ trans('messages.option.options') }}">
-                                        @foreach($options as $option)
-                                                <option value="{{ $option->id }}"> {{ $option->$name }} </option>
-                                        @endforeach
-                                    </select>
+                            <div class="form-group mb-4 row">
+                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                    <label for="" class="form-label">{{ trans('messages.option.options') }}</label>
                                 </div>
-                            </div><br>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_option_details') }} </label>
-                                <div class="col-lg-6">
-                                    <select name="option_details_id" id="option_details" class="select">
-                                        <optgroup label="{{ trans('messages.auction.choose_option_details') }}">
-                                            @foreach($option_details as $option_detail)
-                                                <option value="{{ $option_detail->id }}"> {{ $option_detail->$value }} </option>
-                                        @endforeach
-                                    </select>
+                                <div class="col-lg-10 col-md-9">
+                                    <div class="select-inputs-options"></div>
                                 </div>
                             </div>
 
@@ -150,6 +126,31 @@
 
 
 
+
+                            {{-- ====================== select one option ============== --}}
+{{--                            <div class="form-group">--}}
+{{--                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_options') }} </label>--}}
+{{--                                <div class="col-lg-6">--}}
+{{--                                    <select name="option_id" id="options" class="select">--}}
+{{--                                        <optgroup label="{{ trans('messages.option.options') }}">--}}
+{{--                                        @foreach($options as $option)--}}
+{{--                                                <option value="{{ $option->id }}"> {{ $option->$name }} </option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div><br>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_option_details') }} </label>--}}
+{{--                                <div class="col-lg-6">--}}
+{{--                                    <select name="option_details_id" id="option_details" class="select">--}}
+{{--                                        <optgroup label="{{ trans('messages.auction.choose_option_details') }}">--}}
+{{--                                            @foreach($option_details as $option_detail)--}}
+{{--                                                <option value="{{ $option_detail->id }}"> {{ $option_detail->$value }} </option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{-- ====================== select one option ============== --}}
 
 
 {{--          // ////////////////////////////////////////////////                 --}}
@@ -274,12 +275,12 @@
                                 <div class="col-lg-6">
                                     <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">
                                 </div>
-                            </div>
+                            </div><br>
 
 
                         </div>
                     </fieldset>
-                    <button type="submit" class="btn btn-primary stepy-finish" id="save-form-btn">{{ trans('messages.add_and_forward_to_list') }}
+                    <button type="submit" class="btn btn-primary stepy-finish mt-5" id="save-form-btn">{{ trans('messages.add_and_forward_to_list') }}
                         <i class="icon-check position-right"></i></button>
                 </form>
                 </div>
@@ -324,6 +325,10 @@
 @stop
 @section('scripts')
     @include('Dashboard.layouts.parts.ajax_get_options')
+
+
     @include('Dashboard.layouts.parts.map')
+@include('Dashboard.Auctions.ajax_get_options_by_category_id')
+
 
 @endsection

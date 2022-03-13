@@ -200,6 +200,7 @@ return [
         'online_payment_conditions_en' => ' شروط الدفع الالكتروني باللغة الانجليزية',
     ],
     'about_app' => ' عن مزادات',
+    'balance' => 'الرصيد',
 
 
     'buttons' => [
@@ -310,6 +311,7 @@ return [
         'location' => 'الموقع ',
         'verified' => 'تم مراجعة حسابهم ',
         'not_verified' => 'لم يتم مراجعة حسابهم بعد ',
+        'add_wallet' => 'اضافة رصيد الي محفظة المستخدم',
     ],
     'company' => [
         'company' => 'مؤسسة',

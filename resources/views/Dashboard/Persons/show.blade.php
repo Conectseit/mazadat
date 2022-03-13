@@ -34,6 +34,8 @@
                 <li class=""><a href="#other_data" data-toggle="tab"><i class="icon-menu7 position-left"></i> {{ trans('messages.person.address_data') }}</a></li>
                 <li><a href="#add_address" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{trans('messages.person.additional_address')}}</a></li>
 
+
+
                 {{--                <li><a href="#person_auctions" data-toggle="tab"><i--}}
 {{--                            class="icon-calendar3 position-left"></i> {{ trans('messages.person.person_auctions') }}--}}
 {{--                        <span class="badge badge-success badge-inline position-right">11--}}
@@ -41,6 +43,8 @@
 {{--                        </span></a>--}}
 {{--                </li>--}}
                 <li><a href="#send_notification" data-toggle="tab"><i class="icon-bell3 position-left"></i> {{trans('messages.notification.send')}}</a></li>
+                <li><a href="#wallet" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{trans('messages.wallet')}}</a></li>
+
             </ul>
         </div>
     </div>
@@ -94,12 +98,9 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label
-                                                                    class="col-form-label col-lg-3">{{ trans('messages.person.full_name') }}
-                                                                    :</label>
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.person.full_name') }}:</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control"
-                                                                           value="{{ $person->full_name }}" readonly>
+                                                                    <input type="text" class="form-control" value="{{ $person->full_name }}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -423,10 +424,46 @@
 
 
                         </div>
+                        <div class="tab-pane fade" id="wallet">
+                            <div class="panel panel-flat">
+                                <div class="panel-heading">
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li><a data-action="collapse"></a></li>
+                                            <li><a data-action="reload"></a></li>
+                                            <li><a data-action="close"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ trans('messages.wallet') }}:</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" value="{{ $person->wallet }} ريال-سعودي" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row"><br>
+
+
+                                        <a href="#" data-toggle="modal" data-target="#add_wallet"
+                                           class="btn btn-success btn-labeled btn-labeled-left"><b><i
+                                                    class="icon-plus2"></i></b>{{ trans('messages.person.add_wallet') }}
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        @include('Dashboard.Persons.add_to_wallet_modal')
+
+
     </div>
 
 @stop

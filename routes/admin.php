@@ -110,6 +110,7 @@ Route::group(
 
                 Route::get('person/{id?}/ban', [PersonController::class, 'ban'])->name('person/ban');
                 Route::get('person/{id?}/not_ban', [PersonController::class, 'not_ban'])->name('person/not_ban');
+                Route::post('person/{id?}/add_balance', [PersonController::class, 'add_balance'])->name('add_balance');
 
                 Route::get('persons/person/{id?}/verified', [PersonController::class, 'verified'])->name('person/verified');
                 Route::get('persons/person/{id?}/not_verified', [PersonController::class, 'not_verified'])->name('person/not_verified');
@@ -118,8 +119,6 @@ Route::group(
                 Route::get('transaction/{id?}/accept', [TransactionController::class, 'accept'])->name('transaction/accept');
 
                 Route::post('send_single_notify', [NotificationController::class, 'send_single_notify'])->name('send_single_notify');
-
-
                 Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
                 Route::put('settings/update', [SettingController::class, 'update'])->name('settings.update');
                 Route::put('add_option_detail/{option_id}', [CategoryController::class, 'add_option_detail'])->name('add_option_detail');

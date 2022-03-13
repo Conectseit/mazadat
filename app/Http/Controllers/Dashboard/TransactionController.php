@@ -26,35 +26,38 @@ class TransactionController extends Controller
 
 
 
-    public function store(Request $request)
-    {
-        $user=User::where('id',$request->user_id)->first();
-        Payment::create($request->all());
-
-        $user->update(['wallet' => ($user->wallet + ($request['amount']))]);
-
-        return back()->with('message', trans('messages.messages.added_successfully'));
-    }
-
-
+//    public function store(Request $request)
+//    {
+//        $user=User::where('id',$request->user_id)->first();
+//        Payment::create($request->all());
+//
+//        $user->update(['wallet' => ($user->wallet + ($request['amount']))]);
+//
+//        return back()->with('message', trans('messages.messages.added_successfully'));
+//    }
 
 
-    public function destroy(Request $request)
-    {
-        $city = Payment::find($request->id);
-        if (!$city) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, City is not exists !!']);
-        try {
-            $city->delete();
-            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
-        } catch (Exception $e) {
-            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
-        }
-    }
+
+//
+//    public function destroy(Request $request)
+//    {
+//        $city = Payment::find($request->id);
+//        if (!$city) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, City is not exists !!']);
+//        try {
+//            $city->delete();
+//            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
+//        } catch (Exception $e) {
+//            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
+//        }
+//    }
 
 
     public function accept($id)
     {
         $transaction = Payment::find($id);
+        $user = User::where('id',$transaction->user_id)->first();
+
+        $user->update(['wallet'=> $transaction->amount +$user->wallet]);
         $transaction->update(['is_accepted'=> 1]);
         return back();
     }

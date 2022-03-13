@@ -64,20 +64,36 @@ class AuctionController extends Controller
                 $auction_images = DB::table('auction_images')->insert($data);
 
                 //======= upload auction inspection_report_images =======
-                $data = [];
+                $dataa = [];
                 if ($request->hasfile('inspection_report_images')) {
                     foreach ($request->file('inspection_report_images') as $key => $img) {
-                        $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
+                        $dataa[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
                     }
                 }
-                $auction_inspection_report_images = DB::table('inspection_images')->insert($data);
+                $auction_inspection_report_images = DB::table('inspection_images')->insert($dataa);
 
                 //======= upload auction options =======
-                $auction_options = AuctionData::Create([
-                    'auction_id' => $auction->id,
-                    'option_id' => $request->option_id,
-                    'option_details_id' => $request->option_details_id,
-                ]);
+
+
+            $options = [];
+            if(is_array($request->option_ids))
+            {
+                foreach ($request->option_ids as $option_detail_id) {
+                    $options[$option_detail_id] = [
+                        'auction_id'        => $auction->id,
+                        'option_details_id' => $option_detail_id // <==== arrrray ??,
+                    ];
+                }
+            }
+            if(count($options) > 0) DB::table('auction_data')->insert($options);
+
+
+
+//                $auction_options = AuctionData::Create([
+//                    'auction_id' => $auction->id,
+//                    'option_id' => $request->option_id,
+//                    'option_details_id' => $request->option_details_id,
+//                ]);
 
 
 // ===========================================================
@@ -202,14 +218,16 @@ class AuctionController extends Controller
         return Option::getOptionsByCategoryId($request);
     }
 
-    public function get_option_details_by_option_id(Request $request)
-    {
-        $option = Option::find($request->option_id);
 
-        if (!$option) return response()->json(['status' => false], 500);
 
-        return response()->json(['option_details' => $option->option_details, 'status' => true], 200);
-    }
+//    public function get_option_details_by_option_id(Request $request)
+//    {
+//        $option = Option::find($request->option_id);
+//
+//        if (!$option) return response()->json(['status' => false], 500);
+//
+//        return response()->json(['option_details' => $option->option_details, 'status' => true], 200);
+//    }
 
 
 
