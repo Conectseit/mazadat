@@ -15,7 +15,6 @@
                 <form action="{{route('front.add_auction')}}" method="post"  id="submitted-form" enctype="multipart/form-data">
                     @csrf
                     <div class="inputs-group">
-
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="email" class="form-label">{{trans('messages.name_ar')}}</label>
@@ -26,7 +25,6 @@
                                        value="{{ old('name_ar') }}"
                                        placeholder="{{trans('messages.enter_name_ar')}}">
                                 @error('name_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
-
                             </div>
                         </div>
 
@@ -86,7 +84,8 @@
                             <div class="col-lg-10 col-md-9">
                                 <textarea name="auction_terms_ar"
                                           class="form-control @error('auction_terms_ar') is-invalid @enderror" cols="100"
-                                          placeholder="{{trans('messages.enter_auction_terms_ar')}}">{{ old('auction_terms_ar') }}
+                                          placeholder="{{trans('messages.enter_auction_terms_ar')}}">
+                                    {{ old('auction_terms_ar') }}
                                 </textarea>
                                 @error('auction_terms_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
@@ -235,8 +234,7 @@
 
                         <div class="sign-btn">
                             <p> {{trans('messages.wait')}}</p>
-                            <button type="submit" id="save-form-btn"
-                                    class="btn btn-primary submit-btn">{{trans('messages.auction.add')}}</button>
+                            <button type="submit" id="save-form-btn" class="btn btn-primary submit-btn">{{trans('messages.auction.add')}}</button>
                         </div>
                     </div>
                 </form>

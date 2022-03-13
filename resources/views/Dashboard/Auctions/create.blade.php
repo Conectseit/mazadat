@@ -57,19 +57,19 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="name_ar"
+                                <input type="text" class="form-control"  value="{{ old('name_ar')}}" name="name_ar"
                                        placeholder="@lang('messages.name_ar') ">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="name_en"
+                                <input type="text" class="form-control"  value="{{ old('name_en')}}" name="name_en"
                                        placeholder="@lang('messages.name_en') ">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="description_ar"
+                                <input type="text" class="form-control"  value="{{ old('description_ar')}}" name="description_ar"
                                        placeholder="@lang('messages.description_ar') ">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="description_en"
+                                <input type="text" class="form-control"  value="{{ old('description_en')}}" name="description_en"
                                        placeholder="@lang('messages.description_en') ">
                             </div>
                         </div>
@@ -80,11 +80,15 @@
                         <div class="row">
                             <div class="form-group">
                                 <label class="control-label"> {{ trans('messages.auction.auction_terms_ar') }}: </label>
-                                <textarea rows="2" cols="2" name="auction_terms_ar" class="form-control"></textarea>
+                                <textarea rows="2" cols="2" name="auction_terms_ar" class="form-control">
+                                    {{ old('auction_terms_ar') }}
+                                </textarea>
                             </div>
                             <div class="form-group">
                                 <label class="control-label"> {{ trans('messages.auction.auction_terms_en') }}: </label>
-                                <textarea rows="2" cols="2" name="auction_terms_en" class="form-control"></textarea>
+                                <textarea rows="2" cols="2" name="auction_terms_en" class="form-control">
+                                    {{ old('auction_terms_en') }}
+                                </textarea>
                             </div>
                         </div>
                     </fieldset>
@@ -178,24 +182,24 @@
                         <div class="row">
                             <div class="form-group">
                                 <label class="display-block">{{ trans('messages.auction.start_date') }}:</label>
-                                <input type="datetime-local" class="form-control" value="" name="start_date"
+                                <input type="datetime-local" class="form-control"  value="" name="start_date"
                                        placeholder="@lang('messages.auction.start_date') ">
                             </div>
                             <div class="form-group">
                                 <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>
-                                <input type="datetime-local" class="form-control" value="" name="end_date"
+                                <input type="datetime-local" class="form-control"  value="" name="end_date"
                                        placeholder="@lang('messages.auction.end_date') ">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="start_auction_price"
+                                <input type="text" class="form-control"  value="{{ old('start_auction_price')}}" name="start_auction_price"
                                        placeholder="@lang('messages.auction.start_auction_price') ">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="value_of_increment"
+                                <input type="text" class="form-control"  value="{{ old('value_of_increment')}}" name="value_of_increment"
                                        placeholder="@lang('messages.auction.value_of_increment') ">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="delivery_charge"
+                                <input type="text" class="form-control"  value="{{ old('delivery_charge')}}" name="delivery_charge"
                                        placeholder="@lang('messages.auction.delivery_charge') ">
                             </div>
                         </div>

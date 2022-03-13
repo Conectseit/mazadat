@@ -25,8 +25,9 @@ class CategoryAuctionsResource extends JsonResource
             'current_price'               => $this->current_price,
             'value_of_increment'          => (int)$this->value_of_increment,
 //            'start_date'                  => $this->start_date,
-            'start_date'                  => $this->start_date->format('l m-d-Y'),
-            'end_date'                    => $this->end_date->format('l m-d-Y'),
+            'start_date'                  =>isset($this->start_date)?$this->start_date->format('l m-d-Y'):null,
+            'end_date'                    =>isset($this->end_date)?$this->end_date->format('l m-d-Y'):null,
+//            'end_date'                    => $this->end_date->format('l m-d-Y'),
 
             'remaining_time'              => $this->remaining_time,
 

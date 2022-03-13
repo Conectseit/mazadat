@@ -17,15 +17,6 @@ class AuthResource extends JsonResource
 //        return parent::toArray($request);
         $name = 'name_' . app()->getLocale();
         return [
-//            'first_name'          => $this->first_name,
-//            'middle_name'         => $this->middle_name,
-//            'last_name'           => $this->last_name,
-//
-//            'latitude'                     => isset($this->latitude)?$this->latitude:null,
-//            'longitude'                    => isset($this->longitude)?$this->longitude:null,
-//            'commercial_register_image'    => isset($this->commercial_register_image_path)?$this->commercial_register_image_path:null,
-//            'company_authorization_image'  => isset($this->company_authorization_image_path)?$this->company_authorization_image_path:null,
-
             'id'                  => $this->id,
             'image'               => $this->image_path,
             'user_name'           => $this->user_name ,
@@ -43,6 +34,18 @@ class AuthResource extends JsonResource
 
     }
 }
+
+
+
+//            'first_name'          => $this->first_name,
+//            'middle_name'         => $this->middle_name,
+//            'last_name'           => $this->last_name,
+//
+//            'latitude'                     => isset($this->latitude)?$this->latitude:null,
+//            'longitude'                    => isset($this->longitude)?$this->longitude:null,
+//            'commercial_register_image'    => isset($this->commercial_register_image_path)?$this->commercial_register_image_path:null,
+//            'company_authorization_image'  => isset($this->company_authorization_image_path)?$this->company_authorization_image_path:null,
+
 
 
 
