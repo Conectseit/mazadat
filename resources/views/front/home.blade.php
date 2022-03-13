@@ -57,6 +57,7 @@
     </style>
 @endsection
 
+@include('front.layouts.splash')
 
 @section('content')
     @include('front.layouts.parts.nav_home')
@@ -148,16 +149,6 @@
     <div class="category-items-page">
         <section class="items">
             <div class="container">
-
-
-{{--                <div class="row">--}}
-{{--                    <div class=" d-flex justify-content-between">--}}
-{{--                        <div  class="count-auction btn ">  {{ trans('messages.auction_on_progress') }} (5)</div>--}}
-{{--                        <div  class="count-auction btn ">  {{ trans('messages.auction_ended') }} (3)</div>--}}
-{{--                        <div  class="count-auction btn ">  {{ trans('messages.auction_selled') }} (15)</div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <br>--}}
                 <div class="row">
                     <div class=" d-flex justify-content-between">
                         @if(auth()->check())
@@ -191,7 +182,6 @@
         </section>
     </div>
 
-    @include('front.layouts.splash')
 
 @stop
 

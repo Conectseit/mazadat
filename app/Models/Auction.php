@@ -28,14 +28,7 @@ class Auction extends Model
         $images = $this->inspectionimages;
         return isset($images[0]) ? asset('uploads/auctions/' . $images[0]->image) : asset('uploads/default.png');
     }
-//    public function getInspectionReportImagePathAttribute()
-//    {
-//        $inspection_report_image = Auction::where('id', $this->id)->first()->inspection_report_image;
-//        if (!$inspection_report_image) {
-//            return asset('uploads/default.png');
-//        }
-//        return asset('uploads/auctions/' . $this->inspection_report_image);
-//    }
+
 
 
 

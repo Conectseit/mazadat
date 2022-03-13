@@ -2,35 +2,30 @@
 @section('title', trans('messages.auction.auction_details'))
 @section('style')
     <style>
-        #map {
-            height: 400px;
-            border: solid 1px;
-            padding-right: 20px;
-        }
-
-        .carousel-item img {
-            height: 400px;
-            border: solid 1px;
-        }
+        #map {nheight: 400px;border: solid 1px;padding-right: 20px;}
+        .carousel-item img {height: 400px;border: solid 1px;}
     </style>
 @endsection
 
 @section('content')
+    <main class="categories-bar row">
     @include('front.layouts.parts.nav_categories')
+    </main>
     <div class="ad-details-page">
         <main class="ad-main-details">
             <div class="container">
                 <div class="row">
                     @include('front.layouts.parts.make_bid_alert')
                     @if($auction->status!=='done')
-                        <div class="col-lg-8 d-flex align-items-center">
-                            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
-                                    class="fal fa-arrow-circle-right"></i> </a>
-                            <h5 class="text-center mx-auto my-1">{{__('messages.auction.remaining_time')}}
-                                :<i class="fal fa-clock"></i>
-                            </h5>
-                            <div id="countdown" style="margin-right: -141px;">
-                                {{--                            <div id='tiles'></div>--}}
+                        <div class="col-lg-2 d-flex align-items-center">
+                        </div>
+                        <div class="col-lg-4 d-flex align-items-center">
+                            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-right"></i> </a>
+
+                            <div id="countdown"  style="margin-right: -141px;">
+                                <h5 class="text-center mx-auto my-1">{{__('messages.auction.remaining_time')}}
+                                    : <i class="fal fa-clock"> </i>
+                                </h5>
                                 <div class="labels">
                                     <li>Days</li>
                                     <li>Hours</li>
@@ -54,7 +49,7 @@
                             @endif
                         @endif
                     @endif
-                    <div class="col-lg-4 d-flex align-items-center justify-content-end" id="bidMainInfo">
+                    <div class="col-lg-6 d-flex align-items-center justify-content-end" id="bidMainInfo">
                         <div class="current-price">
                             <p>{{ trans('messages.auction.current_price')}}:</p>
                             <h4>{{($auction->current_price)}}</h4>

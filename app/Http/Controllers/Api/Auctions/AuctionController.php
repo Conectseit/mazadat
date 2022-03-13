@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Auctions;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PARENT_API;
 use App\Http\Requests\Api\auction\AddAuctionRequest;
+use App\Http\Requests\Api\auction\UpdateAuctionRequest;
 use App\Http\Requests\Api\MakeBidRequest;
 use App\Http\Resources\Api\AuctionDetailsResource;
 use App\Http\Resources\Api\CategoryAuctionsResource;
@@ -241,6 +242,90 @@ class AuctionController extends PARENT_API
         }
 
     }
+
+
+    public function updateAuction(UpdateAuctionRequest $request,$id)
+    {
+        $auction = Auction::find($id);
+        if (!$auction) {
+            return responseJson(false, trans('api.not_found_auction'), null);  //NOT_FOUND
+        }
+
+        DB::beginTransaction();
+        try {
+            //======= update auction =======
+            $request_data = $request->except(['inspection_report_images' . 'images']);
+
+//======= upload auction images =======
+            $_data = [];
+            if ($request->hasfile('images')) {
+
+                foreach ($auction->auctionimages as $image) {
+//                    unlink('uploads/auctions/' . $image->image);
+                    $image->delete();
+                }
+
+                foreach ($request->file('images') as $key => $img) {
+                    $_data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
+                }
+                $auction_images = DB::table('auction_images')->insert($_data);
+            }
+
+//======= upload auction inspection_report_images =======
+            $data = [];
+            if ($request->hasfile('inspection_report_images')) {
+                foreach ($auction->inspectionimages as $image) {
+//                    unlink('uploads/auctions/' . $image->image);
+                    $image->delete();
+                }
+                foreach ($request->file('inspection_report_images') as $key => $img) {
+                    $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
+                }
+                $auction_inspection_images = DB::table('inspection_images')->insert($data);
+            }
+
+
+
+//======= upload auction options =======
+            $dataa = [];
+            if(is_array($request->option_details_id))
+            {
+
+                foreach ($auction->auctiondata as $auctiondataa) {
+                    $auctiondataa->delete();
+                }
+                foreach ($request->option_details_id as $option_detail_id) {
+                    $dataa[$option_detail_id] = [
+                        'auction_id'        => $auction->id,
+                        'option_details_id' => $option_detail_id // <==== arrrray ??,
+                    ];
+                }
+            }
+            if(count($dataa) > 0) DB::table('auction_data')->insert($dataa);
+
+            $auction->update($request_data + ['current_price' => $request->start_auction_price,]);
+
+            DB::commit();
+//            return responseJson(true, trans('api.updated_your_auction_successfully_wait_until_admin_accept_it'), new AuctionDetailsResource($auction));  //OK don-successfully
+            return responseJson(true, trans('api.updated_your_auction_successfully_wait_until_admin_accept_it'), null);  //OK don-successfully
+
+        } catch (Exception $e) {
+            DB::rollback();
+            return responseJson(false, $e->getMessage());
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

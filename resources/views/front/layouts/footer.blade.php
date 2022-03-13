@@ -24,79 +24,11 @@
 {{--                    <a href="#">الشروط والاحكام <i class="fal fa-chevron-left"></i></a>--}}
 {{--                    <a href="#">تعؤف اكثر على مزادات <i class="fal fa-chevron-left"></i></a>--}}
                     <div class="accordion" id="accordionPanelsStayOpenExample">
-
-
-{{--                                    <div class="accordion accordion-flush" id="accordionFlushExample">--}}
-{{--                                        <ul class="methods">--}}
-{{--                                            <li>--}}
-{{--                                                <div class="accordion-item">--}}
-{{--                                                    <h2 class="accordion-header" id="flush-headingOne">--}}
-{{--                                                        <button class="accordion-button collapsed" type="button"--}}
-{{--                                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"--}}
-{{--                                                                aria-expanded="false" aria-controls="flush-collapseOne">--}}
-{{--                                                            Gadaa--}}
-{{--                                                        </button>--}}
-{{--                                                    </h2>--}}
-{{--                                                    <div id="flush-collapseOne" class="accordion-collapse collapse"--}}
-{{--                                                         aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">--}}
-{{--                                                        <div class="accordion-body">--}}
-{{--                                                            asdfghj--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </li>--}}
-
-
-{{--                                            --}}{{--                                <li>--}}
-{{--                                            --}}{{--                                    <div class="accordion-item">--}}
-{{--                                            --}}{{--                                        <h2 class="accordion-header" id="flush-headingTwo">--}}
-{{--                                            --}}{{--                                            <button class="accordion-button collapsed" type="button"--}}
-{{--                                            --}}{{--                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"--}}
-{{--                                            --}}{{--                                                    aria-expanded="false" aria-controls="flush-collapseTwo">--}}
-{{--                                            --}}{{--                                                El Raiyad--}}
-{{--                                            --}}{{--                                            </button>--}}
-{{--                                            --}}{{--                                        </h2>--}}
-{{--                                            --}}{{--                                        <div id="flush-collapseTwo" class="accordion-collapse collapse"--}}
-{{--                                            --}}{{--                                             aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">--}}
-{{--                                            --}}{{--                                            <div class="accordion-body">--}}
-{{--                                            --}}{{--                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero ullam--}}
-{{--                                            --}}{{--                                                repellat cupiditate esse! Tenetur, maiores laboriosam sequi dolorem--}}
-{{--                                            --}}{{--                                                libero voluptatum reiciendis omnis pariatur, neque consectetur aliquam--}}
-{{--                                            --}}{{--                                                dolorum incidunt sit odit!--}}
-{{--                                            --}}{{--                                            </div>--}}
-{{--                                            --}}{{--                                        </div>--}}
-{{--                                            --}}{{--                                    </div>--}}
-{{--                                            --}}{{--                                </li>--}}
-{{--                                            --}}{{--                                <li>--}}
-{{--                                            --}}{{--                                    <div class="accordion-item">--}}
-{{--                                            --}}{{--                                        <h2 class="accordion-header" id="flush-headingThree">--}}
-{{--                                            --}}{{--                                            <button class="accordion-button collapsed" type="button"--}}
-{{--                                            --}}{{--                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"--}}
-{{--                                            --}}{{--                                                    aria-expanded="false" aria-controls="flush-collapseThree">--}}
-{{--                                            --}}{{--                                                El Raiyad--}}
-{{--                                            --}}{{--                                            </button>--}}
-{{--                                            --}}{{--                                        </h2>--}}
-{{--                                            --}}{{--                                        <div id="flush-collapseThree" class="accordion-collapse collapse"--}}
-{{--                                            --}}{{--                                             aria-labelledby="flush-headingThree"--}}
-{{--                                            --}}{{--                                             data-bs-parent="#accordionFlushExample">--}}
-{{--                                            --}}{{--                                            <div class="accordion-body">--}}
-{{--                                            --}}{{--                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero ullam--}}
-{{--                                            --}}{{--                                                repellat cupiditate esse! Tenetur, maiores laboriosam sequi dolorem--}}
-{{--                                            --}}{{--                                                libero voluptatum reiciendis omnis pariatur, neque consectetur aliquam--}}
-{{--                                            --}}{{--                                                dolorum incidunt sit odit!--}}
-{{--                                            --}}{{--                                            </div>--}}
-{{--                                            --}}{{--                                        </div>--}}
-{{--                                            --}}{{--                                    </div>--}}
-{{--                                            --}}{{--                                </li>--}}
-
-{{--                                        </ul>--}}
-{{--                                    </div>--}}
-
-
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                                    {{trans('messages.terms')}}    <i class="fal fa-chevron-left" style="padding: 20px"></i>
+                                    {{trans('messages.terms')}}
+{{--                                    <i class="fal fa-chevron-left" style="padding: 20px"></i>--}}
                                 </button>
                             </h2>
                             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
@@ -130,11 +62,6 @@
                                {{trans('messages.auction.unique')}}
                             </h4>
                             <ul>
-{{--                                <li><a href="#">المركبات والمعدات</a></li>--}}
-{{--                                <li><a href="#">أرقام اتصالات المميزة</a></li>--}}
-{{--                                <li><a href="#">متفرقات</a></li>--}}
-{{--                                <li><a href="#">مزاد ابوظبي العقاري</a></li>--}}
-{{--                                <li><a href="#">مزاد الامارات العقاري</a></li>--}}
 
                                 @foreach($featured_auctions->where('is_unique', 1)->latest()->take(4)->get() as $auction)
 {{--                                @foreach($featured_auctions->orderBy('count_of_buyer', 'desc')->take(4)->get() as $auction)--}}
@@ -150,8 +77,7 @@
                             </h4>
                             <ul>
                                 <li><a href="{{route('front.about_app')}}">{{trans('messages.about_app')}}</a></li>
-{{--                                <li><a href="#">اتصل بنا</a></li>--}}
-{{--                                <li><a href="#">نتائج المزادات </a></li>--}}
+
                                 <li><a href="{{route('front.show_register')}}">{{trans('messages.register')}}</a></li>
                             </ul>
                         </div>
@@ -180,9 +106,7 @@
                                        data-bs-target="#forget_pass_modal"> {{trans('messages.forget_pass')}}</a>
                                 </li>
                                 <li><a href="{{route('front.questions')}}">{{trans('messages.question.questions')}} </a></li>
-{{--                                <li><a href="#">التسجيل</a></li>--}}
-{{--                                <li><a href="#">التأمين</a></li>--}}
-{{--                                <li><a href="#">المزايدة</a></li>--}}
+
                             </ul>
                         </div>
                     </div>

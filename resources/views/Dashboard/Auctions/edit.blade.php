@@ -116,21 +116,34 @@
                                        placeholder="@lang('messages.auction.delivery_charge')">
                             </div>
                         </div>
-
+                        @if(isset($auction->start_date))
                         <div class="form-group">
                             <label class="display-block">{{ trans('messages.auction.start_date') }}:</label>
-                            <input type="datetime-local" class="form-control" value=""
-{{--                            <input type="datetime-local" class="form-control" value="{{$auction->start_date->format('Y-m-d\TH:i')}}"--}}
-
+                            <input type="datetime-local" class="form-control" value="{{$auction->start_date->format('Y-m-d\TH:i')}}"
                                    name="start_date" placeholder="@lang('messages.auction.start_date') ">
                         </div>
+                        @else
+                            <div class="form-group">
+                                <label class="display-block">{{ trans('messages.auction.start_date') }}:</label>
+                                <input type="datetime-local" class="form-control" value=""
+                                       name="start_date" placeholder="@lang('messages.auction.start_date') ">
+                            </div>
+                        @endif
+
+
+                        @if(isset($auction->end_date))
                         <div class="form-group">
                             <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>
-{{--                            <input type="datetime-local" class="form-control" value="{{$auction->end_date->format('Y-m-d\TH:i')}}"--}}
-                            <input type="datetime-local" class="form-control" value=""
-                                   name="end_date"
-                                   placeholder="@lang('messages.auction.end_date') ">
+                            <input type="datetime-local" class="form-control" value="{{$auction->end_date->format('Y-m-d\TH:i')}}"
+                                   name="end_date" placeholder="@lang('messages.auction.end_date') ">
                         </div>
+                        @else
+                            <div class="form-group">
+                                <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>
+                                <input type="datetime-local" class="form-control" value=""
+                                       name="end_date" placeholder="@lang('messages.auction.end_date') ">
+                            </div>
+                        @endif
 
                         <div class="form-group">
                             <label class="col-lg-3 control-label"> {{ trans('messages.auction.auction_terms_ar') }} </label>

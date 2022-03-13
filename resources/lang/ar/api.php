@@ -48,6 +48,7 @@ return [
 
 
     'added_your_auction_successfully_wait_until_admin_accept_it'         	=> ' تم رفع مزادك بنجاح , انتظر حتي يتم قبوله من ادارة الموقع',
+    'updated_your_auction_successfully_wait_until_admin_accept_it'         	=> ' تم تعديل مزادك بنجاح , انتظر حتي يتم قبوله من ادارة الموقع',
 
 
 

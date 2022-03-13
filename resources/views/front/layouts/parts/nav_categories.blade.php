@@ -1,4 +1,4 @@
-<main class="categories-bar row">
+
     @inject('categories', 'App\Models\Category')
     <div class="item col-lg-2 text-center" >
         <a class="home-active" href="{{route('front.home')}}">
@@ -21,7 +21,7 @@
             @endforeach
              </div>
     </div>
-</main>
+
 
 
 

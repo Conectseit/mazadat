@@ -6,7 +6,9 @@
 
 @section('content')
 
-    @include('front.layouts.parts.nav_categories')
+    <main class="categories-bar row">
+        @include('front.layouts.parts.nav_categories')
+    </main>
     @include('front.layouts.parts.alert')
 
     <section class="notifications-page">
