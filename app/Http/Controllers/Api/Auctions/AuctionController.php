@@ -284,8 +284,6 @@ class AuctionController extends PARENT_API
                 $auction_inspection_images = DB::table('inspection_images')->insert($data);
             }
 
-
-
 //======= upload auction options =======
             $dataa = [];
             if(is_array($request->option_details_id))
@@ -314,6 +312,26 @@ class AuctionController extends PARENT_API
             return responseJson(false, $e->getMessage());
         }
 
+    }
+
+
+    public function deleteAuction(Request $request,$id)
+    {
+        $auction = Auction::find($id);
+
+        if (!$auction)
+            return responseJson(false, trans('api.not_found_auction'), null);  //NOT_FOUND
+
+//            foreach ($auction->auctionimages as $image) {
+//                unlink('uploads/auctions/' . $image->image);
+//            }
+        try {
+            $auction->delete();
+            return responseJson(false, trans('api.deleted_auction_successfully'), null);  //NOT_FOUND
+        } catch (Exception $e) {
+            return responseJson(false, trans('api.Server Internal Error 500'), null);  //NOT_FOUND
+
+        }
     }
 
 

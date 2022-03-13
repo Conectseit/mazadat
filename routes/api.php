@@ -109,8 +109,10 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('watched_auctions', [AuctionController::class, 'watched_auctions']);
         Route::post('make_auction/{id}/watch', [AuctionController::class, 'watch_auction']);
 
-        Route::post('update_auction/{id}', [AuctionController::class, 'updateAuction']);
+
         Route::post('add_auction', [AuctionController::class, 'add_auction']);
+        Route::post('update_auction/{id}', [AuctionController::class, 'updateAuction']);
+        Route::post('delete_auction/{id}', [AuctionController::class, 'deleteAuction']);
         Route::post('my_auctions', [UserController::class, 'my_auctions']); // مزاداتي
         Route::get('my_pending_auctions', [UserController::class, 'my_pending_auctions']); //
 
