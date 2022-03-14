@@ -204,6 +204,19 @@
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
 
+{{--                        <div class="form-group">--}}
+{{--                            <label>@lang('messages.auction.images')</label>--}}
+{{--                            <div class="row">--}}
+
+{{--                                        <div>--}}
+{{--                                            <h3>Upload Multiple Image By Click On Box</h3>--}}
+{{--                                        </div>--}}
+{{--                                   --}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+
+
                         <div class="form-group">
                             <label>@lang('messages.auction.images')</label>
                             <input type="file" class="form-control " name="images[]" multiple="multiple"/>
@@ -247,6 +260,13 @@
 @push('scripts')
     @include('front.layouts.parts.map')
     @include('front.auctions.parts.ajax_get_options')
+
+    <script type="text/javascript">
+        Dropzone.options.imageUpload = {
+            maxFilesize         :       1,
+            acceptedFiles: ".jpeg,.jpg,.png,.gif"
+        };
+    </script>
 
 @endpush
 

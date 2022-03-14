@@ -40,7 +40,7 @@ class UrwayPayment
 //        $live = 'https://payments.urway-tech.com/URWAYPGService/transaction/jsonProcess/JSONrequest';
 //        return config('pay.status') == 'local' ? $local : $live;
 
-        $live = ' https://payments.urway-tech.com/URWAYPG/URWAYPGService/transaction/jsonProcess/JSONrequest';
+        $live = 'https://payments.urway-tech.com/URWAYPGService/transaction/jsonProcess/JSONrequest';
 
         return config('pay.status') == $live;
     }
