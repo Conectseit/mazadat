@@ -121,6 +121,12 @@ class Auction extends Model
     }
 
 
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
 //    public function options()
 //    {
 //        return $this->belongsToMany(Option::class, 'auction_data');

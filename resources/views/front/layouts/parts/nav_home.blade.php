@@ -29,9 +29,11 @@
                 <div  class=" statistics btn"><b><i class="fal fa-gavel"></i>
                     </b>{{ trans('messages.auction.done') }}:({{$auctions->where(['status'=>'done'])->count()}})</div>
                 <div  class=" statistics btn"><b><i class="fal fa-gavel"></i>
-                    </b>{{ trans('messages.auction.selled') }}:??</div><div  class=" statistics btn"><b><i class="fal fa-gavel"></i>
-                    </b>????:??</div><div  class=" statistics btn"><b><i class="fal fa-gavel"></i>
-                    </b>????:??</div>
+                    </b>{{ trans('messages.auction.selled') }}:؟؟</div>
+{{--                <div  class=" statistics btn"><b><i class="fal fa-gavel"></i>--}}
+{{--                    </b>????:??</div>--}}
+{{--                <div  class=" statistics btn"><b><i class="fal fa-gavel"></i>--}}
+{{--                    </b>????:??</div>--}}
             </div>
         </div>
         </div>

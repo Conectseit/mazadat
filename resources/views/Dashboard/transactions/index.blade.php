@@ -70,8 +70,8 @@
 
                                                         <td class="text-center">{{ $loop->iteration }}</td>
                                                         <td class="text-center">
-{{--                                                            <a href={{ route('buyers.show', $transaction->user->id) }}> {{ isNullable($transaction->user->full_name) }}</a>--}}
-                                                            <a href=""> {{ isNullable($transaction->user->full_name) }}</a>
+{{--                                                            <a href={{ route('buyers.show', $transaction->user->id) }}> {{ isNullable($transaction->user->user_name) }}</a>--}}
+                                                            <a href=""> {{ isNullable($transaction->user->user_name) }}</a>
                                                         </td>
                                                         {{-- <td class="text-center"><a href=""> {{ isNullable($transaction->user->wallet) }}</a></td>--}}
 {{--                                                        <td class="text-center"><a href=""> {{ isNullable($transaction->payment_type) }}</a></td>--}}
@@ -109,7 +109,7 @@
 
                                                         <td class="text-center">{{ $loop->iteration }}</td>
                                                         <td class="text-center">
-                                                            <a href=""> {{ isNullable($transaction->user->full_name) }}</a>
+                                                            <a href=""> {{ isNullable($transaction->user->user_name) }}</a>
                                                         </td>
                                                         <td class="text-center">
                                                             <a href="{{ $transaction->image_path }}" data-popup="lightbox">
@@ -156,9 +156,9 @@
                                                         <td class="text-center">{{ $loop->iteration }}</td>
                                                         <td class="text-center">
 {{--                                                            <a href=--}}
-{{--                                                                {{ route('buyers.show', $transaction->user->id) }}>{{ isNullable($transaction->user->full_name) }}--}}
+{{--                                                                {{ route('buyers.show', $transaction->user->id) }}>{{ isNullable($transaction->user->user_name) }}--}}
 {{--                                                            </a>--}}
-                                                            <a href=""> {{ isNullable($transaction->user->full_name) }}</a>
+                                                            <a href=""> {{ isNullable($transaction->user->user_name) }}</a>
                                                         </td>                                                        <td class="text-center"><a href=""> {{ isNullable($transaction->amount) }}</a></td>
                                                         <td class="text-center">{{isset($transaction->created_at) ?$transaction->created_at->format('y/m/d'):'---' }}</td>
                                                     </tr>

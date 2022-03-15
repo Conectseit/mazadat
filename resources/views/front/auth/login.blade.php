@@ -63,10 +63,18 @@
                         <div class="sign-btn">
                             <button type="submit"  id="save-form-btn" class="btn btn-primary submit-btn">{{trans('messages.login')}}</button>
                         </div>
+{{--                        <div class="sign-btn">--}}
+{{--                            <a href="{{route('front.show_register')}}" >{{trans('messages.register')}}</a>--}}
+{{--                        </div>--}}
+
+
 
                     </div>
                 </form>
+
+
             </div>
+
         </div>
         @include('front.layouts.parts.modal')
 

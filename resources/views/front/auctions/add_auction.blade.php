@@ -204,16 +204,16 @@
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
 
-{{--                        <div class="form-group">--}}
-{{--                            <label>@lang('messages.auction.images')</label>--}}
-{{--                            <div class="row">--}}
+                        <div class="form-group">
+                            <label>@lang('messages.auction.images')</label>
+                            <div class="row">
 
-{{--                                        <div>--}}
-{{--                                            <h3>Upload Multiple Image By Click On Box</h3>--}}
-{{--                                        </div>--}}
-{{--                                   --}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                                        <div>
+                                            <h3>Upload Multiple Image By Click On Box</h3>
+                                        </div>
+
+                            </div>
+                        </div>
 
 
 

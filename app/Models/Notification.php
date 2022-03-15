@@ -14,7 +14,7 @@ class Notification extends Model
 
     public static function sendNewAuctionNotification($auction_id): void
     {
-        $users = User::whereHas('token', function($q){
+        $users = User::where('is_accepted',1)->whereHas('token', function($q){
             return $q->whereNotNull('fcm');
         })->get();
 
@@ -45,7 +45,17 @@ class Notification extends Model
         Notification::create([
             'title'    => $title,
             'text'     => $text,
-            'is_seen'  => $auction_id,
+            'auction_id'  => $auction_id,
+//            'auction_image' => $auction_image,
+
         ]);
+    }
+
+
+
+
+    public function auction()
+    {
+        return $this->belongsTo(Auction::class);
     }
 }
