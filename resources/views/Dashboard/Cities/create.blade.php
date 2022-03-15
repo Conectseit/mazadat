@@ -39,19 +39,19 @@
                             </ul>
                         </div>
                     </div>
-{{--                    <div class="form-group">--}}
-{{--                        <label class="col-lg-3 control-label display-block"> {{ trans('messages.country.name') }}: </label>--}}
-{{--                        <div class="col-lg-6">--}}
-{{--                            <select name="country_id" class="select">--}}
-{{--                                <optgroup label="{{ trans('messages.country.name')}}">--}}
-{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label display-block"> {{ trans('messages.country.name') }}: </label>
+                        <div class="col-lg-6">
+                            <select name="country_id" class="select">
+                                <optgroup label="{{ trans('messages.country.name')}}">
+                                    <option selected disabled>{{trans('messages.select')}}</option>
 
-{{--                                @foreach($countries as $country)--}}
-{{--                                        <option value="{{ $country->id }}"> {{ $country->$name }} </option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-{{--                    </div><br>--}}
+                                @foreach($countries as $country)
+                                        <option value="{{ $country->id }}"> {{ $country->$name }} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div><br>
 
                     <div class="panel-body">
                         <div class="box-body">

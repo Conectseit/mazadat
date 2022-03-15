@@ -2,15 +2,10 @@
 
 @section('title', trans('messages.create-var',['var'=>trans('messages.permission.permission')]))
 
-@section('scripts')
 
-@endsection
-
-@section('content')
-
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
+<!-- Page header -->
+{{--<div class="page-header page-header-default">--}}
+    @section('breadcrumb')
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
                 <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
@@ -22,9 +17,12 @@
 
             @include('Dashboard.layouts.parts.quick-links')
         </div>
-        @endsection
-    </div>
-    <!-- /page header -->
+    @endsection
+{{--</div>--}}
+<!-- /page header -->
+@section('content')
+
+
 
 
     @include('Dashboard.layouts.parts.validation_errors')
@@ -231,11 +229,7 @@
 {{--                               value=" {{ trans('messages.added_and_come_messages') }} "/>--}}
                     </div>
                 </div>
-
-
             </form>
-
-
             <!-- /basic layout -->
 
         </div>

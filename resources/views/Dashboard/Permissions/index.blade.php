@@ -1,27 +1,20 @@
 @extends('Dashboard.layouts.master')
 
 @section('title', trans('messages.permissions.permissions'))
+@section('breadcrumb')
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{route('admin.home')}}"><i
+                        class="icon-home2 position-left"></i> @lang('messages.home')
+                </a>
+            </li>
+            <li class="active">@lang('messages.permission.permissions')</li>
+        </ul>
 
-@section('content')
-
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
-            <div class="breadcrumb-line">
-                <ul class="breadcrumb">
-                    <li><a href="{{route('admin.home')}}"><i
-                                class="icon-home2 position-left"></i> @lang('messages.home')
-                        </a>
-                    </li>
-                    <li class="active">@lang('messages.permission.permissions')</li>
-                </ul>
-
-                @include('Dashboard.layouts.parts.quick-links')
-            </div>
-        @endsection
+        @include('Dashboard.layouts.parts.quick-links')
     </div>
-    <!-- /page header -->
-
+@endsection
+@section('content')
 
     @include('Dashboard.layouts.parts.validation_errors')
 

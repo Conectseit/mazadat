@@ -117,6 +117,7 @@ class AuctionController extends Controller
 
 
 
+
 //            $users = AuctionBuyer::where('auction_id' , $auction->id)->get();
 //
 //            foreach ($users->buyer as $user){

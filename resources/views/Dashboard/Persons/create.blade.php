@@ -44,25 +44,25 @@
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">{{ trans('messages.first_name') }}</label>
                                 <div class="col-lg-9">
-                                    <input type="text" class="form-control" value="" name="first_name" placeholder="@lang('messages.first_name') ">
+                                    <input type="text" class="form-control" value="{{ old('first_name')}}" name="first_name" placeholder="@lang('messages.first_name') ">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">{{ trans('messages.middle_name') }}</label>
                                 <div class="col-lg-9">
-                                    <input type="text" class="form-control" value="" name="middle_name" placeholder="@lang('messages.middle_name') ">
+                                    <input type="text" class="form-control" value="{{ old('middle_name')}}" name="middle_name" placeholder="@lang('messages.middle_name') ">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">{{ trans('messages.last_name') }}</label>
                                 <div class="col-lg-9">
-                                    <input type="text" class="form-control" value="" name="last_name" placeholder="@lang('messages.last_name') ">
+                                    <input type="text" class="form-control" value="{{ old('last_name')}}" name="last_name" placeholder="@lang('messages.last_name') ">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">{{ trans('messages.user_name') }}</label>
                                 <div class="col-lg-9">
-                                    <input type="text" class="form-control" value="" name="user_name" placeholder="@lang('messages.user_name') ">
+                                    <input type="text" class="form-control" value="{{ old('user_name')}}" name="user_name" placeholder="@lang('messages.user_name') ">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -76,7 +76,7 @@
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">{{ trans('messages.mobile') }}</label>
                                 <div class="col-lg-9">
-                                    <input type="text" name="mobile" value="{{ old('mobile') }}" class="form-control"
+                                    <input type="text" maxlength="14" name="mobile" value="{{ old('mobile') }}" class="form-control"
                                            placeholder="{{ trans('messages.mobile') }}">
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
         <div class="col-md-6">
             <div class="panel panel-flat">
                 <div class="panel-heading">
-                    <h5 class="panel-title"> {{ trans('messages.latest_persons') }} </h5>
+                    <h5 class="panel-title"> {{ trans('messages.person.latest_persons') }} </h5>
                     <div class="heading-elements">
                         <ul class="icons-list">
                             <li><a data-action="collapse"></a></li>

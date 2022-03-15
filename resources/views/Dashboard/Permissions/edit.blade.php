@@ -1,29 +1,20 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.edit-var',['var'=>trans('messages.permission.edit')]))
 
+@section('breadcrumb')
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
+            </li>
+            <li><a href="{{ route('permissions.index') }}"><i
+                        class="icon-admin position-left"></i> @lang('messages.permission.permissions')</a></li>
+            <li class="active">@lang('messages.edit-var',['var'=>trans('messages.permission.edit')])</li>
+        </ul>
 
-@section('content')
-
-
-    <!-- Page header -->
-    <div class="page-header page-header-default">
-        @section('breadcrumb')
-        <div class="breadcrumb-line">
-            <ul class="breadcrumb">
-                <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
-                </li>
-                <li><a href="{{ route('permissions.index') }}"><i
-                            class="icon-admin position-left"></i> @lang('messages.permission.permissions')</a></li>
-                <li class="active">@lang('messages.edit-var',['var'=>trans('messages.permission.edit')])</li>
-            </ul>
-
-            @include('Dashboard.layouts.parts.quick-links')
-        </div>
-        @endsection
+        @include('Dashboard.layouts.parts.quick-links')
     </div>
-    <!-- /page header -->
-
-
+@stop
+@section('content')
     @include('Dashboard.layouts.parts.validation_errors')
 
 
@@ -81,6 +72,7 @@
                         @foreach(cruds() as $i => $crud)
                             <div class="panel panel-flat">
                                 <div class="panel-heading">
+                                    <h5 class="panel-title">@lang('messages.'.str()->singular($crud).'.' .$crud)</h5>
 {{--                                    <h5 class="panel-title">@lang('messages.'.$crud.'.' .$crud)</h5>--}}
                                     <div class="heading-elements">
                                         <ul class="icons-list">
@@ -188,7 +180,9 @@
                                                     <label>
                                                         <input type="checkbox" name="perms[]" class="switchery"
                                                                value="settings.index">
-                                                        @if(in_array('settings.index',$perms))  @endif
+                                                        @if(in_array('settings.index',$perms))
+
+                                                        @endif
                                                     </label>
                                                 </div>
                                             </div>
@@ -202,7 +196,7 @@
                                                 <div class="checkbox checkbox-switchery switchery-xs">
                                                     <label>
                                                         <input type="checkbox" name="perms[]" class="switchery"
-                                                               value="settings.updateAll">
+                                                               value="settings.update">
                                                     </label>
                                                 </div>
                                             </div>

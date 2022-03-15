@@ -64,7 +64,7 @@ function isNullable($text){ return (!isset($text) || $text == null || $text == '
 
 function cruds()
 {
-    return ['sellers','categories','cities','admins','auctions'];
+    return ['persons','companies','categories','cities','admins','auctions','permissions','contacts','transactions','advertisements'];
 }
 
 function model_count($model, $withDeleted = false)

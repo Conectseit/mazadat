@@ -80,7 +80,7 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $col = self::is_email($request->email) ? 'email' : 'user_name';
+        $col = self::is_email($request->email) ? 'email' : 'mobile';
 
         Auth::attempt([$col => $request->email, 'password' => $request->password]);
 
@@ -89,6 +89,9 @@ class AuthController extends Controller
             ->with('error', trans('messages.sorry_invalid_email_or_password'));
 
         $user = auth()->user();
+        if ($user->ban == 1) {
+            return back()->with('error', trans('messages.sorry_your_account_is_baned_from_admin_contact_with_customer_service_team'));
+        }
 
         if ($user->is_active == 'deactive') {
             Auth::logout();

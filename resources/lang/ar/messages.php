@@ -297,6 +297,7 @@ return [
         'person' => 'فرد',
         'persons' => 'افراد',
         'person_data' => 'بيانات العميل',
+        'latest_persons' => 'اخر العملاء المضافة حديثا',
         'image' => 'صورة العميل',
         'add_new_person' => 'اضافة فرد جديد',
         'edit' => 'تعديل فرد : ',
@@ -638,7 +639,9 @@ return [
 
     'added_successfully_wait_until_admin_accept_your_auction' => 'انتظر حتي يتم قبول مزادك من ادارة الموقع',
     'Sorry_you_should_complete_all_data_for_auction_first' => 'يجب اكمال بيانات المزاد اولا وادخال وقت الابتداء والانتهاء للمزاد ومصاريف الشحن',
-    'accept_auction' => 'تم قبول المزاد'
+    'accept_auction' => 'تم قبول المزاد',
+    'sorry_your_account_is_baned_from_admin_contact_with_customer_service_team'
+    => 'عفوا تم حظر حسابك من قبل ادارة الموقع . يمكنك التواصل مع خدمة العملاء',
 
 
 

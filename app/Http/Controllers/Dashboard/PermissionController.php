@@ -31,7 +31,8 @@ class PermissionController extends Controller
         $admin_role->description_ar = $request->description_ar;
         $admin_role->permissions = json_encode($request->perms);
         $admin_role->save();
-        return redirect()->route('permissions.index')->with('success', 'تم اضافة المجموعة بنجاح');
+        return redirect()->route('permissions.index')->with('message', trans('messages.messages.added_successfully'));
+
     }
 
 
@@ -62,7 +63,8 @@ class PermissionController extends Controller
 //            'description_en' => $request->description_en,
             'permissions' => json_encode($request->perms)
         ]);
-        return redirect()->route('permissions.index');
+        return redirect()->route('permissions.index')->with('message', trans('messages.messages.updated_successfully'));
+
 
     }
 

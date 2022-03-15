@@ -21,7 +21,6 @@ class PersonController extends Controller
     }
     public function register_person(RegisterRequest $request)
     {
-
         $activation_code = random_int(0000, 9999);
         DB::beginTransaction();
         try {

@@ -8,6 +8,7 @@
 <footer>
 {{--    @inject('settings', 'App\Models\Setting')--}}
     @inject('latest_auctions', 'App\Models\Auction')
+    @inject('categories', 'App\Models\Category')
     @inject('featured_auctions', 'App\Models\Auction')
     @php($about= 'about_app_'.app()->getLocale())
     @php($terms= 'conditions_terms_'.app()->getLocale())
@@ -89,10 +90,20 @@
                                 {{trans('messages.auction.latest_auctions')}}
                             </h4>
                             <ul>
-                                @foreach($latest_auctions ->orderBy('id', 'desc')->take(4)->get() as $auction)
 
-                                <li><a href="{{route('front.auction_details',$auction->id)}}">{{ substr($auction->$name,0,15) }}</a></li>
-                                @endforeach
+
+
+
+
+{{--                            @foreach($categories->whereHas('auctions') ->orderBy('id', 'desc')->first() as $auction)--}}
+
+{{--                            <li><a href="{{route('front.auction_details',$auction->id)}}">{{ substr($auction->$name,0,15) }}</a></li>--}}
+{{--                            @endforeach--}}
+
+{{--                                @foreach($latest_auctions ->orderBy('id', 'desc')->take(4)->get() as $auction)--}}
+
+{{--                                <li><a href="{{route('front.auction_details',$auction->id)}}">{{ substr($auction->$name,0,15) }}</a></li>--}}
+{{--                                @endforeach--}}
                             </ul>
                         </div>
                         <div class="ul-parent">

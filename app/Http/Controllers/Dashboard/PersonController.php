@@ -24,9 +24,10 @@ class PersonController extends Controller
 
     public function index()
     {
-        $data['persons'] = User::where('is_company', 'person')->get();
-        $data['accepted_persons'] = User::where(['is_company'=> 'person','is_accepted'=>1,'is_verified'=>1])->get();
-        $data['not_accepted_persons'] = User::where(['is_company'=> 'person','is_verified'=>0])->get();
+
+        $data['persons'] = User::where('is_company', 'person')->latest()->get();
+        $data['accepted_persons'] = User::where(['is_company'=> 'person','is_accepted'=>1,'is_verified'=>1])->latest()->get();
+        $data['not_accepted_persons'] = User::where(['is_company'=> 'person','is_verified'=>0])->latest()->get();
 
         return view('Dashboard.Persons.index', $data);
     }
@@ -41,10 +42,14 @@ class PersonController extends Controller
     }
 
 
+
+
+
     public function store(PersonRequest $request)
     {
         DB::beginTransaction();
         try {
+
             $country = Country::where('id',$request->country_id)->first();
 
             $request_data = $request->except(['image','mobile']);
@@ -52,7 +57,14 @@ class PersonController extends Controller
             if ($request->mobile) {
                 $request_data['mobile'] =$country->phone_code. $request->mobile ;
             }
-            $person = User::create($request_data+['type' => 'buyer','is_company' => 'person', 'is_accepted' =>1, 'is_active' => 'active','is_verified'=>1
+
+            if (User::where('mobile', $request_data['mobile'])->first()) {
+
+                return back()->with('error', 'قيمة الجوال مستخدمة من قبل');
+            }
+            $person = User::create($request_data+['type' => 'buyer',
+                    'is_company' => 'person',
+                    'is_accepted' =>1, 'is_active' => 'active','is_verified'=>1, 'accept_app_terms'=>'yes',
 //                    'mobile' => $country->phone_code.$request->mobile
                 ]);
 
@@ -63,12 +75,12 @@ class PersonController extends Controller
 
 
 
-            // ===========================================================
+// ===========================================================
             $name='name_' . app()->getLocale();
             activity()
                 ->performedOn($person)
                 ->causedBy(auth()->guard('admin')->user())
-                ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة مستخدم'.($person->full_name));
+                ->log('قام المشرف'.auth()->guard('admin')->user()->full_name .'  باضافة مستخدم'.($person->full_name));
 // ===========================================================
 
 

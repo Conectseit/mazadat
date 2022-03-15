@@ -222,7 +222,8 @@
 
 
     @include('front.user.script_edit')
-    @include('front.layouts.parts.map')
+    @include('front.user.add_location_map')
+{{--    @include('front.layouts.parts.map')--}}
 {{--    @include('front.auth.ajax_get_cities')--}}
 
 @endpush

@@ -97,11 +97,11 @@
                                             <div id="map"></div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <input type="text" id="geo_lat" name="latitude" value="{{ settings('latitude') }}
+                                            <input type="text" id="geo_lat" name="latitude" value="{{ settings('latitude') }}"
                                                    readonly="" placeholder=" latitude" class="form-control">
                                         </div>
                                         <div class="col-lg-6">
-                                            <input type="text" id="geo_lng" name="longitude" value="{{ settings('longitude') }}
+                                            <input type="text" id="geo_lng" name="longitude" value="{{ settings('longitude') }}"
                                                    readonly="" placeholder="longitude" class="form-control">
                                         </div>
                                 </div>

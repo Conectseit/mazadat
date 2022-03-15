@@ -1,7 +1,8 @@
 <div class="row">
     <div class=" d-flex justify-content-between">
-        <div  class="add-auction btn "><b> <i
-                    class="fal fa-plus-circle"></i> </b>{{ trans('messages.additional_address') }}</div>
+        <div  class="add-auction btn "><b>
+{{--                <i class="fal fa-plus-circle"></i>--}}
+            </b>{{ trans('messages.additional_address') }}:</div>
     </div>
 
 
@@ -18,10 +19,15 @@
                             <div id="map"></div>
                         </div>
                         <div class="col-lg-6">
-                            <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control hidden d-none">
+                            <input type="text" id="geo_lat" name="latitude"
+                                   value="{{isset(auth()->user()->latitude)?auth()->user()->latitude:'24.7135517'}}"
+                                   readonly="" placeholder=" latitude" class="form-control hidden d-none">
                         </div>
                         <div class="col-lg-6">
-                            <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control hidden d-none">
+                            <input type="text" id="geo_lng" name="longitude"
+                                   value="{{isset(auth()->user()->longitude)?auth()->user()->longitude:'46.67529569'}}"
+{{--                                   value="{{auth()->user()->longitude}}"--}}
+                                   readonly="" placeholder="longitude" class="form-control hidden d-none">
                         </div>
                         @error('latitude')<span style="color: #e81414;">{{ $message }}</span>@enderror
 

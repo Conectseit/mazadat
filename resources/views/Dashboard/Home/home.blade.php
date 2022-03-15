@@ -35,6 +35,8 @@
 {{--    @include('notify::messages')--}}
 <!-- Content area -->
 <div class="content">
+    @include('Dashboard.layouts.parts.validation_errors')
+
     <div class="row">
         <p>{{trans('messages.Statistics')}}</p>
         <div class="col-lg-12" dir="{{ direction() }}">
