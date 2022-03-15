@@ -36,13 +36,13 @@ class UrwayPayment
 
     public static function base()
     {
-//        $local = 'https://payments-dev.urway-tech.com/URWAYPGService/transaction/jsonProcess/JSONrequest';
-//        $live = 'https://payments.urway-tech.com/URWAYPGService/transaction/jsonProcess/JSONrequest';
-//        return config('pay.status') == 'local' ? $local : $live;
-
+        $local = 'https://payments-dev.urway-tech.com/URWAYPGService/transaction/jsonProcess/JSONrequest';
         $live = 'https://payments.urway-tech.com/URWAYPGService/transaction/jsonProcess/JSONrequest';
+        return config('pay.status') == 'local' ? $local : $live;
 
-        return config('pay.status') == $live;
+//        $live = 'https://payments.urway-tech.com/URWAYPGService/transaction/jsonProcess/JSONrequest';
+//
+//        return config('pay.status') == 'live' ? $live : '';
     }
 
     public static function paymentUrl($response)

@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\SellerRequest;
 use App\Http\Requests\Dashboard\users\CompanyRequest;
+use App\Http\Requests\Dashboard\users\WalletRequest;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Nationality;
+use App\Models\Payment;
 use App\Models\Token;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -173,6 +175,22 @@ class CompanyController extends Controller
                 'success' => $company->save(),
             ]
         ]);
+    }
+
+
+    public function add_balance(WalletRequest $request,$id)
+    {
+        $company = User::findOrFail($id);
+
+        $company->update(['wallet'=> $request->wallet +$company->wallet]);
+
+        Payment::Create([
+            'user_id'     => $company->id,
+            'date'        => $company->updated_at,
+            'amount'      => $request->wallet,
+            'payment_type'=> 'cash'
+        ]);
+        return back();
     }
 
 }

@@ -42,7 +42,9 @@
                 </li>
                 <li><a href="#send_notification" data-toggle="tab"><i
                             class="icon-bell3 position-left"></i> {{trans('messages.notification.send')}}</a></li>
-                <li><a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> Settings</a></li>
+{{--                <li><a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> Settings</a></li>--}}
+                <li><a href="#wallet" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{trans('messages.wallet')}}</a></li>
+
             </ul>
         </div>
     </div>
@@ -198,7 +200,7 @@
                                     <!-- Palette colors -->
                                     <h6 class="content-group-sm text-semibold">
                                         {{__('messages.company.full_name')}}
-                                        <small class="display-block">{{$company->full_name}}</small>
+                                        <small class="display-block">{{$company->user_name}}</small>
                                     </h6>
 
                                     <div class="row">
@@ -326,13 +328,47 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="settings">
+{{--                        <div class="tab-pane fade" id="settings">--}}
+{{--                        </div>--}}
 
+
+                        <div class="tab-pane fade" id="wallet">
+                            <div class="panel panel-flat">
+                                <div class="panel-heading">
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li><a data-action="collapse"></a></li>
+                                            <li><a data-action="reload"></a></li>
+                                            <li><a data-action="close"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ trans('messages.wallet') }}:</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" value="{{ $company->wallet }} ريال-سعودي" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row"><br>
+                                        <a href="#" data-toggle="modal" data-target="#add_wallet"
+                                           class="btn btn-success btn-labeled btn-labeled-left"><b>
+                                                <i class="icon-plus2"></i></b>{{ trans('messages.person.add_wallet') }}
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        @include('Dashboard.Companies.add_to_wallet_modal')
+
     </div>
 
 @stop
