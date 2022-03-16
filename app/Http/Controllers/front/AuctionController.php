@@ -247,7 +247,7 @@ class AuctionController extends Controller
             }
             if(count($options) > 0) DB::table('auction_data')->insert($options);
 
-            Notification::sendNewAuctionNotification($auction->id);
+//            Notification::sendNewAuctionNotification($auction->id);
 
             DB::commit();
             return back()->with('success', trans('messages.added_successfully_wait_until_admin_accept_your_auction'));
