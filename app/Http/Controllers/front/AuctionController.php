@@ -47,10 +47,10 @@ class AuctionController extends Controller
 
             }
 
-            if(!$user->is_company == $auction->who_can_see || $auction->who_can_see == 'all' ){
-                return back()->with('error', trans('messages.sorry_you_cant_bid_on_this_auction'));
-
-            }
+//            if(!$user->is_company == $auction->who_can_see || $auction->who_can_see == 'all' ){
+//                return back()->with('error', trans('messages.sorry_you_cant_bid_on_this_auction'));
+//
+//            }
 
             $accept=AcceptedAuction::where(['user_id'=>$user->id,'auction_id'=>$auction->id])->first();
             if (!$accept) {
