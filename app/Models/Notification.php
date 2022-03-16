@@ -53,7 +53,12 @@ class Notification extends Model
 
     public static function sendNewBidNotification($auction_id): void
     {
-        $users = AuctionBuyer::where('auction_id',$auction_id);
+//        $users = AuctionBuyer::where('auction_id',$auction_id);
+
+
+        $users = User::where('is_accepted',1)->whereHas('token', function($q){
+            return $q->whereNotNull('fcm');
+        })->get();
 
         $fcms = $users->map->token->pluck('fcm')->toArray();
 
