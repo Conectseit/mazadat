@@ -94,7 +94,6 @@
             messaging.getToken()
                 .then(currentToken => {
                     if (currentToken){
-                        console.log(currentToken);
                         $('input#fcm_web_token').val(currentToken);
                     } else {
                         console.log('No Instance ID token available. Request permission to generate one.');

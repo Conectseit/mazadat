@@ -80,7 +80,6 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-        dd($request->all());
         $col = self::is_email($request->email) ? 'email' : 'mobile';
 
         Auth::attempt([$col => $request->email, 'password' => $request->password]);
@@ -111,7 +110,7 @@ class AuthController extends Controller
         }
 
         $jwt_token = JWTAuth::fromUser($user);
-        auth()->user()->token->update(['jwt' => $jwt_token,'fcm_web_token'=>$request->fcm_web_token]);
+        auth()->user()->token->update(['jwt' => $jwt_token,'fcm_web_token'=>$request->fcm_web_token ?? 'none']);
 
         return redirect()->route('front.home');
     }
