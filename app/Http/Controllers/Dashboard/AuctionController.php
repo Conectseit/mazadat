@@ -234,16 +234,16 @@ class AuctionController extends Controller
 
     public function accept($id)
     {
-
         $auction = Auction::findOrFail($id);
         if(is_null($auction->start_date) && is_null($auction->end_date ) )
             {
                 return redirect()->route('auctions.index')->with('error', trans('messages.Sorry_you_should_complete_all_data_for_auction_first'));
             }
+
         $auction->update(['is_accepted'=> 1]);
 
-//        dd(auth()->user()->mobile);
-        SmsController::send_sms($auction->seller()->mobile, 'تم قبول مزادك من ادرة موقع مزادات' );
+
+        SmsController::send_sms($auction->seller->mobile, 'تم قبول مزادك من ادرة موقع مزادات' );
         Notification::sendNewAuctionNotification($auction->id);
 
         return redirect()->route('auctions.index')->with('success', trans('messages.accept_auction'));

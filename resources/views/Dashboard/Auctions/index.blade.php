@@ -252,13 +252,13 @@
                                         <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
                                             <thead>
                                             <tr style="background-color:gainsboro">
-                                                <th class="text-center">Serial number</th>
+{{--                                                <th class="text-center">Serial number</th>--}}
                                                 <th class="text-center">قسم</th>
                                                 <th class="text-center">{{ trans('messages.image') }}</th>
                                                 <th class="text-center">{{ trans('messages.name') }}</th>
                                                 <th class="text-center">{{ trans('messages.auction.start_auction_price') }}</th>
 {{--                                                <th class="text-center">{{ trans('messages.auction.value_of_increment') }}</th>--}}
-                                                <th class="text-center">{{ trans('messages.auction.remaining_days') }}</th>
+{{--                                                <th class="text-center">{{ trans('messages.auction.remaining_days') }}</th>--}}
                                                 <th class="text-center">@lang('messages.since')</th>
                                                 <th class="text-center">@lang('messages.form-actions')</th>
                                             </tr>
@@ -266,7 +266,7 @@
                                             <tbody>
                                             @foreach($on_progress_auctions as $auction)
                                                 <tr id="auction-row-{{ $auction->id }}">
-                                                    <td class="text-center">{{ $auction->serial_number }}</td>
+{{--                                                    <td class="text-center">{{ $auction->serial_number }}</td>--}}
                                                     <td class="text-center">{{ $auction->category->$name }}</td>
                                                     <td class="text-center">
                                                         <a href="{{ $auction->first_image_path }}" data-popup="lightbox">
@@ -276,7 +276,22 @@
                                                     <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
                                                     <td class="text-center"> {{ ($auction->start_auction_price ) }}</a></td>
 {{--                                                    <td class="text-center"> {{ ($auction->value_of_increment ) }}</a></td>--}}
-                                                    <td class="text-center">{{$auction->remaining_time['days']}}</td>
+{{--                                                    <td class="text-center">{{$auction->remaining_time['days']}}</td>--}}
+
+
+                                                    <td class="text-center">
+                                                        @if($auction->is_accepted ==1)
+                                                            <a href="auction/{{$auction->id}}/not_accept/">
+                                                                <span class="badge badge-danger" >  <i class="icon-close2"> </i>  {{trans('messages.not_accept')}} </span>
+                                                            </a>
+                                                            {{--                                                           @else--}}
+                                                            {{--                                                               <a href="auction/{{$auction->id}}/accept/">--}}
+                                                            {{--                                                                   <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.accept')}} </span>--}}
+                                                            {{--                                                               </a>--}}
+                                                            {{--                                                                <a href="buyer/{{$auction->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
+                                                        @endif
+                                                    </td>
+
                                                     <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
                                                     <td class="text-center">
                                                         <div class="list-icons text-center">

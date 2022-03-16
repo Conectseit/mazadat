@@ -102,6 +102,8 @@ Route::group(
 
 
 
+                Route::get('auction/{id?}/done', [AuctionController::class, 'done'])->name('auction/done');
+
                 Route::get('auction/{id?}/accept', [AuctionController::class, 'accept'])->name('auction/accept');
                 Route::get('auction/{id?}/not_accept', [AuctionController::class, 'not_accept'])->name('auction/not_accept');
 

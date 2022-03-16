@@ -92,7 +92,7 @@
                             <ul>
 
                             @foreach(\App\Models\Category::has('auctions')->get() as $category)
-                                <li><a href="">{{ substr($category->auctions->last()->$name,0,15) }}</a></li>
+                                <li><a href="{{route('front.auction_details',$category->auctions->last()->id)}}">{{ substr($category->auctions->last()->$name,0,15) }}</a></li>
                             @endforeach
 
 {{--                                @foreach($latest_auctions ->orderBy('id', 'desc')->take(4)->get() as $auction)--}}

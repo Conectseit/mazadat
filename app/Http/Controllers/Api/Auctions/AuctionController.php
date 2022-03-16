@@ -12,6 +12,7 @@ use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\AuctionData;
+use App\Models\Notification;
 use App\Models\WatchedAuction;
 use Exception;
 use Illuminate\Http\Request;
@@ -128,6 +129,7 @@ class AuctionController extends PARENT_API
 
             $user_current_available_limit= $user->available_limit - ( $request->offer);
             $user->update(['available_limit' => $user_current_available_limit]);
+            Notification::sendNewBidNotification($auction->id);
 
             DB::commit();
             return responseJson(true, trans('api.updated_successfully'));

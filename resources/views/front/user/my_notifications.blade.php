@@ -12,9 +12,9 @@
     @include('front.layouts.parts.alert')
 
     <section class="notifications-page">
-        @if($notifications->count() > 0)
+        @if($_notifications->count() > 0)
         <div class="container">
-            @foreach($notifications as $notification)
+            @foreach($_notifications as $notification)
             <div class="notification-item">
                 <i class="fal fa-exclamation-circle"></i>
                 <div class="text">

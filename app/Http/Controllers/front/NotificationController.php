@@ -11,7 +11,12 @@ class NotificationController extends Controller
 {
     public function my_notification()
     {
-        $data['notifications'] =  auth()->user()->notifications()->get();
+
+        $notifications = Notification::whereNull('user_id')->latest()->get();
+        $data['_notifications'] = $notifications->merge(auth()->user()->notifications);
+
+
+//        $data['notifications'] =  auth()->user()->notifications()->get();
         return view('front.user.my_notifications',$data);
     }
 }

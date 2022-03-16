@@ -22,7 +22,7 @@
                                 <label for="email" class="form-label"> البريد الالكتروني</label>
                             </div>
                             <div class="col-sm-8">
-                                 <input type="hidden" name="fcm_web_token" value="">
+                                 <input type="hidden" id="fcm_web_token" name="fcm_web_token" value="">
                                 <input type="text" class="form-control @error('email') is-invalid @enderror"
                                        id="email" name="email" aria-describedby="emailHelp"
 {{--                                       value="{{ old('email') }}"--}}
@@ -95,7 +95,7 @@
                 .then(currentToken => {
                     if (currentToken){
                         console.log(currentToken);
-                        $('input[name=fcm_web_token]').val(currentToken);
+                        $('input#fcm_web_token').val(currentToken);
                     } else {
                         console.log('No Instance ID token available. Request permission to generate one.');
                     }
