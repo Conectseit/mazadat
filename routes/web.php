@@ -111,7 +111,7 @@ Route::group(
 //        Route::post('/ajax-delete-auction', [AuctionController::class, 'destroy'])->name('front.ajax-delete-auction');
         Route::any('delete-auction/{auction}', [AuctionController::class, 'deleteAuction'])->name('front.delete-auction');
         Route::any('auction_show_update/{auction}', [AuctionController::class, 'auction_show_update'])->name('front.auction_show_update');
-        Route::any('auction_update', [AuctionController::class, 'auction_update'])->name('front.auction_update');
+        Route::any('auction_update/{auction}', [AuctionController::class, 'auction_update'])->name('front.auction_update');
 
 
         // ============ // profile ================

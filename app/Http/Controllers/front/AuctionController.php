@@ -12,6 +12,7 @@ use App\Models\AuctionBuyer;
 use App\Models\AuctionData;
 use App\Models\AuctionImage;
 use App\Models\Category;
+use App\Models\InspectionImage;
 use App\Models\Notification;
 use App\Models\Option;
 use App\Models\User;
@@ -36,13 +37,20 @@ class AuctionController extends Controller
         {
             $user = auth()->user();
 
+
             if( $user->is_verified == 0)
             {
                 return back()->with('error', trans('messages.Sorry_you_should_wait_until_admin_accept_you'));
             }
-            if(!$auction = Auction::find($id))
+            if(!$auction = Auction::find($id)){
                 return back()->with('error', trans('messages.not_found_auction'));
 
+            }
+
+            if(!$user->is_company == $auction->who_can_see || $auction->who_can_see == 'all' ){
+                return back()->with('error', trans('messages.sorry_you_cant_bid_on_this_auction'));
+
+            }
 
             $accept=AcceptedAuction::where(['user_id'=>$user->id,'auction_id'=>$auction->id])->first();
             if (!$accept) {
@@ -259,16 +267,6 @@ class AuctionController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
     public  function deleteAuction (Auction $auction)
     {
         $auction= Auction::where([ 'auction_id' => $auction->id,]);
@@ -280,31 +278,69 @@ class AuctionController extends Controller
 
     public function auction_show_update($id)
     {
-
         $data['auction'] = Auction::find($id);
         $data['categories'] = Category::all();
         $data['options'] = Option::all();
-
         $data['users'] = User::where('is_verified', 1)->get();
+        $data['images'] = AuctionImage::where(['auction_id' => $id])->get();
+        $data['inspection_report_images'] = InspectionImage::where(['auction_id' => $id])->get();
+
 
         return view('front.auctions.update_auction',$data);
     }
 
 
 
-    public function destroy(Request $request)
+    public function auction_update(Request $request, $id)
     {
-        $auction = Auction::find($request->id);
-        if (!$auction) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, auction is not exists !!']);
-//            foreach ($auction->auctionimages as $image) {
-//                unlink('uploads/auctions/' . $image->image);
-//            }
-        try {
-            $auction->delete();
-            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
-        } catch (Exception $e) {
-            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
+        $auction = Auction::find($id);
+
+        $request_data = $request->except(['images', 'inspection_report_images']);
+        $data = [];
+        if ($request->hasfile('images')) {
+            foreach ($auction->auctionimages as $image) {
+                unlink('uploads/auctions/' . $image->image);
+                $image->delete();
+            }
+            foreach ($request->file('images') as $key => $img) {
+                $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
+            }
+            $auction_images = DB::table('auction_images')->insert($data);
         }
+
+        $dataa = [];
+        if ($request->hasfile('inspection_report_images')) {
+            foreach ($auction->inspectionimages as $image) {
+                unlink('uploads/auctions/' . $image->image);
+                $image->delete();
+            }
+            foreach ($request->file('inspection_report_images') as $key => $img) {
+                $dataa[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
+            }
+            $auction_inspection_images = DB::table('inspection_images')->insert($dataa);
+        }
+
+        $auction = $auction->update($request_data);
+        return redirect()->route('front.my_auctions')->with('success', trans('messages.messages.updated_successfully'));
     }
+
+
+
+
+
+//    public function destroy(Request $request)
+//    {
+//        $auction = Auction::find($request->id);
+//        if (!$auction) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, auction is not exists !!']);
+////            foreach ($auction->auctionimages as $image) {
+////                unlink('uploads/auctions/' . $image->image);
+////            }
+//        try {
+//            $auction->delete();
+//            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
+//        } catch (Exception $e) {
+//            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
+//        }
+//    }
 
 }

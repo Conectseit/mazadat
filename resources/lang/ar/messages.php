@@ -94,6 +94,7 @@ return [
     'no_data_found' => 'لاتوجد بيانات مضافة حتي الان ',
     'description' => 'الوصف',
      'edit-var'              => 'تعديل :var',
+     'update'              => 'تعديل ',
      'the end date should between'              => 'تاريخ انتهاء المزاد يجب ان يكون بين',
 
 
@@ -442,6 +443,7 @@ return [
         'allowed_take_photo' => 'امكانية طلب التصوير للمزاد',
         'location' => 'موقع المزاد',
         'unique' => ' المزادات المميزة',
+        'update' => ' تعديل المزاد',
 
     ],
     'terms' => 'الشروط والاحكام  ',

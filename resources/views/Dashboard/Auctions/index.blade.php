@@ -160,8 +160,6 @@
                                    </div>
                                 </div>
 
-
-
                                 <div class="tab-pane " id="not_accepted">
                                    <div class="row">
                                        @if($not_accepted_auctions->count() > 0)
@@ -249,8 +247,6 @@
                                        @endif
                                    </div>
                                 </div>
-
-
                                 <div class="tab-pane" id="on_progress_auctions">
                                     @if($on_progress_auctions->count() > 0)
                                         <table class="table datatable-basic" id="auctions" style="font-size: 16px;">

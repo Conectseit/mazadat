@@ -40,5 +40,8 @@ class Category extends Model
     {
         return $this->hasManyThrough(OptionDetail::class, Option::class);
     }
-
+    public function auctions()
+    {
+        return $this->hasMany(Auction::class);
+    }
 }
