@@ -24,10 +24,10 @@ class AuctionController extends Controller
 {
     public function index()
     {
-        $data['auctions'] = Auction::latest()->paginate(200);
-        $data['on_progress_auctions'] = Auction::where('status', 'on_progress')->where('is_accepted', 1)->latest()->paginate(200);
-        $data['done_auctions'] = Auction::where('status', 'done')->where('is_accepted', 1)->latest()->paginate(200);
-        $data['not_accepted_auctions'] = Auction::where('is_accepted', 0)->latest()->paginate(200);
+        $data['auctions'] = Auction::latest()->get();
+        $data['on_progress_auctions'] = Auction::where('status', 'on_progress')->where('is_accepted', 1)->latest()->get();
+        $data['done_auctions'] = Auction::where('status', 'done')->where('is_accepted', 1)->latest()->get();
+        $data['not_accepted_auctions'] = Auction::where('is_accepted', 0)->latest()->get();
         return view('Dashboard.Auctions.index', $data);
     }
 

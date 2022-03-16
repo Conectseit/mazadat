@@ -113,24 +113,10 @@ class AuctionController extends Controller
             $user_current_available_limit= $user->available_limit - ( $offer);
             $user->update(['available_limit' => $user_current_available_limit]);
 
+
+            Notification::sendNewBidNotification($auction->id);
+
             DB::commit();
-
-
-
-
-//            $users = AuctionBuyer::where('auction_id' , $auction->id)->get();
-//
-//            foreach ($users->buyer as $user){
-//                if ($user->token->fcm != null ) {
-//                    Firebase::send([
-//                        'title'      => 'kk',
-//                        'text'       => 'ooo',
-//                        'fcm_tokens' => $user->token->fcm
-//                    ]);
-//                }
-//
-//            }
-
 
             return back()->with('success', trans('messages.bid_done_successfully'));
         }
@@ -275,5 +261,50 @@ class AuctionController extends Controller
 
 
 
+
+
+
+
+
+
+
+
+    public  function deleteAuction (Auction $auction)
+    {
+        $auction= Auction::where([ 'auction_id' => $auction->id,]);
+        $auction->delete();
+        return back()->with('success', trans('messages.deleted_your_auction_successfully'));
+    }
+
+
+
+    public function auction_show_update($id)
+    {
+
+        $data['auction'] = Auction::find($id);
+        $data['categories'] = Category::all();
+        $data['options'] = Option::all();
+
+        $data['users'] = User::where('is_verified', 1)->get();
+
+        return view('front.auctions.update_auction',$data);
+    }
+
+
+
+    public function destroy(Request $request)
+    {
+        $auction = Auction::find($request->id);
+        if (!$auction) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, auction is not exists !!']);
+//            foreach ($auction->auctionimages as $image) {
+//                unlink('uploads/auctions/' . $image->image);
+//            }
+        try {
+            $auction->delete();
+            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
+        } catch (Exception $e) {
+            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
+        }
+    }
 
 }

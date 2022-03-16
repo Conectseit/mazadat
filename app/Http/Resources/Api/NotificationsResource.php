@@ -6,20 +6,17 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class NotificationsResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
     public function toArray($request)
     {
 
         return [
             'title'         => $this->title,
             'text'          => $this->text,
-            'auction_id'    => $this->is_seen,
-//            'is_seen'       => $this->is_seen,
+            'auction'    => [
+                'id' => isset($this->auction_id)?$this->auction_id:'null',
+                'image' => isset($this->auction->first_image_path)?$this->auction->first_image_path:'null', // url full
+            ],
+            'is_seen'       => $this->is_seen,
             'send_at'       => $this->created_at->diffForHumans(),
         ];
 

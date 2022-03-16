@@ -15,7 +15,6 @@
 <script src="{{asset('Front/assets/js/lightbox.min.js')}}"></script>
 <script src="{{asset('Front/assets/js/main.js')}}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
 
 
 <script>

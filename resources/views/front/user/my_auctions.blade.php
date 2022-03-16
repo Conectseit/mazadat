@@ -47,7 +47,7 @@
                                                     <p class="start-date info-item">
                                                         <i class="fal fa-calendar-alt"></i>
                                                                                             يبدأ فى الثلاثاء , 16/11/2021 , 10:10
-                                                        {{trans('messages.auction.start_at')}} : {{ ($auction->start_date->format('l, m/d/Y') ) }}
+                                                        {{trans('messages.auction.start_at')}} : {{  isset($auction->start_date)?$auction->start_date->format('l, m/d/Y'):''  }}
                                                     </p>
                                                     <div class="row">
                                                         <div class="col-sm-6">
@@ -106,7 +106,7 @@
                                                 <p class="start-date info-item">
                                                     <i class="fal fa-calendar-alt"></i>
                                                     يبدأ فى الثلاثاء , 16/11/2021 , 10:10
-                                                    {{trans('messages.auction.start_at')}} : {{ ($auction->start_date->format('l, m/d/Y') ) }}
+                                                    {{trans('messages.auction.start_at')}} : {{  isset($auction->start_date)?$auction->start_date->format('l, m/d/Y'):''  }}
                                                 </p>
                                                 <div class="row">
                                                     <div class="col-sm-6">
@@ -135,10 +135,14 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-2">
-                                        {{--                                            <div class="buttons">--}}
-                                        {{--                                                <a href="{{route('front.auction_details',$auction->id)}}" class="bid"> متابعة</a>--}}
-                                        {{--                                                <a href="{{route('front.cancel_bid_auction',$auction->id)}}" class="remove">الخروج</a>--}}
-                                        {{--                                            </div>--}}
+                                        <div class="buttons">
+                                            <a href="{{route('front.auction_show_update',$auction->id)}}" class="bid">@lang('messages.update')</a>
+                                            <a href="{{route('front.delete-auction',$auction->id)}}" class="remove">@lang('messages.delete')</a>
+{{--                                            <a data-id="{{ $auction->id }}" class="delete-action"--}}
+{{--                                               href="{{ Url('/auction/auction/'.$auction->id) }}">--}}
+{{--                                                <i class="icon-database-remove"></i>@lang('messages.delete')--}}
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -211,8 +215,63 @@
     </section>
 @stop
 
-@push('scripts')
-    <script>
+@section('scripts')
+{{--    @include('Dashboard.layouts.parts.ajax_delete', ['model' => 'auction'])--}}
 
-    </script>
-@endpush
+
+{{--<script>--}}
+{{--    let modelTable = '{{ str()->plural('auction') }}';--}}
+{{--    let currentModel = '{{ 'auction' }}';--}}
+
+{{--    $('a.delete-action').on('click', function (e) {--}}
+{{--        var id = $(this).data('id');--}}
+{{--        var tbody = $('table#'+modelTable+' tbody');--}}
+{{--        var count = tbody.data('count');--}}
+
+{{--        e.preventDefault();--}}
+
+{{--        swal({--}}
+{{--            title: "{{ trans('messages.confirm-delete-message-var', ['var' => trans('messages.'.'auction'.'.'.'auction')]) }}",--}}
+{{--            icon: "warning",--}}
+{{--            buttons: true,--}}
+{{--            dangerMode: true,--}}
+{{--        })--}}
+{{--            .then((willDelete) => {--}}
+{{--                if (willDelete) {--}}
+{{--                    var tbody = $('table#'+modelTable+' tbody');--}}
+{{--                    var count = tbody.data('count');--}}
+{{--                    $.ajax({--}}
+{{--                        type: 'POST',--}}
+{{--                        --}}{{--url: '{{ Url('dashboard/ajax-delete-' . auction) }}',--}}
+{{--                        url: '{{ route('front.ajax-delete-' . 'auction') }}',--}}
+{{--                        --}}{{--url: '{{ Url('/'.auction.'/'.auction.'/'.auction->id) }}',--}}
+{{--                            --}}{{--url: '{{ route('categories.destroy',$category->id) }}',--}}
+{{--                        data: {id: id},--}}
+{{--                        success: function (response) {--}}
+{{--                            if (response.deleteStatus) {--}}
+{{--                                // $('#city-row-'+id).fadeOut(); count = count - 1;tbody.attr('data-count', count);--}}
+{{--                                $('#'+currentModel+'-row-' + id).remove();--}}
+{{--                                count = count - 1;--}}
+{{--                                tbody.attr('data-count', count);--}}
+{{--                                swal(response.message, {icon: "success"});--}}
+{{--                            }--}}
+{{--                            else {--}}
+{{--                                swal(response.error);--}}
+{{--                            }--}}
+{{--                        },--}}
+{{--                        error: function (x) {--}}
+{{--                            crud_handle_server_errors(x);--}}
+{{--                        },--}}
+{{--                        complete: function () {--}}
+{{--                            if (count === 1) tbody.append(`<tr><td colspan="5"><strong>No data available in table</strong></td></tr>`);--}}
+{{--                        }--}}
+{{--                    });--}}
+{{--                }--}}
+{{--                else {--}}
+{{--                    swal("تم الغاء الحذف");--}}
+{{--                }--}}
+{{--            });--}}
+{{--    });--}}
+
+{{--</script>--}}
+@stop

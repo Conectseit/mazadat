@@ -34,10 +34,8 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                <form action="{{ route('auctions.store') }}"  method="post"
-                      id="submitted-form"
-                      class =" stepy-basic wizard-form steps-validation"
-                enctype="multipart/form-data">
+                <form action="{{ route('auctions.store') }}"  method="post" id="submitted-form"
+                      class =" stepy-basic wizard-form steps-validation" enctype="multipart/form-data">
                     @csrf
                     <fieldset title="1">
                         <legend class="text-semibold">{{ trans('messages.auction.basic_data') }}</legend><br><br>
@@ -97,7 +95,6 @@
                         <legend class="text-semibold">{{ trans('messages.auction.options') }}</legend>
                         <div class="row">
 
-
                             <div class="form-group">
                                 <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_category') }} </label>
                                 <div class="col-lg-6">
@@ -120,12 +117,6 @@
                                     <div class="select-inputs-options"></div>
                                 </div>
                             </div>
-
-
-
-
-
-
 
                             {{-- ====================== select one option ============== --}}
 {{--                            <div class="form-group">--}}
@@ -226,7 +217,7 @@
                                 </label>
 
                                 <label class="radio-inline">
-                                    <input type="radio" value="users" class="styled" name="who_can_see">
+                                    <input type="radio" value="person" class="styled" name="who_can_see">
                                     {{trans('messages.auction.users')}}
                                 </label>
                                 <label class="radio-inline">
@@ -243,7 +234,7 @@
                                 </label>
 
                                 <label class="radio-inline">
-                                    <input type="radio" value="users" class="styled" name="who_can_buy">
+                                    <input type="radio" value="person" class="styled" name="who_can_buy">
                                     {{trans('messages.auction.users')}}
                                 </label>
                                 <label class="radio-inline">
@@ -252,21 +243,72 @@
                                 </label>
                             </div>
 
+{{--                            <div class="form-group">--}}
+{{--                                <label>@lang('messages.auction.images')</label>--}}
+{{--                                <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
+{{--                                <input type="file" multiple id="gallery-photo-add"  class="form-control" name="images[]">--}}
+{{--                                <div class="gallery"></div>--}}
+{{--                            </div>--}}
+
+
+
+{{--                            <hr>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label>@lang('messages.auction.inspection_report_images')</label>--}}
+{{--                                <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
+{{--                            </div>--}}
+{{--                            <hr>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label>@lang('messages.auction.location'):</label>--}}
+{{--                                <div class="col-lg-12">--}}
+{{--                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">--}}
+{{--                                    <div id="map"></div>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-lg-6">--}}
+{{--                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control">--}}
+{{--                                </div>--}}
+{{--                                <div class="col-lg-6">--}}
+{{--                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">--}}
+{{--                                </div>--}}
+{{--                            </div><br>--}}
+
+
+                        </div>
+                    </fieldset>
+
+                    <fieldset title="6">
+                        <legend class="text-semibold">@lang('messages.auction.images')</legend><br><br>
+                        <div class="row">
                             <div class="form-group">
                                 <label>@lang('messages.auction.images')</label>
-                                <input type="file" class="form-control " name="images[]" multiple="multiple"/>
+                                {{--                                <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
+                                <input type="file" multiple id="gallery-photo-add"  class="form-control" name="images[]">
+                                <div class="gallery"></div>
                             </div>
-
-                            <hr>
+                        </div>
+                    </fieldset>
+                    <fieldset title="7">
+                        <legend class="text-semibold">@lang('messages.auction.images')</legend><br><br>
+                        <div class="row">
                             <div class="form-group">
-                                <label>@lang('messages.auction.inspection_report_images')</label>
-                                <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>
+                                <div class="form-group">
+                                    <label>@lang('messages.auction.inspection_report_images')</label>
+{{--                                    <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
+                                    <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">
+                                    <div class="gallery1"></div>
+                                </div>
+
                             </div>
-                            <hr>
+                        </div>
+                    </fieldset>
+
+                    <fieldset title="8">
+                        <legend class="text-semibold">@lang('messages.auction.location')</legend><br><br>
+                        <div class="row">
                             <div class="form-group">
                                 <label>@lang('messages.auction.location'):</label>
                                 <div class="col-lg-12">
-{{--                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">--}}
+                                    {{--                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">--}}
                                     <div id="map"></div>
                                 </div>
                                 <div class="col-lg-6">
@@ -276,10 +318,10 @@
                                     <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">
                                 </div>
                             </div><br>
-
-
                         </div>
                     </fieldset>
+
+
                     <button type="submit" class="btn btn-primary stepy-finish mt-5" id="save-form-btn">{{ trans('messages.add_and_forward_to_list') }}
                         <i class="icon-check position-right"></i></button>
                 </form>
@@ -329,6 +371,6 @@
 
     @include('Dashboard.layouts.parts.map')
 @include('Dashboard.Auctions.ajax_get_options_by_category_id')
-
+@include('Dashboard.Auctions.image_preview')
 
 @endsection

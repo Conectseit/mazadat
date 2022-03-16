@@ -91,14 +91,11 @@
                             </h4>
                             <ul>
 
-
-
-
-
 {{--                            @foreach($categories->whereHas('auctions') ->orderBy('id', 'desc')->first() as $auction)--}}
 
 {{--                            <li><a href="{{route('front.auction_details',$auction->id)}}">{{ substr($auction->$name,0,15) }}</a></li>--}}
 {{--                            @endforeach--}}
+
 
 {{--                                @foreach($latest_auctions ->orderBy('id', 'desc')->take(4)->get() as $auction)--}}
 

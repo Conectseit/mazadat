@@ -4,16 +4,11 @@ namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PARENT_API;
-use App\Http\Requests\Api\DocumentRequest;
-use App\Http\Requests\Api\TrafficFileNumberRequest;
-use App\Http\Requests\Api\UploadPassportRequest;
 use App\Http\Requests\Api\user\UploadPaymentReceiptRequest;
+use App\Http\Resources\Api\auction\PendingAuctionsResource;
 use App\Http\Resources\Api\CategoryAuctionsResource;
-use App\Http\Resources\Api\DocumntsResource;
 use App\Models\Auction;
-use App\Models\Document;
 use App\Models\Payment;
-use App\Models\TrafficFileNumber;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -84,7 +79,7 @@ class UserController extends PARENT_API
 
         if ($auctions->where('status', 'on_progress')->where('is_accepted',0)->count() > 0)
         {
-            return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'on_progress')->where('is_accepted',0)));  //OK
+            return responseJson(true, trans('api.auction_details'), PendingAuctionsResource::collection($auctions->where('status', 'on_progress')->where('is_accepted',0)));  //OK
         } else {
             return responseJson(false, trans('api.there_is_pending_auctions'), null);  //OK
         }

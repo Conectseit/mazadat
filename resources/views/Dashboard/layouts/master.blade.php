@@ -51,6 +51,7 @@
     <script type="text/javascript" src="{{ url('assets/js/sweetalert.min.js') }}"></script>
     <script type="text/javascript" src="{{ url('assets/js/moment.min.js') }}"></script>
     <script type="text/javascript" src="{{ url('assets/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
+{{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>--}}
 
     {{--==============  end teeest ====================================--}}
 

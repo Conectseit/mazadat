@@ -17,15 +17,11 @@ class NotificationController extends PARENT_API
 {
     public function index()
     {
-        $user = auth('api')->user();
-        $notifications = Notification::all();
-//        $notifications = Notification::where('user_id',$user->id)->get();
+        $notifications = Notification::whereNull('user_id')->latest()->get();
 
-        if ($notifications->count() <= 0) {
-            return responseJson(false, trans('api.there_is_no_notifications_yet'), null);  //OK
-        }
-        return responseJson(true, trans('api.all_notifications'),NotificationsResource::collection($notifications) );  //OK don-successfully
+        $_notifications = $notifications->merge(auth()->guard('api')->user()->notifications);
 
+        return responseJson(true, trans('api.all_notifications'),NotificationsResource::collection($_notifications) );  //OK don-successfully
     }
 
 }
