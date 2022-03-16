@@ -22,8 +22,8 @@ class Notification extends Model
 
         $tokens = $users->map->token->pluck('fcm_web_token')->toArray();
 
-        $title = 'مزايدة جديدة';
-        $text = 'تم إضافة مزايدة جديدة'; // write your message here .. later
+        $title = 'مزاد جديد';
+        $text = 'تم إضافة مزاد جديد'; // write your message here .. later
 
         Firebase::send([
             'title'      => $title,

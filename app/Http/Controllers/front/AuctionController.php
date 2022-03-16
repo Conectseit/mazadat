@@ -122,8 +122,8 @@ class AuctionController extends Controller
             $user->update(['available_limit' => $user_current_available_limit]);
 
 
-//            Notification::sendNewBidNotification($auction->id);
-            Notification::sendNewAuctionNotification($auction->id);
+            Notification::sendNewBidNotification($auction->id);
+//            Notification::sendNewAuctionNotification($auction->id);
 
 
             DB::commit();
