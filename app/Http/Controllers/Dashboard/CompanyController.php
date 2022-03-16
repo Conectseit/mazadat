@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SmsController;
 use App\Http\Requests\Dashboard\SellerRequest;
 use App\Http\Requests\Dashboard\users\CompanyRequest;
 use App\Http\Requests\Dashboard\users\WalletRequest;
@@ -149,6 +150,8 @@ class CompanyController extends Controller
     {
         $company = User::findOrFail($id);
         $company->update(['is_accepted'=> 1,'is_verified'=> 1]);
+        SmsController::send_sms($company->mobile, 'تم قبول حسابك  من ادرة موقع مزادات' );
+
         return back();
     }
     public function not_accept($id)

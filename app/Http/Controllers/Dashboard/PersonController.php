@@ -171,14 +171,16 @@ class PersonController extends Controller
 
     public function ban($id)
     {
-        $company = User::findOrFail($id);
-        $company->update(['ban'=> 1]);
+        $person = User::findOrFail($id);
+        $person->update(['ban'=> 1]);
+        SmsController::send_sms($person->mobile, 'تم حظر حسابك  من ادرة موقع مزادات' );
+
         return back();
     }
     public function not_ban($id)
     {
-        $company = User::findOrFail($id);
-        $company->update(['ban'=> 0]);
+        $person = User::findOrFail($id);
+        $person->update(['ban'=> 0]);
         return back();
     }
 

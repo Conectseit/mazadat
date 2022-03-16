@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SmsController;
 use App\Http\Requests\Dashboard\AuctionRequest;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
@@ -240,6 +241,9 @@ class AuctionController extends Controller
                 return redirect()->route('auctions.index')->with('error', trans('messages.Sorry_you_should_complete_all_data_for_auction_first'));
             }
         $auction->update(['is_accepted'=> 1]);
+
+//        dd(auth()->user()->mobile);
+        SmsController::send_sms($auction->seller()->mobile, 'تم قبول مزادك من ادرة موقع مزادات' );
         Notification::sendNewAuctionNotification($auction->id);
 
         return redirect()->route('auctions.index')->with('success', trans('messages.accept_auction'));

@@ -70,7 +70,7 @@ class PaymentController extends Controller
         $text .= " - IBan :  " . $iban."\n";
         $text .= " - swift code :  " . $swift_code."\n";
         $text .= " - routing number :  " . $routing_number;
-        dd(auth()->user()->mobile);
+//        dd(auth()->user()->mobile);
         SmsController::send_sms(auth()->user()->mobile, $text);
 
 //        SmsController::send_sms(removePhoneZero(auth()->user()->mobile,'966'), $text);
