@@ -40,7 +40,7 @@ Route::group(
 
 
     // ============ // category ================
-    Route::get('category/{id}/auctions', [CategoryController::class, 'categoryAuctions'])->name('front.category_auctions');
+    Route::get('category/{category}/auctions', [CategoryController::class, 'categoryAuctions'])->name('front.category_auctions');
 //    Route::post('search/{id}', [CategoryController::class, 'search'])->name('front.search');
     Route::post('main_filter_category/{id}/auctions', [FilterController::class,'main_filter'])->name('front.main_filter');
     Route::post('filter_category/{id}/auctions', [FilterController::class,'filterCategory'])->name('front.filter_category');

@@ -19,8 +19,8 @@ class FilterController extends Controller
     {
         $auctions_ids = AuctionData::whereIn('option_details_id', $request->option_detail_id)->get()->pluck('auction_id')->toArray();
 //        $data['auctions'] = Auction::find($auctions_ids);
-        $data['on_progress_auctions'] = Auction::find($auctions_ids)->where('status', 'on_progress')->where('is_accepted',1);
-        $data['done_auctions'] = Auction::find($auctions_ids)->where('status', 'done')->where('is_accepted',1);
+        $data['on_progress_auctions'] = Auction::find($auctions_ids)->where('status', 'on_progress')->where('is_accepted',1)->paginate(20);
+        $data['done_auctions'] = Auction::find($auctions_ids)->where('status', 'done')->where('is_accepted',1)->paginate(20);
 
 
 
@@ -56,8 +56,8 @@ class FilterController extends Controller
         }
 
 //        $data['auctions'] = $query->where('category_id', $id)->where('status', 'on_progress')->get();
-        $data['on_progress_auctions'] = $query->where('category_id', $id)->where('status', 'on_progress')->where('is_accepted',1)->get();
-        $data['done_auctions'] = $query->where('category_id', $id)->where('status', 'done')->where('is_accepted',1)->get();
+        $data['on_progress_auctions'] = $query->where('category_id', $id)->where('status', 'on_progress')->where('is_accepted',1)->paginate(20);
+        $data['done_auctions'] = $query->where('category_id', $id)->where('status', 'done')->where('is_accepted',1)->paginate(20);
 
 
         return view('front.auctions.category_auctions',$data);

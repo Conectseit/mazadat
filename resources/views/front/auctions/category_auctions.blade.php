@@ -25,7 +25,6 @@
                             <button class="search-btn" id="searchBtn"><i class="fal fa-search"></i></button>
                             <form class="search-form" id="searchForm"
                                   action="{{ route('front.category_auctions',$category->id) }}" method="get">
-                                @csrf
                                 <input class="form-control" type="search" name="search_by_auction_name"
                                        placeholder="عن ماذا تبحث" aria-label="Search">
                             </form>

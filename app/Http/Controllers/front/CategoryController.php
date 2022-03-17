@@ -12,20 +12,28 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
 
-    public function categoryAuctions(Request $request, $id)
+    public function categoryAuctions(Request $request, Category $category)
     {
         $name = 'name_' . app()->getLocale();
-        $query = Auction::query();
-        if ($category = Category::where('id', $id)->find($id)) {
-            if ($request->has('search_by_auction_name')) {
-                $query->where($name, 'like', '%' . $request['search_by_auction_name'] . '%');
-            }
-            $data['on_progress_auctions'] = $query->where('category_id', $id)->where('status', 'on_progress')->where('is_accepted',1)->paginate('20');
-            $data['done_auctions'] = $query->where('category_id', $id)->where('status', 'done')->get();
-        }
 
-        $data['category'] = Category::where('id', $id)->first();
-        $data['category_options'] = Option::where('category_id', $id)->with('option_details')->get();
+        $auctions = $category->auctions;
+
+        if ($request->has('search_by_auction_name'))
+        {
+            $_auctions = $category->auctions()->where($name, 'like', '%' . $request->search_by_auction_name . '%')->get();
+
+            $data['on_progress_auctions'] = $_auctions->where('category_id', $category->id)->where('status', 'on_progress')->where('is_accepted',1)->paginate(20);
+
+            $data['done_auctions'] = $_auctions->where('category_id', $category->id)->where('status', 'done')->paginate(20);
+        }
+        else
+        {
+            $data['on_progress_auctions'] = $auctions->where('category_id', $category->id)->where('status', 'on_progress')->where('is_accepted',1)->paginate(20);
+
+            $data['done_auctions'] = $auctions->where('category_id', $category->id)->where('status', 'done')->paginate(20);
+        }
+        $data['category'] = $category;
+        $data['category_options'] = Option::where('category_id', $category->id)->with('option_details')->get();
 
         return view('front.auctions.category_auctions',$data);
     }
