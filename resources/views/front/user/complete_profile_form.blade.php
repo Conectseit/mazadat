@@ -20,7 +20,8 @@
                                         {{--                                        <option selected disabled>{{ auth()->user()->nationality->$name }}</option>--}}
 
                                         @foreach ($nationalities as $nationality)
-                                            <option value="{{ $nationality->id }}"> {{ $nationality->$name }} </option>
+                                            <option {{isset(auth()->user()->nationality_id)==$nationality->id? 'selected' : ''}}
+                                                value="{{ $nationality->id }}"> {{ $nationality->$name }} </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -34,13 +35,10 @@
                                     <select class=" select form-select form-control" id="cities" name="city_id"
                                             aria-label="Default select example">
 
-                                        <option selected
-                                                disabled>{{ isset(auth()->user()->city)? auth()->user()->city->$name :  trans('messages.select') }}</option>
-
-                                        {{--                                        <option selected disabled>{{ auth()->user()->city->$name }}</option>--}}
+                                        <option selected disabled>{{ isset(auth()->user()->city)? auth()->user()->city->$name :  trans('messages.select') }}</option>
                                         @foreach ($cities as $city)
-                                            {{--                                            <option  disabled>{{trans('messages.select')}}</option>--}}
-                                            <option value="{{ $city->id }}"> {{ $city->$name }} </option>
+                                            <option  {{isset(auth()->user()->city_id)==$city->id? 'selected' : ''}}
+                                                value="{{ $city->id }}"> {{ $city->$name }} </option>
                                         @endforeach
                                     </select>
                                 </div>

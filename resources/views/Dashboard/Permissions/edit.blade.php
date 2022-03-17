@@ -181,7 +181,7 @@
                                                         <input type="checkbox" name="perms[]" class="switchery"
                                                                value="settings.index">
                                                         @if(in_array('settings.index',$perms))
-
+                                                            'checked'
                                                         @endif
                                                     </label>
                                                 </div>
