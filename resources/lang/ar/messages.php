@@ -444,6 +444,7 @@ return [
         'location' => 'موقع المزاد',
         'unique' => ' المزادات المميزة',
         'update' => ' تعديل المزاد',
+        'make_done' => ' سحب المزاد اوانهاؤه',
 
     ],
     'terms' => 'الشروط والاحكام  ',
@@ -525,6 +526,8 @@ return [
 
 
     'messages' => [
+        'Admin Login Successfully' => 'تم تسجيل دخول ادمن',
+        'Invaild Email Or Password' => 'عفوا هناك خطأ في الايميل او كلمة المرور. حاول مرة اخري',
         'Plz_Login_First' => 'عفوا يجب تسجيل الدخول أولا ',
         'sorry_you_dont_have_permission' => 'عفوا ليس لديك صلاحية ',
         'added_successfully' => 'تمت الاضافة بنجاح',
@@ -641,12 +644,20 @@ return [
 
     'added_successfully_wait_until_admin_accept_your_auction' => 'انتظر حتي يتم قبول مزادك من ادارة الموقع',
     'Sorry_you_should_complete_all_data_for_auction_first' => 'يجب اكمال بيانات المزاد اولا وادخال وقت الابتداء والانتهاء للمزاد ومصاريف الشحن',
-    'accept_auction' => 'تم قبول المزاد',
+
     'sorry_your_account_is_baned_from_admin_contact_with_customer_service_team'
     => 'عفوا تم حظر حسابك من قبل ادارة الموقع . يمكنك التواصل مع خدمة العملاء',
 
 
 
+
+
+    'accept_auction' => 'تم قبول المزاد',
+    'need_update' => ' ارسال رسالة لتعديل المزاد',
+    'make_done_auction' => 'تم سحب المزاد وانهاؤه',
+    'send_sms_to_auction_owner_successfully' => 'تم ارسال رسالة نصية لصاحب المزاد بنجاح',
+    'update_your_auction_and_send_it_again' => 'هناك خطأ في  بيانات مزادك من فضلك ارسلها مرة اخري',
+    'deleted_your_auction_successfully' => 'تم حذف مزادك',
 
 
 

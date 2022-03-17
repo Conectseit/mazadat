@@ -10,6 +10,10 @@
     </main>
     @include('front.layouts.parts.alert')
     <section class="watching-page">
+
+        <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
+                class="fal fa-arrow-circle-right text-black"></i> </a>   حسابي الشخصي
+        <br><br>
         @if($auctions->count() > 0)
             <div class="container">
                 @foreach($auctions as $auction)

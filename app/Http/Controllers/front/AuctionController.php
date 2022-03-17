@@ -271,7 +271,7 @@ class AuctionController extends Controller
 
     public  function deleteAuction (Auction $auction)
     {
-        $auction= Auction::where([ 'auction_id' => $auction->id,]);
+        $auction= Auction::where([ 'id' => $auction->id,]);
         $auction->delete();
         return back()->with('success', trans('messages.deleted_your_auction_successfully'));
     }

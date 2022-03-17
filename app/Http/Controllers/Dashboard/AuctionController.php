@@ -52,7 +52,7 @@ class AuctionController extends Controller
                     //======= create auction =======
                     $request_data = $request->except(['inspection_report_images' . 'images']);
 
-                    $auction = Auction::create($request_data + ['is_accepted' => '1',
+                    $auction = Auction::create($request_data + ['is_accepted' => '1','status'=> 'on_progress',
                             'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
 
                 //======= upload auction images =======
@@ -176,9 +176,15 @@ class AuctionController extends Controller
             }
             $auction_inspection_images = DB::table('inspection_images')->insert($dataa);
         }
-
-
         $auction = $auction->update($request_data);
+
+        // ===========================================================
+        $name='name_' . app()->getLocale();
+        activity()
+            ->performedOn($auction)
+            ->causedBy(auth()->guard('admin')->user())
+            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بتعديل مؤسسة'.($auction->$name));
+// ======================
         return redirect()->route('auctions.index')->with('success', trans('messages.messages.updated_successfully'));
     }
 
@@ -240,19 +246,34 @@ class AuctionController extends Controller
                 return redirect()->route('auctions.index')->with('error', trans('messages.Sorry_you_should_complete_all_data_for_auction_first'));
             }
 
-        $auction->update(['is_accepted'=> 1]);
-
+        $auction->update(['is_accepted'=> 1,'status'=>'on_progress']);
 
         SmsController::send_sms($auction->seller->mobile, 'تم قبول مزادك من ادرة موقع مزادات' );
         Notification::sendNewAuctionNotification($auction->id);
 
         return redirect()->route('auctions.index')->with('success', trans('messages.accept_auction'));
     }
-    public function not_accept($id)
+//    public function not_accept($id)
+//    {
+//        $auction = Auction::findOrFail($id);
+//        $auction->update(['is_accepted'=> 0]);
+//        return back();
+//    }
+
+    public function make_done($id)
     {
         $auction = Auction::findOrFail($id);
-        $auction->update(['is_accepted'=> 0]);
-        return back();
+        $auction->update(['status'=> 'done']);
+        return back()->with('success', trans('messages.make_done_auction'));
+    }
+    public function need_update($id)
+    {
+        $auction = Auction::findOrFail($id);
+
+        $user = User::where('id',$auction->seller_id)->first();
+        SmsController::send_sms($user->mobile, trans('messages.update_your_auction_and_send_it_again'));
+
+        return back()->with('success', trans('messages.send_sms_to_auction_owner_successfully'));
     }
 
     public function unique($id)

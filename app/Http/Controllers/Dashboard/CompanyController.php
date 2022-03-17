@@ -54,17 +54,32 @@ class CompanyController extends Controller
                 $request_data['company_authorization_image'] = uploaded($request->company_authorization_image, 'user');
             }
             if ($request->image) $request_data['image'] = uploaded($request->image, 'user');
+
             if ($request->mobile) {
                 $request_data['mobile'] =$country->phone_code. $request->mobile ;
             }
+            if (User::where('mobile', $request_data['mobile'])->first()) {
 
-            $company = User::create($request_data+['type' => 'buyer','is_appear_name'=>1,'is_company'=>'company','accept_app_terms'=>'yes', 'is_accepted' =>1, 'is_active' => 'active', 'is_completed' =>1
+                return back()->with('error', 'قيمة الجوال مستخدمة من قبل');
+            }
+
+            $company = User::create($request_data+['type' => 'buyer','is_appear_name'=>1,
+                    'is_company'=>'company','accept_app_terms'=>'yes', 'is_accepted' =>1,
+                    'is_active' => 'active', 'is_completed' =>1,'is_verified'=>1
 //                    'mobile' => $country->phone_code.$request->mobile
                 ]);
             if ($company) {
                 $jwt_token = JWTAuth::fromUser($company);
                 Token::create(['jwt' => $jwt_token, 'user_id' => $company->id,]);
             }
+
+
+            activity()
+                ->performedOn($company)
+                ->causedBy(auth()->guard('admin')->user())
+                ->log('قام المشرف'.auth()->guard('admin')->user()->full_name .'  باضافة مؤسسة'.($company->user_name));
+// ===========================================================
+
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();
@@ -95,6 +110,14 @@ class CompanyController extends Controller
             $request_data['image'] = uploaded($request->image, 'user');
         }
         $user->update($request_data);
+
+// ===========================================================
+        $name='name_' . app()->getLocale();
+        activity()
+            ->performedOn($user)
+            ->causedBy(auth()->guard('admin')->user())
+            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بتعديل مؤسسة'.($user->user_name));
+// ======================
         return redirect()->route('companies.index')->with('success',  trans('messages.messages.updated_successfully'));
     }
 
@@ -104,7 +127,8 @@ class CompanyController extends Controller
             return redirect()->route('companies.index')->with('class', 'danger')->with('message', trans('messages.messages.try_access_not_found_content'));
         }
         $data['company'] = User::find($id);
-        $data['company_auctions'] = AuctionBuyer::where('buyer_id',$id)->get();
+//        $data['company_auctions'] = AuctionBuyer::where('buyer_id',$id)->get();
+        $data['company_auctions'] = Auction::where('seller_id',$id)->get();
         return view('Dashboard.Companies.show', $data);
     }
 
@@ -118,6 +142,12 @@ class CompanyController extends Controller
             if (!is_null($user->commercial_register_image)) unlink('uploads/users/' . $user->commercial_register_image);
             if (!is_null($user->company_authorization_image)) unlink('uploads/users/' . $user->company_authorization_image);
             $user->delete();
+
+            activity()
+                ->performedOn($user)
+                ->causedBy(auth()->guard('admin')->user())
+                ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بحذف مؤسسة'.($user->user_name));
+// ======================
             return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);

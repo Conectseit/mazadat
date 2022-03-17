@@ -28,9 +28,9 @@ class AuthController extends Controller
         $remember = isset($request['remember']) ? $request['remember'] : false;
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
 
-            return redirect()->route('admin.home')->with('success', 'Admin Login Successfully');
+            return redirect()->route('admin.home')->with('success', trans('messages.messages.Admin Login Successfully'));
         }
-        return back()->with('error', 'Invaild Email Or Password')->with('class', 'alert-danger');
+        return back()->with('error',trans('messages.messages.Invaild Email Or Password') )->with('class', 'alert-danger');
     }
 
 

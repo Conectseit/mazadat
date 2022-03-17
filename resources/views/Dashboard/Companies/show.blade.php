@@ -157,6 +157,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-form-label col-lg-3">{{ trans('messages.company.company_authorization_image') }}:</label>
+                                                                        <div class="col-lg-9">
+                                                                            <img src="{{ $company->company_authorization_image_path }}" alt="" class=" img-thumbnail">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div><br>
                                                             <div class="form-group row"><br>
                                                                 <label class="col-form-label col-lg-3">{{ trans('messages.company.location') }}:</label>
@@ -199,7 +208,7 @@
                                 <div class="panel-body">
                                     <!-- Palette colors -->
                                     <h6 class="content-group-sm text-semibold">
-                                        {{__('messages.company.full_name')}}
+                                        {{__('messages.company.user_name')}}
                                         <small class="display-block">{{$company->user_name}}</small>
                                     </h6>
 
@@ -214,10 +223,10 @@
                                                         <div class="media-body">
                                                             <strong>{{$company_auction->start_auction_price}}
                                                                 ريال</strong>
-                                                            <div
-                                                                class="text-muted mt-5">{{$company_auction->value_of_increment}}
-                                                                ريال
-                                                            </div>
+{{--                                                            <div--}}
+{{--                                                                class="text-muted mt-5">{{$company_auction->value_of_increment}}--}}
+{{--                                                                ريال--}}
+{{--                                                            </div>--}}
                                                         </div>
 
                                                         <div class="media-right">
@@ -230,7 +239,7 @@
                                                 </div>
                                                 <div>
                                                     <span class="badge  badge-pill" style="background-color: #00838F;">
-                                                        <a href={{ route('auctions.show', $company_auction->id) }}>{{__('messages.company.show_auction_bids')}}</a>
+                                                        <a href={{ route('auctions.show', $company_auction->id) }}>{{__('messages.show')}}</a>
                                                     </span>
                                                 </div>
                                             </div>
@@ -275,7 +284,7 @@
                                                             <div>
                                                                 <span class="badge  badge-pill"
                                                                       style="background-color: #00838F;">
-                                                                    <a href={{ route('auctions.show', $company_auction->id) }}>{{__('messages.company.show_auction_bids')}}</a>
+                                                                    <a href={{ route('auctions.show', $company_auction->id) }}>{{__('messages.show')}}</a>
                                                                 </span>
                                                             </div>
                                                             <button type="button"

@@ -102,11 +102,10 @@ Route::group(
 
 
 
-                Route::get('auction/{id?}/done', [AuctionController::class, 'done'])->name('auction/done');
-
+                Route::get('auction/{id?}/done', [AuctionController::class, 'make_done'])->name('auction/done');
                 Route::get('auction/{id?}/accept', [AuctionController::class, 'accept'])->name('auction/accept');
-                Route::get('auction/{id?}/not_accept', [AuctionController::class, 'not_accept'])->name('auction/not_accept');
-
+//                Route::get('auction/{id?}/not_accept', [AuctionController::class, 'not_accept'])->name('auction/not_accept');
+                Route::get('auction/{id?}/need_update', [AuctionController::class, 'need_update'])->name('auction/need_update');
                 Route::get('auction/{id?}/unique', [AuctionController::class, 'unique'])->name('auction/unique');
                 Route::get('auction/{id?}/not_unique', [AuctionController::class, 'not_unique'])->name('auction/not_unique');
 
@@ -115,7 +114,6 @@ Route::group(
                 Route::get('person/{id?}/ban', [PersonController::class, 'ban'])->name('person/ban');
                 Route::get('person/{id?}/not_ban', [PersonController::class, 'not_ban'])->name('person/not_ban');
                 Route::post('person/{id?}/add_balance', [PersonController::class, 'add_balance'])->name('add_balance');
-
                 Route::get('persons/person/{id?}/verified', [PersonController::class, 'verified'])->name('person/verified');
                 Route::get('persons/person/{id?}/not_verified', [PersonController::class, 'not_verified'])->name('person/not_verified');
 

@@ -406,7 +406,7 @@
                                               @foreach($auction_bids as $auction_bid)
                                                   <tr id="auction_bids-row-{{ $auction_bid->id }}">
                                                         <td class="text-center">
-                                                            {{$auction_bid->buyer->full_name}}
+                                                            {{$auction_bid->buyer->user_name}}
                                                         </td>
                                                         <td class="text-center">
                                                             {{$auction_bid->buyer_offer}} / ريال- سعودي

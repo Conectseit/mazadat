@@ -294,19 +294,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-                        {{--                        <div class="d-flex justify-content-center">--}}
-                        {{--                            {!! $on_progress_auctions->links() !!}--}}
-                        {{--                        </div>--}}
+                                                <div class="d-flex justify-content-center">
+                                                    {!! $on_progress_auctions->links() !!}
+                                                </div>
 
 
                     </div>
@@ -396,7 +386,6 @@
                         {{--                        </div>--}}
 
                     </div>
-                    {{--                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>--}}
                 </div>
 
 

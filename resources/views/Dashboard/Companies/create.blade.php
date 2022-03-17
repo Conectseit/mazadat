@@ -25,7 +25,7 @@
         <div class="col-md-7">
 
             <!-- Basic layout-->
-            <form action="{{ route('companies.store') }}" class="form-horizontal" method="post"
+            <form action="{{ route('companies.store') }}" class="form-horizontal" method="post" id="submitted-form"
                   enctype="multipart/form-data">
                 @csrf
                 <div class="panel panel-flat">
@@ -67,6 +67,8 @@
                                 <div class="form-group">
                                     <label>@lang('messages.commercial_register_image')</label>
                                     <input type="file" class="form-control commercial_register_image" name="commercial_register_image">
+                                    <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview2">
+
                                 </div>
 
                             </div>
@@ -88,7 +90,7 @@
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">{{ trans('messages.mobile') }}</label>
                                 <div class="col-lg-9">
-                                    <input type="text" name="mobile" value="{{ old('mobile') }}" class="form-control"
+                                    <input type="text" name="mobile"  maxlength="14" value="{{ old('mobile') }}" class="form-control"
                                            placeholder="{{ trans('messages.mobile') }}">
                                 </div>
                             </div>
@@ -156,12 +158,14 @@
 
                             <div class="form-group">
                                 <label>@lang('messages.company.company_authorization_image')</label>
-                                <input type="file" class="form-control " name="company_authorization_image">
+                                <input type="file" class="form-control  company_authorization_image" name="company_authorization_image">
+                                <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview1">
+
                             </div>
                         </div>
                     </div>
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
-                        <input type="submit" class="btn btn-primary" value=" {{ trans('messages.add_and_forward_to_list') }} "/>
+                        <input type="submit" class="btn btn-primary"   id="save-form-btn" value=" {{ trans('messages.add_and_forward_to_list') }} "/>
                     </div>
                 </div>
             </form>
@@ -208,6 +212,34 @@
 @section('scripts')
     @include('front.auth.ajax_get_cities')
     @include('Dashboard.layouts.parts.map')
+
+
+
+    <script>
+
+        // ======== image preview ====== //
+        $(".company_authorization_image").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.image-preview1').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+// ====================================
+        });
+
+        $(".commercial_register_image").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.image-preview2').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+    </script>
 @stop
 
 

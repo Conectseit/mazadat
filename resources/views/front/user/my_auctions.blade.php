@@ -11,6 +11,9 @@
     @include('front.layouts.parts.alert')
 
     <section class="watching-page">
+        <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
+                class="fal fa-arrow-circle-right text-black"></i> </a>   حسابي الشخصي
+        <br><br>
         <div class="container">
 
             <ul class="nav nav-tabs" id="myTab" role="tablist">

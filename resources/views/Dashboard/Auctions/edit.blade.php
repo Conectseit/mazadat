@@ -61,7 +61,7 @@
 
                                         @foreach ($users as $seller )
                                             <option
-                                                {{ $auction->seller_id == $seller->id ? 'selected' : '' }} value="{{ $seller->id }}"> {{ $seller->full_name}} </option>
+                                                {{ $auction->seller_id == $seller->id ? 'selected' : '' }} value="{{ $seller->id }}"> {{ $seller->user_name}} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -209,12 +209,25 @@
                         <hr>
                         <div class="form-group">
                             <label>@lang('messages.auction.inspection_report_images')</label>
-                            <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>
+{{--                            <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
+                            <input type="file" multiple id="gallery-photo-add"  class="form-control" name="images[]">
+                            <div class="gallery"></div>
                         </div>
                         <div class="form-group">
                             <label>@lang('messages.auction.images')</label>
-                            <input type="file" class="form-control " name="images[]" multiple="multiple"/>
+{{--                            <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
+                            <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">
+                            <div class="gallery1"></div>
+
                         </div>
+
+
+
+
+
+
+
+
 
 
                         <div class="text-right">
@@ -233,6 +246,12 @@
         </div>
     </div>
 
-
-
 @stop
+
+@section('scripts')
+{{--    @include('Dashboard.layouts.parts.ajax_get_options')--}}
+{{--    @include('Dashboard.layouts.parts.map')--}}
+{{--    @include('Dashboard.Auctions.ajax_get_options_by_category_id')--}}
+    @include('Dashboard.Auctions.image_preview')
+
+@endsection

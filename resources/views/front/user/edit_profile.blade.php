@@ -27,6 +27,8 @@
                 <h3>{{ trans('messages.please_complete_your_data')}}</h3>
             @endif
 
+            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
+                    class="fal fa-arrow-circle-right text-black"></i> </a>   حسابي الشخصي
 
             <div class="row">
                 <div class="edit-form">

@@ -62,9 +62,10 @@ class PersonController extends Controller
 
                 return back()->with('error', 'قيمة الجوال مستخدمة من قبل');
             }
-            $person = User::create($request_data+['type' => 'buyer',
-                    'is_company' => 'person',
-                    'is_accepted' =>1, 'is_active' => 'active','is_verified'=>1, 'accept_app_terms'=>'yes',
+            $person = User::create($request_data+['type' => 'buyer', 'is_company' =>'person',
+                    'is_appear_name'=>1, 'is_accepted' =>1, 'is_active' =>'active',
+                    'is_verified'=>1,'is_completed' =>1, 'accept_app_terms'=>'yes',
+
 //                    'mobile' => $country->phone_code.$request->mobile
                 ]);
 
@@ -72,8 +73,6 @@ class PersonController extends Controller
                 $jwt_token = JWTAuth::fromUser($person);
                 Token::create(['jwt' => $jwt_token, 'user_id' => $person->id,]);
             }
-
-
 
 // ===========================================================
             $name='name_' . app()->getLocale();

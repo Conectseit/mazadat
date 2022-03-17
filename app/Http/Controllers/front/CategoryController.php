@@ -21,18 +21,18 @@ class CategoryController extends Controller
                 $query->where($name, 'like', '%' . $request['search_by_auction_name'] . '%');
             }
             $data['on_progress_auctions'] = $query->where('category_id', $id)->where('status', 'on_progress')->where('is_accepted',1)->paginate('20');
-            $data['done_auctions'] = $query->where('category_id', $id)->where('status', 'done')->where('is_accepted',1)->paginate('20');
+            $data['done_auctions'] = $query->where('category_id', $id)->where('status', 'done')->get();
         }
 
-//            $data['auctions'] = Auction::where('category_id', $id)->get();
         $data['category'] = Category::where('id', $id)->first();
         $data['category_options'] = Option::where('category_id', $id)->with('option_details')->get();
 
-
-
-
         return view('front.auctions.category_auctions',$data);
     }
+
+
+
+    //            $data['auctions'] = Auction::where('category_id', $id)->get();
 
 //    public function search(SearchRequest $request,$id)
 //    {

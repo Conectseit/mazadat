@@ -67,7 +67,7 @@
 {{--                                                   <th class="text-center">{{ trans('messages.auction.start_date') }}</th>--}}
 {{--                                                   <th class="text-center">{{ trans('messages.auction.end_date') }}</th>--}}
 {{--                                                   <th class="text-center">{{ trans('messages.auction.remaining_days') }}</th>--}}
-                                                   <th class="text-center">{{ trans('messages.not_accept') }}</th>
+{{--                                                   <th class="text-center">{{ trans('messages.not_accept') }}</th>--}}
 {{--                                                   <th class="text-center">{{ trans('messages.unique') }}</th>--}}
 
                                                    <th class="text-center">@lang('messages.since')</th>
@@ -96,18 +96,18 @@
 {{--                                                       <td class="text-center">{{$auction->remaining_time['days']}}</td>--}}
                                                        {{--                                                    {{ Carbon\Carbon::now()->toDateTimeString() }}--}}
 
-                                                       <td class="text-center">
-                                                           @if($auction->is_accepted ==1)
-                                                               <a href="auction/{{$auction->id}}/not_accept/">
-                                                                   <span class="badge badge-danger" >  <i class="icon-close2"> </i>  {{trans('messages.not_accept')}} </span>
-                                                               </a>
+{{--                                                       <td class="text-center">--}}
+{{--                                                           @if($auction->is_accepted ==1)--}}
+{{--                                                               <a href="auction/{{$auction->id}}/not_accept/">--}}
+{{--                                                                   <span class="badge badge-danger" >  <i class="icon-close2"> </i>  {{trans('messages.not_accept')}} </span>--}}
+{{--                                                               </a>--}}
 {{--                                                           @else--}}
 {{--                                                               <a href="auction/{{$auction->id}}/accept/">--}}
 {{--                                                                   <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.accept')}} </span>--}}
 {{--                                                               </a>--}}
 {{--                                                                <a href="buyer/{{$auction->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
-                                                           @endif
-                                                       </td>
+{{--                                                           @endif--}}
+{{--                                                       </td>--}}
 {{--                                                       <td class="text-center">--}}
 {{--                                                           @if($auction->is_unique ==0)--}}
 {{--                                                               <a href="auction/{{$auction->id}}/unique/">--}}
@@ -170,6 +170,7 @@
                                                    <th class="text-center">{{ trans('messages.image') }}</th>
                                                    <th class="text-center">{{ trans('messages.name') }}</th>
                                                    <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
+                                                   <th class="text-center">{{ trans('messages.need_update') }}</th>
                                                    <th class="text-center">{{ trans('messages.unique') }}</th>
                                                    <th class="text-center">@lang('messages.since')</th>
                                                    <th class="text-center">@lang('messages.form-actions')</th>
@@ -195,6 +196,15 @@
                                                                </a>
                                                                {{--                                                                <a href="buyer/{{$auction->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
                                                            @endif
+                                                       </td>
+
+
+
+                                                       <td class="text-center">
+                                                               <a href="auction/{{$auction->id}}/need_update/">
+                                                                   <span class="badge badge-primary" >  <i class="icon-close2"> </i>  {{trans('messages.need_update')}} </span>
+                                                               </a>
+
                                                        </td>
                                                        <td class="text-center">
                                                            @if($auction->is_unique ==0)
@@ -257,6 +267,7 @@
                                                 <th class="text-center">{{ trans('messages.image') }}</th>
                                                 <th class="text-center">{{ trans('messages.name') }}</th>
                                                 <th class="text-center">{{ trans('messages.auction.start_auction_price') }}</th>
+                                                <th class="text-center">{{ trans('messages.auction.make_done') }}</th>
 {{--                                                <th class="text-center">{{ trans('messages.auction.value_of_increment') }}</th>--}}
 {{--                                                <th class="text-center">{{ trans('messages.auction.remaining_days') }}</th>--}}
                                                 <th class="text-center">@lang('messages.since')</th>
@@ -280,15 +291,10 @@
 
 
                                                     <td class="text-center">
-                                                        @if($auction->is_accepted ==1)
-                                                            <a href="auction/{{$auction->id}}/not_accept/">
-                                                                <span class="badge badge-danger" >  <i class="icon-close2"> </i>  {{trans('messages.not_accept')}} </span>
+                                                        @if($auction->status !='done')
+                                                            <a href="auction/{{$auction->id}}/done/">
+                                                                <span class="badge badge-primary" >  <i class="icon-close2"> </i>  {{trans('messages.auction.make_done')}} </span>
                                                             </a>
-                                                            {{--                                                           @else--}}
-                                                            {{--                                                               <a href="auction/{{$auction->id}}/accept/">--}}
-                                                            {{--                                                                   <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.accept')}} </span>--}}
-                                                            {{--                                                               </a>--}}
-                                                            {{--                                                                <a href="buyer/{{$auction->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
                                                         @endif
                                                     </td>
 

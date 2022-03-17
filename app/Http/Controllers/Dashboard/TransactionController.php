@@ -59,7 +59,15 @@ class TransactionController extends Controller
 
         $user->update(['wallet'=> $transaction->amount +$user->wallet]);
         $transaction->update(['is_accepted'=> 1]);
-        return back();
+
+        // ===========================================================
+        activity()
+            ->performedOn($user)
+            ->causedBy(auth()->guard('admin')->user())
+            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بقبول الايداع البنكي للمستخدم'.($user->user_name));
+// ======================
+        return back()->with('class', 'danger')->with('message', trans('messages.messages.accept_payment_recipt'));
+
     }
 
 }

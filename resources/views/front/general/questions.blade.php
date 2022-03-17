@@ -5,8 +5,9 @@
 @endsection
 
 @section('content')
-    @include('front.layouts.parts.nav_categories')
-
+    <main class="categories-bar row">
+        @include('front.layouts.parts.nav_categories')
+    </main>
     <section class="notifications-page">
         <div class="container">
             @foreach($questions as $questionn)
