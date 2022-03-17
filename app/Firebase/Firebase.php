@@ -46,7 +46,11 @@ class Firebase
 
     public static function createWebCurl($to, $data)
     {
-        $fields = array('to' => $to, 'notification' => self::getWebData($data));
+        $fields = [
+            'to' => $to,
+            'data'         => self::getWebData($data),
+            'notification' => self::getWebData($data),
+        ];
 
         return Http::withToken(env('FCM_SERVER_KEY'))->post(self::url(), $fields);
     }
