@@ -66,6 +66,7 @@ class Firebase
             'title' => $data['title'],
             'body'  => $data['body'],
             'icon'  => $data['icon'],
+
         ];
     }
 }

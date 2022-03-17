@@ -98,16 +98,26 @@ class CompanyController extends Controller
         }
 //        $data['latest_companies'] = User::where('type', 'person')->orderBy('id', 'desc')->take(5)->get();
         $data['company'] = User::find($id);
+        $data['countries'] = Country::all();
+        $data['cities'] = City::all();
+        $data['nationalities'] = Nationality::all();
         return view('Dashboard.Companies.edit', $data);
     }
 
     public function update(CompanyRequest $request,User $user)
     {
         $user = User::find($request->company_id);
-        $request_data = $request->except('image');
+        $request_data = $request->except('image','commercial_register_image','company_authorization_image');
         if ($request->hasFile('image')) {
             if (!is_null($user->image)) unlink('uploads/users/' . $user->image);
             $request_data['image'] = uploaded($request->image, 'user');
+        }
+
+        if ($request->commercial_register_image) {
+            $request_data['commercial_register_image'] = uploaded($request->commercial_register_image, 'user');
+        }
+        if ($request->company_authorization_image) {
+            $request_data['company_authorization_image'] = uploaded($request->company_authorization_image, 'user');
         }
         $user->update($request_data);
 

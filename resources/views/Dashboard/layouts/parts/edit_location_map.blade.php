@@ -1,12 +1,12 @@
 
+
+
+
 {{--    //Map//--}}
 <script>
     function initMap() {
-        // let lat_val = 24.7135517;
-        // let lng_val = 46.67529569;
-        $latitude={{isset(auth()->user()->latitude)?auth()->user()->latitude:'24.7135517'}};
-        $longitude={{isset(auth()->user()->longitude)?auth()->user()->longitude:'46.67529569'}};
-        {{--$longitude={{auth()->user()->longitude}};--}}
+        $latitude={{isset($company->latitude)?$company->latitude:'24.7135517'}};
+        $longitude={{isset($company->longitude)?$company->longitude:'46.67529569'}};
         let lat_val =$latitude;
         let lng_val =$longitude;
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -93,3 +93,4 @@
 {{--<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyDdCP49XcVxRLuY-4CYtxHXxnqucDvQLE8" >--}}
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks" >
 </script>
+

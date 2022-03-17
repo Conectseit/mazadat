@@ -329,7 +329,7 @@ class AuctionController extends PARENT_API
 //            }
         try {
             $auction->delete();
-            return responseJson(false, trans('api.deleted_auction_successfully'), null);  //NOT_FOUND
+            return responseJson(true, trans('api.deleted_auction_successfully'), null);  //NOT_FOUND
         } catch (Exception $e) {
             return responseJson(false, trans('api.Server Internal Error 500'), null);  //NOT_FOUND
 

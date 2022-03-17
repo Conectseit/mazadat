@@ -263,7 +263,7 @@ class AuctionController extends Controller
     {
 //        $data['auctions'] =  auth()->user()->seller_auctions()->get();
         $data['on_progress_auctions'] = auth()->user()->seller_auctions()->where(['status'=> 'on_progress','is_accepted'=>1])->paginate('20');
-        $data['pending_auctions'] = auth()->user()->seller_auctions()->where('status', 'on_progress')->where('is_accepted',0)->paginate('20');
+        $data['pending_auctions'] = auth()->user()->seller_auctions()->where('status', 'not_accepted')->where('is_accepted',0)->paginate('20');
         $data['ended_auctions'] = auth()->user()->seller_auctions()->where('status', 'done')->where('is_accepted',1)->paginate('20');
         return view('front.user.my_auctions', $data);
     }
