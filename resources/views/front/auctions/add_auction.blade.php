@@ -51,8 +51,7 @@
                             <div class="col-lg-10 col-md-9">
                                 <textarea name="description_ar"
                                           class="form-control @error('description_ar') is-invalid @enderror" cols="100"
-                                          placeholder="{{trans('messages.enter_description_ar')}}">{{ old('description_ar') }}
-                                </textarea>
+                                          placeholder="{{trans('messages.description_ar')}}">{{ old('description_ar') }}</textarea>
                                 @error('description_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
 
@@ -65,8 +64,7 @@
                             <div class="col-lg-10 col-md-9">
                                 <textarea name="description_en"
                                           class="form-control @error('description_en') is-invalid @enderror" cols="100"
-                                          placeholder="{{trans('messages.enter_description_en')}}">{{ old('description_en') }}
-                                </textarea>
+                                          placeholder="{{trans('messages.description_en')}}">{{ old('description_en') }}</textarea>
                                 @error('description_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                         </div>
@@ -84,9 +82,7 @@
                             <div class="col-lg-10 col-md-9">
                                 <textarea name="auction_terms_ar"
                                           class="form-control @error('auction_terms_ar') is-invalid @enderror" cols="100"
-                                          placeholder="{{trans('messages.enter_auction_terms_ar')}}">
-                                    {{ old('auction_terms_ar') }}
-                                </textarea>
+                                          placeholder="{{trans('messages.auction.auction_terms_ar')}}">{{ old('auction_terms_ar') }}</textarea>
                                 @error('auction_terms_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
 
@@ -100,8 +96,7 @@
                             <div class="col-lg-10 col-md-9">
                                 <textarea name="auction_terms_en"
                                           class="form-control @error('auction_terms_en') is-invalid @enderror" cols="100"
-                                          placeholder="{{trans('messages.enter_auction_terms_en')}}">{{ old('auction_terms_en') }}
-                                </textarea>
+                                          placeholder="{{trans('messages.auction.auction_terms_en')}}">{{ old('auction_terms_en') }}</textarea>
                                 @error('auction_terms_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
 
@@ -140,7 +135,7 @@
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 <label class="radio-inline">
-                                    <input type="radio" value="0" class="styled" name="allowed_take_photo">
+                                    <input type="radio" value="0" class="styled" name="allowed_take_photo" checked="checked">
                                     {{trans('messages.No')}}
                                 </label>
                                 <label class="radio-inline">
@@ -251,8 +246,5 @@
     @include('front.layouts.parts.map')
     @include('front.auctions.parts.ajax_get_options')
     @include('front.auctions.parts.image_preview')
-
-
-
 @endpush
 

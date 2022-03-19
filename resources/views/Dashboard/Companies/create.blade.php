@@ -25,8 +25,8 @@
         <div class="col-md-7">
 
             <!-- Basic layout-->
-            <form action="{{ route('companies.store') }}" class="form-horizontal" method="post" id="submitted-form"
-                  enctype="multipart/form-data">
+            <form action="{{ route('companies.store') }}" class="form-horizontal" method="post"
+                  id="submitted-form" enctype="multipart/form-data">
                 @csrf
                 <div class="panel panel-flat">
                     <div class="panel-heading">

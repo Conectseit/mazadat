@@ -17,6 +17,8 @@ class AddLatitudeToAuctionsTable extends Migration
             $table->string('latitude')->nullable()->after('current_price');
             $table->string('longitude')->nullable()->after('latitude');
             $table->boolean('allowed_take_photo')->default(0)->after('longitude');
+            $table->boolean('is_unique')->default(0)->after('current_price');
+
 
         });
     }
@@ -32,6 +34,8 @@ class AddLatitudeToAuctionsTable extends Migration
             $table->dropColumn('latitude');
             $table->dropColumn('longitude');
             $table->dropColumn('allowed_take_photo');
+            $table->dropColumn('is_unique');
+
 
         });
     }

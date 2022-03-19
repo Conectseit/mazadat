@@ -6,7 +6,6 @@
 
 @endsection
 
-
 @section('content')
     @include('front.auctions.parts.head')
     <section class="sign-up-page">
@@ -98,9 +97,8 @@
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 <textarea name="auction_terms_en"
-                                          class="form-control @error('auction_terms_en') is-invalid @enderror" cols="100"
-                                          >{{ $auction->auction_terms_en }}
-                                </textarea>
+                                          class="form-control @error('auction_terms_en') is-invalid @enderror" cols="100">
+                                    {{ $auction->auction_terms_en }}</textarea>
                                 @error('auction_terms_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
 
@@ -149,9 +147,40 @@
                     </div>
 
                     <div class="inputs-group">
+                        <h5 class="group-title"> {{ trans('messages.auction.options') }}</h5>
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="email" class="form-label">{{ trans('messages.auction.choose_category')}}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <select class="form-select form-control"  id="category" name="category_id"
+                                        aria-label="Default select example">
+{{--                                    <option selected disabled> {{ trans('messages.auction.choose_category')}}</option>--}}
+                                    <option selected
+                                            disabled>{{ isset($auction->category_id)? $auction->category->$name :  trans('messages.select') }}
+                                    </option>
+                                    @foreach ($categories as $category)
+                                        <option
+{{--                                            {{isset($auction->category_id) == $category->id ? 'selected' : ''}}--}}
+                                            value="{{ $category->id }}"> {{ $category->$name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('category_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                        </div>
 
 
 
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="email" class="form-label">{{ trans('messages.option.options') }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <div class="select-inputs-options"></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
 
@@ -232,57 +261,3 @@
     @include('front.auctions.parts.image_preview_update')
 @endpush
 
-
-
-
-
-
-
-
-{{--                        <h5 class="group-title"> {{ trans('messages.auction.options') }}</h5>--}}
-{{--                        <div class="form-group mb-4 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label for="email" class="form-label">{{ trans('messages.auction.choose_category')}}</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-{{--                                <select class="form-select form-control"  id="category" name="category_id"--}}
-{{--                                        aria-label="Default select example">--}}
-{{--                                    <option selected disabled> {{ trans('messages.auction.choose_category')}}</option>--}}
-{{--                                    @foreach ($categories as $category)--}}
-{{--                                        <option value="{{ $category->id }}"> {{ $category->$name }} </option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                            @error('category_id')<span style="color: #e81414;">{{ $message }}</span>@enderror--}}
-
-{{--                        </div>--}}
-
-
-
-{{--                        <div class="form-group mb-4 row">--}}
-{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                <label for="email" class="form-label">{{ trans('messages.option.options') }}</label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-10 col-md-9">--}}
-{{--                                <select class="form-select form-control" name="option_id" id="options"--}}
-{{--                                        aria-label="Default select example">--}}
-{{--                                    <option selected disabled> {{ trans('messages.option.options') }}</option>--}}
-{{--                                    @foreach ($options as $option)--}}
-{{--                                        <option value="{{ $option->id }}"> {{ $option->$name }} </option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                                <div class="select-inputs-options"></div>--}}
-{{--                                @foreach ($options as $key => $option)--}}
-{{--                                <select class="form-select form-control"  id="options" name="option_ids[]" multiple aria-label="Default select example">--}}
-{{--                                    <option value="{{ $option->id }}">{{ $option->$name }}</option>--}}
-{{--                                    <optgroup class="form-select form-control" id="options" label="{{ $option->$name }}" value="{{ $option->id }}">--}}
-{{--                                        <option>Diplodocus</option>--}}
-{{--                                        <option>Saltasaurus</option>--}}
-{{--                                    </optgroup>--}}
-{{--                                </select>--}}
-{{--                                @endforeach--}}
-
-
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}

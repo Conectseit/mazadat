@@ -73,6 +73,8 @@
                         <div class="sign-btn row">
                             <button type="submit" id="resend-code-btn" class="btn btn-primary submit-btn">{{trans('messages.send')}}</button>
                         </div>
+
+{{--                        <p> Resend OTP in <span id="countdowntimer">10 </span> Seconds</p>--}}
                         <p class="mt-5">لم يصلك كود التفعيل؟ <a id="resend-code-btn" href="{{ route('front.resend-sms',$mobile) }}" class="create text-orange">ارسل مرة أخرى</a></p>
                     </div>
                 </form>
@@ -144,5 +146,16 @@
                 }
             });
         });
+
+
+
+//timer
+        var timeleft = 10;
+        var downloadTimer = setInterval(function(){
+            timeleft--;
+            document.getElementById("countdowntimer").textContent = timeleft;
+            if(timeleft <= 0)
+                clearInterval(downloadTimer);
+        },1000);
     </script>
 @endpush

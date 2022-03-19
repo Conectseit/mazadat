@@ -179,12 +179,12 @@ class AuctionController extends Controller
         $auction = $auction->update($request_data);
 
         // ===========================================================
-        $name='name_' . app()->getLocale();
-        activity()
-            ->performedOn($auction)
-            ->causedBy(auth()->guard('admin')->user())
-            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بتعديل مؤسسة'.($auction->$name));
-// ======================
+//        $name='name_' . app()->getLocale();
+//        activity()
+//            ->performedOn($auction)
+//            ->causedBy(auth()->guard('admin')->user())
+//            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بتعديل مؤسسة'.($auction->$name));
+//// ======================
         return redirect()->route('auctions.index')->with('success', trans('messages.messages.updated_successfully'));
     }
 

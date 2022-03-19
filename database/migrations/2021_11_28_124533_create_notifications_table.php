@@ -17,6 +17,8 @@ class CreateNotificationsTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('auction_id')->unsigned()->nullable();
+            $table->foreign('auction_id')->references('id')->on('auctions')->onDelete('cascade')->onUpdate('cascade');
             $table->string('title')->nullable();
             $table->text('text')->nullable();
             $table->boolean('is_seen')->default(0);

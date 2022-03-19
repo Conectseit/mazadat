@@ -9,10 +9,20 @@ use App\Models\Category;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
+    public function cronjob()
+    {
+        Log::info('done');
 
+        $on_progress_auctions= Auction::where('status','on_progress')->where('end_date','>=' ,Carbon::now())->get();
+        foreach ($on_progress_auctions as $on_progress_auction){
+            $on_progress_auction->update(['status'=>'done']);
+        }
+    }
     public function home()
     {
         $data['categories'] = Category::all();
@@ -26,6 +36,7 @@ class HomeController extends Controller
         $data['companies'] = User::where(['is_company'=>'company'])->whereHas('seller_auctions')->get();
         return view('front.company.all_companies',$data);
     }
+
     public function companyAuctions(Request $request, $id)
     {
         $data['company'] = User::where('id', $id)->first();
@@ -37,12 +48,6 @@ class HomeController extends Controller
         return view('front.company.company_auctions',$data);
 
     }
-
-
-
-
-
-
 }
 
 

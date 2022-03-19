@@ -138,11 +138,12 @@
                             </div>
                             <div class="col-lg-7 col-md-6">
                                 <label class="radio-inline">
-                                    <input type="radio"  value="1" class="styled" name="is_appear_name" checked="checked">{{trans('messages.Yes')}}
+                                    <label class="radio-inline">
+                                        <input type="radio" value="0" class="styled" name="is_appear_name" checked="checked">{{trans('messages.No')}}
+                                    </label>
+                                    <input type="radio"  value="1" class="styled" name="is_appear_name" >{{trans('messages.Yes')}}
                                 </label>
-                                <label class="radio-inline">
-                                    <input type="radio" value="0" class="styled" name="is_appear_name">{{trans('messages.No')}}
-                                </label>
+
                             </div>
                         </div>
 

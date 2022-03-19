@@ -40,6 +40,16 @@ class CategoryController extends Controller
 
         if ($request->image) $request_data['image'] = uploaded($request->image, 'category');
         $category = Category::create($request_data);
+
+// ===========================================================
+        $name='name_' . app()->getLocale();
+        activity()
+            ->performedOn($category)
+            ->causedBy(auth()->guard('admin')->user())
+            ->log(' قام المشرف' . ' '.auth()->guard('admin')->user()->full_name .' '. ' باضافة قسم '. ($category->$name));
+// ===========================================================
+
+
         return redirect()->route('categories.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
 
     }
@@ -76,6 +86,17 @@ class CategoryController extends Controller
             $request_data['image'] = uploaded($request->image, 'category');
         }
         $category->update($request_data);
+
+
+// ===========================================================
+        $name='name_' . app()->getLocale();
+        activity()
+            ->performedOn($category)
+            ->causedBy(auth()->guard('admin')->user())
+            ->log(' قام المشرف' . ' '.auth()->guard('admin')->user()->full_name .' '. ' بتعديل قسم '. ($category->$name));
+
+// ===========================================================
+
         return redirect()->route('categories.index')->with('success', trans('messages.messages.updated_successfully'));
     }
 

@@ -26,6 +26,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
+Route::get('/cronjob/update-auction-status', [HomeController::class, 'cronJob']);
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),

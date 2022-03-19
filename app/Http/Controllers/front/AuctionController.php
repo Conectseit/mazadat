@@ -205,7 +205,6 @@ class AuctionController extends Controller
 
     public function add_auction(AddAuctionRequest $request)
     {
-
         DB::beginTransaction();
         try {
             $serial_number = '#' . random_int(00000, 99999);
@@ -213,7 +212,7 @@ class AuctionController extends Controller
             $request_data = $request->except(['inspection_report_images' . 'images']);
 
             $auction = Auction::create($request_data + ['seller_id'=>auth()->user()->id,
-                    'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
+                    'current_price' => $request->start_auction_price,  'status'=> 'not_accepted','serial_number' => $serial_number]);
 
 
             //======= upload auction images =======
@@ -236,15 +235,21 @@ class AuctionController extends Controller
 
             //======= upload auction options =======
             $options = [];
-            if(is_array($request->option_ids))
+
+            $ids = array_filter($request->option_ids);
+
+
+            if(is_array($ids) && !empty($ids))
             {
-                foreach ($request->option_ids as $option_detail_id) {
+                // if $request->option_ids is null or equal zero - has zero -> refuse it
+                foreach ($ids as $option_detail_id) {
                     $options[$option_detail_id] = [
                         'auction_id'        => $auction->id,
                         'option_details_id' => $option_detail_id // <==== arrrray ??,
                     ];
                 }
             }
+
             if(count($options) > 0) DB::table('auction_data')->insert($options);
 
 //            Notification::sendNewAuctionNotification($auction->id);
@@ -263,6 +268,7 @@ class AuctionController extends Controller
     {
 //        $data['auctions'] =  auth()->user()->seller_auctions()->get();
         $data['on_progress_auctions'] = auth()->user()->seller_auctions()->where(['status'=> 'on_progress','is_accepted'=>1])->paginate('20');
+//        $data['pending_auctions'] = Auction::where('seller_id', auth()->user()->id)->where('status', 'not_accepted')->paginate('20');
         $data['pending_auctions'] = auth()->user()->seller_auctions()->where('status', 'not_accepted')->where('is_accepted',0)->paginate('20');
         $data['ended_auctions'] = auth()->user()->seller_auctions()->where('status', 'done')->where('is_accepted',1)->paginate('20');
         return view('front.user.my_auctions', $data);

@@ -18,11 +18,14 @@
             }
             reader.readAsDataURL(this.files[0]);
         }
+    });
 
+</script>
 
+<script>
+    $(document).ready(function(e){
 
-
-        // ======================== saveBtn disabled ============
+// ======================== saveBtn disabled ============
         let saveBtn = $('#save-form-btn');
         let registerForm = $('#submitted-form');
 
@@ -30,8 +33,8 @@
             saveBtn.attr('disabled', 'true');
         });
 // ====================================
-    });
 
+    });
 </script>
 
 

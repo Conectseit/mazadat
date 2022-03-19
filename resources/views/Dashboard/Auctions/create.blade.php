@@ -199,16 +199,6 @@
                     <fieldset title="5">
                         <legend class="text-semibold">{{ trans('messages.auction.other_data') }}</legend><br><br>
                         <div class="row">
-{{--                            <div class="form-group">--}}
-{{--                                <label>@lang('messages.auction.inspection_report_image')</label>--}}
-{{--                                <input type="file" class="form-control image " name="inspection_report_image">--}}
-{{--                            </div>--}}
-
-{{--                            <div class="form-group">--}}
-{{--                                <img src=" {{ asset('uploads/default.png') }} " width=" 100px "--}}
-{{--                                     class="thumbnail image-preview">--}}
-{{--                            </div>--}}
-
                             <div class="form-group">
                                 <label class="display-block">{{ trans('messages.auction.who_can_see') }}:</label>
                                 <label class="radio-inline">
@@ -372,5 +362,10 @@
     @include('Dashboard.layouts.parts.map')
 @include('Dashboard.Auctions.ajax_get_options_by_category_id')
 @include('Dashboard.Auctions.image_preview')
+
+
+
+
+
 
 @endsection

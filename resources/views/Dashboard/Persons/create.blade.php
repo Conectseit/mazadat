@@ -24,8 +24,8 @@
         <div class="col-md-6">
 
             <!-- Basic layout-->
-            <form action="{{ route('persons.store') }}" class="form-horizontal" method="post" id="submitted-form"
-                  enctype="multipart/form-data">
+            <form action="{{ route('persons.store') }}" class="form-horizontal" method="post"
+                  id="submitted-form" enctype="multipart/form-data">
                 @csrf
                 <div class="panel panel-flat">
                     <div class="panel-heading">
@@ -100,10 +100,12 @@
                             <div class="form-group">
                                 <label class="col-lg-3 control-label display-block">{{ trans('messages.is_appear_name')}}:</label>
                                 <label class="radio-inline">
-                                    <input type="radio"  value="0" class="styled" name="is_appear_name" checked="checked">{{trans('messages.Yes')}}
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" value="1" class="styled" name="is_appear_name">{{trans('messages.No')}}
+                                    <label class="radio-inline">
+                                        <input type="radio" value="0" class="styled" name="is_appear_name" checked="checked">{{trans('messages.No')}}
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio"  value="1" class="styled" name="is_appear_name" >{{trans('messages.Yes')}}
+                                    </label>
                                 </label>
                             </div>
 

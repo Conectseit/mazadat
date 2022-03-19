@@ -21,16 +21,11 @@ class Auction extends Model
         return isset($images[0]) ? asset('uploads/auctions/' . $images[0]->image) : asset('uploads/default.png');
     }
 
-
-
     public function getFirstInspectionImagePathAttribute()
     {
         $images = $this->inspectionimages;
         return isset($images[0]) ? asset('uploads/auctions/' . $images[0]->image) : asset('uploads/default.png');
     }
-
-
-
 
 //    public function getRemainingTimeAttribute()
 //    {
@@ -55,16 +50,6 @@ class Auction extends Model
 //        return ['days' => $diff->d, 'hours' => $diff->h,'minutes' => $diff->m, 'seconds' => $diff->s];
 //    }
 
-
-
-
-
-
-
-
-
-
-
     public function getRemainingTimeAttribute()
     {
         $now  = Carbon::now();
@@ -75,11 +60,6 @@ class Auction extends Model
         return ['days' => $diff->d, 'hours' => $diff->h,'minutes' => $diff->m, 'seconds' => $diff->s];
     }
 
-
-
-
-
-
     public function seller()
     {
         return $this->belongsTo('App\Models\User', 'seller_id')->withDefault(['full_name' => 'لا يوجد']);
@@ -89,15 +69,21 @@ class Auction extends Model
     {
         return $this->belongsTo('App\Models\User', 'buyer_id')->withDefault(['full_name' => 'لا يوجد']);
     }
+
     public function category()
     {
         return $this->belongsTo('App\Models\Category', 'category_id')->withDefault(['name_ar' => '== ']);
     }
 
-
     public function auctiondata()
     {
-        return $this->hasMany(AuctionData::class,'auction_id');
+        return $this->hasMany(AuctionData::class);
+    }
+
+    // do the samething as auctiondata
+    public function option_details()
+    {
+        return $this->belongsToMany(OptionDetail::class,'auction_data','auction_id','option_details_id');
     }
 
     public function auctionimages()

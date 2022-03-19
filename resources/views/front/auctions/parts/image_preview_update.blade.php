@@ -1,13 +1,9 @@
 <script>
 //====
-
-
-
-
-
     $(function() {
         // Multiple images preview in browser
         var imagesPreview = function(input, placeToInsertImagePreview) {
+            $(placeToInsertImagePreview).html(``);
             if (input.files) {
                 var filesAmount = input.files.length;
 
@@ -30,6 +26,7 @@
     $(function() {
         // Multiple images preview in browser
         var imagesPreview1 = function(input, placeToInsertImagePreview) {
+            $(placeToInsertImagePreview).html(``);
 
             if (input.files) {
                 var filesAmount = input.files.length;

@@ -18,7 +18,7 @@ class AddNameToUsersTable extends Migration
             $table->string('first_name')->after('is_company')->nullable();
             $table->string('middle_name')->after('first_name')->nullable();
             $table->string('last_name')->after('middle_name')->nullable();
-            $table->string('address2')->after('address')->nullable();
+//            $table->string('address2')->after('address')->nullable();
         });
     }
 
@@ -34,7 +34,7 @@ class AddNameToUsersTable extends Migration
             $table->dropColumn('first_name');
             $table->dropColumn('middle_name');
             $table->dropColumn('last_name');
-            $table->dropColumn('address2');
+//            $table->dropColumn('address2');
         });
     }
 }
