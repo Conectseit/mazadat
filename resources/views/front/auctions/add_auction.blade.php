@@ -244,7 +244,7 @@
 
 @push('scripts')
     @include('front.layouts.parts.map')
-    @include('front.auctions.parts.ajax_get_options')
+    @include('front.auctions.parts.add_auction_ajax_get_options')
     @include('front.auctions.parts.image_preview')
 @endpush
 

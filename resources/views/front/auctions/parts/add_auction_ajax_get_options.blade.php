@@ -1,7 +1,7 @@
 <script>
-    @if($auction)
-        get_ajax_request({{ $auction->category_id }}, @json($auction->option_details));
-    @endif
+{{--    @if($auction)--}}
+{{--        get_ajax_request({{ $auction->category_id }}, @json($auction->option_details));--}}
+{{--    @endif--}}
 
     // ========= get_options_by_category_id =====
     function get_ajax_request(category_id, options_details)
