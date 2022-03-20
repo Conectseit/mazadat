@@ -7,6 +7,9 @@ use App\Http\Controllers\PARENT_API;
 use App\Http\Requests\Api\user\UploadPaymentReceiptRequest;
 use App\Http\Resources\Api\auction\PendingAuctionsResource;
 use App\Http\Resources\Api\CategoryAuctionsResource;
+use App\Http\Resources\Api\collections\AuctionsCollection;
+use App\Http\Resources\Api\collections\MyAuctionsCollection;
+use App\Http\Resources\Api\collections\MyPendingAuctionsCollection;
 use App\Models\Auction;
 use App\Models\Payment;
 use App\Models\User;
@@ -57,13 +60,17 @@ class UserController extends PARENT_API
 
         if ($request->status == 'done') {
                 if ($auctions->where('status', 'done')->count() > 0) {
-                    return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'done')->where('is_accepted',1)));  //OK
+                    return responseJson(true, trans('api.all_my_auctions'), new AuctionsCollection($auctions->where('status', 'done')->paginate(10)));  //OK don-successfully
+
+//                    return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'done')));  //OK
                 } else {
                     return responseJson(false, trans('api.there_is_done_auctions'), null);  //OK
                 }
         }
         if ($auctions->where('status', 'on_progress')->count() > 0) {
-            return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'on_progress')->where('is_accepted',1)));  //OK
+            return responseJson(true, trans('api.all_my_auctions'), new AuctionsCollection($auctions->where('status', 'on_progress')->where('is_accepted',1)->paginate(10)));  //OK don-successfully
+
+//            return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'on_progress')->where('is_accepted',1)));  //OK
         } else {
             return responseJson(false, trans('api.there_is_on_progress_auctions'), null);  //OK
         }
@@ -74,12 +81,12 @@ class UserController extends PARENT_API
 
     public function my_pending_auctions(Request $request)
     {
-
-        $auctions = $request->user()->seller_auctions->where('status', 'not_accepted')->where('is_accepted',0);
+        $auctions = $request->user()->seller_auctions->where('status', 'not_accepted')->where('is_accepted',0)->paginate(10);
 
         if ($auctions->count() > 0)
         {
-            return responseJson(true, trans('api.auction_details'), PendingAuctionsResource::collection($auctions));  //OK
+            return responseJson(true, trans('api.auction_details'), new MyPendingAuctionsCollection($auctions));  //OK
+//            return responseJson(true, trans('api.auction_details'), PendingAuctionsResource::collection($auctions));  //OK
         } else {
             return responseJson(false, trans('api.there_is_pending_auctions'), null);  //OK
         }

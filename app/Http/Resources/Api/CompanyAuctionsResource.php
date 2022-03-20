@@ -30,7 +30,6 @@ class CompanyAuctionsResource extends JsonResource
             'remaining_time'              => $this->remaining_time,
             'status'                      => $this->status,
             'is_unique'                   => $this->is_unique,
-
             'is_watched_auction'          => auth()->guard('api')->check() ? is_watched_auction($this->id) : false,
 
         ];

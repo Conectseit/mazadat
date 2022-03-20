@@ -7,6 +7,8 @@ use App\Http\Controllers\PARENT_API;
 use App\Http\Requests\Api\AuctionsStatusRequest;
 use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Http\Resources\Api\CategoryResource;
+use App\Http\Resources\Api\collections\AuctionsCollection;
+use App\Http\Resources\Api\collections\CompanyAuctionsCollection;
 use App\Http\Resources\Api\CompaniesResource;
 use App\Http\Resources\Api\CompanyAuctionsResource;
 use App\Models\Auction;
@@ -43,10 +45,11 @@ class CategoryController extends PARENT_API
 // =========== for appear ended auctions
             if ($request->status == 'done') {
 //                if ($appearance_of_ended_auctions == 'yes') {
-                    $category_auctions = $query->where('category_id', $id)->where('status', 'done')->where('is_accepted',1)->get();
+                    $category_auctions = $query->where('category_id', $id)->where('status', 'done')->where('is_accepted',1)->paginate(10);
 
                     if ($category_auctions->count() > 0) {
-                        return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($category_auctions));  //OK don-successfully
+                        return responseJson(true, trans('api.all_category_auctions'), new AuctionsCollection($category_auctions));  //OK don-successfully
+//                        return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($category_auctions));  //OK don-successfully
                     }
                     return responseJson(false, trans('api.there_is_no_ended_auctions_on_this_category'), null);  //
 
@@ -55,10 +58,12 @@ class CategoryController extends PARENT_API
 //                }
 // ==================================
             } else
-                $category_auctions = $query->where('category_id', $id)->where('status', 'on_progress')->where('is_accepted',1)->get();
+                $category_auctions = $query->where('category_id', $id)->where('status', 'on_progress')->where('is_accepted',1)->paginate(10);
+//                $category_auctions = $query->where('category_id', $id)->where('status', 'on_progress')->where('is_accepted',1)->get();
 
             if ($category_auctions->count() > 0) {
-                return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($category_auctions));  //OK don-successfully
+                return responseJson(true, trans('api.all_category_auctions'), new AuctionsCollection($category_auctions));  //OK don-successfully
+//                return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($category_auctions));  //OK don-successfully
             }
             return responseJson(false, trans('api.there_is_no_on_progress_auctions_on_this_category'), null);  //
         }
@@ -95,7 +100,9 @@ class CategoryController extends PARENT_API
 
     public function all_companies()
     {
-        $companies = User::where('is_company','company')->get();
+//        $companies = User::where('is_company','company')->get();
+        $companies = User::where(['is_company'=>'company'])->whereHas('seller_auctions')->get();
+
         if ($companies->count() > 0) {
             return responseJson(true, trans('api.all_companies'), CompaniesResource::collection($companies));  //OK don-successfully
         }
@@ -111,43 +118,37 @@ class CategoryController extends PARENT_API
         $query = Auction::query();
         if ($company = User::where('id', $id)->find($id)) {
 
-
-// =========== for appear ended auctions
-            if ($request->status == 'done') {
-                if ($appearance_of_ended_auctions == 'yes') {
-                    $company_auctions = $query->where('seller_id', $id)->where('status', 'done')->get();
-
+            if ($request->status == 'done')
+            {
+                    $company_auctions = $query->where('seller_id', $id)->where('status', 'done')->paginate(10);
                     if ($company_auctions->count() > 0) {
                         $data =[
                             'company_name'=> $company_data->user_name,
                             'company_logo'=> $company_data->image_path,
-                            'company_auctions' => CompanyAuctionsResource::collection($company_auctions),
+                            'company_auctions' => new CompanyAuctionsCollection($company_auctions),
+//                            'company_auctions' => CompanyAuctionsResource::collection($company_auctions),
                         ] ;
                         return responseJson(true, trans('api.all_company_auctions'), $data);  //OK don-successfully
 //                        return responseJson(true, trans('api.all_company_auctions'), CompanyAuctionsResource::collection($company_auctions));  //OK don-successfully
                     }
                     return responseJson(false, trans('api.there_is_no_ended_auctions_on_this_company'), null);  //
 
-                } else {
-                    return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
-                }
-// ==================================
             } else
-                $company_auctions = $query->where('seller_id', $id)->where('status', 'on_progress')->get();
-
+                $company_auctions = $query->where('seller_id', $id)->where('status', 'on_progress')->paginate(10);
             if ($company_auctions->count() > 0) {
 
                 $data =[
                     'company_name'=> $company_data->user_name,
                     'company_logo'=> $company_data->image_path,
-                    'company_auctions' => CompanyAuctionsResource::collection($company_auctions),
+                    'company_auctions' => new CompanyAuctionsCollection($company_auctions),
+//                    'company_auctions' => CompanyAuctionsResource::collection($company_auctions),
                 ] ;
                 return responseJson(true, trans('api.all_company_auctions'), $data);  //OK don-successfully
 //                return responseJson(true, trans('api.all_company_auctions'), CompanyAuctionsResource::collection($company_auctions));  //OK don-successfully
             }
-            return responseJson(false, trans('api.there_is_no_on_progress_auctions_on_this_category'), null);  //
+            return responseJson(false, trans('api.there_is_no_on_progress_auctions_on_this_company'), null);  //
         }
-        return responseJson(false, trans('api.not_found_category'), null);  //
+        return responseJson(false, trans('api.not_found_company'), null);  //
     }
 
 }
