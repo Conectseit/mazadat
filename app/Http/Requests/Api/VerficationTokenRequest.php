@@ -26,7 +26,8 @@ class VerficationTokenRequest extends REQUEST_API_PARENT
     {
         return [
 //            'email' => 'required|exists:users,email',
-            'token' => 'required|exists:password_resets,token',
+//            'token' => 'required|exists:password_resets,token',
+            'code' => 'required',
         ];
     }
 }

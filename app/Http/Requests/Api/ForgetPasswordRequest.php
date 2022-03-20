@@ -25,7 +25,8 @@ class ForgetPasswordRequest extends REQUEST_API_PARENT
     public function rules()
     {
         return [
-            'email'           => 'required|email|exists:users',
+//            'email'           => 'required|email|exists:users',
+            'mobile'           => 'required',
         ];
     }
 }

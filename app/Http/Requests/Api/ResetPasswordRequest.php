@@ -28,6 +28,7 @@ class ResetPasswordRequest extends REQUEST_API_PARENT
         return [
 //            'email' => 'required|exists:users,email',
             //'token' => 'required|exists:password_resets,token',
+            'mobile' => 'required|exists:users,mobile',
             'password' => 'required',
         ];
     }
