@@ -204,7 +204,7 @@ class PersonController extends Controller
     {
         $person = User::findOrFail($id);
         $person->update(['is_verified'=> 1]);
-        SmsController::send_sms(($person->mobile), trans('messages.activation_code_is', ['code' => 'تم الموافقة علي بيانات حسابك من ادارة الموقع']));
+        SmsController::send_sms($person->mobile, 'تم الموافقة علي بيانات حسابك من ادارة الموقع' );
 
         return back();
     }
@@ -212,8 +212,7 @@ class PersonController extends Controller
     {
         $person = User::findOrFail($id);
         $person->update(['is_verified'=> 0]);
-//        SmsController::send_sms(($person->mobile), trans('messages.activation_code_is', ['code' => 'هناك خطأ في تكملة بيانات حسابك من فضلك ارسلها مرة اخري']));
-
+        SmsController::send_sms($person->mobile, 'هناك خطأ في تكملة بيانات حسابك من فضلك ارسلها مرة اخري' );
         return back();
     }
 

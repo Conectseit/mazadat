@@ -26,7 +26,7 @@ return [
 //    'active'              => 'فعال',
     'type'                  => 'النوع',
 
-    'activation_code_is'    => 'كود التفعيل هو : :code',
+    'activation_code_is'    => 'كود التفعيل من مزادات هو : :code',
     'edit'                  => 'تعديل',
     'delete'                => 'حذف',
     'save'                  => 'حفظ',
