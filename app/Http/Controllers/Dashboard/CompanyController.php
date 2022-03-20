@@ -212,7 +212,6 @@ class CompanyController extends Controller
         } else {
             $company->active = 1;
         }
-
         return response()->json([
             'data' => [
                 'success' => $company->save(),

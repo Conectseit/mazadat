@@ -658,6 +658,8 @@ return [
     'send_sms_to_auction_owner_successfully' => 'تم ارسال رسالة نصية لصاحب المزاد بنجاح',
     'update_your_auction_and_send_it_again' => 'هناك خطأ في  بيانات مزادك من فضلك ارسلها مرة اخري',
     'deleted_your_auction_successfully' => 'تم حذف مزادك',
+    'ban_user_and_send_SMS_successfully' => 'تم حظر حساب  وارسال رسالة sms',
+    'active_user_again_and_send_SMS_successfully' => 'تم رفع الحظر وتفعيل حساب العميل مرة اخري وارسال رسالة sms',
 
 
 

@@ -173,15 +173,15 @@ class PersonController extends Controller
         $person = User::findOrFail($id);
         $person->update(['ban'=> 1]);
         SmsController::send_sms($person->mobile, 'تم حظر حسابك  من ادرة موقع مزادات' );
+        return back()->with('success',  trans('messages.ban_user_and_send_SMS_successfully'));
 
-        return back();
     }
     public function not_ban($id)
     {
         $person = User::findOrFail($id);
         $person->update(['ban'=> 0]);
-        return back();
-    }
+        SmsController::send_sms($person->mobile, 'تم رفع الحظر وتفعيل حسابك  من ادرة موقع مزادات' );
+        return back()->with('success',  trans('messages.active_user_again_and_send_SMS_successfully'));    }
 
     public function add_balance(WalletRequest $request,$id)
     {
@@ -204,16 +204,15 @@ class PersonController extends Controller
     {
         $person = User::findOrFail($id);
         $person->update(['is_verified'=> 1]);
-        SmsController::send_sms($person->mobile, 'تم الموافقة علي بيانات حسابك من ادارة الموقع' );
-
-        return back();
+        SmsController::send_sms($person->mobile, 'تم الموافقة علي بيانات حسابك من ادارة موقع مزادات' );
+        return back()->with('success',  trans('messages.active_user_and_send_SMS_successfully'));
     }
     public function not_verified($id)
     {
         $person = User::findOrFail($id);
         $person->update(['is_verified'=> 0]);
-        SmsController::send_sms($person->mobile, 'هناك خطأ في تكملة بيانات حسابك من فضلك ارسلها مرة اخري' );
-        return back();
+        SmsController::send_sms($person->mobile, 'هناك خطأ في تكملة بيانات حسابك في موقع مزادات من فضلك ارسلها مرة اخري' );
+        return back()->with('success',  trans('messages.send_SMS_successfully'));
     }
 
 
