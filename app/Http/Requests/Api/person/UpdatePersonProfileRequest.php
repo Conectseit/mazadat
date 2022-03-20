@@ -28,7 +28,7 @@ class UpdatePersonProfileRequest extends REQUEST_API_PARENT
     {
         return [
             'first_name'       => 'sometimes|string|max:255',
-            'middle_name'      => 'sometimes|string|max:255',
+            'middle_name'      => 'sometimes',
             'last_name'        => 'sometimes|string|max:255',
             'user_name'        => 'sometimes|string|max:255|unique:users,user_name,'.auth()->user()->id,
 
