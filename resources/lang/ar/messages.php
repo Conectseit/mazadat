@@ -304,7 +304,7 @@ return [
         'edit' => 'تعديل فرد : ',
         'full_name' => 'الاسم بالكامل ',
         'identity' => 'صورة هوية رسمية ',
-        'address_data' => 'بيانات اخري ',
+        'data_need_accept' => 'بيانات يجب الموافقة عليها',
         'block' => 'الحي ',
         'street' => 'الشارع ',
         'block_num' => 'رقم المبني ',
@@ -660,7 +660,7 @@ return [
     'deleted_your_auction_successfully' => 'تم حذف مزادك',
     'ban_user_and_send_SMS_successfully' => 'تم حظر حساب  وارسال رسالة sms',
     'active_user_again_and_send_SMS_successfully' => 'تم رفع الحظر وتفعيل حساب العميل مرة اخري وارسال رسالة sms',
-    'active_user_and_send_SMS_successfully' => 'تم رفع الحظر وتفعيل حساب العميل مرة اخري وارسال رسالة sms',
+    'active_user_and_send_SMS_successfully' => 'تم الموافقة وتفعيل حساب العميل وارسال رسالة sms',
 
 
 

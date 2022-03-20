@@ -31,7 +31,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#person_data" data-toggle="tab"><i
                             class="icon-menu7 position-left"></i> {{ trans('messages.person.person_data') }}</a></li>
-                <li class=""><a href="#other_data" data-toggle="tab"><i class="icon-menu7 position-left"></i> {{ trans('messages.person.address_data') }}</a></li>
+                <li class=""><a href="#other_data" data-toggle="tab"><i class="icon-menu7 position-left"></i> {{ trans('messages.person.data_need_accept') }}</a></li>
                 <li><a href="#add_address" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{trans('messages.person.additional_address')}}</a></li>
 
 
