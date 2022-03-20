@@ -23,6 +23,7 @@ class OptionResource extends JsonResource
 //            'name'               => $this->$name,
             'option_name'                 => $this->option_detail->option->$name,
             'option_details_name'                 => $this->option_detail->$value,
+            'option_detail_id'                 => $this->option_detail->id,
         ];
     }
 }
