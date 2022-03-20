@@ -238,7 +238,6 @@ class AuctionController extends Controller
 
             $ids = array_filter($request->option_ids);
 
-
             if(is_array($ids) && !empty($ids))
             {
                 // if $request->option_ids is null or equal zero - has zero -> refuse it
@@ -251,11 +250,9 @@ class AuctionController extends Controller
             }
 
             if(count($options) > 0) DB::table('auction_data')->insert($options);
-
-//            Notification::sendNewAuctionNotification($auction->id);
-
             DB::commit();
-            return back()->with('success', trans('messages.added_successfully_wait_until_admin_accept_your_auction'));
+            return redirect()->route('front.my_auctions')->with('success', trans('messages.added_successfully_wait_until_admin_accept_your_auction'));
+//            return back()->with('success', trans('messages.added_successfully_wait_until_admin_accept_your_auction'));
 
         } catch (Exception $e) {
             DB::rollback();
@@ -327,6 +324,33 @@ class AuctionController extends Controller
             }
             $auction_inspection_images = DB::table('inspection_images')->insert($dataa);
         }
+
+
+        //======= upload auction options =======
+
+
+        $options = [];
+
+        $ids = array_filter($request->option_ids);
+
+        if(is_array($ids) && !empty($ids))
+        {
+            // if $request->option_ids is null or equal zero - has zero -> refuse it
+            foreach ($ids as $option_detail_id) {
+                $options[$option_detail_id] = [
+                    'auction_id'        => $auction->id,
+                    'option_details_id' => $option_detail_id // <==== arrrray ??,
+                ];
+            }
+        }
+
+//        foreach ($auction->option_details as $option_detail) {
+//            $option_detail->delete();
+//        }
+
+        if(count($options) > 0) DB::table('auction_data')->insert($options);
+
+
 
         $auction = $auction->update($request_data);
         return redirect()->route('front.my_auctions')->with('success', trans('messages.messages.updated_successfully'));

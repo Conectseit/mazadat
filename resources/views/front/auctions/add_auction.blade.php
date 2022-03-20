@@ -54,7 +54,6 @@
                                           placeholder="{{trans('messages.description_ar')}}">{{ old('description_ar') }}</textarea>
                                 @error('description_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
-
                         </div>
 
                         <div class="form-group mb-4 row">

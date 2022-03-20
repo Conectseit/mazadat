@@ -208,33 +208,42 @@
 
                         <hr>
                         <div class="form-group">
-                            <label>@lang('messages.auction.inspection_report_images')</label>
+                            <label>@lang('messages.auction.images')</label>
 {{--                            <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
                             <input type="file" multiple id="gallery-photo-add"  class="form-control" name="images[]">
-                            <div class="gallery"></div>
+                            <div class="gallery">
+                                @if ($images)
+
+                                    @foreach($images as $image)
+                                        <img src="{{asset($image->ImagePath) }}"
+                                             style="height: 40px; padding-right: 1px;" alt="">
+                                        {{--                                            <button class="btn btn-danger" style="margin-top: 5px;"></button>--}}
+                                    @endforeach
+                                @endif
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>@lang('messages.auction.images')</label>
+                            <label>@lang('messages.auction.inspection_report_images')</label>
 {{--                            <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
                             <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">
-                            <div class="gallery1"></div>
+                            <div class="gallery1">
+
+                                @if ($inspection_report_images)
+
+                                    @foreach($inspection_report_images as $image)
+                                        <img src="{{asset($image->ImagePath) }}" style="height: 40px; padding-right: 1px;"
+                                             alt="">
+                                        {{--                                            <button class="btn btn-danger" style="margin-top: 5px;"></button>--}}
+                                    @endforeach
+                                @endif
+                            </div>
 
                         </div>
-
-
-
-
-
-
-
-
-
-
                         <div class="text-right">
                             <input type="submit" class="btn btn-primary" name="forward"
                             value=" {{ trans('messages.update_and_come_back') }} "/>
-{{--                            <input type="submit" class="btn btn-success"--}}
-{{--                                   value=" {{ trans('messages.update_and_come_back') }} "/>--}}
+                            <input type="submit" class="btn btn-success"
+                                   value=" {{ trans('messages.update_and_come_back') }} "/>
                         </div>
                     </div>
                 </div>
@@ -249,9 +258,9 @@
 @stop
 
 @section('scripts')
-{{--    @include('Dashboard.layouts.parts.ajax_get_options')--}}
-{{--    @include('Dashboard.layouts.parts.map')--}}
-{{--    @include('Dashboard.Auctions.ajax_get_options_by_category_id')--}}
-    @include('Dashboard.Auctions.image_preview')
+    @include('Dashboard.layouts.parts.ajax_get_options')
+    @include('Dashboard.layouts.parts.map')
+    @include('Dashboard.Auctions.ajax_get_options_by_category_id')
+    @include('Dashboard.Auctions.image_preview_update')
 
 @endsection

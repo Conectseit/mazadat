@@ -143,6 +143,10 @@ class AuctionController extends Controller
 //        $data['sellers'] = User::where('type', 'seller')->get();
         $data['users'] = User::where('is_verified', 1)->get();
 
+        $data['images'] = AuctionImage::where(['auction_id' => $id])->get();
+        $data['inspection_report_images'] = InspectionImage::where(['auction_id' => $id])->get();
+
+
         return view('Dashboard.Auctions.edit', $data);
     }
 
@@ -176,15 +180,17 @@ class AuctionController extends Controller
             }
             $auction_inspection_images = DB::table('inspection_images')->insert($dataa);
         }
-        $auction = $auction->update($request_data);
 
-        // ===========================================================
-//        $name='name_' . app()->getLocale();
-//        activity()
-//            ->performedOn($auction)
-//            ->causedBy(auth()->guard('admin')->user())
-//            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بتعديل مؤسسة'.($auction->$name));
-//// ======================
+// ===========================================================
+
+        $name='name_' . app()->getLocale();
+        activity()
+            ->performedOn($auction)
+            ->causedBy(auth()->guard('admin')->user())
+            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بتعديل مزاد'.($auction->$name));
+// ===========================================================
+
+        $auction->update($request_data);
         return redirect()->route('auctions.index')->with('success', trans('messages.messages.updated_successfully'));
     }
 
