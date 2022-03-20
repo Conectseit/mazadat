@@ -24,7 +24,12 @@ class PendingAuctionsResource extends JsonResource
             'name_en'                     => $this->name_en,
             'start_auction_price'         => $this->start_auction_price,
             'value_of_increment'          => (int)$this->value_of_increment,
-            'category_id'                 => $this->category_id,
+//            'category_id'                 => $this->category_id,
+
+            'category'    => [
+                'id' => isset($this->category_id)?$this->category_id:'null',
+                'name' => isset($this->category_id)?$this->category->$name:'null', // url full
+            ],
             'description_ar'              => $this->description_ar,
             'description_en'              => $this->description_en,
             'auction_terms_ar'            => $this->auction_terms_ar,
