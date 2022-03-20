@@ -156,8 +156,6 @@ class AuthController extends PARENT_API
 
 
 // ====================== forget_password ============================
-
-
     public function forget_password(ForgetPasswordRequest $request)
     {
 

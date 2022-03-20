@@ -193,7 +193,7 @@ class AuctionController extends PARENT_API
             $request_data = $request->except(['inspection_report_images' . 'images']);
 
             $auction = Auction::create($request_data + ['seller_id'=>auth()->user()->id,
-                    'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
+                    'current_price' => $request->start_auction_price, 'serial_number' => $serial_number,'status'=>'not_accepted']);
 
             //======= upload auction images =======
             $_data = [];
