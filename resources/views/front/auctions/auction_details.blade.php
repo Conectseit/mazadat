@@ -22,7 +22,7 @@
                         <div class="col-lg-4 d-flex align-items-center">
                             <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-right"></i> </a>
 
-                            <div id="countdown"  style="margin-right: -141px;">
+                            <div id="countdown"  style="margin-right: -141px; background: #d1915c;">
                                 <h5 class="text-center mx-auto my-1">{{__('messages.auction.remaining_time')}}
                                     : <i class="fal fa-clock"> </i>
                                 </h5>
