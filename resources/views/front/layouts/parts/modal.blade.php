@@ -110,14 +110,25 @@
                 </div>
                 <div class="modal-body">
 
+{{--                    <div class="form-group">--}}
+{{--                        <div class="col-lg-12 col-md-12">--}}
+{{--                            <input type="text" name="email" value="{{ old('email') }}"--}}
+{{--                                   class="form-control @error('email') is-invalid @enderror"--}}
+{{--                                   placeholder="{{trans('messages.enter_email')}}">--}}
+{{--                            @error('email') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
                     <div class="form-group">
                         <div class="col-lg-12 col-md-12">
-                            <input type="text" name="email" value="{{ old('email') }}"
-                                   class="form-control @error('email') is-invalid @enderror"
-                                   placeholder="{{trans('messages.enter_email')}}">
-                            @error('email') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror
+                            <input type="text" name="mobile" value="{{ old('mobile') }}"
+                                   class="form-control @error('mobile') is-invalid @enderror"
+                                   placeholder="{{trans('messages.enter_mobile')}} 966 xx xxx">
+                            @error('mobile') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror
                         </div>
-                    </div><br>
+                    </div>
+
+                    <br>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary add">ارسال</button>

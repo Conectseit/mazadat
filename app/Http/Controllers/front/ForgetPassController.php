@@ -4,6 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\SmsController;
 use App\Http\Requests\Front\user\ForgetPassRequest;
 use App\Http\Requests\Front\user\resetPasswordRequest;
 use App\Mail\ConfirmCode;
@@ -22,24 +23,17 @@ class ForgetPassController extends Controller
 // =========== reset password ===========================
     public function forget_pass(ForgetPassRequest $request)
     {
-
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('mobile', $request->mobile)->first();
 
         if (!$user) {
             return back()->with('error', trans('messages.invalid_email'));
         }
 
-//        if ($user->is_active != 'active') return back()->with('error', 'عفوا هذا الحساب غير مفعل من قبل الادارة');
-
         $code = create_rand_numbers();
 
         $user->update(['reset_password_code' => $code]);
-
-        Mail::to($request->email)->send(new ConfirmCode($code));
-
-        Log::info($code);
-        return redirect()->route('front.reset-code-page', $request->email);
-//        return view('front.auth.resetCodePage', compact('email'));
+        SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
+        return redirect()->route('front.reset-code-page', $request->mobile);
     }
 
 
@@ -90,11 +84,44 @@ class ForgetPassController extends Controller
 
 // =========== End reset password =================
 
-
-
-
-
 }
+
+
+
+
+
+
+
+
+/// send rest by email ????
+
+//public function forget_pass(ForgetPassRequest $request)
+//{
+//    $user = User::where('email', $request->email)->first();
+//
+//    if (!$user) {
+//        return back()->with('error', trans('messages.invalid_email'));
+//    }
+//
+////        if ($user->is_active != 'active') return back()->with('error', 'عفوا هذا الحساب غير مفعل من قبل الادارة');
+//
+//    $code = create_rand_numbers();
+//
+//    $user->update(['reset_password_code' => $code]);
+//
+//    Mail::to($request->email)->send(new ConfirmCode($code));
+//
+//    Log::info($code);
+//    return redirect()->route('front.reset-code-page', $request->email);
+////        return view('front.auth.resetCodePage', compact('email'));
+//}
+
+
+
+
+
+
+
 
 
 
