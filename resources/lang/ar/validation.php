@@ -214,6 +214,7 @@ return [
         'auction_terms_ar' => 'الشروط والاحكام بالعربي',
         'auction_terms_en' => 'الشروط والاحكام بالانجليزي',
         'inspection_report_image' => 'صورة تقرير الفحص',
+        'company_authorization_image' => 'صورة التفويض من المؤسسة',
 //        'g-recaptcha-response' => 'Please verify that you are not a robot.',
 
 

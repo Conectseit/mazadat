@@ -93,8 +93,21 @@
                 </g>
             </g>
         </svg>
+{{--        <div style="padding: 40px;">--}}
+{{--            <h3>انتظرونا قريبا ......</h3>--}}
+{{--            <h1>--}}
+{{--                <a href="{{route('front.home')}}"> </a>--}}
+{{--            </h1>--}}
+{{--        </div>--}}
+
+
+
         <div style="padding: 40px;">
-            <h3>انتظرونا قريبا ......</h3>
+            <a href="{{route('front.home')}}">
+                <div class="submit-btn btn btn-primary submit-btn save-btn mx-auto">
+                    {{trans('messages.start')}}<br>
+                </div>
+            </a>
         </div>
     </div>
 

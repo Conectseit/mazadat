@@ -45,20 +45,20 @@ class CategoryController extends PARENT_API
 // =========== for appear ended auctions
             if ($request->status == 'done') {
 //                if ($appearance_of_ended_auctions == 'yes') {
-                    $category_auctions = $query->where('category_id', $id)->where('status', 'done')->where('is_accepted',1)->paginate(10);
+                $category_auctions = $query->where('category_id', $id)->where('status', 'done')->where('is_accepted', 1)->paginate(10);
 
-                    if ($category_auctions->count() > 0) {
-                        return responseJson(true, trans('api.all_category_auctions'), new AuctionsCollection($category_auctions));  //OK don-successfully
+                if ($category_auctions->count() > 0) {
+                    return responseJson(true, trans('api.all_category_auctions'), new AuctionsCollection($category_auctions));  //OK don-successfully
 //                        return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($category_auctions));  //OK don-successfully
-                    }
-                    return responseJson(false, trans('api.there_is_no_ended_auctions_on_this_category'), null);  //
+                }
+                return responseJson(false, trans('api.there_is_no_ended_auctions_on_this_category'), null);  //
 
 //                } else {
 //                    return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
 //                }
 // ==================================
             } else
-                $category_auctions = $query->where('category_id', $id)->where('status', 'on_progress')->where('is_accepted',1)->paginate(10);
+                $category_auctions = $query->where('category_id', $id)->where('status', 'on_progress')->where('is_accepted', 1)->paginate(10);
 //                $category_auctions = $query->where('category_id', $id)->where('status', 'on_progress')->where('is_accepted',1)->get();
 
             if ($category_auctions->count() > 0) {
@@ -71,37 +71,20 @@ class CategoryController extends PARENT_API
     }
 
 
-
-
-
-
-
-
     public function uniqueAuctions()
     {
-        $featured_auctions= Auction:: where('is_unique', 1)->latest()->get();
+        $featured_auctions = Auction:: where('is_unique', 1)->latest()->get();
 
-           if ($featured_auctions->count() > 0) {
-               return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($featured_auctions));
-           }
-            return responseJson(false, trans('api.there_is_no_unique_auctions_on_this_category'), null);  //
-
+        if ($featured_auctions->count() > 0) {
+            return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($featured_auctions));
+        }
+        return responseJson(false, trans('api.there_is_no_unique_auctions_on_this_category'), null);  //
     }
-
-
-
-
-
-
-
-
-
-
 
     public function all_companies()
     {
 //        $companies = User::where('is_company','company')->get();
-        $companies = User::where(['is_company'=>'company'])->whereHas('seller_auctions')->get();
+        $companies = User::where(['is_company' => 'company'])->whereHas('seller_auctions')->get();
 
         if ($companies->count() > 0) {
             return responseJson(true, trans('api.all_companies'), CompaniesResource::collection($companies));  //OK don-successfully
@@ -111,38 +94,37 @@ class CategoryController extends PARENT_API
 
     public function companyAuctions(Request $request, $id)
     {
-        $company_data=User::where('id', $id)->first();
+        $company_data = User::where('id', $id)->first();
         $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
 
         $name = 'name_' . app()->getLocale();
         $query = Auction::query();
         if ($company = User::where('id', $id)->find($id)) {
 
-            if ($request->status == 'done')
-            {
-                    $company_auctions = $query->where('seller_id', $id)->where('status', 'done')->paginate(10);
-                    if ($company_auctions->count() > 0) {
-                        $data =[
-                            'company_name'=> $company_data->user_name,
-                            'company_logo'=> $company_data->image_path,
-                            'company_auctions' => new CompanyAuctionsCollection($company_auctions),
+            if ($request->status == 'done') {
+                $company_auctions = $query->where('seller_id', $id)->where('status', 'done')->paginate(10);
+                if ($company_auctions->count() > 0) {
+                    $data = [
+                        'company_name' => $company_data->user_name,
+                        'company_logo' => $company_data->image_path,
+                        'company_auctions' => new CompanyAuctionsCollection($company_auctions),
 //                            'company_auctions' => CompanyAuctionsResource::collection($company_auctions),
-                        ] ;
-                        return responseJson(true, trans('api.all_company_auctions'), $data);  //OK don-successfully
+                    ];
+                    return responseJson(true, trans('api.all_company_auctions'), $data);  //OK don-successfully
 //                        return responseJson(true, trans('api.all_company_auctions'), CompanyAuctionsResource::collection($company_auctions));  //OK don-successfully
-                    }
-                    return responseJson(false, trans('api.there_is_no_ended_auctions_on_this_company'), null);  //
+                }
+                return responseJson(false, trans('api.there_is_no_ended_auctions_on_this_company'), null);  //
 
             } else
                 $company_auctions = $query->where('seller_id', $id)->where('status', 'on_progress')->paginate(10);
             if ($company_auctions->count() > 0) {
 
-                $data =[
-                    'company_name'=> $company_data->user_name,
-                    'company_logo'=> $company_data->image_path,
+                $data = [
+                    'company_name' => $company_data->user_name,
+                    'company_logo' => $company_data->image_path,
                     'company_auctions' => new CompanyAuctionsCollection($company_auctions),
 //                    'company_auctions' => CompanyAuctionsResource::collection($company_auctions),
-                ] ;
+                ];
                 return responseJson(true, trans('api.all_company_auctions'), $data);  //OK don-successfully
 //                return responseJson(true, trans('api.all_company_auctions'), CompanyAuctionsResource::collection($company_auctions));  //OK don-successfully
             }

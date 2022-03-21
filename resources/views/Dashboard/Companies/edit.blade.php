@@ -43,10 +43,16 @@
                     <div class="panel-body">
 
                         <div class="form-group">
-                            <label>@lang('messages.company.image')</label>
-                            <input type="file" class="form-control image" name="image">
-                            <img src=" {{$company->image_path}} " width=" 100px " value="{{$company->image_path}}"
-                                 class="thumbnail image-preview">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label>@lang('messages.company.image')</label>
+                                    <input type="file" class="form-control image" name="image">
+                                </div>
+                                <div class="col-lg-6">
+                                    <img src=" {{$company->image_path}} " width=" 100px " value="{{$company->image_path}}"
+                                         class="thumbnail image-preview">
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">{{ trans('messages.company.user_name') }}</label>

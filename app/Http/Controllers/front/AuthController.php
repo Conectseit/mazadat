@@ -52,6 +52,7 @@ class AuthController extends Controller
 
     public function resendSms($mobile)
     {
+
         try
         {
             $user = User::where('mobile', $mobile)->first();
@@ -61,13 +62,14 @@ class AuthController extends Controller
             $user->update(['activation_code' => $activation_code]);
 
 //    SmsController::send_sms(($mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
-
-            return response()->json(['data' => [], 'status' => true, 'message' => 'تم إعادة إرسال الكود بنجاح']);
+//            return response()->json(['data' => [], 'status' => true, 'message' => 'تم إعادة إرسال الكود بنجاح']);
+            return back();
         }
         catch (\Exception $e)
         {
-            return response()->josn(['data' => [], 'status' => false, 'message' => $e->getMessage()]);
+//            return response()->josn(['data' => [], 'status' => false, 'message' => $e->getMessage()]);
         }
+
     }
 
 

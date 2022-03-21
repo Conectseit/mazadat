@@ -2646,10 +2646,13 @@ a.ui-button:active,
     background: #eeeeee47;
 }
 
-a:hover {
-    /*color: #fff;*/
-    color: #1e3c48;
-}
+/*a:hover {*/
+/*    !*color: #fff;*!*/
+/*    color: #1e3c48;*/
+/*}*/
+
+
+
 /*a, .fa .fa-home:hover {*/
 /*    color: #1e3c48;*/
 /*}*/

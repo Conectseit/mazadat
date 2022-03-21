@@ -662,6 +662,9 @@ return [
     'active_user_again_and_send_SMS_successfully' => 'تم رفع الحظر وتفعيل حساب العميل مرة اخري وارسال رسالة sms',
     'active_user_and_send_SMS_successfully' => 'تم الموافقة وتفعيل حساب العميل وارسال رسالة sms',
 
+    'no_auctions_yet_for_this_company' => 'لا يوجد مزادات لهذه المؤسسة حتي الان',
+    'start' => 'ابدأ الان ......',
+
 
 
 ];

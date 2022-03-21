@@ -31,20 +31,7 @@
     @include('front.auctions.parts.head')
     <section class="sign-up-page">
         <div class="container">
-{{--            <h4 class="title"> {{ trans('messages.activation') }}</h4>--}}
-{{--            @include('Dashboard.layouts.parts.validation_errors')--}}
-
-{{--            @if(session()->has('error'))--}}
-{{--                <div class="alert alert-warning alert-dismissible" role="alert">--}}
-{{--                    {{ session('error') }}--}}
-{{--                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
-{{--                        <span aria-hidden="true">&times;</span>--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-{{--            @endif--}}
             @include('front.layouts.parts.alert')
-
-
             <div class="row">
                 <form action="{{route('front.check_code')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -71,11 +58,16 @@
                         </div>
 
                         <div class="sign-btn row">
-                            <button type="submit" id="resend-code-btn" class="btn btn-primary submit-btn">{{trans('messages.send')}}</button>
+                            <button type="submit" id="resend-code-btn" class="btn btn-primary submit-btn send_again">{{trans('messages.send')}}</button>
                         </div>
 
-{{--                        <p> Resend OTP in <span id="countdowntimer">10 </span> Seconds</p>--}}
-                        <p class="mt-5">لم يصلك كود التفعيل؟ <a id="resend-code-btn" href="{{ route('front.resend-sms',$mobile) }}" class="create text-orange">ارسل مرة أخرى</a></p>
+
+                        <p class="mt-3 ">
+
+                            <a id="resend-code-btn" href="{{ route('front.resend-sms',$mobile) }}" class="create  text-orange send_btn d-none"> لم يصلك كود التفعيل؟  ارسل مرة أخرى</a>
+                            <span class="counter_send d-none"> اعادة ارسال بعد  <span id="countdowntimer">20 </span> Seconds</span>
+                        </p>
+
                     </div>
                 </form>
             </div>
@@ -94,68 +86,80 @@
                 fadeDuration: 300,
                 fitImagesInViewport: true,
             });
-            $('a#resend-code-btn').on('click', function(e){
-                e.preventDefault();
-                let href = $(this).attr('href');
-                let timerInterval
-                Swal.fire({
-                    // title: 'Auto close alert!',
-                    // html: 'I will close in <b></b> milliseconds.',
-                    html: 'سيتم اعادة ارسال كود التفعيل <b></b> بعد ثانيتين.',
-                    timer: 2000,
-                    timerProgressBar: true,
-                    didOpen: () => {
-                        Swal.showLoading()
-                        const b = Swal.getHtmlContainer().querySelector('b')
-                        $.ajax({
-                            method: 'GET',
-                            url: href,
-                            success: res => console.log(res),
-                            error: err => console.log(err),
-                        });
-                    },
-                    willClose: () => {
-                        clearInterval(timerInterval)
-                    }
-                }).then((result) => {
-                    /* Read more about handling dismissals below */
-                    if (result.dismiss === Swal.DismissReason.timer) {
-                        console.log('I was closed by the timer')
-                    }
-                });
-            });
+            // $('a#resend-code-btn').on('click', function(e){
+            //     e.preventDefault();
+            //     let href = $(this).attr('href');
+            //     let timerInterval
+            //     Swal.fire({
+            //         // title: 'Auto close alert!',
+            //         // html: 'I will close in <b></b> milliseconds.',
+            //         html: 'سيتم اعادة ارسال كود التفعيل <b></b> بعد ثانيتين.',
+            //         timer: 2000,
+            //         timerProgressBar: true,
+            //         didOpen: () => {
+            //             Swal.showLoading()
+            //             const b = Swal.getHtmlContainer().querySelector('b')
+            //             $.ajax({
+            //                 method: 'GET',
+            //                 url: href,
+            //                 success: res => console.log(res),
+            //                 error: err => console.log(err),
+            //             });
+            //         },
+            //         willClose: () => {
+            //             clearInterval(timerInterval)
+            //         }
+            //
+            //     }).then((result) => {
+            //         /* Read more about handling dismissals below */
+            //         if (result.dismiss === Swal.DismissReason.timer) {
+            //             console.log('I was closed by the timer')
+            //         }
+            //     });
+            // });
         });
-        var items = document.querySelectorAll('.code'),
-            lastTabIndex = 4,
-            backSpaceCode = 8;
-        items.forEach(function(item) {
-            item.addEventListener('focus', function(e) {
-                e.target.value = '';
-            });
-            item.addEventListener('keydown', function(e) {
-                let keyCode = e.keyCode,
-                    currentTabIndex = e.target.tabIndex;
-                if (keyCode !== backSpaceCode && currentTabIndex !== lastTabIndex) {
-                    document.querySelectorAll('.code').forEach(function(inpt) {
-                        if (inpt.tabIndex === currentTabIndex + 1) {
-                            setTimeout(function() {
-                                inpt.focus();
-                            }, 100);
-                        }
-                    });
-                }
-            });
-        });
-
-
-
+        // var items = document.querySelectorAll('.code'),
+        //     lastTabIndex = 4,
+        //     backSpaceCode = 8;
+        // items.forEach(function(item) {
+        //     item.addEventListener('focus', function(e) {
+        //         e.target.value = '';
+        //     });
+        //     item.addEventListener('keydown', function(e) {
+        //         let keyCode = e.keyCode,
+        //             currentTabIndex = e.target.tabIndex;
+        //         if (keyCode !== backSpaceCode && currentTabIndex !== lastTabIndex) {
+        //             document.querySelectorAll('.code').forEach(function(inpt) {
+        //                 if (inpt.tabIndex === currentTabIndex + 1) {
+        //                     setTimeout(function() {
+        //                         inpt.focus();
+        //                     }, 100);
+        //                 }
+        //             });
+        //         }
+        //     });
+        // });
+        $( document ).ready(function() {
+           // var timeleft = 1000;
+           // var downloadTimer = setInterval(function(){
+           //     timeleft--;
+           //     document.getElementById("countdowntimer").textContent = timeleft;
+           //     if(timeleft <= 0)
+           //         clearInterval(downloadTimer);
+           // },10000);
+            $( ".send_btn" ).addClass('d-none')
+            $( ".counter_send" ).removeClass('d-none')
+            var timeleft = 20 ;
+            var downloadTimer = setInterval(function(){
+                timeleft--;
+                $("#countdowntimer").textContent = timeleft;
+                $( ".send_btn" ).removeClass('d-none')
+                $( ".counter_send" ).addClass('d-none')
+                if(timeleft <= 0)
+                    clearInterval(downloadTimer);
+            },20000);
+       })
 //timer
-        var timeleft = 10;
-        var downloadTimer = setInterval(function(){
-            timeleft--;
-            document.getElementById("countdowntimer").textContent = timeleft;
-            if(timeleft <= 0)
-                clearInterval(downloadTimer);
-        },1000);
-    </script>
+
+</script>
 @endpush

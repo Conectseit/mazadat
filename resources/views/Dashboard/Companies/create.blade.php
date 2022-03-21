@@ -42,37 +42,17 @@
 
                     <div class="panel-body">
                         <div class="box-body">
-
-                            <div id="location" style="display:block;">
-{{--                                <div class="form-group">--}}
-{{--                                    <label>@lang('messages.commercial_register_image')--}}
-{{--                                        <input type="file" class="col-lg-3 control-label display-block  " name="commercial_register_image">--}}
-{{--                                        <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview">--}}
-{{--                                    </label>--}}
-{{--                                </div><br>--}}
-
-                                <div class="form-group">
-                                    <label>@lang('messages.company.location'):</label>
-                                    <div class="col-lg-12">
-{{--                                        <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">--}}
-                                        <div id="map"></div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>@lang('messages.company.image'):</label>
                                     </div>
                                     <div class="col-lg-6">
-                                        <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">
+                                        <input type="file" class="form-control image " name="image">
+                                        <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>@lang('messages.commercial_register_image')</label>
-                                    <input type="file" class="form-control commercial_register_image" name="commercial_register_image">
-                                    <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview2">
-
-                                </div>
-
                             </div>
-
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">{{ trans('messages.company.user_name') }}</label>
                                 <div class="col-lg-9">
@@ -150,18 +130,45 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>@lang('messages.company.image'):</label>
-                                    <input type="file" class="form-control image " name="image">
-                                    <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview">
-                            </div>
 
                             <div class="form-group">
-                                <label>@lang('messages.company.company_authorization_image')</label>
-                                <input type="file" class="form-control  company_authorization_image" name="company_authorization_image">
-                                <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview1">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>@lang('messages.company.company_authorization_image')</label>
+                                        <input type="file" class="form-control  company_authorization_image" name="company_authorization_image">
 
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview1">
+                                    </div>
+                                </div>
                             </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>@lang('messages.commercial_register_image')</label>
+                                        <input type="file" class="form-control commercial_register_image" name="commercial_register_image">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview2">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                    <label>@lang('messages.company.location'):</label>
+                                    <div class="col-lg-12">
+                                        {{--                                        <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">--}}
+                                        <div id="map"></div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">
+                                    </div>
+                                </div>
+
+
                         </div>
                     </div>
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">

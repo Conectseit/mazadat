@@ -34,6 +34,9 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function () {
 
+    Route::get('/', function () {
+        return view('front/splash_index');
+    });
 //    Route::group(['prefix' => 'front'], function () {
     Route::get('/home', [HomeController::class, 'home'])->name('front.home');
     Route::get('all_companies', [HomeController::class, 'all_companies'])->name('front.all_companies');
@@ -147,9 +150,9 @@ Route::group(
 });
 
 
-Route::get('/', function () {
-    return view('front/splash_index');
-});
+//Route::get('/', function () {
+//    return view('front/splash_index');
+//});
 
 
 
