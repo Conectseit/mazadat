@@ -123,10 +123,10 @@
                                 {{trans('messages.follow_us')}}
                             </h4>
                             <div class="social">
-                                <a href="{{App\Models\Setting::where('key','facebook_url')->first()->value}}"><i class="fab fa-facebook-square"></i></a>
-                                <a href="{{ App\Models\Setting:: where('key','instagram_url')->first()->value}}"><i class="fab fa-instagram"></i></a>
-                                <a href="{{ App\Models\Setting:: where('key','twitter_url')->first()->value}}"><i class="fab fa-twitter-square"></i></a>
-                                <a href="{{ App\Models\Setting:: where('key','youtube_url')->first()->value}}"><i class="fab fa-youtube"></i></a>
+                                <a href="{{App\Models\Setting::where('key','facebook_url')->first()->value}}"  target="_blank"><i class="fab fa-facebook-square"></i></a>
+                                <a href="{{ App\Models\Setting:: where('key','instagram_url')->first()->value}}" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="{{ App\Models\Setting:: where('key','twitter_url')->first()->value}}" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                                <a href="{{ App\Models\Setting:: where('key','youtube_url')->first()->value}}" target="_blank"><i class="fab fa-youtube"></i></a>
                                 <a href="#"><i class="fab fa-google-plus-square"></i></a>
                             </div>
                         </div>
