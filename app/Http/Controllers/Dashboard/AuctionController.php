@@ -28,7 +28,7 @@ class AuctionController extends Controller
         $data['auctions'] = Auction::latest()->get();
         $data['on_progress_auctions'] = Auction::where('status', 'on_progress')->where('is_accepted', 1)->latest()->get();
         $data['done_auctions'] = Auction::where('status', 'done')->where('is_accepted', 1)->latest()->get();
-        $data['not_accepted_auctions'] = Auction::where('is_accepted', 0)->latest()->get();
+        $data['not_accepted_auctions'] = Auction::where('status', 'not_accepted')->where('is_accepted', 0)->latest()->get();
         return view('Dashboard.Auctions.index', $data);
     }
 
@@ -180,6 +180,38 @@ class AuctionController extends Controller
             }
             $auction_inspection_images = DB::table('inspection_images')->insert($dataa);
         }
+
+
+        //======= update auction options =======
+        $options = [];
+        if ($request->has('option_ids')) {
+            $ids = array_filter($request->option_ids);
+
+            // $auction->option_details->sync($ids); in case of we build a many to many relationship
+
+            DB::table('auction_data')->where('auction_id',$auction->id)->delete();
+
+            if(is_array($ids) && !empty($ids))
+            {
+                // if $request->option_ids is null or equal zero - has zero -> refuse it
+                foreach ($ids as $option_detail_id) {
+                    $options[$option_detail_id] = [
+                        'auction_id'        => $auction->id,
+                        'option_details_id' => $option_detail_id // <==== arrrray ??,
+                    ];
+                }
+            }}
+
+//        foreach ($auction->option_details as $option_detail) {
+//            $option_detail->delete();
+//        }
+
+        if(count($options) > 0) DB::table('auction_data')->insert($options);
+
+
+
+
+
 
 // ===========================================================
 

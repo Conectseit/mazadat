@@ -113,10 +113,10 @@ Route::group(
         Route::post('add_auction', [AuctionController::class, 'add_auction'])->name('front.add_auction');
         Route::get('my_auctions', [AuctionController::class, 'my_auctions'])->name('front.my_auctions');
         Route::post('ajax/get-options-by-category-id', [AuctionController::class, 'get_options_by_category_id'])->name('front.ajax_get_options_by_category_id');
-//        Route::post('/ajax-delete-auction', [AuctionController::class, 'destroy'])->name('front.ajax-delete-auction');
-        Route::any('delete-auction/{auction}', [AuctionController::class, 'deleteAuction'])->name('front.delete-auction');
+        Route::post('/ajax-delete-auction', [AuctionController::class, 'destroy'])->name('front.ajax-delete-auction');
+//        Route::any('delete-auction/{auction}', [AuctionController::class, 'deleteAuction'])->name('front.delete-auction');
         Route::any('auction_show_update/{auction}', [AuctionController::class, 'auction_show_update'])->name('front.auction_show_update');
-        Route::any('auction_update/{auction}', [AuctionController::class, 'auction_update'])->name('front.auction_update');
+        Route::any('auction_update/{auction}', [AuctionController::class, 'updateAuction'])->name('front.auction_update');
 
 
         // ============ // profile ================

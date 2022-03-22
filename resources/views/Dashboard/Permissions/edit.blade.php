@@ -179,10 +179,7 @@
                                                 <div class="checkbox checkbox-switchery switchery-xs">
                                                     <label>
                                                         <input type="checkbox" name="perms[]" class="switchery"
-                                                               value="settings.index">
-                                                        @if(in_array('settings.index',$perms))
-                                                            'checked'
-                                                        @endif
+                                                               value="settings.index" {{ in_array('settings.index',$perms) ? 'checked' : '' }}>
                                                     </label>
                                                 </div>
                                             </div>
@@ -196,7 +193,9 @@
                                                 <div class="checkbox checkbox-switchery switchery-xs">
                                                     <label>
                                                         <input type="checkbox" name="perms[]" class="switchery"
-                                                               value="settings.update">
+
+                                                               value="settings.update" {{ in_array('settings.update',$perms) ? 'checked' : '' }}>
+
                                                     </label>
                                                 </div>
                                             </div>

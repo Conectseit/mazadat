@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $data['categories'] = Category::latest()->paginate(200);
+        $data['categories'] = Category::all()->paginate(10);
 //        $data['categories'] = Category::select('id','image','created_at',
 //            'name_' . LaravelLocalization::getCurrentLocale() . ' as name',
 //            'description_' . LaravelLocalization::getCurrentLocale() . ' as description',
@@ -109,6 +109,15 @@ class CategoryController extends Controller
             if (!is_null($category->image)) unlink('uploads/categories/' . $category->image);
 //            File::delete('uploads/categories/' . $request->image);
             $category->delete();
+
+            // ===========================================================
+            $name='name_' . app()->getLocale();
+            activity()
+                ->performedOn($category)
+                ->causedBy(auth()->guard('admin')->user())
+                ->log(' قام المشرف' . ' '.auth()->guard('admin')->user()->full_name .' '. ' بحذف  قسم '. ($category->$name));
+// ===========================================================
+
             return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);

@@ -14,6 +14,8 @@
 <script src="{{asset('Front/assets/js/fa-pro.js')}}"></script>
 <script src="{{asset('Front/assets/js/lightbox.min.js')}}"></script>
 <script src="{{asset('Front/assets/js/main.js')}}"></script>
+<script type="text/javascript" src="{{ url('assets/js/sweetalert.min.js') }}"></script>
+
 
 
 

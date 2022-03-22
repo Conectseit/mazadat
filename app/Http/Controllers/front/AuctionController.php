@@ -36,8 +36,6 @@ class AuctionController extends Controller
         try
         {
             $user = auth()->user();
-
-
             if( $user->is_verified == 0)
             {
                 return back()->with('error', trans('messages.Sorry_you_should_wait_until_admin_accept_you'));
@@ -211,8 +209,8 @@ class AuctionController extends Controller
             //======= create auction =======
             $request_data = $request->except(['inspection_report_images' . 'images']);
 
-            $auction = Auction::create($request_data + ['seller_id'=>auth()->user()->id,
-                    'current_price' => $request->start_auction_price,  'status'=> 'not_accepted','serial_number' => $serial_number]);
+            $auction = Auction::create($request_data + ['seller_id' => auth()->user()->id,
+                    'current_price' => $request->start_auction_price, 'status' => 'not_accepted', 'serial_number' => $serial_number]);
 
 
             //======= upload auction images =======
@@ -236,20 +234,20 @@ class AuctionController extends Controller
             //======= upload auction options =======
             $options = [];
 
-            $ids = array_filter($request->option_ids);
+            $ids = $request->option_ids ? array_filter($request->option_ids) : [];
 
-            if(is_array($ids) && !empty($ids))
-            {
+            if (is_array($ids) && !empty($ids)) {
                 // if $request->option_ids is null or equal zero - has zero -> refuse it
                 foreach ($ids as $option_detail_id) {
                     $options[$option_detail_id] = [
-                        'auction_id'        => $auction->id,
+                        'auction_id' => $auction->id,
                         'option_details_id' => $option_detail_id // <==== arrrray ??,
                     ];
                 }
             }
 
-            if(count($options) > 0) DB::table('auction_data')->insert($options);
+            if (count($options) > 0) DB::table('auction_data')->insert($options);
+
             DB::commit();
             return redirect()->route('front.my_auctions')->with('success', trans('messages.added_successfully_wait_until_admin_accept_your_auction'));
 //            return back()->with('success', trans('messages.added_successfully_wait_until_admin_accept_your_auction'));
@@ -272,12 +270,12 @@ class AuctionController extends Controller
     }
 
 
-    public  function deleteAuction (Auction $auction)
-    {
-        $auction= Auction::where([ 'id' => $auction->id,]);
-        $auction->delete();
-        return back()->with('success', trans('messages.deleted_your_auction_successfully'));
-    }
+//    public  function deleteAuction (Auction $auction)
+//    {
+//        $auction= Auction::where([ 'id' => $auction->id,]);
+//        $auction->delete();
+//        return back()->with('success', trans('messages.deleted_your_auction_successfully'));
+//    }
 
 
 
@@ -296,7 +294,7 @@ class AuctionController extends Controller
 
 
 
-    public function auction_update(Request $request, $id)
+    public function updateAuction(Request $request, $id)
     {
         $auction = Auction::find($id);
 
@@ -326,12 +324,14 @@ class AuctionController extends Controller
         }
 
 
-        //======= upload auction options =======
-
-
+//======= update auction options =======
         $options = [];
-
+        if ($request->has('option_ids')) {
         $ids = array_filter($request->option_ids);
+
+        // $auction->option_details->sync($ids); in case of we build a many to many relationship
+
+        DB::table('auction_data')->where('auction_id',$auction->id)->delete();
 
         if(is_array($ids) && !empty($ids))
         {
@@ -342,7 +342,7 @@ class AuctionController extends Controller
                     'option_details_id' => $option_detail_id // <==== arrrray ??,
                 ];
             }
-        }
+        }}
 
 //        foreach ($auction->option_details as $option_detail) {
 //            $option_detail->delete();
@@ -350,9 +350,7 @@ class AuctionController extends Controller
 
         if(count($options) > 0) DB::table('auction_data')->insert($options);
 
-
-
-        $auction = $auction->update($request_data);
+        $auction = $auction->update($request_data+['current_price' => $request->start_auction_price, 'status' => 'not_accepted',]);
         return redirect()->route('front.my_auctions')->with('success', trans('messages.messages.updated_successfully'));
     }
 
@@ -360,19 +358,19 @@ class AuctionController extends Controller
 
 
 
-//    public function destroy(Request $request)
-//    {
-//        $auction = Auction::find($request->id);
-//        if (!$auction) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, auction is not exists !!']);
-////            foreach ($auction->auctionimages as $image) {
-////                unlink('uploads/auctions/' . $image->image);
-////            }
-//        try {
-//            $auction->delete();
-//            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
-//        } catch (Exception $e) {
-//            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
-//        }
-//    }
+    public function destroy(Request $request)
+    {
+        $auction = Auction::find($request->id);
+        if (!$auction) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, auction is not exists !!']);
+//            foreach ($auction->auctionimages as $image) {
+//                unlink('uploads/auctions/' . $image->image);
+//            }
+        try {
+            $auction->delete();
+            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
+        } catch (Exception $e) {
+            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
+        }
+    }
 
 }

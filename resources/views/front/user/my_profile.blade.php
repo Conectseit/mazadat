@@ -3,16 +3,13 @@
 @section('style')
     <style></style>
 @endsection
-
 @section('content')
     <main class="categories-bar row">
         @include('front.layouts.parts.nav_categories')
     </main>
     @include('front.layouts.parts.alert')
     <section class="my-profile-page">
-
         <div class="container">
-
             <div class="row">
                 <div class="col-lg-6">
                     <div class="slogan-right">
@@ -24,7 +21,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="info">
-                                    <h4 class="name">{{auth()->user()->full_name }}</h4>
+                                    <h4 class="name">{{isset(auth()->user()->full_name)?auth()->user()->full_name :auth()->user()->user_name }}</h4>
                                     <h5 class="email">{{Auth::guard('web')->user()->email}} </h5>
 {{--                                    <p>--}}
 {{--                                        {{trans('messages.bio')}}:--}}

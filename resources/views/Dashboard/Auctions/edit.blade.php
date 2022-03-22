@@ -39,19 +39,7 @@
                     </div>
 
                     <div class="panel-body">
-                        <div class="form-group">
-                            <label
-                                class="col-lg-3 control-label display-block"> {{ trans('messages.auction.category_name') }} </label>
-                            <div class="col-lg-9">
-                                <select name="category_id" class="select form-control">
-                                    <optgroup label="{{ trans('messages.auction.category_name') }}">
-                                        @foreach ($categories as $category)
-                                            <option
-                                                {{ $auction->category_id == $category->id ? 'selected' : '' }} value="{{ $category->id }}"> {{ $category->name_ar }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+
                         <div class="form-group">
                             <label
                                 class="col-lg-3 control-label display-block"> {{ trans('messages.auction.seller_full_name') }} </label>
@@ -161,23 +149,43 @@
                         </div>
 
 
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.category_name') }} </label>
+                            <div class="col-lg-9">
+                                <select name="category_id" id="category" class="select form-control">
+                                    <optgroup label="{{ trans('messages.auction.category_name') }}">
+                                        @foreach ($categories as $category)
+                                            <option
+                                                {{ $auction->category_id == $category->id ? 'selected' : '' }} value="{{ $category->id }}"> {{ $category->name_ar }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
-{{--                        <div class="form-group">--}}
-{{--                            <label class="display-block">{{ trans('messages.auction.who_can_see') }}:</label>--}}
-{{--                            <label class="radio-inline">--}}
-{{--                                <input type="radio" value="all" class="styled" name="who_can_see" checked="checked">--}}
-{{--                                {{trans('messages.all')}}--}}
-{{--                            </label>--}}
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label display-block"> {{ trans('messages.option.options') }} </label>
+                            <div class="col-lg-9">
+                                <div class="select-inputs-options"></div>
+                            </div>
+                        </div>
 
-{{--                            <label class="radio-inline">--}}
-{{--                                <input type="radio" value="users" class="styled" name="who_can_see">--}}
-{{--                                {{trans('messages.auction.users')}}--}}
-{{--                            </label>--}}
-{{--                            <label class="radio-inline">--}}
-{{--                                <input type="radio" value="company" class="styled" name="who_can_see">--}}
-{{--                                {{trans('messages.auction.company')}}--}}
-{{--                            </label>--}}
-{{--                        </div>--}}
+
+                        <div class="form-group">
+                            <label class="display-block">{{ trans('messages.auction.who_can_see') }}:</label>
+                            <label class="radio-inline">
+                                <input type="radio" value="all" class="styled" name="who_can_see" checked="checked">
+                                {{trans('messages.all')}}
+                            </label>
+
+                            <label class="radio-inline">
+                                <input type="radio" value="users" class="styled" name="who_can_see">
+                                {{trans('messages.auction.users')}}
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" value="company" class="styled" name="who_can_see">
+                                {{trans('messages.auction.company')}}
+                            </label>
+                        </div>
 
 {{--                        <div class="form-group">--}}
 {{--                            <label class="display-block">{{ trans('messages.auction.who_can_buy') }}:</label>--}}
@@ -258,9 +266,10 @@
 @stop
 
 @section('scripts')
-    @include('Dashboard.layouts.parts.ajax_get_options')
+{{--    @include('Dashboard.layouts.parts.ajax_get_options')--}}
     @include('Dashboard.layouts.parts.map')
-    @include('Dashboard.Auctions.ajax_get_options_by_category_id')
+    @include('Dashboard.Auctions.parts.update_auction_ajax_get_options')
+{{--    @include('Dashboard.Auctions.ajax_get_options_by_category_id')--}}
     @include('Dashboard.Auctions.image_preview_update')
 
 @endsection

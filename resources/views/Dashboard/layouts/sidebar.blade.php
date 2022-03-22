@@ -4,9 +4,7 @@
     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
     <li class="active"><a href="{{route('admin.home')}}"><i class="icon-home4"></i>
             <span>{{ trans('messages.home') }}</span></a></li>
-
-
-    <li>
+    <li >
 {{--                <a href="#"><i class="icon-stack2"></i> <span>{{ trans('messages.users') }}</span></a>--}}
         <a href="#"><i class="icon-people"></i> <span>{{ trans('messages.user.users') }}</span></a>
         <ul>

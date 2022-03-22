@@ -20,12 +20,18 @@ class MyPendingAuctionsCollection extends ResourceCollection
 
         return [
             'data' => PendingAuctionsResource::collection($this->collection),
+            "links" => [
+                "prev" => $this->previousPageUrl(),
+                "next" => $this->nextPageUrl(),
+            ],
             "meta" => [
                 "current_page" => $this->currentPage(),
+                "from" => $this->firstItem(),
+                "to" => $this->lastItem(),
                 "last_page" => $this->lastPage(), // not For Simple
                 "per_page" => $this->perPage(),
                 'count' => $this->count(), //count of items at current page
-                "total" => $this->total() // not For Simple
+                "total" => $this->total() // count of all items
             ],
         ];
     }

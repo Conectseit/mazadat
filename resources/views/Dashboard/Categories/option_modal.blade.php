@@ -26,10 +26,16 @@
                                 <div class="box-body">
                                     <input type="hidden" name="category_id" value="{{$category->id}}" >
                                     <div class="form-group">
-                                        <input type="text" class="form-control" value="" name="name_ar" placeholder="@lang('messages.name_ar') ">
+                                        <input type="text" class="form-control"  name="name_ar"
+                                               value="{{ old('name_ar') }}"
+                                               placeholder="@lang('messages.name_ar') ">
+                                        @error('name_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" value="" name="name_en" placeholder="@lang('messages.name_en') ">
+                                        <input type="text" class="form-control"  name="name_en"
+                                               value="{{ old('name_en') }}" placeholder="@lang('messages.name_en') ">
+                                        @error('name_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                                     </div>
                                 </div>
                             </div>
@@ -41,12 +47,6 @@
                     <!-- /basic layout -->
                 </div>
                 <div class="modal-footer">
-
-                    {{--                        <div>--}}
-                    {{--                                     <span class="badge  badge-pill" style="background-color: #00838F;">--}}
-                    {{--                                        <a href=>{{__('messages.seller.show_auction_bids')}}</a>--}}
-                    {{--                                      </span>--}}
-                    {{--                        </div>--}}
 
                     <button type="button" class="btn btn-link btn-xs text-uppercase text-semibold" data-dismiss="modal">Close
                     </button>

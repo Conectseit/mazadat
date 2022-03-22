@@ -5,7 +5,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-6">
-                    <a href="{{ asset('Dashboard/assets/images/mazadat_logo.jpg') }}" data-popup="lightbox">
+                    <a style="float: {{ floating('right', 'right') }};" href="{{ asset('Dashboard/assets/images/mazadat_logo.jpg') }}" data-popup="lightbox">
                         <img src="{{ asset('Dashboard/assets/images/header1.png') }}" alt="" width="400" height="80" class="img-circle">
                     </a>
                 </div>

@@ -30,16 +30,18 @@
                 </a>
             </div>
             <div class="media-body">
-                <h1>{{ trans('messages.auction.name') }} : {{ $auction->$name }} <small class="display-block">UX/UI
-                        designer</small></h1>
+                <h1>{{ trans('messages.auction.name') }} : {{ $auction->$name }}
+{{--                    <small class="display-block">UX/UI designer</small></h1>--}}
             </div>
 
-            <div class="media-right media-middle">
-                                <ul class="list-inline list-inline-condensed no-margin-bottom text-nowrap">
-                                    <li><a href="#" class="btn btn-default"><i class="icon-file-picture position-left"></i> Cover image</a></li>
-                                    <li><a href="#" class="btn btn-default"><i class="icon-file-stats position-left"></i> Statistics</a></li>
-                                </ul>
-            </div>
+{{--            <div class="media-right media-middle">--}}
+{{--                <ul class="list-inline list-inline-condensed no-margin-bottom text-nowrap">--}}
+{{--                    <li><a href="#" class="btn btn-default"><i class="icon-file-picture position-left"></i> Cover image</a>--}}
+{{--                    </li>--}}
+{{--                    <li><a href="#" class="btn btn-default"><i class="icon-file-stats position-left"></i> Statistics</a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </div>--}}
         </div>
     </div>
     <!-- /cover area -->
@@ -62,9 +64,10 @@
                             class="badge badge-success badge-inline position-right">{{$auction_option_details->count()}}</span>
                     </a></li>
                 <li><a href="#auction_images" data-toggle="tab"><i
-                            class="icon-calendar3 position-left"></i> {{ trans('messages.auction.images') }} <span
-                            class="badge badge-success badge-inline position-right">{{$images->count()}}</span></a></li>
-                <li><a href="#inspection_report_image" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{ trans('messages.auction.inspection_report_images') }}</a></li>
+                            class="icon-calendar3 position-left"></i> {{ trans('messages.auction.images') }}
+                        <span class="badge badge-success badge-inline position-right">{{$images->count()}}</span></a></li>
+                <li><a href="#inspection_report_image" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{ trans('messages.auction.inspection_report_images') }}
+                        <span class="badge badge-success badge-inline position-right">{{$inspection_report_images->count()}}</span></a></li>
 
                 <li><a href="#location" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{ trans('messages.auction.location') }}</a></li>
                 @if($auction->is_accepted ==1)
@@ -73,7 +76,7 @@
                             class="badge badge-success badge-inline position-right">{{$auction_bids->count()}}</span></a>
                 </li>
                 @endif
-                <li><a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> Settings</a></li>
+{{--                <li><a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{ trans('messages.auction.winner') }}</a></li>--}}
             </ul>
         </div>
     </div>
@@ -111,6 +114,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.auction.auction_terms')}}:</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text"  value="{{ $auction->$auction_terms }}" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
                                                         <label class="col-form-label col-lg-4">{{ trans('messages.category.category') }}:</label>
                                                         <div class="col-lg-8">
                                                             <input type="text"  value="{{ $auction->category['name_' . app()->getLocale()] }}" class="form-control" readonly>
@@ -119,7 +128,7 @@
                                                     <div class="form-group row">
                                                         <label class="col-form-label col-lg-4">{{ trans('messages.auction.seller') }}:</label>
                                                         <div class="col-lg-8">
-                                                            <input type="text"  value="{{ $auction->seller->full_name }}" class="form-control" readonly>
+                                                            <input type="text"  value="{{ $auction->seller->user_name }}" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -135,9 +144,33 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.auction.start_auction_price') }}:</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text"  value="{{ $auction->start_auction_price  }}" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.auction.current_price') }}:</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text"  value="{{ $auction->current_price  }}" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.auction.value_of_increment') }}:</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text"  value="{{ $auction->value_of_increment}}" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
                                                         <label class="col-form-label col-lg-4">{{ trans('messages.auction.delivery_charge') }}:</label>
                                                         <div class="col-lg-8">
-                                                            <input type="text"  value="{{ $auction->delivery_charge  }}" class="form-control" readonly>
+                                                            <input type="text"  value="{{ $auction->delivery_charge}}" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.auction.who_can_see') }}:</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text"  value="{{ $auction->who_can_see }}" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -169,10 +202,10 @@
                                 </div>
                                 <div class="panel-body">
 
-                                    <a href="#" data-toggle="modal" data-target="#add_options"
-                                       class="btn btn-success btn-labeled btn-labeled-left"><b><i
-                                                class="icon-plus2"></i></b>{{ trans('messages.option.add') }}
-                                    </a>
+{{--                                    <a href="#" data-toggle="modal" data-target="#add_options"--}}
+{{--                                       class="btn btn-success btn-labeled btn-labeled-left"><b><i--}}
+{{--                                                class="icon-plus2"></i></b>{{ trans('messages.option.add') }}--}}
+{{--                                    </a>--}}
                                     @if($auction_option_details->count() > 0)
                                         <table class="table datatable-basic" id="auction_option_details" style="font-size: 16px;">
                                             <thead>
@@ -319,23 +352,12 @@
                                             </tbody>
                                         </table>
                                     @else
-                                        <center><h3> @lang('messages.no_data_found') </h3></center>
+                                        <div style="text-align: center;"><h3> @lang('messages.no_data_found') </h3></div>
                                     @endif
                                 </div>
 
                             </div>
                             <!-- /inspection_report_images -->
-
-
-
-
-                            {{--                            <div class="panel panel-flat">--}}
-                            {{--                                <div class="panel-body">--}}
-                            {{--                                    <a href="{{asset($auction->inspection_report_image_path) }}" data-popup="lightbox">--}}
-                            {{--                                        <img src="{{asset($auction->inspection_report_image_path) }}" alt="" width="80" height="70" class="img-preview rounded">--}}
-                            {{--                                    </a>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
                         </div>
 
                         <div class="tab-pane fade" id="location">
@@ -415,18 +437,20 @@
                                               @endforeach
                                         </tbody>
                                     </table>
+
                                     @else
                                         <center><h3> @lang('messages.no_data_found') </h3></center>
                                     @endif
+
+                                        <a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{ trans('messages.auction.winner') }}</a>
+
                                 </div>
 
                             </div>
                             <!-- /auction_auction_bidss -->
                         </div>
 
-                        <div class="tab-pane fade" id="settings">
-
-                        </div>
+{{--                        <div class="tab-pane fade" id="settings"></div>--}}
                     </div>
                 </div>
             </div>

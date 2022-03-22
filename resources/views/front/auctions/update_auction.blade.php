@@ -1,9 +1,7 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.auction.update'))
 @section('style')
-    <style> #map {
-            height: 400px;
-        }</style>
+    <style> #map { height: 400px;}</style>
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/js/plugins/dropzone/dist/min/dropzone.min.css') }}"/>
 
 @endsection
@@ -15,7 +13,7 @@
 
         <div class="container">
             <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
-                    class="fal fa-arrow-circle-right text-black"></i> </a>
+                    class="fal fa-arrow-circle-right text-black"></i> </a><br>
             <h4 class="title"> {{ trans('messages.auction.update') }}</h4>
             <div class="row">
                 <form action="{{route('front.auction_update',$auction)}}" method="post" id="submitted-form"
@@ -69,8 +67,6 @@
                                 @error('description_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                         </div>
-
-
                     </div>
 
                     <div class="inputs-group">
@@ -85,7 +81,6 @@
                                           cols="100">{{ $auction->auction_terms_ar }}</textarea>
                                 @error('auction_terms_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
-
                         </div>
 
                         <div class="form-group mb-4 row">
@@ -99,7 +94,6 @@
                                           cols="100">{{ $auction->auction_terms_en }}</textarea>
                                 @error('auction_terms_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
-
                         </div>
 
 
@@ -136,11 +130,11 @@
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 <label class="radio-inline">
-                                    <input type="radio" value="0" class="styled" name="allowed_take_photo">
+                                    <input type="radio" {{ $auction->allowed_take_photo == '0' ? 'checked' : '' }} value="0" class="styled" name="allowed_take_photo">
                                     {{trans('messages.No')}}
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" value="1" class="styled" name="allowed_take_photo">
+                                    <input type="radio" {{ $auction->allowed_take_photo == '1' ? 'checked' : '' }} value="1" class="styled" name="allowed_take_photo">
                                     {{trans('messages.Yes')}}
                                 </label>
                             </div>
@@ -171,8 +165,6 @@
                             </div>
                             @error('category_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
                         </div>
-
-
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="email" class="form-label">{{ trans('messages.option.options') }}</label>

@@ -379,6 +379,7 @@ return [
 
 
     'auction' => [
+        'winner' => ' الفائز بالمزاد حتي الان :',
         'count_of_buyer' => 'عدد الاشخاص المزايدين',
         'remaining_time' => 'الوقت المتبقى ',
         'auction_details' => ' تفاصيل المزاد',
@@ -394,8 +395,8 @@ return [
         'pending' => 'المزادات قيد انتظار القبول من الادارة',
         'selled' => 'المزادات المباعه من خلال موقعنا  ',
         'auction_data' => 'بيانات المزاد ',
-        'who_can_see' => 'خيار المزايدة في المزاد ',
-        'who_can_buy' => 'خيار مشاهدة المزاد ',
+        'who_can_see' => 'خيار مشاهدة المزاد ',
+        'who_can_buy' => 'خيار المزايدة المزاد ',
         'company' => 'مؤسسات فقط',
         'users' => 'افراد فقط ',
         'delivery_charge' => 'رسوم الشحن والتوصيل ',
@@ -577,6 +578,7 @@ return [
     'accept_term' => ' بضغطك على تسجيل حسابك انت توافق على الشروط والاحكام الخاص  بموقع مزادات',
     'there_is_no_auctions_on_this_category_yet' => 'لا يوجد  مزادات في هذا القسم حتي الان ',
     'you_dont_have_auctions_yet' => 'لا يوجد لديك مزادات  حتي الان ',
+    'you_dont_have_watched_auctions_yet' => 'لا يوجد لديك مشاهدات  حتي الان ',
     'you_dont_have_notifications_yet' => 'لا يوجد لديك اشعارات  حتي الان ',
     'Sorry_you_should_upload_document_and_passport_first'           =>'عفوا يجب عليك  رفع صورة جواز السفر ووثائق رسمية اولا ',
     'not_found_auction'         	    => ' هذاالمزاد غير موجود',

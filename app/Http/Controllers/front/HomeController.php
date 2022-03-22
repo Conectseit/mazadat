@@ -16,11 +16,15 @@ class HomeController extends Controller
 {
     public function cronjob()
     {
-        Log::info('done');
+        $on_progress_auctions = Auction::query()
+            ->where('status','!=','done')
+            ->get();
 
-        $on_progress_auctions= Auction::where('status','on_progress')->where('end_date','<=' ,Carbon::now())->get();
-        foreach ($on_progress_auctions as $on_progress_auction){
-            $on_progress_auction->update(['status'=>'done']);
+        foreach ($on_progress_auctions as $auction)
+        {
+            if(!$auction->end_date->isPast()) continue;
+
+            $auction->update(['status'=>'done']);
         }
     }
     public function home()
@@ -33,8 +37,12 @@ class HomeController extends Controller
     public function all_companies()
     {
 //        $data['companies'] = User::where(['is_company'=>'company','type'=>'seller'])->get();
-        $data['companies'] = User::where(['is_company'=>'company'])->whereHas('seller_auctions')->get();
-        return view('front.company.all_companies',$data);
+        $companies = User::where('is_company','company')->whereHas('seller_auctions', function ($qu){
+            return $qu->where('status', '!=', 'not_accepted');
+        })->get();
+
+
+        return view('front.company.all_companies', compact('companies'));
     }
 
     public function companyAuctions(Request $request, $id)

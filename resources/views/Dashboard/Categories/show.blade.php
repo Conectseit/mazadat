@@ -15,6 +15,7 @@
 @endsection
 
 @section('content')
+    @include('Dashboard.layouts.parts.validation_errors')
 
 
     <!-- Toolbar -->
@@ -158,7 +159,7 @@
                                                 <td>
                                                     <a href={{ route('auctions.show', $category_auction->id) }}>{{ isNullable($category_auction->$name) }}</a>
                                                 </td>
-                                                <td> {{ ($category_auction->seller->full_name) }}</a></td>
+                                                <td> {{ ($category_auction->seller->user_name) }}</a></td>
 
                                                 {{--                                                    {{ Carbon\Carbon::now()->toDateTimeString() }}--}}
                                                 <td>{{isset($category_auction->created_at) ?$category_auction->created_at->diffForHumans():'---' }}</td>

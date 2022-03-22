@@ -13,20 +13,19 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 class OptionController extends Controller
 {
 
-    public function index()
-    {
-         $data['options'] = Option::latest()->paginate(200);
-
-        return view('Dashboard.Options.index', $data);
-    }
-
-
-    public function create()
-    {
-        $data['latest_options'] = Option::orderBy('id', 'desc')->take(5)->get();
-        $data['categories'] = Category::all();
-        return view('Dashboard.Options.create', $data);
-    }
+//    public function index()
+//    {
+//         $data['options'] = Option::latest()->paginate(200);
+//        return view('Dashboard.Options.index', $data);
+//    }
+//
+//
+//    public function create()
+//    {
+//        $data['latest_options'] = Option::orderBy('id', 'desc')->take(5)->get();
+//        $data['categories'] = Category::all();
+//        return view('Dashboard.Options.create', $data);
+//    }
 
     public function store(OptionRequest $request)
     {
@@ -35,10 +34,10 @@ class OptionController extends Controller
 //        return redirect()->route('options.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
     }
 
-    public function show($id)
-    {
-        //
-    }
+//    public function show($id)
+//    {
+//        //
+//    }
 
 //    public function edit($id)
 //    {
