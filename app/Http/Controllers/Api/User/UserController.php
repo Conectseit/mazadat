@@ -62,12 +62,13 @@ class UserController extends PARENT_API
                 if ($auctions->where('status', 'done')->count() > 0) {
                     return responseJson(true, trans('api.all_my_auctions'), new AuctionsCollection($auctions->where('status', 'done')->paginate(10)));  //OK don-successfully
 
-//                    return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'done')));  //OK
+//                    return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'done')));  // without pagination
                 } else {
                     return responseJson(false, trans('api.there_is_done_auctions'), null);  //OK
                 }
         }
         if ($auctions->where('status', 'on_progress')->count() > 0) {
+
             return responseJson(true, trans('api.all_my_auctions'), new AuctionsCollection($auctions->where('status', 'on_progress')->where('is_accepted',1)->paginate(10)));  //OK don-successfully
 
 //            return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'on_progress')->where('is_accepted',1)));  //OK

@@ -25,9 +25,9 @@ class AuctionsCollection extends ResourceCollection
             ],
             "meta" => [
                 "current_page" => $this->currentPage(),
-                "from" => $this->firstItem(),
-                "to" => $this->lastItem(),
-                "last_page" => $this->lastPage(), // not For Simple
+//                "from" => $this->firstItem(),
+//                "to" => $this->lastItem(),
+                "last_page" => $this->lastPage(), //
                 "per_page" => $this->perPage(),
                 'count' => $this->count(), //count of items at current page
                 "total" => $this->total() // count of all items

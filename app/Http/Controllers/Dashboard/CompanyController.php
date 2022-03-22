@@ -226,13 +226,21 @@ class CompanyController extends Controller
 
         $company->update(['wallet'=> $request->wallet +$company->wallet]);
 
-        Payment::Create([
+       $payment= Payment::Create([
             'user_id'     => $company->id,
             'date'        => $company->updated_at,
             'amount'      => $request->wallet,
             'payment_type'=> 'cash'
         ]);
-        return back();
+// ===========================================================
+        activity()
+            ->performedOn($company)
+            ->causedBy(auth()->guard('admin')->user())
+            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة رصيد الي محفظة المؤسسة '.($company->user_name).''.$payment->amount.'ريال سعودي');
+// ===========================================================
+
+        return back()->with('message', trans('messages.messages.added_balance_successfully'));
+
     }
 
 }

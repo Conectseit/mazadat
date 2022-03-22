@@ -17,9 +17,9 @@ class TransactionController extends Controller
     public function index()
     {
         $data['transactions'] = Payment::get();
-        $data['online_transactions'] = Payment::where(['payment_type'=> 'online'])->get();
-        $data['bank_deposit_transactions'] = Payment::where(['payment_type'=> 'bank_deposit'])->get();
-        $data['cash_transactions'] = Payment::where(['payment_type'=> 'cash'])->get();
+        $data['online_transactions'] = Payment::where(['payment_type'=> 'online'])->latest()->get();
+        $data['bank_deposit_transactions'] = Payment::where(['payment_type'=> 'bank_deposit'])->latest()->get();
+        $data['cash_transactions'] = Payment::where(['payment_type'=> 'cash'])->latest()->get();
 
         return view('Dashboard.transactions.index', $data);
     }
@@ -64,7 +64,7 @@ class TransactionController extends Controller
         activity()
             ->performedOn($user)
             ->causedBy(auth()->guard('admin')->user())
-            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بقبول الايداع البنكي للمستخدم'.($user->user_name));
+            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بقبول الايداع البنكي للمستخدم'.($user->user_name).''.$transaction->amount.''.'ريال سعودي');
 // ======================
         return back()->with('class', 'danger')->with('message', trans('messages.messages.accept_payment_recipt'));
 

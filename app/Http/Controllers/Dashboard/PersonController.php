@@ -189,13 +189,21 @@ class PersonController extends Controller
 
         $person->update(['wallet'=> $request->wallet +$person->wallet]);
 
-            Payment::Create([
+        $payment= Payment::Create([
                     'user_id'     => $person->id,
                     'date'        => $person->updated_at,
                     'amount'      => $request->wallet,
                     'payment_type'=> 'cash'
                 ]);
-        return back();
+
+// ===========================================================
+        activity()
+            ->performedOn($person)
+            ->causedBy(auth()->guard('admin')->user())
+            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة رصيد الي محفظة المؤسسة '.($person->user_name) .''.$payment->amount.'ريال سعودي');
+// ===========================================================
+
+        return back()->with('message', trans('messages.messages.added_balance_successfully'));
     }
 
 
