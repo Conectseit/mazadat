@@ -42,9 +42,6 @@ class PersonController extends Controller
     }
 
 
-
-
-
     public function store(PersonRequest $request)
     {
         DB::beginTransaction();
@@ -81,9 +78,6 @@ class PersonController extends Controller
                 ->causedBy(auth()->guard('admin')->user())
                 ->log('قام المشرف'.auth()->guard('admin')->user()->full_name .'  باضافة مستخدم'.($person->full_name));
 // ===========================================================
-
-
-
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();
@@ -93,8 +87,6 @@ class PersonController extends Controller
         }
         return redirect()->route('persons.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
     }
-
-
 
 
     public function edit($id)
@@ -205,8 +197,6 @@ class PersonController extends Controller
 
         return back()->with('message', trans('messages.messages.added_balance_successfully'));
     }
-
-
 
     public function verified($id)
     {

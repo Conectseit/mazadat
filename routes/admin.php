@@ -111,8 +111,10 @@ Route::group(
 
 
 
-                Route::get('person/{id?}/ban', [PersonController::class, 'ban'])->name('person/ban');
-                Route::get('person/{id?}/not_ban', [PersonController::class, 'not_ban'])->name('person/not_ban');
+                Route::get('person/{id?}/ban', [PersonController::class, 'ban'])->name('ban');
+                Route::get('person/{id?}/not_ban', [PersonController::class, 'not_ban'])->name('not_ban');
+
+
                 Route::post('person/{id?}/add_balance', [PersonController::class, 'add_balance'])->name('add_balance');
 
 
