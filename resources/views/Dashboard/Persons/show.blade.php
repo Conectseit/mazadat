@@ -216,9 +216,14 @@
                                                             <div class="form-group row">
 
                                                                 @if($person->is_verified ==0)
-                                                                    <a href="person/{{$person->id}}/not_verified/" class="btn btn-danger btn-sm"><i
+{{--                                                                    <a href="person/{{$person->id}}/not_verified/" class="btn btn-danger btn-sm"><i--}}
+{{--                                                                            class="icon-close2"></i>{{trans('messages.not_verified')}}</a>--}}
+{{--                                                                    <a href="person/{{$person->id}}/verified/" class="btn btn-success btn-sm"> <i--}}
+{{--                                                                            class="icon-check2"></i> {{trans('messages.verified')}}</a>--}}
+
+                                                                    <a href="{{route('not_verified',$person->id)}}" class="btn btn-danger btn-sm"><i
                                                                             class="icon-close2"></i>{{trans('messages.not_verified')}}</a>
-                                                                    <a href="person/{{$person->id}}/verified/" class="btn btn-success btn-sm"> <i
+                                                                    <a href="{{route('verified',$person->id)}}" class="btn btn-success btn-sm"> <i
                                                                             class="icon-check2"></i> {{trans('messages.verified')}}</a>
                                                                 @endif
                                                             </div>

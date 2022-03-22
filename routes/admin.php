@@ -114,8 +114,10 @@ Route::group(
                 Route::get('person/{id?}/ban', [PersonController::class, 'ban'])->name('person/ban');
                 Route::get('person/{id?}/not_ban', [PersonController::class, 'not_ban'])->name('person/not_ban');
                 Route::post('person/{id?}/add_balance', [PersonController::class, 'add_balance'])->name('add_balance');
-                Route::get('persons/person/{id?}/verified', [PersonController::class, 'verified'])->name('person/verified');
-                Route::get('persons/person/{id?}/not_verified', [PersonController::class, 'not_verified'])->name('person/not_verified');
+
+
+                Route::get('person/{id?}/verified', [PersonController::class, 'verified'])->name('verified');
+                Route::get('person/{id?}/not_verified', [PersonController::class, 'not_verified'])->name('not_verified');
 
 
                 Route::get('transaction/{id?}/accept', [TransactionController::class, 'accept'])->name('transaction/accept');
