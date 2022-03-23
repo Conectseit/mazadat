@@ -21,9 +21,10 @@ class ComplteProfileRequest extends FormRequest
             'street'                => 'required_if:is_company,person|string',
             'block_num'             => 'required_if:is_company,person|numeric',
 //            'delivery_time'         => 'required_if:is_company,person|in:am,pm',
-            'signs'                 => 'required_if:is_company,person',
+            'signs'                 => 'required_if:is_company,person|string',
             'P_O_Box'               => 'required',
-            'passport_image'        => 'required_if:is_company,==,person',
+            'passport_image'        => 'required_if:is_company,==,person|image',
+
 
         ];
     }

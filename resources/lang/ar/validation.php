@@ -206,6 +206,7 @@ return [
         'latitude'         	=> ' الموقع',
         'longitude'         	=> ' الموقع',
         'block_num'         	=> ' رقم المبني',
+        'country_id'         	=> ' كود الدولة',
 
 
 

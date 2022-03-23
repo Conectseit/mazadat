@@ -96,8 +96,10 @@ Route::group(
 
                 Route::get('company/{id?}/unique', [CompanyController::class, 'unique'])->name('company/unique');
                 Route::get('company/{id?}/not_unique', [CompanyController::class, 'not_unique'])->name('company/not_unique');
+
                 Route::get('company/{id?}/accept', [CompanyController::class, 'accept'])->name('company/accept');
                 Route::get('company/{id?}/not_accept', [CompanyController::class, 'not_accept'])->name('company/not_accept');
+
                 Route::post('company/{id?}/add_balance', [CompanyController::class, 'add_balance'])->name('add_balance');
 
 

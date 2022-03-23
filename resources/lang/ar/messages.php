@@ -670,7 +670,7 @@ return [
     'ban_user_and_send_SMS_successfully' => 'تم حظر حساب  وارسال رسالة sms',
     'active_user_again_and_send_SMS_successfully' => 'تم رفع الحظر وتفعيل حساب العميل مرة اخري وارسال رسالة sms',
     'active_user_and_send_SMS_successfully' => 'تم الموافقة وتفعيل حساب العميل وارسال رسالة sms',
-    'not_verified_yet_and_send_SMS' => 'ارسال رسالة بيانات غير مكتملة ',
+    'not_verified_yet_and_send_SMS' => 'الغاء قبول حساب العميل وارسال رسالة بأن بيانات الحساب غير مكتملة ',
 
     'no_auctions_yet_for_this_company' => 'لا يوجد مزادات لهذه المؤسسة حتي الان',
     'start' => 'ابدأ الان ......',
