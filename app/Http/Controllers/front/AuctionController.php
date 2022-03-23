@@ -77,9 +77,9 @@ class AuctionController extends Controller
             if($request->buyer_offer > $user->available_limit)
                 return back()->with('warning1', trans('messages.sorry_you_cant_make_bid_your_available_limit_less_than_this_value'));
 
-            if (is_null($bid))
+            if ( $bid== null)
+//            if (is_null($bid))
             {
-
                 $auction_commission = $auction->category->auction_commission;
                 if($user->wallet < ($auction_commission  + $request->buyer_offer))
                     return back()->with('warning1', trans('messages.you_should_charge_your_wallet_first'));
