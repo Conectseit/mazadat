@@ -14,7 +14,7 @@
 
 
 @section('content')
-{{--    @include('Dashboard.layouts.parts.validation_errors')--}}
+    @include('Dashboard.layouts.parts.validation_errors')
 
 
     <!-- Basic datatable -->
@@ -93,21 +93,22 @@
                                             <table class="table datatable-basic" id="transactions" style="font-size: 16px;">
                                                 <thead>
                                                 <tr>
-                                                    <th class="text-center">#</th>
+{{--                                                    <th class="text-center">#</th>--}}
                                                     <th class="text-center">{{ trans('messages.user_name') }}</th>
                                                     <th class="text-center">{{ trans('messages.transaction.receipt_image') }}</th>
                                                     <th class="text-center">{{ trans('messages.transaction.amount') }}</th>
                                                     <th class="text-center">{{ trans('messages.transaction.date') }}</th>
                                                     <th class="text-center">@lang('messages.transaction.since')</th>
-                                                    <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
-
+                                                    <th class="text-center">{{ trans('messages.accept') }}</th>
+                                                    <th class="text-center">{{ trans('messages.not_accept') }}</th>
+                                                    <th class="text-center">@lang('messages.form-actions')</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 @foreach($bank_deposit_transactions as $transaction)
                                                     <tr id="transaction-row-{{ $transaction->id }}">
 
-                                                        <td class="text-center">{{ $loop->iteration }}</td>
+{{--                                                        <td class="text-center">{{ $loop->iteration }}</td>--}}
                                                         <td class="text-center">
                                                             <a href=""> {{ isNullable($transaction->user->user_name) }}</a>
                                                         </td>
@@ -122,11 +123,47 @@
                                                             @if($transaction->is_accepted ==0)
 {{--                                                                <a href="seller/{{$seller->id}}/not_accept/" class="btn btn-danger btn-sm"><i--}}
 {{--                                                                        class="icon-close2"></i>{{trans('messages.not_accept')}}</a>--}}
+{{--                                                                <a href="transaction/{{$transaction->id}}/not_accept/" class="btn btn-success btn-sm"> <i--}}
+{{--                                                                        class="icon-check2"></i> {{trans('messages.not_accept')}}</a>--}}
 {{--                                                            @else--}}
                                                                 <a href="transaction/{{$transaction->id}}/accept/" class="btn btn-success btn-sm"> <i
                                                                         class="icon-check2"></i> {{trans('messages.accept')}}</a>
                                                             @endif
                                                         </td>
+
+
+                                                        <td class="text-center">
+                                                            @if($transaction->is_accepted ==0)
+                                                                <a href="transaction/{{$transaction->id}}/not_accept/" class="btn btn-danger btn-sm">
+                                                                    <i class="icon-check2"></i> {{trans('messages.not_accept')}}</a>
+                                                            @endif
+                                                        </td>
+
+
+
+
+
+                                                        <td class="text-center">
+                                                            <div class="list-icons text-center">
+                                                                <div class="list-icons-item dropdown text-center">
+                                                                    <a href="#"
+                                                                       class="list-icons-item caret-0 dropdown-toggle"
+                                                                       data-toggle="dropdown">
+                                                                        <i class="icon-menu9"></i>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
+
+                                                                        <li>
+                                                                            <a data-id="{{ $transaction->id }}" class="delete-action"
+                                                                               href="{{ Url('/transaction/transaction/'.$transaction->id) }}">
+                                                                                <i class="icon-database-remove"></i>@lang('messages.delete')
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
                                                     </tr>
                                                 @endforeach
                                                 </tbody>
@@ -184,7 +221,7 @@
 @stop
 
 @section('scripts')
-{{--    @include('Dashboard.layouts.parts.ajax_delete', ['model' => 'transaction'])--}}
+    @include('Dashboard.layouts.parts.ajax_delete', ['model' => 'transaction'])
 @stop
 
 

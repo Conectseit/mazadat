@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SmsController;
 use App\Http\Requests\Dashboard\CityRequest;
 use App\Models\City;
 use App\Models\Country;
@@ -38,18 +39,18 @@ class TransactionController extends Controller
 
 
 
-//
-//    public function destroy(Request $request)
-//    {
-//        $city = Payment::find($request->id);
-//        if (!$city) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, City is not exists !!']);
-//        try {
-//            $city->delete();
-//            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
-//        } catch (Exception $e) {
-//            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
-//        }
-//    }
+
+    public function destroy(Request $request)
+    {
+        $city = Payment::find($request->id);
+        if (!$city) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, City is not exists !!']);
+        try {
+            $city->delete();
+            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
+        } catch (Exception $e) {
+            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
+        }
+    }
 
 
     public function accept($id)
@@ -66,8 +67,19 @@ class TransactionController extends Controller
             ->causedBy(auth()->guard('admin')->user())
             ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بقبول الايداع البنكي للمستخدم'.($user->user_name).''.$transaction->amount.''.'ريال سعودي');
 // ======================
-        return back()->with('class', 'danger')->with('message', trans('messages.messages.accept_payment_recipt'));
+        return back()->with('message', trans('messages.messages.accept_payment_receipt'));
 
+    }
+
+
+    public function not_accept($id)
+    {
+        $transaction = Payment::findOrFail($id);
+        $transaction->update(['is_accepted'=> 0]);
+        $user = User::where('id',$transaction->user_id)->first();
+
+        SmsController::send_sms($user->mobile, 'هناك خطأ في  بيانات فاتورة الايداع البنكي في موقع مزادات من فضلك ارسلها مرة اخري' );
+        return back()->with('danger',  trans('messages.messages.not_accept_deposit_receipt_and_send_SMS'));
     }
 
 }

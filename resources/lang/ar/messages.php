@@ -542,6 +542,7 @@ return [
         'try_access_not_found_content' => 'عفوا لا يوجد هذا العنصر',
         'added_balance_successfully' => 'تم اضافة رصيد لمحظة المستخدم بنجاح',
         'sorry_this_option_added_before_select_another_one' => 'عفوا لقد قمت باضافة هذا التصنيف من قبل,اختر تصنيف اخر',
+        'not_accept_deposit_receipt_and_send_SMS' => 'لم يتم قبول  الايداع البنكي وارسال رسالة sms',
     ],
 
 

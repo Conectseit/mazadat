@@ -125,6 +125,7 @@ Route::group(
 
 
                 Route::get('transaction/{id?}/accept', [TransactionController::class, 'accept'])->name('transaction/accept');
+                Route::get('transaction/{id?}/not_accept', [TransactionController::class, 'not_accept'])->name('transaction/not_accept');
 
                 Route::post('send_single_notify', [NotificationController::class, 'send_single_notify'])->name('send_single_notify');
                 Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
