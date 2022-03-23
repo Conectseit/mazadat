@@ -279,7 +279,7 @@ class AuctionController extends Controller
     public function accept($id)
     {
         $auction = Auction::findOrFail($id);
-        if(is_null($auction->start_date) && is_null($auction->end_date ) )
+        if(($auction->start_date== null) && ($auction->end_date== null ) )
             {
                 return redirect()->route('auctions.index')->with('error', trans('messages.Sorry_you_should_complete_all_data_for_auction_first'));
             }
