@@ -5,7 +5,6 @@
             </b>{{ trans('messages.additional_address') }}:</div>
     </div>
 
-
     <div class="row">
         <div class="edit-form">
             <form action="{{route('front.add_address')}}" method="post" enctype="multipart/form-data">

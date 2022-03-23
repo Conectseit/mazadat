@@ -26,14 +26,23 @@ class UserController extends Controller
         $data['user'] = User::where('id', auth()->user()->id)->first();
         return view('front.user.my_profile', $data);
     }
+    public function showCompleteProfile()
+    {
+        $data['user'] = User::where('id', auth()->user()->id)->first();
+        $data['nationalities'] = Nationality::all();
+//        $data['cities'] = City::all();
+        $data['cities'] = City::where('country_id',auth()->user()->country_id)->get();
+        $data['countries'] = Country::all();
+        return view('front.user.complete_profile', $data);
+    }
 
 
 
     public function editProfile()
     {
-        $data['nationalities'] = Nationality::all();
-//        $data['cities'] = City::all();
-        $data['cities'] = City::where('country_id',auth()->user()->country_id)->get();
+//        $data['nationalities'] = Nationality::all();
+////        $data['cities'] = City::all();
+//        $data['cities'] = City::where('country_id',auth()->user()->country_id)->get();
         $data['countries'] = Country::all();
         return view('front.user.edit_profile',$data);
     }

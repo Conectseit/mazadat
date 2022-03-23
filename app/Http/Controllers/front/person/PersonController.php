@@ -36,7 +36,8 @@ class PersonController extends Controller
             }
 
 
-            $user = User::create($request_data + ['activation_code' => $activation_code, 'is_accepted'=>'1','type'=>'buyer','accept_app_terms'=>'yes','country_id'=>$country->id]);
+            $user = User::create($request_data + ['activation_code' => $activation_code, 'is_accepted'=>'1',
+                    'type'=>'buyer','accept_app_terms'=>'yes','country_id'=>$country->id]);
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);

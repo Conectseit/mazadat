@@ -24,11 +24,9 @@ class PersonController extends Controller
 
     public function index()
     {
-
         $data['persons'] = User::where('is_company', 'person')->latest()->get();
         $data['accepted_persons'] = User::where(['is_company'=> 'person','is_accepted'=>1,'is_verified'=>1])->latest()->get();
         $data['not_accepted_persons'] = User::where(['is_company'=> 'person','is_verified'=>0])->latest()->get();
-
         return view('Dashboard.Persons.index', $data);
     }
 
@@ -40,7 +38,6 @@ class PersonController extends Controller
         $data['nationalities'] = Nationality::all();
         return view('Dashboard.Persons.create', $data);
     }
-
 
     public function store(PersonRequest $request)
     {
@@ -111,8 +108,6 @@ class PersonController extends Controller
 
         $user->update($request_data);
 //        User::findOrFail($id)->update($request_data);
-
-
 
 // ===========================================================
         $name='name_' . app()->getLocale();
@@ -192,7 +187,7 @@ class PersonController extends Controller
         activity()
             ->performedOn($person)
             ->causedBy(auth()->guard('admin')->user())
-            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة رصيد الي محفظة المؤسسة '.($person->user_name) .''.$payment->amount.'ريال سعودي');
+            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.''.' باضافة رصيد الي محفظة العميل  '.''.($person->user_name).'' .'بمقدار'.$payment->amount.' '.'ريال سعودي');
 // ===========================================================
 
         return back()->with('message', trans('messages.messages.added_balance_successfully'));

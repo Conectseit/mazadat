@@ -38,7 +38,7 @@
                 <form action="{{route('front.check-reset-code')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="inputs-group">
-                        <h5 class="group-title">{{trans('messages.email_reset')}}</h5>
+                        <h5 class="group-title">{{trans('messages.mobile_reset')}}</h5>
 {{--                        <p class="mb-4"> </p>--}}
 
                         <div class="form-group mb-4 row">

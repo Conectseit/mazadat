@@ -26,7 +26,7 @@ class ForgetPassController extends Controller
         $user = User::where('mobile', $request->mobile)->first();
 
         if (!$user) {
-            return back()->with('error', trans('messages.invalid_email'));
+            return back()->with('error', trans('messages.messages.invalid_mobile'));
         }
 
         $code = create_rand_numbers();

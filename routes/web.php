@@ -124,6 +124,7 @@ Route::group(
         Route::any('edit_profile', [UserController::class, 'editProfile'])->name('front.edit_profile');
 
         Route::any('update_profile', [UserController::class, 'updateProfile'])->name('front.update_profile');
+        Route::any('show_complete_profile', [UserController::class, 'showCompleteProfile'])->name('front.show_complete_profile');
         Route::post('complete_profile', [UserController::class, 'completeProfile'])->name('front.complete_profile');
         Route::any('add_address', [UserController::class, 'addAddress'])->name('front.add_address');
 

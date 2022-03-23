@@ -7,8 +7,6 @@
     @include('front.auctions.parts.head')
     <section class="sign-up-page">
         @include('front.layouts.parts.alert')
-
-
         <div class="container">
             <h4 class="title"> {{ trans('messages.login') }}</h4>
             <div class="row">
@@ -19,7 +17,7 @@
                         <p class="mb-5">{{ __('messages.plz_log') }}</p>
                         <div class="mb-4 form-group row">
                             <div class="col-sm-2 d-flex align-items-center">
-                                <label for="email" class="form-label"> البريد الالكتروني</label>
+                                <label for="email" class="form-label"> {{ trans('messages.email_or_mobile') }}</label>
                             </div>
                             <div class="col-sm-8">
                                  <input type="hidden" id="fcm_web_token" name="fcm_web_token" value="">

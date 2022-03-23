@@ -1,4 +1,38 @@
-<div class="row">
+@extends('front.layouts.master')
+@section('title', trans('messages.my_profile'))
+@section('style')
+    <style>
+        #img-preview3 {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid #eee;
+        }
+        #map {height: 400px;}
+
+        #add_map {height: 400px;}
+    </style>
+    <link rel="stylesheet" href="{{asset('Front/assets/css/profile_image.css')}}"/>
+
+@endsection
+
+@section('content')
+    <section class="my-profile-page edit-profile">
+
+        <div class="container">
+
+            @include('front.layouts.parts.alert')
+
+
+            @if(auth()->user()->is_completed==0)
+                <h3>{{ trans('messages.please_complete_your_data')}}</h3>
+            @endif
+
+            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
+                    class="fal fa-arrow-circle-right text-black"></i> </a> حسابي الشخصي
+
+
+            <div class="row">
                 <div class="edit-form">
                     <form action="{{route('front.complete_profile')}}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -20,7 +54,8 @@
                                         {{--                                        <option selected disabled>{{ auth()->user()->nationality->$name }}</option>--}}
 
                                         @foreach ($nationalities as $nationality)
-                                            <option {{isset(auth()->user()->nationality_id)==$nationality->id? 'selected' : ''}}
+                                            <option
+                                                {{isset(auth()->user()->nationality_id)==$nationality->id? 'selected' : ''}}
                                                 value="{{ $nationality->id }}"> {{ $nationality->$name }} </option>
                                         @endforeach
                                     </select>
@@ -35,10 +70,11 @@
                                     <select class=" select form-select form-control" id="cities" name="city_id"
                                             aria-label="Default select example">
 
-                                        <option selected disabled>{{ isset(auth()->user()->city)? auth()->user()->city->$name :  trans('messages.select') }}</option>
+                                        <option selected
+                                                disabled>{{ isset(auth()->user()->city)? auth()->user()->city->$name :  trans('messages.select') }}</option>
                                         @foreach ($cities as $city)
-                                            <option  {{isset(auth()->user()->city_id)==$city->id? 'selected' : ''}}
-                                                value="{{ $city->id }}"> {{ $city->$name }} </option>
+                                            <option {{isset(auth()->user()->city_id)==$city->id? 'selected' : ''}}
+                                                    value="{{ $city->id }}"> {{ $city->$name }} </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -125,20 +161,20 @@
 
 
 
-{{--                                <div class="form-group mb-4 row">--}}
-{{--                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-{{--                                        <label for="block" class="form-label"> @lang('messages.passport_image')</label>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-lg-10 col-md-9">--}}
-{{--                                        <input type="file" class="form-control image " name="passport_image">--}}
+                                {{--                                <div class="form-group mb-4 row">--}}
+                                {{--                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+                                {{--                                        <label for="block" class="form-label"> @lang('messages.passport_image')</label>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="col-lg-10 col-md-9">--}}
+                                {{--                                        <input type="file" class="form-control image " name="passport_image">--}}
 
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="form-group">--}}
-{{--                                    <img src=" {{auth()->user()->passport_image_path}} " width=" 100px "--}}
-{{--                                         value="{{auth()->user()->passport_image_path}}"--}}
-{{--                                         class="thumbnail image-preview">--}}
-{{--                                </div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                                {{--                                <div class="form-group">--}}
+                                {{--                                    <img src=" {{auth()->user()->passport_image_path}} " width=" 100px "--}}
+                                {{--                                         value="{{auth()->user()->passport_image_path}}"--}}
+                                {{--                                         class="thumbnail image-preview">--}}
+                                {{--                                </div>--}}
 
 
 
@@ -170,3 +206,20 @@
             </div>
 
 
+            @if(auth()->user()->is_company=='person')
+                @include('front.user.add_address_form')
+            @endif
+
+        </div>
+    </section>
+@stop
+
+@push('scripts')
+
+
+    @include('front.user.parts.script_edit')
+    @include('front.user.parts.add_location_map')
+    {{--    @include('front.layouts.parts.map')--}}
+    {{--    @include('front.auth.ajax_get_cities')--}}
+
+@endpush

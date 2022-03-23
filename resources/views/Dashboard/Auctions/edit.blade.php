@@ -270,6 +270,6 @@
     @include('Dashboard.layouts.parts.map')
     @include('Dashboard.Auctions.parts.update_auction_ajax_get_options')
 {{--    @include('Dashboard.Auctions.ajax_get_options_by_category_id')--}}
-    @include('Dashboard.Auctions.image_preview_update')
+    @include('Dashboard.Auctions.parts.image_preview_update')
 
 @endsection

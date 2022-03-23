@@ -118,54 +118,6 @@
                                 </div>
                             </div>
 
-                            {{-- ====================== select one option ============== --}}
-{{--                            <div class="form-group">--}}
-{{--                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_options') }} </label>--}}
-{{--                                <div class="col-lg-6">--}}
-{{--                                    <select name="option_id" id="options" class="select">--}}
-{{--                                        <optgroup label="{{ trans('messages.option.options') }}">--}}
-{{--                                        @foreach($options as $option)--}}
-{{--                                                <option value="{{ $option->id }}"> {{ $option->$name }} </option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div><br>--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_option_details') }} </label>--}}
-{{--                                <div class="col-lg-6">--}}
-{{--                                    <select name="option_details_id" id="option_details" class="select">--}}
-{{--                                        <optgroup label="{{ trans('messages.auction.choose_option_details') }}">--}}
-{{--                                            @foreach($option_details as $option_detail)--}}
-{{--                                                <option value="{{ $option_detail->id }}"> {{ $option_detail->$value }} </option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{-- ====================== select one option ============== --}}
-
-
-{{--          // ////////////////////////////////////////////////                 --}}
-
-                            <br><br>
-{{--                            <div class="form-group">--}}
-{{--                                <label--}}
-{{--                                    class="col-lg-3 control-label display-block"> {{ trans('messages.option.option_details') }} </label>--}}
-{{--                                <div class="col-lg-9">--}}
-{{--                                    <select name="option_details_id"--}}
-{{--                                            class="select-border-color border-warning form-control">--}}
-{{--                                        <optgroup label="{{ trans('messages.option.options') }}">--}}
-{{--                                            @forelse($options as $option)--}}
-{{--                                                <optgroup label="{{ $option->$name }}">--}}
-{{--                                                    @foreach ($option->option_details as $option_details)--}}
-{{--                                                        <option--}}
-{{--                                                            value="{{ $option_details->id }}"> {{ $option_details->$value }} </option>--}}
-{{--                                                    @endforeach--}}
-{{--                                                </optgroup>--}}
-{{--                                        @empty--}}
-{{--                                        @endforelse--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div><br><br>--}}
                         </div>
                     </fieldset>
 
@@ -194,11 +146,7 @@
                                 <input type="text" class="form-control"  value="{{ old('delivery_charge')}}" name="delivery_charge"
                                        placeholder="@lang('messages.auction.delivery_charge') ">
                             </div>
-                        </div>
-                    </fieldset>
-                    <fieldset title="5">
-                        <legend class="text-semibold">{{ trans('messages.auction.other_data') }}</legend><br><br>
-                        <div class="row">
+
                             <div class="form-group">
                                 <label class="display-block">{{ trans('messages.auction.who_can_see') }}:</label>
                                 <label class="radio-inline">
@@ -215,58 +163,11 @@
                                     {{trans('messages.auction.company')}}
                                 </label>
                             </div>
-
-                            <div class="form-group">
-                                <label class="display-block">{{ trans('messages.auction.who_can_buy') }}:</label>
-                                <label class="radio-inline">
-                                    <input type="radio" value="all" class="styled" name="who_can_buy" checked="checked">
-                                    {{trans('messages.all')}}
-                                </label>
-
-                                <label class="radio-inline">
-                                    <input type="radio" value="person" class="styled" name="who_can_buy">
-                                    {{trans('messages.auction.users')}}
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" value="company" class="styled" name="who_can_buy">
-                                    {{trans('messages.auction.company')}}
-                                </label>
-                            </div>
-
-{{--                            <div class="form-group">--}}
-{{--                                <label>@lang('messages.auction.images')</label>--}}
-{{--                                <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
-{{--                                <input type="file" multiple id="gallery-photo-add"  class="form-control" name="images[]">--}}
-{{--                                <div class="gallery"></div>--}}
-{{--                            </div>--}}
-
-
-
-{{--                            <hr>--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label>@lang('messages.auction.inspection_report_images')</label>--}}
-{{--                                <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
-{{--                            </div>--}}
-{{--                            <hr>--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label>@lang('messages.auction.location'):</label>--}}
-{{--                                <div class="col-lg-12">--}}
-{{--                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">--}}
-{{--                                    <div id="map"></div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-6">--}}
-{{--                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control">--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-6">--}}
-{{--                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">--}}
-{{--                                </div>--}}
-{{--                            </div><br>--}}
-
-
                         </div>
                     </fieldset>
 
-                    <fieldset title="6">
+
+                    <fieldset title="5">
                         <legend class="text-semibold">@lang('messages.auction.images')</legend><br><br>
                         <div class="row">
                             <div class="form-group">
@@ -277,8 +178,8 @@
                             </div>
                         </div>
                     </fieldset>
-                    <fieldset title="7">
-                        <legend class="text-semibold">@lang('messages.auction.images')</legend><br><br>
+                    <fieldset title="6">
+                        <legend class="text-semibold">@lang('messages.auction.inspection_report_images')</legend><br><br>
                         <div class="row">
                             <div class="form-group">
                                 <div class="form-group">
@@ -292,7 +193,7 @@
                         </div>
                     </fieldset>
 
-                    <fieldset title="8">
+                    <fieldset title="7">
                         <legend class="text-semibold">@lang('messages.auction.location')</legend><br><br>
                         <div class="row">
                             <div class="form-group">
@@ -356,16 +257,10 @@
 
 @stop
 @section('scripts')
-    @include('Dashboard.layouts.parts.ajax_get_options')
 
-
-    @include('Dashboard.layouts.parts.map')
-@include('Dashboard.Auctions.ajax_get_options_by_category_id')
-@include('Dashboard.Auctions.image_preview')
-
-
-
-
-
+@include('Dashboard.layouts.parts.ajax_get_options')
+@include('Dashboard.layouts.parts.map')
+@include('Dashboard.Auctions.parts.ajax_get_options_by_category_id')
+@include('Dashboard.Auctions.parts.image_preview')
 
 @endsection

@@ -2,14 +2,21 @@
 @section('title', trans('messages.auction.auction_details'))
 @section('style')
     <style>
-        #map {height: 400px;border: solid 1px;padding-right: 20px;}
-        .carousel-item img {height: 400px;border: solid 1px;}
+        #map {
+            height: 400px;
+            border: solid 1px;
+            padding-right: 20px;
+        }
+        .carousel-item img {
+            height: 400px;
+            border: solid 1px;
+        }
     </style>
 @endsection
 
 @section('content')
     <main class="categories-bar row m-auto">
-    @include('front.layouts.parts.nav_categories')
+        @include('front.layouts.parts.nav_categories')
     </main>
     <div class="ad-details-page">
         <main class="ad-main-details">
@@ -20,10 +27,12 @@
                         <div class="col-lg-2 d-flex align-items-center">
                         </div>
                         <div class="col-lg-4 d-flex align-items-center">
-                            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-right"></i> </a>
+                            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
+                                    class="fal fa-arrow-circle-right"></i> </a>
 
-                            <div id="countdown"  style="margin-right: -141px; background: #d1915c;">
-                                <h5 class="text-center mx-auto my-1 "style=" background: black;">{{__('messages.auction.remaining_time')}}
+                            <div id="countdown" style="margin-right: -141px; background: #d1915c;">
+                                <h5 class="text-center mx-auto my-1 "
+                                    style=" background: black;">{{__('messages.auction.remaining_time')}}
                                     : <i class="fal fa-clock"> </i>
                                 </h5>
                                 <div class="labels">
@@ -42,12 +51,21 @@
 
                         </div>
                         @if(auth()->check())
-                            @if(auth()->user()->id != $auction->seller_id)
-                                <div class="col-lg-2 d-flex align-items-center" id="bid">
-                                    <a href="#" class="bid-btn">Bid Now</a>
-                                </div>
+                            @if(auth()->user()->is_verified == 1 )
+                                @if(auth()->user()->id != $auction->seller_id)
+
+                                    <div class="col-lg-2 d-flex align-items-center" id="bid">
+                                        <a href="#" class="bid-btn"> {{ trans('messages.auction.bid_now')}}</a>
+                                    </div>
+                                @endif
                             @endif
-                        @endif
+                                @if(auth()->user()->is_verified == 0 )
+                                    <div class="col-lg-6 d-flex align-items-center" >
+                                        <a href="{{route('front.show_complete_profile')}}" > {{ trans('messages.please_complete_your_data_to_could_make_bid')}} --></a>
+                                    </div>
+                                @endif
+
+                                @endif
                     @endif
                     <div class="col-lg-6 d-flex align-items-center justify-content-end" id="bidMainInfo">
                         <div class="current-price">
@@ -103,7 +121,8 @@
                                 </div>
                                 <div class="details" id="details">
                                     <p>
-                                        <i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}:{{($auction->start_auction_price)}}
+                                        <i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}
+                                        :{{($auction->start_auction_price)}}
                                     </p>
                                 </div>
 
@@ -116,7 +135,8 @@
                                         :{{($auction->value_of_increment)}}</p>
 
                                     <p class="ticket"><i
-                                            class="fal fa-ticket"></i> {{trans('messages.auction.buyers_count')}}:{{ ($auction->count_of_buyer ) }}
+                                            class="fal fa-ticket"></i> {{trans('messages.auction.buyers_count')}}
+                                        :{{ ($auction->count_of_buyer ) }}
                                     </p>
                                 </div>
                             </div>
@@ -304,7 +324,7 @@
     </div>
 @stop
 @push('scripts')
-{{--    @include('front.layouts.parts.map')--}}
+    {{--    @include('front.layouts.parts.map')--}}
     @include('front.auctions.parts.ajax')
     @include('front.auctions.parts.counter', ['auction' => $auction])
 
@@ -316,35 +336,36 @@
 
 
 
-<script>
-    function initMap() {
+    <script>
+        function initMap() {
 
-        let lat_val ={{ $auction->latitude }};
-        let lng_val ={{ $auction->longitude }};
-        var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: lat_val, lng: lng_val},
-            zoom: 13
-        });
-        var input = document.getElementById('searchInput');
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+            let lat_val = {{ $auction->latitude }};
+            let lng_val = {{ $auction->longitude }};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: lat_val, lng: lng_val},
+                zoom: 13
+            });
+            var input = document.getElementById('searchInput');
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        autocomplete.bindTo('bounds', map);
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
 
-        var infowindow = new google.maps.InfoWindow();
+            var infowindow = new google.maps.InfoWindow();
 
-        var marker = new google.maps.Marker({ position: {lat: lat_val, lng: lng_val}, map: map, anchorPoint: new google.maps.Point(0, -29), draggable :true });
-    }
+            var marker = new google.maps.Marker({
+                position: {lat: lat_val, lng: lng_val},
+                map: map,
+                anchorPoint: new google.maps.Point(0, -29),
+                draggable: true
+            });
+        }
 
 
-
-
-
-
-
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks" >
-</script>
+    </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks">
+    </script>
 
 
 

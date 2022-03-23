@@ -11,9 +11,7 @@
         </ul>
         @include('Dashboard.layouts.parts.quick-links')
     </div>
-@endsection
-
-
+@stop
 @section('content')
 
     <!-- Basic datatable -->
@@ -201,16 +199,13 @@
 
                                                         <td class="text-center">
                                                             @if($person->ban ==1)
-                                                                <a href="person/{{$person->id}}/not_ban/" class="btn btn-danger btn-sm"><i
+                                                                <a href="{{route('not_ban',$person->id)}}" class="btn btn-danger btn-sm"><i
                                                                         class="icon-close2"></i>{{trans('messages.not_ban')}}</a>
                                                             @else
-                                                                <a href="person/{{$person->id}}/ban/" class="btn btn-success btn-sm"> <i
+                                                                <a href="{{route('ban',$person->id)}}" class="btn btn-success btn-sm"> <i
                                                                         class="icon-check2"></i> {{trans('messages.ban')}}</a>
                                                             @endif
                                                         </td>
-
-
-
                                                         <td>{{isset($person->created_at) ?$person->created_at->diffForHumans():'---' }}</td>
                                                         <td class="text-center">
                                                             <ul class="icons-list">

@@ -39,6 +39,9 @@
                                 <a href="{{route('front.edit_profile')}}">تعديل الحساب</a>
                             </div>
                             <div class="col-sm-6">
+                                <a href="{{route('front.show_complete_profile')}}">تكملة بيانات الحساب</a>
+                            </div>
+                            <div class="col-sm-6">
                                 <a href="{{route('front.my_bids')}}">مشاركاتي</a>
                             </div>
                             <div class="col-sm-6">

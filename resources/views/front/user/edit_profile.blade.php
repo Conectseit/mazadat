@@ -8,8 +8,14 @@
             border-radius: 50%;
             border: 5px solid #eee;
         }
-        #map { height: 400px;}
-        #add_map { height: 400px;}
+        
+        /*#map {*/
+        /*    height: 400px;*/
+        /*}*/
+
+        /*#add_map {*/
+        /*    height: 400px;*/
+        /*}*/
     </style>
     <link rel="stylesheet" href="{{asset('Front/assets/css/profile_image.css')}}"/>
 
@@ -28,7 +34,7 @@
             @endif
 
             <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
-                    class="fal fa-arrow-circle-right text-black"></i> </a>   حسابي الشخصي
+                    class="fal fa-arrow-circle-right text-black"></i> </a> حسابي الشخصي
 
             <div class="row">
                 <div class="edit-form">
@@ -43,7 +49,8 @@
                                         <label for="imageUpload"></label>
                                     </div>
                                     <div class="avatar-preview">
-                                        <div id="imagePreview" style="background-image: url({{auth()->user()->image_path}});"
+                                        <div id="imagePreview"
+                                             style="background-image: url({{auth()->user()->image_path}});"
                                         ></div>
                                     </div>
 
@@ -112,13 +119,16 @@
                                 </div>
                                 <div class="col-lg-10 col-md-9">
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" >
+                                        <div class="col-xl-3 col-lg-4 col-sm-6">
 
-                                            <select class="form-select form-control" name="phone_code" aria-label="Default select example">
-{{--                                                <option selected disabled >إختر فيمة</option>--}}
-                                                    <option selected disabled> {{ trans('messages.choose_country_code')}}</option>
+                                            <select class="form-select form-control" name="phone_code"
+                                                    aria-label="Default select example">
+                                                {{--                                                <option selected disabled >إختر فيمة</option>--}}
+                                                <option selected
+                                                        disabled> {{ trans('messages.choose_country_code')}}</option>
                                                 @foreach ($countries as $country)
-                                                    <option {{ $country->phone_code == auth()->user()->country->phone_code ? 'selected' : '' }} value="{{ $country->phone_code }}"> {{ $country->$name }}{{ $country->phone_code }} </option>
+                                                    <option
+                                                        {{ $country->phone_code == auth()->user()->country->phone_code ? 'selected' : '' }} value="{{ $country->phone_code }}"> {{ $country->$name }}{{ $country->phone_code }} </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -167,7 +177,8 @@
                                 </div>
                                 <div class="form-group mb-4 row">
                                     <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                        <label for="name" class="form-label">{{trans('messages.company_location')}}</label>
+                                        <label for="name"
+                                               class="form-label">{{trans('messages.company_location')}}</label>
                                     </div>
                                     <div class="col-lg-10 col-md-9">
                                         <div id="map"></div>
@@ -179,10 +190,10 @@
                                     <div class="col-lg-6">
                                         <input type="text" id="geo_lng" name="longitude" readonly=""
                                                placeholder="longitude" class="form-control hidden d-none">
-                                    </div><br>
+                                    </div>
+                                    <br>
                                 </div><br>
                             @endif
-
 
 
                             <div class="form-group mb-4 row">
@@ -210,11 +221,10 @@
                 </div>
             </div>
 
-
-            @include('front.user.complete_profile_form')
-            @if(auth()->user()->is_company=='person')
-            @include('front.user.add_address_form')
-            @endif
+            {{--            @include('front.user.complete_profile_form')--}}
+            {{--            @if(auth()->user()->is_company=='person')--}}
+            {{--            @include('front.user.add_address_form')--}}
+            {{--            @endif--}}
 
         </div>
     </section>
@@ -223,9 +233,11 @@
 @push('scripts')
 
 
-    @include('front.user.script_edit')
-    @include('front.user.add_location_map')
-{{--    @include('front.layouts.parts.map')--}}
-{{--    @include('front.auth.ajax_get_cities')--}}
+    @include('front.user.parts.script_edit')
+    {{--    @include('front.user.add_location_map')--}}
+
+
+    {{--    @include('front.layouts.parts.map')--}}
+    {{--    @include('front.auth.ajax_get_cities')--}}
 
 @endpush

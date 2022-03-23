@@ -76,6 +76,7 @@ return [
 //    'person'                  => ' فرد',
 //    'company'                 => ' مؤسسة',
     'no_value'                => ' لا يوجد',
+    'email_or_mobile'         => ' البريد الالكتروني او رقم الجوال',
 
 
 
@@ -332,6 +333,7 @@ return [
     ],
 
     'please_complete_your_data' => 'من فضلك اكمل بيانات التسجيل',
+    'please_complete_your_data_to_could_make_bid' => 'من فضلك اكمل بيانات التسجيل لكي يمكنك المزايدة',
     'additional_address' => ' عنوان اضافي',
     'location' => ' عنوان المستخدم ',
 
@@ -446,6 +448,7 @@ return [
         'unique' => ' المزادات المميزة',
         'update' => ' تعديل المزاد',
         'make_done' => ' سحب المزاد اوانهاؤه',
+        'bid_now' => ' ابدأ مزايدتك',
 
     ],
     'terms' => 'الشروط والاحكام  ',
@@ -535,6 +538,7 @@ return [
         'send_successfully' => 'تم الارسال بنجاح',
         'updated_successfully' => 'تم التحديث بنجاح',
         'deleted_successfully' => 'تم الحذف بنجاح',
+        'invalid_mobile' => 'لا يوجود رقم جوال مسجل لدينا مطابق للرقم الذي ادخلته',
         'try_access_not_found_content' => 'عفوا لا يوجد هذا العنصر',
         'added_balance_successfully' => 'تم اضافة رصيد لمحظة المستخدم بنجاح',
         'sorry_this_option_added_before_select_another_one' => 'عفوا لقد قمت باضافة هذا التصنيف من قبل,اختر تصنيف اخر',
@@ -567,6 +571,7 @@ return [
     'change_pass' => 'تعيين كلمة مرور جديدة ',
     'activation_code' => ' كود التفعيل',
     'email_reset' => ' من فضلك قم بادخال كود التفعيل المرسل على  بريدك الالكتروني',
+    'mobile_reset' => ' من فضلك قم بادخال كود التفعيل المرسل على  جوالك',
     'enter_activation_code' => 'اكتب الكود ',
     'register_success' => 'تم التسجيل بنجاح',
     'wrong_code' => 'عفوا كود التحقق غير صحيح',
@@ -640,6 +645,7 @@ return [
 
     'updated_success_wait_until_admin_accept_it'         	=> 'تم التعديل ,, انتظر حتي يتم مراجعة البيانات وقبولها من ادارة الموقع',
     'Sorry_you_should_wait_until_admin_accept_you'         	=> 'يجب انتظار قبول حسابك من الادارة اولا ',
+    'Sorry_you_should_complete_your_account_information_first'         	=> 'يجب تكملة معلومات حسابك اولا ',
     'bid_done_successfully'         	=> 'تمت المزايدة بنجاح',
     'sorry_you_cant_make_bid_your_offer_must_bigger_than_auction_current_price'
     => 'عفوا لا يمكنك المزايدة بهذه القيمة',

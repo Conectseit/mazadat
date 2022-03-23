@@ -36,6 +36,11 @@ class AuctionController extends Controller
         try
         {
             $user = auth()->user();
+
+            if( $user->is_completed==0)
+            {
+                return back()->with('warning_comp', trans('messages.Sorry_you_should_complete_your_account_information_first'));
+            }
             if( $user->is_verified == 0)
             {
                 return back()->with('error', trans('messages.Sorry_you_should_wait_until_admin_accept_you'));
@@ -44,7 +49,6 @@ class AuctionController extends Controller
                 return back()->with('error', trans('messages.not_found_auction'));
 
             }
-
 //            if(!$user->is_company == $auction->who_can_see || $auction->who_can_see == 'all' ){
 //                return back()->with('error', trans('messages.sorry_you_cant_bid_on_this_auction'));
 //
@@ -122,7 +126,6 @@ class AuctionController extends Controller
 
             Notification::sendNewBidNotification($auction->id);
 //            Notification::sendNewAuctionNotification($auction->id);
-
 
             DB::commit();
 

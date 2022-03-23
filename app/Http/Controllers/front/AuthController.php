@@ -107,7 +107,7 @@ class AuthController extends Controller
         }
 
         if ($user->is_completed == 0 ) {
-            return redirect()->route('front.edit_profile')
+            return redirect()->route('front.show_complete_profile')
                 ->with('error', trans('api.please_complete_your_account_first'));
         }
 
