@@ -71,10 +71,10 @@ class SettingController extends Controller
             Setting::where('key', 'instagram_url')->update(['value' => $request->instagram_url]);
         if ($request->whatsapp_phone)
             Setting::where('key', 'whatsapp_phone')->update(['value' => $request->whatsapp_phone]);
-        if ($request->about_ar)
-            Setting::where('key', 'about_ar')->update(['value' => $request->about_ar]);
-        if ($request->about_en)
-            Setting::where('key', 'about_en')->update(['value' => $request->about_en]);
+        if ($request->about_app_ar)
+            Setting::where('key', 'about_app_ar')->update(['value' => $request->about_app_ar]);
+        if ($request->about_app_en)
+            Setting::where('key', 'about_app_en')->update(['value' => $request->about_app_en]);
         if ($request->conditions_terms_ar)
             Setting::where('key', 'conditions_terms_ar')->update(['value' => $request->conditions_terms_ar]);
         if ($request->conditions_terms_en)
