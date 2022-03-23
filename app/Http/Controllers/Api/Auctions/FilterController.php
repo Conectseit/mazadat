@@ -79,10 +79,10 @@ class FilterController extends PARENT_API
 //                }
 //// ==================================
 //            } else {
-                $auctions = $query->where('category_id', $id)->where('status', 'on_progress')->get();
+                $auctions = $query->where('category_id', $id)->where('status', 'on_progress')->paginate(10);
 
                 if ($auctions->count() > 0) {
-                                    return responseJson(true, trans('api.all_category_auctions'), new AuctionsCollection($auctions));  //OK don-successfully
+                    return responseJson(true, trans('api.all_category_auctions'), new AuctionsCollection($auctions));  //OK don-successfully
 
 //                    return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));
                 }
@@ -114,16 +114,15 @@ class FilterController extends PARENT_API
             return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
         }
 
-        $auctions_ids = AuctionData::whereIn('option_details_id', $request->option_details_id)->get()->pluck('auction_id')->toArray();
+        $auctions_ids = AuctionData::whereIn('option_details_id', $request->option_details_id)->paginate(10)->pluck('auction_id')->toArray();
 //        $auctions_ids = AuctionData::where('option_id', $request->option_id)->whereIn('option_details_id', $request->option_details_id)->get()->pluck('auction_id')->toArray();
 
         $auctions = Auction::find($auctions_ids);
 
         if ($auctions->count() > 0) {
-//            return responseJson(true, trans('api.category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK
             return responseJson(true, trans('api.all_category_auctions'), new AuctionsCollection($auctions));  //OK don-successfully
 
-//            return responseJson(true, trans('api.category_auctions'), UserAuctionsResource::collection($data));  //OK
+//            return responseJson(true, trans('api.category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK
         }
         return responseJson(false, trans('api.there_is_no_auctions_on_this_option'), null);  //OK
     }
