@@ -29,7 +29,7 @@ class RegisterCompanyRequest extends REQUEST_API_PARENT
             'company_authorization_image'        => 'required|image',
             'latitude'         => 'required|numeric',
             'longitude'        => 'required_if:is_company,company|numeric',
-            'user_name'        => 'required|string|between:2,200|unique:users',
+            'user_name'        => 'required|string|between:2,200|unique:users,user_name',
             'email'            => 'required|email|max:100|unique:users,email',
             'country_id'       => 'required|numeric|exists:countries,id',
             'phone_code'       => 'required',
