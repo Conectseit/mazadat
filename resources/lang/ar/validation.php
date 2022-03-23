@@ -205,6 +205,7 @@ return [
         'commercial_register_image'         	=> 'صورة السجل التجاري',
         'latitude'         	=> ' الموقع',
         'longitude'         	=> ' الموقع',
+        'block_num'         	=> ' رقم المبني',
 
 
 

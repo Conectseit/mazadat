@@ -23,7 +23,7 @@ class ComplteProfileRequest extends FormRequest
 //            'delivery_time'         => 'required_if:is_company,person|in:am,pm',
             'signs'                 => 'required_if:is_company,person',
             'P_O_Box'               => 'required',
-            'passport_image'        => 'required_if:is_company,person|image',
+            'passport_image'        => 'required_if:is_company,==,person',
 
         ];
     }

@@ -100,7 +100,7 @@
                                     <div class="col-lg-10 col-md-9">
                                         <input type="text" class="form-control" id="name" name="block"
                                                placeholder="{{trans('messages.block')}}"
-                                               value={{ auth()->user()->block}}>
+                                               value={{ isset(auth()->user()->block)?auth()->user()->block: old('block')}}>
                                     </div>
                                     @error('block')<span style="color: #e81414;">{{ $message }}</span>@enderror
 

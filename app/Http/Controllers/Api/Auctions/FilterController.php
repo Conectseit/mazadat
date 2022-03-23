@@ -8,6 +8,7 @@ use App\Http\Requests\Api\user\FilterRequest;
 use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Http\Resources\Api\CategoryOptionsResource;
 use App\Http\Resources\Api\CategoryResource;
+use App\Http\Resources\Api\collections\AuctionsCollection;
 use App\Http\Resources\Api\UserAuctionsResource;
 use App\Models\Auction;
 use App\Models\AuctionData;
@@ -81,7 +82,9 @@ class FilterController extends PARENT_API
                 $auctions = $query->where('category_id', $id)->where('status', 'on_progress')->get();
 
                 if ($auctions->count() > 0) {
-                    return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));
+                                    return responseJson(true, trans('api.all_category_auctions'), new AuctionsCollection($auctions));  //OK don-successfully
+
+//                    return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));
                 }
                 return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);
 //            }
@@ -117,7 +120,9 @@ class FilterController extends PARENT_API
         $auctions = Auction::find($auctions_ids);
 
         if ($auctions->count() > 0) {
-            return responseJson(true, trans('api.category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK
+//            return responseJson(true, trans('api.category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK
+            return responseJson(true, trans('api.all_category_auctions'), new AuctionsCollection($auctions));  //OK don-successfully
+
 //            return responseJson(true, trans('api.category_auctions'), UserAuctionsResource::collection($data));  //OK
         }
         return responseJson(false, trans('api.there_is_no_auctions_on_this_option'), null);  //OK

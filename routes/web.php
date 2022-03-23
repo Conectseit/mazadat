@@ -43,16 +43,12 @@ Route::group(
     Route::get('company/{id}/auctions', [HomeController::class, 'companyAuctions'])->name('front.company_auctions');
 
 
-
     // ============ // category ================
     Route::get('category/{category}/auctions', [CategoryController::class, 'categoryAuctions'])->name('front.category_auctions');
 //    Route::post('search/{id}', [CategoryController::class, 'search'])->name('front.search');
-    Route::post('main_filter_category/{id}/auctions', [FilterController::class,'main_filter'])->name('front.main_filter');
-    Route::post('filter_category/{id}/auctions', [FilterController::class,'filterCategory'])->name('front.filter_category');
+    Route::post('main_filter_category/{id}/auctions', [FilterController::class, 'main_filter'])->name('front.main_filter');
+    Route::post('filter_category/{id}/auctions', [FilterController::class, 'filterCategory'])->name('front.filter_category');
     Route::get('auction_details/{id}', [AuctionController::class, 'auction_details'])->name('front.auction_details');
-
-
-
 
 
 // ============ for auth ================
@@ -74,10 +70,10 @@ Route::group(
     Route::post('login', [AuthController::class, 'login'])->name('front.login');
 
     Route::post('forget_pass', [ForgetPassController::class, 'forget_pass'])->name('front.forget_pass');
-    Route::get('reset-code-page/{email}',  [ForgetPassController::class, 'resetCodePage'] )->name('front.reset-code-page');
-    Route::post('check-reset-code',  [ForgetPassController::class, 'checkResetCode'] )->name('front.check-reset-code');
-    Route::get('change-password-page',  [ForgetPassController::class, 'changePasswordPage'] )->name('front.change-password-page');
-    Route::post('resetPassword',  [ForgetPassController::class, 'resetPassword'] )->name('front.resetPassword');
+    Route::get('reset-code-page/{email}', [ForgetPassController::class, 'resetCodePage'])->name('front.reset-code-page');
+    Route::post('check-reset-code', [ForgetPassController::class, 'checkResetCode'])->name('front.check-reset-code');
+    Route::get('change-password-page', [ForgetPassController::class, 'changePasswordPage'])->name('front.change-password-page');
+    Route::post('resetPassword', [ForgetPassController::class, 'resetPassword'])->name('front.resetPassword');
 // ============ // auth ================
 
 
@@ -86,10 +82,7 @@ Route::group(
     Route::get('about_app', [GeneralController::class, 'about_app'])->name('front.about_app');
 
 
-
-
-
-    Route::group(['middleware' => 'checkUserAuth'], function (){
+    Route::group(['middleware' => 'checkUserAuth'], function () {
         Route::any('/logout', [AuthController::class, 'logout'])->name('front.logout');
         Route::post('auth_contact', [GeneralController::class, 'auth_contact'])->name('front.auth_contact');
 
@@ -143,7 +136,7 @@ Route::group(
         Route::get('success-payment', [PaymentController::class, 'successPayment'])->name('front.success_payment');
 
         //=========== /notifications ============
-           Route::get('my_notification', [NotificationController::class, 'my_notification'])->name('front.my_notification');
+        Route::get('my_notification', [NotificationController::class, 'my_notification'])->name('front.my_notification');
 
     });
     Route::post('ajax_get_cities_by_country_id', [AuthController::class, 'get_cities_by_country_id'])->name('get_cities_by_country_id');
@@ -156,12 +149,6 @@ Route::group(
 //});
 
 
-
-
-
-
-
-
 //        Route::any('update_personal_image', [UserController::class, 'update_personal_image'])->name('front.update_personal_image');
 //        Route::any('update_personal_bio', [UserController::class, 'update_personal_bio'])->name('front.update_personal_bio');
 
@@ -169,8 +156,6 @@ Route::group(
 //        Route::any('user_passport', [UserController::class, 'user_passport'])->name('front.user_passport');
 //        Route::any('upload_passport', [UserController::class, 'uploadPassport'])->name('front.upload_passport');
 //        Route::any('upload_documents', [UserController::class, 'uploadDocuments'])->name('front.upload_documents');
-
-
 
 
 //Route::get('/', function () {
