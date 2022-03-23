@@ -22,16 +22,11 @@ class FilterController extends PARENT_API
 {
     public function main_filter(Request $request, $id)
     {
-//        $appearance_of_ended_auctions = Setting::where('key', 'appearance_of_ended_auctions')->first()->value;
-//        $name = 'name_' . app()->getLocale();
         $query = Auction::query();
 
         $category = Category::find($id);
 
-        if (!$category) return responseJson(false, trans('api.not_found_category'), null);  //
-//        if ($request->has('search_by_name')) {
-//            $query->where($name, 'like', '%' . $request['search_by_name'] . '%');
-//        }
+        if (!$category) return responseJson(false, trans('api.not_found_category'), null);
         if ($request->has('less_price')) {
             $query->orderBy('start_auction_price', 'ASC');
         }
@@ -51,39 +46,10 @@ class FilterController extends PARENT_API
             $query->orderBy('end_date', 'DESC');
         }
 
-
-//        if($request->has('high_bids') && $request->has('high_ending')) {
-//            $query->orderBy('count_of_buyer', 'DESC');
-//            $query->orderBy('end_date', 'DESC');
-//        }
-//        elseif ($request->has('high_bids') && !$request->has('high_ending')){
-//            $query->orderBy('count_of_buyer', 'DESC');
-//        }
-//        elseif (!$request->has('high_bids') && $request->has('high_ending')){
-//            $query->orderBy('end_date', 'DESC');
-//        }
-
-
-
-
-//// =========== for appear ended auctions
-//        if ($request->status == 'done') {
-//            if ($appearance_of_ended_auctions == 'yes') {
-//                $auctions = $query->where('category_id', $id)->where('status', 'done')->get();
-//                if ($auctions->count() == 0) {
-//                    return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
-//                }
-//                return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));
-//            } else {
-//                    return responseJson(false, trans('api.management_not_allowed_to_appear_ended_auctions'), null);
-//                }
-//// ==================================
-//            } else {
                 $auctions = $query->where('category_id', $id)->where('status', 'on_progress')->paginate(10);
 
                 if ($auctions->count() > 0) {
                     return responseJson(true, trans('api.all_category_auctions'), new AuctionsCollection($auctions));  //OK don-successfully
-
 //                    return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));
                 }
                 return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);
@@ -114,10 +80,10 @@ class FilterController extends PARENT_API
             return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
         }
 
-        $auctions_ids = AuctionData::whereIn('option_details_id', $request->option_details_id)->paginate(10)->pluck('auction_id')->toArray();
+        $auctions_ids = AuctionData::whereIn('option_details_id', $request->option_details_id)->get()->pluck('auction_id')->toArray();
 //        $auctions_ids = AuctionData::where('option_id', $request->option_id)->whereIn('option_details_id', $request->option_details_id)->get()->pluck('auction_id')->toArray();
 
-        $auctions = Auction::find($auctions_ids);
+        $auctions = Auction::find($auctions_ids)->paginate(10);
 
         if ($auctions->count() > 0) {
             return responseJson(true, trans('api.all_category_auctions'), new AuctionsCollection($auctions));  //OK don-successfully
@@ -127,54 +93,8 @@ class FilterController extends PARENT_API
         return responseJson(false, trans('api.there_is_no_auctions_on_this_option'), null);  //OK
     }
 
-
-
-
-
-
-
-
-
-
-    //    public function filterr(Request $request, $id)
-    //    {
-    //        $category = Category::where('id', $id)->find($id);
-    //        if (!$category) {
-    //            return responseJson(false, trans('api.not_found_category'), null);  //
-    //        }
-    //        $auctions = Auction::where('category_id', $id)->latest()->get();
-    //        if ($auctions->count() == 0) {
-    //            return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
-    //        }
-    //
-    //        if ($request->less_price) {
-    //            $auctions = Auction::OrderBy('start_auction_price', 'asc')->get();
-    //        }
-    //        if ($request->high_price) {
-    //            $auctions = Auction::OrderBy('start_auction_price', 'desc')->get();
-    //        }
-    //        if ($request->less_bids) {
-    //            $auctions = Auction::OrderBy('count_of_buyer', 'asc')->get();
-    //        }
-    //        if ($request->high_bids) {
-    //            $auctions = Auction::OrderBy('count_of_buyer', 'desc')->get();
-    //        }
-    //
-    //        if ($request->less_ending) {
-    //            $auctions = Auction::where('status','on_progress')->OrderBy('end_date', 'asc')->get();
-    //        }
-    //
-    //        return responseJson(true, trans('api.all_category_auctions'), CategoryAuctionsResource::collection($auctions));  //OK
-    //
-    //    }
-
 }
 
 
 
-//$option_details= [];
-//        $data = AuctionData::whereIn('option_details_id',$option_details);
 
-//        $data = AuctionData::where('option_details_id', $request->option_details_id)->whereHas('auction', function($query){
-//            return $query->where('status','on_progress');
-//        })->get();
