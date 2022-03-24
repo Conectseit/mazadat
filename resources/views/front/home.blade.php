@@ -147,18 +147,33 @@
     <div class="category-items-page">
         <section class="items">
             <div class="container">
+                @inject('auctions', 'App\Models\Auction')
                 <div class="row">
                     <div class=" d-flex justify-content-between">
-                        @if(auth()->check())
-                            @if(auth()->user()->is_verified==1)
-                        <a href="{{route('front.show_add_auction')}}" class="add-auction btn "><b> <i
-                                    class="fal fa-plus-circle"></i> </b>{{ trans('messages.auction.add') }}</a>
-                            @endif
-                        @endif
-                        <a href="{{route('front.all_companies')}}" class="add-auction btn"><b> <i
-                                    class="fal fa-gavel"></i> </b>{{ trans('messages.company.companies_auctions') }}</a>
+                        <div  class=" statistics btn"><b><i class="fal fa-gavel"></i>
+                            </b>{{ trans('messages.auction.on_progress') }}:({{$auctions->where(['status'=>'on_progress','is_accepted'=>1])->count()}})</div>
+                        <div  class=" statistics btn"><b><i class="fal fa-gavel"></i>
+                            </b>{{ trans('messages.auction.done') }}:({{$auctions->where(['status'=>'done'])->count()}})</div>
+                        <div  class=" statistics btn"><b><i class="fal fa-gavel"></i>
+                            </b>{{ trans('messages.auction.selled') }}:؟؟</div>
                     </div>
                 </div>
+
+
+
+
+                {{--                <div class="row">--}}
+{{--                    <div class=" d-flex justify-content-between">--}}
+{{--                        @if(auth()->check())--}}
+{{--                            @if(auth()->user()->is_verified==1)--}}
+{{--                        <a href="{{route('front.show_add_auction')}}" class="add-auction btn "><b> <i--}}
+{{--                                    class="fal fa-plus-circle"></i> </b>{{ trans('messages.auction.add') }}</a>--}}
+{{--                            @endif--}}
+{{--                        @endif--}}
+{{--                        <a href="{{route('front.all_companies')}}" class="add-auction btn"><b> <i--}}
+{{--                                    class="fal fa-gavel"></i> </b>{{ trans('messages.company.companies_auctions') }}</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <br>
                 <div class="row">
 
@@ -181,12 +196,8 @@
             </div>
         </section>
     </div>
-
-
 @stop
 
 @push('scripts')
-    <script>
-
-    </script>
+    <script></script>
 @endpush

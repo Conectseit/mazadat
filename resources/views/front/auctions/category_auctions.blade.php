@@ -3,8 +3,6 @@
 @section('style')
     <style></style>
 @endsection
-
-
 @section('content')
     <main class="categories-bar row">
         @include('front.layouts.parts.nav_categories')
@@ -91,9 +89,12 @@
         </main>
 
 
+
         <section class="items">
             <div class="container">
-
+                <div class="title">
+                    <h5>{{ $category->$description }}</h5>
+                </div><br>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
@@ -195,17 +196,12 @@
                                         @include('front.auctions.parts.ajax-watch', ['auction' => $auction])
                                         @endif
                                     @empty
-
                                         <center><h2> @lang('messages.there_is_no_auctions_on_this_category_yet') </h2></center>
                                     @endforelse
-
                                 </div>
-
                         @else
                         <div class="row">
                             @forelse($on_progress_auctions as $auction)
-
-
                                 <div class="col-lg-4 col-md-6" id="viewItem">
                                     <div class="card gallery-card" id="itemCard">
                                         <a href="{{route('front.auction_details',$auction->id)}}" class="image">

@@ -1,4 +1,5 @@
-<!-- wallet modal -->
+<!-- wallet modal ==-->
+
 <div id="add_wallet" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -24,7 +25,6 @@
                                             <input type="text" name="wallet"  class="form-control" placeholder="{{ trans('messages.balance') }}">
                                         </div>
                                     </div>
-
                                     <br>
 
                                 </div>

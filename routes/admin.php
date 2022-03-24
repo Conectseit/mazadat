@@ -21,6 +21,7 @@ use App\Http\Controllers\Dashboard\QuestionController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\SettingsController;
 use App\Http\Controllers\Dashboard\TransactionController;
+use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -96,32 +97,26 @@ Route::group(
 
                 Route::get('company/{id?}/unique', [CompanyController::class, 'unique'])->name('company/unique');
                 Route::get('company/{id?}/not_unique', [CompanyController::class, 'not_unique'])->name('company/not_unique');
-
                 Route::get('company/{id?}/accept', [CompanyController::class, 'accept'])->name('company/accept');
                 Route::get('company/{id?}/not_accept', [CompanyController::class, 'not_accept'])->name('company/not_accept');
 
-                Route::post('company/{id?}/add_balance', [CompanyController::class, 'add_balance'])->name('add_balance');
 
+                Route::get('person/{id?}/verified', [PersonController::class, 'verified'])->name('verified');
+                Route::get('person/{id?}/not_verified', [PersonController::class, 'not_verified'])->name('not_verified');
 
 
                 Route::get('auction/{id?}/done', [AuctionController::class, 'make_done'])->name('auction/done');
                 Route::get('auction/{id?}/accept', [AuctionController::class, 'accept'])->name('auction/accept');
-//                Route::get('auction/{id?}/not_accept', [AuctionController::class, 'not_accept'])->name('auction/not_accept');
                 Route::get('auction/{id?}/need_update', [AuctionController::class, 'need_update'])->name('auction/need_update');
                 Route::get('auction/{id?}/unique', [AuctionController::class, 'unique'])->name('auction/unique');
                 Route::get('auction/{id?}/not_unique', [AuctionController::class, 'not_unique'])->name('auction/not_unique');
 
 
-
-                Route::get('person/{id?}/ban', [PersonController::class, 'ban'])->name('ban');
-                Route::get('person/{id?}/not_ban', [PersonController::class, 'not_ban'])->name('not_ban');
-
-
-                Route::post('person/{id?}/add_balance', [PersonController::class, 'add_balance'])->name('add_balance');
+                Route::get('user/{id?}/ban', [UserController::class, 'ban'])->name('ban');
+                Route::get('user/{id?}/not_ban', [UserController::class, 'not_ban'])->name('not_ban');
+                Route::post('user/{id?}/add_balance', [UserController::class, 'add_balance'])->name('add_balance');
 
 
-                Route::get('person/{id?}/verified', [PersonController::class, 'verified'])->name('verified');
-                Route::get('person/{id?}/not_verified', [PersonController::class, 'not_verified'])->name('not_verified');
 
 
                 Route::get('transaction/{id?}/accept', [TransactionController::class, 'accept'])->name('transaction/accept');
@@ -141,11 +136,11 @@ Route::group(
     });
 });
 
-Route::get('/test', function () {
-//    return  view('Dashboard.Home.test-table');
-    return  view('Dashboard.layouts.master');
-
-});
+//Route::get('/test', function () {
+////    return  view('Dashboard.Home.test-table');
+//    return  view('Dashboard.layouts.master');
+//
+//});
 
 
 
@@ -158,3 +153,13 @@ Route::get('/test', function () {
 
 //                Route::post('/ajax-delete-seller', [SellerController::class, 'destroy'])->name('ajax-delete-seller');
 //                Route::post('/ajax-delete-buyer', [BuyerController::class, 'destroy'])->name('ajax-delete-buyer');
+
+//                Route::get('person/{id?}/ban', [PersonController::class, 'ban'])->name('ban');
+//                Route::get('person/{id?}/not_ban', [PersonController::class, 'not_ban'])->name('not_ban');
+
+//                Route::post('person/{id?}/add_balance', [PersonController::class, 'add_balance'])->name('add_balance');
+
+//                Route::post('company/{id?}/add_balance', [CompanyController::class, 'add_balance'])->name('add_balance');
+
+//                Route::get('auction/{id?}/not_accept', [AuctionController::class, 'not_accept'])->name('auction/not_accept');
+

@@ -12,6 +12,7 @@ use App\Models\AuctionBuyer;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Nationality;
+use App\Models\Notification;
 use App\Models\Payment;
 use App\Models\Token;
 use App\Models\User;
@@ -170,7 +171,6 @@ class CompanyController extends Controller
 
     public function unique($id)
     {
-
         $company = User::findOrFail($id);
         $company->update(['unique_company'=> 1]);
         return back();
@@ -188,10 +188,11 @@ class CompanyController extends Controller
 
     public function accept($id)
     {
-
         $company = User::findOrFail($id);
         $company->update(['is_accepted'=> 1,'is_verified'=> 1]);
-//        SmsController::send_sms($company->mobile, 'تم قبول حسابك  من ادرة موقع مزادات' );
+        Notification::sendAcceptAccountNotify($company->id);
+
+        SmsController::send_sms($company->mobile, 'تم قبول حسابك  من ادرة موقع مزادات' );
 
         return back()->with('success',  trans('messages.active_user_and_send_SMS_successfully'));
     }
@@ -199,50 +200,52 @@ class CompanyController extends Controller
     {
         $company = User::findOrFail($id);
         $company->update(['is_accepted'=> 0]);
-//        SmsController::send_sms($company->mobile, 'هناك خطأ في تكملة بيانات حسابك في موقع مزادات من فضلك ارسلها مرة اخري' );
+        Notification::sendNotAcceptAccountNotify($company->id);
+
+        SmsController::send_sms($company->mobile, 'هناك خطأ في تكملة بيانات حسابك في موقع مزادات من فضلك ارسلها مرة اخري' );
         return back()->with('success',  trans('messages.not_verified_yet_and_send_SMS'));
     }
 
 
-    public function activation(Request $request)
-    {
+//    public function activation(Request $request)
+//    {
+//
+//        $company = User::findOrFail($request->company_id);
+//
+//        if($company->active == 1){
+//            $company->active = 0;
+//        } else {
+//            $company->active = 1;
+//        }
+//        return response()->json([
+//            'data' => [
+//                'success' => $company->save(),
+//            ]
+//        ]);
+//    }
 
-        $company = User::findOrFail($request->company_id);
 
-        if($company->active == 1){
-            $company->active = 0;
-        } else {
-            $company->active = 1;
-        }
-        return response()->json([
-            'data' => [
-                'success' => $company->save(),
-            ]
-        ]);
-    }
-
-
-    public function add_balance(WalletRequest $request,$id)
-    {
-        $company = User::findOrFail($id);
-
-        $company->update(['wallet'=> $request->wallet +$company->wallet]);
-
-       $payment= Payment::Create([
-            'user_id'     => $company->id,
-            'date'        => $company->updated_at,
-            'amount'      => $request->wallet,
-            'payment_type'=> 'cash'
-        ]);
-// ===========================================================
-        activity()
-            ->performedOn($company)
-            ->causedBy(auth()->guard('admin')->user())
-            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة رصيد الي محفظة المؤسسة '.($company->user_name).''.$payment->amount.'ريال سعودي');
-// ===========================================================
-
-        return back()->with('message', trans('messages.messages.added_balance_successfully'));
-
-    }
+//    public function add_balance(WalletRequest $request,$id)
+//    {
+//        $company = User::findOrFail($id);
+//
+//        $company->update(['wallet'=> $request->wallet +$company->wallet]);
+//
+//       $payment= Payment::Create([
+//            'user_id'     => $company->id,
+//            'date'        => $company->updated_at,
+//            'amount'      => $request->wallet,
+//            'payment_type'=> 'cash'
+//        ]);
+//// ===========================================================
+//        activity()
+//            ->performedOn($company)
+//            ->causedBy(auth()->guard('admin')->user())
+//            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة رصيد الي محفظة المؤسسة '.($company->user_name).''.$payment->amount.'ريال سعودي');
+//// ===========================================================
+//
+//        return back()->with('message', trans('messages.messages.added_balance_successfully'));
+//
+//    }
 
 }

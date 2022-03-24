@@ -31,7 +31,6 @@ class RegisterCompanyRequest extends FormRequest
                 }
             case 'POST': {
                     return [
-
                         'commercial_register_image'        => 'required|image',
                         'company_authorization_image'      => 'required|image',
                         'g-recaptcha-response'             => 'required|captcha',
@@ -42,8 +41,6 @@ class RegisterCompanyRequest extends FormRequest
                         'mobile'      => 'required|numeric|min:9|unique:users,mobile',
                         'email'       => 'required|unique:users,email',
                         'password'    => 'required|min:6|confirmed',
-
-
 
                     ];
                 }

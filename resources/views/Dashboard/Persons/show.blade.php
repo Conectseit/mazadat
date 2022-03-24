@@ -230,11 +230,9 @@
 
 
                                                             <div class="form-group row">
-
                                                                 @if($person->is_verified ==1)
-
-                                                                    <div class="btn btn-success btn-sm"> <i
-                                                                            class="icon-check2"></i> {{trans('messages.verified')}}</div>
+                                                                    <div class="btn btn-success btn-sm">
+                                                                        <i class="icon-check2"></i> {{trans('messages.verified')}}</div>
                                                                 @endif
                                                             </div>
 
@@ -422,12 +420,8 @@
                                             <input type="text" id="geo_lng"  value="{{ $person->longitude }}"  name="longitude" readonly="" placeholder="longitude" class="form-control" >
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-
-
-
                         </div>
                         <div class="tab-pane fade" id="wallet">
                             <div class="panel panel-flat">
@@ -456,9 +450,7 @@
                                                     class="icon-plus2"></i></b>{{ trans('messages.person.add_wallet') }}
 
                                         </a>
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>

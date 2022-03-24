@@ -448,7 +448,7 @@ return [
         'unique' => ' المزادات المميزة',
         'update' => ' تعديل المزاد',
         'make_done' => ' سحب المزاد اوانهاؤه',
-        'bid_now' => ' ابدأ مزايدتك',
+        'bid_now' => ' زايد الأن',
 
     ],
     'terms' => 'الشروط والاحكام  ',
@@ -514,7 +514,7 @@ return [
         'since' => 'تاريخ رفع الايصال',
         'amount' => ' المبلغ المحول',
         'user_wallet' => 'الرصيد الكلي في المحفظة',
-        'cash' => 'تحويلات نقدية',
+        'cash' => ' دفع رصيد نقدي',
         'online' => 'تحويلات اونلاين',
         'bank_deposit' => 'تحويلات عن طريق الايداع البنكي',
         'receipt_image' => 'صورة الفاتورة البنكية',
@@ -644,7 +644,7 @@ return [
                             يمكنك
                             تسجيل مستخدم جديد مجانأ',
 
-    'updated_success_wait_until_admin_accept_it'         	=> 'تم التعديل ,, انتظر حتي يتم مراجعة البيانات وقبولها من ادارة الموقع',
+    'updated_success_wait_until_admin_accept_it'         	=> 'تم تكملة البيانات , انتظر حتي يتم مراجعتها وقبولها من ادارة الموقع',
     'Sorry_you_should_wait_until_admin_accept_you'         	=> 'يجب انتظار قبول حسابك من الادارة اولا ',
     'Sorry_you_should_complete_your_account_information_first'         	=> 'يجب تكملة معلومات حسابك اولا ',
     'bid_done_successfully'         	=> 'تمت المزايدة بنجاح',

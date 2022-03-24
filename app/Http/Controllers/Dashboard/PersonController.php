@@ -155,43 +155,44 @@ class PersonController extends Controller
         }
     }
 
-    public function ban($id)
-    {
-        $person = User::findOrFail($id);
-        $person->update(['ban'=> 1]);
-        SmsController::send_sms($person->mobile, 'تم حظر حسابك  من ادرة موقع مزادات' );
-        return back()->with('success',  trans('messages.ban_user_and_send_SMS_successfully'));
+//    public function ban($id)
+//    {
+//        $person = User::findOrFail($id);
+//        $person->update(['ban'=> 1]);
+//        SmsController::send_sms($person->mobile, 'تم حظر حسابك  من ادرة موقع مزادات' );
+//        return back()->with('success',  trans('messages.ban_user_and_send_SMS_successfully'));
+//
+//    }
+//    public function not_ban($id)
+//    {
+//        $person = User::findOrFail($id);
+//        $person->update(['ban'=> 0]);
+//        SmsController::send_sms($person->mobile, 'تم رفع الحظر وتفعيل حسابك  من ادرة موقع مزادات' );
+//        return back()->with('success',  trans('messages.active_user_again_and_send_SMS_successfully'));
+//    }
 
-    }
-    public function not_ban($id)
-    {
-        $person = User::findOrFail($id);
-        $person->update(['ban'=> 0]);
-        SmsController::send_sms($person->mobile, 'تم رفع الحظر وتفعيل حسابك  من ادرة موقع مزادات' );
-        return back()->with('success',  trans('messages.active_user_again_and_send_SMS_successfully'));    }
-
-    public function add_balance(WalletRequest $request,$id)
-    {
-        $person = User::findOrFail($id);
-
-        $person->update(['wallet'=> $request->wallet +$person->wallet]);
-
-        $payment= Payment::Create([
-                    'user_id'     => $person->id,
-                    'date'        => $person->updated_at,
-                    'amount'      => $request->wallet,
-                    'payment_type'=> 'cash'
-                ]);
-
-// ===========================================================
-        activity()
-            ->performedOn($person)
-            ->causedBy(auth()->guard('admin')->user())
-            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.''.' باضافة رصيد الي محفظة العميل  '.''.($person->user_name).'' .'بمقدار'.$payment->amount.' '.'ريال سعودي');
-// ===========================================================
-
-        return back()->with('message', trans('messages.messages.added_balance_successfully'));
-    }
+//    public function add_balance(WalletRequest $request,$id)
+//    {
+//        $person = User::findOrFail($id);
+//
+//        $person->update(['wallet'=> $request->wallet +$person->wallet]);
+//
+//        $payment= Payment::Create([
+//                    'user_id'     => $person->id,
+//                    'date'        => $person->updated_at,
+//                    'amount'      => $request->wallet,
+//                    'payment_type'=> 'cash'
+//                ]);
+//
+//// ===========================================================
+//        activity()
+//            ->performedOn($person)
+//            ->causedBy(auth()->guard('admin')->user())
+//            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.''.' باضافة رصيد الي محفظة العميل  '.''.($person->user_name).'' .'بمقدار'.$payment->amount.' '.'ريال سعودي');
+//// ===========================================================
+//
+//        return back()->with('message', trans('messages.messages.added_balance_successfully'));
+//    }
 
     public function verified($id)
     {

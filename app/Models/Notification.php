@@ -98,6 +98,65 @@ class Notification extends Model
     }
 
 
+    public function sendAcceptAccountNotify($company_id){
+
+        $user=User::find($company_id);
+
+        if (is_null($user)){
+            return back()->with('class', 'success')->with('message', trans('messages.messages.user_not_found'));
+        }
+        $title = 'قبول حسابك';
+        $text = '  تم قبول حسابك من ادارة موقع مزادات ';
+
+        if ($user->token->fcm != null ) {
+            Firebase::send([
+                'title'      => $title,
+                'text'       => $text,
+                'fcm_tokens' => $user->token->fcm
+            ]);
+        }
+        Firebase::createWebCurl($user->token->fcm_web_token, [
+            'title'=> $title,
+            'body' => $text,
+            'icon' => 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
+        ]);
+       $notify= Notification::create([
+            'user_id'    => $user->id,
+            'title'      => $title,
+            'text'       => $text,
+        ]);
+    }
+    public function sendNotAcceptAccountNotify($company_id){
+
+        $user=User::find($company_id);
+
+        if (is_null($user)){
+            return back()->with('class', 'success')->with('message', trans('messages.messages.user_not_found'));
+        }
+        $title = 'لم يتم قبول حسابك';
+        $text = '  لم يتم قبول حسابك من ادارة موقع مزادات هناك خطأ في بياناتك من فضلك ارسلها مرة اخري ';
+
+        if ($user->token->fcm != null ) {
+            Firebase::send([
+                'title'      => $title,
+                'text'       => $text,
+                'fcm_tokens' => $user->token->fcm
+            ]);
+        }
+        Firebase::createWebCurl($user->token->fcm_web_token, [
+            'title'=> $title,
+            'body' => $text,
+            'icon' => 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
+        ]);
+       $notify= Notification::create([
+            'user_id'    => $user->id,
+            'title'      => $title,
+            'text'       => $text,
+        ]);
+    }
+
+
+
 
 
 

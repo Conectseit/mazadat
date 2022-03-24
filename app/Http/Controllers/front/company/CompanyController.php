@@ -21,7 +21,7 @@ class CompanyController extends Controller
         return view('front.auth.register_company', $data);
     }
 
-    public function register_company(RegisterCompa00nyRequest $request)
+    public function register_company(RegisterCompanyRequest $request)
     {
         $activation_code = random_int(0000, 9999);
         DB::beginTransaction();

@@ -52,7 +52,7 @@
 
                                     <div class="panel-body">
                                         @if($accepted_companies->count() > 0)
-                                            <table class="table datatable-basic" id="company" style="font-size: 16px;">
+                                            <table class="table datatable-basic" id="company" style="font-size: 14px;">
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
 {{--                                                    <th class="text-center">#</th>--}}
@@ -61,8 +61,10 @@
                                                     <th class="text-center">{{ trans('messages.company.user_name') }}</th>
 {{--                                                    <th class="text-center">{{ trans('messages.mobile') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.email') }}</th>
-                                                    <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
+{{--                                                    <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.unique') }}</th>
+                                                    <th class="text-center">{{ trans('messages.ban/not') }}</th>
+
                                                     <th class="text-center">@lang('messages.since')</th>
                                                     <th class="text-center">@lang('messages.form-actions')</th>
                                                 </tr>
@@ -82,35 +84,46 @@
 {{--                                                        <td class="text-center"> {{ $company->mobile}}</td>--}}
                                                         <td class="text-center"> {{ $company->email}}</td>
 
-                                                        <td class="text-center">
-                                                            @if($company->is_accepted ==1)
-                                                                <a href="company/{{$company->id}}/not_accept/" class="btn btn-danger btn-sm"><i
-                                                                        class="icon-close2"></i>{{trans('messages.not_accept')}}</a>
-                                                            @else
-                                                                <a href="company/{{$company->id}}/accept/" class="btn btn-success btn-sm"> <i
-                                                                        class="icon-check2"></i> {{trans('messages.accept')}}</a>
-                                                            @endif
-                                                        </td>
-
-
 {{--                                                        <td class="text-center">--}}
-{{--                                                            @if($company->unique_company ==0)--}}
-{{--                                                                <a href="company/{{$company->id}}/unique/" class="btn btn-success btn-sm"> <i--}}
-{{--                                                                        class="icon-check2"></i> {{trans('messages.unique')}}</a>--}}
+{{--                                                            @if($company->is_accepted ==1)--}}
+{{--                                                                <a href="company/{{$company->id}}/not_accept/" class="btn btn-danger btn-sm"><i--}}
+{{--                                                                        class="icon-close2"></i>{{trans('messages.not_accept')}}</a>--}}
 {{--                                                            @else--}}
-
-{{--                                                                <a href="company/{{$company->id}}/not_unique/" class="btn btn-danger btn-sm"><i--}}
-{{--                                                                        class="icon-close2"></i>{{trans('messages.not_unique')}}</a>--}}
+{{--                                                                <a href="company/{{$company->id}}/accept/" class="btn btn-success btn-sm"> <i--}}
+{{--                                                                        class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
 {{--                                                            @endif--}}
 {{--                                                        </td>--}}
 
+
                                                         <td class="text-center">
-                                                            @if($company->is_accepted ==1)
-                                                                <a href="{{route('company/not_accept',$company->id)}}" class="btn btn-danger btn-sm"><i
-                                                                        class="icon-close2"></i>{{trans('messages.not_accept')}}</a>
+                                                            @if($company->unique_company ==0)
+                                                                <a href="company/{{$company->id}}/unique/" class="btn btn-success btn-sm"> <i
+                                                                        class="icon-check2"></i> {{trans('messages.unique')}}</a>
                                                             @else
-                                                                <a href="{{route('company/accept',$company->id)}}" class="btn btn-success btn-sm"> <i
-                                                                        class="icon-check2"></i> {{trans('messages.accept')}}</a>
+
+                                                                <a href="company/{{$company->id}}/not_unique/" class="btn btn-danger btn-sm"><i
+                                                                        class="icon-close2"></i>{{trans('messages.not_unique')}}</a>
+                                                            @endif
+                                                        </td>
+
+{{--                                                        <td class="text-center">--}}
+{{--                                                            @if($company->is_accepted ==1)--}}
+{{--                                                                <a href="{{route('company/not_accept',$company->id)}}" class="btn btn-danger btn-sm"><i--}}
+{{--                                                                        class="icon-close2"></i>{{trans('messages.not_accept')}}</a>--}}
+{{--                                                            @else--}}
+{{--                                                                <a href="{{route('company/accept',$company->id)}}" class="btn btn-success btn-sm"> <i--}}
+{{--                                                                        class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
+{{--                                                            @endif--}}
+{{--                                                        </td>--}}
+
+
+                                                        <td class="text-center">
+                                                            @if($company->ban ==1)
+                                                                <a href="{{route('not_ban',$company->id)}}" class="btn btn-danger btn-sm"><i
+                                                                        class="icon-close2"></i>{{trans('messages.not_ban')}}</a>
+                                                            @else
+                                                                <a href="{{route('ban',$company->id)}}" class="btn btn-success btn-sm"> <i
+                                                                        class="icon-check2"></i> {{trans('messages.ban')}}</a>
                                                             @endif
                                                         </td>
 
@@ -167,7 +180,8 @@
                                                     <th class="text-center">{{ trans('messages.company.user_name') }}</th>
 {{--                                                    <th class="text-center">{{ trans('messages.mobile') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.email') }}</th>
-                                                    <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
+                                                    <th class="text-center">{{ trans('messages.accept') }}</th>
+                                                    <th class="text-center">{{ trans('messages.not_accept') }}</th>
                                                     <th class="text-center">@lang('messages.since')</th>
                                                     <th class="text-center">@lang('messages.form-actions')</th>
                                                 </tr>
@@ -187,21 +201,29 @@
 {{--                                                        <td class="text-center"> {{ $company->mobile}}</td>--}}
                                                         <td class="text-center"> {{ $company->email}}</td>
 
-                                                        <td class="text-center">
-                                                            @if($company->is_accepted ==1)
+{{--                                                        <td class="text-center">--}}
+{{--                                                            @if($company->is_accepted ==0)--}}
 {{--                                                                <a href="company/{{$company->id}}/not_accept/" class="btn btn-danger btn-sm"><i--}}
 {{--                                                                        class="icon-close2"></i>{{trans('messages.not_accept')}}</a>--}}
-                                                                <a href="{{route('company/not_accept',$company->id)}}" class="btn btn-danger btn-sm"><i
-                                                                        class="icon-close2"></i>{{trans('messages.not_accept')}}</a>
-                                                            @else
-                                                                <a href="{{route('company/accept',$company->id)}}" class="btn btn-success btn-sm"> <i
-                                                                        class="icon-check2"></i> {{trans('messages.accept')}}</a>
+{{--                                                                <a href="{{route('company/not_accept',$company->id)}}" class="btn btn-danger btn-sm"><i--}}
+{{--                                                                        class="icon-close2"></i>{{trans('messages.not_accept')}}</a>--}}
+{{--                                                            @else--}}
+{{--                                                                <a href="{{route('company/accept',$company->id)}}" class="btn btn-success btn-sm"> <i--}}
+{{--                                                                        class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
 {{--                                                                <a href="company/{{$company->id}}/accept/" class="btn btn-success btn-sm"> <i--}}
 {{--                                                                        class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
-                                                            @endif
+{{--                                                            @endif--}}
+{{--                                                        </td>--}}
+
+                                                        <td class="text-center">
+                                                                <a href="{{route('company/not_accept',$company->id)}}" class="btn btn-danger btn-sm"><i
+                                                                        class="icon-close2"></i>{{trans('messages.not_accept')}}</a>
                                                         </td>
 
-
+                                                        <td class="text-center">
+                                                                <a href="{{route('company/accept',$company->id)}}" class="btn btn-success btn-sm"> <i
+                                                                        class="icon-check2"></i> {{trans('messages.accept')}}</a>
+                                                        </td>
                                                         <td class="text-center">{{isset($company->created_at) ?$company->created_at->diffForHumans():'---' }}</td>
                                                         <td class="text-center">
 

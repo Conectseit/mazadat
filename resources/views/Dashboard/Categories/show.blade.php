@@ -98,16 +98,26 @@
                                                             </div>
                                                             <div class="form-group row">
                                                                 <div class="col-md-12">
-                                                                    <div class="form-group row">
-                                                                        <label class="col-form-label col-lg-3">{{ trans('messages.description') }}:</label>
-                                                                        <div class="col-lg-9">
-                                                                            <textarea rows="5" cols="5" name="about_app_ar" class="form-control">
-                                                                                {{ $category->$description }}
-                                                                            </textarea>
-                                                                        </div>
-                                                                    </div>
+                                                                    <label class="col-form-label">{{ trans('messages.auction_commission') }}:</label>
+                                                                    {{ $category->auction_commission }}
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.category.image') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <img src=" {{$category->image_path}} " width=" 100px " value="{{$category->image_path}}"
+                                                                     class="thumbnail image-preview">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.description') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <textarea rows="4" cols="4"  class="form-control">
+                                                                        {{ $category->$description }}</textarea>
+                                                                </div>
+                                                            </div>
+
                                                         </form>
                                                     </div>
                                                 </div>

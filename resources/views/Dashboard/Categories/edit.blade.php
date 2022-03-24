@@ -59,6 +59,10 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <input type="text" class="form-control"  value="{{$category->auction_commission}}" name="auction_commission"
+                                   placeholder="@lang('messages.auction_commission')   /100 ريال ">
+                        </div>
+                        <div class="form-group">
                             <label>@lang('messages.category.image')</label>
                             <input type="file" class="form-control image " name="image">
                         </div>

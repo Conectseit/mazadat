@@ -20,7 +20,8 @@ messaging.setBackgroundMessageHandler(function(payload) {
     const notificationTitle = payload.data.title;
     const notificationOptions = {
         body: payload.data.title,
-        icon: 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
+        // icon: 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
+        icon: 'https://mzadat.com.sa/public/Dashboard/assets/images/mazadat_logo.jpg'
         // icon: payload.data.icon //your logo here
     };
 
