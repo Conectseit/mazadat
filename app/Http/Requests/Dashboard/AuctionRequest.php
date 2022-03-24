@@ -33,7 +33,7 @@ class AuctionRequest extends FormRequest
                         'name_ar' => 'required',
                         'name_en' => 'required',
                         'seller_id' => 'required',
-                        'category_id' => 'sometimes',
+                        'category_id' => 'required',
                         'description_ar' => 'required',
                         'description_en' => 'required',
                         'auction_terms_ar' => 'required',
@@ -45,8 +45,14 @@ class AuctionRequest extends FormRequest
                         'delivery_charge' => ['required','numeric'],
                         'latitude'         => 'required|numeric',
                         'longitude'        => 'required|numeric',
-                        'images.*' => 'image',
+//                        'images.*' => 'image',
 //                        'inspection_report_image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
+
+                        'option_ids.*' => ['required'],
+                        'images' => ['required'],
+                        'images.*' => ['required','mimes:png,jpg,jpeg'],
+                        'inspection_report_images' => ['required'],
+                        'inspection_report_images.*' => ['required','mimes:png,jpg,jpeg'],
                     ];
 
             }

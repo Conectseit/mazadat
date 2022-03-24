@@ -32,6 +32,7 @@ class AuctionController extends Controller
 
     public function make_bid(MakeBidRequest $request, $id)
     {
+
         DB::beginTransaction();
         try
         {
@@ -125,7 +126,6 @@ class AuctionController extends Controller
 
 
             Notification::sendNewBidNotification($auction->id);
-//            Notification::sendNewAuctionNotification($auction->id);
 
             DB::commit();
 

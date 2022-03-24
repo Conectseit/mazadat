@@ -86,6 +86,12 @@ class Auction extends Model
         return $this->belongsToMany(OptionDetail::class,'auction_data','auction_id','option_details_id');
     }
 
+    public function buyers()
+    {
+        return $this->belongsToMany(User::class,'auction_buyers','auction_id','buyer_id');
+    }
+
+
     public function auctionimages()
     {
         return $this->hasMany(AuctionImage::class,'auction_id');

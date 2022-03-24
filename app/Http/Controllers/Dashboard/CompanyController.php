@@ -26,8 +26,8 @@ class CompanyController extends Controller
     public function index()
     {
         $data['companies'] = User::where('is_company', 'company')->get();
-        $data['accepted_companies'] = User::where(['is_company'=> 'company','is_accepted'=>1])->get();
-        $data['not_accepted_companies'] = User::where(['is_company'=> 'company','is_accepted'=>0])->get();
+        $data['accepted_companies'] = User::where(['is_company'=> 'company','is_accepted'=>1])->latest()->get();
+        $data['not_accepted_companies'] = User::where(['is_company'=> 'company','is_accepted'=>0])->latest()->get();
         return view('Dashboard.Companies.index', $data);
     }
 

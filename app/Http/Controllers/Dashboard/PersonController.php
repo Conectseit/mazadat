@@ -12,6 +12,7 @@ use App\Models\AuctionBuyer;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Nationality;
+use App\Models\Notification;
 use App\Models\Payment;
 use App\Models\Token;
 use App\Models\User;
@@ -198,6 +199,7 @@ class PersonController extends Controller
     {
         $person = User::findOrFail($id);
         $person->update(['is_verified'=> 1]);
+        Notification::sendAcceptAccountNotify($person->id);
         SmsController::send_sms($person->mobile, 'تم الموافقة علي بيانات حسابك من ادارة موقع مزادات' );
         return back()->with('success',  trans('messages.active_user_and_send_SMS_successfully'));
     }
@@ -205,6 +207,8 @@ class PersonController extends Controller
     {
         $person = User::findOrFail($id);
         $person->update(['is_verified'=> 0]);
+        Notification::sendNotAcceptAccountNotify($person->id);
+
         SmsController::send_sms($person->mobile, 'هناك خطأ في تكملة بيانات حسابك في موقع مزادات من فضلك ارسلها مرة اخري' );
         return back()->with('success',  trans('messages.not_verified_yet_and_send_SMS'));
     }

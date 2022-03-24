@@ -55,21 +55,20 @@ class Notification extends Model
 
     public static function sendNewBidNotification($auction_id): void
     {
-//        $users = AuctionBuyer::where('auction_id',$auction_id);
-
-
-//        $users = User::where('is_accepted',1)->whereHas('token', function($q){
-//            return $q->whereNotNull('fcm');
-//        })->get();
+//          AuctionBuyer::where('auction_id',$auction_id)->get();
+//        $auction = Auction::where('id',$auction_id)->first();
+//
+//        $users = $auction->buyers->get();
 
         $users = User::where('is_accepted',1)->whereHas('token')->get();
+
 
         $fcms = $users->map->token->pluck('fcm')->toArray();
 
         $tokens = $users->map->token->pluck('fcm_web_token')->toArray();
 
         $title = 'مزايدة جديدة';
-        $text = 'تم رفع مزايدة جديدة'; // write your message here .. later
+        $text = ' تم رفع مزايدة جديدة في المزاد التي تتابعه'; // write your message here .. later
 
         Firebase::send([
             'title'      => $title,
@@ -88,25 +87,25 @@ class Notification extends Model
         }
 
         // save the notification;
-        Notification::create([
+
+       Notification::create([
             'title'    => $title,
             'text'     => $text,
             'auction_id'  => $auction_id,
 //            'auction_image' => $auction_image,
-
         ]);
     }
 
 
-    public function sendAcceptAccountNotify($company_id){
+    public function sendAcceptAccountNotify($user_id){
 
-        $user=User::find($company_id);
+        $user=User::find($user_id);
 
         if (is_null($user)){
             return back()->with('class', 'success')->with('message', trans('messages.messages.user_not_found'));
         }
         $title = 'قبول حسابك';
-        $text = '  تم قبول حسابك من ادارة موقع مزادات ';
+        $text = ' تم قبول حسابك من ادارة موقع مزادات ';
 
         if ($user->token->fcm != null ) {
             Firebase::send([
@@ -125,10 +124,11 @@ class Notification extends Model
             'title'      => $title,
             'text'       => $text,
         ]);
-    }
-    public function sendNotAcceptAccountNotify($company_id){
 
-        $user=User::find($company_id);
+    }
+    public function sendNotAcceptAccountNotify($user_id){
+
+        $user=User::find($user_id);
 
         if (is_null($user)){
             return back()->with('class', 'success')->with('message', trans('messages.messages.user_not_found'));
@@ -154,9 +154,6 @@ class Notification extends Model
             'text'       => $text,
         ]);
     }
-
-
-
 
 
 

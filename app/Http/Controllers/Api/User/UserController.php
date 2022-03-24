@@ -82,7 +82,7 @@ class UserController extends PARENT_API
 
     public function my_pending_auctions(Request $request)
     {
-        $auctions = $request->user()->seller_auctions->where('status', 'not_accepted')->where('is_accepted',0)->paginate(10);
+        $auctions = $request->user()->seller_auctions->where('status', 'not_accepted')->where('is_accepted',0)->sortDesc()->paginate(10);
 
         if ($auctions->count() > 0)
         {

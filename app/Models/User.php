@@ -81,10 +81,6 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Auction::class, 'seller_id');
     }
 
-    public function buyer_auctions()
-    {
-        return $this->hasMany(Auction::class, 'buyer_id');
-    }
 
 
     public function payments()
@@ -107,10 +103,7 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo(Nationality::class, 'nationality_id');
     }
 
-    public function additional_contacts()
-    {
-        return $this->hasMany(AdditionalUserContact::class, 'user_id');
-    }
+
 
     public function auctionbuyers()
     {
@@ -177,12 +170,22 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-    public function documents()
-    {
-        return $this->hasMany(Document::class);
-    }
+//    public function buyer_auctions()
+//    {
+//        return $this->hasMany(Auction::class, 'buyer_id');
+//    }
 
 
+
+//    public function documents()
+//    {
+//        return $this->hasMany(Document::class);
+//    }
+
+//    public function additional_contacts()
+//    {
+//        return $this->hasMany(AdditionalUserContact::class, 'user_id');
+//    }
 
 //====================================================================
 //    public function setImageAttribute($image)

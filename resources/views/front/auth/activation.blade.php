@@ -65,7 +65,7 @@
                         <p class="mt-3 ">
 
                             <a id="resend-code-btn" href="{{ route('front.resend-sms',$mobile) }}" class="create  text-orange send_btn d-none"> لم يصلك كود التفعيل؟  ارسل مرة أخرى</a>
-                            <span class="counter_send d-none"> اعادة ارسال بعد  <span id="countdowntimer">20 </span> Seconds</span>
+                            <span class="counter_send d-none"> اعادة ارسال بعد  <span id="countdowntimer">10 </span> Seconds</span>
                         </p>
 
                     </div>
@@ -149,7 +149,7 @@
            // },10000);
             $( ".send_btn" ).addClass('d-none')
             $( ".counter_send" ).removeClass('d-none')
-            var timeleft = 20 ;
+            var timeleft = 10 ;
             var downloadTimer = setInterval(function(){
                 timeleft--;
                 $("#countdowntimer").textContent = timeleft;
