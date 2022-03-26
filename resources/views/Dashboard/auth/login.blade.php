@@ -26,7 +26,7 @@
                                  class="img-circle">
 {{--                            <i class="icon-reading"></i>--}}
                         </div>
-                        <h5 class="content-group">Login to your account <small class="display-block">Your
+                        <h5 class="content-group">@lang('messages.log_in') <small class="display-block">Your
                                 credentials</small></h5>
                     </div>
 

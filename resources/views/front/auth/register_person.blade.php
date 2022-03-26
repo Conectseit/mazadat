@@ -72,12 +72,22 @@
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 <div class="row">
+{{--                                    <div class="col-xl-3 col-lg-4 col-sm-6">--}}
+{{--                                        <select class="form-select form-control" name="phone_code"--}}
+{{--                                                aria-label="Default select example">--}}
+{{--                                            <option selected disabled> {{ trans('messages.choose_country_code')}}</option>--}}
+{{--                                            @foreach ($countries as $country)--}}
+{{--                                                <option  value="{{ $country->phone_code }}"> {{ $country->$name }}{{ $country->phone_code }} </option>--}}
+{{--                                            @endforeach--}}
+{{--                                        </select>--}}
+{{--                                    </div>--}}
+
                                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                                        <select class="form-select form-control" name="phone_code"
+                                        <select class="form-select form-control" name="country_id"
                                                 aria-label="Default select example">
                                             <option selected disabled> {{ trans('messages.choose_country_code')}}</option>
                                             @foreach ($countries as $country)
-                                                <option  value="{{ $country->phone_code }}"> {{ $country->$name }}{{ $country->phone_code }} </option>
+                                                <option value="{{ $country->id }}"> {{ $country->$name }}{{ $country->phone_code }} </option>
                                             @endforeach
                                         </select>
                                     </div>

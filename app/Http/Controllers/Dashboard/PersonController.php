@@ -26,8 +26,8 @@ class PersonController extends Controller
     public function index()
     {
         $data['persons'] = User::where('is_company', 'person')->latest()->get();
-        $data['accepted_persons'] = User::where(['is_company'=> 'person','is_accepted'=>1,'is_verified'=>1])->latest()->get();
-        $data['not_accepted_persons'] = User::where(['is_company'=> 'person','is_verified'=>0])->latest()->get();
+        $data['accepted_persons'] = User::where(['is_company'=> 'person','is_active'=>'active','is_accepted'=>1,'is_verified'=>1])->latest()->get();
+        $data['not_accepted_persons'] = User::where(['is_company'=> 'person','is_active'=>'active','is_verified'=>0])->latest()->get();
         return view('Dashboard.Persons.index', $data);
     }
 

@@ -10,7 +10,7 @@ class ActivityController extends Controller
 {
     public function index()
     {
-        $data['activities']= Activity::latest()->paginate(10);
+        $data['activities']= Activity::latest()->get();
         return view('Dashboard.Activities.index', $data);
     }
 

@@ -4,12 +4,12 @@
 <!-- Page header -->
 @section('breadcrumb')
     <div class="breadcrumb-line">
-        <ul class="breadcrumb">
+        <ul class="breadcrumb"style="float: {{ floating('right', 'left') }}">
             <li><a href="index.html"><i class="icon-home2 position-left"></i> @lang('messages.home')</a></li>
             <li class="active">@lang('messages.Dashboard')</li>
         </ul>
 
-        <ul class="breadcrumb-elements">
+        <ul class="breadcrumb-elements"style="float: {{ floating('left', 'right') }}">
             <li><a href="{{ route('contacts.index') }}"><i class="icon-comment-discussion position-left"></i> {{trans('messages.contact.contacts')}}</a></li>
             <li class="dropdown">
                 <a href="{{ route('settings.index') }}" class="dropdown-toggle" data-toggle="dropdown">
@@ -20,8 +20,8 @@
 
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li><a href="{{ route('admin.showProfile') }}"><i class="icon-user-lock"></i> @lang('messages.my-account')</a></li>
-                    <li><a href="#"><i class="icon-statistics"></i> Analytics</a></li>
-                    <li><a href="#"><i class="icon-accessibility"></i> Accessibility</a></li>
+{{--                    <li><a href="#"><i class="icon-statistics"></i> Analytics</a></li>--}}
+{{--                    <li><a href="#"><i class="icon-accessibility"></i> Accessibility</a></li>--}}
                     <li class="divider"></li>
                     <li><a href="{{ route('settings.index') }}"><i class="icon-gear"></i> {{ trans('messages.settings.settings') }}</a></li>
                 </ul>
@@ -75,12 +75,12 @@
 
     <!-- Dashboard content -->
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8" style="float: {{ floating('right', 'left') }}">
             <!-- Latest Auctions -->
-            <div class="panel panel-flat">
+            <div class="panel panel-flat" >
                 <div class="panel-heading">
                     <h6 class="panel-title">{{ trans('messages.auction.latest_auctions') }}</h6>
-                    <div class="heading-elements">
+                    <div class="heading-elements"style="float: {{ floating('right', 'left') }}">
                         <ul class="icons-list">
                             <li><a data-action="collapse"></a></li>
                             <li><a data-action="reload"></a></li>
@@ -100,14 +100,14 @@
                                                 <a href="#">
 {{--                                                    <img src="{{asset('Dashboard/assets/images/placeholder.jpg')}}"--}}
                                                     <img src="{{ $auction->first_image_path }}"
-                                                         class="img-responsive img-rounded media-preview" alt="">
+                                                         class="img-responsive img-rounded media-preview" alt="" >
                                                     <span class="zoom-image"><i class="icon-play3"></i></span>
                                                 </a>
                                             </div>
                                         </div>
 
                                         <div class="media-body">
-                                            <h6 class="media-heading"><a href="#">{{$auction->name_ar}}</a></h6>
+                                            <h6 class="media-heading"><a href="#">{{$auction->$name}}</a></h6>
                                             <ul class="list-inline list-inline-separate text-muted mb-5">
                                                 <li>
                                                     <i class="icon-book-play position-left"></i> {{$auction->seller->user_name}}
@@ -124,18 +124,14 @@
                 </div>
             </div>
             <!-- /latest Auctions -->
-
-
-
         </div>
     </div>
     <!-- /dashboard content -->
 
 
     <!-- Footer -->
-    <div class="footer text-muted">
-        &copy; 2015. <a href="#">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov"
-                                                                 target="_blank">Eugene Kopyov</a>
+    <div class="footer text-muted " style="text-align: center;">
+        <h3> <a href="#">Mazadat</a> by <a href="" target="_blank"> &copy; Connect</a> 2022.</h3>
     </div>
     <!-- /footer -->
 

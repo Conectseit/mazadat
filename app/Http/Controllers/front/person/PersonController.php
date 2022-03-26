@@ -25,13 +25,16 @@ class PersonController extends Controller
         DB::beginTransaction();
         try {
             $request_data = $request->except(['image','phone_code','mobile']);
-            $country=Country::where('phone_code',$request->phone_code)->first();
+//            $country=Country::where('phone_code',$request->phone_code)->first();
+//            if ($request->mobile) {
+//                $request_data['mobile'] =$request->phone_code. $request->mobile ;
+//            }
+            $country=Country::find($request->country_id);
             if ($request->mobile) {
-                $request_data['mobile'] =$request->phone_code. $request->mobile ;
+                $request_data['mobile'] =$country->phone_code. $request->mobile ;
             }
 
             if (User::where('mobile', $request_data['mobile'])->first()) {
-
                 return back()->with('error', 'قيمة الجوال مستخدمة من قبل');
             }
 
@@ -42,7 +45,7 @@ class PersonController extends Controller
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
             }
             DB::commit();
-            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+//            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
 
 //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
             return redirect()->route('front.show_activation', $request_data['mobile']);

@@ -14,7 +14,11 @@ class NotificationController extends Controller
         $notifications = Notification::whereNull('user_id')->latest()->get();
         $data['_notifications'] = $notifications->merge(auth()->user()->notifications)->sortDesc();
 
-//        $data['notifications'] =  auth()->user()->notifications()->get();
+//        $data['_notifications'] =  auth()->user()->notifications()->get();
+
+//        foreach ($data['_notifications'] as $notification) {
+//            $notification->update(['is_seen' => 1]);
+//        }
         return view('front.user.my_notifications',$data);
     }
 }

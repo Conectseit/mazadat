@@ -43,7 +43,6 @@ class CompanyController extends Controller
             }
 
             if (User::where('mobile', $request_data['mobile'])->first()) {
-
                 return back()->with('error', 'قيمة الجوال مستخدمة من قبل');
             }
 
@@ -55,7 +54,7 @@ class CompanyController extends Controller
                 ]);
             }
             DB::commit();
-            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+//            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
             return redirect()->route('front.show_activation', $request_data['mobile']);
 
         } catch (\Exception $e) {

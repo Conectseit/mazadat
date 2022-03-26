@@ -177,14 +177,13 @@
                                 <div class="gallery"></div>
                             </div>
                         </div>
-                    </fieldset>
-                    <fieldset title="6">
+                        <hr>
                         <legend class="text-semibold">@lang('messages.auction.inspection_report_images')</legend><br><br>
                         <div class="row">
                             <div class="form-group">
                                 <div class="form-group">
                                     <label>@lang('messages.auction.inspection_report_images')</label>
-{{--                                    <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
+                                    {{--                                    <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
                                     <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">
                                     <div class="gallery1"></div>
                                 </div>
@@ -193,7 +192,8 @@
                         </div>
                     </fieldset>
 
-                    <fieldset title="7">
+
+                    <fieldset title="6">
                         <legend class="text-semibold">@lang('messages.auction.location')</legend><br><br>
                         <div class="row">
                             <div class="form-group">

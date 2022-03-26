@@ -2,6 +2,7 @@
 
 return [
     'Login'                 => 'Login',
+    'log_in'                 => 'Login to your account',
     'logout'                => 'Logout',
     'Dashboard'             => 'Dashboard',
     'admins'                => 'Admins',

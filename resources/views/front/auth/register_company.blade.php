@@ -10,14 +10,12 @@
             <h4 class="title"> {{ trans('messages.register_company') }}</h4>
 
             @include('front.layouts.parts.alert')
-            
+
             <div class="row">
                 <form action="{{route('front.register_company')}}" method="post" id="submitted-form" enctype="multipart/form-data">
                     @csrf
                     <div class="inputs-group">
                         <h5 class="group-title">{{trans('messages.personal_info')}}</h5>
-
-
                         <div class="form-group mb-4  row ">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label>@lang('messages.company.company_authorization_image')</label>
@@ -76,7 +74,6 @@
                                                 <option value="{{ $country->id }}"> {{ $country->$name }}{{ $country->phone_code }} </option>
                                             @endforeach
                                         </select>
-
                                     </div>
                                     <div class="col-xl-9 col-lg-8 col-sm-6">
                                         <input type="text"   name="mobile" maxlength="14"

@@ -3,7 +3,7 @@
 
 @section('breadcrumb')
     <div class="breadcrumb-line">
-        <ul class="breadcrumb">
+        <ul class="breadcrumb" style="float: {{ floating('right', 'left') }}">
             <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
             </li>
             <li><a href="{{ route('auctions.index') }}"><i
@@ -118,7 +118,6 @@
                             </div>
                         @endif
 
-
                         @if(isset($auction->end_date))
                         <div class="form-group">
                             <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>
@@ -156,7 +155,7 @@
                                     <optgroup label="{{ trans('messages.auction.category_name') }}">
                                         @foreach ($categories as $category)
                                             <option
-                                                {{ $auction->category_id == $category->id ? 'selected' : '' }} value="{{ $category->id }}"> {{ $category->name_ar }} </option>
+                                                {{ $auction->category_id == $category->id ? 'selected' : '' }} value="{{ $category->id }}"> {{ $category->$name }} </option>
                                     @endforeach
                                 </select>
                             </div>

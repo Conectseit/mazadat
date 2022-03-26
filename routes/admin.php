@@ -105,8 +105,8 @@ Route::group(
                 Route::get('person/{id?}/not_verified', [PersonController::class, 'not_verified'])->name('not_verified');
 
 
-                Route::get('auction/{id?}/done', [AuctionController::class, 'make_done'])->name('auction/done');
-                Route::get('auction/{id?}/accept', [AuctionController::class, 'accept'])->name('auction/accept');
+//                Route::get('auction/{id?}/done', [AuctionController::class, 'make_done'])->name('auction/done');
+                Route::any('auction/{id?}/accept', [AuctionController::class, 'accept'])->name('auction/accept');
                 Route::get('auction/{id?}/need_update', [AuctionController::class, 'need_update'])->name('auction/need_update');
                 Route::get('auction/{id?}/unique', [AuctionController::class, 'unique'])->name('auction/unique');
                 Route::get('auction/{id?}/not_unique', [AuctionController::class, 'not_unique'])->name('auction/not_unique');

@@ -2648,7 +2648,10 @@ a.ui-button:active,
 
 a:hover {
     color: #fff;
-    /*color: #1e3c48;*/
+}
+
+.hoome_icon:hover {
+    color: #1e3c48;
 }
 
 

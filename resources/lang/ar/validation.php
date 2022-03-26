@@ -207,6 +207,11 @@ return [
         'longitude'         	=> ' الموقع',
         'block_num'         	=> ' رقم المبني',
         'country_id'         	=> ' كود الدولة',
+        'seller_id'         	=> ' صاحب المزاد',
+        'category_id'         	=> 'القسم ',
+        'inspection_report_images'         	=> 'صور تقارير الفحص ',
+        'images'         	=> 'صورالمزاد ',
+        'option_ids'         	=> 'تصنيفات المزاد ',
 
 
 

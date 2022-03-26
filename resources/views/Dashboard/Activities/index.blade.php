@@ -22,12 +22,6 @@
             @include('Dashboard.layouts.parts.table-header', ['collection' => $activities, 'name' => 'activities', 'icon' => 'activities'])
         </div>
         <br>
-        {{--        <div class="list-icons" style="padding-right: 10px;">--}}
-        {{--            <a href="{{route('activities.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i--}}
-        {{--                        class="icon-plus2"></i></b>{{ trans('messages.activity.add') }}</a>--}}
-        {{--        </div>--}}
-
-
 
         @if($activities->count() > 0)
             <table class="table datatable-basic" id="activities" style="font-size: 16px;">
@@ -36,7 +30,8 @@
                     <th class="text-center">#</th>
                     <th class="text-center">{{ trans('messages.activity.description') }}</th>
                     <th class="text-center">{{ trans('messages.activity.admin_name') }}</th>
-                    <th class="text-center">@lang('messages.since')</th>
+                    <th class="text-center">@lang('messages.activity.since')</th>
+                    <th class="text-center">@lang('messages.delete')</th>
                     <th class="text-center">@lang('messages.form-actions')</th>
                 </tr>
                 </thead>
@@ -49,6 +44,14 @@
                         <td class="text-center"> {{ isNullable($activity->description) }}</td>
                         <td class="text-center"><a href=""> {{ isNullable($activity->causer->full_name) }}</a></td>
                         <td class="text-center">{{isset($activity->created_at) ?$activity->created_at->diffForHumans():'---' }}</td>
+                        <td class="text-center">
+                            <div class="list-icons text-center">
+                                <a data-id="{{ $activity->id }}" class="delete-action"
+                                   href="{{ Url('/activity/activity/'.$activity->id) }}">
+                                    <i class="icon-database-remove"></i>
+                                </a>
+                            </div>
+                        </td>
                         <td class="text-center">
                             <div class="list-icons text-center">
                                 <div class="list-icons-item dropdown text-center">

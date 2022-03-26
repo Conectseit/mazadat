@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SmsController;
+use App\Http\Requests\Dashboard\AddStartDateAuctionRequest;
 use App\Http\Requests\Dashboard\AuctionRequest;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
@@ -208,11 +209,6 @@ class AuctionController extends Controller
 
         if(count($options) > 0) DB::table('auction_data')->insert($options);
 
-
-
-
-
-
 // ===========================================================
 
         $name='name_' . app()->getLocale();
@@ -276,17 +272,23 @@ class AuctionController extends Controller
 
 
 
-    public function accept($id)
+    public function accept(AddStartDateAuctionRequest $request,$id)
     {
         $auction = Auction::findOrFail($id);
-        if(($auction->start_date== null) && ($auction->end_date== null ) )
-            {
-                return redirect()->route('auctions.index')->with('error', trans('messages.Sorry_you_should_complete_all_data_for_auction_first'));
-            }
+//        if(($auction->start_date== null) && ($auction->end_date== null ) )
+//            {
+//                return redirect()->route('auctions.index')->with('error', trans('messages.Sorry_you_should_complete_all_data_for_auction_first'));
+//            }
 
-        $auction->update(['is_accepted'=> 1,'status'=>'on_progress']);
+//        $auction->update(['is_accepted'=> 1,'status'=>'on_progress']);
+        $auction->update($request->all() +['is_accepted'=> 1]);
 
-        SmsController::send_sms($auction->seller->mobile, 'تم قبول مزادك من ادرة موقع مزادات' );
+
+        $text = 'تم قبول مزادك من ادرة موقع مزادات' ."\n";
+        $text .= " - سوف يبدأ :  " . $auction->start_date;
+
+        SmsController::send_sms($auction->seller->mobile, $text);
+
         Notification::sendNewAuctionNotification($auction->id);
 
         return redirect()->route('auctions.index')->with('success', trans('messages.accept_auction'));
@@ -298,12 +300,12 @@ class AuctionController extends Controller
 //        return back();
 //    }
 
-    public function make_done($id)
-    {
-        $auction = Auction::findOrFail($id);
-        $auction->update(['status'=> 'done']);
-        return back()->with('success', trans('messages.make_done_auction'));
-    }
+//    public function make_done($id)
+//    {
+//        $auction = Auction::findOrFail($id);
+//        $auction->update(['status'=> 'done']);
+//        return back()->with('success', trans('messages.make_done_auction'));
+//    }
     public function need_update($id)
     {
         $auction = Auction::findOrFail($id);

@@ -243,7 +243,7 @@
                                             </tbody>
                                         </table>
                                     @else
-                                        <center><h3> @lang('messages.no_data_found') </h3></center>
+                                        <div style="text-align: center;"><h3> @lang('messages.no_data_found') </h3></div>
                                     @endif
                                 </div>
                             </div>

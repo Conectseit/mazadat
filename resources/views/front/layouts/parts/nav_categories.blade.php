@@ -1,7 +1,7 @@
 
     @inject('categories', 'App\Models\Category')
     <div class="item col-lg-2 text-center" >
-        <a class="home-active" href="{{route('front.home')}}">
+        <a class="home-active hoome_icon" href="{{route('front.home')}}">
             <i class="fa fa-home "><h4 class="px-2"></h4> </i>
         </a>
     </div>
@@ -10,7 +10,7 @@
 
             @foreach( App\Models\Category::all() as $category)
                 <div class="item">
-                    <a href="{{route('front.category_auctions',$category->id)}}">
+                    <a class="hoome_icon" href="{{route('front.category_auctions',$category->id)}}">
                         <h4>{{$category->$name}}</h4>
 
 {{--                        <i class="fal fa-city">--}}

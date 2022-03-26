@@ -11,7 +11,7 @@
         </ul>
         @include('Dashboard.layouts.parts.quick-links')
     </div>
-@endsection
+@stop
 
 @section('content')
 
@@ -155,11 +155,10 @@
                                                </tbody>
                                            </table>
                                        @else
-                                           <center><h3> @lang('messages.no_data_found') </h3></center>
+                                           <div style="text-align: center;"><h3> @lang('messages.no_data_found') </h3></div>
                                        @endif
                                    </div>
                                 </div>
-
                                 <div class="tab-pane " id="not_accepted">
                                    <div class="row">
                                        @if($not_accepted_auctions->count() > 0)
@@ -169,7 +168,7 @@
                                                    <th class="text-center">قسم</th>
                                                    <th class="text-center">{{ trans('messages.image') }}</th>
                                                    <th class="text-center">{{ trans('messages.name') }}</th>
-                                                   <th class="text-center">{{ trans('messages.accept/not_accept') }}</th>
+                                                   <th class="text-center">{{ trans('messages.auction.add_time/accept') }}</th>
                                                    <th class="text-center">{{ trans('messages.need_update') }}</th>
                                                    <th class="text-center">@lang('messages.since')</th>
                                                    <th class="text-center">@lang('messages.form-actions')</th>
@@ -178,26 +177,32 @@
                                                <tbody>
                                                @foreach($not_accepted_auctions as $auction)
                                                    <tr id="auction-row-{{ $auction->id }}">
-
                                                        <td class="text-center">{{ $auction->category->$name }}</td>
                                                        <td class="text-center">
                                                            <a href="{{ $auction->first_image_path }}" data-popup="lightbox"><img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                        </td>
                                                        <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
+{{--                                                       <td class="text-center">--}}
+{{--                                                           @if($auction->is_accepted ==0)--}}
+{{--                                                               <a href="auction/{{$auction->id}}/not_accept/">--}}
+{{--                                                                   <span class="badge badge-danger" >  <i class="icon-close2"> </i>  {{trans('messages.not_accept')}} </span>--}}
+{{--                                                               </a>--}}
+{{--                                                           @else--}}
+{{--                                                               <a href="auction/{{$auction->id}}/accept/">--}}
+{{--                                                                   <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.accept')}} </span>--}}
+{{--                                                               </a>--}}
+{{--                                                               --}}{{--                                                                <a href="buyer/{{$auction->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
+{{--                                                           @endif--}}
+{{--                                                       </td>--}}
+
+
                                                        <td class="text-center">
-                                                           @if($auction->is_accepted ==1)
-                                                               <a href="auction/{{$auction->id}}/not_accept/">
-                                                                   <span class="badge badge-danger" >  <i class="icon-close2"> </i>  {{trans('messages.not_accept')}} </span>
-                                                               </a>
-                                                           @else
-                                                               <a href="auction/{{$auction->id}}/accept/">
-                                                                   <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.accept')}} </span>
-                                                               </a>
-                                                               {{--                                                                <a href="buyer/{{$auction->id}}/accept/" class="btn btn-success btn-sm">  <i class="icon-check2"></i> {{trans('messages.accept')}}</a>--}}
-                                                           @endif
+                                                           <a href="#" data-toggle="modal" data-target="#add_start_time_modal"
+                                                              class="btn btn-success btn-labeled btn-labeled-left">
+{{--                                                               <b><i class="icon-plus2"></i></b>{{ trans('messages.auction.add_time/accept') }}--}}
+                                                               <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.auction.add_time/accept')}} </span>
+                                                           </a>
                                                        </td>
-
-
 
                                                        <td class="text-center">
                                                                <a href="auction/{{$auction->id}}/need_update/">
@@ -235,12 +240,15 @@
                                                                </div>
                                                            </div>
                                                        </td>
+
+                                                       @include('Dashboard.Auctions.parts.add_start_time_modal')
+
                                                    </tr>
                                                @endforeach
                                                </tbody>
                                            </table>
                                        @else
-                                           <center><h3> @lang('messages.no_data_found') </h3></center>
+                                           <div style="text-align: center;"><h3> @lang('messages.no_data_found') </h3></div>
                                        @endif
                                    </div>
                                 </div>
@@ -255,7 +263,7 @@
                                                 <th class="text-center">{{ trans('messages.auction.start_auction_price') }}</th>
                                                 <th class="text-center">{{ trans('messages.unique') }}</th>
 
-                                                <th class="text-center">{{ trans('messages.auction.make_done') }}</th>
+{{--                                                <th class="text-center">{{ trans('messages.auction.make_done') }}</th>--}}
                                                 <th class="text-center">@lang('messages.since')</th>
                                                 <th class="text-center">@lang('messages.form-actions')</th>
                                             </tr>
@@ -282,13 +290,13 @@
                                                                </a>
                                                            @endif
                                                     </td>
-                                                    <td class="text-center">
-                                                        @if($auction->status !='done')
-                                                            <a href="auction/{{$auction->id}}/done/">
-                                                                <span class="badge badge-primary" >  <i class="icon-close2"> </i>  {{trans('messages.auction.make_done')}} </span>
-                                                            </a>
-                                                        @endif
-                                                    </td>
+{{--                                                    <td class="text-center">--}}
+{{--                                                        @if($auction->status !='done')--}}
+{{--                                                            <a href="auction/{{$auction->id}}/done/">--}}
+{{--                                                                <span class="badge badge-primary" >  <i class="icon-close2"> </i>  {{trans('messages.auction.make_done')}} </span>--}}
+{{--                                                            </a>--}}
+{{--                                                        @endif--}}
+{{--                                                    </td>--}}
                                                     <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
                                                     <td class="text-center">
                                                         <div class="list-icons text-center">
@@ -324,7 +332,8 @@
                                         </table>
 
                                     @else
-                                        <center><h3> @lang('messages.no_data_found') </h3></center>
+                                        <div
+                                            style="text-align: center;"><h3> @lang('messages.no_data_found') </h3></div>
                                     @endif
                                 </div>
                                 <div class="tab-pane" id="done_auctions">
@@ -396,7 +405,7 @@
                                             </tbody>
                                         </table>
                                     @else
-                                        <center><h3> @lang('messages.no_data_found') </h3></center>
+                                        <div style="text-align: center;"><h3> @lang('messages.no_data_found') </h3></div>
                                     @endif
                                 </div>
                             </div>

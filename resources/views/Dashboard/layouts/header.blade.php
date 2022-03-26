@@ -27,19 +27,19 @@
 {{--            </ul>--}}
 {{--        </div>--}}
 
-        <div class="heading-elements">
-            <div class="heading-btn-group">
+{{--        <div class="heading-elements">--}}
+{{--            <div class="heading-btn-group">--}}
 {{--                time--}}
 {{--                <p class="btn  btn-float text-size-small has-text" id="txt"></p>--}}
 
-                <a href="#" class="btn btn-link btn-float text-size-small has-text"><i
-                                        class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
-                                <a href="#" class="btn btn-link btn-float text-size-small has-text"><i
-                                        class="icon-calculator text-primary"></i> <span>Invoices</span></a>
-                                <a href="#" class="btn btn-link btn-float text-size-small has-text"><i
-                                        class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
-            </div>
-        </div>
+{{--                <a href="#" class="btn btn-link btn-float text-size-small has-text"><i--}}
+{{--                                        class="icon-bars-alt text-primary"></i><span>Statistics</span></a>--}}
+{{--                                <a href="#" class="btn btn-link btn-float text-size-small has-text"><i--}}
+{{--                                        class="icon-calculator text-primary"></i> <span>Invoices</span></a>--}}
+{{--                                <a href="#" class="btn btn-link btn-float text-size-small has-text"><i--}}
+{{--                                        class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
     </div>
     <!-- Page header -->
