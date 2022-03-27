@@ -17,7 +17,9 @@ class HomeController extends Controller
     public function cronjob()
     {
         $on_progress_auctions = Auction::query()
-            ->where('status','!=','done')->get();
+//            ->where('status','!=','done')->get();
+            ->where('status','=','on_progress')->get();
+
 
         foreach ($on_progress_auctions as $auction)
         {
@@ -30,7 +32,7 @@ class HomeController extends Controller
     public function cronJobAppearAuctions()
     {
         $auctions = Auction::query()
-            ->where('is_accepted','1')->where('start_date','>=' ,Carbon::now())->get();
+            ->where('status','not_accepted')->where('is_accepted','1')->where('start_date','>=' ,Carbon::now())->get();
 
         foreach ($auctions as $auction)
         {

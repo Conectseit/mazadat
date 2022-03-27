@@ -45,7 +45,7 @@
                     <div class="col-lg-2" style="float: {{ floating('right', 'left') }};">
                         <div class="panel bg-{{ $color }}-400">
                             <div class="panel-body" >
-                                <a href="{{route(Str::plural($model). '.'.'index')}}" style="color: gold;">
+                                <a href="{{route(Str::plural($model). '.'.'index')}}" style="color: whitesmoke;">
                                 <h3 class="no-margin"> {{trans('messages.count')}} ({{ model_count($model) ?? 0 }}) </h3>
 
                                      @lang('messages.'.$model. '.' .Str::plural($model))</a>
@@ -56,18 +56,18 @@
                         </div>
                     </div>
                 @endforeach
-{{--                    <div class="col-lg-2" style="float: {{ floating('right', 'left') }};">--}}
-{{--                        <div class="panel bg-green-400">--}}
-{{--                            <div class="panel-body" >--}}
-{{--                                <h3 class="no-margin"> {{trans('messages.count')}} (0) </h3>--}}
-{{--                                <a href="{{route('persons.index')}}">--}}
-{{--                                    @lang('messages.person.persons'))</a>--}}
-{{--                            </div>--}}
-{{--                            <div class="container-fluid">--}}
-{{--                                <div class="chart" id="members-online"></div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    <div class="col-lg-2" style="float: {{ floating('right', 'left') }};">
+                        <div class="panel bg-green-400">
+                            <div class="panel-body" >
+                                <h3 class="no-margin"> {{trans('messages.count')}} ( {{App\Models\User::where('is_company', 'person')->count()}} )  </h3>
+                                <a href="{{route('persons.index')}}">
+                                    @lang('messages.person.persons')</a>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="chart" id="members-online"></div>
+                            </div>
+                        </div>
+                    </div>
 
             </div>
         </div>
