@@ -22,11 +22,10 @@ class HomeController extends Controller
 
         foreach ($on_progress_auctions as $auction)
         {
-            if(!$auction->end_date->isPast()) continue;
-            if($auction->end_date < Carbon::now()) {
+//            if(!$auction->end_date->isPast()) continue;
+            if($auction->end_date <= Carbon::now()) {
                 $auction->update(['status'=>'done']);
             }
-
         }
 
     }
