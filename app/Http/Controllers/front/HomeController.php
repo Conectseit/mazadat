@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $on_progress_auctions = Auction::query()
 //            ->where('status','!=','done')->get();
-            ->where('status','=','on_progress')->where('end_date','<' ,Carbon::now())->get();
+            ->where('status','=','on_progress')->where('end_date','<=' ,Carbon::now())->get();
 
         foreach ($on_progress_auctions as $auction)
         {
