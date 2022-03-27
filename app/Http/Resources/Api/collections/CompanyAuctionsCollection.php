@@ -19,6 +19,10 @@ class CompanyAuctionsCollection extends ResourceCollection
 
         return [
             'data' => CompanyAuctionsResource::collection($this->collection),
+            "links" => [
+                "prev" => $this->previousPageUrl(),
+                "next" => $this->nextPageUrl(),
+            ],
             "meta" => [
                 "current_page" => $this->currentPage(),
                 "last_page" => $this->lastPage(), // not For Simple

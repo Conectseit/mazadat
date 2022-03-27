@@ -44,6 +44,7 @@
                             <ul class="nav nav-pills nav-pills-bordered nav-justified">
                                 <li class="active"><a href="#all_auctions" data-toggle="tab">{{ trans('messages.auction.all_auctions') }}</a></li>
                                 <li><a href="#not_accepted" data-toggle="tab">{{ trans('messages.auction.not_accepted') }}</a></li>
+                                <li><a href="#accepted_not_appear" data-toggle="tab">{{ trans('messages.auction.accepted_not_appear') }}</a></li>
                                 <li><a href="#on_progress_auctions" data-toggle="tab">{{ trans('messages.auction.on_progress') }}</a></li>
                                 <li><a href="#done_auctions" data-toggle="tab">{{ trans('messages.auction.done') }}</a></li>
                             </ul>
@@ -209,6 +210,70 @@
                                                                    <span class="badge badge-primary" >  <i class="icon-close2"> </i>  {{trans('messages.need_update')}} </span>
                                                                </a>
                                                        </td>
+
+                                                       <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
+                                                       <td class="text-center">
+                                                           <div class="list-icons text-center">
+                                                               <div class="list-icons-item dropdown text-center">
+                                                                   <a href="#"
+                                                                      class="list-icons-item caret-0 dropdown-toggle"
+                                                                      data-toggle="dropdown">
+                                                                       <i class="icon-menu9"></i>
+                                                                   </a>
+                                                                   <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
+                                                                       <li>
+                                                                           <a href="{{ route('auctions.edit',$auction->id) }}">
+                                                                               <i class="icon-database-edit2"></i>@lang('messages.edit')
+                                                                           </a>
+                                                                       </li>
+                                                                       <li>
+                                                                           <a href="{{ route('auctions.show',$auction->id) }}">
+                                                                               <i class="icon-eye"></i>@lang('messages.show')
+                                                                           </a>
+                                                                       </li>
+                                                                       <li>
+                                                                           <a data-id="{{ $auction->id }}" class="delete-action"
+                                                                              href="{{ Url('/auction/auction/'.$auction->id) }}">
+                                                                               <i class="icon-database-remove"></i>@lang('messages.delete')
+                                                                           </a>
+                                                                       </li>
+                                                                   </ul>
+                                                               </div>
+                                                           </div>
+                                                       </td>
+
+                                                       @include('Dashboard.Auctions.parts.add_start_time_modal')
+
+                                                   </tr>
+                                               @endforeach
+                                               </tbody>
+                                           </table>
+                                       @else
+                                           <div style="text-align: center;"><h3> @lang('messages.no_data_found') </h3></div>
+                                       @endif
+                                   </div>
+                                </div>
+                                <div class="tab-pane " id="accepted_not_appear">
+                                   <div class="row">
+                                       @if($accepted_not_appear->count() > 0)
+                                           <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
+                                               <thead>
+                                               <tr style="background-color:gainsboro">
+                                                   <th class="text-center">قسم</th>
+                                                   <th class="text-center">{{ trans('messages.image') }}</th>
+                                                   <th class="text-center">{{ trans('messages.name') }}</th>
+                                                   <th class="text-center">@lang('messages.since')</th>
+                                                   <th class="text-center">@lang('messages.form-actions')</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @foreach($accepted_not_appear as $auction)
+                                                   <tr id="auction-row-{{ $auction->id }}">
+                                                       <td class="text-center">{{ $auction->category->$name }}</td>
+                                                       <td class="text-center">
+                                                           <a href="{{ $auction->first_image_path }}" data-popup="lightbox"><img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle"></a>
+                                                       </td>
+                                                       <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
 
                                                        <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
                                                        <td class="text-center">

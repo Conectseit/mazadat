@@ -29,12 +29,13 @@ class HomeController extends Controller
 
     public function cronJobAppearAuctions()
     {
-        $not_accepted_auctions = Auction::query()
-            ->where('status','not_accepted')->where('start_date','>=' ,Carbon::now())->get();
+        $auctions = Auction::query()
+            ->where('is_accepted','1')->where('start_date','>=' ,Carbon::now())->get();
 
-        foreach ($not_accepted_auctions as $auction)
+        foreach ($auctions as $auction)
         {
-            $auction->update(['is_appear'=>'1']);
+//            $auction->update(['is_appear'=>'1']);
+            $auction->update(['status'=>'on_progress']);
         }
     }
 

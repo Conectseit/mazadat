@@ -30,6 +30,7 @@ class AuctionController extends Controller
         $data['on_progress_auctions'] = Auction::where('status', 'on_progress')->where('is_accepted', 1)->latest()->get();
         $data['done_auctions'] = Auction::where('status', 'done')->where('is_accepted', 1)->latest()->get();
         $data['not_accepted_auctions'] = Auction::where('status', 'not_accepted')->where('is_accepted', 0)->latest()->get();
+        $data['accepted_not_appear'] = Auction::where('status', 'not_accepted')->where('is_accepted', 1)->latest()->get();
         return view('Dashboard.Auctions.index', $data);
     }
 
@@ -287,7 +288,7 @@ class AuctionController extends Controller
         $text = 'تم قبول مزادك من ادرة موقع مزادات' ."\n";
         $text .= " - سوف يبدأ :  " . $auction->start_date;
 
-        SmsController::send_sms($auction->seller->mobile, $text);
+//        SmsController::send_sms($auction->seller->mobile, $text);
 
         Notification::sendNewAuctionNotification($auction->id);
 

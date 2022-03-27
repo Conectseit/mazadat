@@ -23,14 +23,18 @@ class Notification extends Model
         $fcms = $users->map->token->pluck('fcm')->toArray();
 
         $tokens = $users->map->token->pluck('fcm_web_token')->toArray();
-
+        $auction = Auction::findOrFail($auction_id);
         $title = 'مزاد جديد';
-        $text = 'تم إضافة مزاد جديد'; // write your message here .. later
+//        $text = ' سوف يبدأ يوم '. ''.$auction->start_date; // write your message here .. later
+
+        $text = 'تم إضافة مزاد جديد,' ."\n";
+        $text .= " - سوف يبدأ :  " . $auction->start_date;
+        $text .= " في قسم :  " . $auction->category->name_ar;
 
         Firebase::send([
             'title'      => $title,
             'text'       => $text,
-            'auction_id' => $auction_id,
+//            'auction_id' => $auction_id,
             'fcm_tokens' => $fcms
         ]);
 

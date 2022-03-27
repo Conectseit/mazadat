@@ -221,38 +221,38 @@
 
         </div>
         </div>
-        <div class="col-md-3" dir="{{ direction() }}" >
-            <div class="panel panel-flat">
+{{--        <div class="col-md-3" dir="{{ direction() }}" >--}}
+{{--            <div class="panel panel-flat">--}}
 
-                <div class="panel-heading">
-                    <h5 class="panel-title"> {{ trans('messages.auction.latest_auctions') }} </h5>
-                    <div class="heading-elements">
-                        <ul class="icons-list">
-                            <li><a data-action="collapse"></a></li>
-                            <li><a data-action="reload"></a></li>
-                            <li><a data-action="close"></a></li>
-                        </ul>
-                    </div>
-                </div>
+{{--                <div class="panel-heading">--}}
+{{--                    <h5 class="panel-title"> {{ trans('messages.auction.latest_auctions') }} </h5>--}}
+{{--                    <div class="heading-elements">--}}
+{{--                        <ul class="icons-list">--}}
+{{--                            <li><a data-action="collapse"></a></li>--}}
+{{--                            <li><a data-action="reload"></a></li>--}}
+{{--                            <li><a data-action="close"></a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <div class="panel-body">
+{{--                <div class="panel-body">--}}
 
-                    <table class="table table-bordered table-hover">
-                        <tr class="text-center">
-                            <th> {{ trans('messages.name') }} </th>
-                            <th> {{ trans('messages.image') }} </th>
-                        </tr>
-                        @forelse($latest_auctions as $auction)
-                            <tr>
-                                <td> {{ substr($auction->$name,0,15) }} </td>
-                                <td><img src="{{ $auction->first_image_path }}" style="height:50px;"/></td>
-                            </tr>
-                        @empty
-                        @endforelse
-                    </table>
-                </div>
-            </div>
-        </div>
+{{--                    <table class="table table-bordered table-hover">--}}
+{{--                        <tr class="text-center">--}}
+{{--                            <th> {{ trans('messages.name') }} </th>--}}
+{{--                            <th> {{ trans('messages.image') }} </th>--}}
+{{--                        </tr>--}}
+{{--                        @forelse($latest_auctions as $auction)--}}
+{{--                            <tr>--}}
+{{--                                <td> {{ substr($auction->$name,0,15) }} </td>--}}
+{{--                                <td><img src="{{ $auction->first_image_path }}" style="height:50px;"/></td>--}}
+{{--                            </tr>--}}
+{{--                        @empty--}}
+{{--                        @endforelse--}}
+{{--                    </table>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
 
 @stop
