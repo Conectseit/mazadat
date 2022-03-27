@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <div class="table-responsive content-group">
                     <!-- Basic layout-->
-                    <form action="{{ route('auction/accept',$auction->id) }}" class="form-horizontal" method="post"
+                    <form action="{{ route('auction/accept',$auction->id) }}" class="form-horizontal" method="post" id="submitted-form"
                           enctype="multipart/form-data">
                         @csrf
                         <div class="panel panel-flat">
@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
-                                <input type="submit" class="btn btn-primary"
+                                <input type="submit" class="btn btn-primary" id="save-form-btn"
                                        value=" {{ trans('messages.add_and_forward_to_list') }} "/>
                             </div>
                         </div>

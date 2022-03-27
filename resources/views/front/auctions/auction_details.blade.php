@@ -216,9 +216,7 @@
                         <h4>{{ trans('messages.auction.images')}}:</h4>
                     </div>
                     <div class="row">
-
                         <div class="col-md-10 col-10 mx-auto">
-
                             <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel"
                                  data-bs-interval="3000">
                                 <div class="carousel-indicators">
@@ -260,7 +258,6 @@
                                 </button>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <hr>

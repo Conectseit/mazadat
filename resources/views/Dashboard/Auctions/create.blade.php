@@ -166,7 +166,6 @@
                         </div>
                     </fieldset>
 
-
                     <fieldset title="5">
                         <legend class="text-semibold">@lang('messages.auction.images')</legend><br><br>
                         <div class="row">
