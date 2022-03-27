@@ -38,7 +38,6 @@ class AdvertisementController extends Controller
 // ===========================================================
 
         return redirect()->route('advertisements.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
-
     }
 
 

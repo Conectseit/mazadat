@@ -109,7 +109,6 @@ class AuctionController extends Controller
                 ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة مزاد'.($auction->$name));
 // ===========================================================
 
-
             DB::commit();
             return redirect()->route('auctions.index')->with('message', trans('messages.messages.added_successfully'));
 
@@ -251,7 +250,6 @@ class AuctionController extends Controller
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
         }
-        // return redirect()->route('auctions.index');
     }
 
 
@@ -261,18 +259,6 @@ class AuctionController extends Controller
     }
 
 
-
-//    public function get_option_details_by_option_id(Request $request)
-//    {
-//        $option = Option::find($request->option_id);
-//
-//        if (!$option) return response()->json(['status' => false], 500);
-//
-//        return response()->json(['option_details' => $option->option_details, 'status' => true], 200);
-//    }
-
-
-
     public function accept(AddStartDateAuctionRequest $request,$id)
     {
         $auction = Auction::findOrFail($id);
@@ -280,7 +266,6 @@ class AuctionController extends Controller
 //            {
 //                return redirect()->route('auctions.index')->with('error', trans('messages.Sorry_you_should_complete_all_data_for_auction_first'));
 //            }
-
 //        $auction->update(['is_accepted'=> 1,'status'=>'on_progress']);
         $auction->update($request->all() +['is_accepted'=> 1]);
 
@@ -294,19 +279,7 @@ class AuctionController extends Controller
 
         return redirect()->route('auctions.index')->with('success', trans('messages.accept_auction'));
     }
-//    public function not_accept($id)
-//    {
-//        $auction = Auction::findOrFail($id);
-//        $auction->update(['is_accepted'=> 0]);
-//        return back();
-//    }
 
-//    public function make_done($id)
-//    {
-//        $auction = Auction::findOrFail($id);
-//        $auction->update(['status'=> 'done']);
-//        return back()->with('success', trans('messages.make_done_auction'));
-//    }
     public function need_update($id)
     {
         $auction = Auction::findOrFail($id);
@@ -321,15 +294,39 @@ class AuctionController extends Controller
     {
         $auction = Auction::findOrFail($id);
         $auction->update(['is_unique'=> 1]);
-        return back();
+        return back()->with('success', trans('messages.updated_success'));
     }
     public function not_unique($id)
     {
         $auction = Auction::findOrFail($id);
         $auction->update(['is_unique'=> 0]);
-        return back();
+        return back()->with('success', trans('messages.updated_success'));
     }
 
 
 
 }
+
+//    public function get_option_details_by_option_id(Request $request)
+//    {
+//        $option = Option::find($request->option_id);
+//
+//        if (!$option) return response()->json(['status' => false], 500);
+//
+//        return response()->json(['option_details' => $option->option_details, 'status' => true], 200);
+//    }
+
+
+//    public function not_accept($id)
+//    {
+//        $auction = Auction::findOrFail($id);
+//        $auction->update(['is_accepted'=> 0]);
+//        return back();
+//    }
+
+//    public function make_done($id)
+//    {
+//        $auction = Auction::findOrFail($id);
+//        $auction->update(['status'=> 'done']);
+//        return back()->with('success', trans('messages.make_done_auction'));
+//    }

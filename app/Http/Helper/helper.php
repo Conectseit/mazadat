@@ -70,7 +70,7 @@ function cruds()
 function model_count($model, $withDeleted = false)
 {
     if($model == 'company') return \App\Models\User::where('is_company', 'company')->count();
-    elseif ($model == 'buyer') return \App\Models\User::where('type', 'buyer')->count();
+    elseif ($model == 'person') return \App\Models\User::where('is_company', 'person')->count();
     elseif ($model == 'question') return \App\Models\CommonQuestion::count();
         else
     $mo = "App\\Models\\".ucwords($model);
