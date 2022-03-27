@@ -219,8 +219,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link hvr-shutter-out-horizontal"
 {{--                                               id="signInBtn" href="{{route('front.home')}}"--}}
-                                                href="{{route('front.show_login')}}"
-                                            >@lang('messages.login')</a>
+                                                href="{{route('front.show_login')}}">@lang('messages.login')</a>
                                         </li>
 
                                     @endif

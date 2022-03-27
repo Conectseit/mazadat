@@ -160,10 +160,6 @@ return [
         'twitter_url' => 'application twitter account',
         'youtube_url' => 'youtube_url',
         'instagram_url' => 'instagram_url',
-//        'whatsapp_phone' => 'whatsapp_phone',
-//        'copy_write_ar' => 'حقوق الملكية باللغة العربية',
-//        'copy_write_en' => 'حقوق الملكية باللغة الإنجليزية',
-
         'about_app_ar' => 'about mazadat in arabic',
         'about_app_en' => 'about mazadat in english',
         'conditions_terms_ar' => 'conditions & terms in arabic',
@@ -180,8 +176,11 @@ return [
         'online_payment' => 'online payment settings',
         'online_payment_conditions_ar' => ' online payment conditions in arabic',
         'online_payment_conditions_en' => ' online payment conditions in english',
+
+
+
     ],
-    'about_app' => ' about Mazadat',
+    'about_app' => ' about Us',
 
 
     'buttons' => [
@@ -328,6 +327,20 @@ return [
         'choose_location' => 'choose location',
         'allowed_take_photo' => 'allowed take photo',
 
+        'winner' => ' الفائز بالمزاد حتي الان :',
+        'add_time/accept' => 'اضافة وقت الابتداء ثم قبول المزاد ',
+
+        'accepted_not_appear' => ' تم قبولهم  ولم تبدأ بعد',
+        'pending' => 'المزادات قيد انتظار القبول من الادارة',
+        'selled' => 'المزادات المباعه من خلال موقعنا  ',
+
+        'location' => 'موقع المزاد',
+        'unique' => ' المزادات المميزة',
+        'update' => ' تعديل المزاد',
+        'make_done' => ' سحب المزاد اوانهاؤه',
+        'bid_now' => ' Bid now',
+
+
 
     ],
     'terms' => 'terms & conditions ',
@@ -342,25 +355,7 @@ return [
         'edit' => 'edit ',
         'latest_cities' => 'latest cities',
     ],
-    'nationality' => [
-        'nationality' => 'nationality',
-        'nationalities' => 'nationalities',
-        'all_nationalities' => 'all nationalities',
-        'add' => 'add new',
-        'edit' => 'edit',
-        'latest_nationalities' => 'latest nationalities',
-    ],
-    'country' => [
-        'country' => 'country',
-        'countries' => 'countries',
-        'all_countries' => 'all countries',
-        'add' => 'add',
-        'edit' => 'edit ',
-        'latest_countries' => 'latest countries',
-        'phone_code' => 'phone_ code',
-        'flag' => 'flag',
-        'name' => ' country',
-    ],
+
 
     'question' => [
         'question' => 'question ',
@@ -375,6 +370,7 @@ return [
         'add' => 'add',
         'edit' => ' edit ',
     ],
+
     'permission' => [
         'permission' => 'permission ',
         'name' => 'name ',
@@ -401,13 +397,6 @@ return [
 
 
 
-    'add_new_category' => 'add new category',
-    'latest_categories' => 'latest categories',
-    'latest_sellers' => 'latest sellers',
-    'auction_commission' => 'auction commission ',
-
-
-
     'notification' => [
         'send' => 'send notification',
         'title' => ' notification title',
@@ -415,16 +404,6 @@ return [
         'notifications' => ' notifications',
     ],
 
-    'messages' => [
-        'Plz_Login_First' => 'Please Login First',
-        'sorry_you_dont_have_permission' => 'sorry, you dont have permission',
-        'added_successfully' => 'added successfully',
-        'send_successfully' => 'send successfully',
-        'updated_successfully' => 'updated successfully',
-        'deleted_successfully' => 'deleted successfully',
-        'try_access_not_found_content' => 'not found content',
-        'sorry_this_option_added_before_select_another_one' => 'select another option',
-    ],
 
 
     // for front
@@ -498,37 +477,42 @@ return [
     'en' => [
         'en' => 'English',
     ],
-    'login_as_visitor'         	=> ' الدخول كزائر ',
-    'already_has_account'         	=> 'لديك حساب بالفعل ؟',
-    'contact_us'         	=> 'Contact Us',
+
+
+
+    'login_as_visitor'         	=> ' login as visitor ',
+    'already_has_account'       => 'already has account?',
+    'contact_us'         	    => 'Contact Us',
     'register_person'         	=> ' Register Person ',
     'register_company'         	=> ' Register Company',
-    'enter_company_name'         	=> 'enter company name ',
-    'company_name'         	        => ' Company Name ',
+    'enter_company_name'        => 'enter company name ',
+    'company_name'         	    => ' Company Name ',
     'company_location'         	=> 'Company Location',
-
-    'pass_terms'         	=> 'Not : password must less than 6 characters',
+    'pass_terms'         	    => 'Not : password must less than 6 characters',
     'register_success_welcome_in_our_website'     	=> 'register success_welcome_in_our_website',
 
 
     'person' => [
-        'person' => 'فرد',
-        'persons' => 'افراد',
-        'person_data' => 'بيانات العميل',
-        'image' => 'صورة العميل',
-        'add_new_person' => 'اضافة فرد جديد',
-        'edit' => 'تعديل فرد : ',
-        'full_name' => 'الاسم بالكامل ',
-        'identity' => 'صورة هوية رسمية ',
+        'person' => 'person',
+        'persons' => 'persons',
+        'person_data' => 'person data',
+        'image' => 'person image',
+        'add_new_person' => 'add new person',
+        'edit' => 'edit: ',
+        'full_name' => 'full name',
+        'identity' => 'identity',
         'address_data' => 'بيانات العنوان ',
-        'block' => 'الحي ',
-        'street' => 'الشارع ',
-        'block_num' => 'رقم المبني ',
-        'signs' => 'أقرب علامة مميزه ',
-        'additional_address' => 'العنوان الاضافي',
-        'location' => 'الموقع ',
-        'verified' => 'تم مراجعة حسابهم ',
-        'not_verified' => 'لم يتم مراجعة حسابهم بعد ',
+        'block' => 'block ',
+        'street' => 'street ',
+        'block_num' => 'block number ',
+        'signs' => 'signs',
+        'additional_address' => 'additional address',
+        'location' => 'location ',
+        'verified' => 'verified',
+        'not_verified' => 'not verified',
+        'latest_persons' => 'latest persons',
+        'data_need_accept' => 'data need accept',
+        'add_wallet' => 'add balance to wallet',
     ],
     'company' => [
         'company' => 'مؤسسة',
@@ -547,6 +531,191 @@ return [
     ],
 
 
+
+
+    'company' => [
+        'company' => 'مؤسسة',
+        'companies' => 'مؤسسات',
+        'user_name' => 'اسم المؤسسة',
+        'image' => 'شعار المؤسسة',
+        'company_data' => 'بيانات المؤسسة',
+        'company_auctions' => 'مزادات المؤسسة',
+        'companies_auctions' => 'مزادات الشركات',
+        'company_authorization_image' => 'صورة التفويض من المؤسسة',
+        'location' => 'موقع المؤسسة',
+        'latest_companies' => 'احدث المؤسسات المسجلة لدينا',
+        'add_new_company' => 'اضافة مؤسسة جديد',
+        'edit' => 'تعديل مؤسسة : ',
+        'show' => 'عرض التفاصيل',
+    ],
+
+
+
+
+
+
+
+
+
+
+    'email_or_mobile'         => ' البريد الالكتروني او رقم الجوال',
+
+
+    'balance' => 'الرصيد',
+
+
+
+
+
+
+
+
+// ==== eng
+    'auctions_of'=>' مزادات شركة',
+
+    'block'=>'الحي  ',
+    'street'=>'الشارع ',
+    'block_num'=>'رقم المبني',
+    'signs'=>'أقرب علامة مميزه',
+    'not_ban'=>'الغاء الحظر',
+    'ban'=>' حظر',
+    'unique'=>' مميز',
+    'not_unique'=>' غير مميز',
+    'verified'=>' تمت مراجعة الحساب',
+    'not_verified'=>' بيانات غير مكتملة',
+    'please_complete_your_address_details'=>'بيانات اساسية اخري',
+
+    'activity' => [
+        'activities' => 'نشاطات المشرفين',
+        'activity' => ' النشاط',
+        'description' => 'وصف النشاط',
+        'since' => 'تاريخ النشاط',
+        'admin_name' => 'اسم المشرف الذي قام بالنشاط',
+    ],
+
+    'advertisement' => [
+        'advertisement' => 'اعلان',
+        'advertisements' => 'الاعلانات',
+        'last_advertisements' => 'اخر الاعلانات المضافة',
+        'add' => 'اضافة اعلان جديد',
+        'edit' => 'تعديل اعلان ',
+
+    ],
+
+    'user' => [
+        'user' => 'user',
+        'users' => 'users',
+
+    ],
+
+
+    'please_complete_your_data' => 'من فضلك اكمل بيانات التسجيل',
+    'please_complete_your_data_to_could_make_bid' => 'من فضلك اكمل بيانات التسجيل لكي يمكنك المزايدة',
+    'additional_address' => ' عنوان اضافي',
+    'location' => ' عنوان المستخدم ',
+
+
+
+    'enter_name_ar' => 'ادخل اسم المزاد باللغة العربية',
+    'enter_name_en' => 'ادخل اسم المزاد باللغة الانجليزية',
+
+
+    'nationality' => [
+        'nationality' => 'nationality',
+        'nationalities' => 'nationalities',
+        'all_nationalities' => 'all nationalities',
+        'add' => 'add new',
+        'edit' => 'edit',
+        'latest_nationalities' => 'latest nationalities',
+    ],
+    'country' => [
+        'country' => 'country',
+        'countries' => 'countries',
+        'all_countries' => 'all countries',
+        'add' => 'add',
+        'edit' => 'edit ',
+        'latest_countries' => 'latest countries',
+        'phone_code' => 'phone_ code',
+        'flag' => 'flag',
+        'name' => ' country',
+    ],
+
+
+
+
+
+    'add_new_category' => 'add new category',
+    'latest_categories' => 'latest categories',
+    'latest_sellers' => 'latest sellers',
+    'auction_commission' => 'auction commission ',
+
+
+
+    'mobile_reset' => ' من فضلك قم بادخال كود التفعيل المرسل على  جوالك',
+    'you_dont_have_watched_auctions_yet' => 'لا يوجد لديك مشاهدات  حتي الان ',
+    'passport_image'         	=> ' صورة جواز السفر ',
+
+
+    'wait'         	=> 'انتظر حتي يتم مراجعة بيانات مزادك من خلال ادارة الموقع',
+    'ban/not'         	=> 'حظر/ الغاء الحظر ',
+    'follow_us'         	=> 'تابعنا على ',
+    'identity'         	=> ' صورة هوية رسمية ',
+    'support&help'         	=> 'الدعم والمساعدة ',
+    'forget_pass'         	=> 'نسيت كلمة المرور؟',
+    'plz_log'         	=> 'من فضلك ادخل معلومات الدخول الخاصة بحسابك لتتمكن من استخدام كل خصائص الموقع وإذا لم يكن لديك حسابك؟
+                            يمكنك
+                            تسجيل مستخدم جديد مجانأ',
+
+    'updated_success_wait_until_admin_accept_it'         	=> 'تم تكملة البيانات , انتظر حتي يتم مراجعتها وقبولها من ادارة الموقع',
+    'Sorry_you_should_wait_until_admin_accept_you'         	=> 'يجب انتظار قبول حسابك من الادارة اولا ',
+    'Sorry_you_should_complete_your_account_information_first'         	=> 'يجب تكملة معلومات حسابك اولا ',
+    'bid_done_successfully'         	=> 'تمت المزايدة بنجاح',
+    'sorry_you_cant_make_bid_your_offer_must_bigger_than_auction_current_price'
+    => 'عفوا لا يمكنك المزايدة بهذه القيمة',
+
+
+    'added_successfully_wait_until_admin_accept_your_auction' => 'انتظر حتي يتم قبول مزادك من ادارة الموقع',
+    'Sorry_you_should_complete_all_data_for_auction_first' => 'يجب اكمال بيانات المزاد اولا وادخال وقت الابتداء والانتهاء للمزاد ومصاريف الشحن',
+
+    'sorry_your_account_is_baned_from_admin_contact_with_customer_service_team'
+    => 'عفوا تم حظر حسابك من قبل ادارة الموقع . يمكنك التواصل مع خدمة العملاء',
+
+
+    'accept_auction' => 'تم قبول المزاد',
+    'need_update' => ' ارسال رسالة لتعديل المزاد',
+    'make_done_auction' => 'تم سحب المزاد وانهاؤه',
+    'send_sms_to_auction_owner_successfully' => 'تم ارسال رسالة نصية لصاحب المزاد بنجاح',
+    'update_your_auction_and_send_it_again' => 'هناك خطأ في  بيانات مزادك من فضلك ارسلها مرة اخري',
+    'deleted_your_auction_successfully' => 'تم حذف مزادك',
+    'ban_user_and_send_SMS_successfully' => 'تم حظر حساب  وارسال رسالة sms',
+    'active_user_again_and_send_SMS_successfully' => 'تم رفع الحظر وتفعيل حساب العميل مرة اخري وارسال رسالة sms',
+    'active_user_and_send_SMS_successfully' => 'تم الموافقة وتفعيل حساب العميل وارسال رسالة sms',
+    'not_verified_yet_and_send_SMS' => 'الغاء قبول حساب العميل وارسال رسالة بأن بيانات الحساب غير مكتملة ',
+
+    'no_auctions_yet_for_this_company' => 'no auctions for this company yet',
+    'start' => 'start now ......',
+
+
+
+
+
+    'messages' => [
+        'Plz_Login_First' => 'Please Login First',
+        'sorry_you_dont_have_permission' => 'sorry, you dont have permission',
+        'added_successfully' => 'added successfully',
+        'send_successfully' => 'send successfully',
+        'updated_successfully' => 'updated successfully',
+        'deleted_successfully' => 'deleted successfully',
+        'try_access_not_found_content' => 'not found content',
+        'sorry_this_option_added_before_select_another_one' => 'select another option',
+        'Admin Login Successfully' => 'Admin Login Successfully',
+        'Invalid Email Or Password' => 'Invalid Email Or Password , try again',
+
+        'invalid_mobile' => 'invalid mobile',
+        'added_balance_successfully' => 'added balance successfully',
+        'not_accept_deposit_receipt_and_send_SMS' => 'not accept deposit receipt and send SMS',
+
+    ],
 
 
 
