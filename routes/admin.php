@@ -117,8 +117,6 @@ Route::group(
                 Route::post('user/{id?}/add_balance', [UserController::class, 'add_balance'])->name('add_balance');
 
 
-
-
                 Route::get('transaction/{id?}/accept', [TransactionController::class, 'accept'])->name('transaction/accept');
                 Route::get('transaction/{id?}/not_accept', [TransactionController::class, 'not_accept'])->name('transaction/not_accept');
 

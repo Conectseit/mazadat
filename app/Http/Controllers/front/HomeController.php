@@ -20,10 +20,10 @@ class HomeController extends Controller
 //            ->where('status','!=','done')->get();
             ->where('status','=','on_progress')->get();
 
-
         foreach ($on_progress_auctions as $auction)
         {
-            if(!$auction->end_date->isPast()) continue;
+//            if(!$auction->end_date->isPast()) continue;
+            if(!$auction->end_date <= Carbon::now()) continue;
 
             $auction->update(['status'=>'done']);
         }
