@@ -71,7 +71,7 @@
 
         <div class="row">
 
-            <div class="col-md-10 col-5 mx-auto">
+            <div class="col-md-10 col-3 mx-auto">
                 <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"
