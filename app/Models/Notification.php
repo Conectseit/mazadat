@@ -54,7 +54,7 @@ class Notification extends Model
                 'body'  => $text,
 //                'icon' => 'https://mzadat.com.sa/public/Dashboard/assets/images/Yellow-notificatio-PNG.png'
 
-                'icon'  => 'https://mzadat.com.sa/Front/assets/imgs/splash-logo.png'
+                'icon'  => 'https://mzadat.com.sa/Front/assets/imgs/logoo.png'
             ]);
         }
 
