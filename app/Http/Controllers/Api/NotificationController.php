@@ -17,9 +17,11 @@ class NotificationController extends PARENT_API
 {
     public function index()
     {
-        $notifications = Notification::whereNull('user_id')->latest()->get();
+//        $notifications = Notification::whereNull('user_id')->latest()->get();
+//
+//        $_notifications = $notifications->merge(auth()->guard('api')->user()->notifications);
 
-        $_notifications = $notifications->merge(auth()->guard('api')->user()->notifications);
+        $_notifications =  auth()->user()->notifications()->latest()->get();
 
         return responseJson(true, trans('api.all_notifications'),NotificationsResource::collection($_notifications) );  //OK don-successfully
     }
