@@ -2,15 +2,8 @@
 @section('title', trans('messages.auction.auction_details'))
 @section('style')
     <style>
-        #map {
-            height: 400px;
-            border: solid 1px;
-            padding-right: 20px;
-        }
-        .carousel-item img {
-            height: 400px;
-            border: solid 1px;
-        }
+        #map { height: 400px; border: solid 1px; padding-right: 20px; }
+        .carousel-item img { height: 400px; border: solid 1px; }
     </style>
 @endsection
 
@@ -23,7 +16,8 @@
             <div class="container">
                 <div class="row">
                     @include('front.layouts.parts.make_bid_alert')
-                    @if($auction->status!=='done')
+                    {{--                    @if($auction->status!=='done')--}}
+                    @if($auction->status=='on_progress')
                         <div class="col-lg-2 d-flex align-items-center">
                         </div>
                         <div class="col-lg-4 d-flex align-items-center">
@@ -59,13 +53,14 @@
                                     </div>
                                 @endif
                             @endif
-                                @if(auth()->user()->is_verified == 0 )
-                                    <div class="col-lg-6 d-flex align-items-center" >
-                                        <a href="{{route('front.show_complete_profile')}}" > {{ trans('messages.please_complete_your_data_to_could_make_bid')}} --></a>
-                                    </div>
-                                @endif
+                            @if(auth()->user()->is_verified == 0 )
+                                <div class="col-lg-6 d-flex align-items-center">
+                                    <a href="{{route('front.show_complete_profile')}}"> {{ trans('messages.please_complete_your_data_to_could_make_bid')}}
+                                        --></a>
+                                </div>
+                            @endif
 
-                                @endif
+                        @endif
                     @endif
                     <div class="col-lg-6 d-flex align-items-center justify-content-end" id="bidMainInfo">
                         <div class="current-price">
@@ -174,8 +169,8 @@
                                                             @if(auth()->check()){{ checkIsUserAccept($auction)->count()?'checked':''}}@endif
                                                             >
                                                         </a>
-                                                        <label class="form-check-label" for="accept-terms">قبول الشروط
-                                                            والاحكام</label>
+                                                        <label class="form-check-label" for="accept-terms" style="color: red;">
+                                                            {{ trans('messages.accept_terms')}} </label>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -208,8 +203,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
-                <hr>
+                </div><hr>
 
                 <div class="more">
                     <div class="terms">
@@ -276,10 +270,7 @@
                             </div>
                         @endforeach
                     </div>
-
-                </div>
-                <hr>
-
+                </div><hr>
 
                 <div class="more-imgs">
                     <div class="terms">
@@ -301,11 +292,7 @@
                             </div>
                         @endforeach
                     </div>
-
-                </div>
-                <hr>
-
-
+                </div><hr>
                 <div class="terms">
                     <h4>{{ trans('messages.auction.terms')}}:</h4>
                     <p>{{$auction->$auction_terms}}</p>
@@ -324,14 +311,6 @@
     {{--    @include('front.layouts.parts.map')--}}
     @include('front.auctions.parts.ajax')
     @include('front.auctions.parts.counter', ['auction' => $auction])
-
-
-
-
-
-
-
-
 
     <script>
         function initMap() {
@@ -358,15 +337,10 @@
             });
         }
 
-
     </script>
     <script
         src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks">
     </script>
-
-
-
-
 
 @endpush
 

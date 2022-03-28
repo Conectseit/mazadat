@@ -18,9 +18,9 @@
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
         @include('Dashboard.layouts.parts.validation_errors')
 
-        <div class="panel-heading">
-            @include('Dashboard.layouts.parts.table-header', ['collection' => $persons, 'name' => 'persons', 'icon' => 'person'])
-        </div>
+{{--        <div class="panel-heading">--}}
+{{--            @include('Dashboard.layouts.parts.table-header', ['collection' => $persons, 'name' => 'persons', 'icon' => 'person'])--}}
+{{--        </div>--}}
         <br>
         <div class="list-icons" style="padding-right: 10px;">
             <a href="{{route('persons.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i

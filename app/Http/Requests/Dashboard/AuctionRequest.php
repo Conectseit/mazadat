@@ -42,7 +42,7 @@ class AuctionRequest extends FormRequest
 //                        'start_date' => 'required',
 
 
-                        'start_date'  => ['required','date','after_or_equal:'. now()->format('Y-m-d')],
+                        'start_date'  => ['required','date','after_or_equal:'. now()->format('Y-m-d H:i:s')],
                         'end_date'    =>  'required|date|after:start_date',
 
                         'start_auction_price'   => ['required','numeric'],
@@ -66,7 +66,7 @@ class AuctionRequest extends FormRequest
             case 'PATCH': {
                     return [
 
-                        'start_date'  => ['required','date','after_or_equal:'. now()->format('Y-m-d')],
+                        'start_date'  => ['required','date','after_or_equal:'. now()->format('Y-m-d H:i:s')],
                         'end_date'    =>  'required|date|after:start_date',
                         'delivery_charge' => ['required','numeric'],
                     ];

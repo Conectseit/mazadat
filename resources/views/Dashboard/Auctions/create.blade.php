@@ -24,7 +24,7 @@
             <div class="panel panel-white">
                 <div class="panel-heading">
                     @include('Dashboard.layouts.parts.validation_errors')
-                    <h6 class="panel-title">{{ trans('messages.auction.add') }}</h6>
+                    <h3 class="panel-title">{{ trans('messages.auction.add') }}</h3>
                     <div class="heading-elements">
                         <ul class="icons-list">
                             <li><a data-action="collapse"></a></li>
@@ -74,15 +74,17 @@
                         <div class="row">
                             <div class="form-group">
                                 <label class="control-label"> {{ trans('messages.auction.auction_terms_ar') }}: </label>
-                                <textarea rows="2" cols="2" name="auction_terms_ar" class="form-control">
-                                    {{ old('auction_terms_ar') }}
-                                </textarea>
+                                <textarea rows="2" cols="2" name="auction_terms_ar" class="form-control  @error('auction_terms_ar') is-invalid @enderror" >
+                                    {{ old('auction_terms_ar') }}</textarea>
+                                @error('auction_terms_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
                             <div class="form-group">
                                 <label class="control-label"> {{ trans('messages.auction.auction_terms_en') }}: </label>
-                                <textarea rows="2" cols="2" name="auction_terms_en" class="form-control">
-                                    {{ old('auction_terms_en') }}
-                                </textarea>
+                                <textarea rows="2" cols="2" name="auction_terms_en" class="form-control @error('auction_terms_ar') is-invalid @enderror" >
+                                    {{ old('auction_terms_en') }}</textarea>
+                                @error('auction_terms_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
                         </div>
                     <div class="row">

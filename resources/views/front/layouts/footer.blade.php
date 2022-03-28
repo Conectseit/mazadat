@@ -73,8 +73,7 @@
                         </div>
                         <div class="ul-parent">
                             <h4 class="footer-title">
-                                <span class="sq"></span>
-                                مزادات
+                                <span class="sq"></span>{{trans('messages.mazadat')}}
                             </h4>
                             <ul>
                                 <li><a href="{{route('front.about_app')}}">{{trans('messages.about_app')}}</a></li>

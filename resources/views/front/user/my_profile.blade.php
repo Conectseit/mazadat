@@ -10,6 +10,10 @@
     @include('front.layouts.parts.alert')
     <section class="my-profile-page">
         <div class="container">
+            @if(auth()->user()->is_completed==0)
+                Not verified account   <h3> {{ trans('messages.please_complete_your_data')}}  </h3>
+            @endif
+            <br>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="slogan-right">

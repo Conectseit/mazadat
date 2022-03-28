@@ -19,7 +19,6 @@ class Notification extends Model
 //        })->get();
         $users = User::where('is_accepted', 1)->whereHas('token')->get();
 
-
         $fcms = $users->map->token->pluck('fcm')->toArray();
 
         $tokens = $users->map->token->pluck('fcm_web_token')->toArray();
@@ -77,6 +76,8 @@ class Notification extends Model
         $title = 'مزايدة جديدة';
         $text = ' تم رفع مزايدة جديدة في المزاد التي تتابعه'; // write your message here .. later
 
+
+
         Firebase::send([
             'title' => $title,
             'text' => $text,
@@ -92,20 +93,62 @@ class Notification extends Model
             ]);
         }
 
-        // save the notification;
+        foreach ($users as $user) {
+            // save the notification;
+            Notification::create([
+                'title'      => $title,
+                'text'       => $text,
+                'auction_id' => $auction_id,
+                'user_id'    => $user->id,
+            ]);
+        }
+//        // save the notification;
+//        Notification::create([
+//            'title' => $title,
+//            'text' => $text,
+//            'auction_id' => $auction_id,
+////            'auction_image' => $auction_image,
+//        ]);
 
-        Notification::create([
+
+
+    }
+
+
+
+
+    public static function sendNewBidNotificationToAuctionOwner($auction_id): void
+    {
+
+        $auction = Auction::where('id', $auction_id)->first();
+
+        $user = $auction->seller;
+
+        $title = 'مزايدة جديدة';
+        $text = ' تم رفع مزايدة جديدة في مزادك الخاص';
+
+        if ($user->token->fcm != null) {
+            Firebase::send([
+                'title' => $title,
+                'text' => $text,
+                'fcm_tokens' => $user->token->fcm
+            ]);
+        }
+        Firebase::createWebCurl($user->token->fcm_web_token, [
+            'title' => $title,
+            'body' => $text,
+            'icon' => 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
+        ]);
+        $notify = Notification::create([
+            'user_id' => $user->id,
             'title' => $title,
             'text' => $text,
-            'auction_id' => $auction_id,
-//            'auction_image' => $auction_image,
         ]);
     }
 
 
     public function sendAcceptAccountNotify($user_id)
     {
-
         $user = User::find($user_id);
 
         if (is_null($user)) {

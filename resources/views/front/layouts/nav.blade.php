@@ -140,7 +140,7 @@
                                     @if(auth()->check())
                                         <li class="nav-item">
                                             <a href="#" class="nav-link hvr-shutter-out-horizontal" data-bs-toggle="modal"
-                                               data-bs-target="#contact-modal1">اتصل بنا</a>
+                                               data-bs-target="#contact-modal1">{{trans('messages.contact_us')}}</a>
                                         </li>
 
                                             <li class="nav-item">

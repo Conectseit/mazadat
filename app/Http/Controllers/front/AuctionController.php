@@ -109,6 +109,8 @@ class AuctionController extends Controller
                     'current_price'  => $request->buyer_offer,
 //                    'current_price'  => $auction->current_price + $request->buyer_offer,
                 ]);
+                Notification::sendNewBidNotificationToAuctionOwner($auction->id);
+                Notification::sendNewBidNotification($auction->id);
                 DB::commit();
                 return back()->with('success', trans('messages.bid_done_successfully'));
             }
@@ -125,6 +127,7 @@ class AuctionController extends Controller
             $user->update(['available_limit' => $user_current_available_limit]);
 
 
+            Notification::sendNewBidNotificationToAuctionOwner($auction->id);
             Notification::sendNewBidNotification($auction->id);
 
             DB::commit();
