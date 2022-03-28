@@ -46,14 +46,15 @@ class Notification extends Model
             'text'       => $text,
             'auction_id' => $auction_id,
             'fcm_tokens' => $fcms,
-            'icon' => 'https://mzadat.com.sa/public/Dashboard/assets/images/Yellow-notificatio-PNG.png'
         ]);
 
         foreach ($tokens as $token) {
             Firebase::createWebCurl($token, [
                 'title' => $title,
                 'body'  => $text,
-                'icon'  => 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
+//                'icon' => 'https://mzadat.com.sa/public/Dashboard/assets/images/Yellow-notificatio-PNG.png'
+
+                'icon'  => 'https://mzadat.com.sa/Front/assets/imgs/splash-logo.png'
             ]);
         }
 
