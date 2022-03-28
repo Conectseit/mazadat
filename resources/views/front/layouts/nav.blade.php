@@ -147,7 +147,9 @@
                                                 <a class="nav-link hvr-shutter-out-horizontal"
                                                    href="{{route('front.my_notification')}}">
                                                     <i class="fa fa-bell fa-fw"></i>
+                                                    @if( auth()->user()->notifications->where('is_seen', 0)->count() > 0)
                                                     <span class="text-danger">({{ auth()->user()->notifications->where('is_seen', 0)->count() }})</span>
+                                                    @endif
                                                     {{trans('messages.notification.notifications')}}</a>
                                             </li>
 

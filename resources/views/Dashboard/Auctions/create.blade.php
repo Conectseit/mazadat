@@ -37,8 +37,7 @@
                 <form action="{{ route('auctions.store') }}"  method="post" id="submitted-form"
                       class =" stepy-basic wizard-form steps-validation" enctype="multipart/form-data">
                     @csrf
-                    <fieldset title="1">
-                        <legend class="text-semibold">{{ trans('messages.auction.basic_data') }}</legend><br><br>
+
                         <div class="row">
                             <div class="form-group">
                                 <label
@@ -71,10 +70,7 @@
                                        placeholder="@lang('messages.description_en') ">
                             </div>
                         </div>
-                    </fieldset>
 
-                    <fieldset title="2">
-                        <legend class="text-semibold">{{ trans('messages.auction.auction_terms') }}</legend><br><br>
                         <div class="row">
                             <div class="form-group">
                                 <label class="control-label"> {{ trans('messages.auction.auction_terms_ar') }}: </label>
@@ -89,128 +85,107 @@
                                 </textarea>
                             </div>
                         </div>
-                    </fieldset>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_category') }} </label>
+                            <div class="col-lg-6">
+                                <select name="category_id" id="category" class="select">
+                                    {{--                                        <optgroup  label="{{ trans('messages.auction.choose_category') }}}">--}}
+                                    <option selected disabled>{{trans('messages.select')}}</option>
 
-                    <fieldset title="3">
-                        <legend class="text-semibold">{{ trans('messages.auction.options') }}</legend>
-                        <div class="row">
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}"> {{ $category->$name }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div><br>
 
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="" class="form-label">{{ trans('messages.option.options') }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <div class="select-inputs-options"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="display-block">{{ trans('messages.auction.start_date') }}:</label>
+                            <input type="datetime-local" class="form-control"  value="" name="start_date"
+                                   placeholder="@lang('messages.auction.start_date') ">
+                        </div>
+                        <div class="form-group">
+                            <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>
+                            <input type="datetime-local" class="form-control"  value="" name="end_date"
+                                   placeholder="@lang('messages.auction.end_date') ">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control"  value="{{ old('start_auction_price')}}" name="start_auction_price"
+                                   placeholder="@lang('messages.auction.start_auction_price') ">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control"  value="{{ old('value_of_increment')}}" name="value_of_increment"
+                                   placeholder="@lang('messages.auction.value_of_increment') ">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control"  value="{{ old('delivery_charge')}}" name="delivery_charge"
+                                   placeholder="@lang('messages.auction.delivery_charge') ">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="display-block">{{ trans('messages.auction.who_can_see') }}:</label>
+                            <label class="radio-inline">
+                                <input type="radio" value="all" class="styled" name="who_can_see" checked="checked">
+                                {{trans('messages.all')}}
+                            </label>
+
+                            <label class="radio-inline">
+                                <input type="radio" value="person" class="styled" name="who_can_see">
+                                {{trans('messages.auction.users')}}
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" value="company" class="styled" name="who_can_see">
+                                {{trans('messages.auction.company')}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label>@lang('messages.auction.images')</label>
+                            {{--                                <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
+                            <input type="file" multiple id="gallery-photo-add"  class="form-control" name="images[]">
+                            <div class="gallery"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
                             <div class="form-group">
-                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_category') }} </label>
-                                <div class="col-lg-6">
-                                    <select name="category_id" id="category" class="select">
-{{--                                        <optgroup  label="{{ trans('messages.auction.choose_category') }}}">--}}
-                                            <option selected disabled>{{trans('messages.select')}}</option>
-
-                                        @foreach($categories as $category)
-                                                <option value="{{ $category->id }}"> {{ $category->$name }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div><br>
-
-                            <div class="form-group mb-4 row">
-                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label for="" class="form-label">{{ trans('messages.option.options') }}</label>
-                                </div>
-                                <div class="col-lg-10 col-md-9">
-                                    <div class="select-inputs-options"></div>
-                                </div>
+                                <label>@lang('messages.auction.inspection_report_images')</label>
+                                {{--                                    <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
+                                <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">
+                                <div class="gallery1"></div>
                             </div>
 
                         </div>
-                    </fieldset>
-
-                    <fieldset title="4">
-                        <legend class="text-semibold">{{ trans('messages.auction.time') }}</legend><br><br>
-                        <div class="row">
-                            <div class="form-group">
-                                <label class="display-block">{{ trans('messages.auction.start_date') }}:</label>
-                                <input type="datetime-local" class="form-control"  value="" name="start_date"
-                                       placeholder="@lang('messages.auction.start_date') ">
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label>@lang('messages.auction.location'):</label>
+                            <div class="col-lg-12">
+                                {{--                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">--}}
+                                <div id="map"></div>
                             </div>
-                            <div class="form-group">
-                                <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>
-                                <input type="datetime-local" class="form-control"  value="" name="end_date"
-                                       placeholder="@lang('messages.auction.end_date') ">
+                            <div class="col-lg-6">
+                                <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control">
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control"  value="{{ old('start_auction_price')}}" name="start_auction_price"
-                                       placeholder="@lang('messages.auction.start_auction_price') ">
+                            <div class="col-lg-6">
+                                <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control"  value="{{ old('value_of_increment')}}" name="value_of_increment"
-                                       placeholder="@lang('messages.auction.value_of_increment') ">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control"  value="{{ old('delivery_charge')}}" name="delivery_charge"
-                                       placeholder="@lang('messages.auction.delivery_charge') ">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="display-block">{{ trans('messages.auction.who_can_see') }}:</label>
-                                <label class="radio-inline">
-                                    <input type="radio" value="all" class="styled" name="who_can_see" checked="checked">
-                                    {{trans('messages.all')}}
-                                </label>
-
-                                <label class="radio-inline">
-                                    <input type="radio" value="person" class="styled" name="who_can_see">
-                                    {{trans('messages.auction.users')}}
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" value="company" class="styled" name="who_can_see">
-                                    {{trans('messages.auction.company')}}
-                                </label>
-                            </div>
-                        </div>
-                    </fieldset>
-
-                    <fieldset title="5">
-                        <legend class="text-semibold">@lang('messages.auction.images')</legend><br><br>
-                        <div class="row">
-                            <div class="form-group">
-                                <label>@lang('messages.auction.images')</label>
-                                {{--                                <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
-                                <input type="file" multiple id="gallery-photo-add"  class="form-control" name="images[]">
-                                <div class="gallery"></div>
-                            </div>
-                        </div>
-                        <hr>
-                        <legend class="text-semibold">@lang('messages.auction.inspection_report_images')</legend><br><br>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="form-group">
-                                    <label>@lang('messages.auction.inspection_report_images')</label>
-                                    {{--                                    <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
-                                    <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">
-                                    <div class="gallery1"></div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </fieldset>
-
-
-                    <fieldset title="6">
-                        <legend class="text-semibold">@lang('messages.auction.location')</legend><br><br>
-                        <div class="row">
-                            <div class="form-group">
-                                <label>@lang('messages.auction.location'):</label>
-                                <div class="col-lg-12">
-                                    {{--                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">--}}
-                                    <div id="map"></div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control">
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">
-                                </div>
-                            </div><br>
-                        </div>
-                    </fieldset>
-
+                        </div><br>
+                    </div>
 
                     <button type="submit" class="btn btn-primary stepy-finish mt-5" id="save-form-btn">{{ trans('messages.add_and_forward_to_list') }}
                         <i class="icon-check position-right"></i></button>

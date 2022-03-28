@@ -13,7 +13,7 @@ class ComplteProfileRequest extends FormRequest
 
     public function rules()
     {
-        return [
+        return  [
 
             'nationality_id'        => 'required|numeric|exists:nationalities,id',
             'city_id'               => 'required|numeric|exists:cities,id',
@@ -25,7 +25,11 @@ class ComplteProfileRequest extends FormRequest
             'P_O_Box'               => 'required',
             'passport_image'        => 'required_if:is_company,==,person|image',
 
-
         ];
+//        if(auth()->user->is_company== 'person'){
+//
+//        }
+
+//        return $rule;
     }
 }

@@ -54,7 +54,7 @@ class AuctionController extends Controller
                     //======= create auction =======
                     $request_data = $request->except(['inspection_report_images' . 'images']);
 
-                    $auction = Auction::create($request_data + ['is_accepted' => '1','status'=> 'on_progress',
+                    $auction = Auction::create($request_data + ['is_accepted' => '1','status'=> 'not_accepted',
                             'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
 
                 //======= upload auction images =======
@@ -75,9 +75,7 @@ class AuctionController extends Controller
                 }
                 $auction_inspection_report_images = DB::table('inspection_images')->insert($dataa);
 
-                //======= upload auction options =======
-
-
+        //======= upload auction options =======
             $options = [];
             if(is_array($request->option_ids))
             {
@@ -100,7 +98,7 @@ class AuctionController extends Controller
 
 
 // ===========================================================
-            Notification::sendNewAuctionNotification($auction->id);
+Notification::sendNewAuctionNotification($auction->id);
 
             $name='name_' . app()->getLocale();
             activity()

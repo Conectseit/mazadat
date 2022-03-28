@@ -60,8 +60,6 @@
                         <div class="sign-btn row">
                             <button type="submit" id="resend-code-btn" class="btn btn-primary submit-btn send_again">{{trans('messages.send')}}</button>
                         </div>
-
-
                         <p class="mt-3 ">
 
                             <a id="resend-code-btn" href="{{ route('front.resend-sms',$mobile) }}" class="create  text-orange send_btn d-none"> لم يصلك كود التفعيل؟  ارسل مرة أخرى</a>
@@ -71,7 +69,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </section>
 
@@ -153,11 +150,13 @@
             var downloadTimer = setInterval(function(){
                 timeleft--;
                 $("#countdowntimer").textContent = timeleft;
+                // console.log(timeleft);
                 $( ".send_btn" ).removeClass('d-none')
-                $( ".counter_send" ).addClass('d-none')
+
                 if(timeleft <= 0)
                     clearInterval(downloadTimer);
-            },20000);
+                $( ".counter_send" ).addClass('d-none')
+            },10000);
        })
 //timer
 
