@@ -22,9 +22,8 @@ messaging.setBackgroundMessageHandler(function(payload) {
         body: payload.data.title,
         // icon: 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
         // icon: 'https://mzadat.com.sa/public/Dashboard/assets/images/mazadat_logo.jpg'
-        // icon: 'https://mzadat.com.sa/public/Dashboard/assets/images/logo_dark.png'
-        icon: 'https://mzadat.com.sa/public/Dashboard/assets/images/Yellow-notificatio-PNG.png'
-        // icon: payload.data.icon //your logo here
+        // icon: 'https://mzadat.com.sa/public/Dashboard/assets/images/Yellow-notificatio-PNG.png'
+        icon: payload.data.icon //your logo here
     };
     return self.registration.showNotification(notificationTitle,
         notificationOptions);

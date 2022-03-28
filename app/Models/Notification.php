@@ -45,7 +45,8 @@ class Notification extends Model
             'title'      => $title,
             'text'       => $text,
             'auction_id' => $auction_id,
-            'fcm_tokens' => $fcms
+            'fcm_tokens' => $fcms,
+            'icon' => 'https://mzadat.com.sa/public/Dashboard/assets/images/Yellow-notificatio-PNG.png'
         ]);
 
         foreach ($tokens as $token) {
