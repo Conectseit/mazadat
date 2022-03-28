@@ -54,7 +54,8 @@ class Notification extends Model
                 'body'  => $text,
 //                'icon' => 'https://mzadat.com.sa/public/Dashboard/assets/images/Yellow-notificatio-PNG.png'
 //                'icon'  => 'https://mzadat.com.sa/public/Dashboard/assets/images/mazadat_logo.jpg',
-                'icon'  => 'https://mzadat.com.sa/public/Dashboard/assets/images/Group_mazadat.png',
+//                'icon'  => 'https://mzadat.com.sa/public/Dashboard/assets/images/Group_mazadat.png',
+                'icon'  => 'https://mzadat.com.sa/public/Dashboard/assets/images/loogoo.png',
 //                'auction_id' => $auction_id,
             ]);
         }
