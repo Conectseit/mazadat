@@ -53,8 +53,8 @@ class Notification extends Model
                 'title' => $title,
                 'body'  => $text,
 //                'icon' => 'https://mzadat.com.sa/public/Dashboard/assets/images/Yellow-notificatio-PNG.png'
-
-                'icon'  => 'https://mzadat.com.sa/Front/assets/imgs/logoo.png'
+                'icon'  => 'https://mzadat.com.sa/public/Dashboard/assets/images/mazadat_logo.jpg',
+//                'auction_id' => $auction_id,
             ]);
         }
 
@@ -91,7 +91,7 @@ class Notification extends Model
             Firebase::createWebCurl($token, [
                 'title' => $title,
                 'body' => $text,
-                'icon' => 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
+                'icon'  => 'https://mzadat.com.sa/public/Dashboard/assets/images/mazadat_logo.jpg',
             ]);
         }
 
@@ -139,8 +139,8 @@ class Notification extends Model
         Firebase::createWebCurl($user->token->fcm_web_token, [
             'title' => $title,
             'body' => $text,
-            'icon' => 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
-        ]);
+            'icon'  => 'https://mzadat.com.sa/public/Dashboard/assets/images/mazadat_logo.jpg',
+            ]);
         $notify = Notification::create([
             'user_id' => $user->id,
             'title' => $title,
@@ -169,8 +169,8 @@ class Notification extends Model
         Firebase::createWebCurl($user->token->fcm_web_token, [
             'title' => $title,
             'body' => $text,
-            'icon' => 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
-        ]);
+            'icon'  => 'https://mzadat.com.sa/public/Dashboard/assets/images/mazadat_logo.jpg',
+            ]);
         $notify = Notification::create([
             'user_id' => $user->id,
             'title' => $title,
@@ -200,7 +200,7 @@ class Notification extends Model
         Firebase::createWebCurl($user->token->fcm_web_token, [
             'title' => $title,
             'body' => $text,
-            'icon' => 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
+            'icon'  => 'https://mzadat.com.sa/public/Dashboard/assets/images/mazadat_logo.jpg',
         ]);
         $notify = Notification::create([
             'user_id' => $user->id,
@@ -208,7 +208,6 @@ class Notification extends Model
             'text' => $text,
         ]);
     }
-
 
     public function auction()
     {

@@ -271,7 +271,7 @@ Notification::sendNewAuctionNotification($auction->id);
         $text = 'تم قبول مزادك من ادرة موقع مزادات' ."\n";
         $text .= " - سوف يبدأ :  " . $auction->start_date;
 
-//        SmsController::send_sms($auction->seller->mobile, $text);
+        SmsController::send_sms($auction->seller->mobile, $text);
 
         Notification::sendNewAuctionNotification($auction->id);
 
