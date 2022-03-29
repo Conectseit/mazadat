@@ -68,27 +68,29 @@ class PersonController extends Controller
 
     public function update_person_profile(UpdatePersonProfileRequest $request)
     {
-
-        $request_data = $request->except(['image','phone_code','mobile']);
-        if ($request->mobile) {
-            $request_data['mobile'] =$request->phone_code. $request->mobile ;
-        }
-
-        if (User::where('mobile', $request_data['mobile'])->first()) {
-            return responseJson(false, 'قيمة الجوال مستخدمة من قبل', null);  //
-        }
-        if ($request->image) {
-            $request_data['image']  = uploaded($request->image, 'user');
-        }
         $user = $request->user();
         if (!$user) {
             return responseJson(false, 'The user not found...', null); //
         }
+        $request_data = $request->except(['image','phone_code','mobile']);
+        if ($request->mobile) {
+            $request_data['mobile'] =$request->phone_code. $request->mobile ;
+        }
+        if ($request->image) {
+            $request_data['image']  = uploaded($request->image, 'user');
+        }
 
 
-        $user->update($request_data);
+
+        if ( $update_user=User::where('mobile', $request_data['mobile'])->first()) {
+            if($update_user->id == $user->id){
+                $user->update($request_data);
+                return responseJson(true, trans('api.request_done_successfully'), new PersonResource($user)); //ACCEPTED
+            }
+            return responseJson(false, 'قيمة الجوال مستخدمة من قبل', null);  //
+        }
+
 //        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));
-        return responseJson(true, trans('api.request_done_successfully'), new PersonResource($user)); //ACCEPTED
     }
 
 
