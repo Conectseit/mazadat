@@ -14,24 +14,26 @@ use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
-    public function cronJobMakeAuctionDone()
-    {
+//    public function cronJobMakeAuctionDone()
+//    {
+//        $on_progress_auctions = Auction::query()
+////            ->where('status','!=','done')->get();
+//            ->where('status','=','on_progress')->get();
+//        foreach ($on_progress_auctions as $auction)
+//        {
+////            if(!$auction->end_date->isPast()) continue;
+//            if($auction->end_date <= Carbon::now())
+//            {
+//                $auction->update(['status'=>'done']);
+//            }
+//        }
+//    }
 
-        $on_progress_auctions = Auction::query()
-//            ->where('status','!=','done')->get();
-            ->where('status','=','on_progress')->get();
-        foreach ($on_progress_auctions as $auction)
-        {
-//            if(!$auction->end_date->isPast()) continue;
-            if($auction->end_date <= Carbon::now())
-            {
-                $auction->update(['status'=>'done']);
-            }
-        }
-    }
+
 
     public function cronJobMakeAuctionOnProgress()
     {
+        dd('ll');
         $auctions = Auction::query()
             ->where('status','not_accepted')->where('is_accepted','1')->get();
 
@@ -43,6 +45,16 @@ class HomeController extends Controller
             }
         }
     }
+    public function cronJobMakeAuctionDone()
+    {
+        $on_progress_auctions = Auction::where('status','=','on_progress')->where('end_date','<' , now())->get();
+        foreach ($on_progress_auctions as $auction)
+        {
+                $auction->update(['status'=>'done']);
+        }
+    }
+
+
 
 //    public function cronJobAppearAuctions()
 //    {
