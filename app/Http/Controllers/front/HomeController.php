@@ -44,14 +44,14 @@ class HomeController extends Controller
             }
         }
     }
-    public function cronJobMakeAuctionDone()
-    {
-        $on_progress_auctions = Auction::where('status','=','on_progress')->where('end_date','<' , now())->get();
-        foreach ($on_progress_auctions as $auction)
-        {
-                $auction->update(['status'=>'done']);
-        }
-    }
+//    public function cronJobMakeAuctionDone()
+//    {
+//        $on_progress_auctions = Auction::where('status','on_progress')->where('end_date','<' , now())->get();
+//        foreach ($on_progress_auctions as $auction)
+//        {
+//                $auction->update(['status'=>'done']);
+//        }
+//    }
 
 
 

@@ -41,9 +41,10 @@ class Update_auction_satus extends Command
     {
         //return Command::SUCCESS;
 //        )
-        $on_progress_auctions= Auction::where('status','on_progress')->where('end_date','<=' ,Carbon::now())->get();
+        $on_progress_auctions= Auction::where('status','on_progress')->where('end_date','<' ,Carbon::now())->get();
         foreach ($on_progress_auctions as $on_progress_auction){
             $on_progress_auction->update(['status'=>'done']);
         }
+
     }
 }
