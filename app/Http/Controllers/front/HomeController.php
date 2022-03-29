@@ -33,7 +33,6 @@ class HomeController extends Controller
 
     public function cronJobMakeAuctionOnProgress()
     {
-        dd('ll');
         $auctions = Auction::query()
             ->where('status','not_accepted')->where('is_accepted','1')->get();
 
