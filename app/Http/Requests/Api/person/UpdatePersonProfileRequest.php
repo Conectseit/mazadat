@@ -37,7 +37,7 @@ class UpdatePersonProfileRequest extends REQUEST_API_PARENT
             'is_appear_name'   => 'sometimes|in:0,1',
             'mobile'           => 'sometimes|string|min:9|max:255|unique:users,mobile,'.auth()->user()->id,
             'email'            => 'sometimes|email|max:255|unique:users,email,'. auth()->user()->id,
-            'image'            => 'sometimes|image',
+            'image'            => 'sometimes',
         ];
     }
 
