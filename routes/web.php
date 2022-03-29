@@ -52,7 +52,7 @@ Route::group(
     Route::get('auction_details/{id}', [AuctionController::class, 'auction_details'])->name('front.auction_details');
 
 
-// ============ for auth ================
+// ============ for authentication ================
     Route::get('show_register', [AuthController::class, 'show_register'])->name('front.show_register');
 
 // ============ register_person ================
@@ -115,9 +115,9 @@ Route::group(
 
         // ============ // profile ================
         Route::any('my_profile', [UserController::class, 'showProfile'])->name('front.my_profile');
-        Route::any('edit_profile', [UserController::class, 'editProfile'])->name('front.edit_profile');
-
+        Route::any('edit_profile', [UserController::class, 'showEditProfile'])->name('front.edit_profile');
         Route::any('update_profile', [UserController::class, 'updateProfile'])->name('front.update_profile');
+
         Route::any('show_complete_profile', [UserController::class, 'showCompleteProfile'])->name('front.show_complete_profile');
         Route::post('complete_profile', [UserController::class, 'completeProfile'])->name('front.complete_profile');
         Route::any('add_address', [UserController::class, 'addAddress'])->name('front.add_address');

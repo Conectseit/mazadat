@@ -25,8 +25,10 @@ class AddAddressRequest extends REQUEST_API_PARENT
     public function rules()
     {
         return [
-            'person_latitude'  => 'required',
-            'person_longitude' => 'required'
+//            'person_latitude'  => 'required',
+//            'person_longitude' => 'required'
+            'latitude'  => 'required',
+            'longitude' => 'required'
         ];
     }
 

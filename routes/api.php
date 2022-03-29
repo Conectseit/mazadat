@@ -48,7 +48,6 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('password_verify_token', [AuthController::class, 'verify']);
     Route::post('password_reset', [AuthController::class, 'passwordReset']);
 
-
     Route::post('logout', [AuthController::class, 'logout'])->middleware('jwt.auth');
 
 
@@ -73,14 +72,13 @@ Route::group(['namespace' => 'Api'], function () {
     Route::any('all_companies', [CategoryController::class, 'all_companies']);
     Route::any('company/{id}/auctions', [CategoryController::class, 'companyAuctions']);
 
-    //=========== auction ============
+    //=========== auction details ============
     Route::post('auction/{id}', [AuctionController::class, 'auction']);
 
     //=========== filter category ===========
     Route::post('main_filter_category/{id}/auctions', [FilterController::class,'main_filter']);
     Route::post('filter_category/{id}/auctions', [FilterController::class,'filterCategory']);
     Route::post('get_options_of_category/{id}', [FilterController::class,'get_options_of_category']);
-
 
     Route::get('success-payment', [PaymentController::class, 'successPayment']);
 
@@ -123,7 +121,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('cancel_bid_auction/{id}', [AuctionController::class, 'cancel_bid_auction']);
 
         //=========== notifications ============
-        Route::get('notifications', [NotificationController::class, 'index']);
+        Route::get('notifications', [NotificationController::class, 'my_notification']);
 
         //=========== payment ======================
         Route::any('my_wallet', [UserController::class, 'my_wallet']);

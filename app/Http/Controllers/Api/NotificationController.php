@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 class NotificationController extends PARENT_API
 {
-    public function index()
+    public function my_notification()
     {
 //        $notifications = Notification::whereNull('user_id')->latest()->get();
 //

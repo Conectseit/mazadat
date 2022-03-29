@@ -45,7 +45,7 @@ class AuthController extends PARENT_API
 
         $user->update(['activation_code' => $activation_code]);
 
-//    SmsController::send_sms(($mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+        SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
 
         return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_Resend'), $activation_code); //OK
 
@@ -94,7 +94,8 @@ class AuthController extends PARENT_API
     public function login(LoginRequest $request)
     {
         try {
-            $col = self::is_email($request->email) ? 'email' : 'user_name';
+//            $col = self::is_email($request->email) ? 'email' : 'user_name';
+            $col = self::is_email($request->email) ? 'email' : 'mobile';
 
             if (!$token = JWTAuth::attempt([$col => $request->email, 'password' => $request->password])) {
                 return responseJson(false, trans('api.sorry_invalid_email_or_password'), null);
@@ -255,12 +256,6 @@ class AuthController extends PARENT_API
 
 
 }
-
-
-
-
-
-
 
 //
 //    public function update_personal_image(UpdatePersonalImageRequest $request)

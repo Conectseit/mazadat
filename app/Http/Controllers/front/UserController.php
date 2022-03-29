@@ -38,7 +38,7 @@ class UserController extends Controller
 
 
 
-    public function editProfile()
+    public function showEditProfile()
     {
 //        $data['nationalities'] = Nationality::all();
 ////        $data['cities'] = City::all();
