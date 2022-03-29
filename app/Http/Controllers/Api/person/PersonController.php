@@ -57,8 +57,6 @@ class PersonController extends Controller
     public function person_profile()
     {
         $user = auth()->user();
-
-
         if (!$user) {
             return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
         }
@@ -75,6 +73,10 @@ class PersonController extends Controller
         if ($request->mobile) {
             $request_data['mobile'] =$request->phone_code. $request->mobile ;
         }
+
+        if (User::where('mobile', $request_data['mobile'])->first()) {
+            return responseJson(false, 'قيمة الجوال مستخدمة من قبل', null);  //
+        }
         if ($request->image) {
             $request_data['image']  = uploaded($request->image, 'user');
         }
@@ -82,6 +84,8 @@ class PersonController extends Controller
         if (!$user) {
             return responseJson(false, 'The user not found...', null); //
         }
+
+
         $user->update($request_data);
 //        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));
         return responseJson(true, trans('api.request_done_successfully'), new PersonResource($user)); //ACCEPTED

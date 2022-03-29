@@ -75,6 +75,10 @@ class CompanyController extends Controller
         if ($request->mobile) {
             $request_data['mobile'] =$request->phone_code. $request->mobile ;
         }
+
+        if (User::where('mobile', $request_data['mobile'])->first()) {
+            return responseJson(false, 'قيمة الجوال مستخدمة من قبل', null);  //
+        }
         if ($request->image) {
             $request_data['image'] = uploaded($request->image, 'user');
         }
