@@ -511,9 +511,6 @@
                                             @endforeach
                                             </tbody>
                                         </table>
-
-
-
                                         <br><br>
                                         @if($auction_bids->last()->buyer->is_company == 'person')
 
