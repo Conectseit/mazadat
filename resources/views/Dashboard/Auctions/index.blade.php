@@ -259,9 +259,10 @@
                                            <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
                                                <thead>
                                                <tr style="background-color:gainsboro">
-                                                   <th class="text-center">قسم</th>
+                                                   <th class="text-center">{{ trans('messages.category.category') }}</th>
                                                    <th class="text-center">{{ trans('messages.image') }}</th>
                                                    <th class="text-center">{{ trans('messages.name') }}</th>
+                                                   <th class="text-center">{{ trans('messages.auction.start_auction_price') }}</th>
                                                    <th class="text-center">@lang('messages.since')</th>
                                                    <th class="text-center">@lang('messages.form-actions')</th>
                                                </tr>
@@ -274,6 +275,7 @@
                                                            <a href="{{ $auction->first_image_path }}" data-popup="lightbox"><img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                        </td>
                                                        <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
+                                                       <td class="text-center"> {{ ($auction->start_auction_price ) }}</a></td>
 
                                                        <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
                                                        <td class="text-center">

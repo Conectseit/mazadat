@@ -27,10 +27,10 @@ class AuctionController extends Controller
     public function index()
     {
         $data['auctions'] = Auction::latest()->get();
-        $data['on_progress_auctions'] = Auction::where('status', 'on_progress')->where('is_accepted', 1)->latest()->get();
-        $data['done_auctions'] = Auction::where('status', 'done')->where('is_accepted', 1)->latest()->get();
         $data['not_accepted_auctions'] = Auction::where('status', 'not_accepted')->where('is_accepted', 0)->latest()->get();
         $data['accepted_not_appear'] = Auction::where('status', 'not_accepted')->where('is_accepted', 1)->latest()->get();
+        $data['on_progress_auctions'] = Auction::where('status', 'on_progress')->where('is_accepted', 1)->latest()->get();
+        $data['done_auctions'] = Auction::where('status', 'done')->where('is_accepted', 1)->latest()->get();
         return view('Dashboard.Auctions.index', $data);
     }
 
@@ -51,43 +51,56 @@ class AuctionController extends Controller
         DB::beginTransaction();
         try {
             $serial_number = '#' . random_int(00000, 99999);
-                    //======= create auction =======
-                    $request_data = $request->except(['inspection_report_images' . 'images']);
+            //======= create auction =======
+            $request_data = $request->except(['inspection_report_images' . 'images']);
 
-                    $auction = Auction::create($request_data + ['is_accepted' => '1','status'=> 'not_accepted',
-                            'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
+            $auction = Auction::create($request_data + ['is_accepted' => '1', 'status' => 'not_accepted',
+                    'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
 
-                //======= upload auction images =======
-                $data = [];
-                if ($request->hasfile('images')) {
-                    foreach ($request->file('images') as $key => $img) {
-                        $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
-                    }
-                }
-                $auction_images = DB::table('auction_images')->insert($data);
-
-                //======= upload auction inspection_report_images =======
-                $dataa = [];
-                if ($request->hasfile('inspection_report_images')) {
-                    foreach ($request->file('inspection_report_images') as $key => $img) {
-                        $dataa[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
-                    }
-                }
-                $auction_inspection_report_images = DB::table('inspection_images')->insert($dataa);
-
-        //======= upload auction options =======
-            $options = [];
-            if(is_array($request->option_ids))
-            {
-                foreach ($request->option_ids as $option_detail_id) {
-                    $options[$option_detail_id] = [
-                        'auction_id'        => $auction->id,
-                        'option_details_id' => $option_detail_id // <==== arrrray ??,
-                    ];
+            //======= upload auction images =======
+            $data = [];
+            if ($request->hasfile('images')) {
+                foreach ($request->file('images') as $key => $img) {
+                    $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
                 }
             }
-            if(count($options) > 0) DB::table('auction_data')->insert($options);
+            $auction_images = DB::table('auction_images')->insert($data);
 
+            //======= upload auction inspection_report_images =======
+            $dataa = [];
+            if ($request->hasfile('inspection_report_images')) {
+                foreach ($request->file('inspection_report_images') as $key => $img) {
+                    $dataa[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
+                }
+            }
+            $auction_inspection_report_images = DB::table('inspection_images')->insert($dataa);
+
+            //======= upload auction options =======
+            $options = [];
+            if ($request->has('option_ids')) {
+                $ids = $request->option_ids ? array_filter($request->option_ids) : [];
+
+                if (is_array($ids) && !empty($ids)) {
+                    // if $request->option_ids is null or equal zero - has zero -> refuse it
+                    foreach ($ids as $option_detail_id) {
+                        $options[$option_detail_id] = [
+                            'auction_id' => $auction->id,
+                            'option_details_id' => $option_detail_id // <==== arrrray ??,
+                        ];
+                    }
+                }
+            }
+
+//            if(is_array($request->option_ids))
+//            {
+//                foreach ($request->option_ids as $option_detail_id) {
+//                    $options[$option_detail_id] = [
+//                        'auction_id'        => $auction->id,
+//                        'option_details_id' => $option_detail_id // <==== arrrray ??,
+//                    ];
+//                }
+//            }
+            if (count($options) > 0) DB::table('auction_data')->insert($options);
 
 
 //                $auction_options = AuctionData::Create([
@@ -98,13 +111,13 @@ class AuctionController extends Controller
 
 
 // ===========================================================
-Notification::sendNewAuctionNotification($auction->id);
+            Notification::sendNewAuctionNotification($auction->id);
 
-            $name='name_' . app()->getLocale();
+            $name = 'name_' . app()->getLocale();
             activity()
                 ->performedOn($auction)
                 ->causedBy(auth()->guard('admin')->user())
-                ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة مزاد'.($auction->$name));
+                ->log('قام المشرف' . auth()->guard('admin')->user()->full_name . ' باضافة مزاد' . ($auction->$name));
 // ===========================================================
 
             DB::commit();
@@ -188,32 +201,32 @@ Notification::sendNewAuctionNotification($auction->id);
 
             // $auction->option_details->sync($ids); in case of we build a many to many relationship
 
-            DB::table('auction_data')->where('auction_id',$auction->id)->delete();
+            DB::table('auction_data')->where('auction_id', $auction->id)->delete();
 
-            if(is_array($ids) && !empty($ids))
-            {
+            if (is_array($ids) && !empty($ids)) {
                 // if $request->option_ids is null or equal zero - has zero -> refuse it
                 foreach ($ids as $option_detail_id) {
                     $options[$option_detail_id] = [
-                        'auction_id'        => $auction->id,
+                        'auction_id' => $auction->id,
                         'option_details_id' => $option_detail_id // <==== arrrray ??,
                     ];
                 }
-            }}
+            }
+        }
 
 //        foreach ($auction->option_details as $option_detail) {
 //            $option_detail->delete();
 //        }
 
-        if(count($options) > 0) DB::table('auction_data')->insert($options);
+        if (count($options) > 0) DB::table('auction_data')->insert($options);
 
 // ===========================================================
 
-        $name='name_' . app()->getLocale();
+        $name = 'name_' . app()->getLocale();
         activity()
             ->performedOn($auction)
             ->causedBy(auth()->guard('admin')->user())
-            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بتعديل مزاد'.($auction->$name));
+            ->log('قام المشرف' . auth()->guard('admin')->user()->full_name . ' بتعديل مزاد' . ($auction->$name));
 // ===========================================================
 
         $auction->update($request_data);
@@ -257,7 +270,7 @@ Notification::sendNewAuctionNotification($auction->id);
     }
 
 
-    public function accept(AddStartDateAuctionRequest $request,$id)
+    public function accept(AddStartDateAuctionRequest $request, $id)
     {
         $auction = Auction::findOrFail($id);
 //        if(($auction->start_date== null) && ($auction->end_date== null ) )
@@ -265,10 +278,10 @@ Notification::sendNewAuctionNotification($auction->id);
 //                return redirect()->route('auctions.index')->with('error', trans('messages.Sorry_you_should_complete_all_data_for_auction_first'));
 //            }
 //        $auction->update(['is_accepted'=> 1,'status'=>'on_progress']);
-        $auction->update($request->all() +['is_accepted'=> 1]);
+        $auction->update($request->all() + ['is_accepted' => 1]);
 
 
-        $text = 'تم قبول مزادك من ادرة موقع مزادات' ."\n";
+        $text = 'تم قبول مزادك من ادرة موقع مزادات' . "\n";
         $text .= " - سوف يبدأ :  " . $auction->start_date;
 
         SmsController::send_sms($auction->seller->mobile, $text);
@@ -282,7 +295,7 @@ Notification::sendNewAuctionNotification($auction->id);
     {
         $auction = Auction::findOrFail($id);
 
-        $user = User::where('id',$auction->seller_id)->first();
+        $user = User::where('id', $auction->seller_id)->first();
         SmsController::send_sms($user->mobile, trans('messages.update_your_auction_and_send_it_again'));
 
         return back()->with('success', trans('messages.send_sms_to_auction_owner_successfully'));
@@ -291,16 +304,16 @@ Notification::sendNewAuctionNotification($auction->id);
     public function unique($id)
     {
         $auction = Auction::findOrFail($id);
-        $auction->update(['is_unique'=> 1]);
-        return back()->with('success', trans('messages.updated_success'));
-    }
-    public function not_unique($id)
-    {
-        $auction = Auction::findOrFail($id);
-        $auction->update(['is_unique'=> 0]);
+        $auction->update(['is_unique' => 1]);
         return back()->with('success', trans('messages.updated_success'));
     }
 
+    public function not_unique($id)
+    {
+        $auction = Auction::findOrFail($id);
+        $auction->update(['is_unique' => 0]);
+        return back()->with('success', trans('messages.updated_success'));
+    }
 
 
 }

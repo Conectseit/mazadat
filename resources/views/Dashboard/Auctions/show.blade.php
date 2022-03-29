@@ -512,27 +512,31 @@
                                             </tbody>
                                         </table>
 
+
+
+                                        <br><br>
+                                        @if($auction_bids->last()->buyer->is_company == 'person')
+
+                                            <i class="icon-cog3 position-left"></i>
+                                            <h1>{{ trans('messages.auction.winner') }}</h1>
+                                            <a href="{{ route('persons.show', $auction_bids->last()->buyer->id) }}"  class="btn btn-success">
+                                                {{$auction_bids->last()->buyer->full_name}}
+                                            </a>
+                                        @endif
+
+                                        @if($auction_bids->last()->buyer->is_company == 'company')
+
+                                            <i class="icon-cog3 position-left"></i>
+                                            <h1>{{ trans('messages.auction.winner') }}</h1>
+                                            <a href="{{ route('companies.show', $auction_bids->last()->buyer->id) }}"  class="btn btn-success">
+                                                {{$auction_bids->last()->buyer->user_name}}
+                                            </a>
+                                        @endif
+
                                     @else
                                         <div style="text-align: center;"><h3> @lang('messages.no_data_found') </h3>
                                         </div>
-                                    @endif
-                                    <br><br>
-                                    @if($auction_bids->last()->buyer->is_company == 'person')
 
-                                        <i class="icon-cog3 position-left"></i>
-                                        <h1>{{ trans('messages.auction.winner') }}</h1>
-                                        <a href="{{ route('persons.show', $auction_bids->last()->buyer->id) }}"  class="btn btn-success">
-                                            {{$auction_bids->last()->buyer->full_name}}
-                                        </a>
-                                    @endif
-
-                                    @if($auction_bids->last()->buyer->is_company == 'company')
-
-                                        <i class="icon-cog3 position-left"></i>
-                                        <h1>{{ trans('messages.auction.winner') }}</h1>
-                                        <a href="{{ route('companies.show', $auction_bids->last()->buyer->id) }}"  class="btn btn-success">
-                                            {{$auction_bids->last()->buyer->user_name}}
-                                        </a>
                                     @endif
 
                                 </div>
