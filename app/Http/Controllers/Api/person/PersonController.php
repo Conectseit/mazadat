@@ -80,8 +80,6 @@ class PersonController extends Controller
             $request_data['image']  = uploaded($request->image, 'user');
         }
 
-
-
         if ( $update_user=User::where('mobile', $request_data['mobile'])->first()) {
             if($update_user->id == $user->id){
                 $user->update($request_data);
