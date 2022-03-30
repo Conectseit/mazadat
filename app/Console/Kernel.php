@@ -20,6 +20,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('auction:update_status')->everyMinute();
     }
+
     protected $commands = [
         //
         Update_auction_satus::class ,

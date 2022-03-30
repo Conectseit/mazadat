@@ -33,25 +33,22 @@ class HomeController extends Controller
 
     public function cronJobMakeAuctionOnProgress()
     {
-        $auctions = Auction::query()
-            ->where('status','not_accepted')->where('is_accepted','1')->get();
-
+        $auctions = Auction::where('status','not_accepted')
+            ->where('is_accepted','1')->where('start_date' ,'<=', Carbon::now())->get();
         foreach ($auctions as $auction)
         {
-            if($auction->start_date <= Carbon::now())
-            {
+//            if($auction->start_date <= Carbon::now())
                 $auction->update(['status'=>'on_progress']);
-            }
         }
     }
-//    public function cronJobMakeAuctionDone()
-//    {
-//        $on_progress_auctions = Auction::where('status','on_progress')->where('end_date','<' , now())->get();
-//        foreach ($on_progress_auctions as $auction)
-//        {
-//                $auction->update(['status'=>'done']);
-//        }
-//    }
+    public function cronJobMakeAuctionDone()
+    {
+        $on_progress_auctions = Auction::where('status','on_progress')->where('end_date','<' , now())->get();
+        foreach ($on_progress_auctions as $auction)
+        {
+                $auction->update(['status'=>'done']);
+        }
+    }
 
 
 

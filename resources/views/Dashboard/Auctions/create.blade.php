@@ -125,15 +125,15 @@
                                    placeholder="@lang('messages.auction.end_date') ">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control"  value="{{ old('start_auction_price')}}" name="start_auction_price"
+                            <input type="number" class="form-control"  value="{{ old('start_auction_price')}}" name="start_auction_price"
                                    placeholder="@lang('messages.auction.start_auction_price') ">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control"  value="{{ old('value_of_increment')}}" name="value_of_increment"
+                            <input type="number" class="form-control"  value="{{ old('value_of_increment')}}" name="value_of_increment"
                                    placeholder="@lang('messages.auction.value_of_increment') ">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control"  value="{{ old('delivery_charge')}}" name="delivery_charge"
+                            <input type="number" class="form-control"  value="{{ old('delivery_charge')}}" name="delivery_charge"
                                    placeholder="@lang('messages.auction.delivery_charge') ">
                         </div>
 

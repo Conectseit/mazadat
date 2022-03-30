@@ -52,31 +52,30 @@ class AuthController extends Controller
 
     public function resendSms($mobile)
     {
-        try
-        {
+        try {
             $user = User::where('mobile', $mobile)->first();
+
+            if (!$user)
+                return back();
 
             $activation_code = create_rand_numbers();
 
             $user->update(['activation_code' => $activation_code]);
 
-           SmsController::send_sms(($mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+            SmsController::send_sms(($mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
 //            return response()->json(['data' => [], 'status' => true, 'message' => 'تم إعادة إرسال الكود بنجاح']);
-            return back()->with('message' , 'تم إعادة إرسال الكود بنجاح');
-        }
-        catch (\Exception $e)
-        {
+            return back()->with('message', 'تم إعادة إرسال الكود بنجاح');
+        } catch (\Exception $e) {
 //            return response()->josn(['data' => [], 'status' => false, 'message' => $e->getMessage()]);
         }
 
     }
 
 
-
     public function show_login()
     {
         $data['countries'] = Country::all();
-        return view('front.auth.login',$data);
+        return view('front.auth.login', $data);
     }
 
     public function login(LoginRequest $request)
@@ -96,7 +95,7 @@ class AuthController extends Controller
 
         if ($user->is_active == 'deactive') {
             Auth::logout();
-            return redirect()->route('front.show_activation',$user->mobile)
+            return redirect()->route('front.show_activation', $user->mobile)
                 ->with('error', trans('api.please_active_your_account_by_activation_code_first'));
 //            return back()->withInput($request->only('email'))->with('error', trans('api.please_active_your_account_by_activation_code_first'));
         }
@@ -105,7 +104,7 @@ class AuthController extends Controller
             return back()->withInput($request->only('email'))->with('error', trans('api.please_wait_your_account_not_activated_yet'));
         }
 
-        if ($user->is_completed == 0 ) {
+        if ($user->is_completed == 0) {
             return redirect()->route('front.show_complete_profile')
                 ->with('error', trans('api.please_complete_your_account_first'));
         }
@@ -115,7 +114,7 @@ class AuthController extends Controller
         }
 
         $jwt_token = JWTAuth::fromUser($user);
-        auth()->user()->token->update(['jwt' => $jwt_token,'fcm_web_token'=>$request->fcm_web_token ?? 'none']);
+        auth()->user()->token->update(['jwt' => $jwt_token, 'fcm_web_token' => $request->fcm_web_token ?? 'none']);
 
         return redirect()->route('front.home');
     }
@@ -126,12 +125,6 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->route('front.home');
     }
-
-
-
-
-
-
 
 
     public function get_cities_by_country_id(Request $request)

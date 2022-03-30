@@ -27,7 +27,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 
 Route::get('/cronjob/update-auction-on-progress', [HomeController::class, 'cronJobMakeAuctionOnProgress']);
-//Route::get('/cronjob/update-auction-done', [HomeController::class, 'cronJobMakeAuctionDone']);
+Route::get('/cronjob/update-auction-done', [HomeController::class, 'cronJobMakeAuctionDone']);
 
 Route::group(
     [

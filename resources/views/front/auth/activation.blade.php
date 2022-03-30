@@ -61,7 +61,6 @@
                             <button type="submit" id="resend-code-btn" class="btn btn-primary submit-btn send_again">{{trans('messages.send')}}</button>
                         </div>
                         <p class="mt-3 ">
-
                             <a id="resend-code-btn" href="{{ route('front.resend-sms',$mobile) }}" class="create  text-orange send_btn d-none"> لم يصلك كود التفعيل؟  ارسل مرة أخرى</a>
                             <span class="counter_send d-none"> اعادة ارسال بعد  <span id="countdowntimer">10 </span> Seconds</span>
                         </p>
@@ -137,28 +136,49 @@
         //     });
         // });
         $( document ).ready(function() {
-           // var timeleft = 1000;
-           // var downloadTimer = setInterval(function(){
-           //     timeleft--;
-           //     document.getElementById("countdowntimer").textContent = timeleft;
-           //     if(timeleft <= 0)
-           //         clearInterval(downloadTimer);
-           // },10000);
+           // debugger;
             $( ".send_btn" ).addClass('d-none')
             $( ".counter_send" ).removeClass('d-none')
             var timeleft = 10 ;
             var downloadTimer = setInterval(function(){
                 timeleft--;
+                // document.getElementById("countdowntimer").textContent = timeleft;
                 $("#countdowntimer").textContent = timeleft;
-                // console.log(timeleft);
+                 console.log(timeleft);
                 $( ".send_btn" ).removeClass('d-none')
 
                 if(timeleft <= 0)
                     clearInterval(downloadTimer);
                 $( ".counter_send" ).addClass('d-none')
             },10000);
-       })
-//timer
 
+  //===========================================================================//
+            // const interval=setInterval(myFun,30000);
+            // function myFun(){
+            //     // debugger;
+            //     while ( timeleft >0) {
+            //         timeleft--;
+            //        const element= document.getElementById("countdowntimer");
+            //            element.textContent =timeleft.toString();
+            //         $('.create').hide();
+            //         $('.counter_send').show();
+            //         $('.countdowntimer').show();
+            //
+            //     }
+            //
+            //     if(timeleft == 0) {
+            //         clearInterval(interval);
+            //         $('.countdowntimer').hide();
+            //         $('.create').show();
+            //     }
+            // }
+            {{--                            <a id="resend-code-btn" href="{{ route('front.resend-sms',$mobile) }}" class="create"> لم يصلك كود التفعيل؟  ارسل مرة أخرى</a>--}}
+            {{--                            <span class="counter_send d-none"> اعادة ارسال بعد  <span id="countdowntimer" value="10"> 10</span> Seconds</span>--}}
+//===========================================================================//
+
+
+
+
+        })
 </script>
 @endpush
