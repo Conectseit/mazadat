@@ -1,11 +1,5 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.home'))
-@section('style')
-    <style>
-
-    </style>
-@endsection
-
 
 @section('content')
     <main class="categories-bar row">
@@ -13,14 +7,13 @@
     </main>
     @include('front.layouts.parts.alert')
     <div class="category-items-page">
-        <main class="category-control">
+        <main class="category-control"  dir="{{ direction() }}">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 d-flex my-auto ">
                         <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
                                 class="fal fa-arrow-circle-right"></i> </a>
                         {{--                        <a href="javascript:history.back()" class="">  <i class="fal fa-arrow-circle-right"></i>  </a>--}}
-
                         <h3 class="category-title">
                             {{trans('messages.auctions_of')}}:{{$company->user_name}}
                         </h3>
@@ -28,9 +21,8 @@
                 </div>
             </div>
         </main>
-        <section class="items">
+        <section class="items" dir="{{ direction() }}">
             <div class="container">
-
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
@@ -42,7 +34,6 @@
                                 type="button" role="tab" aria-controls="profile"
                                 aria-selected="false">{{ trans('messages.auction.done') }}</button>
                     </li>
-
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>

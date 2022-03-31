@@ -14,7 +14,7 @@
     @php($terms= 'conditions_terms_'.app()->getLocale())
     @php($app_description= 'app_description_'.app()->getLocale())
 
-    <div class="container">
+    <div class="container" dir="{{ direction() }}">
         <div class="row">
             <div class="col-lg-7 slog-right">
                 <img class="logo" src="{{asset('Front/assets/imgs/logo-text.svg')}}" alt="logo">

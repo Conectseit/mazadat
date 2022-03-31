@@ -33,17 +33,13 @@
     @include('front.layouts.parts.alert')
 
 
-    <section class="categories">
-
+    <section class="categories"  dir="{{ direction() }}">
         <div class="container">
             <div class="row">
                 <div class=" d-flex justify-content-between" >
-                    <h4>قائمة الشركات</h4>
+                    <h4> {{__('messages.company.list')}}</h4>
                 </div>
             </div><br>
-
-
-
             <div class="row">
                 @foreach($companies as $category)
                 <div class="col-sm-3">

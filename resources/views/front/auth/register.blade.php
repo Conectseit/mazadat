@@ -21,9 +21,9 @@
 
 @section('content')
     @include('front.auctions.parts.head')
-    <section class="my-wallet-page">
+    <section class="my-wallet-page"  dir="{{ direction() }}">
         <div class="container">
-            <h3 class="title">اهلا بك في موقع مزادات ....</h3><br><br>
+            <h3 class="title"> {{trans('messages.welcome_in_mazadat')}}</h3><br><br>
 
             <div class="">
                 <div class="row">

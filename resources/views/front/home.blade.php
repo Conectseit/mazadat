@@ -11,7 +11,6 @@
             font-size: 12px;
             background: #1e3c48;
         }
-
         .add-auction.btn {
             text-align: center;
             border: 1px solid #fff;
@@ -39,11 +38,8 @@
         .category-items-page .items .card.gallery-card .card-body {
             background: #1e3c48;
         }
-
-        /*//*/
         .category-items-page .items .card.gallery-card .card-title {
-            text-align: center;
-            position: static;
+            text-align: center; position: static;
         }
 
         .category-items-page .items .card.gallery-card {
@@ -53,11 +49,8 @@
         }
 
         .category-items-page .items .card.gallery-card:hover {
-            border: 10px solid #1e3c48;
-            opacity: .9;
+            border: 10px solid #1e3c48; opacity: .9;
         }
-
-        /*    */
 
     </style>
 @endsection
@@ -68,10 +61,8 @@
     @include('front.layouts.parts.nav_home')
     @include('front.layouts.parts.alert')
     <div class="mt-0">
-
         <div class="row">
-
-            <div class="col-md-10 col-sm-2 mx-auto">
+            <div class="col-md-10 col-sm-2 mx-auto" dir="{{ direction() }}">
                 <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"
@@ -162,7 +153,7 @@
 
 
     <div class="category-items-page">
-        <section class="items">
+        <section class="items" dir="{{ direction() }}">
             <div class="container">
                 @inject('auctions', 'App\Models\Auction')
                 <div class="row">
@@ -195,7 +186,7 @@
                 {{--                    </div>--}}
                 {{--                </div>--}}
                 <br>
-                <h1 style="color: #d1915c;"> الأقسام والتصنيفات ::</h1><br>
+                <h1 style="color: #d1915c;"> {{__('messages.categories')}}</h1><br>
                 <div class="row">
 
                     @foreach($categories as $category)

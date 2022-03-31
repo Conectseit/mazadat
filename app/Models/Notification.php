@@ -46,6 +46,7 @@ class Notification extends Model
             'text'       => $text,
             'auction_id' => $auction_id,
             'fcm_tokens' => $fcms,
+            'click_action' => route('front.auction_details',$auction_id),
         ]);
 
         foreach ($tokens as $token) {
@@ -86,7 +87,9 @@ class Notification extends Model
             'title' => $title,
             'text' => $text,
             'auction_id' => $auction_id,
-            'fcm_tokens' => $fcms
+            'fcm_tokens' => $fcms,
+            'click_action' => route('front.auction_details',$auction_id),
+
         ]);
 
         foreach ($tokens as $token) {
@@ -135,7 +138,9 @@ class Notification extends Model
             Firebase::send([
                 'title' => $title,
                 'text' => $text,
-                'fcm_tokens' => $user->token->fcm
+                'fcm_tokens' => $user->token->fcm,
+                'click_action' => route('front.auction_details',$auction_id),
+
             ]);
         }
         Firebase::createWebCurl($user->token->fcm_web_token, [

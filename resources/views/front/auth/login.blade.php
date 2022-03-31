@@ -7,13 +7,13 @@
     @include('front.auctions.parts.head')
     <section class="sign-up-page">
         @include('front.layouts.parts.alert')
-        <div class="container">
+        <div class="container" dir="{{ direction() }}">
             <h4 class="title"> {{ trans('messages.login') }}</h4>
             <div class="row">
                 <form action="{{route('front.login')}}" method="post" id="submitted-form" enctype="multipart/form-data">
                     @csrf
                     <div class="inputs-group">
-                        <h4 class="title" style="color: #d1915c;">الدخول لحسابك</h4>
+                        <h4 class="title" style="color: #d1915c;"> {{ trans('messages.log_in') }}</h4>
                         <p class="mb-5">{{ __('messages.plz_log') }}</p>
                         <div class="mb-4 form-group row">
                             <div class="col-sm-2 d-flex align-items-center">
@@ -24,7 +24,7 @@
                                 <input type="text" class="form-control @error('email') is-invalid @enderror"
                                        id="email" name="email" aria-describedby="emailHelp"
 {{--                                       value="{{ old('email') }}"--}}
-                                       placeholder="ادخل بريدك الالكتروني او رقم جوالك 966xxx xxx">
+                                       placeholder=" {{ trans('messages.enter_email_or_mobile') }}">
                                 @error('email')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -33,10 +33,10 @@
 
                         <div class="mb-4 form-group row">
                             <div class="col-sm-2 d-flex align-items-center">
-                                <label for="password" class="form-label">كلمة المرور</label>
+                                <label for="password" class="form-label">{{ trans('messages.password') }}</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="password" class="form-control" name="password" id="password"  placeholder="ادخل كلمة المرور">
+                                <input type="password" class="form-control" name="password" id="password"  placeholder="{{ trans('messages.enter_password') }}">
                             </div>
                         </div>
 
@@ -47,14 +47,14 @@
 {{--                                {!! NoCaptcha::display() !!}--}}
                             </div>
                             <div class="col-sm-4">
-                                <div class="mb-3 form-check">
+                                <div class="mb-3 form-check" >
                                     <input type="checkbox" class="form-check-input" name="remember" id="remember">
-                                    <label class="form-check-label" for="remember">تذكرنى؟</label>
+                                    <label class="form-check-label" for="remember" > {{ trans('messages.remember') }}</label>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <a href="#" class="forgot" data-bs-toggle="modal"
-                                   data-bs-target="#forget_pass_modal">نسيت كلمة المرور؟</a>
+                                   data-bs-target="#forget_pass_modal"> {{ trans('messages.forget_password') }}</a>
                                 <a href="#" class="forgot"></a>
                             </div>
                         </div>

@@ -67,6 +67,7 @@ class Firebase
             'body'  => $data['body'],
             'icon'  => $data['icon'],
 //            'auction_id'            => $data['auction_id'] ?? 0,
+            'click_action' => $data['click_action'] ?? null,
         ];
     }
 }

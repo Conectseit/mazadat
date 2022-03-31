@@ -13,17 +13,19 @@ class ComplteProfileRequest extends FormRequest
 
     public function rules()
     {
+        $required = request('is_company') == 'person' ? "required" : "nullable";
+
         return  [
 
             'nationality_id'        => 'required|numeric|exists:nationalities,id',
             'city_id'               => 'required|numeric|exists:cities,id',
-            'block'                 => 'required_if:is_company,person|string',
-            'street'                => 'required_if:is_company,person|string',
-            'block_num'             => 'required_if:is_company,person|numeric',
+            'block'                 => [$required,'string'],
+            'street'                => [$required,'string'],
+            'block_num'             => [$required,'numeric'],
 //            'delivery_time'         => 'required_if:is_company,person|in:am,pm',
-            'signs'                 => 'required_if:is_company,person|string',
+            'signs'                 => [$required,'string'],
             'P_O_Box'               => 'required',
-            'passport_image'        => 'required_if:is_company,==,person|image',
+            'passport_image'        => [$required,'image'],
 
         ];
 //        if(auth()->user->is_company== 'person'){

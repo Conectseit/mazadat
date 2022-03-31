@@ -56,6 +56,7 @@
                                            <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
                                                <thead>
                                                <tr style="background-color:gainsboro">
+                                                   <th class="text-center">id</th>
                                                    <th class="text-center">Serial number</th>
                                                    <th class="text-center">قسم</th>
                                                    <th class="text-center">{{ trans('messages.image') }}</th>
@@ -76,9 +77,10 @@
                                                </tr>
                                                </thead>
                                                <tbody>
-                                               @foreach($auctions as $auction)
+                                               @foreach($auctions as $key => $auction)
                                                    <tr id="auction-row-{{ $auction->id }}">
 
+                                                       <td class="text-center">{{ $key+1 }}</td>
                                                        <td class="text-center">{{ $auction->serial_number }}</td>
                                                        <td class="text-center">{{ $auction->category->$name }}</td>
                                                        <td class="text-center">

@@ -2,7 +2,7 @@
 @section('title', trans('messages.auction.auction_details'))
 @section('style')
     <style>
-        #map { height: 400px; border: solid 1px; padding-right: 20px; }
+        #map {height: 400px; border: solid 1px; padding-right: 20px;}
         .carousel-item img { height: 400px; border: solid 1px; }
     </style>
 @endsection
@@ -16,7 +16,6 @@
             <div class="container">
                 <div class="row">
                     @include('front.layouts.parts.make_bid_alert')
-                    {{--                    @if($auction->status!=='done')--}}
                     @if($auction->status=='on_progress')
                         <div class="col-lg-2 d-flex align-items-center">
                         </div>
@@ -75,12 +74,12 @@
                 </div>
             </div>
         </main>
-        <section class="ad-info">
+        <section class="ad-info" dir="{{ direction() }}">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3">
-                        <h4 class="ad-title">قسم {{ ($auction->category->$name ) }}</h4>
-                        <div class="main-image" style="height: 200px;">
+                    <div class="col-lg-3" >
+                        <h4 class="ad-title">{{ trans('messages.category.category')}}  ({{ ($auction->category->$name )}})</h4>
+                        <div class="main-image" style="height: 200px;" >
                             <img src="{{$auction->first_image_path}}" alt="image" class="img-thumbnail">
                         </div>
                     </div>
@@ -100,19 +99,27 @@
 
                                     </p>
                                 </div>
-                                <div class="details" id="details">
-                                    <p><i class="fal fa-clock"></i> {{trans('messages.auction.remaining_time')}}:
-                                        {{--                                        {{ ($auction->remaining_time['days'] ) }}--}}
-                                        <span class="test-time"> <span id="Timerapp"></span></span>
+                                @if($auction->status=='on_progress')
+                                    <div class="details" id="details">
+                                        <p><i class="fal fa-clock"></i> {{trans('messages.auction.remaining_time')}}:
+                                            {{--                                        {{ ($auction->remaining_time['days'] ) }}--}}
+                                            <span class="test-time"> <span id="Timerapp"></span></span>
+                                        </p>
+                                    </div>
+                                @endif
 
-                                    </p>
-                                </div>
+                                @if($auction->status=='done')
+                                    <div class="details" id="details">
+                                        <p><i class="fal fa-clock"></i> {{trans('messages.auction.remaining_time')}}:
+                                            <span class="test-time">{{trans('messages.auction.done_auction')}} </span>
+                                        </p>
+                                    </div>
+                                @endif
                             </div>
                             <div class="col-lg-6">
                                 <div class="details" id="details">
                                     <h5>{{trans('messages.auction.delivery_charge')}} :
                                         {{($auction->delivery_charge)}}</h5>
-
                                 </div>
                                 <div class="details" id="details">
                                     <p>
@@ -121,8 +128,8 @@
                                     </p>
                                 </div>
 
-                                <div class="details" id="details">
-                                    <p><i class="fal fa-gavel"></i>{{trans('messages.auction.current_price')}}
+                                <div class="details " id="details" >
+                                    <p ><i class="fal fa-gavel"></i>{{trans('messages.auction.current_price')}}
                                         :{{($auction->current_price)}}</p>
                                 </div>
                                 <div class="details" id="details">
@@ -169,7 +176,8 @@
                                                             @if(auth()->check()){{ checkIsUserAccept($auction)->count()?'checked':''}}@endif
                                                             >
                                                         </a>
-                                                        <label class="form-check-label" for="accept-terms" style="color: red;">
+                                                        <label class="form-check-label" for="accept-terms"
+                                                               style="color: red;">
                                                             {{ trans('messages.accept_terms')}} </label>
                                                     </div>
                                                 </li>
@@ -203,7 +211,8 @@
                             </form>
                         </div>
                     </div>
-                </div><hr>
+                </div>
+                <hr>
 
                 <div class="more">
                     <div class="terms">
@@ -270,7 +279,8 @@
                             </div>
                         @endforeach
                     </div>
-                </div><hr>
+                </div>
+                <hr>
 
                 <div class="more-imgs">
                     <div class="terms">
@@ -292,7 +302,8 @@
                             </div>
                         @endforeach
                     </div>
-                </div><hr>
+                </div>
+                <hr>
                 <div class="terms">
                     <h4>{{ trans('messages.auction.terms')}}:</h4>
                     <p>{{$auction->$auction_terms}}</p>
@@ -308,41 +319,7 @@
     </div>
 @stop
 @push('scripts')
-    {{--    @include('front.layouts.parts.map')--}}
+    @include('front.auctions.parts.auction_location_on_google_map')
     @include('front.auctions.parts.ajax')
     @include('front.auctions.parts.counter', ['auction' => $auction])
-
-    <script>
-        function initMap() {
-
-            let lat_val = {{ $auction->latitude }};
-            let lng_val = {{ $auction->longitude }};
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: lat_val, lng: lng_val},
-                zoom: 13
-            });
-            var input = document.getElementById('searchInput');
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-            var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.bindTo('bounds', map);
-
-            var infowindow = new google.maps.InfoWindow();
-
-            var marker = new google.maps.Marker({
-                position: {lat: lat_val, lng: lng_val},
-                map: map,
-                anchorPoint: new google.maps.Point(0, -29),
-                draggable: true
-            });
-        }
-
-    </script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks">
-    </script>
-
 @endpush
-
-
-

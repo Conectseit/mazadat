@@ -247,8 +247,8 @@
 
                         </div>
                         <div class="text-right">
-                            <input type="submit" class="btn btn-primary" name="forward"
-                            value=" {{ trans('messages.update_and_come_back') }} "/>
+{{--                            <input type="submit" class="btn btn-primary" name="forward"--}}
+{{--                            value=" {{ trans('messages.update_and_come_back') }} "/>--}}
                             <input type="submit" class="btn btn-success"
                                    value=" {{ trans('messages.update_and_come_back') }} "/>
                         </div>
@@ -256,9 +256,6 @@
                 </div>
             </form>
             <!-- /basic layout -->
-
-
-
         </div>
     </div>
 

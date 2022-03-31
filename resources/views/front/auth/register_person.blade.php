@@ -5,7 +5,7 @@
 
 @section('content')
     @include('front.auctions.parts.head')
-    <section class="sign-up-page">
+    <section class="sign-up-page" dir="{{ direction() }}">
         <div class="container">
             <h4 class="title"> {{ trans('messages.add_new_user') }}</h4>
 

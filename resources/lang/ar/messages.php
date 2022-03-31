@@ -3,6 +3,7 @@
 return [
 
     'Dashboard'             => 'لوحة تحكم موقع مزادات',
+    'welcome_in_mazadat'    => 'اهلا بك في موقع مزادات ....',
     'home'                  => 'الصفحة الرئيسية',
     'mazadat'               => 'مزادات',
     'Statistics'            => 'احصائيات عامة للموقع',
@@ -46,7 +47,7 @@ return [
     'wallet'                  => 'رصيد المحفظة',
     'select'                  => 'اختر',
     'quick_links'             => 'روابط سريعة',
-    'cancel_delete'           => 'تم الغاء الحذف',
+    'cancel_delete'           => 'تم إلغاء الحذف',
     'is_appear_name'          => '  اخفاءاسم العميل ؟',
     'confirm-delete-message-var' => 'هل انت متأكد من حذف هذا :var',
     'password'                => 'كلمه المرور',
@@ -68,6 +69,7 @@ return [
     'user_name'               => 'اسم المستخدم',
     'mobile'                  => 'رقم الجوال',
     'email'                   => 'البريد الالكتروني',
+    'enter_password'          => 'ادخل كلمة المرور',
     'P_O_Box'                 => 'رقم البريد',
     'gender'                  => 'االنوع',
     'female'                  => 'أنثي',
@@ -79,6 +81,7 @@ return [
 //    'company'                 => ' مؤسسة',
     'no_value'                => ' لا يوجد',
     'email_or_mobile'         => ' البريد الالكتروني او رقم الجوال',
+    'cancel'                  => 'إلغاء',
 
 
 
@@ -269,7 +272,7 @@ return [
     'street'=>'الشارع ',
     'block_num'=>'رقم المبني',
     'signs'=>'أقرب علامة مميزه',
-    'not_ban'=>'الغاء الحظر',
+    'not_ban'=>'إلغاء الحظر',
     'ban'=>' حظر',
     'unique'=>' مميز',
     'not_unique'=>' غير مميز',
@@ -334,6 +337,7 @@ return [
         'add_new_company' => 'اضافة مؤسسة جديد',
         'edit' => 'تعديل مؤسسة : ',
         'show' => 'عرض التفاصيل',
+        'list' => 'قائمة الشركات والمؤسسات',
     ],
 
     'please_complete_your_data' => 'من فضلك اكمل بيانات التسجيل',
@@ -455,6 +459,7 @@ return [
         'update' => ' تعديل المزاد',
         'make_done' => ' سحب المزاد اوانهاؤه',
         'bid_now' => ' زايد الأن',
+        'done_auction' => ' مزاد منتهي',
 
     ],
     'terms' => 'الشروط والاحكام  ',
@@ -554,6 +559,7 @@ return [
 
 
     'updated_success' => 'تم التحديث بنجاح',
+    'categories' => 'الأقسام والتصنيفات ::',
 
 
     // for front
@@ -569,7 +575,9 @@ return [
     'enter_mobile' => 'ادخل رقم الجوال : ',
     'enter_user_name' => 'ادخل  اسم المستخدم او الاسم المستعار : ',
     'register_your_account' => 'تسجيل حسابك',
-    'enter_password' => 'كلمة المرور',
+//    'enter_password' => 'كلمة المرور',
+    'forget_password' => 'نسيت كلمة المرور؟',
+    'remember' => 'تذكرنى؟',
     'confirm-password' => 'قم بتاكيد كلمة المرور',
     'sorry_invalid_email_or_password' => 'هناك خطأ في الايميل او كلمة المرور, من فضلك حاول مرة اخري ',
     'account_data' => 'بيانات حسابك',
@@ -641,7 +649,7 @@ return [
     'pass_terms'         	    => 'ملحوظة : كلمة المرور يجب ان لا تقل عن 6احرف او ارقام ',
     'register_success_welcome_in_our_website'         	=> 'تم تسجيل حسابك بنجاح اهلا بك في موقعنا',
     'wait'                    	=> 'انتظر حتي يتم مراجعة بيانات مزادك من خلال ادارة الموقع',
-    'ban/not'                  	=> 'حظر/ الغاء الحظر ',
+    'ban/not'                  	=> 'حظر/ إلغاء الحظر ',
     'follow_us'               	=> 'تابعنا على ',
     'identity'                	=> ' صورة هوية رسمية ',
     'support&help'           	=> 'الدعم والمساعدة ',
@@ -675,7 +683,7 @@ return [
     'ban_user_and_send_SMS_successfully' => 'تم حظر حساب  وارسال رسالة sms',
     'active_user_again_and_send_SMS_successfully' => 'تم رفع الحظر وتفعيل حساب العميل مرة اخري وارسال رسالة sms',
     'active_user_and_send_SMS_successfully' => 'تم الموافقة وتفعيل حساب العميل وارسال رسالة sms',
-    'not_verified_yet_and_send_SMS' => 'الغاء قبول حساب العميل وارسال رسالة بأن بيانات الحساب غير مكتملة ',
+    'not_verified_yet_and_send_SMS' => 'إلغاء قبول حساب العميل وارسال رسالة بأن بيانات الحساب غير مكتملة ',
 
     'no_auctions_yet_for_this_company' => 'لا يوجد مزادات لهذه المؤسسة حتي الان',
     'start' => 'ابدأ الان ......',

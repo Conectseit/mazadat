@@ -5,10 +5,10 @@
 @endsection
 
 @section('content')
-    <main class="categories-bar row">
+    <main class="categories-bar row" >
         @include('front.layouts.parts.nav_categories')
     </main>
-    <section class="notifications-page">
+    <section class="notifications-page" dir="{{ direction() }}">
         <div class="container">
             @foreach($questions as $questionn)
                 <div class="notification-item">

@@ -8,7 +8,7 @@
     <main class="categories-bar row">
         @include('front.layouts.parts.nav_categories')
     </main>
-    <section class="about-us-page">
+    <section class="about-us-page" dir="{{ direction() }}">
         <div class="container">
             <div class="text">
                 <p>

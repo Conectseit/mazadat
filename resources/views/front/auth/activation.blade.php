@@ -143,7 +143,7 @@
             var downloadTimer = setInterval(function(){
                 timeleft--;
                 // document.getElementById("countdowntimer").textContent = timeleft;
-                $("#countdowntimer").textContent = timeleft;
+                $("#countdowntimer").html(timeleft);
                  console.log(timeleft);
                 $( ".send_btn" ).removeClass('d-none')
 

@@ -37,6 +37,9 @@
                     <form action="{{route('front.complete_profile')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="inputs-group">
+                            @if(auth()->user()->is_company =='person')
+                              <input type="hidden" name="is_company" value="person"/>
+                            @endif
                             <h5 class="group-title">{{ trans('messages.please_complete_your_address_details')}}</h5>
                             <div class="form-group mb-4 row">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
@@ -215,11 +218,8 @@
 @stop
 
 @push('scripts')
-
-
     @include('front.user.parts.script_edit')
     @include('front.user.parts.add_location_map')
     {{--    @include('front.layouts.parts.map')--}}
     {{--    @include('front.auth.ajax_get_cities')--}}
-
 @endpush

@@ -182,12 +182,12 @@
                                     {{--                                    </li>--}}
                                     <li class="nav-item">
                                         <div class="nav-link ">
-                                            <span class="hvr-shutter-out-horizontal   ">
+                                            <span class="hvr-shutter-out-horizontal">
                                                     <a href="{{ isLocalized("ar") }}" class="arabic {{ app()->isLocale('ar') ? 'active-lang' : '' }}">
                                                         @lang('messages.ar.ar')
                                                     </a>
                                             </span>  ||
-                                            <span class="hvr-shutter-out-horizontal  ">
+                                            <span class="hvr-shutter-out-horizontal">
                                                    <a href="{{ isLocalized("en") }}" class="arabic {{ app()->isLocale('en') ? 'active-lang' : '' }}">
                                                        @lang('messages.en.en')
                                                    </a>
@@ -223,9 +223,7 @@
 {{--                                               id="signInBtn" href="{{route('front.home')}}"--}}
                                                 href="{{route('front.show_login')}}">@lang('messages.login')</a>
                                         </li>
-
                                     @endif
-
                                 </ul>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-<main class="categories-bar">
+<main class="categories-bar" dir="{{ direction() }}">
     {{--    @inject('auctions', 'App\Models\Auction')--}}
     <div class="container">
         {{--        <div class="owl-carousel categories-bar-carousel owl-theme">--}}

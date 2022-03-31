@@ -24,8 +24,6 @@
     <link rel="stylesheet" href="{{asset('Front/assets/css/splash-animation.min.css')}}">
     <link rel="stylesheet" href="{{asset('Front/assets/css/style.css')}}"/>
 
-
-{{--//--}}
     <link href="{{asset('Front/assets/css/lightbox.min.css')}}" rel="stylesheet"/>
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
@@ -36,15 +34,7 @@
     <title>Mazadat/@yield('title')</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
-
-
-
-
-
     {{--    // dropzon --}}
-
-
-
 
 </head>
 

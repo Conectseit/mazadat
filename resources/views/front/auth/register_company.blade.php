@@ -5,8 +5,8 @@
 @endsection
 @section('content')
     @include('front.auctions.parts.head')
-    <section class="sign-up-page">
-        <div class="container">
+    <section class="sign-up-page" dir="{{ direction() }}">
+        <div class="container" >
             <h4 class="title"> {{ trans('messages.register_company') }}</h4>
 
             @include('front.layouts.parts.alert')
@@ -100,7 +100,7 @@
                         </div>
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="password-confirm" class="form-label">تاكيد كلمة المرور</label>
+                                <label for="password-confirm" class="form-label">{{trans('messages.confirm-password')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 <input type="password" class="form-control" id="password-confirm"
