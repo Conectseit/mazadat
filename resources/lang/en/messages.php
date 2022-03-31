@@ -284,7 +284,7 @@ return [
         'count_of_buyer'  => 'count of bids',
         'remaining_time'  => 'remaining time',
         'auction_details' => ' auction details',
-        'make_bid'        => 'make bid',
+        'make_bid'        => 'Make Bid',
         'auction'         => 'auction',
         'auctions'        => 'auctions',
         'name'            => 'auction name',
