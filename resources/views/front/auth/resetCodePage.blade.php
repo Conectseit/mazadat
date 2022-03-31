@@ -28,8 +28,7 @@
 @endsection
 
 @section('content')
-    @include('front.auctions.parts.head')
-    <section class="sign-up-page">
+    <section class="sign-up-page" dir="{{ direction() }}">
         <div class="container">
 {{--            <h4 class="title"> {{ trans('messages.activation') }}</h4>--}}
             @include('front.layouts.parts.alert')

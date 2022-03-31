@@ -18,7 +18,7 @@ return [
     'profile'               => 'Profile',
     'profile-info'          => 'profile-info',
     'account-settings'      => 'account-settings',
-    'add'                   => 'add new',
+    'add'                   => 'Add',
     'all'                   => ' all',
     'all_the'               => ' all',
     'image'                 => 'image',
@@ -42,7 +42,24 @@ return [
 //    'active'                => 'فعال',
 
     'activation_code_is'        => 'كود التفعيل هو : :code',
-    'wallet'                    => 'wallet',
+    'wallet'                    => 'Wallet',
+    'current_wallet'            => 'Current Wallet  : ',
+    'choose_available_limit'    => 'Choose Available Limit',
+    'available_limit'           => 'Available Limit  : ',
+    'choose_payment_method'     => 'Choose Payment Method',
+    'cheque'                    => 'Cheque',
+    'bank_deposit'              => 'Bank Deposit',
+    'online_pay'                => 'Online Payment',
+    'online_payment'            => 'Online Payment',
+    'pay'                       => 'Pay',
+    'our_offices'               => 'Our Offices',
+    'upload_receipt'            => 'Upload Receipt',
+    'send_receipt'              => 'Upload Receipt',
+    'choose_image'              => 'Upload Image',
+    'date'                      => 'date',
+    'send_sms'                  => 'Send Through SMS',
+
+
     'select'                    => 'Select',
     'quick_links'               => 'quick links',
     'cancel_delete'             => 'cancel delete',
@@ -51,10 +68,10 @@ return [
     'password'                  => 'Password',
     'confirm_password'          => 'Confirm password',
 
-    'name_ar'  => 'name arabic',
-    'name_en'  => ' name english',
-    'value_ar' => 'name arabic',
-    'value_en' => ' name english',
+    'name_ar'  => 'Arabic Name',
+    'name_en'  => 'English Name',
+    'value_ar' => 'Arabic Name',
+    'value_en' => 'English Name',
     'value'    => 'value ',
 
     'not_accept'           => 'not accept ',
@@ -70,6 +87,9 @@ return [
     'mobile'               => ' Mobile',
     'email'    => 'Email',
     'P_O_Box'  => 'P_O_Box',
+    'fax'      => 'Fax',
+    'address'  => 'Address',
+
     'gender'   => 'gender',
     'female'   => 'female',
     'male'     => 'male',
@@ -79,6 +99,8 @@ return [
 //    'person'   => ' person',
 //    'company'  => ' company',
     'no_value' => '  no value',
+    'my_profile'              => 'My Profile',
+
 
 
 
@@ -118,7 +140,7 @@ return [
 
  //======= options========
     'option' => [
-        'options' => 'options',
+        'options' => 'Options',
         'option' => ' option',
         'option_details' => 'option details',
         'all_options' => 'all options',
@@ -166,11 +188,11 @@ return [
         'conditions_terms_en' => 'conditions & terms in english',
         'hour' => 'hour',
         'day' => 'day',
-        'bank_settings' => 'bank account settings',
-        'bank_name_ar' => 'bank name in arabic ',
-        'bank_name_en' => 'bank name in english',
-        'account_number' => ' account_number ',
-        'branch' => ' branch ',
+        'bank_settings' => 'Bank Account Settings',
+        'bank_name_ar' => 'Bank Arabic Name  ',
+        'bank_name_en' => 'Bank English Name ',
+        'account_number' => 'Account Number ',
+        'branch' => ' Branch ',
 
         'appearance_of_ended_auctions' => 'appearance of ended auctions',
         'online_payment' => 'online payment settings',
@@ -276,14 +298,15 @@ return [
         'company'         => 'only company',
         'users'           => 'only users ',
         'delivery_charge' => 'delivery charge ',
-        'start_auction_price'     => ' start auction price ',
+        'start_auction_price'     => 'Start Auction Price ',
         'current_price'           => 'current price',
-        'value_of_increment'      => 'value of increment',
+        'value_of_increment'      => 'Value Of Increment',
         'images'                  => 'Auction Images',
         'inspection_report_image' => 'inspection report image',
         'seller_full_name'        => 'seller full name',
-        'choose_category'         => 'choose category',
+        'choose_category'         => 'Choose Category',
         'add'                     => 'add new',
+        'add_new'                 => 'Add New Auction',
         'edit'                    => 'edit',
         'show'                    => 'show auction details',
         'latest_auctions'         => 'Latest auctions',
@@ -295,12 +318,12 @@ return [
         'buyer_offer'             => 'offer',
         'bids'                    => 'bids',
         'show_auction_bids'       => 'show auction bid',
-        'auction_terms_ar'        => 'auction terms in arabic',
-        'auction_terms_en'        => 'auction terms in english',
-        'auction_terms'           => 'auction terms ',
+        'auction_terms_ar'        => 'Auction Terms in Arabic',
+        'auction_terms_en'        => 'Auction Terms in English',
+        'auction_terms'           => 'Auction Terms ',
         'terms'                   => 'Terms & Conditions',
         'basic_data'                => 'basic data',
-        'choose_options'            => 'choose options',
+        'choose_options'            => 'Choose Options',
         'choose_option_details'     => 'choose option details',
         'options'                   => 'Auction Options',
         'other_data'                => 'other_data',
@@ -316,7 +339,7 @@ return [
         'inspection_location_map'   => 'Inspection Location Map',
         'calculate_delivery_charge' => 'calculate delivery charge',
         'choose_location'           => 'choose location',
-        'allowed_take_photo'        => 'allowed take photo',
+        'allowed_take_photo'        => 'Allowed Take Photo',
 
         'winner'               => ' winner of auction until mow is: ',
         'add_time/accept'      => 'add_time and accept auction',
@@ -333,9 +356,9 @@ return [
     'terms' => 'Terms & Conditions ',
     'about_mazadat' => 'about mazadat',
 
-    'city_name' => 'city name',
+    'city_name' => 'City Name',
     'city' => [
-        'city' => 'city',
+        'city' => 'City',
         'cities' => 'cities',
         'all_cities' => 'all cities',
         'add' => 'add',
@@ -392,12 +415,12 @@ return [
     ],
 
     'nationality' => [
-        'nationality' => 'nationality',
-        'nationalities' => 'nationalities',
-        'all_nationalities' => 'all nationalities',
+        'nationality' => 'Nationality',
+        'nationalities' => 'Nationalities',
+        'all_nationalities' => 'All Nationalities',
         'add' => 'add new',
-        'edit' => 'edit',
-        'latest_nationalities' => 'latest nationalities',
+        'edit' => 'Edit',
+        'latest_nationalities' => 'Latest Nationalities',
     ],
     'country' => [
         'country' => 'country',
@@ -437,7 +460,7 @@ return [
     'send' => ' Send',
     'seller/buyer' => ' type:seller/buyer',
     'change_pass' => 'change password ',
-    'activation_code' => ' activation code',
+    'activation_code' => ' Activation Code',
     'email_reset' => ' please enter activation which send to your mobile ',
     'enter_activation_code' => 'enter activation code ',
     'register_success' => 'register success',
@@ -461,11 +484,11 @@ return [
     'updated_successfully' => 'updated successfully',
     'you_should_charge_your_wallet_first' => ' you should charge your wallet first',
     'amount' => 'amount',
-    'enter_amount_you_will_pay' => 'enter amount you would add to your wallet',
-    'account_name' => 'account name ',
-    'account_number' => ' account number',
+    'enter_amount_you_will_pay' => 'Enter amount you would add to your wallet',
+    'account_name' => 'Account Name ',
+    'account_number' => ' Account Number',
     'bank_name' => 'Bank name',
-    'branch' => ' branch',
+    'branch' => ' Branch',
     'iban' => ' IBAN',
     'swift_code' => ' Swift Code',
     'routing_number' => ' Routing Number',
@@ -478,12 +501,12 @@ return [
     'paid_success' => 'add balance to your wallet success',
     'updated_success' => 'updated successfully ',
     'message_sent_success' => 'message sent success',
-    'our_address_on_map' => 'our address on map ',
+    'our_address_on_map' => 'Our Address On Map ',
     'bank_info' => 'bank info is: ',
     'Sorry_you_should_accept_auction_terms_first' => 'Sorry,you should accept auction terms first',
 
     'ar' => [
-        'ar' => 'Arabic',
+        'ar' => 'عربي',
     ],
 
     'en' => [
@@ -554,11 +577,18 @@ return [
     'user' => [
         'user' => 'user',
         'users' => 'users',
-
+        'update_profile' => 'Update Profile',
+        'complete_data' => 'Complete Account Data',
+        'bids' => 'My Bids',
+        'watched_auctions' => 'My Watched Auctions',
+        'my_auctions' => 'My Auctions',
+        'wallet' => 'My Wallet',
+        'my_wallet' => 'My Wallet',
+        'update_personal_profile' => 'Update Personal profile',
     ],
 
-    'login_as_visitor'         	=> ' login as visitor ',
-    'already_has_account'       => 'already has account?',
+    'login_as_visitor'         	=> ' login as visitor? ',
+    'already_has_account'       => 'already has account ? Login',
     'contact_us'         	    => 'Contact Us',
     'register_person'         	=> ' Register Person ',
     'register_company'         	=> ' Register Company',
@@ -593,11 +623,11 @@ return [
 
     'please_complete_your_data'                   => ' please complete your account data',
     'please_complete_your_data_to_could_make_bid' => ' please complete your account data to can make bid',
-    'additional_address'                          => ' additional address',
-    'location'                                    => 'user location ',
+    'additional_address'                          => ' Additional Address ',
+    'location'                                    => 'User Location ',
     'enter_name_ar'                               => 'enter arabic name',
     'enter_name_en'                               => 'enter english name',
-    'mobile_reset'                                => 'enter reset code sent to your mobile',
+    'mobile_reset'                                => 'Enter Reset Code Which Sent To Your Mobile',
     'you_dont_have_watched_auctions_yet'          =>'you dont have watched auctions yet ',
     'passport_image'         	                  => ' passport image',
 
@@ -607,7 +637,7 @@ return [
     'follow_us'         	=> 'Follow Us ',
     'identity'            	=> ' Identity image ',
     'support&help'         	=> 'Support & Help',
-    'forget_password'       => 'Forget pass ?',
+    'forget_password'       => 'Forget Password ?',
     'remember'              => 'Remember me',
 
     'plz_log'            	=> 'Please,Enter your account login data to can access site ',
@@ -644,7 +674,9 @@ return [
     'no_auctions_yet_for_this_company' => 'no auctions for this company yet',
     'start' => 'start now ......',
     'accept_terms' => ' you should accept conditions & terms',
-    'please_complete_your_address_details' => ' please complete your address details',
+    'please_complete_your_address_details' => 'Please Complete Your Account Details  ',
+    'developers' => 'Developed By Connect Developers Team',
+    'copy_right' => ' All Copyrights Reserved for Connect -©2022 ',
 
 
     'messages' => [
@@ -662,6 +694,7 @@ return [
         'invalid_mobile' => 'invalid mobile',
         'added_balance_successfully' => 'added balance successfully',
         'not_accept_deposit_receipt_and_send_SMS' => 'not accept deposit receipt and send SMS',
+
 
     ],
 

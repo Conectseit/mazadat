@@ -9,37 +9,35 @@
         @include('front.layouts.parts.nav_categories')
     </main>
     @include('front.layouts.parts.alert')
-    <section class="my-wallet-page">
+    <section class="my-wallet-page" dir="{{ direction() }}">
         <div class="container">
             <nav class="breadcrumb-nav" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('front.my_profile')}}">حسابى</a></li>
-                    <li class="breadcrumb-item"><a href="{{route('front.my_wallet')}}">محفظتى</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">شيك</li>
+                    <li class="breadcrumb-item" style="padding-right: 10px;"><a href="{{route('front.my_profile')}}">{{ trans('messages.my_profile') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('front.my_wallet')}}">{{ trans('messages.user.my_wallet')}}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ trans('messages.cheque')}}</li>
                 </ol>
             </nav>
         </div>
-
         <div class="wallet-balance">
             <div class="container">
                 <div class="balance-content">
-                    <h2>مكاتبنا</h2>
+                    <h2>{{ trans('messages.our_offices')}}</h2>
                 </div>
-
             </div>
         </div>
         <div class="container">
             <ul class="wallet-details">
                 <li>
-                    <p>الهاتف:</p>
+                    <p>{{ trans('messages.mobile')}} : </p>
                     <p>{{$mobile}}</p>
                 </li>
                 <li>
-                    <p>فاكس:</p>
+                    <p>{{ trans('messages.fax')}} : </p>
                     <p>{{$fax}}</p>
                 </li>
                 <li>
-                    <p>البريد الالكترونى:</p>
+                    <p>{{ trans('messages.email')}} : </p>
                     <p>{{$email}}</p>
                 </li>
             </ul>
@@ -54,7 +52,7 @@
                                             <button class="accordion-button collapsed" type="button"
                                                     data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
                                                     aria-expanded="false" aria-controls="flush-collapseOne">
-                                                العنوان
+                                                {{ trans('messages.address')}}
                                             </button>
                                         </h2>
                                         <div id="flush-collapseOne" class="accordion-collapse collapse"
@@ -92,9 +90,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <hr><br><br>
+            </div><br><br>
 
             <div class="terms">
 {{--                <h4>{{ trans('messages.our_address_on_map')}}:</h4>--}}
@@ -129,20 +125,6 @@
 {{--    <script>--}}
 {{--        @include('front.layouts.parts.map')--}}
 {{--    </script>--}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 {{--<script>--}}
@@ -234,9 +216,4 @@
 {{--<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyDdCP49XcVxRLuY-4CYtxHXxnqucDvQLE8" >--}}
 {{--<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks" >--}}
 {{--</script>--}}
-
-
-
-
-
 @endpush

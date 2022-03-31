@@ -5,14 +5,14 @@
 @endsection
 
 @section('content')
-    @include('front.auctions.parts.head')
-    <section class="sign-up-page">
+    <section class="sign-up-page"  dir="{{ direction() }}">
         @include('front.layouts.parts.alert')
 
-        <div class="container">
-            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-right text-black"></i> </a><br>
+        <div class="container" >
+            <h4 class="title">
+                <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
 
-            <h4 class="title"> {{ trans('messages.auction.add') }}</h4>
+                {{ trans('messages.auction.add_new') }}</h4>
             <div class="row">
                 <form action="{{route('front.add_auction')}}" method="post"  id="submitted-form" enctype="multipart/form-data">
                     @csrf

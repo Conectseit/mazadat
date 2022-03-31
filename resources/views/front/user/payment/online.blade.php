@@ -5,13 +5,13 @@
 @endsection
 
 @section('content')
-    <section class="my-wallet-page">
+    <section class="my-wallet-page" dir="{{ direction() }}">
         <div class="container">
             <nav class="breadcrumb-nav" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('front.my_profile')}}">حسابى</a></li>
-                    <li class="breadcrumb-item"><a href="{{route('front.my_wallet')}}">محفظتى</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">الدفع الالكترونى</li>
+                    <li class="breadcrumb-item"><a href="{{route('front.my_profile')}}">{{ trans('messages.my_profile') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('front.my_wallet')}}">{{ trans('messages.user.my_wallet')}}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{__('messages.online_pay')}}</li>
                 </ol>
             </nav>
         </div>
@@ -20,7 +20,7 @@
         <div class="wallet-balance">
             <div class="container">
                 <div class="balance-content">
-                    <h2>الدفع الالكترونى</h2>
+                    <h2>{{__('messages.online_payment')}}</h2>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
                                 <div class=" my-2">
                                     <input type="number" class="form-control"  name="amount" placeholder="{{trans('messages.amount')}}">
                                 </div>
-                                <input type="submit" class="pay-link" value="إدفع">
+                                <input type="submit" class="pay-link" value="{{trans('messages.pay')}}">
 
                             </div>
                         </form>

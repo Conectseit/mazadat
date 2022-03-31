@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-    <section class="my-profile-page edit-profile">
+    <section class="my-profile-page edit-profile" dir="{{ direction() }}">
 
         <div class="container">
 
@@ -27,10 +27,9 @@
             @if(auth()->user()->is_completed==0)
                 <h3>{{ trans('messages.please_complete_your_data')}}</h3>
             @endif
-
-            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
-                    class="fal fa-arrow-circle-right text-black"></i> </a> حسابي الشخصي
-
+            <h5 class="title">
+                <a href="{{ route('front.my_profile') }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
+                {{ trans('messages.my_profile') }}</h5>
 
             <div class="row">
                 <div class="edit-form">
@@ -46,9 +45,9 @@
                                     <label for="full_name"
                                            class="form-label"> {{ trans('messages.nationality.nationality') }}</label>
                                 </div>
-                                <div class="col-lg-10 col-md-9">
+                                <div class="col-lg-10 col-md-9" >
                                     <select class=" select form-select form-control" name="nationality_id"
-                                            aria-label="Default select example">
+                                            aria-label="Default select example" >
                                         {{--                                        <option selected disabled>{{trans('messages.select')}}</option>--}}
                                         <option selected
                                                 disabled>{{ isset(auth()->user()->nationality)? auth()->user()->nationality->$name :  trans('messages.select') }}
@@ -202,7 +201,7 @@
                             @endif
 
 
-                            <button type="submit" class="btn btn-primary submit-btn">اضافة</button>
+                            <button type="submit" class="btn btn-primary submit-btn">{{__(trans('messages.add'))}}</button>
                         </div>
                     </form>
                 </div>

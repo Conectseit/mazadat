@@ -36,15 +36,27 @@ return [
     'account_settings'      => 'اعدادات الملف الشخصي',
     'my-account'            => 'حسابي',
     'show'                  => 'عرض البيانات',
+    'date'                  => ' التاريخ',
     'Yes'                   => 'نعم',
     'No'                    => 'لا',
 
 
 
-
-
-
     'wallet'                  => 'رصيد المحفظة',
+    'current_wallet'          => 'الإيداع الحالي:',
+    'available_limit'         => 'الحد المتاح:',
+    'cheque'                  => 'شيك',
+    'bank_deposit'            => 'ايداع بنكى',
+    'online_pay'              => 'الدفع عبر الإنترنت (بطاقة الائتمان)',
+    'online_payment'          => 'الدفع الالكترونى',
+    'pay'                     => 'إدفع',
+    'choose_available_limit'  => 'اختر الحد الخاص بك',
+    'choose_payment_method'   => 'اختر طريقة الدفع',
+    'our_offices'             => 'مكاتبنا',
+    'upload_receipt'          => 'قم برفع ايصال الدفع الخاص بك',
+    'send_receipt'            => 'رفع الفاتورة',
+    'send_sms'                => ' ارسال عن طريق رسالة نصية',
+    'choose_image'            => ' اختر صورة',
     'select'                  => 'اختر',
     'quick_links'             => 'روابط سريعة',
     'cancel_delete'           => 'تم إلغاء الحذف',
@@ -82,6 +94,7 @@ return [
     'no_value'                => ' لا يوجد',
     'email_or_mobile'         => ' البريد الالكتروني او رقم الجوال',
     'cancel'                  => 'إلغاء',
+    'my_profile'              => 'حسابي الشخصي',
 
 
 
@@ -151,7 +164,8 @@ return [
         'option_detail' => 'تفصيل التصنيف',
     ],
 
-
+    'fax' => 'فاكس',
+    'address' => 'العنوان',
     'settings' => [
         'settings' => 'الإعدادات',
         'general_settings' => 'الإعدادات العامة',
@@ -300,6 +314,14 @@ return [
     'user' => [
         'user' => 'عميل',
         'users' => 'العملاء/ المستخدمين',
+        'update_profile' => 'تعديل الحساب',
+        'complete_data' => 'تكملة بيانات الحساب',
+        'bids' => 'مشاركاتي',
+        'watched_auctions' => 'مشاهداتي',
+        'my_auctions' => 'مزاداتي',
+        'wallet' => 'المحفظة',
+        'my_wallet' => 'محفظتي',
+        'update_personal_profile' => 'تعديل الصفحة الشخصية',
 
     ],
     'person' => [
@@ -421,6 +443,7 @@ return [
         'seller_full_name' => 'اسم صاحب المزاد',
         'choose_category' => 'اختر قسم المزاد',
         'add' => 'اضافة مزاد جديد',
+        'add_new' => 'اضافة مزاد جديد',
         'edit' => 'تعديل مزاد ',
         'show' => 'عرض تفاصيل المزاد',
         'latest_auctions' => 'احدث المزادات المضافة',
@@ -572,6 +595,8 @@ return [
     'enter_middle_name' => 'ادخل الاسم الثاني ',
     'enter_last_name' => 'ادخل الاسم الاخير ',
     'enter_email' => 'ادخل البريد الالكترونى',
+    'enter_email_or_mobile' => ' ادخل البريد الالكتروني او رقم الجوال 966xxx xxx',
+
     'enter_mobile' => 'ادخل رقم الجوال : ',
     'enter_user_name' => 'ادخل  اسم المستخدم او الاسم المستعار : ',
     'register_your_account' => 'تسجيل حسابك',
@@ -638,8 +663,9 @@ return [
         'en' => 'English',
     ],
 
-    'login_as_visitor'         	=> ' الدخول كزائر ',
-    'already_has_account'       => ' , تسجيل الدخول ؟',
+    'login_as_visitor'         	=> ' الدخول كزائر ؟ ',
+
+    'already_has_account'       => 'already has account , تسجيل الدخول ؟',
     'contact_us'             	=> 'اتصل بنا ',
     'register_person'         	=> ' تسجيل مستخدين (أفراد) ',
     'register_company'         	=> ' تسجيل مؤسسات (شركات) ',
@@ -689,6 +715,8 @@ return [
     'start' => 'ابدأ الان ......',
     'accept_terms' => ' يجب عليك قبول الشروط والاحكام اولا  ',
     'please_complete_your_address_details' => ' من فضلك اكمل بيانات الحساب  ',
+    'developers' => ' برمجة وتطوير فريق  Connect للبرمجيات والتسويق',
+    'copy_right' => '© جميع الحقوق محفوظة لدي مؤسسة Connect للبرمجيات والتسويق - 2022',
 
 
 

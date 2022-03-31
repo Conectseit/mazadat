@@ -9,10 +9,12 @@
         @include('front.layouts.parts.nav_categories')
     </main>
     @include('front.layouts.parts.alert')
-    <section class="watching-page">
+    <section class="watching-page" dir="{{ direction() }}">
         <div class="container">
-            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
-                    class="fal fa-arrow-circle-right text-black"></i> </a> حسابي الشخصي<br><br>
+{{--            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-right text-black"></i> </a> حسابي الشخصي<br><br>--}}
+            <h5 class="title">
+                <a href="{{ route('front.my_profile') }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
+                {{ trans('messages.my_profile') }}</h5><br>
             @if($auctions->count() > 0)
                 @foreach($auctions as $auction)
                     <div class="watching-card">

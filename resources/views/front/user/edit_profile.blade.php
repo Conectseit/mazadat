@@ -8,7 +8,7 @@
             border-radius: 50%;
             border: 5px solid #eee;
         }
-        
+
         /*#map {*/
         /*    height: 400px;*/
         /*}*/
@@ -22,26 +22,29 @@
 @endsection
 
 @section('content')
-    <section class="my-profile-page edit-profile">
+    <section class="my-profile-page edit-profile"  dir="{{ direction() }}">
 
         <div class="container">
 
             @include('front.layouts.parts.alert')
 
-
             @if(auth()->user()->is_completed==0)
                 <h3>{{ trans('messages.please_complete_your_data')}}</h3>
             @endif
 
-            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
-                    class="fal fa-arrow-circle-right text-black"></i> </a> حسابي الشخصي
+{{--            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i--}}
+{{--                    class="fal fa-arrow-circle-right text-black"></i> </a> حسابي الشخصي--}}
+            <h5 class="title">
+                <a href="{{ route('front.my_profile') }}" class="mt-2 mx-1 back"> <i
+                        class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
+                {{ trans('messages.my_profile') }}</h5>
 
             <div class="row">
                 <div class="edit-form">
                     <form action="{{route('front.update_profile')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="inputs-group">
-                            <h5 class="group-title">تعديل الصفحة الشخصية</h5>
+                            <h5 class="group-title"> {{ trans('messages.user.update_personal_profile') }}</h5>
                             <div class="form-group mb-4 row ">
                                 <div class="avatar-upload">
                                     <div class="avatar-edit">
@@ -104,10 +107,10 @@
                             </div>
                             <div class="form-group mb-4 row">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label for="email" class="form-label">البريد الالكتروني</label>
+                                    <label for="email" class="form-label">{{trans('messages.email')}}</label>
                                 </div>
                                 <div class="col-lg-10 col-md-9">
-                                    <input type="email" class="form-control" id="email" name="email"
+                                    <input type="text" class="form-control" id="email" name="email"
                                            placeholder="{{trans('messages.enter_email')}}"
                                            value={{ auth()->user()->email}}>
                                 </div>
@@ -115,7 +118,7 @@
 
                             <div class="form-group mb-4 row">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label for="phone" class="form-label">رقم الجوال</label>
+                                    <label for="phone" class="form-label">{{trans('messages.mobile')}}</label>
                                 </div>
                                 <div class="col-lg-10 col-md-9">
                                     <div class="row">
@@ -198,7 +201,7 @@
 
                             <div class="form-group mb-4 row">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label for="password" class="form-label">كلمة المرور</label>
+                                    <label for="password" class="form-label">{{trans('messages.password')}}</label>
                                 </div>
                                 <div class="col-lg-10 col-md-9">
                                     <input type="password" class="form-control" id="password" name="password"
@@ -207,7 +210,7 @@
                             </div>
                             <div class="form-group mb-4 row">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label for="password-confirm" class="form-label">تاكيد كلمة المرور</label>
+                                    <label for="password-confirm" class="form-label">{{trans('messages.confirm-password')}}</label>
                                 </div>
                                 <div class="col-lg-10 col-md-9">
                                     <input type="password" class="form-control" id="password-confirm"
@@ -215,7 +218,7 @@
                                            placeholder="{{trans('messages.confirm-password')}}">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary submit-btn">تعديل</button>
+                            <button type="submit" class="btn btn-primary submit-btn">{{trans('messages.edit')}}</button>
                         </div>
                     </form>
                 </div>

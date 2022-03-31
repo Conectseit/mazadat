@@ -14,9 +14,9 @@
     @php($terms= 'conditions_terms_'.app()->getLocale())
     @php($app_description= 'app_description_'.app()->getLocale())
 
-    <div class="container" dir="{{ direction() }}">
+    <div class="container" >
         <div class="row">
-            <div class="col-lg-7 slog-right">
+            <div class="col-lg-7 slog-right" dir="{{ direction() }}">
                 <img class="logo" src="{{asset('Front/assets/imgs/logo-text.svg')}}" alt="logo">
                 <p class="footer-text">
                     {{App\Models\Setting::where('key',$about)->first()->value}}
@@ -54,7 +54,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-5" dir="{{ direction() }}">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="ul-parent">
@@ -108,7 +108,7 @@
                             <ul>
                                 <li>
                                     <a href="#" class="forgot" data-bs-toggle="modal"
-                                       data-bs-target="#forget_pass_modal"> {{trans('messages.forget_pass')}}</a>
+                                       data-bs-target="#forget_pass_modal"> {{trans('messages.forget_password')}}</a>
                                 </li>
                                 <li><a href="{{route('front.questions')}}">{{trans('messages.question.questions')}} </a></li>
 
@@ -139,11 +139,10 @@
     </div>
     <div class="rights">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <p>
-                        مؤسسة مزادات للتسويق  - 2022 &copy; جميع الحقوق محفوظة
-                    </p>
+            <div class="row" dir="{{ direction() }}">
+                <div class="col-lg-6" >
+                    <p>{{trans('messages.copy_right')}}</p>
+                    <h3> {{trans('messages.developers')}}</h3>
                 </div>
                 <div class="col-lg-6">
                     <div class="payment-brands">

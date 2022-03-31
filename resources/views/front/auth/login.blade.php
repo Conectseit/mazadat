@@ -49,13 +49,12 @@
                             <div class="col-sm-4">
                                 <div class="mb-3 form-check" >
                                     <input type="checkbox" class="form-check-input" name="remember" id="remember">
-                                    <label class="form-check-label" for="remember" > {{ trans('messages.remember') }}</label>
+                                    <label class="form-check-label" for="remember" style="text-decoration:underline" > {{ trans('messages.remember') }}</label>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <a href="#" class="forgot" data-bs-toggle="modal"
-                                   data-bs-target="#forget_pass_modal"> {{ trans('messages.forget_password') }}</a>
-                                <a href="#" class="forgot"></a>
+                                   data-bs-target="#forget_pass_modal" style="text-decoration:underline"> {{ trans('messages.forget_password') }}</a>
                             </div>
                         </div>
 

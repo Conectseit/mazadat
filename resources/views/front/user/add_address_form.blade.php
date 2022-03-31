@@ -34,21 +34,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {{--                        <div class="form-group mb-4 row">--}}
 {{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
 {{--                                <label for="name" class="form-label">{{trans('messages.location')}}</label>--}}
@@ -78,7 +63,7 @@
 
 {{--                        </div><br>--}}
 
-                    <button type="submit" class="btn btn-primary submit-btn">اضافة</button>
+                    <button type="submit" class="btn btn-primary submit-btn">{{__('messages.add')}}</button>
                 </div>
             </form>
         </div>

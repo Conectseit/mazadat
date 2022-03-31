@@ -29,7 +29,7 @@
 
 @section('content')
     @include('front.auctions.parts.head')
-    <section class="sign-up-page">
+    <section class="sign-up-page"  dir="{{ direction() }}">
         <div class="container">
             @include('front.layouts.parts.alert')
             <div class="row">

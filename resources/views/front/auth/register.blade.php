@@ -44,12 +44,12 @@
                 </div>
                 <div class="row d-flex align-items-center my-2">
                     <h5 class="title text-center">
-                        <a class="text-primary" href="{{route('front.show_login')}}">already have account{{trans('messages.already_has_account')}}<br></a>
+                        <a class="text-primary" href="{{route('front.show_login')}}">{{trans('messages.already_has_account')}}<br></a>
                     </h5>
                 </div>
                 <div class="row d-flex align-items-center my-1">
                     <h5 class="title text-center">
-                        <a class="text-dark" href="{{route('front.home')}}">{{trans('messages.login_as_visitor')}}</a> ...
+                        <a class="text-dark" href="{{route('front.home')}}" style="text-decoration:underline">{{trans('messages.login_as_visitor')}}</a>
                     </h5>
                 </div>
             </div>
