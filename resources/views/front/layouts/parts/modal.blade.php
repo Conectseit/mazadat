@@ -13,8 +13,8 @@
 
                     <div class="form-group mb-4 row">
                         <div class="col-lg-12 col-md-12">
-                            <input type="text" class="form-control"  name="user_name" dir="{{ direction() }}"
-                                   placeholder="{{trans('messages.enter_user_name')}}">
+                            <input type="text" class="form-control"  name="full_name" dir="{{ direction() }}"
+                                   placeholder="{{trans('messages.enter_full_name')}}">
                         </div>
                     </div>
                     <div class="form-group mb-4 row">

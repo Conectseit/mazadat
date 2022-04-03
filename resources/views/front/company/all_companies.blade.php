@@ -41,7 +41,6 @@
                     <h4>
                         <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
                         {{__('messages.company.list')}}
-
                     </h4>
                 </div>
             </div><br>
