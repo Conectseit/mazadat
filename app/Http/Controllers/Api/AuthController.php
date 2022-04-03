@@ -136,7 +136,8 @@ class AuthController extends PARENT_API
 
     public function logout(Request $request)
     {
-        auth()->user()->token->update(['jwt' => '']);
+        auth()->user()->token->update(['jwt' => '', 'fcm' =>null]);
+
         auth()->logout();
         return responseJson(true, trans('api.logout_successfully'), null); //OK
     }

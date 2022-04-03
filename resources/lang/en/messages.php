@@ -291,6 +291,9 @@ return [
         'all_auctions'    => 'all auctions',
         'done'            => 'Done Auctions',
         'on_progress'     => 'On Progress Auctions',
+        'count_of_on_progress'     => 'Count Of On Progress Auctions',
+        'count_of_done'     => 'Count Of Done Auctions',
+
         'not_accepted'    => 'not accepted',
         'auction_data'    => 'auction data',
         'who_can_see'     => 'who can see',
@@ -672,7 +675,7 @@ return [
 
 
     'no_auctions_yet_for_this_company' => 'no auctions for this company yet',
-    'start' => 'start now ......',
+    'start' => 'start now',
     'accept_terms' => ' you should accept conditions & terms',
     'please_complete_your_address_details' => 'Please Complete Your Account Details  ',
     'developers' => 'Developed By Connect Developers Team',

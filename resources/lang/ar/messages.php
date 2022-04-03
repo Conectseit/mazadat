@@ -424,6 +424,8 @@ return [
         'all_auctions' => 'جميع المزادات',
         'done' => 'المزادات المنتهية',
         'on_progress' => 'المزادات الحالية',
+        'count_of_on_progress' => 'عدد المزادات الحالية',
+        'count_of_done' => 'عدد المزادات المنتهية',
         'accepted_not_appear' => ' تم قبولهم  ولم تبدأ بعد',
         'not_accepted' => ' لم يتم قبولهم بعد',
         'pending' => 'المزادات قيد انتظار القبول من الادارة',
@@ -712,7 +714,7 @@ return [
     'not_verified_yet_and_send_SMS' => 'إلغاء قبول حساب العميل وارسال رسالة بأن بيانات الحساب غير مكتملة ',
 
     'no_auctions_yet_for_this_company' => 'لا يوجد مزادات لهذه المؤسسة حتي الان',
-    'start' => 'ابدأ الان ......',
+    'start' => 'إبدأ الاّن',
     'accept_terms' => ' يجب عليك قبول الشروط والاحكام اولا  ',
     'please_complete_your_address_details' => ' من فضلك اكمل بيانات الحساب  ',
     'developers' => ' برمجة وتطوير فريق  Connect للبرمجيات والتسويق',

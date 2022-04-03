@@ -121,6 +121,7 @@ class AuthController extends Controller
 
     public function logout()
     {
+        auth()->user()->token->update(['jwt' => '', 'fcm_web_token' =>null]);
         Auth::logout();
         return redirect()->route('front.home');
     }

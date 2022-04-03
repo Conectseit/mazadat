@@ -160,15 +160,15 @@
 {{--                    <div class=" d-flex justify-content-between">--}}
                     <div class=" col-lg-8 col-md-8">
                         <div class=" statistics btn"><b><i class="fal fa-gavel"></i>
-                            </b>{{ trans('messages.auction.on_progress') }}
+                            </b>{{ trans('messages.auction.count_of_on_progress') }}
                             :({{$auctions->where(['status'=>'on_progress','is_accepted'=>1])->count()}})
                         </div>
                         <div class=" statistics btn"><b><i class="fal fa-gavel"></i>
-                            </b>{{ trans('messages.auction.done') }}:({{$auctions->where(['status'=>'done'])->count()}})
+                            </b>{{ trans('messages.auction.count_of_done') }}:({{$auctions->where(['status'=>'done'])->count()}})
                         </div>
-                        <div class=" statistics btn"><b><i class="fal fa-gavel"></i>
-                            </b>{{ trans('messages.auction.selled') }}:؟؟
-                        </div>
+{{--                        <div class=" statistics btn"><b><i class="fal fa-gavel"></i>--}}
+{{--                            </b>{{ trans('messages.auction.selled') }}:؟؟--}}
+{{--                        </div>--}}
                     </div>
                 </div>
 

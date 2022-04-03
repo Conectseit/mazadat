@@ -105,7 +105,8 @@
         <div style="padding: 40px;">
             <a href="{{route('front.home')}}">
                 <div class="submit-btn btn btn-primary submit-btn save-btn mx-auto">
-                    {{trans('messages.start')}}<br>
+                    <i class="fal fa-arrow-circle-{{ floating('right','right') }}" style="padding-left: 2px;"></i>
+                    {{trans('messages.start')}}  <br>
                 </div>
             </a>
         </div>
