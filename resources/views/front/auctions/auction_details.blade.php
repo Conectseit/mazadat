@@ -2,8 +2,16 @@
 @section('title', trans('messages.auction.auction_details'))
 @section('style')
     <style>
-        #map {height: 400px; border: solid 1px; padding-right: 20px;}
-        .carousel-item img { height: 400px; border: solid 1px; }
+        #map {
+            height: 400px;
+            border: solid 1px;
+            padding-right: 20px;
+        }
+
+        .carousel-item img {
+            height: 400px;
+            border: solid 1px;
+        }
     </style>
 @endsection
 
@@ -15,6 +23,8 @@
         <main class="ad-main-details">
             <div class="container">
                 <div class="row">
+
+
                     @include('front.layouts.parts.make_bid_alert')
                     @if($auction->status=='on_progress')
                         <div class="col-lg-2 d-flex align-items-center">
@@ -77,9 +87,16 @@
         <section class="ad-info" dir="{{ direction() }}">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3" >
-                        <h4 class="ad-title">{{ trans('messages.category.category')}}  ({{ ($auction->category->$name )}})</h4>
-                        <div class="main-image" style="height: 200px;" >
+                    <div class="col-lg-3">
+                        <h4 class="ad-title">
+                            <a href="{{ route('front.category_auctions',$auction->category->id) }}"
+                               class="mt-2 mx-1 back"> <i
+                                    class="fal fa-arrow-circle-{{ floating('right','left') }}"
+                                    style="color: black;"></i>
+                            </a>
+                            {{ trans('messages.category.category')}} ({{ ($auction->category->$name )}})
+                        </h4>
+                        <div class="main-image" style="height: 200px;">
                             <img src="{{$auction->first_image_path}}" alt="image" class="img-thumbnail">
                         </div>
                     </div>
@@ -128,8 +145,8 @@
                                     </p>
                                 </div>
 
-                                <div class="details " id="details" >
-                                    <p ><i class="fal fa-gavel"></i>{{trans('messages.auction.current_price')}}
+                                <div class="details " id="details">
+                                    <p><i class="fal fa-gavel"></i>{{trans('messages.auction.current_price')}}
                                         :{{($auction->current_price)}}</p>
                                 </div>
                                 <div class="details" id="details">
