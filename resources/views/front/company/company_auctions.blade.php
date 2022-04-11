@@ -52,7 +52,7 @@
                                             <p class="start-date info-item">
                                                 <i class="fal fa-calendar-alt"></i>
                                                 {{trans('messages.auction.start_at')}}
-                                                يبدأ فى الثلاثاء , 16/11/2021 , 10:10
+
                                                 : {{ ($auction->start_date->format('l, m/d/Y') ) }}
 
                                             </p>
@@ -84,11 +84,11 @@
                                             </div>
                                             <div class="row">
 
-                                                <div class="col-sm-6">
-                                                    <p>
-                                                        <i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}
-                                                        :{{$auction->remaining_time['days']}}</p>
-                                                </div>
+{{--                                                <div class="col-sm-6">--}}
+{{--                                                    <p>--}}
+{{--                                                        <i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}--}}
+{{--                                                        :{{$auction->remaining_time['days']}}</p>--}}
+{{--                                                </div>--}}
                                                 @if(auth()->check())
                                                     <div class="col-sm-6">
                                                         <div class="container">
@@ -137,7 +137,7 @@
                                             <p class="start-date info-item">
                                                 <i class="fal fa-calendar-alt"></i>
                                                 {{trans('messages.auction.start_at')}}
-                                                يبدأ فى الثلاثاء , 16/11/2021 , 10:10
+{{--                                                يبدأ فى الثلاثاء , 16/11/2021 , 10:10--}}
                                                 : {{ ($auction->start_date->format('l, m/d/Y') ) }}
 
                                             </p>
@@ -169,11 +169,11 @@
                                             </div>
                                             <div class="row">
 
-                                                <div class="col-sm-6">
-                                                    <p>
-                                                        <i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}
-                                                        :{{$auction->remaining_time['days']}}</p>
-                                                </div>
+{{--                                                <div class="col-sm-6">--}}
+{{--                                                    <p>--}}
+{{--                                                        <i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}--}}
+{{--                                                        :{{$auction->remaining_time['days']}}</p>--}}
+{{--                                                </div>--}}
                                                 @if(auth()->check())
                                                     <div class="col-sm-6">
                                                         <div class="container">
