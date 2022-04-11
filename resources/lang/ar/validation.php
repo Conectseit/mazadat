@@ -191,6 +191,7 @@ return [
         'size' => 'الحجم',
 
         'full_name' => 'الإسم بالكامل',
+        'passport_image' => 'صورة الهوية او جواز السفر',
         'city_id' => 'المدينة',
         'nationality_id' => 'الجنسية',
         'banned' => 'الحظر',

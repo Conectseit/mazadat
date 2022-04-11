@@ -45,10 +45,9 @@
                     <div class="col-lg-2" style="float: {{ floating('right', 'left') }};">
                         <div class="panel bg-{{ $color }}-400">
                             <div class="panel-body" >
-                                <a href="{{route(Str::plural($model). '.'.'index')}}" style="color: whitesmoke;">
-                                <h3 class="no-margin"> {{trans('messages.count')}} ({{ model_count($model) ?? 0 }}) </h3>
-
-                                     @lang('messages.'.$model. '.' .Str::plural($model))</a>
+                                <a href="{{route(Str::plural($model). '.'.'index')}}" style="color: whitesmoke; font-weight: bold;">
+                                    <h6 class=""> {{trans('messages.count')}}   @lang('messages.'.$model. '.' .Str::plural($model))({{ model_count($model) ?? 0 }}) </h6>
+                                </a>
                             </div>
                             <div class="container-fluid">
                                 <div class="chart" id="members-online"></div>
@@ -58,10 +57,10 @@
                 @endforeach
                     <div class="col-lg-2" style="float: {{ floating('right', 'left') }};">
                         <div class="panel bg-green-400">
-                            <div class="panel-body" >
-                                <h3 class="no-margin"> {{trans('messages.count')}} ( {{App\Models\User::where('is_company', 'person')->count()}} )  </h3>
-                                <a href="{{route('persons.index')}}">
-                                    @lang('messages.person.persons')</a>
+                            <div class="panel-body">
+                                <a href="{{route('persons.index')}}" style="color: whitesmoke;">
+                                <h3 class="no-margin"> {{trans('messages.count')}} @lang('messages.person.persons') ( {{App\Models\User::where('is_company', 'person')->count()}} )  </h3>
+                                </a>
                             </div>
                             <div class="container-fluid">
                                 <div class="chart" id="members-online"></div>
@@ -126,15 +125,18 @@
             </div>
             <!-- /latest Auctions -->
         </div>
+
     </div>
     <!-- /dashboard content -->
 
-
     <!-- Footer -->
-    <div class="footer text-muted " style="text-align: center;">
-        <h3> <a href="#">Mazadat</a> by <a href="" target="_blank"> &copy; Connect</a> 2022.</h3>
+    <div class=" " style="text-align: center; padding: 80px 20px 0 0 ;">
+        <h3> <a href="#">Developed </a> by <a href="" target="_blank"> &copy; Connect Team devlopers</a> 2022.</h3>
     </div>
     <!-- /footer -->
+
+
+
 
 </div>
 <!-- /content area -->

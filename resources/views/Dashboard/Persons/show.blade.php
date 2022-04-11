@@ -104,6 +104,24 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.first_name') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control" value="{{ $person->first_name }}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.middle_name') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control" value="{{ $person->middle_name }}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-form-label col-lg-3">{{ trans('messages.last_name') }}:</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control" value="{{ $person->last_name }}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
                                                                 <label
                                                                     class="col-form-label col-lg-3">{{ trans('messages.user_name') }}
                                                                     :</label>

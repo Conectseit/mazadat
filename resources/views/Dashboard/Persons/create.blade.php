@@ -41,6 +41,12 @@
 
                     <div class="panel-body">
                         <div class="box-body">
+
+                            <div class="form-group">
+                                <label>@lang('messages.person.image'):</label>
+                                <input type="file" class="form-control image " name="image">
+                                <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview">
+                            </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">{{ trans('messages.first_name') }}</label>
                                 <div class="col-lg-9">
@@ -144,10 +150,52 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>@lang('messages.person.image'):</label>
-                                    <input type="file" class="form-control image " name="image">
-                                    <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview">
+                                <label class="col-lg-3 control-label">{{ trans('messages.block') }}</label>
+                                <div class="col-lg-9">
+                                    <input type="text" maxlength="14" name="block" value="{{ old('block') }}" class="form-control"
+                                           placeholder="{{ trans('messages.block') }}">
+                                </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">{{ trans('messages.street') }}</label>
+                                <div class="col-lg-9">
+                                    <input type="text" maxlength="14" name="street" value="{{ old('street') }}" class="form-control"
+                                           placeholder="{{ trans('messages.street') }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">{{ trans('messages.block_num') }}</label>
+                                <div class="col-lg-9">
+                                    <input type="text" maxlength="14" name="block_num" value="{{ old('block_num') }}" class="form-control"
+                                           placeholder="{{ trans('messages.block_num') }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">{{ trans('messages.signs') }}</label>
+                                <div class="col-lg-9">
+                                    <input type="text" maxlength="14" name="signs" value="{{ old('signs') }}" class="form-control"
+                                           placeholder="{{ trans('messages.signs') }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">{{ trans('messages.P_O_Box') }}</label>
+                                <div class="col-lg-9">
+                                    <input type="text" maxlength="14" name="P_O_Box" value="{{ old('P_O_Box') }}" class="form-control"
+                                           placeholder="{{ trans('messages.P_O_Box') }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>@lang('messages.identity')</label>
+                                        <input type="file" class="form-control  passport_image" name="passport_image">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview1">
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
@@ -194,6 +242,22 @@
 @stop
 @section('scripts')
     @include('front.auth.ajax_get_cities')
+
+
+
+
+    <script>
+        // ======== image preview ====== //
+        $(".passport_image").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.image-preview1').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
 @stop
 
 

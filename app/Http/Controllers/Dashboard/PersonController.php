@@ -47,14 +47,14 @@ class PersonController extends Controller
 
             $country = Country::where('id',$request->country_id)->first();
 
-            $request_data = $request->except(['image','mobile']);
+            $request_data = $request->except(['image','mobile','passport_image']);
             if ($request->image) $request_data['image'] = uploaded($request->image, 'user');
+            if ($request->passport_image) $request_data['passport_image'] = uploaded($request->passport_image, 'user');
             if ($request->mobile) {
                 $request_data['mobile'] =$country->phone_code. $request->mobile ;
             }
 
             if (User::where('mobile', $request_data['mobile'])->first()) {
-
                 return back()->with('error', 'قيمة الجوال مستخدمة من قبل');
             }
             $person = User::create($request_data+['type' => 'buyer', 'is_company' =>'person',

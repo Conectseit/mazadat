@@ -166,14 +166,13 @@ function models($withColors = false)
     {
         return [
             'teal'    => 'admin',
-            'blue'    => 'company',
-//            'pink'    => 'buyer',
-            'green'   => 'auction',
-            'orange'  => 'question',
             'grey'    => 'category',
-            'pink'  => 'contact',
+            'green'   => 'auction',
+            'blue'    => 'company',
+            'orange'  => 'question',
+            'pink'    => 'contact',
             'violet'  => 'nationality',
-            'danger-600'  => 'country',
+            'danger'  => 'country',
             'indigo'  => 'city',
 
         ];
