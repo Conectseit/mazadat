@@ -126,30 +126,7 @@
 
 
 
-    {{--        <section class="categories">--}}
 
-    {{--        <div class="container">--}}
-    {{--            <div class="row">--}}
-    {{--                <div class=" d-flex justify-content-between" >--}}
-    {{--                    <a href="{{route('front.show_add_auction')}}" class="add-auction btn "><b>  <i class="fal fa-plus-circle"></i>  </b>{{ trans('messages.auction.add') }}</a>--}}
-
-    {{--                    <a href="{{route('front.all_companies')}}" class="add-auction btn"><b>  <i class="fal fa-gavel"></i>  </b>{{ trans('messages.company.companies_auctions') }}</a>--}}
-    {{--                </div>--}}
-    {{--            </div><br>--}}
-    {{--            <div class="row">--}}
-    {{--                @foreach($categories as $category)--}}
-    {{--                <div class="col-lg-3 col-md-6">--}}
-    {{--                    <a href="{{route('front.category_auctions',$category->id)}}" class="cate-card">--}}
-    {{--                        <i class="fal fa-city"></i>--}}
-    {{--                        <img src="{{ $category->ImagePath }}" alt="" width="50" height="50" class="img-circle ">--}}
-
-    {{--                        <h4>{{$category->$name}}</h4>--}}
-    {{--                    </a>--}}
-    {{--                </div>--}}
-    {{--                @endforeach--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
 
 
     <div class="category-items-page">
@@ -208,9 +185,35 @@
                 </div>
             </div>
         </section>
+
+
+
+
+
+
+        <section class="categories">
+
+            <div class="container">
+{{--                <div class="row">--}}
+{{--                    <div class=" d-flex justify-content-between" >--}}
+{{--                        <a href="{{route('front.show_add_auction')}}" class="add-auction btn "><b>  <i class="fal fa-plus-circle"></i>  </b>{{ trans('messages.auction.add') }}</a>--}}
+
+{{--                        <a href="{{route('front.all_companies')}}" class="add-auction btn"><b>  <i class="fal fa-gavel"></i>  </b>{{ trans('messages.company.companies_auctions') }}</a>--}}
+{{--                    </div>--}}
+{{--                </div><br>--}}
+                <div class="row">
+                    @foreach($categories as $category)
+                        <div class="col-lg-3 col-md-6">
+                            <a href="{{route('front.category_auctions',$category->id)}}" class="cate-card">
+{{--                                <i class="fal fa-city"></i>--}}
+                                <img src="{{ $category->ImagePath }}" alt="" width="80" height="80"  class="img-circle" >
+                                <h4 style="padding-top: 30px;">{{$category->$name}}</h4>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
     </div>
 @stop
 
-@push('scripts')
-    <script></script>
-@endpush

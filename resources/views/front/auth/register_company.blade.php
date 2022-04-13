@@ -76,9 +76,9 @@
                                         </select>
                                     </div>
                                     <div class="col-xl-9 col-lg-8 col-sm-6">
-                                        <input type="text"   name="mobile" maxlength="14"
+                                        <input type="text"   name="mobile" maxlength="9"
                                                class="form-control   @error('mobile') is-invalid @enderror"  value="{{ old('mobile') }}"
-                                               placeholder="{{trans('messages.enter_mobile')}}xxx xxx xx">
+                                               placeholder="{{trans('messages.enter_mobile')}}xxx xxx xxx">
                                         @error('mobile')<span style="color: #e81414;">{{ $message }}</span>@enderror
                                     </div>
                                 </div>

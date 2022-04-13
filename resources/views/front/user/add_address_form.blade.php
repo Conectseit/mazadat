@@ -1,36 +1,36 @@
-<div class="row">
-    <div class=" d-flex justify-content-between">
-        <div  class="add-auction btn "><b>
+{{--<div class="row">--}}
+{{--    <div class=" d-flex justify-content-between">--}}
+{{--        <div  class="add-auction btn "><b>--}}
 {{--                <i class="fal fa-plus-circle"></i>--}}
-            </b>{{ trans('messages.additional_address') }}:</div>
-    </div>
+{{--            </b>{{ trans('messages.additional_address') }}:</div>--}}
+{{--    </div>--}}
 
-    <div class="row">
-        <div class="edit-form">
-            <form action="{{route('front.add_address')}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="inputs-group">
+{{--    <div class="row">--}}
+{{--        <div class="edit-form">--}}
+{{--            <form action="{{route('front.add_address')}}" method="post" enctype="multipart/form-data">--}}
+{{--                @csrf--}}
+{{--                <div class="inputs-group">--}}
 
-                    <div class="form-group">
-                        <label>{{trans('messages.location')}}:</label>
-                        <div class="col-lg-12">
-                            {{--                                    <input id="searchInput" class=" form-control"  placeholder=" اختر المكان علي الخريطة " name="other">--}}
-                            <div id="map"></div>
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="text" id="geo_lat" name="latitude"
-                                   value="{{isset(auth()->user()->latitude)?auth()->user()->latitude:'24.7135517'}}"
-                                   readonly="" placeholder=" latitude" class="form-control hidden d-none">
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="text" id="geo_lng" name="longitude"
-                                   value="{{isset(auth()->user()->longitude)?auth()->user()->longitude:'46.67529569'}}"
+{{--                    <div class="form-group">--}}
+{{--                        <label>{{trans('messages.location')}}:</label>--}}
+{{--                        <div class="col-lg-12">--}}
+{{--                            --}}{{--                                    <input id="searchInput" class=" form-control"  placeholder=" اختر المكان علي الخريطة " name="other">--}}
+{{--                            <div id="map"></div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-lg-6">--}}
+{{--                            <input type="text" id="geo_lat" name="latitude"--}}
+{{--                                   value="{{isset(auth()->user()->latitude)?auth()->user()->latitude:'24.7135517'}}"--}}
+{{--                                   readonly="" placeholder=" latitude" class="form-control hidden d-none">--}}
+{{--                        </div>--}}
+{{--                        <div class="col-lg-6">--}}
+{{--                            <input type="text" id="geo_lng" name="longitude"--}}
+{{--                                   value="{{isset(auth()->user()->longitude)?auth()->user()->longitude:'46.67529569'}}"--}}
 {{--                                   value="{{auth()->user()->longitude}}"--}}
-                                   readonly="" placeholder="longitude" class="form-control hidden d-none">
-                        </div>
-                        @error('latitude')<span style="color: #e81414;">{{ $message }}</span>@enderror
+{{--                                   readonly="" placeholder="longitude" class="form-control hidden d-none">--}}
+{{--                        </div>--}}
+{{--                        @error('latitude')<span style="color: #e81414;">{{ $message }}</span>@enderror--}}
 
-                    </div>
+{{--                    </div>--}}
 
 
 
@@ -63,9 +63,9 @@
 
 {{--                        </div><br>--}}
 
-                    <button type="submit" class="btn btn-primary submit-btn">{{__('messages.add')}}</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+{{--                    <button type="submit" class="btn btn-primary submit-btn">{{__('messages.add')}}</button>--}}
+{{--                </div>--}}
+{{--            </form>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}

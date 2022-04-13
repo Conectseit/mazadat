@@ -95,6 +95,7 @@ return [
     'email_or_mobile'         => ' البريد الالكتروني او رقم الجوال',
     'cancel'                  => 'إلغاء',
     'my_profile'              => 'حسابي الشخصي',
+    'update_personal_image'   => 'تعديل صورة الملف الشخصى',
 
 
 
@@ -321,6 +322,7 @@ return [
         'my_auctions' => 'مزاداتي',
         'wallet' => 'المحفظة',
         'my_wallet' => 'محفظتي',
+        'addresses' => 'عناويني',
         'update_personal_profile' => 'تعديل الصفحة الشخصية',
 
     ],
@@ -340,11 +342,18 @@ return [
         'block_num' => 'رقم المبني ',
         'signs' => 'أقرب علامة مميزه ',
         'additional_address' => 'العنوان الاضافي',
+        'additional_addresses' => 'العناوين الاضافية',
+        'main_address_on_map' => 'العنوان الرئيسي علي الخريطة',
+        'main_address' => 'العنوان الرئيسي ',
         'location' => 'الموقع ',
         'verified' => 'تم مراجعة حسابهم ',
+        'de_active' => 'مستخدم لم يفعل حسابه حتي الان',
         'not_verified' => 'لم يتم مراجعة حسابهم بعد ',
         'add_wallet' => 'اضافة رصيد الي محفظة المستخدم',
     ],
+    'no_additional_address_found' => 'لايوجد عناوين اضافية',
+    'add_address' => 'اضافة عنوان اخر',
+
     'company' => [
         'company' => 'مؤسسة',
         'companies' => 'مؤسسات',
@@ -599,7 +608,7 @@ return [
     'enter_email' => 'ادخل البريد الالكترونى',
     'enter_email_or_mobile' => ' ادخل البريد الالكتروني او رقم الجوال 966xxx xxx',
 
-    'enter_mobile' => 'ادخل رقم الجوال : ',
+    'enter_mobile' => 'ادخل رقم الجوال بدون 0: ',
     'enter_user_name' => 'ادخل  اسم المستخدم او الاسم المستعار : ',
     'register_your_account' => 'تسجيل حسابك',
 //    'enter_password' => 'كلمة المرور',
@@ -613,7 +622,7 @@ return [
     'change_pass' => 'تعيين كلمة مرور جديدة ',
     'activation_code' => ' كود التفعيل',
     'email_reset' => ' من فضلك قم بادخال كود التفعيل المرسل على  بريدك الالكتروني',
-    'mobile_reset' => ' من فضلك قم بادخال كود التفعيل المرسل على  جوالك',
+    'mobile_reset' => ' من فضلك قم بادخال كود استعادة كلمة المرور المرسل على  جوالك',
     'enter_activation_code' => 'اكتب الكود ',
     'register_success' => 'تم التسجيل بنجاح',
     'wrong_code' => 'عفوا كود التحقق غير صحيح',
@@ -654,6 +663,7 @@ return [
     'updated_success'         	=> 'تم التعديل بنجاح ',
     'message_sent_success'         	=> 'تم ارسال الرسالة بنجاح ',
     'our_address_on_map'         	=> 'موقعنا ',
+    'user_location_on_map'         	=> 'عنوان المستخدم علي الخريطة ',
     'bank_info'         	=> 'معلومات الحساب البنكي هي:  ',
     'Sorry_you_should_accept_auction_terms_first'         	=> 'يجب عليك قبول شروط واحكام المزاد اولا',
 
@@ -684,6 +694,7 @@ return [
     'forget_pass'           	=> 'نسيت كلمة المرور؟',
     'plz_log'               	=> 'من فضلك ادخل معلومات الدخول الخاصة بحسابك لتتمكن من استخدام كل خصائص الموقع ',
 
+    'complete_profile_success'         	=> 'تم تكملة بيانات حسابك والاّن يمكنك المشاركة في خصائص الموقع',
     'updated_success_wait_until_admin_accept_it'         	=> 'تم تكملة البيانات , انتظر حتي يتم مراجعتها وقبولها من ادارة الموقع',
     'Sorry_you_should_wait_until_admin_accept_you'         	=> 'يجب انتظار قبول حسابك من الادارة اولا ',
     'Sorry_you_should_complete_your_account_information_first'         	=> 'يجب تكملة معلومات حسابك اولا ',
@@ -712,6 +723,7 @@ return [
     'active_user_again_and_send_SMS_successfully' => 'تم رفع الحظر وتفعيل حساب العميل مرة اخري وارسال رسالة sms',
     'active_user_and_send_SMS_successfully' => 'تم الموافقة وتفعيل حساب العميل وارسال رسالة sms',
     'not_verified_yet_and_send_SMS' => 'إلغاء قبول حساب العميل وارسال رسالة بأن بيانات الحساب غير مكتملة ',
+    'checked_all_data_of_user_account_successfully' => 'تمت مراجعة بيانات حساب العميل ',
 
     'no_auctions_yet_for_this_company' => 'لا يوجد مزادات لهذه المؤسسة حتي الان',
     'start' => 'إبدأ الاّن',
@@ -719,8 +731,6 @@ return [
     'please_complete_your_address_details' => ' من فضلك اكمل بيانات الحساب  ',
     'developers' => ' برمجة وتطوير فريق  Connect للبرمجيات والتسويق',
     'copy_right' => '© جميع الحقوق محفوظة لدي مؤسسة Connect للبرمجيات والتسويق - 2022',
-
-
 
 ];
 

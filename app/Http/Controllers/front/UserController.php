@@ -16,6 +16,7 @@ use App\Models\Country;
 use App\Models\Document;
 use App\Models\Nationality;
 use App\Models\User;
+use App\Models\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Testing\Fluent\Concerns\Has;
 
@@ -34,6 +35,13 @@ class UserController extends Controller
         $data['cities'] = City::where('country_id',auth()->user()->country_id)->get();
         $data['countries'] = Country::all();
         return view('front.user.complete_profile', $data);
+    }
+    public function show_my_addresses()
+    {
+        $data['user_addresses'] = UserAddress::where('user_id',auth()->user()->id)->get();
+//        $data['user'] = User::where('id', auth()->user()->id)->first();
+
+        return view('front.user.my_addresses', $data);
     }
 
 
@@ -56,8 +64,9 @@ class UserController extends Controller
         if ($request->passport_image) {
             $request_data['passport_image']  = uploaded($request->passport_image, 'user');
         }
-        $user->update($request_data+['is_completed'=>1]);
-        return back()->with('success', trans('messages.updated_success_wait_until_admin_accept_it'));
+        $user->update($request_data+['is_completed'=>1,'is_verified'=>1]);
+         return redirect()->route('front.my_profile')->with('success', trans('messages.complete_profile_success'));
+//        return back()->with('success', trans('messages.updated_success_wait_until_admin_accept_it'));
     }
 
     public function updateProfile(updateProfileRequest $request)
@@ -99,15 +108,29 @@ class UserController extends Controller
         return back()->with('success', trans('messages.updated_success'));
     }
 
+    public function update_personal_image(updatePersonalImageRequest $request)
+    {
+        $request_data = $request->except(['image']);
+        if ($request->image) {
+            $request_data['image'] = $request_data['image'] = uploaded($request->image, 'user');
+        }
+        $user = auth()->user();
+        $user->update($request_data);
+        return back()->with('success', trans('messages.updated_success'));
+    }
 
 
 
-
+    public function show_add_address()
+    {
+        $data['user'] = User::where('id', auth()->user()->id)->first();
+        return view('front.user.show_add_address', $data);
+    }
     public function addAddress(AdditionalAddressRequest $request)
     {
         $user = auth()->user();
-        $user->update($request->all());
-        return back()->with('success', trans('messages.updated_success'));
+         UserAddress::create($request->all() + ['user_id' => $user->id]);
+        return redirect()->route('front.show_my_addresses')->with('success', trans('messages.added_success'));
     }
 
 

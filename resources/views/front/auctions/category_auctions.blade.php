@@ -1,8 +1,5 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.category.auctions'))
-@section('style')
-    <style></style>
-@endsection
 @section('content')
     <main class="categories-bar row">
         @include('front.layouts.parts.nav_categories')
@@ -70,14 +67,6 @@
                                             <option value="high_ending">high_ending</option>
                                         </select>
                                     </div>
-                                    {{--                                    <div class="col-lg-3 col-md-6"><select class="form-select"--}}
-                                    {{--                                                                           aria-label="Default select example">--}}
-                                    {{--                                            <option selected>Open this select menu</option>--}}
-                                    {{--                                            <option value="1">One</option>--}}
-                                    {{--                                            <option value="2">Two</option>--}}
-                                    {{--                                            <option value="3">Three</option>--}}
-                                    {{--                                        </select>--}}
-                                    {{--                                    </div>--}}
                                 </div>
                                 <button class="submit-btn">تطبيق</button>
                             </form>
@@ -106,9 +95,6 @@
                                 type="button" role="tab" aria-controls="profile"
                                 aria-selected="false">{{ trans('messages.auction.done') }}</button>
                     </li>
-                    {{--                        <li class="nav-item" role="presentation">--}}
-                    {{--                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>--}}
-                    {{--                        </li>--}}
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>
@@ -136,7 +122,6 @@
                                                     <p class="start-date info-item">
                                                         <i class="fal fa-calendar-alt"></i>
                                                         {{trans('messages.auction.start_at')}}
-                                                        {{--                                    يبدأ فى الثلاثاء , 16/11/2021 , 10:10--}}
                                                         : {{isset($auction->start_date)? ($auction->start_date->format('l, m/d/Y') ):''}}
 
                                                     </p>
@@ -220,7 +205,6 @@
                                                 <p class="start-date info-item">
                                                     <i class="fal fa-calendar-alt"></i>
                                                     {{trans('messages.auction.start_at')}}
-                                                    {{--                                    يبدأ فى الثلاثاء , 16/11/2021 , 10:10--}}
                                                     : {{isset($auction->start_date)? ($auction->start_date->format('l, m/d/Y') ):''}}
 
                                                 </p>
@@ -286,13 +270,9 @@
 
                             </div>
                         @endif
-
-
                         <div class="d-flex justify-content-center">
                             {!! $on_progress_auctions->links() !!}
                         </div>
-
-
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><br>
 

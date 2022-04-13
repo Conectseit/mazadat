@@ -32,7 +32,7 @@ class CategoryRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'name_ar' => 'required',
+                    'name_ar' => 'bail|required',
                     'name_en' => 'required',
                     'description_ar' => 'required',
                     'description_en' => 'required',

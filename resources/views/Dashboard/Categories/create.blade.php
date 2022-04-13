@@ -1,5 +1,15 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.create-var',['var'=>trans('messages.category.category')]))
+@section('style')
+    <style>
+        .form-group input[required] + .label-text:after,
+        .form-group select[required] {
+            color: #c00;
+            content: " *";
+            font-family: serif;
+        }
+    </style>
+@endsection
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
@@ -15,7 +25,8 @@
 @endsection
 
 @section('content')
-    @include('Dashboard.layouts.parts.validation_errors')
+{{--    @include('Dashboard.layouts.parts.validation_errors')--}}
+
     <div class="row" style="padding: 15px;">
         <div class="col-md-6">
 
@@ -38,31 +49,54 @@
 
                     <div class="panel-body">
                         <div class="box-body">
+
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="name_ar"
-                                       placeholder="@lang('messages.name_ar') ">
+                                    <input type="text" class="form-control"
+                                           value="{{ old('name_ar') }}" name="name_ar"
+                                           placeholder="@lang('messages.name_ar')" required>
+                                    <span class="label-text"></span>
+                                @error('name_ar') <span  class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{ old('name_en') }}"  name="name_en"
+                                       placeholder="@lang('messages.name_en')" required>
+                                <span class="label-text"></span>
+                                @error('name_en') <span  class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{ old('description_ar') }}"  name="description_ar"
+                                       placeholder="@lang('messages.description_ar')" required>
+                                <span class="label-text"></span>
+                                @error('description_ar') <span  class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="name_en"
-                                       placeholder="@lang('messages.name_en') ">
+                                <input type="text" class="form-control" value="{{ old('description_en') }}"  name="description_en"
+                                       placeholder="@lang('messages.description_en')" required>
+                                <span class="label-text"></span>
+                                @error('description_en') <span  class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" value="" name="description_ar"
-                                       placeholder="@lang('messages.description_ar') ">
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <input type="number" class="form-control " value="" name="auction_commission"--}}
+{{--                                       placeholder="@lang('messages.auction_commission')   /100 ريال ">--}}
+{{--                            </div>--}}
+
+
 
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="description_en"
-                                       placeholder="@lang('messages.description_en') ">
+                                <input type="text" class="form-control"
+                                       value="{{ old('auction_commission') }}" name="auction_commission"
+                                       placeholder="@lang('messages.auction_commission')" required>
+                                <span class="label-text"></span>
+                                @error('auction_commission') <span class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" value="" name="auction_commission"
-                                       placeholder="@lang('messages.auction_commission')   /100 ريال ">
-                            </div>
+
+
                             <div class="form-group">
                                 <label>@lang('messages.image')</label>
                                 <input type="file" class="form-control image " name="image">
+                                @error('image')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
 
                             <div class="form-group">

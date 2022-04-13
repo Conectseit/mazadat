@@ -159,7 +159,6 @@ class Notification extends Model
     public function sendAcceptAccountNotify($user_id)
     {
         $user = User::find($user_id);
-
         if (is_null($user)) {
             return back()->with('class', 'success')->with('message', trans('messages.messages.user_not_found'));
         }

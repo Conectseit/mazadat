@@ -137,9 +137,7 @@
                                             <p class="start-date info-item">
                                                 <i class="fal fa-calendar-alt"></i>
                                                 {{trans('messages.auction.start_at')}}
-{{--                                                يبدأ فى الثلاثاء , 16/11/2021 , 10:10--}}
                                                 : {{ ($auction->start_date->format('l, m/d/Y') ) }}
-
                                             </p>
                                             <div class="row">
                                                 <div class="col-sm-6">
@@ -207,16 +205,9 @@
                         </div>
 
                     </div>
-                    {{--                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>--}}
                 </div>
 
             </div>
         </section>
     </div>
 @stop
-
-@push('scripts')
-    <script>
-
-    </script>
-@endpush

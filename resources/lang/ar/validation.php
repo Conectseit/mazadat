@@ -211,7 +211,7 @@ return [
         'seller_id'         	=> ' صاحب المزاد',
         'category_id'         	=> 'القسم ',
         'inspection_report_images'         	=> 'صور تقارير الفحص ',
-        'images'         	=> 'صورالمزاد ',
+        'images'            	=> 'صورالمزاد ',
         'option_ids'         	=> 'تصنيفات المزاد ',
 
 

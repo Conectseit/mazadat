@@ -20,16 +20,16 @@
     <section class="my-profile-page edit-profile" dir="{{ direction() }}">
 
         <div class="container">
-
+            <h5 class="title">
+                <a href="{{ route('front.my_profile') }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
+                {{ trans('messages.my_profile') }}</h5>
             @include('front.layouts.parts.alert')
 
 
             @if(auth()->user()->is_completed==0)
-                <h3>{{ trans('messages.please_complete_your_data')}}</h3>
+                <h3>(Not completed) {{ trans('messages.please_complete_your_data')}}  </h3>
             @endif
-            <h5 class="title">
-                <a href="{{ route('front.my_profile') }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
-                {{ trans('messages.my_profile') }}</h5>
+
 
             <div class="row">
                 <div class="edit-form">
@@ -195,13 +195,35 @@
                                              src="{{ auth()->user()->passport_image_path}}" width="250px"/>
                                     </div>
                                     @error('passport_image')<span style="color: #e81414;">{{ $message }}</span>@enderror
-
                                 </div>
+
+                                    <div class="form-group">
+                                        <label>{{trans('messages.user_location_on_map')}}:</label>
+                                        <div class="col-lg-12">
+                                            {{--                                    <input id="searchInput" class=" form-control"  placeholder=" اختر المكان علي الخريطة " name="other">--}}
+                                            <div id="map"></div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="geo_lat" name="latitude"
+                                                   value=""
+{{--                                                   value="{{isset(auth()->user()->latitude)?auth()->user()->latitude:'24.7135517'}}"--}}
+                                                   readonly="" placeholder=" latitude" class="form-control hidden d-none">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="geo_lng" name="longitude"
+                                                   value=""
+{{--                                                   value="{{isset(auth()->user()->longitude)?auth()->user()->longitude:'46.67529569'}}"--}}
+                                                   {{--                                   value="{{auth()->user()->longitude}}"--}}
+                                                   readonly="" placeholder="longitude" class="form-control hidden d-none">
+                                        </div>
+                                        @error('latitude')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
+                                    </div>
 
                             @endif
 
 
-                            <button type="submit" class="btn btn-primary submit-btn">{{__(trans('messages.add'))}}</button>
+                            <button type="submit" class="btn btn-primary submit-btn">{{__(trans('messages.send'))}}</button>
                         </div>
                     </form>
                 </div>

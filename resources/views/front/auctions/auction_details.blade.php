@@ -2,16 +2,8 @@
 @section('title', trans('messages.auction.auction_details'))
 @section('style')
     <style>
-        #map {
-            height: 400px;
-            border: solid 1px;
-            padding-right: 20px;
-        }
-
-        .carousel-item img {
-            height: 400px;
-            border: solid 1px;
-        }
+        #map { height: 400px; border: solid 1px; padding-right: 20px; }
+        .carousel-item img { height: 400px; border: solid 1px; }
     </style>
 @endsection
 
@@ -307,10 +299,6 @@
                         @foreach($auction->auctiondata as $option)
 
                             <div class="col-md-3 col-6">
-                                {{--                                <p>{{$option->$name}}</p>--}}
-                                {{--                                <p>{{$option->option_detail->option->$name}}</p>--}}
-                                {{--                                <p>{{$option->option_detail->$value}}</p>--}}
-
                                 <div class="description" id="description">
                                     <h5>{{$option->option_detail->option->$name}}:</h5>
                                     <p>{{$option->option_detail->$value}}</p>

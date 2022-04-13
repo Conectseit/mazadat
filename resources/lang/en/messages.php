@@ -100,6 +100,7 @@ return [
 //    'company'  => ' company',
     'no_value' => '  no value',
     'my_profile'              => 'My Profile',
+    'update_personal_image'   => 'update personal image',
 
 
 
@@ -454,7 +455,7 @@ return [
     'enter_last_name' => 'enter last name',
     'enter_email' => '  enter email',
     'enter_user_name' => '  enter user name',
-    'enter_mobile' => 'enter mobile :',
+    'enter_mobile' => 'enter mobile with out zero :',
     'register_your_account' => 'Register your account',
     'enter_password' => 'enter password ',
     'confirm-password' => 'Confirm Password',
@@ -505,6 +506,7 @@ return [
     'updated_success' => 'updated successfully ',
     'message_sent_success' => 'message sent success',
     'our_address_on_map' => 'Our Address On Map ',
+    'user_location_on_map' => 'User Location On Map ',
     'bank_info' => 'bank info is: ',
     'Sorry_you_should_accept_auction_terms_first' => 'Sorry,you should accept auction terms first',
 
@@ -536,6 +538,7 @@ return [
         'additional_address' => 'additional address',
         'location' => 'location ',
         'verified' => 'verified',
+        'de_active' => 'not active his account yet',
         'not_verified' => 'not verified',
         'latest_persons' => 'latest persons',
         'data_need_accept' => 'data need accept',
@@ -587,6 +590,8 @@ return [
         'my_auctions' => 'My Auctions',
         'wallet' => 'My Wallet',
         'my_wallet' => 'My Wallet',
+        'addresses' => 'My Addresses',
+
         'update_personal_profile' => 'Update Personal profile',
     ],
 
@@ -645,6 +650,7 @@ return [
 
     'plz_log'            	=> 'Please,Enter your account login data to can access site ',
 
+    'complete_profile_success'                          	=> 'complete profile success',
     'updated_success_wait_until_admin_accept_it'         	=> 'تم تكملة البيانات , انتظر حتي يتم مراجعتها وقبولها من ادارة الموقع',
     'Sorry_you_should_wait_until_admin_accept_you'         	=> 'يجب انتظار قبول حسابك من الادارة اولا ',
     'Sorry_you_should_complete_your_account_information_first'         	=> 'يجب تكملة معلومات حسابك اولا ',
@@ -660,7 +666,7 @@ return [
     => 'عفوا تم حظر حسابك من قبل ادارة الموقع . يمكنك التواصل مع خدمة العملاء',
 
 
-    'accept_auction' => 'تم قبول المزاد',
+    'accept_auction' => 'accept auction',
     'need_update' => ' ارسال رسالة لتعديل المزاد',
     'make_done_auction' => 'تم سحب المزاد وانهاؤه',
     'send_sms_to_auction_owner_successfully' => 'تم ارسال رسالة نصية لصاحب المزاد بنجاح',
@@ -670,6 +676,7 @@ return [
     'active_user_again_and_send_SMS_successfully' => 'تم رفع الحظر وتفعيل حساب العميل مرة اخري وارسال رسالة sms',
     'active_user_and_send_SMS_successfully' => 'تم الموافقة وتفعيل حساب العميل وارسال رسالة sms',
     'not_verified_yet_and_send_SMS' => 'الغاء قبول حساب العميل وارسال رسالة بأن بيانات الحساب غير مكتملة ',
+    'checked_all_data_of_user_account_successfully' => 'checked all data of user account successfully',
 
 
 

@@ -67,13 +67,29 @@
                                 </div>
                             </div>
 
+
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">{{ trans('messages.mobile') }}</label>
-                                <div class="col-lg-9">
-                                    <input type="text" name="mobile"  maxlength="14" value="{{ old('mobile') }}" class="form-control"
-                                           placeholder="{{ trans('messages.mobile') }}">
+                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.mobile') }} </label>
+                                <div class="col-lg-5">
+                                    <select name="country_id" class="select form-control"  id="country">
+                                        <option selected disabled>{{trans('messages.choose_country_code')}}</option>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}"> {{ $country->$name }}{{ $country->phone_code }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input type="text" maxlength="9" name="mobile" value="{{ old('mobile') }}" class="form-control"
+                                           placeholder="{{trans('messages.enter_mobile')}}xxx xxx xxx">
                                 </div>
                             </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label class="col-lg-3 control-label">{{ trans('messages.mobile') }}</label>--}}
+{{--                                <div class="col-lg-9">--}}
+{{--                                    <input type="text" name="mobile"  maxlength="14" value="{{ old('mobile') }}" class="form-control"--}}
+{{--                                           placeholder="{{ trans('messages.mobile') }}">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">{{ trans('messages.P_O_Box') }}</label>
                                 <div class="col-lg-9">
@@ -95,6 +111,7 @@
                                 <div class="col-lg-9">
                                     <input type="password" class="form-control" name="password_confirmation"
                                            placeholder=" {{ trans('messages.confirm_password') }} "/>
+                                    <p class="text-pink">  {{trans('messages.pass_terms')}}</p>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -108,17 +125,17 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.country.country') }} </label>
-                                <div class="col-lg-9">
-                                    <select name="country_id" class="select form-control"  id="country">
-                                        <option selected disabled>{{trans('messages.select')}}</option>
-                                        @foreach ($countries as $country)
-                                            <option value="{{ $country->id }}"> {{ $country->$name }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.country.country') }} </label>--}}
+{{--                                <div class="col-lg-9">--}}
+{{--                                    <select name="country_id" class="select form-control"  id="country">--}}
+{{--                                        <option selected disabled>{{trans('messages.select')}}</option>--}}
+{{--                                        @foreach ($countries as $country)--}}
+{{--                                            <option value="{{ $country->id }}"> {{ $country->$name }} </option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="form-group">
                                 <label class="col-lg-3 control-label display-block"> {{ trans('messages.city_name') }} </label>
                                 <div class="col-lg-9">

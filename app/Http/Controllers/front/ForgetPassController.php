@@ -48,7 +48,7 @@ class ForgetPassController extends Controller
         $user = User::where('reset_password_code', $request->code)->first();
 
         if (!$user) return back()->withInput($request->only('mobile'))->with('error', 'عفوا الكود التحقق غير صحيح');
-
+        $user->update(['reset_password_code' => null]);
         auth()->login($user);
         return redirect()->route('front.change-password-page');
     }

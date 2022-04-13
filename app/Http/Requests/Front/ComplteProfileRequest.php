@@ -24,6 +24,7 @@ class ComplteProfileRequest extends FormRequest
             'block_num'             => [$required,'numeric'],
 //            'delivery_time'         => 'required_if:is_company,person|in:am,pm',
             'signs'                 => [$required,'string'],
+            'latitude'              => [$required,'string'],
             'P_O_Box'               => 'required',
             'passport_image'        => [$required,'image'],
 

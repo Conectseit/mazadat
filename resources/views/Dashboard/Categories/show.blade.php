@@ -105,8 +105,8 @@
                                                             <div class="form-group">
                                                                 <label class="col-form-label col-lg-3">{{ trans('messages.category.image') }}:</label>
                                                                 <div class="col-lg-9">
-                                                                    <img src=" {{$category->image_path}} " width=" 100px " value="{{$category->image_path}}"
-                                                                     class="thumbnail image-preview">
+                                                                    <img src=" {{$category->image_path}} " width=" 150px " value="{{$category->image_path}}"
+                                                                     class=" image-preview">
                                                                 </div>
                                                             </div>
 
@@ -248,7 +248,8 @@
                                                 <tr id="option-row-{{ $option->id }}">
                                                     <td>{{ $option->id }}</td>
                                                     <td>
-                                                        <a href={{ route('options.show', $option->id) }}> {{ isNullable($option->$name) }}</a>
+                                                        {{ isNullable($option->$name) }}
+{{--                                                        <a href={{ route('options.show', $option->id) }}> {{ isNullable($option->$name) }}</a>--}}
                                                     </td>
                                                     <td>
                                                         @if( $option->option_details->count() >0)
@@ -280,6 +281,10 @@
                                                                     <i class="icon-menu9"></i>
                                                                 </a>
                                                                 <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
+                                                                    <li>
+                                                                        <a href="{{ route('options.edit',$option->id) }}"> <i
+                                                                                class="icon-database-edit2"></i>@lang('messages.edit') </a>
+                                                                    </li>
                                                                     <li>
                                                                         <a data-id="{{ $option->id }}"
                                                                            class="delete-action"

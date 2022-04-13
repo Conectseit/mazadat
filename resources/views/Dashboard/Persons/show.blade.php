@@ -32,7 +32,8 @@
                 <li class="active"><a href="#person_data" data-toggle="tab"><i
                             class="icon-menu7 position-left"></i> {{ trans('messages.person.person_data') }}</a></li>
                 <li class=""><a href="#other_data" data-toggle="tab"><i class="icon-menu7 position-left"></i> {{ trans('messages.person.data_need_accept') }}</a></li>
-                <li><a href="#add_address" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{trans('messages.person.additional_address')}}</a></li>
+                <li><a href="#main_address" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{trans('messages.person.main_address_on_map')}}</a></li>
+                <li><a href="#additional_address" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{trans('messages.person.additional_address')}}</a></li>
 
 
 
@@ -233,7 +234,7 @@
 
                                                             <div class="form-group row">
 
-                                                                @if($person->is_verified ==0)
+                                                                @if($person->is_checked_account ==0)
 {{--                                                                    <a href="person/{{$person->id}}/not_verified/" class="btn btn-danger btn-sm"><i--}}
 {{--                                                                            class="icon-close2"></i>{{trans('messages.not_verified')}}</a>--}}
 {{--                                                                    <a href="person/{{$person->id}}/verified/" class="btn btn-success btn-sm"> <i--}}
@@ -248,7 +249,7 @@
 
 
                                                             <div class="form-group row">
-                                                                @if($person->is_verified ==1)
+                                                                @if($person->is_checked_account ==1)
                                                                     <div class="btn btn-success btn-sm">
                                                                         <i class="icon-check2"></i> {{trans('messages.verified')}}</div>
                                                                 @endif
@@ -265,7 +266,90 @@
                             </div>
                             <!-- /person_data -->
                         </div>
+                        <div class="tab-pane fade" id="main_address">
+                            <div class="panel panel-flat">
+                                <div class="panel-heading">
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li><a data-action="collapse"></a></li>
+                                            <li><a data-action="reload"></a></li>
+                                            <li><a data-action="close"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <h6 class="content-group-sm text-semibold">{{ trans('messages.person.location') }}:</h6>
+                                    <div class="form-group row"><br>
+                                        {{--                                        <label class="col-form-label col-lg-3">{{ trans('messages.person.location') }}:</label>--}}
 
+                                        <div class="col-lg-9">
+                                            {{--                                                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -180px;" placeholder=" اختر المكان علي الخريطة " name="other" >--}}
+                                            <div id="map"></div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="geo_lat"  value="{{ $person->latitude }}"  name="latitude" readonly="" placeholder=" latitude " class="form-control" >
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="geo_lng"  value="{{ $person->longitude }}"  name="longitude" readonly="" placeholder="longitude" class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="additional_address">
+
+                            <div class="panel panel-flat">
+                                    <div class="panel-heading">
+                                        <div class="heading-elements">
+                                            <ul class="icons-list">
+                                                <li><a data-action="collapse"></a></li>
+                                                <li><a data-action="reload"></a></li>
+                                                <li><a data-action="close"></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        @if($person_addresses->count() > 0)
+
+                                            @foreach($person_addresses as $person_address)
+                                                <div class="row">
+                                                    <div class="form-group mb-4 row">
+                                                        <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                                            <label for="block" class="form-label"> {{trans('messages.block')}}:</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-9">{{ $person_address->block}}</div>
+                                                    </div>
+                                                    <div class="form-group mb-4 row">
+                                                        <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                                            <label for="block"
+                                                                   class="form-label"> {{trans('messages.street')}}:</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-9">{{ $person_address->street}}:</div>
+                                                    </div>
+                                                    <div class="form-group mb-4 row">
+                                                        <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                                            <label for="block" class="form-label"> {{trans('messages.block_num')}}:</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-9">{{ $person_address->block_num}}</div>
+
+                                                    </div>
+                                                    <div class="form-group mb-4 row">
+                                                        <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                                            <label for="block" class="form-label"> {{trans('messages.signs')}}:</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-9">{{ $person_address->signs}}</div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            @endforeach
+
+                                        @else
+                                            <div style="text-align: center;"><h2> @lang('messages.no_additional_address_found') </h2></div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                        </div>
 
 {{--                        <div class="tab-pane fade" id="person_auctions">--}}
 {{--                            <!-- Seller_auctions -->--}}
@@ -401,46 +485,17 @@
                                             <input type="text" class="form-control" name="title"/><br>
                                             <label> {{ trans('messages.notification.text') }} </label>
                                             <textarea class="form-control" name="text"></textarea><br>
-                                            <center>
+                                            <div style="text-align: center;">
                                                 <button type="submit"
                                                         class="btn btn-primary"> {{ trans('messages.notification.send') }}
                                                     <i class="icon-arrow-left13 position-right"></i></button>
-                                            </center>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="add_address">
-                            <div class="panel panel-flat">
-                                <div class="panel-heading">
-                                    <div class="heading-elements">
-                                        <ul class="icons-list">
-                                            <li><a data-action="collapse"></a></li>
-                                            <li><a data-action="reload"></a></li>
-                                            <li><a data-action="close"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="panel-body">
-                                    <h6 class="content-group-sm text-semibold">{{ trans('messages.person.location') }}:</h6>
-                                    <div class="form-group row"><br>
-{{--                                        <label class="col-form-label col-lg-3">{{ trans('messages.person.location') }}:</label>--}}
 
-                                        <div class="col-lg-9">
-                                            {{--                                                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -180px;" placeholder=" اختر المكان علي الخريطة " name="other" >--}}
-                                            <div id="map"></div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <input type="text" id="geo_lat"  value="{{ $person->latitude }}"  name="latitude" readonly="" placeholder=" latitude " class="form-control" >
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <input type="text" id="geo_lng"  value="{{ $person->longitude }}"  name="longitude" readonly="" placeholder="longitude" class="form-control" >
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="tab-pane fade" id="wallet">
                             <div class="panel panel-flat">
                                 <div class="panel-heading">
@@ -461,12 +516,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group row"><br>
-
-
                                         <a href="#" data-toggle="modal" data-target="#add_wallet"
                                            class="btn btn-success btn-labeled btn-labeled-left"><b><i
                                                     class="icon-plus2"></i></b>{{ trans('messages.person.add_wallet') }}
-
                                         </a>
                                     </div>
                                 </div>
@@ -477,8 +529,6 @@
             </div>
         </div>
         @include('Dashboard.Persons.add_to_wallet_modal')
-
-
     </div>
 
 @stop
@@ -494,9 +544,7 @@
                 zoom: 13
             });
             var marker = new google.maps.Marker({ position: {lat: lat_val, lng: lng_val}, map: map, draggable :true });
-
         }
-
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks" >
     </script>

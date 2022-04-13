@@ -114,12 +114,17 @@ Route::group(
 
 
         // ============ // profile ================
+        Route::any('update_personal_image', [UserController::class, 'update_personal_image'])->name('front.update_personal_image');
+
         Route::any('my_profile', [UserController::class, 'showProfile'])->name('front.my_profile');
         Route::any('edit_profile', [UserController::class, 'showEditProfile'])->name('front.edit_profile');
         Route::any('update_profile', [UserController::class, 'updateProfile'])->name('front.update_profile');
 
         Route::any('show_complete_profile', [UserController::class, 'showCompleteProfile'])->name('front.show_complete_profile');
         Route::post('complete_profile', [UserController::class, 'completeProfile'])->name('front.complete_profile');
+        Route::any('show_my_addresses', [UserController::class, 'show_my_addresses'])->name('front.show_my_addresses');
+
+        Route::get('show_add_address', [UserController::class, 'show_add_address'])->name('front.show_add_address');
         Route::any('add_address', [UserController::class, 'addAddress'])->name('front.add_address');
 
         Route::any('choose_available_limit', [UserController::class, 'choose_available_limit'])->name('front.choose_available_limit');
@@ -150,7 +155,6 @@ Route::group(
 //});
 
 
-//        Route::any('update_personal_image', [UserController::class, 'update_personal_image'])->name('front.update_personal_image');
 //        Route::any('update_personal_bio', [UserController::class, 'update_personal_bio'])->name('front.update_personal_bio');
 
 //        Route::any('user_documents', [UserController::class, 'user_documents'])->name('front.user_documents');

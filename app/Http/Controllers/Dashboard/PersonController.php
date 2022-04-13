@@ -16,6 +16,7 @@ use App\Models\Notification;
 use App\Models\Payment;
 use App\Models\Token;
 use App\Models\User;
+use App\Models\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -26,8 +27,9 @@ class PersonController extends Controller
     public function index()
     {
         $data['persons'] = User::where('is_company', 'person')->latest()->get();
-        $data['accepted_persons'] = User::where(['is_company'=> 'person','is_active'=>'active','is_accepted'=>1,'is_verified'=>1])->latest()->get();
-        $data['not_accepted_persons'] = User::where(['is_company'=> 'person','is_active'=>'active','is_verified'=>0])->latest()->get();
+        $data['accepted_persons'] = User::where(['is_company'=> 'person','is_active'=>'active','is_accepted'=>1,'is_checked_account'=>1])->latest()->get();
+        $data['not_accepted_persons'] = User::where(['is_company'=> 'person','is_active'=>'active','is_checked_account'=>0])->latest()->get();
+        $data['not_actived_persons'] = User::where(['is_company'=> 'person','is_active'=>'deactive'])->latest()->get();
         return view('Dashboard.Persons.index', $data);
     }
 
@@ -128,6 +130,7 @@ class PersonController extends Controller
             return redirect()->route('persons.index')->with('class', 'danger')->with('message', trans('messages.messages.try_access_not_found_content'));
         }
         $data['person'] = User::find($id);
+        $data['person_addresses'] = UserAddress::where('user_id',$id)->get();
 //        $data['person_auctions'] = AuctionBuyer::where('buyer_id',$id)->get();
         return view('Dashboard.Persons.show', $data);
     }
@@ -198,17 +201,19 @@ class PersonController extends Controller
     public function verified($id)
     {
         $person = User::findOrFail($id);
-        $person->update(['is_verified'=> 1]);
-        Notification::sendAcceptAccountNotify($person->id);
-        SmsController::send_sms($person->mobile, 'تم الموافقة علي بيانات حسابك من ادارة موقع مزادات' );
-        return back()->with('success',  trans('messages.active_user_and_send_SMS_successfully'));
+        $person->update(['is_checked_account'=> 1]);
+//        $person->update(['is_verified'=> 1]);
+//        SmsController::send_sms($person->mobile, 'تم الموافقة علي بيانات حسابك من ادارة موقع مزادات' );
+//        return back()->with('success',  trans('messages.active_user_and_send_SMS_successfully'));
+//        Notification::sendAcceptAccountNotify($person->id);
+        return back()->with('success',  trans('messages.checked_all_data_of_user_account_successfully'));
     }
     public function not_verified($id)
     {
         $person = User::findOrFail($id);
-        $person->update(['is_verified'=> 0]);
-        Notification::sendNotAcceptAccountNotify($person->id);
-        SmsController::send_sms($person->mobile, 'هناك خطأ في تكملة بيانات حسابك في موقع مزادات من فضلك ارسلها مرة اخري' );
+        $person->update(['is_checked_account'=> 0]);
+//        Notification::sendNotAcceptAccountNotify($person->id);
+//        SmsController::send_sms($person->mobile, 'هناك خطأ في تكملة بيانات حسابك في موقع مزادات من فضلك ارسلها مرة اخري' );
         return back()->with('success',  trans('messages.not_verified_yet_and_send_SMS'));
     }
 
