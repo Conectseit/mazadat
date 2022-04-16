@@ -154,6 +154,17 @@
                             </label>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label display-block"> @lang('messages.extra_file'): </label>
+                            <div class="col-md-6">
+                                <input type="file" class="form-control " name="extra">
+
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="form-group">
                             <label>@lang('messages.auction.images')</label>
@@ -173,8 +184,31 @@
 
                         </div>
                     </div>
+
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label display-block"> {{ trans('messages.city_name') }} </label>
+                        <div class="col-lg-9">
+                            <select name="city_id" class="select form-control"  id="cities">
+                                <option selected disabled>{{trans('messages.select')}}</option>
+                                @foreach ($cities as $city)
+                                    <option value="{{ $city->id }}"> {{ $city->$name }} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="form-group">
+                            <label class="col-lg-3 control-label"> @lang('messages.auction.address'): </label>
+                            <div class="col-md-6">
+                            <input type="text" class="form-control"  value="{{ old('address')}}" name="address"
+                                   placeholder="@lang('messages.auction.address_details') ">
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                    <div class="form-group">
+
                             <label>@lang('messages.auction.location'):</label>
                             <div class="col-lg-12">
                                 {{--                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">--}}
@@ -187,8 +221,8 @@
                                 <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">
                             </div>
                         </div><br>
-                    </div>
 
+                    </div>
                     <button type="submit" class="btn btn-primary stepy-finish mt-5" id="save-form-btn">{{ trans('messages.add_and_forward_to_list') }}
                         <i class="icon-check position-right"></i></button>
                 </form>

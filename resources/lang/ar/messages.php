@@ -221,8 +221,13 @@ return [
         'online_payment_conditions_ar' => ' شروط الدفع الالكتروني باللغة العربية',
         'online_payment_conditions_en' => ' شروط الدفع الالكتروني باللغة الانجليزية',
     ],
+    'mobile_terms' =>'ملحوظة: رقم الجوال يجب ان يكون ساري ولا يقل عن 9ارقام',
+    'condition_and_terms' => 'الشروط والأحكام',
+    'appear_name_note' => 'ملحوظة : باختياراخفاء الاسم سوف يظهر للعملاء اسمك المستعار الذي ادخلته بدلا من اسمك الاول الاخير  ',
     'about_app' => ' عن مزادات',
     'balance' => 'الرصيد',
+    'download' => 'تنزيل',
+    'extra_file' => 'ملف اضافي',
 
 
     'buttons' => [
@@ -488,7 +493,9 @@ return [
         'calculate_delivery_charge' => 'حساب اجمالي تكلفة الشحن',
         'choose_location' => 'اختر موقع توصيل المزاد',
         'allowed_take_photo' => 'امكانية طلب التصوير للمزاد',
-        'location' => 'موقع المزاد',
+        'address' => ' عنوان المزاد ',
+        'location' => ' موقع المزاد علي الخريطة',
+        'address_details' => ' / البلد/الحي',
         'unique' => ' المزادات المميزة',
         'update' => ' تعديل المزاد',
         'make_done' => ' سحب المزاد اوانهاؤه',
@@ -598,6 +605,7 @@ return [
 
     // for front
     'register' => 'تسجيل مستخدم جديد',
+    'not_have_account_register_new' => 'ليس لدي حساب, تسجيل حساب جديد ',
     'add_new_user' => 'تسجيل مستخدم جديد',
     'personal_info' => 'البيانات الشخصية',
     'enter_message' => '  اكتب رسالتك ',

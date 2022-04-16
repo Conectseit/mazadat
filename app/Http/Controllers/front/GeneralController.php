@@ -25,6 +25,12 @@ class GeneralController extends Controller
         $data['about_app'] = Setting::where('key',$about)->first()->value;
         return view('front.general.about_app', $data);
     }
+    public function condition_and_terms()
+    {
+        $about= 'conditions_terms_'.app()->getLocale();
+        $data['conditions_terms'] = Setting::where('key',$about)->first()->value;
+        return view('front.general.condition_and_terms', $data);
+    }
 
     public function contact_us(ContactRequest $request)
     {

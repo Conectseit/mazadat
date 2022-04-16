@@ -57,8 +57,9 @@
                                                <thead>
                                                <tr style="background-color:gainsboro">
                                                    <th class="text-center">id</th>
-                                                   <th class="text-center">Serial number</th>
+{{--                                                   <th class="text-center">Serial number</th>--}}
                                                    <th class="text-center">قسم</th>
+                                                   <th class="text-center">{{ trans('messages.extra_file') }}</th>
                                                    <th class="text-center">{{ trans('messages.image') }}</th>
                                                    <th class="text-center">{{ trans('messages.name') }}</th>
 {{--                                                   <th class="text-center">{{ trans('messages.description') }}</th>--}}
@@ -81,8 +82,13 @@
                                                    <tr id="auction-row-{{ $auction->id }}">
 
                                                        <td class="text-center">{{ $key+1 }}</td>
-                                                       <td class="text-center">{{ $auction->serial_number }}</td>
+{{--                                                       <td class="text-center">{{ $auction->serial_number }}</td>--}}
                                                        <td class="text-center">{{ $auction->category->$name }}</td>
+                                                       <td class="text-center">
+                                                           <a href="{{route('view',$auction->id)}}" target="_blank"> <i class="icon-file-pdf" style="color: red;"> </i></a>
+
+                                                           <a href="{{route('download',$auction->extra)}}"><i class="icon-download4"> </i> {{trans('messages.download')}}</a>
+                                                       </td>
                                                        <td class="text-center">
                                                            <a href="{{ $auction->first_image_path }}" data-popup="lightbox"><img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                        </td>

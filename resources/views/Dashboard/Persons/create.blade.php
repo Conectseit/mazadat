@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <input type="text" maxlength="9" name="mobile" value="{{ old('mobile') }}" class="form-control"
-                                           placeholder="{{trans('messages.enter_mobile')}}xxx xxx xxx">
+                                           placeholder="{{trans('messages.enter_mobile')}}5xx xxx xxx">
                                 </div>
                             </div>
 {{--                            <div class="form-group">--}}

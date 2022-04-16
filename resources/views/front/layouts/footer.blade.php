@@ -34,7 +34,7 @@
                             </h2>
                             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                                 <div class="accordion-body">
-                                    <strong>{{App\Models\Setting::where('key',$terms)->first()->value}}</strong>
+                                    <strong>{!! App\Models\Setting::where('key',$terms)->first()->value !!}</strong>
                                     {{--                                    any HTML can go within the <code>.accordion-body</code>,--}}
                                 </div>
                             </div>
@@ -141,13 +141,19 @@
         <div class="container">
             <div class="row" dir="{{ direction() }}">
                 <div class="col-lg-6" >
-                    <p>{{trans('messages.copy_right')}}</p>
-                    <h3> {{trans('messages.developers')}}</h3>
+                    <p style="font-weight: bold; font-size: 15px;">{{trans('messages.copy_right')}}</p>
+{{--                    <h3> {{trans('messages.developers')}}</h3>--}}
+
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-2">
+                    <div class="connect-logo">
+                        <img src="{{asset('Front/assets/imgs/connect-light-logo.png')}}" alt="mastercard"style="width: 150px;">
+                    </div>
+                </div>
+                <div class="col-lg-4">
                     <div class="payment-brands">
-                        <img src="{{asset('Front/assets/imgs/mastercard.svg')}}" alt="mastercard">
-                        <img src="{{asset('Front/assets/imgs/mastercard.svg')}}" alt="mastercard">
+{{--                        <img src="{{asset('Front/assets/imgs/dark-connect-logo.png')}}" alt="mastercard"style="width: 95px;">--}}
+                        <img src="{{asset('Front/assets/imgs/mastercard.svg')}}" alt="mastercard" >
                         <img src="{{asset('Front/assets/imgs/mastercard.svg')}}" alt="mastercard">
                         <img src="{{asset('Front/assets/imgs/mastercard.svg')}}" alt="mastercard">
                     </div>

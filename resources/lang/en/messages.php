@@ -199,12 +199,14 @@ return [
         'online_payment' => 'online payment settings',
         'online_payment_conditions_ar' => ' online payment conditions in arabic',
         'online_payment_conditions_en' => ' online payment conditions in english',
-
-
-
     ],
     'about_app' => ' About Us',
+    'condition_and_terms' => 'Condition & Terms',
+    'mobile_terms' =>'ملحوظة: رقم الجوال يجب ان يكون ساري ولا يقل عن 9ارقام',
+    'appear_name_note' => 'ملحوظة : باختياراخفاء الاسم سوف يظهر للعملاء اسمك المستعار الذي ادخلته بدلا من اسمك الاول الاخير  ',
 
+    'download' => 'download',
+    'extra_file' => 'extra file',
 
     'buttons' => [
         'reset_data'          => 'reset data',
@@ -350,7 +352,9 @@ return [
         'accepted_not_appear'  => ' accepted auctions & not appear',
         'pending'              => 'pending auctions',
         'selled'               => 'selled auctions',
-        'location'             => ' Auction Location',
+        'location'             => ' Auction Location on map',
+
+        'address_details'      => ' / البلد/الحي',
         'unique'               => 'Unique Auctions',
         'update'               => ' update auction',
         'bid_now'              => ' Bid now',

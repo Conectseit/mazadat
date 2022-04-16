@@ -572,15 +572,15 @@
                             <form action="{{ route('settings.update') }}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('PUT') }}
-                                <div class="form-group row">
-                                    <label
-                                        class="col-form-label col-lg-3">{{ trans('messages.settings.conditions_terms_ar') }}
+                                <div class="form-group row" >
+                                    <label class="col-form-label col-lg-3">{{ trans('messages.settings.conditions_terms_ar') }}
                                         :</label>
                                     <div class="col-lg-9">
-                                                <textarea rows="5" cols="5" name="conditions_terms_ar"
-                                                          class="form-control"
-                                                          placeholder="{{ trans('messages.settings.conditions_terms_ar') }}">{{ settings('conditions_terms_ar') }}
-                                                </textarea>
+{{--                                        <textarea type="text" style="resize: vertical;" rows="8" class="form-control"id="conditions_terms_ar" name="conditions_terms_ar">{{ settings('conditions_terms_ar') }}</textarea>--}}
+
+                                      <textarea rows="5" cols="5" name="conditions_terms_ar" class="  form-control "
+                                                  placeholder="{{ trans('messages.settings.conditions_terms_ar') }}">{{ settings('conditions_terms_ar') }}
+                                        </textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -606,19 +606,21 @@
                     <!-- /basic layout -->
                 </div>
             </div>
-        </div>@section('scripts')
+        </div>
 
-            @include('Dashboard.Settings.app_location_map')
-        @stop
+
     </div>
-
-
-
-
-
 
 @stop
 
+@section('scripts')
 
+
+    <script>
+        CKEDITOR.replace('conditions_terms_ar', { height: '400px' });
+        {{--CKEDITOR.instances.about_app_ar.setData(`{!! isset($setting) ? $setting->value : '' !!}`);--}}
+    </script>
+    @include('Dashboard.Settings.app_location_map')
+@stop
 
 

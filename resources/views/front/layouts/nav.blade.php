@@ -54,8 +54,6 @@
 {{--            </div>--}}
 
 
-
-
 {{--            <div class="mb-4 form-group row">--}}
 {{--                <div class="col-sm-2 d-flex align-items-center">--}}
 {{--                    <label for="password" class="form-label">كلمة المرور</label>--}}
@@ -137,27 +135,35 @@
                                            href="{{route('front.questions')}}">
                                             {{trans('messages.question.questions')}}</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link hvr-shutter-out-horizontal"
+                                           href="{{route('front.all_companies')}}"><i
+                                                class="fal fa-gavel"></i> @lang('messages.company.companies_auctions')
+                                        </a>
+                                    </li>
                                     @if(auth()->check())
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link hvr-shutter-out-horizontal" data-bs-toggle="modal"
+                                            <a href="#" class="nav-link hvr-shutter-out-horizontal"
+                                               data-bs-toggle="modal"
                                                data-bs-target="#contact-modal1">{{trans('messages.contact_us')}}</a>
                                         </li>
 
-                                            <li class="nav-item">
-                                                <a class="nav-link hvr-shutter-out-horizontal"
-                                                   href="{{route('front.my_notification')}}">
-                                                    <i class="fa fa-bell fa-fw"></i>
-                                                    @if( auth()->user()->notifications->where('is_seen', 0)->count() > 0)
+                                        <li class="nav-item">
+                                            <a class="nav-link hvr-shutter-out-horizontal"
+                                               href="{{route('front.my_notification')}}">
+                                                <i class="fa fa-bell fa-fw"></i>
+                                                @if( auth()->user()->notifications->where('is_seen', 0)->count() > 0)
                                                     <span class="text-danger">({{ auth()->user()->notifications->where('is_seen', 0)->count() }})</span>
-                                                    @endif
-                                                    {{trans('messages.notification.notifications')}}</a>
-                                            </li>
+                                                @endif
+                                                {{trans('messages.notification.notifications')}}</a>
+                                        </li>
 
                                     @else
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link hvr-shutter-out-horizontal" data-bs-toggle="modal"
-                                           data-bs-target="#contact-modal">@lang('messages.contact_us')</a>
-                                    </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link hvr-shutter-out-horizontal"
+                                               data-bs-toggle="modal"
+                                               data-bs-target="#contact-modal">@lang('messages.contact_us')</a>
+                                        </li>
                                     @endif
                                 </ul>
                             </div>
@@ -183,45 +189,58 @@
                                     <li class="nav-item">
                                         <div class="nav-link ">
                                             <span class="hvr-shutter-out-horizontal">
-                                                    <a href="{{ isLocalized("ar") }}" class="arabic {{ app()->isLocale('ar') ? 'active-lang' : '' }}">
+                                                    <a href="{{ isLocalized("ar") }}"
+                                                       class="arabic {{ app()->isLocale('ar') ? 'active-lang' : '' }}">
                                                         @lang('messages.ar.ar')
                                                     </a>
-                                            </span>  ||
+                                            </span> ||
                                             <span class="hvr-shutter-out-horizontal">
-                                                   <a href="{{ isLocalized("en") }}" class="arabic {{ app()->isLocale('en') ? 'active-lang' : '' }}">
+                                                   <a href="{{ isLocalized("en") }}"
+                                                      class="arabic {{ app()->isLocale('en') ? 'active-lang' : '' }}">
                                                        @lang('messages.en.en')
                                                    </a>
                                              </span>
                                         </div>
                                     </li>
 
+
                                     {{--when authinticate--}}
                                     @if(auth()->check())
 
+                                        @if(auth()->user()->is_verified==1)
+                                            <li class="nav-item">
+                                                <a class="nav-link hvr-shutter-out-horizontal"
+                                                   href="{{route('front.show_add_auction')}}"> <i class="fal fa-plus-circle"> </i> @lang('messages.auction.add')</a>
+                                            </li>
+                                        @endif
+
+
+
                                         <li class="nav-item">
-                                            <a class="nav-link hvr-shutter-out-horizontal"
-                                               href="{{route('front.logout')}}">@lang('messages.logout')</a>
-                                        </li>
-                                        <li class="nav-item">
-{{--                                            <h4 class="name"> welcome {{auth()->user()->full_name }}</h4>--}}
+                                            {{--                                            <h4 class="name"> welcome {{auth()->user()->full_name }}</h4>--}}
 
                                             <a class="nav-link hvr-shutter-out-horizontal"
-                                               href="{{route('front.my_profile')}}"> <i class="fa fa-user"></i>  {{trans('messages.profile')}}</a>
+                                               href="{{route('front.my_profile')}}"> <i
+                                                    class="fa fa-user"></i> {{trans('messages.profile')}}</a>
                                         </li>
-{{--                                        <div class="slogan-left">--}}
+                                            <li class="nav-item">
+                                                <a class="nav-link hvr-shutter-out-horizontal"
+                                                   href="{{route('front.logout')}}">@lang('messages.logout')</a>
+                                            </li>
+                                        {{--                                        <div class="slogan-left">--}}
 
-{{--                                            <h4 class="name">{{auth()->user()->full_name }}</h4>--}}
-{{--                                            <h5 class="email">{{Auth::guard('web')->user()->email}} </h5>--}}
-{{--                                        </div>--}}
+                                        {{--                                            <h4 class="name">{{auth()->user()->full_name }}</h4>--}}
+                                        {{--                                            <h5 class="email">{{Auth::guard('web')->user()->email}} </h5>--}}
+                                        {{--                                        </div>--}}
                                     @else
+                                        {{--                                        <li class="nav-item">--}}
+                                        {{--                                            <a class="nav-link hvr-shutter-out-horizontal"--}}
+                                        {{--                                               href="{{route('front.show_register')}}">  {{trans('messages.register')}}</a>--}}
+                                        {{--                                        </li>--}}
                                         <li class="nav-item">
                                             <a class="nav-link hvr-shutter-out-horizontal"
-                                               href="{{route('front.show_register')}}">  {{trans('messages.register')}}</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link hvr-shutter-out-horizontal"
-{{--                                               id="signInBtn" href="{{route('front.home')}}"--}}
-                                                href="{{route('front.show_login')}}">@lang('messages.login')</a>
+                                               {{--                                               id="signInBtn" href="{{route('front.home')}}"--}}
+                                               href="{{route('front.show_login')}}">@lang('messages.login')</a>
                                         </li>
                                     @endif
                                 </ul>

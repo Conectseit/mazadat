@@ -48,6 +48,8 @@ class AuctionRequest extends FormRequest
                         'start_auction_price'   => ['required','numeric'],
                         'value_of_increment' => ['required','numeric'],
                         'delivery_charge' => ['required','numeric'],
+                        'address'         => 'required',
+                        'extra'           => 'required|mimes:pdf|max:2048',
                         'latitude'         => 'required|numeric',
 //                        'longitude'        => 'required|numeric',
 //                        'images.*' => 'image',
@@ -62,6 +64,8 @@ class AuctionRequest extends FormRequest
                     ];
 
             }
+
+
             case 'PUT':
             case 'PATCH': {
                     return [

@@ -92,9 +92,10 @@
                                         </select>
                                     </div>
                                     <div class="col-xl-9 col-lg-8 col-sm-6">
-                                        <input type="text"  maxlength="9" name="mobile"
+                                        <input type="text"  name="mobile"  maxlength="9" minlength="9"
                                                class="form-control   @error('mobile') is-invalid @enderror"  value="{{ old('mobile') }}"
-                                               placeholder="{{trans('messages.enter_mobile')}}xxx xxx xxx">
+                                               placeholder="{{trans('messages.enter_mobile')}}5xx xxx xxx">
+                                        <h6 class="group-title">  {{trans('messages.mobile_terms')}}</h6>
                                         @error('mobile')<span style="color: #e81414;">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
@@ -143,18 +144,30 @@
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
                         <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                            <div class="col-lg-2 col-md-3">
                                 <label for="is_appear_name" class="form-label">{{ trans('messages.is_appear_name')}}</label>
                             </div>
-                            <div class="col-lg-7 col-md-6">
+                            <div class="col-lg-3 col-md-3">
                                 <label class="radio-inline">
                                     <label class="radio-inline">
                                         <input type="radio" value="0" class="styled" name="is_appear_name" checked="checked">{{trans('messages.No')}}
                                     </label>
                                     <input type="radio"  value="1" class="styled" name="is_appear_name" >{{trans('messages.Yes')}}
                                 </label>
-
                             </div>
+                            <div class="col-lg-7 col-md-6">
+                                <p>{{trans('messages.appear_name_note')}}</p>
+                            </div>
+                        </div>
+
+
+                        <div class=" form-check form-group">
+                            <a href="{{route('front.condition_and_terms')}}">
+                            <label class="form-check-label"  style="color: white; text-decoration: underline">{{ trans('messages.accept_terms')}} </label>
+                            <input type="checkbox" class="form-check-input  @error('accept_app_terms') is-invalid @enderror"
+                                   value="yes" name="accept_app_terms">
+                            </a>
+                            @error('accept_app_terms')<span style="color: #e81414;">{{ $message }}</span>@enderror
                         </div>
 
 
@@ -166,7 +179,7 @@
                             </div>
                             @error('g-recaptcha-response')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
-                            <p> {{trans('messages.accept_term')}}</p>
+{{--                            <p> {{trans('messages.accept_term')}}</p>--}}
                             <button type="submit" id="save-form-btn" class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>
                         </div>
                     </div>

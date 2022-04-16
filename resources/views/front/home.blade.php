@@ -3,13 +3,15 @@
 @section('style')
     <style>
 
-        .statistics.btn {
+        .statistics {
             text-align: center;
             border: 1px solid #fff;
-            padding: 8px;
-            color: #fff;
+            padding: 3px ;
+            margin-top: 10px;margin-bottom: 10px;
+            color: #1e3c48;
             font-size: 12px;
-            background: #1e3c48;
+            width: 220px;
+            /*background: #1e3c48;*/
         }
         .add-auction.btn {
             text-align: center;
@@ -20,37 +22,46 @@
             background: #1e3c48;
         }
 
-        .count-auction.btn {
-            text-align: center;
-            /*border: 1px solid #fff;*/
-            padding: 8px;
-            color: #fff;
-            font-size: 20px;
-            background: #d1915c;
-            width: 357px;
+        /*.count-auction.btn {*/
+        /*    text-align: center;*/
+        /*    !*border: 1px solid #fff;*!*/
+        /*    padding: 8px;*/
+        /*    color: #fff;*/
+        /*    font-size: 20px;*/
+        /*    background: #d1915c;*/
+        /*    width: 357px;*/
+        /*}*/
+        .carousel{
+            margin-top: 40px;
+            /*border-radius: 20px;*/
         }
-
-        .carousel-item img {
+        .carousel-item{
+            width: 100%;
             height: 350px;
-            /*border: 1px solid;*/
+        }
+        .carousel-item img {
+            height: 100%;
+            width: 100%;
+            border-radius: 20px;
+            border: 1px solid;
         }
 
-        .category-items-page .items .card.gallery-card .card-body {
-            background: #1e3c48;
-        }
-        .category-items-page .items .card.gallery-card .card-title {
-            text-align: center; position: static;
-        }
+        /*.category-items-page .items .card.gallery-card .card-body {*/
+        /*    background: #1e3c48;*/
+        /*}*/
+        /*.category-items-page .items .card.gallery-card .card-title {*/
+        /*    text-align: center; position: static;*/
+        /*}*/
 
-        .category-items-page .items .card.gallery-card {
-            border: 0px solid transparent;
-            transition: .3s ease-in-out;
-            border-radius: 30px;
-        }
+        /*.category-items-page .items .card.gallery-card {*/
+        /*    border: 0px solid transparent;*/
+        /*    transition: .3s ease-in-out;*/
+        /*    border-radius: 30px;*/
+        /*}*/
 
-        .category-items-page .items .card.gallery-card:hover {
-            border: 10px solid #1e3c48; opacity: .9;
-        }
+        /*.category-items-page .items .card.gallery-card:hover {*/
+        /*    border: 10px solid #1e3c48; opacity: .9;*/
+        /*}*/
 
     </style>
 @endsection
@@ -58,7 +69,7 @@
 @include('front.layouts.splash')
 
 @section('content')
-    @include('front.layouts.parts.nav_home')
+{{--    @include('front.layouts.parts.nav_home')--}}
     @include('front.layouts.parts.alert')
     <div class="mt-0">
         <div class="row">
@@ -75,16 +86,16 @@
                         <div class="carousel-item active">
                             <a href="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
                                data-popup="lightbox">
-                                <img class="d-block w-100" src="
+                                <img class="d-block " src="
 {{--                    https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide1.jpg" --}}
                                 {{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
                                      alt="First slide">
                             </a>
 
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>{{$advertisements->count() > 0 ? $advertisements->first()->$name : 'mazadat' }}</h5>
-                                {{--                        <p>University Campus</p>--}}
-                            </div>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{$advertisements->count() > 0 ? $advertisements->first()->$name : 'mazadat' }}</h5>
+                                    {{--                        <p>University Campus</p>--}}
+                                </div>
                         </div>
 
                         @foreach($advertisements as $advertisement)
@@ -92,7 +103,7 @@
                                 <div class="carousel-item">
 
                                     <a href="{{ $advertisement->ImagePath }}" data-popup="lightbox">
-                                        <img class="d-block w-100" src="{{ $advertisement->ImagePath }}"
+                                        <img class="d-block" src="{{ $advertisement->ImagePath }}"
                                              alt="Second slide">
                                     </a>
                                     <div class="carousel-caption d-none d-md-block">
@@ -130,81 +141,100 @@
 
 
     <div class="category-items-page">
-        <section class="items" dir="{{ direction() }}">
-            <div class="container">
-                @inject('auctions', 'App\Models\Auction')
-                <div class="row">
+{{--        <section class="items" dir="{{ direction() }}">--}}
+{{--            <div class="container">--}}
+{{--                @inject('auctions', 'App\Models\Auction')--}}
+{{--                <div class="row">--}}
 {{--                    <div class=" d-flex justify-content-between">--}}
-                    <div class=" col-lg-8 col-md-8">
-                        <div class=" statistics btn"><b><i class="fal fa-gavel"></i>
-                            </b>{{ trans('messages.auction.count_of_on_progress') }}
-                            :({{$auctions->where(['status'=>'on_progress','is_accepted'=>1])->count()}})
-                        </div>
-                        <div class=" statistics btn"><b><i class="fal fa-gavel"></i>
-                            </b>{{ trans('messages.auction.count_of_done') }}:({{$auctions->where(['status'=>'done'])->count()}})
-                        </div>
+{{--                    <div class=" col-lg-8 col-md-8">--}}
+{{--                        <div class=" statistics btn"><b><i class="fal fa-gavel"></i>--}}
+{{--                            </b>{{ trans('messages.auction.count_of_on_progress') }}--}}
+{{--                            :({{$auctions->where(['status'=>'on_progress','is_accepted'=>1])->count()}})--}}
+{{--                        </div>--}}
+{{--                        <div class=" statistics btn"><b><i class="fal fa-gavel"></i>--}}
+{{--                            </b>{{ trans('messages.auction.count_of_done') }}:({{$auctions->where(['status'=>'done'])->count()}})--}}
+{{--                        </div>--}}
 {{--                        <div class=" statistics btn"><b><i class="fal fa-gavel"></i>--}}
 {{--                            </b>{{ trans('messages.auction.selled') }}:؟؟--}}
 {{--                        </div>--}}
-                    </div>
-                </div>
+{{--                    </div>--}}
+{{--                </div>--}}
 
 
-                {{--                <div class="row">--}}
-                {{--                    <div class=" d-flex justify-content-between">--}}
-                {{--                        @if(auth()->check())--}}
-                {{--                            @if(auth()->user()->is_verified==1)--}}
-                {{--                        <a href="{{route('front.show_add_auction')}}" class="add-auction btn "><b> <i--}}
-                {{--                                    class="fal fa-plus-circle"></i> </b>{{ trans('messages.auction.add') }}</a>--}}
-                {{--                            @endif--}}
-                {{--                        @endif--}}
-                {{--                        <a href="{{route('front.all_companies')}}" class="add-auction btn"><b> <i--}}
-                {{--                                    class="fal fa-gavel"></i> </b>{{ trans('messages.company.companies_auctions') }}</a>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                <br>
-                <h1 style="color: #d1915c;"> {{__('messages.categories')}}</h1><br>
-                <div class="row">
+{{--                --}}{{--                <div class="row">--}}
+{{--                --}}{{--                    <div class=" d-flex justify-content-between">--}}
+{{--                --}}{{--                        @if(auth()->check())--}}
+{{--                --}}{{--                            @if(auth()->user()->is_verified==1)--}}
+{{--                --}}{{--                        <a href="{{route('front.show_add_auction')}}" class="add-auction btn "><b> <i--}}
+{{--                --}}{{--                                    class="fal fa-plus-circle"></i> </b>{{ trans('messages.auction.add') }}</a>--}}
+{{--                --}}{{--                            @endif--}}
+{{--                --}}{{--                        @endif--}}
+{{--                --}}{{--                        <a href="{{route('front.all_companies')}}" class="add-auction btn"><b> <i--}}
+{{--                --}}{{--                                    class="fal fa-gavel"></i> </b>{{ trans('messages.company.companies_auctions') }}</a>--}}
+{{--                --}}{{--                    </div>--}}
+{{--                --}}{{--                </div>--}}
+{{--                <br>--}}
+{{--                <h1 style="color: #d1915c;"> {{__('messages.categories')}}</h1><br>--}}
+{{--                <div class="row">--}}
 
-                    @foreach($categories as $category)
-                        <div class="col-lg-4 col-md-6" id="viewItem">
-                            <div class="card gallery-card" id="itemCard"
-                                 style="background: url({{ $category->ImagePath }}) center center no-repeat">
-                                <a href="{{route('front.category_auctions',$category->id)}}" class="image">
-                                    <div class="overlay">
+{{--                    @foreach($categories as $category)--}}
+{{--                        <div class="col-lg-4 col-md-6" id="viewItem">--}}
+{{--                            <div class="card gallery-card" id="itemCard"--}}
+{{--                                 style="background: url({{ $category->ImagePath }}) center center no-repeat">--}}
+{{--                                <a href="{{route('front.category_auctions',$category->id)}}" class="image">--}}
+{{--                                    <div class="overlay">--}}
 
-                                    </div>
-                                    {{--                                    <img src="{{ $category->ImagePath }}" alt="card-img">--}}
-                                </a>
-                                <div class="card-body">
-                                    <h3 class="card-title">{{$category->$name}}</h3>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-
-
-
+{{--                                    </div>--}}
+{{--                                    --}}{{--                                    <img src="{{ $category->ImagePath }}" alt="card-img">--}}
+{{--                                </a>--}}
+{{--                                <div class="card-body">--}}
+{{--                                    <h3 class="card-title">{{$category->$name}}</h3>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </section>--}}
 
 
 
-        <section class="categories">
+
+
+
+        <section class="categories" dir="{{ direction() }}">
 
             <div class="container">
-{{--                <div class="row">--}}
-{{--                    <div class=" d-flex justify-content-between" >--}}
-{{--                        <a href="{{route('front.show_add_auction')}}" class="add-auction btn "><b>  <i class="fal fa-plus-circle"></i>  </b>{{ trans('messages.auction.add') }}</a>--}}
-
-{{--                        <a href="{{route('front.all_companies')}}" class="add-auction btn"><b>  <i class="fal fa-gavel"></i>  </b>{{ trans('messages.company.companies_auctions') }}</a>--}}
+                @inject('auctions', 'App\Models\Auction')
+                <div class="row">
+                    {{--                    <div class=" d-flex justify-content-between">--}}
+                    <div class=" col-lg-3 col-md-3">
+                        <div class=" statistics "><b>
+                            </b>{{ trans('messages.auction.count_of_on_progress') }}
+                            :({{$auctions->where(['status'=>'on_progress','is_accepted'=>1])->count()}})
+                        </div>
+                        <div class=" statistics "><b><i class="fal fa-check-circle"style="color: white;background-color: green;" ></i>
+                            </b>{{ trans('messages.auction.count_of_done') }}:({{$auctions->where(['status'=>'done'])->count()}})
+                        </div>
+                    </div>
+{{--                    <div class=" col-lg-6 col-md-6">--}}
 {{--                    </div>--}}
-{{--                </div><br>--}}
+{{--                    <div class=" col-lg-3 col-md-3">--}}
+{{--                        <div class=" statistics "><b>--}}
+{{--                            </b>{{ trans('messages.auction.count_of_on_progress') }}--}}
+{{--                            :({{$auctions->where(['status'=>'on_progress','is_accepted'=>1])->count()}})--}}
+{{--                        </div>--}}
+{{--                        <div class=" statistics "><b><i class="fal fa-check-circle"></i>--}}
+{{--                            </b>{{ trans('messages.auction.count_of_done') }}:({{$auctions->where(['status'=>'done'])->count()}})--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+                </div>
+
+                <h2 style="color: var(--main-color); text-align: center"> {{__('messages.categories')}}</h2><br>
                 <div class="row">
                     @foreach($categories as $category)
-                        <div class="col-lg-3 col-md-6">
-                            <a href="{{route('front.category_auctions',$category->id)}}" class="cate-card">
+                        <div class="col-lg-3 col-md-6" >
+                            <a href="{{route('front.category_auctions',$category->id)}}" class="cate-card" dir="{{ direction() }}">
 {{--                                <i class="fal fa-city"></i>--}}
                                 <img src="{{ $category->ImagePath }}" alt="" width="80" height="80"  class="img-circle" >
                                 <h4 style="padding-top: 30px;">{{$category->$name}}</h4>
@@ -217,3 +247,6 @@
     </div>
 @stop
 
+@push('scripts')
+    <script></script>
+@endpush

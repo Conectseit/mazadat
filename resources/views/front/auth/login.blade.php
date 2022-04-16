@@ -1,6 +1,13 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.login'))
 @section('style')
+    <style>
+        .register{
+          text-decoration: underline;
+            text-align: center;
+            padding-top: 10px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -61,9 +68,9 @@
                         <div class="sign-btn">
                             <button type="submit"  id="save-form-btn" class="btn btn-primary submit-btn">{{trans('messages.login')}}</button>
                         </div>
-{{--                        <div class="sign-btn">--}}
-{{--                            <a href="{{route('front.show_register')}}" >{{trans('messages.register')}}</a>--}}
-{{--                        </div>--}}
+                        <div class="register">
+                            <a href="{{route('front.show_register')}}" >{{trans('messages.register')}}</a>
+                        </div>
 
 
 

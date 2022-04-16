@@ -496,12 +496,16 @@ main.sign-in-form.active {
 }
 
 .categories .cate-card:hover {
-  background-color: transparent;
+  /*background-color: transparent;*/
+    background-color: var(--main-color);
   border: 3px solid var(--secondary-color);
+    color: wheat;
 }
 
-.categories .col-lg-3:nth-of-type(1) .cate-card {
+
+.categories .col-lg-3:nth-of-type(1) .cate-card  {
   border-top-right-radius: 40px;
+  /*  border-top-left-radius: 40px;*/
 }
 
 .categories .col-lg-3:nth-last-of-type(1) .cate-card {
@@ -512,7 +516,7 @@ main.sign-in-form.active {
   color: var(--body-color);
   margin-bottom: 20px;
   font-size: 50px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.5s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -521,6 +525,7 @@ main.sign-in-form.active {
 
 .categories .cate-card:hover i {
   color: var(--secondary-color);
+
 }
 
 /*footer*/
@@ -659,18 +664,26 @@ footer .social a {
   font-size: 30px;
 }
 
+
 footer .social a:not(:last-of-type) {
   margin-left: 15px;
 }
 
 footer .rights {
-  margin-top: 100px;
+  /*margin-top: 100px;*/
   background-color: var(--secondary-color);
   padding: 10px 0;
 }
 
 footer .rights p {
-  margin: revert;
+    margin: revert;
+    padding-top: 36px;
+}
+.connect-logo{
+    background-color: var(--main-color);
+    border-radius: 50%;
+    text-align: center;
+
 }
 
 footer .rights .payment-brands {

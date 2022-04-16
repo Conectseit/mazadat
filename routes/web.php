@@ -81,6 +81,7 @@ Route::group(
     Route::post('contact_us', [GeneralController::class, 'contact_us'])->name('front.contact_us');
     Route::get('questions', [GeneralController::class, 'questions'])->name('front.questions');
     Route::get('about_app', [GeneralController::class, 'about_app'])->name('front.about_app');
+    Route::get('condition_and_terms', [GeneralController::class, 'condition_and_terms'])->name('front.condition_and_terms');
 
 
     Route::group(['middleware' => 'checkUserAuth'], function () {

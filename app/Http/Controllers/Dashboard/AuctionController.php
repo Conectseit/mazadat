@@ -11,6 +11,7 @@ use App\Models\AuctionBuyer;
 use App\Models\AuctionData;
 use App\Models\AuctionImage;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\InspectionImage;
 use App\Models\Notification;
 use App\Models\Option;
@@ -20,6 +21,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 class AuctionController extends Controller
@@ -40,11 +42,12 @@ class AuctionController extends Controller
         $data['categories'] = Category::with('options')->get();
         $data['options'] = Option::all();
         $data['option_details'] = OptionDetail::all();
+        $data['cities'] = City::all();
         $data['users'] = User::where('is_verified', 1)->get();
+
 //        $data['users'] = User::where('type', 'seller')->get();
         return view('Dashboard.Auctions.create', $data);
     }
-
 
     public function store(AuctionRequest $request)
     {
@@ -52,7 +55,15 @@ class AuctionController extends Controller
         try {
             $serial_number = '#' . random_int(00000, 99999);
             //======= create auction =======
-            $request_data = $request->except(['inspection_report_images' . 'images']);
+            $request_data = $request->except(['inspection_report_images' , 'images','extra']);
+
+            if ($request->extra){
+                $file=$request->extra;
+                $filename=time().'.'.$file->getClientOriginalExtension();
+                $request->extra->move('uploads/auction_pdf',$filename);
+                $request_data['extra'] =$filename;
+            }
+
 
             $auction = Auction::create($request_data + ['is_accepted' => '1', 'status' => 'not_accepted',
                     'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
@@ -262,6 +273,24 @@ class AuctionController extends Controller
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
         }
     }
+
+
+
+    public function view($id){
+        $auction=Auction::find($id);
+        return view('Dashboard.Auctions.view_file',compact('auction'));
+    }
+
+    public function download(Request $request,$extra){
+        return response()->download(public_path('uploads/auction_pdf/'.$extra));
+    }
+
+
+
+
+
+
+
 
 
     public function get_options_by_category_id(Request $request)

@@ -21,6 +21,16 @@ class Auction extends Model
         return isset($images[0]) ? asset('uploads/auctions/' . $images[0]->image) : asset('uploads/default.png');
     }
 
+
+    public function getExtraPathAttribute()
+    {
+        $extra = Auction::where('id', $this->id)->first()->extra;
+        if (!$extra) {
+            return asset('uploads/default.png');
+        }
+        return asset( 'uploads/auction_pdf/'.$this->extra);
+    }
+
     public function getFirstInspectionImagePathAttribute()
     {
         $images = $this->inspectionimages;

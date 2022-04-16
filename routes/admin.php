@@ -112,6 +112,10 @@ Route::group(
                 Route::get('auction/{id?}/not_unique', [AuctionController::class, 'not_unique'])->name('auction/not_unique');
 
 
+                Route::get('download/{extra?}', [AuctionController::class, 'download'])->name('download');
+                Route::get('view/{id?}', [AuctionController::class, 'view'])->name('view');
+
+
                 Route::get('user/{id?}/ban', [UserController::class, 'ban'])->name('ban');
                 Route::get('user/{id?}/not_ban', [UserController::class, 'not_ban'])->name('not_ban');
                 Route::post('user/{id?}/add_balance', [UserController::class, 'add_balance'])->name('add_balance');

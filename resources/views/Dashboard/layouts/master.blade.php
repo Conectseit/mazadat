@@ -55,6 +55,9 @@
 
     {{--==============  end teeest ====================================--}}
 
+{{--    ckeditor--}}
+    <script type="text/javascript" src="{{ asset('Dashboard/ckeditor/ckeditor.js') }}"></script>
+
     @yield('style')
 
 </head>
