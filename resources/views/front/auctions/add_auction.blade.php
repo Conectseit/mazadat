@@ -1,7 +1,39 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.auction.add'))
 @section('style')
-    <style> #map {height: 400px;}</style>
+    <style> #map {height: 400px;}
+
+        /*.remove-image {*/
+        /*    display: none;*/
+        /*    position: absolute;*/
+        /*    text-align: center;*/
+        /*    !*top: -10px;*!*/
+        /*    !*right: -10px;*!*/
+        /*    border-radius: 10em;*/
+        /*    padding: 2px 6px 3px;*/
+        /*    text-decoration: none;*/
+        /*    font: 700 21px/20px sans-serif;*/
+        /*    background: #555;*/
+        /*    border: 3px solid #fff;*/
+        /*    color: #FFF;*/
+        /*    box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 2px 4px rgba(0,0,0,0.3);*/
+        /*    text-shadow: 0 1px 2px rgba(0,0,0,0.5);*/
+        /*    -webkit-transition: background 0.5s;*/
+        /*    !*transition: background 0.5s;*!*/
+        /*}*/
+        /*.remove-image:hover {*/
+        /*    background: #E54E4E;*/
+        /*    padding: 3px 7px 5px;*/
+        /*    top: -11px;*/
+        /*    right: -11px;*/
+        /*}*/
+        /*.remove-image:active {*/
+        /*    background: #E54E4E;*/
+        /*    top: -10px;*/
+        /*    right: -11px;*/
+        /*}*/
+
+    </style>
 @endsection
 
 @section('content')
@@ -204,7 +236,13 @@
                             <label>@lang('messages.auction.images')</label>
 {{--                            <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
                             <input type="file" multiple id="gallery-photo-add"  class="form-control" name="images[]">
-                            <div class="gallery"></div>
+{{--                            <input id="btn1" type="button" value="Click me" onclick="onClick1()" style="height: 100px; width: 100px;">--}}
+
+                            <div class="gallery" id="output">
+
+                            {{--                                <p><button onclick="remove_img()"> remove </button></p>--}}
+                                <!--<a class="remove-image" href="#" style="display: inline;">&#215;</a>-->
+                            </div>
                         </div>
 
                         <hr>

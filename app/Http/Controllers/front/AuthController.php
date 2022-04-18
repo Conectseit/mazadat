@@ -34,7 +34,10 @@ class AuthController extends Controller
 
     public function show_activation($mobile)
     {
-        return view('front.auth.activation', compact('mobile'));
+      $user=User::where('mobile',$mobile)->first();
+        $activation_code= $user->activation_code;
+
+        return view('front.auth.activation', compact('mobile'),compact('activation_code'));
     }
 
     public function checkCode(Request $request)
@@ -59,9 +62,9 @@ class AuthController extends Controller
 
             $activation_code = create_rand_numbers();
 
-            $user->update(['activation_code' => $activation_code]);
+            $user->update(['activation_code' => $activation_code,'send_at'=>now()]);
 
-            SmsController::send_sms(($mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+//            SmsController::send_sms(($mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
 //            return response()->json(['data' => [], 'status' => true, 'message' => 'تم إعادة إرسال الكود بنجاح']);
             return back()->with('message', 'تم إعادة إرسال الكود بنجاح');
         } catch (\Exception $e) {

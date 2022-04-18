@@ -205,8 +205,14 @@ return [
     'mobile_terms' =>'ملحوظة: رقم الجوال يجب ان يكون ساري ولا يقل عن 9ارقام',
     'appear_name_note' => 'ملحوظة : باختياراخفاء الاسم سوف يظهر للعملاء اسمك المستعار الذي ادخلته بدلا من اسمك الاول الاخير  ',
 
-    'download' => 'download',
-    'extra_file' => 'extra file',
+    'download'               => 'download',
+    'extra_file'             => 'extra file',
+    'inspection_file_names'  => 'inspection file names',
+    'select_file_name'       => 'select file name',
+    'file_name'              => 'file name',
+
+
+
 
     'buttons' => [
         'reset_data'          => 'reset data',
@@ -309,6 +315,8 @@ return [
         'value_of_increment'      => 'Value Of Increment',
         'images'                  => 'Auction Images',
         'inspection_report_image' => 'inspection report image',
+        'inspection_report_files' => 'inspection report files',
+
         'seller_full_name'        => 'seller full name',
         'choose_category'         => 'Choose Category',
         'add'                     => 'add new',
@@ -472,7 +480,7 @@ return [
     'email_reset' => ' please enter activation which send to your mobile ',
     'enter_activation_code' => 'enter activation code ',
     'register_success' => 'register success',
-    'wrong_code' => 'sorry ,wrong code',
+    'wrong_code' => 'sorry ,wrong code or expired',
     'activation_code_required' => 'activation code required',
     'choose_country_code' => 'choose country code',
     'enter_other_user_data' => 'Enter Other User Data ',

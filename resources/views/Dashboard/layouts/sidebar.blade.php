@@ -1,4 +1,4 @@
-<ul class="navigation navigation-main navigation-accordion">
+<ul class="navigation navigation-main navigation-accordion" >
 
     <!-- Main -->
     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
@@ -8,7 +8,7 @@
             <span >{{ trans('messages.home') }}</span>
         </a>
     </li>
-    <li>
+    <li >
         <a href="#">
             <i class="icon-people"></i>
             <span>{{ trans('messages.user.users') }}</span></a>
@@ -72,7 +72,12 @@
             <li><a href="{{route('cities.create')}}"> {{ trans('messages.add') }}</a></li>
         </ul>
     </li>
-    <li>
+    <li class="nav-item">
+        <a href="{{ route('inspection_file_names.index') }}"
+           class="nav-link {{ request()->route()->getName() == 'dashboard.inspection_file_names.index' ? 'active' : '' }}">
+            <i class="icon-file-pdf"></i> <span>{{ trans('messages.inspection_file_names') }}</span></a>
+    </li>
+
 
     <li>
         <a href="#"><i class="icon-people"></i>

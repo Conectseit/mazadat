@@ -53,12 +53,12 @@
                             <div class="col-sm-6">
                                 <a href="{{route('front.edit_profile')}}"> {{ trans('messages.user.update_profile')}} </a>
                             </div>
-                            <div class="col-sm-6">
-                                <a href="{{route('front.show_my_addresses')}}">{{ trans('messages.user.addresses')}}</a>
-                            </div>
 {{--                            <div class="col-sm-6">--}}
-{{--                                <a href="{{route('front.show_complete_profile')}}">{{ trans('messages.user.complete_data')}}</a>--}}
+{{--                                <a href="{{route('front.show_my_addresses')}}">{{ trans('messages.user.addresses')}}</a>--}}
 {{--                            </div>--}}
+                            <div class="col-sm-6">
+                                <a href="{{route('front.show_complete_profile')}}">{{ trans('messages.user.complete_data')}}</a>
+                            </div>
                             <div class="col-sm-6">
                                 <a href="{{route('front.my_bids')}}"> {{ trans('messages.user.bids')}}</a>
                             </div>

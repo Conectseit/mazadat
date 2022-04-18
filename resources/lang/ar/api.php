@@ -10,6 +10,7 @@ return [
     'login_successfully' 	        => 'تم تسجيل الدخول بنجاح',
     'sorry_invalid_email_or_password'        	=> 'عفوا بيانات الدخول غير صحيحة',
     'wrong_old_password' 	                    => 'عفوا كلمة المرور القديمة غير صحيحة',
+    'sorry_wrong_activation_code_try_again' 	=> 'عفوا كود التفعيل غير صحيح او انتهت صلاحيته حاول مرة اخري ',
     'user_profile'                          	=> 'حسابي',
     'activation_done'                       	=> 'تم تفعيل الحساب',
     'uploaded_successfully'                  	=> 'تم التحميل بنجاح ',

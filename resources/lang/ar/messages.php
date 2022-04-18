@@ -228,6 +228,9 @@ return [
     'balance' => 'الرصيد',
     'download' => 'تنزيل',
     'extra_file' => 'ملف اضافي',
+    'select_file_name' => 'اختر اسم الملف',
+    'file_name' => ' اسم الملف',
+    'inspection_file_names' => 'اسماء ملفات تقارير الفحص',
 
 
     'buttons' => [
@@ -456,6 +459,7 @@ return [
 //        'value_of_increment' => 'قيمة المزايدة في كل مرة',
         'images' => 'صور المزاد',
         'inspection_report_image' => 'صورة تقرير الفحص',
+        'inspection_report_files' => 'ملفات تقرير الفحص',
         'seller_full_name' => 'اسم صاحب المزاد',
         'choose_category' => 'اختر قسم المزاد',
         'add' => 'اضافة مزاد جديد',
@@ -633,7 +637,7 @@ return [
     'mobile_reset' => ' من فضلك قم بادخال كود استعادة كلمة المرور المرسل على  جوالك',
     'enter_activation_code' => 'اكتب الكود ',
     'register_success' => 'تم التسجيل بنجاح',
-    'wrong_code' => 'عفوا كود التحقق غير صحيح',
+    'wrong_code' => 'عفوا كود التحقق غير صحيح او انتهت صلاحيته ',
     'activation_code_required' => 'عفوا كود التفعيل مطلوب',
     'choose_country_code' => 'اختر كود الدولة',
     'enter_other_user_data' => 'بيانات اساسية اخري ',

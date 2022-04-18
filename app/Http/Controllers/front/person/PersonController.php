@@ -38,14 +38,13 @@ class PersonController extends Controller
                 return back()->with('error', 'قيمة الجوال مستخدمة من قبل');
             }
 
-            $user = User::create($request_data + ['activation_code' => $activation_code, 'is_accepted'=>'1',
-                    'type'=>'buyer','country_id'=>$country->id]);
+            $user = User::create($request_data + ['activation_code' => $activation_code, 'send_at'=>now(), 'is_accepted'=>'1', 'type'=>'buyer','country_id'=>$country->id]);
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
             }
             DB::commit();
-            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+//            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
 
 //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
             return redirect()->route('front.show_activation', $request_data['mobile']);

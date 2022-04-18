@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\AdvertisementController;
 use App\Http\Controllers\Dashboard\AuctionDataController;
 use App\Http\Controllers\Dashboard\CompanyController;
 use App\Http\Controllers\Dashboard\CountryController;
+use App\Http\Controllers\Dashboard\InspectionFileNameController;
 use App\Http\Controllers\Dashboard\NationalityController;
 use App\Http\Controllers\Dashboard\NotificationController;
 use App\Http\Controllers\Dashboard\OptionController;
@@ -73,6 +74,7 @@ Route::group(
                     'activities'     => ActivityController::class,
                     'transactions'   => TransactionController::class,
                     'advertisements' => AdvertisementController::class,
+                    'inspection_file_names' => InspectionFileNameController::class,
 
                 ]);
 
@@ -94,6 +96,7 @@ Route::group(
                 Route::post('/ajax-delete-question', [QuestionController::class, 'destroy'])->name('ajax-delete-question');
                 Route::post('/ajax-delete-transaction', [TransactionController::class, 'destroy'])->name('ajax-delete-transaction');
                 Route::post('/ajax-delete-advertisement', [AdvertisementController::class, 'destroy'])->name('ajax-delete-advertisement');
+                Route::post('/ajax-delete-file_name', [InspectionFileNameController::class, 'destroy'])->name('ajax-delete-filename');
 
                 Route::get('company/{id?}/unique', [CompanyController::class, 'unique'])->name('company/unique');
                 Route::get('company/{id?}/not_unique', [CompanyController::class, 'not_unique'])->name('company/not_unique');

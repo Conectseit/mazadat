@@ -14,6 +14,10 @@ class InspectionImage extends Model
     {
         return $this->belongsTo(Auction::class, 'auction_id');
     }
+    public function file()
+    {
+        return $this->belongsTo(FileName::class, 'file_name_id');
+    }
 
     public function getImagePathAttribute()
     {

@@ -157,11 +157,8 @@
 
                     <div class="row">
                         <div class="form-group">
-                            <label class="col-lg-3 control-label display-block"> @lang('messages.extra_file'): </label>
-                            <div class="col-md-6">
-                                <input type="file" class="form-control " name="extra">
-
-                            </div>
+                            <label> <i class="icon-file-pdf"></i>  @lang('messages.extra_file'): </label>
+                            <input type="file" class="form-control " name="extra">
                         </div>
                     </div>
 
@@ -170,20 +167,35 @@
                             <label>@lang('messages.auction.images')</label>
                             {{--                                <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
                             <input type="file" multiple id="gallery-photo-add"  class="form-control" name="images[]">
-                            <div class="gallery"></div>
+                            <div class="gallery" ></div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label>@lang('messages.auction.inspection_report_images')</label>
-                                {{--                                    <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
-                                <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">
-                                <div class="gallery1"></div>
-                            </div>
 
-                        </div>
+
+                    <div class="row">
+                            <div class="form-group">
+                                  <h4><i class="icon-file-pdf"> </i> @lang('messages.auction.inspection_report_files')</h4>
+                                <select name="file_name_id" class="select form-control"  id="cities">
+                                    <option selected disabled>{{trans('messages.select_file_name')}}</option>
+                                    @foreach ($inspection_file_names as $inspection_file_name)
+                                        <option value="{{ $inspection_file_name->id }}"> {{ $inspection_file_name->name }} </option>
+                                    @endforeach
+                                </select>
+                                <input type="file" multiple class="form-control" name="inspection_report_images[]">
+                            </div>
                     </div>
+
+
+{{--                    <div class="row">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label>@lang('messages.auction.inspection_report_images')</label>--}}
+{{--                                --}}{{--                                    <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
+{{--                                <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">--}}
+{{--                                <div class="gallery1"></div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
 
                     <div class="form-group">

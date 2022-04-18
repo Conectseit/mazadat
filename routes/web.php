@@ -28,6 +28,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::get('/cronjob/update-auction-on-progress', [HomeController::class, 'cronJobMakeAuctionOnProgress']);
 Route::get('/cronjob/update-auction-done', [HomeController::class, 'cronJobMakeAuctionDone']);
+Route::get('/cronjob/make-activation_code-expired', [HomeController::class, 'expireActivationCode']);
 
 Route::group(
     [
@@ -123,9 +124,8 @@ Route::group(
 
         Route::any('show_complete_profile', [UserController::class, 'showCompleteProfile'])->name('front.show_complete_profile');
         Route::post('complete_profile', [UserController::class, 'completeProfile'])->name('front.complete_profile');
-        Route::any('show_my_addresses', [UserController::class, 'show_my_addresses'])->name('front.show_my_addresses');
-
-        Route::get('show_add_address', [UserController::class, 'show_add_address'])->name('front.show_add_address');
+//        Route::any('show_my_addresses', [UserController::class, 'show_my_addresses'])->name('front.show_my_addresses');
+//        Route::get('show_add_address', [UserController::class, 'show_add_address'])->name('front.show_add_address');
         Route::any('add_address', [UserController::class, 'addAddress'])->name('front.add_address');
 
         Route::any('choose_available_limit', [UserController::class, 'choose_available_limit'])->name('front.choose_available_limit');

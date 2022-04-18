@@ -38,12 +38,11 @@ class AuctionRequest extends FormRequest
                         'description_en' => 'required',
                         'auction_terms_ar' => 'required',
                         'auction_terms_en' => 'required',
-//                        'end_date' => 'required',
-//                        'start_date' => 'required',
 
 
-                        'start_date'  => ['required','date','after_or_equal:'. now()->format('Y-m-d H:i:s')],
-                        'end_date'    =>  'required|date|after:start_date',
+
+//                        'start_date'  => ['required','date','after_or_equal:'. now()->format('Y-m-d H:i:s')],
+//                        'end_date'    =>  'required|date|after:start_date',
 
                         'start_auction_price'   => ['required','numeric'],
                         'value_of_increment' => ['required','numeric'],
@@ -55,12 +54,12 @@ class AuctionRequest extends FormRequest
 //                        'images.*' => 'image',
 //                        'inspection_report_image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
 
-//                        'option_ids' => ['required'],
+                        'option_ids' => ['required'],
                         'option_ids.*' => ['required'],
                         'images' => ['required'],
                         'images.*' => ['required','mimes:png,jpg,jpeg'],
-                        'inspection_report_images' => ['required'],
-                        'inspection_report_images.*' => ['required','mimes:png,jpg,jpeg'],
+//                        'inspection_report_images' => ['required'],
+//                        'inspection_report_images.*' => ['required','mimes:png,jpg,jpeg'],
                     ];
 
             }

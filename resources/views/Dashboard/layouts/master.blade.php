@@ -65,7 +65,7 @@
 <body>
 
 <!-- Main navbar -->
-<div class="navbar navbar-inverse bg-indigo">
+<div class="navbar navbar-inverse bg-indigo"style="background-color: #0a001f" >
     @include('Dashboard.layouts.nav')
 </div>
 <!-- /main navbar -->
@@ -74,14 +74,14 @@
 <!-- Page container -->
 <div class="page-container">
     <!-- Page content -->
-    <div class="page-content">
+    <div class="page-content"  style="background-color: #0a001f">
     @if (!Request::is(app()->getLocale().'/dashboard/show_login'))
 
      <!-- Main sidebar -->
-            <div class="sidebar sidebar-main sidebar-default">
-                <div class="sidebar-content">
+            <div class="sidebar sidebar-main sidebar-default" >
+                <div class="sidebar-content" >
                 <!-- User menu -->
-                    <div class="sidebar-user-material">
+                    <div class="sidebar-user-material" style="color: white">
                         @include('Dashboard.layouts.sidebar_my_account')
                     </div>
                 <!-- /user menu -->
@@ -99,7 +99,7 @@
 
 
             <!-- Main content -->
-            <div class="content-wrapper">
+            <div class="content-wrapper"  style="background-color: #0a001f">
             <!-- Page header -->
             @include('Dashboard.layouts.header')
             <!-- /page header -->

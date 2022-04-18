@@ -39,7 +39,8 @@
                             @if(auth()->user()->is_company =='person')
                               <input type="hidden" name="is_company" value="person"/>
                             @endif
-                            <h5 class="group-title">{{ trans('messages.please_complete_your_address_details')}}</h5>
+{{--                            <h5 class="group-title">{{ trans('messages.please_complete_your_address_details')}}</h5>--}}
+                            <h5 class="group-title">{{ trans('messages.user.complete_data')}}</h5>
                             <div class="form-group mb-4 row">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                     <label for="full_name"

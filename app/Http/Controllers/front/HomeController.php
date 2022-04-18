@@ -50,6 +50,16 @@ class HomeController extends Controller
         }
     }
 
+    public function expireActivationCode()
+    {
+        $users = User::where('activation_code' ,'!=',null)->get();
+        foreach ($users as $user)
+        {
+            if(Carbon::parse($user->send_at)->addMinutes(5) < now())
+            $user->update(['activation_code'=>null]);
+        }
+    }
+
 
 
 //    public function cronJobAppearAuctions()

@@ -71,7 +71,7 @@
                         <span class="badge badge-success badge-inline position-right">{{$images->count()}}</span></a>
                 </li>
                 <li><a href="#inspection_report_image" data-toggle="tab"><i
-                            class="icon-cog3 position-left"></i> {{ trans('messages.auction.inspection_report_images') }}
+                            class="icon-cog3 position-left"></i> {{ trans('messages.auction.inspection_report_files') }}
                         <span
                             class="badge badge-success badge-inline position-right">{{$inspection_report_images->count()}}</span></a>
                 </li>
@@ -231,6 +231,15 @@
                                                         </div>
                                                     </div>
 
+                                                    <hr>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-lg-4">{{ trans('messages.extra_file') }}:</label>
+                                                        <div class="col-lg-8">
+                                                            <a href="{{route('view',$auction->id)}}" target="_blank"> <i class="icon-file-pdf" style="color: red;"> </i></a>
+                                                            <a href="{{route('download',$auction->extra)}}"><i class="icon-download4"> </i> {{trans('messages.download')}}</a>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <!-- /basic layout -->
@@ -381,25 +390,37 @@
                                     </div>
                                 </div>
                                 <div class="panel-body">
+                                    <h3>{{ trans('messages.auction.inspection_report_files') }}: </h3>
                                     @if($images->count() > 0)
                                         <table class="table datatable" id="inspection_report_images"
                                                style="font-size: 16px;">
                                             <thead>
                                             <tr>
-                                                <th class="text-center"><h3>{{ trans('messages.auction.images') }}
-                                                        : </h3></th>
-                                                <th class="text-center">@lang('messages.form-actions')</th>
+                                                <th class="text-center">@lang('messages.file_name')</th>
+                                                <th class="text-center">{{ trans('messages.auction.inspection_report_files') }}</th>
+{{--                                                <th class="text-center">@lang('messages.form-actions')</th>--}}
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($inspection_report_images as $image)
                                                 <tr id="image-row-{{ $image->id }}">
-                                                    <td>
-                                                        <a href="{{asset($image->ImagePath) }}" data-popup="lightbox">
-                                                            <img src="{{asset($image->ImagePath) }}" alt="" width="80"
-                                                                 height="70" class="img-preview rounded">
-                                                        </a>
+{{--                                                    <td>--}}
+{{--                                                        <a href="{{asset($image->ImagePath) }}" data-popup="lightbox">--}}
+{{--                                                            <img src="{{asset($image->ImagePath) }}" alt="" width="80"--}}
+{{--                                                                 height="70" class="img-preview rounded">--}}
+{{--                                                        </a>--}}
+{{--                                                    </td>--}}
+
+
+                                                    <td class="text-center">{{ $image->file->name }}</td>
+                                                    <td class="text-center">
+                                                        <a href="{{route('view',$image->auction->id)}}" target="_blank"> <i class="icon-file-pdf" style="color: red;"> </i></a>
+
+                                                        <a href="{{route('download',$image->image)}}"><i class="icon-download4"> </i> {{trans('messages.download')}}</a>
                                                     </td>
+
+
+
                                                     {{--                                                    <td class="text-center">--}}
                                                     {{--                                                        <ul class="icons-list">--}}
                                                     {{--                                                            <li class="dropdown">--}}
@@ -441,6 +462,16 @@
                                     </div>
                                 </div>
                                 <div class="panel-body">
+
+                                    <div class="form-group row"><br>
+                                        <label class="col-form-label col-lg-3">{{ trans('messages.auction.address') }}
+                                            :</label>
+
+                                        <div class="col-lg-9">
+                                            {{ $auction->address }}
+                                        </div>
+
+                                    </div><br>
                                     <div class="form-group row"><br>
                                         <label class="col-form-label col-lg-3">{{ trans('messages.auction.location') }}
                                             :</label>
