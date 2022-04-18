@@ -24,9 +24,7 @@
                                         <div class="col-lg-9">
                                             <input type="text" name="wallet"  class="form-control" placeholder="{{ trans('messages.balance') }}">
                                         </div>
-                                    </div>
-
-                                    <br>
+                                    </div><br>
 
                                 </div>
                             </div>

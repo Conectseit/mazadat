@@ -78,6 +78,12 @@
         </main>
         <section class="ad-info" dir="{{ direction() }}">
             <div class="container">
+                <div class="row"style="margin-bottom:20px ;">
+                    <div class="col-lg-12" >
+                        <h4 class="ad-title">{{ ($auction->category->$description )}}</h4>
+                    </div>
+
+                </div>
                 <div class="row">
                     <div class="col-lg-3">
                         <h4 class="ad-title">
@@ -138,7 +144,7 @@
                                 </div>
 
                                 <div class="details " id="details">
-                                    <p><i class="fal fa-gavel"></i>{{trans('messages.auction.current_price')}}
+                                    <p><i class="fa fa-money"></i>{{trans('messages.auction.current_price')}}
                                         :{{($auction->current_price)}}</p>
                                 </div>
                                 <div class="details" id="details">
@@ -146,8 +152,17 @@
                                         :{{($auction->value_of_increment)}}</p>
 
                                     <p class="ticket"><i
-                                            class="fal fa-ticket"></i> {{trans('messages.auction.buyers_count')}}
+                                            class="fa fa-users"></i> {{trans('messages.auction.buyers_count')}}
                                         :{{ ($auction->count_of_buyer ) }}
+                                    </p>
+                                    <p class="ticket"><i
+                                            class="fal fa-user"></i> {{trans('messages.auction.seller')}} :
+
+                                        @if($auction->seller->is_company=='person' && $auction->seller->is_appear_name==1)
+                                            {{ ($auction->seller->full_name ) }}
+                                        @else
+                                            {{ ($auction->seller->user_name ) }}
+                                        @endif
                                     </p>
                                 </div>
                             </div>

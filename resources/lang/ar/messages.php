@@ -332,6 +332,8 @@ return [
         'my_wallet' => 'محفظتي',
         'addresses' => 'عناويني',
         'update_personal_profile' => 'تعديل الصفحة الشخصية',
+        'add_balance' => 'اضافة رصيد لمحفظة مستخدم',
+
 
     ],
     'person' => [

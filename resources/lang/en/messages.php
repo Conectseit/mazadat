@@ -603,6 +603,8 @@ return [
         'wallet' => 'My Wallet',
         'my_wallet' => 'My Wallet',
         'addresses' => 'My Addresses',
+        'add_balance' => 'add balance to user',
+
 
         'update_personal_profile' => 'Update Personal profile',
     ],

@@ -85,11 +85,24 @@
                                     <div class="row">
                                         <div class="col-lg-2">
                                             <div class="form-group">
-                                                <label class="control-label col-lg-3"> عرض </label>
+                                                <label class="control-label col-lg-3"> عرض الكل </label>
                                                 <div class="col-lg-9">
                                                     <div class="checkbox checkbox-switchery switchery-xs">
                                                         <label>
-                                                            {!! Form::checkbox('perms[]', "$crud.index", checkIfHasRole($role, $crud, 'index'), ['class' => 'switchery form-control']) !!}                                                        </label>
+                                                            {!! Form::checkbox('perms[]', "$crud.index", checkIfHasRole($role, $crud, 'index'), ['class' => 'switchery form-control']) !!}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="form-group">
+                                                <label class="control-label col-lg-3"> عرض عنصر </label>
+                                                <div class="col-lg-9">
+                                                    <div class="checkbox checkbox-switchery switchery-xs">
+                                                        <label>
+                                                            {!! Form::checkbox('perms[]', "$crud.show", checkIfHasRole($role, $crud, 'show'), ['class' => 'switchery form-control']) !!}
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -158,7 +171,35 @@
                                 </div>
                             </div>
                         @endforeach
+                        <div class="panel panel-flat">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">@lang('messages.user.add_balance')</h5>
+                                <div class="heading-elements">
+                                    <ul class="icons-list">
+                                        <li><a data-action="collapse"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
 
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-3"> اضافة </label>
+                                            <div class="col-lg-9">
+                                                <div class="checkbox checkbox-switchery switchery-xs">
+                                                    <label>
+                                                        <input type="checkbox" name="perms[]" class="switchery"
+                                                               value="add_balance" {{ in_array('add_balance',$perms) ? 'checked' : '' }}>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="panel panel-flat">
                             <div class="panel-heading">

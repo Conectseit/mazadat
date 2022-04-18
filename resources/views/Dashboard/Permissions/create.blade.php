@@ -88,12 +88,27 @@
                                     <div class="row">
                                         <div class="col-lg-2">
                                             <div class="form-group">
-                                                <label class="control-label col-lg-3"> عرض </label>
+                                                <label class="control-label col-lg-3"> عرض الكل </label>
                                                 <div class="col-lg-9">
                                                     <div class="checkbox checkbox-switchery switchery-xs">
                                                         <label>
                                                             <input type="checkbox" name="perms[]" class="switchery"
                                                                    value="{{ ($crud) }}.index">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-2">
+                                            <div class="form-group">
+                                                <label class="control-label col-lg-3"> عرض عنصر </label>
+                                                <div class="col-lg-9">
+                                                    <div class="checkbox checkbox-switchery switchery-xs">
+                                                        <label>
+                                                            <input type="checkbox" name="perms[]" class="switchery"
+                                                                   value="{{ ($crud) }}.show">
                                                         </label>
                                                     </div>
                                                 </div>
@@ -176,6 +191,38 @@
                         @endforeach
 
 
+
+
+                        <div class="panel panel-flat">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">@lang('messages.user.add_balance')</h5>
+                                <div class="heading-elements">
+                                    <ul class="icons-list">
+                                        <li><a data-action="collapse"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-3"> اضافة </label>
+                                            <div class="col-lg-9">
+                                                <div class="checkbox checkbox-switchery switchery-xs">
+                                                    <label>
+                                                        <input type="checkbox" name="perms[]" class="switchery"
+                                                               value="add_balance">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="panel panel-flat">
                             <div class="panel-heading">
                                 <h5 class="panel-title">@lang('messages.settings.settings')</h5>
@@ -218,6 +265,9 @@
                                 </div>
                             </div>
                         </div>
+
+
+
 
                     </div>
 

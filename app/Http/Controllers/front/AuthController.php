@@ -64,7 +64,7 @@ class AuthController extends Controller
 
             $user->update(['activation_code' => $activation_code,'send_at'=>now()]);
 
-//            SmsController::send_sms(($mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+            SmsController::send_sms(($mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
 //            return response()->json(['data' => [], 'status' => true, 'message' => 'تم إعادة إرسال الكود بنجاح']);
             return back()->with('message', 'تم إعادة إرسال الكود بنجاح');
         } catch (\Exception $e) {

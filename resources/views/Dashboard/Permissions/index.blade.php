@@ -51,7 +51,7 @@
                     <td>{{ $permission->id }}</td>
 
                     <td>
-                        <a href="{{ route('permissions.show', $permission->id) }}">  {{ isNullable($permission->name_ar) }}</a>
+                        <a href="#">  {{ isNullable($permission->name_ar) }}</a>
                     </td>
 
 {{--                    <td>--}}

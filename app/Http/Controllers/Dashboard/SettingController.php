@@ -24,6 +24,16 @@ class SettingController extends Controller
             Setting::where('key', 'app_description_ar')->update(['value' => $request->app_description_ar]);
         if ($request->app_description_en)
             Setting::where('key', 'app_description_en')->update(['value' => $request->app_description_en]);
+        if ($request->about_app_ar)
+            Setting::where('key', 'about_app_ar')->update(['value' => $request->about_app_ar]);
+        if ($request->about_app_en)
+            Setting::where('key', 'about_app_en')->update(['value' => $request->about_app_en]);
+        if ($request->conditions_terms_ar)
+            Setting::where('key', 'conditions_terms_ar')->update(['value' => $request->conditions_terms_ar]);
+        if ($request->conditions_terms_en)
+            Setting::where('key', 'conditions_terms_en')->update(['value' => $request->conditions_terms_en]);
+
+
         if ($request->mobile)
             Setting::where('key', 'mobile')->update(['value' => $request->mobile]);
         if ($request->email)
@@ -52,12 +62,10 @@ class SettingController extends Controller
             Setting::where('key', 'iban')->update(['value' => $request->iban]);
         if ($request->branch)
             Setting::where('key', 'branch')->update(['value' => $request->branch]);
-        if ($request->branch)
+        if ($request->swift_code)
             Setting::where('key', 'swift_code')->update(['value' => $request->swift_code]);
-        if ($request->branch)
+        if ($request->routing_number)
             Setting::where('key', 'routing_number')->update(['value' => $request->routing_number]);
-
-
 
 
 
@@ -71,14 +79,8 @@ class SettingController extends Controller
             Setting::where('key', 'instagram_url')->update(['value' => $request->instagram_url]);
         if ($request->whatsapp_phone)
             Setting::where('key', 'whatsapp_phone')->update(['value' => $request->whatsapp_phone]);
-        if ($request->about_app_ar)
-            Setting::where('key', 'about_app_ar')->update(['value' => $request->about_app_ar]);
-        if ($request->about_app_en)
-            Setting::where('key', 'about_app_en')->update(['value' => $request->about_app_en]);
-        if ($request->conditions_terms_ar)
-            Setting::where('key', 'conditions_terms_ar')->update(['value' => $request->conditions_terms_ar]);
-        if ($request->conditions_terms_en)
-            Setting::where('key', 'conditions_terms_en')->update(['value' => $request->conditions_terms_en]);
+
+
 
 
         // online_payment_conditions
@@ -100,8 +102,8 @@ class SettingController extends Controller
 //        if ($request->max_duration_of_auction)
 //            Setting::where('key', 'max_duration_of_auction')->update(['value' => $request->max_duration_of_auction]);
 
-        if ($request->appearance_of_ended_auctions)
-            Setting::where('key', 'appearance_of_ended_auctions')->update(['value' => $request->appearance_of_ended_auctions]);
+//        if ($request->appearance_of_ended_auctions)
+//            Setting::where('key', 'appearance_of_ended_auctions')->update(['value' => $request->appearance_of_ended_auctions]);
 
 //        if ($request->google_map_key)
 //            Setting::where('key', 'google_map_key')->update(['value' => $request->google_map_key]);
