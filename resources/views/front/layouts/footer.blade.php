@@ -146,7 +146,8 @@
 
                 </div>
                 <div class="col-lg-2">
-                    <div class="connect-logo" style=" background-color: #1e3c48; border-radius: 50%; text-align: center;">
+{{--                    <div class="connect_logo" style=" background-color: #1e3c48; border-radius: 50%; text-align: center;">--}}
+                    <div class="connect_logo">
                         <img src="{{asset('Front/assets/imgs/connect-light-logo.png')}}" alt="mastercard"style="width: 150px;">
                     </div>
                 </div>

@@ -290,16 +290,23 @@
                 <hr>
                 <div class="more-imgs">
                     <div class="terms">
-                        <h4>{{ trans('messages.auction.inspection_report_images')}}:</h4>
+                        <h4>{{ trans('messages.auction.inspection_report_files')}}:</h4>
                     </div>
                     <div class="row">
                         @foreach($auction->inspectionimages as $image)
                             <div class="col-md-3 col-6">
-                                <a href="{{$image->image_path}}">
-                                    <div class="image">
-                                        <img src="{{$image->image_path}}" alt="image">
+{{--                                <a href="{{$image->image_path}}">--}}
+                                    <div class="image" style="background-color: #d1915c;width: 150px; height: 150px;">
+                                        <p>{{ isset($image->file->name) ? $image->file->name:'..' }} :</p>
+                                        <br>
+
+                                        <a href="{{route('inspection_view_file',$image->id)}}" target="_blank">
+                                            <i class=" fa fa-file-pdf-o" style="color: red;"></i>
+                                           </a>
+
+                                        {{--                                        <img src="{{$image->image_path}}" alt="image">--}}
                                     </div>
-                                </a>
+{{--                                </a>--}}
                             </div>
                         @endforeach
                     </div>

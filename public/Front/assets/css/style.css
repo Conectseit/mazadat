@@ -679,11 +679,11 @@ footer .rights p {
     margin: revert;
     padding-top: 36px;
 }
-/*.connect-logo{*/
-/*    background-color: #1e3c48;*/
-/*    border-radius: 50%;*/
-/*    text-align: center;*/
-/*}*/
+.connect_logo{
+    background-color: #1e3c48;
+    border-radius: 50%;
+    text-align: center;
+}
 
 footer .rights .payment-brands {
   display: flex;

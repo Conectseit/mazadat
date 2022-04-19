@@ -12,6 +12,7 @@ use App\Models\AuctionBuyer;
 use App\Models\AuctionData;
 use App\Models\AuctionImage;
 use App\Models\Category;
+use App\Models\FileName;
 use App\Models\InspectionImage;
 use App\Models\Notification;
 use App\Models\Option;
@@ -196,6 +197,8 @@ class AuctionController extends Controller
     {
         $data['categories'] = Category::all();
         $data['options'] = Option::all();
+        $data['inspection_file_names'] = FileName::all();
+
         return view('front.auctions.add_auction', $data);
     }
 
@@ -220,14 +223,36 @@ class AuctionController extends Controller
             }
             $auction_images = DB::table('auction_images')->insert($data);
 
+
             //======= upload auction inspection_report_images =======
             $dataa = [];
             if ($request->hasfile('inspection_report_images')) {
                 foreach ($request->file('inspection_report_images') as $key => $img) {
-                    $dataa[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
+                    $file=$img;
+                    $file_image=time().'.'.$file->getClientOriginalExtension();
+                    $img->move('uploads/inspection_report_pdf',$file_image);
+                    $dataa[$key] =['image' =>$file_image,'auction_id' => $auction->id,'file_name_id'=>$request->file_name_id];
+
                 }
             }
-            $auction_inspection_report_images = DB::table('inspection_images')->insert($dataa);
+            DB::table('inspection_images')->insert($dataa);
+
+
+
+
+
+
+//            //======= upload auction inspection_report_images =======
+//            $dataa = [];
+//            if ($request->hasfile('inspection_report_images')) {
+//                foreach ($request->file('inspection_report_images') as $key => $img) {
+//                    $dataa[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
+//                }
+//            }
+//            $auction_inspection_report_images = DB::table('inspection_images')->insert($dataa);
+
+
+
 
             //======= upload auction options =======
             $options = [];

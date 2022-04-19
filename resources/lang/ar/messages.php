@@ -228,6 +228,7 @@ return [
     'balance' => 'الرصيد',
     'download' => 'تنزيل',
     'extra_file' => 'ملف اضافي',
+    'extra_file_only_to_admin' => 'ملف اضافي يظهر لادارة الموقع فقط',
     'select_file_name' => 'اختر اسم الملف',
     'file_name' => ' اسم الملف',
     'inspection_file_names' => 'اسماء ملفات تقارير الفحص',
@@ -319,8 +320,9 @@ return [
         'edit' => 'تعديل اعلان ',
 
     ],
-
+    'edit_option_details' => 'تعديل التصنيفات الفرعية',
     'user' => [
+
         'user' => 'عميل',
         'users' => 'العملاء/ المستخدمين',
         'update_profile' => 'تعديل الحساب',

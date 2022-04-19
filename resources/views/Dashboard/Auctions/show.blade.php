@@ -232,6 +232,7 @@
                                                     </div>
 
                                                     <hr>
+                                                    @if(isset($auction->extra))
                                                     <div class="form-group row">
                                                         <label class="col-form-label col-lg-4">{{ trans('messages.extra_file') }}:</label>
                                                         <div class="col-lg-8">
@@ -239,6 +240,7 @@
                                                             <a href="{{route('download',$auction->extra)}}"><i class="icon-download4"> </i> {{trans('messages.download')}}</a>
                                                         </div>
                                                     </div>
+                                                    @endif
 
                                                 </div>
                                             </div>
@@ -412,10 +414,9 @@
 {{--                                                    </td>--}}
 
 
-                                                    <td class="text-center">{{ $image->file->name }}</td>
+                                                    <td class="text-center">{{ isset($image->file->name) ? $image->file->name:'..' }}</td>
                                                     <td class="text-center">
-                                                        <a href="{{route('view',$image->auction->id)}}" target="_blank"> <i class="icon-file-pdf" style="color: red;"> </i></a>
-
+                                                        <a href="{{route('inspection_view_file',$image->id)}}" target="_blank"> <i class="icon-file-pdf" style="color: red;"> </i></a>
                                                         <a href="{{route('download',$image->image)}}"><i class="icon-download4"> </i> {{trans('messages.download')}}</a>
                                                     </td>
 

@@ -51,23 +51,33 @@
                                                 <option value="{{ $user->id }}"> {{ $user->user_name }} </option>
                                         @endforeach
                                     </select>
+                                    @error('seller_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                                 </div>
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control"  value="{{ old('name_ar')}}" name="name_ar"
                                        placeholder="@lang('messages.name_ar') ">
+                                @error('name_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control"  value="{{ old('name_en')}}" name="name_en"
                                        placeholder="@lang('messages.name_en') ">
+                                @error('name_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control"  value="{{ old('description_ar')}}" name="description_ar"
                                        placeholder="@lang('messages.description_ar') ">
+                                @error('description_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control"  value="{{ old('description_en')}}" name="description_en"
                                        placeholder="@lang('messages.description_en') ">
+                                @error('description_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                             </div>
                         </div>
 
@@ -100,6 +110,8 @@
                                     @endforeach
                                 </select>
                             </div>
+                            @error('category_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                         </div><br>
 
                         <div class="form-group mb-4 row">
@@ -118,23 +130,33 @@
                             <label class="display-block">{{ trans('messages.auction.start_date') }}:</label>
                             <input type="datetime-local" class="form-control"  value="" name="start_date"
                                    placeholder="@lang('messages.auction.start_date') ">
+                            @error('start_date')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                         </div>
                         <div class="form-group">
                             <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>
                             <input type="datetime-local" class="form-control"  value="" name="end_date"
                                    placeholder="@lang('messages.auction.end_date') ">
+                            @error('end_date')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                         </div>
                         <div class="form-group">
                             <input type="number" class="form-control"  value="{{ old('start_auction_price')}}" name="start_auction_price"
                                    placeholder="@lang('messages.auction.start_auction_price') ">
+                            @error('start_auction_price')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                         </div>
                         <div class="form-group">
                             <input type="number" class="form-control"  value="{{ old('value_of_increment')}}" name="value_of_increment"
                                    placeholder="@lang('messages.auction.value_of_increment') ">
+                            @error('value_of_increment')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                         </div>
                         <div class="form-group">
                             <input type="number" class="form-control"  value="{{ old('delivery_charge')}}" name="delivery_charge"
                                    placeholder="@lang('messages.auction.delivery_charge') ">
+                            @error('delivery_charge')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                         </div>
 
                         <div class="form-group">
@@ -155,34 +177,38 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="form-group">
-                            <label> <i class="icon-file-pdf"></i>  @lang('messages.extra_file'): </label>
-                            <input type="file" class="form-control " name="extra">
-                        </div>
-                    </div>
-
+                    <hr><br>
                     <div class="row">
                         <div class="form-group">
                             <label>@lang('messages.auction.images')</label>
                             {{--                                <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
                             <input type="file" multiple id="gallery-photo-add"  class="form-control" name="images[]">
                             <div class="gallery" ></div>
+                            @error('images')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                         </div>
                     </div>
 
-
+                    <hr><br>
                     <div class="row">
-                            <div class="form-group">
-                                  <h4><i class="icon-file-pdf"> </i> @lang('messages.auction.inspection_report_files')</h4>
-                                <select name="file_name_id" class="select form-control"  id="cities">
-                                    <option selected disabled>{{trans('messages.select_file_name')}}</option>
-                                    @foreach ($inspection_file_names as $inspection_file_name)
-                                        <option value="{{ $inspection_file_name->id }}"> {{ $inspection_file_name->name }} </option>
-                                    @endforeach
-                                </select>
-                                <input type="file" multiple class="form-control" name="inspection_report_images[]">
-                            </div>
+                        <h4><i class="icon-file-pdf"> </i> @lang('messages.auction.inspection_report_files')</h4>
+                        <div class="form-group">
+                                <div class="col-lg-6">
+                                    <select name="file_name_id" class="select form-control">
+                                        <option selected disabled>{{trans('messages.select_file_name')}}</option>
+                                        @foreach ($inspection_file_names as $inspection_file_name)
+                                            <option value="{{ $inspection_file_name->id }}"> {{ $inspection_file_name->name }} </option>
+                                        @endforeach
+                                    </select>
+                                    @error('file_name_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="file" multiple class="form-control" name="inspection_report_images[]">
+                                </div>
+                            @error('inspection_report_images')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
+                        </div>
                     </div>
 
 
@@ -198,6 +224,15 @@
 {{--                    </div>--}}
 
 
+                    <hr><br><br>
+                    <div class="row">
+                        <div class="form-group">
+                            <label> <i class="icon-file-pdf"></i>  @lang('messages.extra_file_only_to_admin'): </label>
+                            <input type="file" class="form-control " name="extra">
+                        </div>
+                    </div>
+                    <hr><br>
+                    <h3>@lang('messages.auction.address'):</h3>
                     <div class="form-group">
                         <label class="col-lg-3 control-label display-block"> {{ trans('messages.city_name') }} </label>
                         <div class="col-lg-9">
@@ -207,6 +242,8 @@
                                     <option value="{{ $city->id }}"> {{ $city->$name }} </option>
                                 @endforeach
                             </select>
+                            @error('city_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                         </div>
                     </div>
                     <div class="row">
@@ -216,13 +253,17 @@
                             <input type="text" class="form-control"  value="{{ old('address')}}" name="address"
                                    placeholder="@lang('messages.auction.address_details') ">
                             </div>
+                            @error('address')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
                         </div>
                     </div><br>
                     <div class="row">
                     <div class="form-group">
 
                             <label>@lang('messages.auction.location'):</label>
-                            <div class="col-lg-12">
+                        @error('latitude')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
+                        <div class="col-lg-12">
                                 {{--                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">--}}
                                 <div id="map"></div>
                             </div>

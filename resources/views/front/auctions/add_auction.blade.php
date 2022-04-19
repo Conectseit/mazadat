@@ -246,12 +246,31 @@
                         </div>
 
                         <hr>
+
+
                         <div class="form-group">
                             <label>@lang('messages.auction.inspection_report_images')</label>
+                            <select name="file_name_id" class="form-select form-control">
+                                <option selected disabled>{{trans('messages.select_file_name')}}</option>
+                                @foreach ($inspection_file_names as $inspection_file_name)
+                                    <option value="{{ $inspection_file_name->id }}"> {{ $inspection_file_name->name }} </option>
+                                @endforeach
+                            </select>
+<br>
+                            <input type="file"  class="form-control" name="inspection_report_images[]">
+                            @error('inspection_report_images')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
+                        </div>
+
+
+
+
+                            {{--  <div class="form-group">--}}
+{{--                            <label>@lang('messages.auction.inspection_report_images')</label>--}}
 {{--                            <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
-                            <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">
-                            <div class="gallery1"></div>
-                        </div><br>
+{{--                            <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">--}}
+{{--                            <div class="gallery1"></div>--}}
+{{--                        </div><br>--}}
 
                         <div class="form-group">
                             <label>@lang('messages.auction.location'):</label>

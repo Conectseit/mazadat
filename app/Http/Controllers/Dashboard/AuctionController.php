@@ -290,6 +290,13 @@ class AuctionController extends Controller
         return view('Dashboard.Auctions.view_file',compact('auction'));
     }
 
+    public function inspection_view_file($id){
+
+        $inspection_file=InspectionImage::find($id);
+
+        return view('Dashboard.Auctions.inspection_view_file',compact('inspection_file'));
+    }
+
     public function download(Request $request,$extra){
         return response()->download(public_path('uploads/auction_pdf/'.$extra));
     }

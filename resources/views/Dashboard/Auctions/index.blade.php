@@ -85,9 +85,11 @@
 {{--                                                       <td class="text-center">{{ $auction->serial_number }}</td>--}}
                                                        <td class="text-center">{{ $auction->category->$name }}</td>
                                                        <td class="text-center">
+                                                           @if(isset($auction->extra))
                                                            <a href="{{route('view',$auction->id)}}" target="_blank"> <i class="icon-file-pdf" style="color: red;"> </i></a>
 
                                                            <a href="{{route('download',$auction->extra)}}"><i class="icon-download4"> </i> {{trans('messages.download')}}</a>
+                                                           @endif
                                                        </td>
                                                        <td class="text-center">
                                                            <a href="{{ $auction->first_image_path }}" data-popup="lightbox"><img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle"></a>

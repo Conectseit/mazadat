@@ -28,5 +28,14 @@ class InspectionImage extends Model
         return asset('uploads/auctions/' . $this->image);
     }
 
+    public function getFilePathAttribute()
+    {
+        $image = InspectionImage::where('id', $this->id)->first()->image;
+        if (!$image) {
+            return asset('uploads/default.png');
+        }
+        return asset( 'uploads/inspection_report_pdf/'.$this->image);
+    }
+
 
 }

@@ -207,6 +207,7 @@ return [
 
     'download'               => 'download',
     'extra_file'             => 'extra file',
+    'extra_file_only_to_admin'             => 'extra file only_to_admin',
     'inspection_file_names'  => 'inspection file names',
     'select_file_name'       => 'select file name',
     'file_name'              => 'file name',

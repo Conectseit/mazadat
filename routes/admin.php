@@ -48,6 +48,8 @@ Route::group(
         Route::get('/show_login', [AuthController::class, 'loginView'])->name('admin.login');
         Route::post('/login', [AuthController::class, 'login'])->name('admin.submit.login');
 
+        Route::get('view/{id?}', [AuctionController::class, 'view'])->name('view');
+        Route::get('inspection_view_file/{id?}', [AuctionController::class, 'inspection_view_file'])->name('inspection_view_file');
 
         Route::group(['middleware' => 'CheckAuthAdmin'], function () {
             Route::any('/logout', [AuthController::class, 'logout'])->name('admin.logout');
@@ -116,7 +118,7 @@ Route::group(
 
 
                 Route::get('download/{extra?}', [AuctionController::class, 'download'])->name('download');
-                Route::get('view/{id?}', [AuctionController::class, 'view'])->name('view');
+
 
 
                 Route::get('user/{id?}/ban', [UserController::class, 'ban'])->name('ban');

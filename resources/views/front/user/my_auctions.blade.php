@@ -1,5 +1,5 @@
 @extends('front.layouts.master')
-@section('title', trans('messages.auction.my_auctions'))
+@section('title', trans('messages.user.my_auctions'))
 @section('style')
     <style></style>
 @endsection
@@ -20,13 +20,13 @@
             <div class="row">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#pending_auctions"
+                        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#pending_auctions"
                                 type="button" role="tab" aria-controls="profile"
                                 aria-selected="false">{{ trans('messages.auction.pending') }}</button>
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#on_progress_auctions"
+                        <button class="nav-link " id="home-tab" data-bs-toggle="tab" data-bs-target="#on_progress_auctions"
                                 type="button" role="tab" aria-controls="home"
                                 aria-selected="true">{{ trans('messages.auction.on_progress') }}</button>
                     </li>
@@ -37,7 +37,7 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade" id="pending_auctions" role="tabpanel" aria-labelledby="profile-tab"><br>
+                    <div class="tab-pane fade show active" id="pending_auctions" role="tabpanel" aria-labelledby="profile-tab"><br>
 
                         @if($pending_auctions->count() > 0)
                             @foreach($pending_auctions as $auction)
@@ -103,7 +103,7 @@
                             <div style="text-align: center;"><h2> @lang('messages.you_dont_have_auctions_yet') </h2></div>
                         @endif
                     </div>
-                    <div class="tab-pane fade show active" id="on_progress_auctions" role="tabpanel" aria-labelledby="home-tab"><br>
+                    <div class="tab-pane fade  " id="on_progress_auctions" role="tabpanel" aria-labelledby="home-tab"><br>
                         @if($on_progress_auctions->count() > 0)
                             @foreach($on_progress_auctions as $auction)
                                 <div class="watching-card">
