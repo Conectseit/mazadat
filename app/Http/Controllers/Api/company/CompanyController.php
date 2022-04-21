@@ -40,7 +40,7 @@ class CompanyController extends Controller
                 return responseJson(false, 'قيمة الجوال مستخدمة من قبل', null);  //
             }
 
-            $user = User::create($request_data + ['activation_code' => $activation_code,'type'=>'buyer','is_appear_name'=>1,'is_company'=>'company','accept_app_terms'=>'yes']);
+            $user = User::create($request_data + ['activation_code' => $activation_code,'send_at'=>now(),'type'=>'buyer','is_appear_name'=>1,'is_company'=>'company','accept_app_terms'=>'yes']);
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id]);

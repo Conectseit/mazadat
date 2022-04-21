@@ -43,7 +43,7 @@ class AuthController extends PARENT_API
         }
         $activation_code = create_rand_numbers();
 
-        $user->update(['activation_code' => $activation_code]);
+        $user->update(['activation_code' => $activation_code,'send_at'=>now()]);
 
         SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
 

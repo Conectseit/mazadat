@@ -249,7 +249,7 @@
 
 
                         <div class="form-group">
-                            <label>@lang('messages.auction.inspection_report_images')</label>
+                            <label>@lang('messages.auction.inspection_report_files')</label>
                             <select name="file_name_id" class="form-select form-control">
                                 <option selected disabled>{{trans('messages.select_file_name')}}</option>
                                 @foreach ($inspection_file_names as $inspection_file_name)
@@ -272,6 +272,9 @@
 {{--                            <div class="gallery1"></div>--}}
 {{--                        </div><br>--}}
 
+
+                        <br>
+                        <br>
                         <div class="form-group">
                             <label>@lang('messages.auction.location'):</label>
                             <div class="col-lg-12">

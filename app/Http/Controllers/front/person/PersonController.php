@@ -38,7 +38,7 @@ class PersonController extends Controller
                 return back()->with('error', 'قيمة الجوال مستخدمة من قبل');
             }
 
-            $user = User::create($request_data + ['activation_code' => $activation_code, 'send_at'=>now(), 'is_accepted'=>'1', 'type'=>'buyer','country_id'=>$country->id]);
+            $user = User::create($request_data + ['activation_code' => $activation_code,'send_at'=>now(), 'is_accepted'=>'1', 'type'=>'buyer','country_id'=>$country->id]);
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
