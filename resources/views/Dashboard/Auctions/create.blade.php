@@ -232,31 +232,31 @@
                         </div>
                     </div>
                     <hr><br>
-                    <h3>@lang('messages.auction.address'):</h3>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label display-block"> {{ trans('messages.city_name') }} </label>
-                        <div class="col-lg-9">
-                            <select name="city_id" class="select form-control"  id="cities">
-                                <option selected disabled>{{trans('messages.select')}}</option>
-                                @foreach ($cities as $city)
-                                    <option value="{{ $city->id }}"> {{ $city->$name }} </option>
-                                @endforeach
-                            </select>
-                            @error('city_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
+{{--                    <h3>@lang('messages.auction.address'):</h3>--}}
+{{--                    <div class="form-group">--}}
+{{--                        <label class="col-lg-3 control-label display-block"> {{ trans('messages.city_name') }} </label>--}}
+{{--                        <div class="col-lg-9">--}}
+{{--                            <select name="city_id" class="select form-control"  id="cities">--}}
+{{--                                <option selected disabled>{{trans('messages.select')}}</option>--}}
+{{--                                @foreach ($cities as $city)--}}
+{{--                                    <option value="{{ $city->id }}"> {{ $city->$name }} </option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                            @error('city_id')<span style="color: #e81414;">{{ $message }}</span>@enderror--}}
 
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label"> @lang('messages.auction.address'): </label>
-                            <div class="col-md-6">
-                            <input type="text" class="form-control"  value="{{ old('address')}}" name="address"
-                                   placeholder="@lang('messages.auction.address_details') ">
-                            </div>
-                            @error('address')<span style="color: #e81414;">{{ $message }}</span>@enderror
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label class="col-lg-3 control-label"> @lang('messages.auction.address'): </label>--}}
+{{--                            <div class="col-md-6">--}}
+{{--                            <input type="text" class="form-control"  value="{{ old('address')}}" name="address"--}}
+{{--                                   placeholder="@lang('messages.auction.address_details') ">--}}
+{{--                            </div>--}}
+{{--                            @error('address')<span style="color: #e81414;">{{ $message }}</span>@enderror--}}
 
-                        </div>
-                    </div><br>
+{{--                        </div>--}}
+{{--                    </div><br>--}}
                     <div class="row">
                     <div class="form-group">
 

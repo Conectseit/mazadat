@@ -53,6 +53,7 @@ Route::group(['namespace' => 'Api'], function () {
 
     //=========== general ============
     Route::get('countries', [CountryController::class, 'countries']);
+    Route::get('inspection_file_names', [AuctionController::class, 'inspection_file_names']);
     Route::get('nationalities', [NationalityController::class, 'nationalities']);
     Route::get('about_app', [SettingController::class, 'about_app']);
     Route::get('conditions_terms', [SettingController::class, 'conditions_terms']);

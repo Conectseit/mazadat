@@ -256,7 +256,9 @@
                                     <option value="{{ $inspection_file_name->id }}"> {{ $inspection_file_name->name }} </option>
                                 @endforeach
                             </select>
-<br>
+                            @error('file_name_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
+                            <br>
                             <input type="file"  class="form-control" name="inspection_report_images[]">
                             @error('inspection_report_images')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
