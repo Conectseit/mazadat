@@ -16,7 +16,8 @@ class InspectionImagesResource extends JsonResource
     {
         //$name = 'name_'.app()->getLocale();
         return [
-            'image'                   => $this->image_path,
+//            'image'                   => $this->image_path,
+            'image'                   => $this->file_path,
         ];
 
     }
