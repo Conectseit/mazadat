@@ -105,7 +105,7 @@ class PersonController extends Controller
         if (!$user) {
             return responseJson(false, 'The user not found...', null); //
         }
-        $user->update($request_data+['is_completed'=>1]);
+        $user->update($request_data+['is_completed'=>1,'is_verified'=>1]);
 //        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));
         return responseJson(true, trans('api.request_done_successfully_wait_until_admin_accept_you'), new PersonResource($user)); //ACCEPTED
     }
