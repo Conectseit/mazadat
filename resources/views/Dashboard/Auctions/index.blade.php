@@ -89,6 +89,7 @@
                                                            <a href="{{route('view',$auction->id)}}" target="_blank"> <i class="icon-file-pdf" style="color: red;"> </i></a>
 
                                                            <a href="{{route('download',$auction->extra)}}"><i class="icon-download4"> </i> {{trans('messages.download')}}</a>
+                                                           @else لا يوجد
                                                            @endif
                                                        </td>
                                                        <td class="text-center">
@@ -231,11 +232,11 @@
                                                                        <i class="icon-menu9"></i>
                                                                    </a>
                                                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
-                                                                       <li>
-                                                                           <a href="{{ route('auctions.edit',$auction->id) }}">
-                                                                               <i class="icon-database-edit2"></i>@lang('messages.edit')
-                                                                           </a>
-                                                                       </li>
+{{--                                                                       <li>--}}
+{{--                                                                           <a href="{{ route('auctions.edit',$auction->id) }}">--}}
+{{--                                                                               <i class="icon-database-edit2"></i>@lang('messages.edit')--}}
+{{--                                                                           </a>--}}
+{{--                                                                       </li>--}}
                                                                        <li>
                                                                            <a href="{{ route('auctions.show',$auction->id) }}">
                                                                                <i class="icon-eye"></i>@lang('messages.show')

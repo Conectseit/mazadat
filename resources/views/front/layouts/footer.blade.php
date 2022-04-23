@@ -34,8 +34,8 @@
                             </h2>
                             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                                 <div class="accordion-body">
-                                    <strong>{!! App\Models\Setting::where('key',$terms)->first()->value !!}</strong>
-                                    {{--                                    any HTML can go within the <code>.accordion-body</code>,--}}
+                                    <p>{!! substr(App\Models\Setting::where('key',$terms)->first()->value,0,500) !!}</p>
+                                    <a href="{{route('front.condition_and_terms')}}">{{__('messages.more')}}</a>
                                 </div>
                             </div>
                         </div>

@@ -285,9 +285,10 @@ class AuctionController extends Controller
     public function my_auctions()
     {
 //        $data['auctions'] =  auth()->user()->seller_auctions()->get();
-        $data['on_progress_auctions'] = auth()->user()->seller_auctions()->where(['status' => 'on_progress', 'is_accepted' => 1])->paginate('20');
 //        $data['pending_auctions'] = Auction::where('seller_id', auth()->user()->id)->where('status', 'not_accepted')->paginate('20');
         $data['pending_auctions'] = auth()->user()->seller_auctions()->where('status', 'not_accepted')->where('is_accepted', 0)->paginate('20');
+        $data['accepted_not_appear_auctions'] = auth()->user()->seller_auctions()->where(['status' => 'not_accepted', 'is_accepted' => 1])->paginate('20');
+        $data['on_progress_auctions'] = auth()->user()->seller_auctions()->where(['status' => 'on_progress', 'is_accepted' => 1])->paginate('20');
         $data['ended_auctions'] = auth()->user()->seller_auctions()->where('status', 'done')->where('is_accepted', 1)->paginate('20');
         return view('front.user.my_auctions', $data);
     }
@@ -301,15 +302,15 @@ class AuctionController extends Controller
 //    }
 
 
-    public function auction_show_update($id)
+    public function show_auction_update($id)
     {
         $data['auction'] = Auction::find($id);
         $data['categories'] = Category::all();
         $data['options'] = Option::all();
-        $data['users'] = User::where('is_verified', 1)->get();
+        $data['inspection_file_names'] = FileName::all();
+//        $data['users'] = User::where('is_verified', 1)->get();
         $data['images'] = AuctionImage::where(['auction_id' => $id])->get();
         $data['inspection_report_images'] = InspectionImage::where(['auction_id' => $id])->get();
-
 
         return view('front.auctions.update_auction', $data);
     }
@@ -332,17 +333,37 @@ class AuctionController extends Controller
             $auction_images = DB::table('auction_images')->insert($data);
         }
 
+
         $dataa = [];
         if ($request->hasfile('inspection_report_images')) {
             foreach ($auction->inspectionimages as $image) {
-                unlink('uploads/auctions/' . $image->image);
+                unlink('uploads/inspection_report_pdf/' . $image->image);
                 $image->delete();
             }
             foreach ($request->file('inspection_report_images') as $key => $img) {
-                $dataa[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
+                $file=$img;
+                $file_image=time().'.'.$file->getClientOriginalExtension();
+                $img->move('uploads/inspection_report_pdf',$file_image);
+                $dataa[$key] =['image' =>$file_image,'auction_id' => $auction->id,'file_name_id'=>$request->file_name_id];
             }
-            $auction_inspection_images = DB::table('inspection_images')->insert($dataa);
+             DB::table('inspection_images')->insert($dataa);
         }
+
+
+
+
+
+//        $dataa = [];
+//        if ($request->hasfile('inspection_report_images')) {
+//            foreach ($auction->inspectionimages as $image) {
+//                unlink('uploads/auctions/' . $image->image);
+//                $image->delete();
+//            }
+//            foreach ($request->file('inspection_report_images') as $key => $img) {
+//                $dataa[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
+//            }
+//            $auction_inspection_images = DB::table('inspection_images')->insert($dataa);
+//        }
 
 
 //======= update auction options =======

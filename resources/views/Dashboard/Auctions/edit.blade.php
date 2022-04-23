@@ -229,26 +229,83 @@
                                 @endif
                             </div>
                         </div>
+
+<hr>
+
                         <div class="form-group">
-                            <label>@lang('messages.auction.inspection_report_images')</label>
-{{--                            <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
-                            <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">
-                            <div class="gallery1">
+                            <h4>@lang('messages.auction.inspection_report_files')</h4><br>
+                            @foreach($inspection_report_images as $image)
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                        <label>@lang('messages.file_name')</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-9">
+                                        <select name="file_name_id" class="form-select form-control">
+                                            <option selected
+                                                    disabled>{{ isset($image->file->name) ? $image->file->name :  trans('messages.select') }}
+                                            </option>
+                                            @foreach ($inspection_file_names as $inspection_file_name)
+                                                <option
+                                                    value="{{ $inspection_file_name->id }}"> {{ $inspection_file_name->name }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
 
-                                @if ($inspection_report_images)
+                                </div>
+                            @endforeach
+                            @error('file_name_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                    <label>@lang('messages.select_file')</label>
+                                </div>
+                                <div class="col-lg-10 col-md-9">
+                                    <input type="file" id="inspection-photo-add" class="form-control"
+                                           name="inspection_report_images[]">
+                                    <div class="gallery1 mt-2">
+                                        @if ($inspection_report_images)
+                                            @foreach($inspection_report_images as $image)
 
-                                    @foreach($inspection_report_images as $image)
-                                        <img src="{{asset($image->ImagePath) }}" style="height: 40px; padding-right: 1px;"
-                                             alt="">
-                                        {{--                                            <button class="btn btn-danger" style="margin-top: 5px;"></button>--}}
-                                    @endforeach
-                                @endif
+                                                <a href="{{route('inspection_view_file',$image->id)}}" target="_blank">
+
+                                                    <i class="icon-file-pdf "style="color: red;"></i>
+                                                </a>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
+
+
+
+
+{{--                        <div class="form-group">--}}
+{{--                            <label>@lang('messages.auction.inspection_report_images')</label>--}}
+{{--                            <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">--}}
+{{--                            <div class="gallery1">--}}
+{{--                                @if ($inspection_report_images)--}}
+{{--                                    @foreach($inspection_report_images as $image)--}}
+{{--                                        <img src="{{asset($image->ImagePath) }}" style="height: 40px; padding-right: 1px;"--}}
+{{--                                             alt="">--}}
+{{--                                        --}}{{--                                            <button class="btn btn-danger" style="margin-top: 5px;"></button>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+
+
+
+
+
+
+
+
+
+
+
                         <div class="text-right">
-{{--                            <input type="submit" class="btn btn-primary" name="forward"--}}
-{{--                            value=" {{ trans('messages.update_and_come_back') }} "/>--}}
                             <input type="submit" class="btn btn-success"
                                    value=" {{ trans('messages.update_and_come_back') }} "/>
                         </div>

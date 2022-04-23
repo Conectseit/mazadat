@@ -24,6 +24,11 @@
                                 type="button" role="tab" aria-controls="profile"
                                 aria-selected="false">{{ trans('messages.auction.pending') }}</button>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link " id="profile-tab" data-bs-toggle="tab" data-bs-target="#accepted_not_appear"
+                                type="button" role="tab" aria-controls="accepted_not_appear"
+                                aria-selected="false">{{ trans('messages.auction.accepted_not_appear') }}</button>
+                    </li>
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link " id="home-tab" data-bs-toggle="tab" data-bs-target="#on_progress_auctions"
@@ -106,6 +111,64 @@
                     <div class="tab-pane fade  " id="on_progress_auctions" role="tabpanel" aria-labelledby="home-tab"><br>
                         @if($on_progress_auctions->count() > 0)
                             @foreach($on_progress_auctions as $auction)
+                                <div class="watching-card">
+                                    <div class="row">
+                                        <div class="col-lg-10">
+                                            <div class="card list-card" id="itemCard-{{ $auction->id }}">
+                                                <a href="{{route('front.auction_details',$auction->id)}}" class="image">
+                                                    <div class="overlay"></div>
+                                                    <img src="{{$auction->first_image_path}}" alt="card-img">
+                                                </a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{ ($auction->$name ) }}</h5>
+                                                    <p class="start-date info-item">
+                                                        <i class="fal fa-calendar-alt"></i>
+                                                        {{trans('messages.auction.start_at')}}
+                                                        : {{  isset($auction->start_date)?$auction->start_date->format('l, m/d/Y'):''  }}
+                                                    </p>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <p>
+                                                                <i class="fal fa-ticket"></i>{{trans('messages.auction.buyers')}}
+                                                                :{{ ($auction->count_of_buyer ) }}</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p><i class="fal fa-tag"></i>
+                                                                {{trans('messages.auction.value_of_increment')}}
+                                                                : {{($auction->value_of_increment)}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <p><i class="fal fa-gavel"></i>
+                                                                {{trans('messages.auction.current_price')}}
+                                                                :{{($auction->current_price)}}</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p>
+                                                                <i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}
+                                                                :{{($auction->start_auction_price)}}</p>
+                                                        </div>
+                                                        {{--                                                    <div class="col-sm-6">--}}
+                                                        {{--                                                        <p>--}}
+                                                        {{--                                                            <i class="fal fa-clock"></i>{{$auction->remaining_time['days']}}--}}
+                                                        {{--                                                        </p>--}}
+                                                        {{--                                                    </div>--}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <div style="text-align: center;"><h2> @lang('messages.you_dont_have_auctions_yet') </h2></div>
+                        @endif
+
+                    </div>
+                    <div class="tab-pane fade  " id="accepted_not_appear" role="tabpanel" aria-labelledby="accepted_not_appear-tab"><br>
+                        @if($accepted_not_appear_auctions->count() > 0)
+                            @foreach($accepted_not_appear_auctions as $auction)
                                 <div class="watching-card">
                                     <div class="row">
                                         <div class="col-lg-10">

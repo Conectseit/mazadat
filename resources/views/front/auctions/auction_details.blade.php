@@ -296,10 +296,8 @@
                         @foreach($auction->inspectionimages as $image)
                             <div class="col-md-3 col-6">
 {{--                                <a href="{{$image->image_path}}">--}}
-                                    <div class="image" style="background-color: #d1915c;width: 150px; height: 150px;">
-                                        <p>{{ isset($image->file->name) ? $image->file->name:'..' }} :</p>
-                                        <br>
-
+                                <p>@lang('messages.file_name'):{{ isset($image->file->name) ? $image->file->name:'..' }}</p><br>
+                                    <div class="image" style="background-color: #d1915c;width: 80px; height: 80px;">
                                         <a href="{{route('inspection_view_file',$image->id)}}" target="_blank">
                                             <i class=" fa fa-file-pdf-o" style="color: red;"></i>
                                            </a>
@@ -346,6 +344,29 @@
     </div>
 @stop
 @push('scripts')
+{{--    <script>--}}
+{{--        // Initialize and add the map--}}
+{{--        function initMap() {--}}
+{{--            // The location of Uluru--}}
+{{--            const uluru = { lat: {{ $auction->latitude }}, lng: {{ $auction->longitude }} };--}}
+{{--            // The map, centered at Uluru--}}
+{{--            const map = new google.maps.Map(document.getElementById("map"), {--}}
+{{--                zoom: 4,--}}
+{{--                center: uluru,--}}
+{{--            });--}}
+{{--            // The marker, positioned at Uluru--}}
+{{--            const marker = new google.maps.Marker({--}}
+{{--                position: uluru,--}}
+{{--                map: map,--}}
+{{--            });--}}
+{{--        }--}}
+
+{{--        window.initMap = initMap;--}}
+{{--    </script>--}}
+{{--    <script--}}
+{{--        src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks">--}}
+{{--    </script>--}}
+
     @include('front.auctions.parts.auction_location_on_google_map')
     @include('front.auctions.parts.ajax')
     @include('front.auctions.parts.counter', ['auction' => $auction])

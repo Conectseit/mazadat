@@ -207,10 +207,11 @@ return [
 
     'download'               => 'download',
     'extra_file'             => 'extra file',
-    'extra_file_only_to_admin'             => 'extra file only_to_admin',
+    'select_file'            => ' select pdf file',
     'inspection_file_names'  => 'inspection file names',
     'select_file_name'       => 'select file name',
-    'file_name'              => 'file name',
+    'file_name'              => 'file type',
+    'extra_file_only_to_admin'             => 'extra file only_to_admin',
 
 
 
@@ -371,6 +372,8 @@ return [
 
     ],
     'terms' => 'Terms & Conditions ',
+    'more' => 'more .....',
+
     'about_mazadat' => 'about mazadat',
 
     'city_name' => 'City Name',

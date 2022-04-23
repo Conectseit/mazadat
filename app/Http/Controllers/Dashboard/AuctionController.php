@@ -174,7 +174,7 @@ class AuctionController extends Controller
         $data['categories'] = Category::all();
 //        $data['sellers'] = User::where('type', 'seller')->get();
         $data['users'] = User::where('is_verified', 1)->get();
-
+        $data['inspection_file_names'] = FileName::all();
         $data['images'] = AuctionImage::where(['auction_id' => $id])->get();
         $data['inspection_report_images'] = InspectionImage::where(['auction_id' => $id])->get();
 
@@ -201,17 +201,37 @@ class AuctionController extends Controller
             $auction_images = DB::table('auction_images')->insert($data);
         }
 
+
         $dataa = [];
         if ($request->hasfile('inspection_report_images')) {
             foreach ($auction->inspectionimages as $image) {
-                unlink('uploads/auctions/' . $image->image);
+                unlink('uploads/inspection_report_pdf/' . $image->image);
                 $image->delete();
             }
             foreach ($request->file('inspection_report_images') as $key => $img) {
-                $dataa[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
+                $file=$img;
+                $file_image=time().'.'.$file->getClientOriginalExtension();
+                $img->move('uploads/inspection_report_pdf',$file_image);
+                $dataa[$key] =['image' =>$file_image,'auction_id' => $auction->id,'file_name_id'=>$request->file_name_id];
             }
-            $auction_inspection_images = DB::table('inspection_images')->insert($dataa);
+            DB::table('inspection_images')->insert($dataa);
         }
+
+
+
+
+
+//        $dataa = [];
+//        if ($request->hasfile('inspection_report_images')) {
+//            foreach ($auction->inspectionimages as $image) {
+//                unlink('uploads/auctions/' . $image->image);
+//                $image->delete();
+//            }
+//            foreach ($request->file('inspection_report_images') as $key => $img) {
+//                $dataa[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
+//            }
+//            $auction_inspection_images = DB::table('inspection_images')->insert($dataa);
+//        }
 
 
         //======= update auction options =======

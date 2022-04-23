@@ -230,7 +230,8 @@ return [
     'extra_file' => 'ملف اضافي',
     'extra_file_only_to_admin' => 'ملف اضافي يظهر لادارة الموقع فقط',
     'select_file_name' => 'اختر اسم الملف',
-    'file_name' => ' اسم الملف',
+    'file_name' => ' نوع الملف',
+    'select_file' => '  اختر ملف pdf',
     'inspection_file_names' => 'اسماء ملفات تقارير الفحص',
 
 
@@ -512,6 +513,7 @@ return [
 
     ],
     'terms' => 'الشروط والاحكام  ',
+    'more' => ' المزيد .....',
     'about_mazadat' => 'تعرف اكثر علي مزادات',
 
     'city_name' => 'اسم المدينة',

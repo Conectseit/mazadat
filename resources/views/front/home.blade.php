@@ -93,8 +93,7 @@
                             </a>
 
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>{{$advertisements->count() > 0 ? $advertisements->first()->$name : 'mazadat' }}</h5>
-                                    {{--                        <p>University Campus</p>--}}
+                                    <h4>{{$advertisements->count() > 0 ? $advertisements->first()->$name : 'mazadat' }}</h4>
                                 </div>
                         </div>
 
@@ -107,7 +106,7 @@
                                              alt="Second slide">
                                     </a>
                                     <div class="carousel-caption d-none d-md-block">
-                                        <h5>{{ isNullable($advertisement->$name) }}</h5>
+                                        <h4>{{ isNullable($advertisement->$name) }}</h4>
                                     </div>
                                 </div>
                             @endif

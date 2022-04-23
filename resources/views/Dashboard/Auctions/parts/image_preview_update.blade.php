@@ -34,7 +34,7 @@
                     var reader = new FileReader();
 
                     reader.onload = function(event) {
-                        $($.parseHTML('<img style="width: 100px;margin: 4px;padding: 8px;">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                        // $($.parseHTML('<img style="width: 100px;margin: 4px;padding: 8px;">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
                     }
                     reader.readAsDataURL(input.files[i]);
                 }
