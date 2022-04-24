@@ -274,14 +274,21 @@ class AuctionController extends Controller
     }
 
 
-    public function destroy(Request $request)
+    public function destroy(Request $request,Auction $auction)
     {
         $auction = Auction::find($request->id);
         if (!$auction) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, auction is not exists !!']);
-//            foreach ($auction->auctionimages as $image) {
-//                unlink('uploads/auctions/' . $image->image);
-//            }
+
         try {
+
+            if (!is_null($auction->auctionimages))
+                foreach ($auction->auctionimages as $image) {
+                    unlink('uploads/auctions/' . $image->image);
+                }
+            if (!is_null($auction->inspectionimages))
+                foreach ($auction->inspectionimages as $image) {
+                    unlink('uploads/inspection_report_pdf/' . $image->image);
+                }
             $auction->delete();
             return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
         } catch (Exception $e) {

@@ -31,6 +31,9 @@ return [
 
 
 
+    'deleted_auction_successfully'         	    => 'تم حذف المزاد بنجاح',
+
+
     'all_questions'         	    => 'الاسئلة الشائعة',
     'all_notifications'         	=> ' الاشعارات',
     'passport_expiry_date'         	=> ' تاريخ انتهاء',

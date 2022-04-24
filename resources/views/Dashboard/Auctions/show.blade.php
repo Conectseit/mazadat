@@ -393,7 +393,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <h3>{{ trans('messages.auction.inspection_report_files') }}: </h3>
-                                    @if($images->count() > 0)
+                                    @if($inspection_report_images->count() > 0)
                                         <table class="table datatable" id="inspection_report_images"
                                                style="font-size: 16px;">
                                             <thead>

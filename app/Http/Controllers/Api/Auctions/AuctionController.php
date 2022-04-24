@@ -252,12 +252,16 @@ class AuctionController extends PARENT_API
     }
 
 
-    public function updateAuction(UpdateAuctionRequest $request, $id)
+    public function updateAuction(UpdateAuctionRequest $request, Auction $auction)
     {
-        $auction = Auction::find($id);
+//        $auction = Auction::find($id);
+        $auction = Auction::find($request->id);
         if (!$auction) {
             return responseJson(false, trans('api.not_found_auction'), null);  //NOT_FOUND
         }
+        if ($auction->seller_id != (auth()->user()->id))
+            return responseJson(false, trans('api.sorry you cant delete this auction'), null);  //NOT_FOUND
+
 
         DB::beginTransaction();
         try {
@@ -269,7 +273,7 @@ class AuctionController extends PARENT_API
             if ($request->hasfile('images')) {
 
                 foreach ($auction->auctionimages as $image) {
-//                    unlink('uploads/auctions/' . $image->image);
+                    unlink('uploads/auctions/' . $image->image);
                     $image->delete();
                 }
 
@@ -280,19 +284,38 @@ class AuctionController extends PARENT_API
             }
 
 //======= upload auction inspection_report_images =======
+//            $data = [];
+//            if ($request->hasfile('inspection_report_images')) {
+//                foreach ($auction->inspectionimages as $image) {
+////                    unlink('uploads/auctions/' . $image->image);
+//                    $image->delete();
+//                }
+//                foreach ($request->file('inspection_report_images') as $key => $img) {
+//                    $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
+//                }
+//                $auction_inspection_images = DB::table('inspection_images')->insert($data);
+//            }
+
+
             $data = [];
             if ($request->hasfile('inspection_report_images')) {
                 foreach ($auction->inspectionimages as $image) {
-//                    unlink('uploads/auctions/' . $image->image);
+                    unlink('uploads/inspection_report_pdf/' . $image->image);
                     $image->delete();
                 }
                 foreach ($request->file('inspection_report_images') as $key => $img) {
-                    $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
+                    $file = $img;
+                    $file_image = time() . '.' . $file->getClientOriginalExtension();
+                    $img->move('uploads/inspection_report_pdf', $file_image);
+                    $data[$key] = ['image' => $file_image, 'auction_id' => $auction->id, 'file_name_id' => $request->file_name_id];
                 }
-                $auction_inspection_images = DB::table('inspection_images')->insert($data);
+                DB::table('inspection_images')->insert($data);
             }
 
+
 //======= upload auction options =======
+
+
             $dataa = [];
             if (is_array($request->option_details_id)) {
 
@@ -322,17 +345,25 @@ class AuctionController extends PARENT_API
     }
 
 
-    public function deleteAuction(Request $request, $id)
+    public function deleteAuction(Request $request, Auction $auction)
     {
-        $auction = Auction::find($id);
+        $auction = Auction::find($request->id);
 
         if (!$auction)
             return responseJson(false, trans('api.not_found_auction'), null);  //NOT_FOUND
 
-//            foreach ($auction->auctionimages as $image) {
-//                unlink('uploads/auctions/' . $image->image);
-//            }
+        if ($auction->seller_id != (auth()->user()->id))
+            return responseJson(false, trans('api.sorry you cant delete this auction'), null);  //NOT_FOUND
+
         try {
+            if (!is_null($auction->auctionimages))
+                foreach ($auction->auctionimages as $image) {
+                    unlink('uploads/auctions/' . $image->image);
+                }
+            if (!is_null($auction->inspectionimages))
+                foreach ($auction->inspectionimages as $image) {
+                    unlink('uploads/inspection_report_pdf/' . $image->image);
+                }
             $auction->delete();
             return responseJson(true, trans('api.deleted_auction_successfully'), null);  //NOT_FOUND
         } catch (Exception $e) {

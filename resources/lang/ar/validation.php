@@ -210,7 +210,7 @@ return [
         'country_id'         	=> ' كود الدولة',
         'seller_id'         	=> ' صاحب المزاد',
         'category_id'         	=> 'القسم ',
-        'inspection_report_images'         	=> 'صور تقارير الفحص ',
+        'inspection_report_images'         	=> 'ملفات تقارير الفحص ',
         'images'            	=> 'صورالمزاد ',
         'option_ids'         	=> 'تصنيفات المزاد ',
 
