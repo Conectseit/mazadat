@@ -2622,7 +2622,7 @@ a.ui-button:active,
 #countdown .labels li {
     width: 65px;
     font: bold 14px 'Droid Sans', Arial, sans-serif;
-    color: #f47321;
+    /*color: #f47321;*/
     text-shadow: 1px 1px 0px #000;
     text-align: center;
     text-transform: uppercase;

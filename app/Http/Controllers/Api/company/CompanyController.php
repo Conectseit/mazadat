@@ -61,7 +61,7 @@ class CompanyController extends Controller
     {
         $user = auth()->user();
         if (!$user) {
-            return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
+            return responseJson(false, trans('api.The_user_not_found'), null); //
         }
         if ($user->ban == 1) {
             return responseJson(true, trans('api.user_profile'), new CompanyResource($user));  //OK

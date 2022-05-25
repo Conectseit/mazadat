@@ -11,6 +11,7 @@ use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Message;
 use App\Models\Nationality;
 use App\Models\Notification;
 use App\Models\Payment;
@@ -138,8 +139,10 @@ class CompanyController extends Controller
             return redirect()->route('companies.index')->with('class', 'danger')->with('message', trans('messages.messages.try_access_not_found_content'));
         }
         $data['company'] = User::find($id);
-//        $data['company_auctions'] = AuctionBuyer::where('buyer_id',$id)->get();
+        $data['messages'] = Message::all();
         $data['company_auctions'] = Auction::where('seller_id',$id)->get();
+        $data['company_bids'] = AuctionBuyer::where('buyer_id',$id)->get();
+
         return view('Dashboard.Companies.show', $data);
     }
 

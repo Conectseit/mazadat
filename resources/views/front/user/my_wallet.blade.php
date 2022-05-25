@@ -24,6 +24,7 @@
             </div>
         </div>
         <div class="container">
+            <h3>{{__('messages.available_limit_note')}}</h3>
             <ul class="wallet-details">
                 <li>
                     <p> {{__('messages.current_wallet')}}</p>

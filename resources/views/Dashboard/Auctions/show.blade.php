@@ -571,7 +571,7 @@
                                 </div>
 
                             </div>
-                            <!-- /auction_auction_bidss -->
+                            <!-- /auction_auction_bids -->
                         </div>
 
                         {{--                        <div class="tab-pane fade" id="settings"></div>--}}

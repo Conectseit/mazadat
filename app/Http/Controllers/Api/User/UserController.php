@@ -10,7 +10,10 @@ use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Http\Resources\Api\collections\AuctionsCollection;
 use App\Http\Resources\Api\collections\MyAuctionsCollection;
 use App\Http\Resources\Api\collections\MyPendingAuctionsCollection;
+use App\Http\Resources\Api\UserBidsResource;
+use App\Http\Resources\Api\UserTransactionsResource;
 use App\Models\Auction;
+use App\Models\AuctionBuyer;
 use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -59,17 +62,17 @@ class UserController extends PARENT_API
         $auctions = $request->user()->seller_auctions;
 
         if ($request->status == 'done') {
-                if ($auctions->where('status', 'done')->count() > 0) {
-                    return responseJson(true, trans('api.all_my_auctions'), new AuctionsCollection($auctions->where('status', 'done')->paginate(10)));  //OK don-successfully
+            if ($auctions->where('status', 'done')->count() > 0) {
+                return responseJson(true, trans('api.all_my_auctions'), new AuctionsCollection($auctions->where('status', 'done')->paginate(10)));  //OK don-successfully
 
 //                    return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'done')));  // without pagination
-                } else {
-                    return responseJson(false, trans('api.there_is_done_auctions'), null);  //OK
-                }
+            } else {
+                return responseJson(false, trans('api.there_is_done_auctions'), null);  //OK
+            }
         }
         if ($auctions->where('status', 'on_progress')->count() > 0) {
 
-            return responseJson(true, trans('api.all_my_auctions'), new AuctionsCollection($auctions->where('status', 'on_progress')->where('is_accepted',1)->paginate(10)));  //OK don-successfully
+            return responseJson(true, trans('api.all_my_auctions'), new AuctionsCollection($auctions->where('status', 'on_progress')->where('is_accepted', 1)->paginate(10)));  //OK don-successfully
 
 //            return responseJson(true, trans('api.auction_details'), CategoryAuctionsResource::collection($auctions->where('status', 'on_progress')->where('is_accepted',1)));  //OK
         } else {
@@ -79,18 +82,47 @@ class UserController extends PARENT_API
     }
 
 
-
     public function my_pending_auctions(Request $request)
     {
-        $auctions = $request->user()->seller_auctions->where('status', 'not_accepted')->where('is_accepted',0)->sortDesc()->paginate(10);
+        $auctions = $request->user()->seller_auctions->where('status', 'not_accepted')->where('is_accepted', 0)->sortDesc()->paginate(10);
 
-        if ($auctions->count() > 0)
-        {
+        if ($auctions->count() > 0) {
             return responseJson(true, trans('api.auction_details'), new MyPendingAuctionsCollection($auctions));  //OK
 //            return responseJson(true, trans('api.auction_details'), PendingAuctionsResource::collection($auctions));  //OK
         } else {
             return responseJson(false, trans('api.there_is_pending_auctions'), null);  //OK
         }
+
+    }
+
+
+    public function user_account_statement_bids()
+    {
+        $user = auth()->user();
+
+        if (!$user) {
+            return responseJson(false, trans('api.The_user_not_found'), null); //
+        }
+        $user_bids = AuctionBuyer::where('buyer_id', $user->id)->get();
+        if ($user_bids->count() > 0)
+            return responseJson(true, trans('api.user_profile'), UserBidsResource::collection($user_bids));  //OK
+        else
+            return responseJson(false, trans('api.there_is_no_bids_for_this_user'), null);  //OK
+
+    }
+
+    public function user_account_statement_transactions()
+    {
+        $user = auth()->user();
+
+        if (!$user) {
+            return responseJson(false, trans('api.The_user_not_found'), null); //
+        }
+        $user_transaction = Payment::where('user_id', $user->id)->get();
+        if ($user_transaction->count() > 0)
+            return responseJson(true, trans('api.user_profile'), UserTransactionsResource::collection($user_transaction));  //OK
+        else
+            return responseJson(false, trans('api.there_is_no_transactions_for_this_user'), null);  //OK
 
     }
 
@@ -165,11 +197,6 @@ class UserController extends PARENT_API
 //        }
 //        return responseJson(true, trans('api.request_done_successfully'), $user->passport_image_path); //ACCEPTED
 //    }
-
-
-
-
-
 
 
     //==================================================================================

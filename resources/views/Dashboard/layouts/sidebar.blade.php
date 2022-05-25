@@ -11,7 +11,7 @@
     <li >
         <a href="#">
             <i class="icon-people"></i>
-            <span>{{ trans('messages.user.users') }}</span></a>
+            <span>{{ trans('messages.person.persons') }} / {{ trans('messages.company.companies') }}</span></a>
         <ul>
             <li><a href="{{route('persons.index')}}">{{ trans('messages.person.persons') }}</a></li>
             <li><a href="{{route('companies.index')}}">{{ trans('messages.company.companies') }}</a></li>
@@ -72,6 +72,14 @@
             <li><a href="{{route('cities.create')}}"> {{ trans('messages.add') }}</a></li>
         </ul>
     </li>
+    <li>
+        <a href="#"><i class="icon-archive"></i>
+            <span> {{ trans('messages.message.messages') }} </span></a>
+        <ul>
+            <li><a href="{{route('messages.index')}}">{{ trans('messages.all') }}</a></li>
+            <li><a href="{{route('messages.create')}}"> {{ trans('messages.add') }}</a></li>
+        </ul>
+    </li>
     <li class="nav-item">
         <a href="{{ route('inspection_file_names.index') }}"
            class="nav-link {{ request()->route()->getName() == 'dashboard.inspection_file_names.index' ? 'active' : '' }}">
@@ -112,6 +120,14 @@
             <span> {{ trans('messages.transaction.transactions') }} </span></a>
         <ul>
             <li><a href="{{ route('transactions.index')}}">{{ trans('messages.show') }}</a></li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="#"><i class="icon-archive"></i>
+            <span> {{ trans('messages.financial_reviews') }} </span></a>
+        <ul>
+            <li><a href="{{ route('financial_reviews.index')}}">{{ trans('messages.show') }}</a></li>
         </ul>
     </li>
 

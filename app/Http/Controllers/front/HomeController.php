@@ -82,14 +82,18 @@ class HomeController extends Controller
         return view('front.home',$data);
     }
 
+    public function unique_auction()
+    {
+        $unique_auction = Auction::where('is_unique', 1)->get();
+        return view('front.auctions.all_unique_auctions', compact('unique_auction'));
+    }
+
     public function all_companies()
     {
 //        $data['companies'] = User::where(['is_company'=>'company','type'=>'seller'])->get();
         $companies = User::where('is_company','company')->whereHas('seller_auctions', function ($qu){
             return $qu->where('status', '!=', 'not_accepted');
         })->get();
-
-
         return view('front.company.all_companies', compact('companies'));
     }
 

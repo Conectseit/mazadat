@@ -249,10 +249,8 @@
                 reader.onload = function (e) {
                     $("#img-preview2").attr("src", e.target.result);
                 };
-
                 reader.readAsDataURL(input.files[0]);
             } else {
-
                 $("#img-preview2").attr("src", "https://assets.wasalt.com/others/icons/villas-for-sale-in-makkah.jpeg");
             }
         }

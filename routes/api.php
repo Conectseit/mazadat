@@ -104,6 +104,10 @@ Route::group(['namespace' => 'Api'], function () {
         Route::get('additional_address', [AuthController::class, 'additionalAddress']);
 
 
+        Route::get('user_account_statement_bids', [UserController::class, 'user_account_statement_bids']);
+        Route::get('user_account_statement_transactions', [UserController::class, 'user_account_statement_transactions']);
+
+
         // =========== auctions ============
         Route::post('watched_auctions', [AuctionController::class, 'watched_auctions']);
         Route::post('make_auction/{id}/watch', [AuctionController::class, 'watch_auction']);

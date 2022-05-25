@@ -35,6 +35,7 @@ class AuctionDetailsResource extends JsonResource
 
             'remaining_time'              => $this->remaining_time,
             'delivery_charge'             => $this->delivery_charge ,
+            'auction_commission'          =>(int) $this->category->auction_commission ,
             'is_unique'                   => $this->is_unique,
             'status'                      => $this->status,
             'seller_id'                   => $this->seller_id,

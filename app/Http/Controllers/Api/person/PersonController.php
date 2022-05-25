@@ -58,7 +58,7 @@ class PersonController extends Controller
     {
         $user = auth()->user();
         if (!$user) {
-            return responseJson(false, trans('api.The_user_not_found'), null); //BAD_REQUEST
+            return responseJson(false, trans('api.The_user_not_found'), null); //
         }
         if ($user->ban == 1) {
             return responseJson(true, trans('api.user_profile'), new PersonResource($user));  //OK
@@ -109,5 +109,7 @@ class PersonController extends Controller
 //        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));
         return responseJson(true, trans('api.request_done_successfully_wait_until_admin_accept_you'), new PersonResource($user)); //ACCEPTED
     }
+
+
 
 }

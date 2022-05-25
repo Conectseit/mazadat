@@ -45,6 +45,7 @@ return [
     'wallet'                  => 'رصيد المحفظة',
     'current_wallet'          => 'الإيداع الحالي:',
     'available_limit'         => 'الحد المتاح:',
+    'available_limit_note'         => 'ملحوظة : يجب  عليك زيادة الحد المتاح اولا لكي تتمكن من اجراء مزايدة ',
     'cheque'                  => 'شيك',
     'bank_deposit'            => 'ايداع بنكى',
     'online_pay'              => 'الدفع عبر الإنترنت (بطاقة الائتمان)',
@@ -53,6 +54,7 @@ return [
     'choose_available_limit'  => 'اختر الحد الخاص بك',
     'choose_payment_method'   => 'اختر طريقة الدفع',
     'our_offices'             => 'مكاتبنا',
+    'visit_our_offices'       => 'لاتمام عملية الدفع كاش يجب عليك الذهاب لأحد فروع مكاتبنا علي العنوان الاتي:',
     'upload_receipt'          => 'قم برفع ايصال الدفع الخاص بك',
     'send_receipt'            => 'رفع الفاتورة',
     'send_sms'                => ' ارسال عن طريق رسالة نصية',
@@ -96,6 +98,10 @@ return [
     'cancel'                  => 'إلغاء',
     'my_profile'              => 'حسابي الشخصي',
     'update_personal_image'   => 'تعديل صورة الملف الشخصى',
+    'days'   => 'أيام',
+    'hours'   => 'ساعات',
+    'min'   => 'دقايق',
+    'sec'   => 'ثواني',
 
 
 
@@ -116,6 +122,8 @@ return [
      'edit-var'              => 'تعديل :var',
      'update'              => 'تعديل ',
      'the end date should between'              => 'تاريخ انتهاء المزاد يجب ان يكون بين',
+     'auction_commission_note'              => 'ملحوظة: رسوم دخول المزاد  سوف تخصم من محفظتك عند مشاركتك في مزاد ثم الخروج من المزاد قبل وقت انتهاءه',
+     'send_receipt_note'              => ' يجب عليك  الإقرار بصحة البيانات المرفوعة في الدفع البنكي أولا',
 
 
 
@@ -127,8 +135,14 @@ return [
     ],
 
 
+    'message' => [
+        'messages' => 'رسائل الاشعارات',
+        'message' => 'رسالة اشعار',
+        'title' => '  عنوان اشعار',
+        'text' => 'نص الاشعار',
+    ],
 
-
+    'financial_reviews' => 'المراجع المالي',
 
 
 //======= categories========
@@ -525,6 +539,7 @@ return [
         'edit' => 'تعديل مدينة ',
         'latest_cities' => 'احدث المدن المضافة',
     ],
+
     'nationality' => [
         'nationality' => 'الجنسية',
         'nationalities' => 'الجنسيات',
@@ -605,6 +620,8 @@ return [
         'added_balance_successfully' => 'تم اضافة رصيد لمحظة المستخدم بنجاح',
         'sorry_this_option_added_before_select_another_one' => 'عفوا لقد قمت باضافة هذا التصنيف من قبل,اختر تصنيف اخر',
         'not_accept_deposit_receipt_and_send_SMS' => 'لم يتم قبول  الايداع البنكي وارسال رسالة sms',
+        'accept_payment_receipt' => 'تم  قبول  الايداع البنكي وارسال رسالة sms',
+        'verify_payment_receipt' => 'تم مراجعة الايداع البنكي واضافة رصيد للمحفظة',
     ],
 
 
@@ -624,7 +641,7 @@ return [
     'enter_middle_name' => 'ادخل الاسم الثاني ',
     'enter_last_name' => 'ادخل الاسم الاخير ',
     'enter_email' => 'ادخل البريد الالكترونى',
-    'enter_email_or_mobile' => ' ادخل البريد الالكتروني او رقم الجوال 966xxx xxx',
+    'enter_email_or_mobile' => ' ادخل البريد الالكتروني او رقم الجوال   9665xx xxx xxx ',
 
     'enter_mobile' => 'ادخل رقم الجوال بدون 0: ',
     'enter_user_name' => 'ادخل  اسم المستخدم او الاسم المستعار : ',
@@ -730,6 +747,10 @@ return [
 
 
 
+    'add_another_image' => 'اضافة صورة اخري',
+    'account_statement' => 'كشف حساب للعميل',
+    'bids' => 'جميع مزايدات العميل',
+    'payment' => 'جميع التحويلات المالية للعميل',
 
     'accept_auction' => 'تم قبول المزاد',
     'need_update' => ' ارسال رسالة لتعديل المزاد',

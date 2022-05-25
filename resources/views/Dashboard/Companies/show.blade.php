@@ -16,8 +16,6 @@
         @include('Dashboard.layouts.parts.quick-links')
     </div>
 @stop
-
-
 @section('content')
 
 
@@ -38,6 +36,12 @@
                         <span
                             class="badge badge-success badge-inline position-right">
 {{--                        {{$company->company_auctions->count()}}--}}
+                        </span></a>
+                </li>
+                <li><a href="#company_account_statement" data-toggle="tab"><i
+                            class="icon-calendar3 position-left"></i> {{ trans('messages.account_statement') }}
+                        <span class="badge badge-success badge-inline position-right">
+                            {{$company_bids->count()}}
                         </span></a>
                 </li>
                 <li><a href="#send_notification" data-toggle="tab"><i
@@ -93,7 +97,7 @@
 {{--                                                            <div class="form-group row">--}}
 {{--                                                                <label class="col-form-label col-lg-3">{{ trans('messages.type') }}:</label>--}}
 {{--                                                                <div class="col-lg-9">--}}
-{{--                                                                    <input type="text" class="form-control" value="{{ $company->is_company=='company'?trans('messages.company'):trans('messages.person')}}" readonly>--}}
+{{--                                                                    <input type="text" class="form-control" value="{{ $company->is_company=='company'?trans('messages.company'):trans('messages.company')}}" readonly>--}}
 
 {{--                                                                </div>--}}
 {{--                                                            </div>--}}
@@ -309,6 +313,116 @@
                             <!-- /Seller_auctions -->
 
                         </div>
+                        <div class="tab-pane fade" id="company_account_statement">
+                            <div class="panel panel-flat">
+                                <div class="panel-body">
+                                    <div class="tabbable">
+                                        <ul class="nav nav-pills nav-pills-bordered nav-justified">
+                                            <li class="active"><a href="#user_bids"
+                                                                  data-toggle="tab">{{ trans('messages.bids') }}</a>
+                                            </li>
+                                            <li><a href="#transactions"
+                                                   data-toggle="tab">{{ trans('messages.payment') }}</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="user_bids">
+                                                <div class="panel-body">
+                                                    <!-- company_bids -->
+                                                    <div class="panel panel-flat">
+                                                        <div class="panel-heading">
+                                                            <div class="heading-elements">
+                                                                <ul class="icons-list">
+                                                                    <li><a data-action="collapse"></a></li>
+                                                                    <li><a data-action="reload"></a></li>
+                                                                    <li><a data-action="close"></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            @if($company_bids->count() > 0)
+                                                                <table class="table table-striped table-dark datatable"
+                                                                       id="auction_bids"
+                                                                       style="font-size: 16px;">
+                                                                    <thead class="table-dark">
+                                                                    <tr>
+                                                                        <th class="text-center">
+                                                                            <h3>{{ trans('messages.auction.name') }}
+                                                                                : </h3></th>
+                                                                        <th class="text-center">
+                                                                            <h3>{{ trans('messages.auction.buyer_offer') }}
+                                                                                : </h3></th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    @foreach($company_bids as $bid)
+                                                                        <tr id="auction_bids-row-{{ $bid->id }}">
+                                                                            <td class="text-center">
+                                                                                {{$bid->auction->$name}}
+                                                                            </td>
+                                                                            <td class="text-center">
+                                                                                {{$bid->buyer_offer}} / ريال- سعودي
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
+                                                                    </tbody>
+                                                                </table>
+                                                            @else
+                                                                <div style="text-align: center;">
+                                                                    <h3> @lang('messages.no_data_found') </h3></div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <!-- /company_bids -->
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="transactions">
+                                                <div class="panel panel-flat">
+                                                    <div class="panel-heading">
+                                                        <div class="heading-elements">
+                                                            <ul class="icons-list">
+                                                                <li><a data-action="collapse"></a></li>
+                                                                <li><a data-action="reload"></a></li>
+                                                                <li><a data-action="close"></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <table class="table table-striped datatable-basic"
+                                                               id="transactions" style="font-size: 16px;">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="text-center">#</th>
+                                                                <th class="text-center">{{ trans('messages.transaction.payment_type') }}</th>
+                                                                <th class="text-center">{{ trans('messages.transaction.amount') }}</th>
+                                                                <th class="text-center">@lang('messages.transaction.date')</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($company->payments as $transaction)
+                                                                <tr id="transaction-row-{{ $transaction->id }}">
+                                                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                                                    <td class="text-center">
+                                                                        {{ isNullable($transaction->payment_type) }}</a>
+                                                                    </td>
+                                                                    <td class="text-center"><a
+                                                                            href=""> {{ isNullable($transaction->amount) }}</a>
+                                                                    </td>
+                                                                    <td class="text-center">{{isset($transaction->created_at) ?$transaction->created_at->format('y/m/d'):'---' }}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <br><h5>{{trans('total_wallet')}} :: {{$company->wallet}}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
                         <div class="tab-pane fade" id="send_notification">
                             <div class="panel panel-flat">
                                 <div class="panel-heading">
@@ -327,10 +441,34 @@
                                               method="post" enctype="multipart/form-data" style="border:1px solid grey;padding:20px 30px">
                                             @csrf
                                             <input type="hidden" name="user_id" value="{{ $company->id }}"/>
-                                            <label> {{ trans('messages.notification.title') }} </label>
-                                            <input type="text" class="form-control" name="title"/><br>
-                                            <label> {{ trans('messages.notification.text') }} </label>
-                                            <textarea class="form-control" name="text"></textarea><br>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.message.title') }}: </label>
+                                                <div class="col-lg-6">
+                                                    <select name="title" class="select">
+                                                        <optgroup label="{{ trans('messages.message.title')}}">
+                                                            <option selected disabled>{{trans('messages.select')}}</option>
+
+                                                            @foreach($messages as $message)
+                                                                <option value="{{ $message->title }}"> {{ $message->title }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div><br>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.message.text') }}: </label>
+                                                <div class="col-lg-6">
+                                                    <select name="text" class="select">
+                                                        <optgroup label="{{ trans('messages.message.text')}}">
+                                                            <option selected disabled>{{trans('messages.select')}}</option>
+                                                            @foreach($messages as $message)
+                                                                <option value="{{ $message->text }}"> {{ $message->text }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div><br>
+
+
                                             <div style="text-align: center;">
                                                 <button type="submit"
                                                         class="btn btn-primary"> {{ trans('messages.notification.send') }}
@@ -382,7 +520,6 @@
 @stop
 
 @section('scripts')
-
     <script>
         function initMap() {
             let lat_val = {{ $company->latitude }};
@@ -392,9 +529,7 @@
                 zoom: 13
             });
             var marker = new google.maps.Marker({ position: {lat: lat_val, lng: lng_val}, map: map, draggable :true });
-
         }
-
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks" >
     </script>

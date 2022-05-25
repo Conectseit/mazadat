@@ -46,6 +46,7 @@ return [
     'current_wallet'            => 'Current Wallet  : ',
     'choose_available_limit'    => 'Choose Available Limit',
     'available_limit'           => 'Available Limit  : ',
+    'available_limit_note'      => 'Note: You Should Increase Available Limit First to  can make abid ',
     'choose_payment_method'     => 'Choose Payment Method',
     'cheque'                    => 'Cheque',
     'bank_deposit'              => 'Bank Deposit',
@@ -53,6 +54,7 @@ return [
     'online_payment'            => 'Online Payment',
     'pay'                       => 'Pay',
     'our_offices'               => 'Our Offices',
+    'visit_our_offices'         => 'To pay as cash method you should visit this our Office address ',
     'upload_receipt'            => 'Upload Receipt',
     'send_receipt'              => 'Upload Receipt',
     'choose_image'              => 'Upload Image',
@@ -101,9 +103,16 @@ return [
     'no_value' => '  no value',
     'my_profile'              => 'My Profile',
     'update_personal_image'   => 'update personal image',
+    'auction_commission_note'              => 'Note: auction commission will deducted from your wallet when you cancel bid before auction ended',
+    'send_receipt_note'              => 'You  should accept your uploaded receipt first ',
 
 
 
+
+    'days'   => 'days',
+    'hours'   => 'hours',
+    'min'   => 'min',
+    'sec'   => 'sec',
 
 
 
@@ -581,7 +590,7 @@ return [
 
 
     'email_or_mobile'         => ' Email or Mobile',
-    'enter_email_or_mobile'   => ' Enter Email or Mobile  966xxx xxx',
+    'enter_email_or_mobile'   => ' Enter Email or Mobile   9665xx xxx xxx',
     'enter_password'   => 'Enter Password',
 
     'balance'                 => 'balance',
@@ -722,6 +731,11 @@ return [
         'invalid_mobile' => 'invalid mobile',
         'added_balance_successfully' => 'added balance successfully',
         'not_accept_deposit_receipt_and_send_SMS' => 'not accept deposit receipt and send SMS',
+        'add_another_image' => 'add another image',
+        'account_statement' => 'client account statement',
+        'bids' => 'client all bids',
+        'payment' => 'client all payments',
+
 
 
     ],

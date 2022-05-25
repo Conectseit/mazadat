@@ -15,8 +15,6 @@
         <main class="ad-main-details">
             <div class="container">
                 <div class="row">
-
-
                     @include('front.layouts.parts.make_bid_alert')
                     @if($auction->status=='on_progress')
                         <div class="col-lg-2 d-flex align-items-center">
@@ -25,16 +23,16 @@
                             <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
                                     class="fal fa-arrow-circle-right"></i> </a>
 
-                            <div id="countdown" style="margin-right: -141px; background: #d1915c;">
+                            <div id="countdown" style="margin-right: -141px; ">
                                 <h5 class="text-center mx-auto my-1 "
-                                    style=" background: black;">{{__('messages.auction.remaining_time')}}
+                                    style=" background: black; padding-bottom: 8px;">{{__('messages.auction.remaining_time')}}
                                     : <i class="fal fa-clock"> </i>
                                 </h5>
                                 <div class="labels">
-                                    <li>Days</li>
-                                    <li>Hours</li>
-                                    <li>Mins</li>
-                                    <li>Secs</li>
+                                    <li>{{__('messages.days')}}</li>
+                                    <li>{{__('messages.hours')}}</li>
+                                    <li>{{__('messages.min')}}</li>
+                                    <li>{{__('messages.sec')}}</li>
                                 </div>
                                 <div class="labels">
                                     <li id="days"></li>
@@ -132,31 +130,33 @@
                                 @endif
                             </div>
                             <div class="col-lg-6">
+
                                 <div class="details" id="details">
-                                    <h5>{{trans('messages.auction.delivery_charge')}} :
-                                        {{($auction->delivery_charge)}}</h5>
+                                    <h5>{{trans('messages.auction_commission')}} :
+                                        {{($auction->category->auction_commission)}} ريال</h5>
+                                    <h6 class="group-title text-primary" >  {{trans('messages.auction_commission_note')}}</h6>
                                 </div>
+
                                 <div class="details" id="details">
                                     <p>
-                                        <i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}
+                                        <i class="fal fa-gavel">  </i>{{trans('messages.auction.start_auction_price')}}
                                         :{{($auction->start_auction_price)}}
                                     </p>
                                 </div>
 
                                 <div class="details " id="details">
-                                    <p><i class="fa fa-money"></i>{{trans('messages.auction.current_price')}}
+                                    <p><i class="fa fa-money">  </i> {{trans('messages.auction.current_price')}}
                                         :{{($auction->current_price)}}</p>
                                 </div>
                                 <div class="details" id="details">
-                                    <p><i class="fal fa-tag"></i>{{trans('messages.auction.value_of_increment')}}
+                                    <p><i class="fal fa-tag">  </i>{{trans('messages.auction.value_of_increment')}}
                                         :{{($auction->value_of_increment)}}</p>
 
-                                    <p class="ticket"><i
-                                            class="fa fa-users"></i> {{trans('messages.auction.buyers_count')}}
+                                    <p class="ticket"><i class="fa fa-users">  </i> {{trans('messages.auction.buyers_count')}}
                                         :{{ ($auction->count_of_buyer ) }}
                                     </p>
-                                    <p class="ticket"><i
-                                            class="fal fa-user"></i> {{trans('messages.auction.seller')}} :
+
+                                    <p class="ticket"><i class="fal fa-user">  </i> {{trans('messages.auction.seller')}} :
 
                                         @if($auction->seller->is_company=='person' && $auction->seller->is_appear_name==1)
                                             {{ ($auction->seller->full_name ) }}
@@ -164,6 +164,11 @@
                                             {{ ($auction->seller->user_name ) }}
                                         @endif
                                     </p>
+
+                                    <div class="details" id="details">
+                                        <h5>{{trans('messages.auction.delivery_charge')}} :
+                                            {{($auction->delivery_charge)}}</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -296,12 +301,11 @@
                         @foreach($auction->inspectionimages as $image)
                             <div class="col-md-3 col-6">
 {{--                                <a href="{{$image->image_path}}">--}}
-                                <p>@lang('messages.file_name'):{{ isset($image->file->name) ? $image->file->name:'..' }}</p><br>
-                                    <div class="image" style="background-color: #d1915c;width: 80px; height: 80px;">
+                                <p> <i class=" fa fa-file-pdf-o" style="color: red; width: 50px;"></i>@lang('messages.file_name') : {{ isset($image->file->name) ? $image->file->name:'..' }}</p><br>
+                                <div class="image" style="width: 80px; height: 80px;">
                                         <a href="{{route('inspection_view_file',$image->id)}}" target="_blank">
-                                            <i class=" fa fa-file-pdf-o" style="color: red;"></i>
-                                           </a>
-
+                                            <img src="{{asset('Front/assets/imgs/pdf-icon.jpg')}}" alt="image" style="width: 100%;">
+                                        </a>
                                         {{--                                        <img src="{{$image->image_path}}" alt="image">--}}
                                     </div>
 {{--                                </a>--}}

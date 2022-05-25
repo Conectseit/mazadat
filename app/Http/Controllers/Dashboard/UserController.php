@@ -46,7 +46,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $user->update(['wallet'=> $request->wallet +$user->wallet]);
+//        $user->update(['wallet'=> $request->wallet +$user->wallet]);
 
         $payment= Payment::Create([
                     'user_id'     => $user->id,

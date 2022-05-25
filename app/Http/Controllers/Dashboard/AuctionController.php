@@ -46,7 +46,6 @@ class AuctionController extends Controller
         $data['cities'] = City::all();
         $data['inspection_file_names'] = FileName::all();
         $data['users'] = User::where('is_verified', 1)->get();
-
 //        $data['users'] = User::where('type', 'seller')->get();
         return view('Dashboard.Auctions.create', $data);
     }
@@ -65,7 +64,6 @@ class AuctionController extends Controller
                 $request->extra->move('uploads/auction_pdf',$filename);
                 $request_data['extra'] =$filename;
             }
-
 
             $auction = Auction::create($request_data + ['is_accepted' => '1', 'status' => 'not_accepted',
                     'current_price' => $request->start_auction_price, 'serial_number' => $serial_number]);
@@ -201,7 +199,6 @@ class AuctionController extends Controller
             $auction_images = DB::table('auction_images')->insert($data);
         }
 
-
         $dataa = [];
         if ($request->hasfile('inspection_report_images')) {
             foreach ($auction->inspectionimages as $image) {
@@ -216,10 +213,6 @@ class AuctionController extends Controller
             }
             DB::table('inspection_images')->insert($dataa);
         }
-
-
-
-
 
 //        $dataa = [];
 //        if ($request->hasfile('inspection_report_images')) {

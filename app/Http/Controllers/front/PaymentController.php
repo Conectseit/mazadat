@@ -79,7 +79,8 @@ class PaymentController extends Controller
 
     public function upload_receipt(UploadReceiptRequest $request)
     {
-        $request_data = $request->except(['image']);
+
+        $request_data = $request->except(['image','checkbox']);
         if ($request->image) {
             $request_data['image'] = $request_data['image'] = uploaded($request->image, 'payments');
         }

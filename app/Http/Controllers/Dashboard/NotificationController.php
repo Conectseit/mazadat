@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Firebase\Firebase;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SmsController;
 use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,7 +13,6 @@ class NotificationController extends Controller
 {
 
     public function send_single_notify(Request $request){
-
         $user=User::find($request->user_id);
         if (is_null($user)){
             return back()->with('class', 'success')->with('message', trans('messages.messages.user_not_found'));
@@ -36,6 +36,9 @@ class NotificationController extends Controller
 ////            'title' => $request->title,
 ////            'text' => $request->text,
 //        ]);
+
+        SmsController::send_sms($user->mobile, $request->text);
+
         return back()->with('class', 'success')->with('message', trans('messages.messages.send_successfully'));
     }
 

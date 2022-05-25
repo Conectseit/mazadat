@@ -86,7 +86,7 @@
                         <div class="carousel-item active">
                             <a href="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
                                data-popup="lightbox">
-                                <img class="d-block " src="
+                                <img class="d-block" src="
 {{--                    https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide1.jpg" --}}
                                 {{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
                                      alt="First slide">
@@ -111,13 +111,7 @@
                                 </div>
                             @endif
                         @endforeach
-                        {{--                <div class="carousel-item">--}}
-                        {{--                    <img class="d-block w-100" src="https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide3.jpg" alt="Third slide">--}}
-                        {{--                    <div class="carousel-caption d-none d-md-block">--}}
-                        {{--                        <h5>Faculty of Engineering</h5>--}}
-                        {{--                        <p>University Campus</p>--}}
-                        {{--                    </div>--}}
-                        {{--                </div>--}}
+
                     </div>
                     <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button"
                             data-bs-slide="prev">
@@ -216,17 +210,13 @@
                             </b>{{ trans('messages.auction.count_of_done') }}:({{$auctions->where(['status'=>'done'])->count()}})
                         </div>
                     </div>
-{{--                    <div class=" col-lg-6 col-md-6">--}}
-{{--                    </div>--}}
-{{--                    <div class=" col-lg-3 col-md-3">--}}
-{{--                        <div class=" statistics "><b>--}}
-{{--                            </b>{{ trans('messages.auction.count_of_on_progress') }}--}}
-{{--                            :({{$auctions->where(['status'=>'on_progress','is_accepted'=>1])->count()}})--}}
-{{--                        </div>--}}
-{{--                        <div class=" statistics "><b><i class="fal fa-check-circle"></i>--}}
-{{--                            </b>{{ trans('messages.auction.count_of_done') }}:({{$auctions->where(['status'=>'done'])->count()}})--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+
+                    <div class=" col-lg-6 col-md-6">
+                    </div>
+                    <div class=" col-lg-3 col-md-3">
+                      <a href="{{route('front.unique_auction')}}" class="add-auction btn"><b> <i class="fal fa-gavel"></i> </b>{{trans('messages.auction.unique')}}</a>
+                    </div>
+
                 </div>
 
                 <h2 style="color: var(--main-color); text-align: center"> {{__('messages.categories')}}</h2><br>

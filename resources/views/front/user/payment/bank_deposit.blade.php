@@ -40,16 +40,21 @@
                                 <p>{{$bank_name}}</p>
                             </li>
                             <li>
-                                <p>{{trans('messages.account_number')}}:</p>
-                                <p>{{$account_number}}</p>
-                            </li>
-                            <li>
                                 <p>{{trans('messages.branch')}}:</p>
                                 <p>{{$branch}}</p>
                             </li>
                             <li>
                                 <p> {{trans('messages.swift_code')}}:</p>
                                 <p>{{$swift_code}}</p>
+                            </li>
+                            <hr>
+                            <li>
+                                <p>{{trans('messages.account_number')}}:</p>
+                                <p>{{$account_number}}</p>
+                            </li>
+                            <li>
+                                <p>{{trans('messages.iban')}}:</p>
+                                <p>{{$iban}}</p>
                             </li>
                             <li>
                                 <p> {{trans('messages.routing_number')}}:</p>
@@ -66,13 +71,12 @@
 
                         </div>
                     </div>
-                    <div class="col-md-3">
+{{--                    <div class="col-md-3">--}}
 
-                            <a href="https://www.riyadbank.com/ar/branches-atms" style="color: darkblue; text-decoration:underline">{{trans('messages.ATM_locations_near_you')}}
-                                <br></a>
-
-                            {{--                            <a href="#">ارسال عن طريق البريد<br>الالكترونى</a>--}}
-                    </div>
+{{--                            <a href="https://www.riyadbank.com/ar/branches-atms" style="color: darkblue; text-decoration:underline">{{trans('messages.ATM_locations_near_you')}}--}}
+{{--                                <br></a>--}}
+{{--                            --}}{{--                            <a href="#">ارسال عن طريق البريد<br>الالكترونى</a>--}}
+{{--                    </div>--}}
                 </div>
             </div>
             <div class="bank-form">
@@ -100,6 +104,20 @@
                                 <i class="fal fa-calendar" style="padding-inline: 30px; padding-top: 5px;"></i>
                                 <input type="text" class="form-control" placeholder="" id="datepicker"
                                        name="date" required>
+                            </div>
+
+
+
+                            <div class="mb-3 form-check form-group">
+                                <a href="javascript:void(0);" id="change-terms-value">
+                                    <input type="checkbox" class="form-check-input"
+                                           id="accept-terms" name="checkbox"
+{{--                                    @if(auth()->check()){{ checkIsUserAccept($auction)->count()?'checked':''}}@endif--}}
+                                     required >
+                                </a>
+                                <label class="form-check-label" for="accept-terms"
+                                       style="color: red;">
+                                    {{ trans('messages.send_receipt_note')}} </label>
                             </div>
                             <button type="submit" class="submit-btn">{{trans('messages.send_receipt')}} </button>
                         </div>

@@ -41,6 +41,7 @@ Route::group(
     });
 //    Route::group(['prefix' => 'front'], function () {
     Route::get('/home', [HomeController::class, 'home'])->name('front.home');
+    Route::get('unique_auction', [HomeController::class, 'unique_auction'])->name('front.unique_auction');
     Route::get('all_companies', [HomeController::class, 'all_companies'])->name('front.all_companies');
     Route::get('company/{id}/auctions', [HomeController::class, 'companyAuctions'])->name('front.company_auctions');
 
@@ -118,6 +119,8 @@ Route::group(
         // ============ // profile ================
         Route::any('update_personal_image', [UserController::class, 'update_personal_image'])->name('front.update_personal_image');
 
+        Route::any('my_account_statement', [UserController::class, 'show_account_statement'])->name('front.my_account_statement');
+
         Route::any('my_profile', [UserController::class, 'showProfile'])->name('front.my_profile');
         Route::any('edit_profile', [UserController::class, 'showEditProfile'])->name('front.edit_profile');
         Route::any('update_profile', [UserController::class, 'updateProfile'])->name('front.update_profile');
@@ -164,7 +167,7 @@ Route::group(
 //        Route::any('upload_documents', [UserController::class, 'uploadDocuments'])->name('front.upload_documents');
 
 
-//Route::get('/', function () {
+//Route::get('//', function () {
 //    return view('welcome');
 //});
 //

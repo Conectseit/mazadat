@@ -109,9 +109,22 @@
                                            placeholder=" {{ trans('messages.confirm_password') }} "/>
                                 </div>
                             </div>
+
+
+                            <div class="form-group">
+                                <label>@lang('messages.image')</label>
+                                <input type="file" class="form-control image " name="image">
+                            </div>
+
+                            <div class="form-group">
+                                <img src=" {{ asset('uploads/default.png') }} " width=" 100px "
+                                     class="thumbnail image-preview">
+                            </div>
                         </div>
 
                     </div>
+
+
 
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
                         <input type="submit" class="btn btn-primary"

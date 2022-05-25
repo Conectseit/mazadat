@@ -6,7 +6,9 @@ use App\Http\Controllers\Dashboard\AdvertisementController;
 use App\Http\Controllers\Dashboard\AuctionDataController;
 use App\Http\Controllers\Dashboard\CompanyController;
 use App\Http\Controllers\Dashboard\CountryController;
+use App\Http\Controllers\Dashboard\FinancialReviewsController;
 use App\Http\Controllers\Dashboard\InspectionFileNameController;
+use App\Http\Controllers\Dashboard\MessageController;
 use App\Http\Controllers\Dashboard\NationalityController;
 use App\Http\Controllers\Dashboard\NotificationController;
 use App\Http\Controllers\Dashboard\OptionController;
@@ -64,6 +66,7 @@ Route::group(
                     'categories'     => CategoryController::class,
                     'options'        => OptionController::class,
                     'option_details' => OptionDetailController::class,
+                    'messages'       => MessageController::class,
                     'cities'         => CityController::class,
                     'countries'      => CountryController::class,
                     'nationalities'  => NationalityController::class,
@@ -75,6 +78,7 @@ Route::group(
                     'admins'         => AdminController::class,
                     'activities'     => ActivityController::class,
                     'transactions'   => TransactionController::class,
+                    'financial_reviews'=> FinancialReviewsController::class,
                     'advertisements' => AdvertisementController::class,
                     'inspection_file_names' => InspectionFileNameController::class,
 
@@ -99,6 +103,7 @@ Route::group(
                 Route::post('/ajax-delete-transaction', [TransactionController::class, 'destroy'])->name('ajax-delete-transaction');
                 Route::post('/ajax-delete-advertisement', [AdvertisementController::class, 'destroy'])->name('ajax-delete-advertisement');
                 Route::post('/ajax-delete-file_name', [InspectionFileNameController::class, 'destroy'])->name('ajax-delete-filename');
+                Route::post('/ajax-delete-message', [MessageController::class, 'destroy'])->name('ajax-delete-message');
 
                 Route::get('company/{id?}/unique', [CompanyController::class, 'unique'])->name('company/unique');
                 Route::get('company/{id?}/not_unique', [CompanyController::class, 'not_unique'])->name('company/not_unique');
@@ -125,6 +130,8 @@ Route::group(
                 Route::get('user/{id?}/not_ban', [UserController::class, 'not_ban'])->name('not_ban');
                 Route::post('user/{id?}/add_balance', [UserController::class, 'add_balance'])->name('add_balance');
 
+
+                Route::get('transaction/{id?}/verify', [FinancialReviewsController::class, 'verify'])->name('transaction/verify');
 
                 Route::get('transaction/{id?}/accept', [TransactionController::class, 'accept'])->name('transaction/accept');
                 Route::get('transaction/{id?}/not_accept', [TransactionController::class, 'not_accept'])->name('transaction/not_accept');

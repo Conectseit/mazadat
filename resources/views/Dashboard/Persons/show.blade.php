@@ -1,7 +1,9 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.person.persons'))
 @section('style')
-    <style> #map { height: 400px;} </style>
+    <style> #map {
+            height: 400px;
+        } </style>
 @endsection
 @section('breadcrumb')
     <div class="breadcrumb-line">
@@ -18,34 +20,51 @@
 @stop
 @section('content')
 
-
     <!-- Toolbar -->
     <div class="navbar navbar-default navbar-xs content-group">
         @include('Dashboard.layouts.parts.validation_errors')
 
         <ul class="nav navbar-nav visible-xs-block">
-            <li class="full-width text-center"><a data-toggle="collapse" data-target="#navbar-filter"><i class="icon-menu7"></i></a></li>
+            <li class="full-width text-center"><a data-toggle="collapse" data-target="#navbar-filter"><i
+                        class="icon-menu7"></i></a></li>
         </ul>
 
         <div class="navbar-collapse collapse" id="navbar-filter">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#person_data" data-toggle="tab"><i
                             class="icon-menu7 position-left"></i> {{ trans('messages.person.person_data') }}</a></li>
-                <li class=""><a href="#other_data" data-toggle="tab"><i class="icon-menu7 position-left"></i> {{ trans('messages.person.data_need_accept') }}</a></li>
-                <li><a href="#main_address" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{trans('messages.person.main_address_on_map')}}</a></li>
-                <li><a href="#additional_address" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{trans('messages.person.additional_address')}}</a></li>
+                <li class=""><a href="#other_data" data-toggle="tab"><i
+                            class="icon-menu7 position-left"></i> {{ trans('messages.person.data_need_accept') }}</a>
+                </li>
+                <li><a href="#main_address" data-toggle="tab"><i
+                            class="icon-cog3 position-left"></i> {{trans('messages.person.main_address_on_map')}}</a>
+                </li>
+                <li><a href="#additional_address" data-toggle="tab"><i
+                            class="icon-cog3 position-left"></i> {{trans('messages.person.additional_address')}}</a>
+                </li>
 
+                {{--                                <li><a href="#person_auctions" data-toggle="tab"><i--}}
+                {{--                            class="icon-calendar3 position-left"></i> {{ trans('messages.person.person_auctions') }}--}}
+                {{--                        <span class="badge badge-success badge-inline position-right">--}}
+                {{--                            {{$person->person_auctions->count()}}--}}
+                {{--                        </span></a>--}}
+                {{--                </li>--}}
 
-
-                {{--                <li><a href="#person_auctions" data-toggle="tab"><i--}}
-{{--                            class="icon-calendar3 position-left"></i> {{ trans('messages.person.person_auctions') }}--}}
-{{--                        <span class="badge badge-success badge-inline position-right">11--}}
-{{--                            {{$person->person_auctions->count()}}--}}
-{{--                        </span></a>--}}
-{{--                </li>--}}
-                <li><a href="#send_notification" data-toggle="tab"><i class="icon-bell3 position-left"></i> {{trans('messages.notification.send')}}</a></li>
-                <li><a href="#wallet" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{trans('messages.wallet')}}</a></li>
-
+                <li><a href="#person_account_statement" data-toggle="tab"><i
+                            class="icon-calendar3 position-left"></i> {{ trans('messages.account_statement') }}
+                        <span class="badge badge-success badge-inline position-right">
+                            {{$person_bids->count()}}
+                        </span></a>
+                </li>
+                <li><a href="#send_notification" data-toggle="tab"><i
+                            class="icon-bell3 position-left"></i> {{trans('messages.notification.send')}}</a></li>
+                <li><a href="#wallet" data-toggle="tab"><i
+                            class="icon-cog3 position-left"></i> {{trans('messages.wallet')}}</a></li>
+                {{--                <li><a href="#auction_bids" data-toggle="tab"><i--}}
+                {{--                            class="icon-calendar3 position-left"></i> {{ trans('messages.person.bids') }}--}}
+                {{--                        <span class="badge badge-success badge-inline position-right">{{$auction_bids->count()}}</span>--}}
+                {{--                    </a>--}}
+                {{--                </li>--}}
             </ul>
         </div>
     </div>
@@ -73,53 +92,75 @@
                                                             <div class="row">
                                                                 <div class="col-lg-6">
                                                                     <div class="form-group row">
-                                                                        <label class="col-form-label col-lg-3">{{ trans('messages.personal_image') }}:</label>
+                                                                        <label
+                                                                            class="col-form-label col-lg-3">{{ trans('messages.personal_image') }}
+                                                                            :</label>
                                                                         <div class="col-lg-9">
-                                                                            <img src="{{ $person->image_path }}" alt="" class=" img-thumbnail">
+                                                                            <img src="{{ $person->image_path }}" alt=""
+                                                                                 class=" img-thumbnail">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="form-group row">
 
-                                                                        <label class="col-form-label col-lg-3"><span class="badge badge-info" >{{ trans('messages.wallet') }} : </span></label>
+                                                                        <label class="col-form-label col-lg-3"><span
+                                                                                class="badge badge-info">{{ trans('messages.wallet') }} : </span></label>
 
                                                                         <div class="col-lg-9">
-                                                                            <input type="text" class="form-control" value="{{ $person->wallet}} /ريال-سعودي/" readonly>
+                                                                            <input type="text" class="form-control"
+                                                                                   value="{{ $person->wallet}} /ريال-سعودي/"
+                                                                                   readonly>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <hr>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.type') }}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.type') }}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $person->is_company=='company'?trans('messages.company.company'):trans('messages.person.person')}}" readonly>
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $person->is_company=='company'?trans('messages.company.company'):trans('messages.person.person')}}"
+                                                                           readonly>
 
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.person.full_name') }}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.person.full_name') }}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $person->full_name }}" readonly>
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $person->full_name }}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.first_name') }}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.first_name') }}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $person->first_name }}" readonly>
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $person->first_name }}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.middle_name') }}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.middle_name') }}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $person->middle_name }}" readonly>
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $person->middle_name }}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.last_name') }}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.last_name') }}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $person->last_name }}" readonly>
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $person->last_name }}" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -132,22 +173,31 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.email') }}:</label>
-                                                                <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $person->email }}" readonly>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.mobile') }}:</label>
-                                                                <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ $person->mobile }}" readonly>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.since') }}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.email') }}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
                                                                     <input type="text" class="form-control"
-                                                                           value="{{ $person->created_at->diffForHumans() }}" readonly>
+                                                                           value="{{ $person->email }}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.mobile') }}
+                                                                    :</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $person->mobile }}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.since') }}
+                                                                    :</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ $person->created_at->diffForHumans() }}"
+                                                                           readonly>
                                                                 </div>
                                                             </div>
                                                         </form>
@@ -161,8 +211,6 @@
                             </div>
                             <!-- /person_data -->
                         </div>
-
-
                         <div class="tab-pane fade in " id="other_data">
                             <!-- person_data -->
                             <div class="timeline timeline-left content-group">
@@ -176,47 +224,75 @@
                                                         <form action="#">
 
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.nationality.nationality') }}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.nationality.nationality') }}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ isset($person->nationality)?$person->nationality->$name:'' }}" readonly>
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ isset($person->nationality)?$person->nationality->$name:'' }}"
+                                                                           readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.city.city') }}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.city.city') }}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ isset($person->city)?$person->city->$name :''}}" readonly>
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ isset($person->city)?$person->city->$name :''}}"
+                                                                           readonly>
                                                                 </div>
                                                             </div>
 
 
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{trans('messages.P_O_Box')}}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{trans('messages.P_O_Box')}}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ isset($person->P_O_Box )?$person->P_O_Box :''}}" readonly>
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ isset($person->P_O_Box )?$person->P_O_Box :''}}"
+                                                                           readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.person.block') }}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.person.block') }}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ isset($person->block )?$person->block :''}}" readonly>
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ isset($person->block )?$person->block :''}}"
+                                                                           readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.person.street') }}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.person.street') }}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ isset($person->street )?$person->street :''}}" readonly>
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ isset($person->street )?$person->street :''}}"
+                                                                           readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.person.block_num') }}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.person.block_num') }}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ isset($person->block_num )?$person->block_num :''}}" readonly>
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ isset($person->block_num )?$person->block_num :''}}"
+                                                                           readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-form-label col-lg-3">{{ trans('messages.person.signs') }}:</label>
+                                                                <label
+                                                                    class="col-form-label col-lg-3">{{ trans('messages.person.signs') }}
+                                                                    :</label>
                                                                 <div class="col-lg-9">
-                                                                    <input type="text" class="form-control" value="{{ isset($person->signs )?$person->signs :''}}" readonly>
+                                                                    <input type="text" class="form-control"
+                                                                           value="{{ isset($person->signs )?$person->signs :''}}"
+                                                                           readonly>
                                                                 </div>
                                                             </div>
 
@@ -224,9 +300,13 @@
                                                             <div class="row">
                                                                 <div class="col-lg-6">
                                                                     <div class="form-group row">
-                                                                        <label class="col-form-label col-lg-3">{{ trans('messages.person.identity') }}:</label>
+                                                                        <label
+                                                                            class="col-form-label col-lg-3">{{ trans('messages.person.identity') }}
+                                                                            :</label>
                                                                         <div class="col-lg-9">
-                                                                            <img src="{{ $person->passport_image_path }}" alt="" class=" img-thumbnail">
+                                                                            <img
+                                                                                src="{{ $person->passport_image_path }}"
+                                                                                alt="" class=" img-thumbnail">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -235,15 +315,19 @@
                                                             <div class="form-group row">
 
                                                                 @if($person->is_checked_account ==0)
-{{--                                                                    <a href="person/{{$person->id}}/not_verified/" class="btn btn-danger btn-sm"><i--}}
-{{--                                                                            class="icon-close2"></i>{{trans('messages.not_verified')}}</a>--}}
-{{--                                                                    <a href="person/{{$person->id}}/verified/" class="btn btn-success btn-sm"> <i--}}
-{{--                                                                            class="icon-check2"></i> {{trans('messages.verified')}}</a>--}}
+                                                                    {{--                                                                    <a href="person/{{$person->id}}/not_verified/" class="btn btn-danger btn-sm"><i--}}
+                                                                    {{--                                                                            class="icon-close2"></i>{{trans('messages.not_verified')}}</a>--}}
+                                                                    {{--                                                                    <a href="person/{{$person->id}}/verified/" class="btn btn-success btn-sm"> <i--}}
+                                                                    {{--                                                                            class="icon-check2"></i> {{trans('messages.verified')}}</a>--}}
 
-                                                                    <a href="{{route('not_verified',$person->id)}}" class="btn btn-danger btn-sm"><i
-                                                                            class="icon-close2"></i>{{trans('messages.not_verified')}}</a>
-                                                                    <a href="{{route('verified',$person->id)}}" class="btn btn-success btn-sm"> <i
-                                                                            class="icon-check2"></i> {{trans('messages.verified')}}</a>
+                                                                    <a href="{{route('not_verified',$person->id)}}"
+                                                                       class="btn btn-danger btn-sm"><i
+                                                                            class="icon-close2"></i>{{trans('messages.not_verified')}}
+                                                                    </a>
+                                                                    <a href="{{route('verified',$person->id)}}"
+                                                                       class="btn btn-success btn-sm"> <i
+                                                                            class="icon-check2"></i> {{trans('messages.verified')}}
+                                                                    </a>
                                                                 @endif
                                                             </div>
 
@@ -251,7 +335,8 @@
                                                             <div class="form-group row">
                                                                 @if($person->is_checked_account ==1)
                                                                     <div class="btn btn-success btn-sm">
-                                                                        <i class="icon-check2"></i> {{trans('messages.verified')}}</div>
+                                                                        <i class="icon-check2"></i> {{trans('messages.verified')}}
+                                                                    </div>
                                                                 @endif
                                                             </div>
 
@@ -278,7 +363,8 @@
                                     </div>
                                 </div>
                                 <div class="panel-body">
-                                    <h6 class="content-group-sm text-semibold">{{ trans('messages.person.location') }}:</h6>
+                                    <h6 class="content-group-sm text-semibold">{{ trans('messages.person.location') }}
+                                        :</h6>
                                     <div class="form-group row"><br>
                                         {{--                                        <label class="col-form-label col-lg-3">{{ trans('messages.person.location') }}:</label>--}}
 
@@ -287,182 +373,299 @@
                                             <div id="map"></div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <input type="text" id="geo_lat"  value="{{ $person->latitude }}"  name="latitude" readonly="" placeholder=" latitude " class="form-control" >
+                                            <input type="text" id="geo_lat" value="{{ $person->latitude }}"
+                                                   name="latitude" readonly="" placeholder=" latitude "
+                                                   class="form-control">
                                         </div>
                                         <div class="col-lg-6">
-                                            <input type="text" id="geo_lng"  value="{{ $person->longitude }}"  name="longitude" readonly="" placeholder="longitude" class="form-control" >
+                                            <input type="text" id="geo_lng" value="{{ $person->longitude }}"
+                                                   name="longitude" readonly="" placeholder="longitude"
+                                                   class="form-control">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="additional_address">
-
                             <div class="panel panel-flat">
-                                    <div class="panel-heading">
-                                        <div class="heading-elements">
-                                            <ul class="icons-list">
-                                                <li><a data-action="collapse"></a></li>
-                                                <li><a data-action="reload"></a></li>
-                                                <li><a data-action="close"></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body">
-                                        @if($person_addresses->count() > 0)
-
-                                            @foreach($person_addresses as $person_address)
-                                                <div class="row">
-                                                    <div class="form-group mb-4 row">
-                                                        <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                                            <label for="block" class="form-label"> {{trans('messages.block')}}:</label>
-                                                        </div>
-                                                        <div class="col-lg-10 col-md-9">{{ $person_address->block}}</div>
-                                                    </div>
-                                                    <div class="form-group mb-4 row">
-                                                        <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                                            <label for="block"
-                                                                   class="form-label"> {{trans('messages.street')}}:</label>
-                                                        </div>
-                                                        <div class="col-lg-10 col-md-9">{{ $person_address->street}}:</div>
-                                                    </div>
-                                                    <div class="form-group mb-4 row">
-                                                        <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                                            <label for="block" class="form-label"> {{trans('messages.block_num')}}:</label>
-                                                        </div>
-                                                        <div class="col-lg-10 col-md-9">{{ $person_address->block_num}}</div>
-
-                                                    </div>
-                                                    <div class="form-group mb-4 row">
-                                                        <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                                            <label for="block" class="form-label"> {{trans('messages.signs')}}:</label>
-                                                        </div>
-                                                        <div class="col-lg-10 col-md-9">{{ $person_address->signs}}</div>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @endforeach
-
-                                        @else
-                                            <div style="text-align: center;"><h2> @lang('messages.no_additional_address_found') </h2></div>
-                                        @endif
+                                <div class="panel-heading">
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li><a data-action="collapse"></a></li>
+                                            <li><a data-action="reload"></a></li>
+                                            <li><a data-action="close"></a></li>
+                                        </ul>
                                     </div>
                                 </div>
+                                <div class="panel-body">
+                                    @if($person_addresses->count() > 0)
+
+                                        @foreach($person_addresses as $person_address)
+                                            <div class="row">
+                                                <div class="form-group mb-4 row">
+                                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                                        <label for="block"
+                                                               class="form-label"> {{trans('messages.block')}}:</label>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-9">{{ $person_address->block}}</div>
+                                                </div>
+                                                <div class="form-group mb-4 row">
+                                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                                        <label for="block"
+                                                               class="form-label"> {{trans('messages.street')}}:</label>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-9">{{ $person_address->street}}:</div>
+                                                </div>
+                                                <div class="form-group mb-4 row">
+                                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                                        <label for="block"
+                                                               class="form-label"> {{trans('messages.block_num')}}
+                                                            :</label>
+                                                    </div>
+                                                    <div
+                                                        class="col-lg-10 col-md-9">{{ $person_address->block_num}}</div>
+
+                                                </div>
+                                                <div class="form-group mb-4 row">
+                                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                                        <label for="block"
+                                                               class="form-label"> {{trans('messages.signs')}}:</label>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-9">{{ $person_address->signs}}</div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        @endforeach
+
+                                    @else
+                                        <div style="text-align: center;">
+                                            <h2> @lang('messages.no_additional_address_found') </h2></div>
+                                    @endif
+                                </div>
+                            </div>
 
                         </div>
 
-{{--                        <div class="tab-pane fade" id="person_auctions">--}}
-{{--                            <!-- Seller_auctions -->--}}
-{{--                            <div class="panel panel-flat">--}}
-{{--                                <div class="panel-heading">--}}
-{{--                                    <div class="heading-elements">--}}
-{{--                                        <ul class="icons-list">--}}
-{{--                                            <li><a data-action="collapse"></a></li>--}}
-{{--                                            <li><a data-action="reload"></a></li>--}}
-{{--                                            <li><a data-action="close"></a></li>--}}
-{{--                                        </ul>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="panel-body">--}}
-{{--                                    <!-- Palette colors -->--}}
-{{--                                    <h6 class="content-group-sm text-semibold">--}}
-{{--                                        {{__('messages.person.full_name')}}--}}
-{{--                                        <small class="display-block">{{$person->full_name}}</small>--}}
-{{--                                    </h6>--}}
+                        <div class="tab-pane fade" id="person_account_statement">
+                            <div class="panel panel-flat">
+                                <div class="panel-body">
+                                    <div class="tabbable">
+                                        <ul class="nav nav-pills nav-pills-bordered nav-justified">
+                                            <li class="active"><a href="#user_bids" data-toggle="tab">{{ trans('messages.bids') }}</a></li>
+                                            <li><a href="#transactions" data-toggle="tab">{{ trans('messages.payment') }}</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="user_bids">
+                                                <div class="panel-body">
+                                                    <!-- person_bids -->
+                                                    <div class="panel panel-flat">
+                                                        <div class="panel-heading">
+                                                            <div class="heading-elements">
+                                                                <ul class="icons-list">
+                                                                    <li><a data-action="collapse"></a></li>
+                                                                    <li><a data-action="reload"></a></li>
+                                                                    <li><a data-action="close"></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            @if($person_bids->count() > 0)
+                                                                <table class="table table-striped table-dark datatable"
+                                                                       id="auction_bids"
+                                                                       style="font-size: 16px;">
+                                                                    <thead class="table-dark">
+                                                                    <tr>
+                                                                        <th class="text-center">
+                                                                            <h3>{{ trans('messages.auction.name') }}
+                                                                                : </h3></th>
+                                                                        <th class="text-center">
+                                                                            <h3>{{ trans('messages.auction.buyer_offer') }}
+                                                                                : </h3></th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    @foreach($person_bids as $bid)
+                                                                        <tr id="auction_bids-row-{{ $bid->id }}">
+                                                                            <td class="text-center">
+                                                                                {{$bid->auction->$name}}
+                                                                            </td>
+                                                                            <td class="text-center">
+                                                                                {{$bid->buyer_offer}} / ريال- سعودي
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
+                                                                    </tbody>
+                                                                </table>
+                                                            @else
+                                                                <div style="text-align: center;">
+                                                                    <h3> @lang('messages.no_data_found') </h3></div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <!-- /person_bids -->
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="transactions">
+                                                <div class="panel panel-flat">
+                                                    <div class="panel-heading">
+                                                        <div class="heading-elements">
+                                                            <ul class="icons-list">
+                                                                <li><a data-action="collapse"></a></li>
+                                                                <li><a data-action="reload"></a></li>
+                                                                <li><a data-action="close"></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <table class="table table-striped datatable-basic"
+                                                               id="transactions" style="font-size: 16px;">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="text-center">#</th>
+                                                                <th class="text-center">{{ trans('messages.transaction.payment_type') }}</th>
+                                                                <th class="text-center">{{ trans('messages.transaction.amount') }}</th>
+                                                                <th class="text-center">@lang('messages.transaction.date')</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($person->payments as $transaction)
+                                                                <tr id="transaction-row-{{ $transaction->id }}">
+                                                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                                                    <td class="text-center">
+                                                                        {{ isNullable($transaction->payment_type) }}</a>
+                                                                    </td>
+                                                                    <td class="text-center"><a
+                                                                            href=""> {{ isNullable($transaction->amount) }}</a>
+                                                                    </td>
+                                                                    <td class="text-center">{{isset($transaction->created_at) ?$transaction->created_at->format('y/m/d'):'---' }}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <br><h5>{{trans('total_wallet')}} :: {{$person ->wallet}}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-{{--                                    <div class="row">--}}
-{{--                                        @foreach($person_auctions as $person_auction)--}}
-{{--                                            <div class="col-sm-4 col-lg-2">--}}
-{{--                                                <div class="panel">--}}
-{{--                                                    <div class="bg-info-800 demo-color">--}}
-{{--                                                        <span>{{$person_auction->$name}}</span></div>--}}
+                        </div>
 
-{{--                                                    <div class="p-15">--}}
-{{--                                                        <div class="media-body">--}}
-{{--                                                            <strong>{{$person_auction->start_auction_price}}--}}
-{{--                                                                ريال</strong>--}}
-{{--                                                            <div--}}
-{{--                                                                class="text-muted mt-5">{{$person_auction->value_of_increment}}--}}
-{{--                                                                ريال--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
 
-{{--                                                        <div class="media-right">--}}
-{{--                                                            <ul class="icons-list">--}}
-{{--                                                                <li><a href="#" data-toggle="modal" data-target="#info_800">--}}
-{{--                                                                        <i class="icon-three-bars"></i></a></li>--}}
-{{--                                                            </ul>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div>--}}
-{{--                                                    <span class="badge  badge-pill" style="background-color: #00838F;">--}}
-{{--                                                        <a href={{ route('auctions.show', $person_auction->id) }}>{{__('messages.person.show_auction_bids')}}</a>--}}
-{{--                                                    </span>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <!-- auction modal -->--}}
-{{--                                            <div id="info_800" class="modal fade">--}}
-{{--                                                <div class="modal-dialog">--}}
-{{--                                                    <div class="modal-content">--}}
-{{--                                                        <div class="modal-header">--}}
-{{--                                                            <button type="button" class="close" data-dismiss="modal">--}}
-{{--                                                                &times;--}}
-{{--                                                            </button>--}}
-{{--                                                            <h5 class="modal-title">{{__('messages.description')}}:</h5>--}}
-{{--                                                        </div>--}}
+                        {{--                        <div class="tab-pane fade" id="person_auctions">--}}
+                        {{--                            <!-- Seller_auctions -->--}}
+                        {{--                            <div class="panel panel-flat">--}}
+                        {{--                                <div class="panel-heading">--}}
+                        {{--                                    <div class="heading-elements">--}}
+                        {{--                                        <ul class="icons-list">--}}
+                        {{--                                            <li><a data-action="collapse"></a></li>--}}
+                        {{--                                            <li><a data-action="reload"></a></li>--}}
+                        {{--                                            <li><a data-action="close"></a></li>--}}
+                        {{--                                        </ul>--}}
+                        {{--                                    </div>--}}
+                        {{--                                </div>--}}
+                        {{--                                <div class="panel-body">--}}
+                        {{--                                    <!-- Palette colors -->--}}
+                        {{--                                    <h6 class="content-group-sm text-semibold">--}}
+                        {{--                                        {{__('messages.person.full_name')}}--}}
+                        {{--                                        <small class="display-block">{{$person->full_name}}</small>--}}
+                        {{--                                    </h6>--}}
 
-{{--                                                        <div class="modal-body">--}}
-{{--                                                            {{$person_auction->$description}}                                                        </div>--}}
+                        {{--                                    <div class="row">--}}
+                        {{--                                        @foreach($person_auctions as $person_auction)--}}
+                        {{--                                            <div class="col-sm-4 col-lg-2">--}}
+                        {{--                                                <div class="panel">--}}
+                        {{--                                                    <div class="bg-info-800 demo-color">--}}
+                        {{--                                                        <span>{{$person_auction->$name}}</span></div>--}}
 
-{{--                                                        <div class="table-responsive content-group">--}}
-{{--                                                            <table class="table">--}}
-{{--                                                                <tr>--}}
-{{--                                                                    <td>{{__('messages.auction.name')}}:</td>--}}
-{{--                                                                    <td><code>{{$person_auction->$name}}</code></td>--}}
-{{--                                                                </tr>--}}
-{{--                                                                <tr>--}}
-{{--                                                                    <td>{{__('messages.auction.start_auction_price')}}--}}
-{{--                                                                        :--}}
-{{--                                                                    </td>--}}
-{{--                                                                    <td>--}}
-{{--                                                                        <code>{{$person_auction->start_auction_price}}</code>--}}
-{{--                                                                    </td>--}}
-{{--                                                                </tr>--}}
-{{--                                                                <tr>--}}
-{{--                                                                    <td>{{__('messages.auction.value_of_increment')}}:--}}
-{{--                                                                    </td>--}}
-{{--                                                                    <td>--}}
-{{--                                                                        <code>.{{$person_auction->value_of_increment}}</code>--}}
-{{--                                                                    </td>--}}
-{{--                                                                </tr>--}}
-{{--                                                            </table>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="modal-footer">--}}
-{{--                                                            <div>--}}
-{{--                                                                <span class="badge  badge-pill"--}}
-{{--                                                                      style="background-color: #00838F;">--}}
-{{--                                                                    <a href={{ route('auctions.show', $person_auction->id) }}>{{__('messages.person.show_auction_bids')}}</a>--}}
-{{--                                                                </span>--}}
-{{--                                                            </div>--}}
-{{--                                                            <button type="button"--}}
-{{--                                                                    class="btn btn-link btn-xs text-uppercase text-semibold"--}}
-{{--                                                                    data-dismiss="modal">Close--}}
-{{--                                                            </button>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <!-- /auction modal -->--}}
-{{--                                        @endforeach--}}
-{{--                                    </div>--}}
-{{--                                    <!-- /palette colors -->--}}
+                        {{--                                                    <div class="p-15">--}}
+                        {{--                                                        <div class="media-body">--}}
+                        {{--                                                            <strong>{{$person_auction->start_auction_price}}--}}
+                        {{--                                                                ريال</strong>--}}
+                        {{--                                                            <div--}}
+                        {{--                                                                class="text-muted mt-5">{{$person_auction->value_of_increment}}--}}
+                        {{--                                                                ريال--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                        </div>--}}
 
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <!-- /Seller_auctions -->--}}
+                        {{--                                                        <div class="media-right">--}}
+                        {{--                                                            <ul class="icons-list">--}}
+                        {{--                                                                <li><a href="#" data-toggle="modal" data-target="#info_800">--}}
+                        {{--                                                                        <i class="icon-three-bars"></i></a></li>--}}
+                        {{--                                                            </ul>--}}
+                        {{--                                                        </div>--}}
+                        {{--                                                    </div>--}}
+                        {{--                                                </div>--}}
+                        {{--                                                <div>--}}
+                        {{--                                                    <span class="badge  badge-pill" style="background-color: #00838F;">--}}
+                        {{--                                                        <a href={{ route('auctions.show', $person_auction->id) }}>{{__('messages.person.show_auction_bids')}}</a>--}}
+                        {{--                                                    </span>--}}
+                        {{--                                                </div>--}}
+                        {{--                                            </div>--}}
+                        {{--                                            <!-- auction modal -->--}}
+                        {{--                                            <div id="info_800" class="modal fade">--}}
+                        {{--                                                <div class="modal-dialog">--}}
+                        {{--                                                    <div class="modal-content">--}}
+                        {{--                                                        <div class="modal-header">--}}
+                        {{--                                                            <button type="button" class="close" data-dismiss="modal">--}}
+                        {{--                                                                &times;--}}
+                        {{--                                                            </button>--}}
+                        {{--                                                            <h5 class="modal-title">{{__('messages.description')}}:</h5>--}}
+                        {{--                                                        </div>--}}
 
-{{--                        </div>--}}
+                        {{--                                                        <div class="modal-body">--}}
+                        {{--                                                            {{$person_auction->$description}}                                                        </div>--}}
+
+                        {{--                                                        <div class="table-responsive content-group">--}}
+                        {{--                                                            <table class="table">--}}
+                        {{--                                                                <tr>--}}
+                        {{--                                                                    <td>{{__('messages.auction.name')}}:</td>--}}
+                        {{--                                                                    <td><code>{{$person_auction->$name}}</code></td>--}}
+                        {{--                                                                </tr>--}}
+                        {{--                                                                <tr>--}}
+                        {{--                                                                    <td>{{__('messages.auction.start_auction_price')}}--}}
+                        {{--                                                                        :--}}
+                        {{--                                                                    </td>--}}
+                        {{--                                                                    <td>--}}
+                        {{--                                                                        <code>{{$person_auction->start_auction_price}}</code>--}}
+                        {{--                                                                    </td>--}}
+                        {{--                                                                </tr>--}}
+                        {{--                                                                <tr>--}}
+                        {{--                                                                    <td>{{__('messages.auction.value_of_increment')}}:--}}
+                        {{--                                                                    </td>--}}
+                        {{--                                                                    <td>--}}
+                        {{--                                                                        <code>.{{$person_auction->value_of_increment}}</code>--}}
+                        {{--                                                                    </td>--}}
+                        {{--                                                                </tr>--}}
+                        {{--                                                            </table>--}}
+                        {{--                                                        </div>--}}
+                        {{--                                                        <div class="modal-footer">--}}
+                        {{--                                                            <div>--}}
+                        {{--                                                                <span class="badge  badge-pill"--}}
+                        {{--                                                                      style="background-color: #00838F;">--}}
+                        {{--                                                                    <a href={{ route('auctions.show', $person_auction->id) }}>{{__('messages.person.show_auction_bids')}}</a>--}}
+                        {{--                                                                </span>--}}
+                        {{--                                                            </div>--}}
+                        {{--                                                            <button type="button"--}}
+                        {{--                                                                    class="btn btn-link btn-xs text-uppercase text-semibold"--}}
+                        {{--                                                                    data-dismiss="modal">Close--}}
+                        {{--                                                            </button>--}}
+                        {{--                                                        </div>--}}
+                        {{--                                                    </div>--}}
+                        {{--                                                </div>--}}
+                        {{--                                            </div>--}}
+                        {{--                                            <!-- /auction modal -->--}}
+                        {{--                                        @endforeach--}}
+                        {{--                                    </div>--}}
+                        {{--                                    <!-- /palette colors -->--}}
+
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
+                        {{--                            <!-- /Seller_auctions -->--}}
+
+                        {{--                        </div>--}}
                         <div class="tab-pane fade" id="send_notification">
                             <div class="panel panel-flat">
                                 <div class="panel-heading">
@@ -478,13 +681,50 @@
                                     <h6 class="content-group-sm text-semibold">{{__('messages.notification.send')}}</h6>
                                     <div class="row">
                                         <form action="{{ route('send_single_notify') }}" class="form-horizontal"
-                                              method="post" enctype="multipart/form-data" style="border:1px solid grey;padding:20px 30px">
+                                              method="post" enctype="multipart/form-data"
+                                              style="border:1px solid grey;padding:20px 30px">
                                             @csrf
                                             <input type="hidden" name="user_id" value="{{ $person->id }}"/>
-                                            <label> {{ trans('messages.notification.title') }} </label>
-                                            <input type="text" class="form-control" name="title"/><br>
-                                            <label> {{ trans('messages.notification.text') }} </label>
-                                            <textarea class="form-control" name="text"></textarea><br>
+                                            <div class="form-group">
+                                                <label
+                                                    class="col-lg-3 control-label display-block"> {{ trans('messages.message.title') }}
+                                                    : </label>
+                                                <div class="col-lg-6">
+                                                    <select name="title" class="select">
+                                                        <optgroup label="{{ trans('messages.message.title')}}">
+                                                            <option selected
+                                                                    disabled>{{trans('messages.select')}}</option>
+
+                                                            @foreach($messages as $message)
+                                                                <option
+                                                                    value="{{ $message->title }}"> {{ $message->title }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <label
+                                                    class="col-lg-3 control-label display-block"> {{ trans('messages.message.text') }}
+                                                    : </label>
+                                                <div class="col-lg-6">
+                                                    <select name="text" class="select">
+                                                        <optgroup label="{{ trans('messages.message.text')}}">
+                                                            <option selected
+                                                                    disabled>{{trans('messages.select')}}</option>
+                                                            @foreach($messages as $message)
+                                                                <option
+                                                                    value="{{ $message->text }}"> {{ $message->text }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            {{--                                            <label> {{ trans('messages.notification.title') }} </label>--}}
+                                            {{--                                            <input type="text" class="form-control" name="title"/><br>--}}
+                                            {{--                                            <label> {{ trans('messages.notification.text') }} </label>--}}
+                                            {{--                                            <textarea class="form-control" name="text"></textarea><br>--}}
+
                                             <div style="text-align: center;">
                                                 <button type="submit"
                                                         class="btn btn-primary"> {{ trans('messages.notification.send') }}
@@ -495,7 +735,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="tab-pane fade" id="wallet">
                             <div class="panel panel-flat">
                                 <div class="panel-heading">
@@ -512,7 +751,8 @@
                                     <div class="form-group row">
                                         <label class="col-form-label col-lg-3">{{ trans('messages.wallet') }}:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" value="{{ $person->wallet }} ريال-سعودي" readonly>
+                                            <input type="text" class="form-control"
+                                                   value="{{ $person->wallet }} ريال-سعودي" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row"><br>
@@ -534,7 +774,6 @@
 @stop
 
 @section('scripts')
-
     <script>
         function initMap() {
             let lat_val = {{ $person->latitude }};
@@ -543,10 +782,10 @@
                 center: {lat: lat_val, lng: lng_val},
                 zoom: 13
             });
-            var marker = new google.maps.Marker({ position: {lat: lat_val, lng: lng_val}, map: map, draggable :true });
+            var marker = new google.maps.Marker({position: {lat: lat_val, lng: lng_val}, map: map, draggable: true});
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks" >
+    <script
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks">
     </script>
-
 @stop

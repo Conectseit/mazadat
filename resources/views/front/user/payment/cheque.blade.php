@@ -22,8 +22,10 @@
         <div class="wallet-balance">
             <div class="container">
                 <div class="balance-content">
-                    <h2>{{ trans('messages.our_offices')}}</h2>
+                    <h3>{{ trans('messages.visit_our_offices')}}</h3>
                 </div>
+
+
             </div>
         </div>
         <div class="container">

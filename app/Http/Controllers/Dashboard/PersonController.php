@@ -11,6 +11,7 @@ use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Message;
 use App\Models\Nationality;
 use App\Models\Notification;
 use App\Models\Payment;
@@ -129,9 +130,10 @@ class PersonController extends Controller
         if (!User::find($id)) {
             return redirect()->route('persons.index')->with('class', 'danger')->with('message', trans('messages.messages.try_access_not_found_content'));
         }
+        $data['messages'] = Message::all();
         $data['person'] = User::find($id);
         $data['person_addresses'] = UserAddress::where('user_id',$id)->get();
-//        $data['person_auctions'] = AuctionBuyer::where('buyer_id',$id)->get();
+        $data['person_bids'] = AuctionBuyer::where('buyer_id',$id)->get();
         return view('Dashboard.Persons.show', $data);
     }
 

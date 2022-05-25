@@ -11,6 +11,7 @@ use App\Http\Requests\Front\user\AdditionalAddressRequest;
 use App\Http\Requests\Front\user\AvailableLimitRequest;
 use App\Http\Requests\Front\user\UploadDocumentRequest;
 use App\Http\Requests\Front\user\UploadPassportRequest;
+use App\Models\AuctionBuyer;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Document;
@@ -36,6 +37,16 @@ class UserController extends Controller
         $data['countries'] = Country::all();
         return view('front.user.complete_profile', $data);
     }
+
+
+    public function show_account_statement()
+    {
+        $data['user'] = User::where('id', auth()->user()->id)->first();
+        $data['person_bids'] = AuctionBuyer::where('buyer_id',auth()->user()->id)->get();
+        return view('front.user.my_account_statement', $data);
+    }
+
+
     public function show_my_addresses()
     {
         $data['user_addresses'] = UserAddress::where('user_id',auth()->user()->id)->get();

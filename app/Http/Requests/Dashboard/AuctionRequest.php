@@ -46,7 +46,7 @@ class AuctionRequest extends FormRequest
                         'delivery_charge' => ['required','numeric'],
 //                        'address'         => 'required',
                         'extra'           => 'sometimes|mimes:pdf|max:2048',
-                        'latitude'         => 'required|numeric',
+//                        'latitude'         => 'required|numeric',
                         'option_ids' => ['required'],
                         'option_ids.*' => ['required'],
                         'images' => ['required'],

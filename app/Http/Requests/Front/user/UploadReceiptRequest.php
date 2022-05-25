@@ -14,6 +14,7 @@ class UploadReceiptRequest extends FormRequest
     public function rules()
     {
         return [
+            'checkbox'  =>'accepted',
             'image'     => 'required|image',
             'amount'    => 'required|numeric',
             'date'      => 'required|date',

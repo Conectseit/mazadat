@@ -23,12 +23,16 @@ class BankResource extends JsonResource
         $bank_name= 'bank_name_'.app()->getLocale();
         $bank_namee = Setting::where('key',$bank_name)->first()->value;
 
+        $swift_code = Setting::where('key', 'swift_code')->first()->value;
+        $routing_number = Setting::where('key', 'routing_number')->first()->value;
         $iban = Setting::where('key', 'iban')->first()->value;
         return [
             'bank_name'         =>$bank_namee,
             'account_name'      =>$account_name,
-            'account_number'    =>$account_number,
             'branch'            =>$branch,
+            'swift_code'        =>$swift_code,
+            'account_number'    =>$account_number,
+            'routing_number'    =>$routing_number,
             'IBAN'              =>$iban,
         ];
 

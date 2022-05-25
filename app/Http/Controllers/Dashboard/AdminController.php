@@ -25,13 +25,19 @@ class AdminController extends Controller
 
     public function store(AdminRequest $request)
     {
-        $admin = new Admin();
-        $admin->full_name = $request->full_name;
-        $admin->admin_role_id = $request->admin_role_id;
-        $admin->email = $request->email;
-        $admin->mobile = $request->mobile;
-        $admin->password = $request->password;
-        $admin->save();
+//        $admin = new Admin();
+//        $admin->full_name = $request->full_name;
+//        $admin->admin_role_id = $request->admin_role_id;
+//        $admin->email = $request->email;
+//        $admin->mobile = $request->mobile;
+//        $admin->password = $request->password;
+//        $admin->save();
+
+
+        $request_data = $request->except(['image']);
+
+        if ($request->image) $request_data['image'] = uploaded($request->image, 'admin');
+        $admin = Admin::create($request_data);
         return redirect()->route('admins.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
     }
 

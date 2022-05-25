@@ -11,7 +11,7 @@
 
         @include('Dashboard.layouts.parts.quick-links')
     </div>
-@endsection
+@stop
 
 
 @section('content')
@@ -39,7 +39,7 @@
             </thead>
             <tbody>
             @foreach($contacts as $contact)
-                <tr class="text-center" id="row_{{ $contact->id }}">
+                <tr class="text-center"  id="contact-row-{{ $contact->id }}">
                     <td>{{ $loop->iteration }}</td>
                     <td>
 {{--                    @if($contact->user_id)--}}
