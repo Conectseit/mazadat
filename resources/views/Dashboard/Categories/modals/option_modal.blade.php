@@ -38,6 +38,17 @@
 
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label display-block"> {{ trans('messages.is_required/not') }} </label>
+                                    <div class="col-lg-9">
+                                        <select name="is_required"  class="select form-control">
+                                            <option value="" selected disabled>{{trans('messages.select')}}</option>
+                                            <option  value="1">{{trans('messages.required')}}</option>
+                                            <option  value="0 ">{{trans('messages.not_required')}}</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
                                 <input type="submit" class="btn btn-primary" value=" {{ trans('messages.add_and_forward_to_list') }} "/>

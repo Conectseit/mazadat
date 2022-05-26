@@ -212,7 +212,7 @@
 
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="email" class="form-label">{{ trans('messages.option.options') }}</label>
+                                <label for="email" class="form-label">{{ trans('messages.option.required_options') }}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 {{--                                <select class="form-select form-control" name="option_id" id="options"--}}
@@ -223,6 +223,7 @@
                                 {{--                                    @endforeach--}}
                                 {{--                                </select>--}}
                                 <div class="select-inputs-options"></div>
+
                                 {{--                                @foreach ($options as $key => $option)--}}
                                 {{--                                <select class="form-select form-control"  id="options" name="option_ids[]" multiple aria-label="Default select example">--}}
                                 {{--                                    <option value="{{ $option->id }}">{{ $option->$name }}</option>--}}
@@ -236,6 +237,16 @@
 
                             </div>
                         </div>
+
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label for="email" class="form-label">{{ trans('messages.option.not_required_options') }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-9">
+                                <div class="not-options"></div>
+                            </div>
+                        </div>
+
                     </div>
 
 

@@ -159,6 +159,8 @@ return [
         'add' => 'add new option ',
         'edit' => ' edit option ',
         'delete' => 'delete option',
+        'required_options' => ' required options ',
+        'not_required_options' => 'not required options ',
         'last_options' => 'last options',
     ],
     'option_detail' => [
@@ -735,6 +737,10 @@ return [
         'account_statement' => 'client account statement',
         'bids' => 'client all bids',
         'payment' => 'client all payments',
+
+        'is_required/not' => ' is required / not',
+        'required'        => ' required',
+        'not_required'    => ' not_required',
 
 
 

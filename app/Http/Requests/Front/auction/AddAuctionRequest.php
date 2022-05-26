@@ -39,7 +39,7 @@ class AddAuctionRequest extends FormRequest
                         'start_auction_price'   => ['required','numeric'],
                         'value_of_increment' => ['required','numeric'],
 //                        'delivery_charge' => ['required','numeric'],
-                        'option_ids.*' => ['required'],
+//                        'option_ids.*' => ['required'],
                         'images' => ['required'],
                         'images.*' => ['required','mimes:png,jpg,jpeg'],
                         'file_name_id'=>['required'],

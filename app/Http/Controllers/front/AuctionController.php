@@ -239,9 +239,6 @@ class AuctionController extends Controller
 
 
 
-
-
-
 //            //======= upload auction inspection_report_images =======
 //            $dataa = [];
 //            if ($request->hasfile('inspection_report_images')) {
@@ -250,8 +247,6 @@ class AuctionController extends Controller
 //                }
 //            }
 //            $auction_inspection_report_images = DB::table('inspection_images')->insert($dataa);
-
-
 
 
             //======= upload auction options =======

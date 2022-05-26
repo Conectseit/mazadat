@@ -16,7 +16,14 @@ class Option extends Model
 
         if (!$category) return response()->json(['status' => false], 500);
 
-        return response()->json(['options' => $category->options, 'status' => true]);
+       $required_options= $category->options->where('is_required',1);
+       $not_required_options= $category->options->where('is_required',0);
+
+        return response()->json([
+//            'options' => $category->options,
+            'options' => $required_options,
+            'not'=>$not_required_options,
+            'status' => true]);
     }
 
     public function category()

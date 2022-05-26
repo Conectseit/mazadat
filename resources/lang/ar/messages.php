@@ -171,6 +171,8 @@ return [
         'add' => 'اضافة تصنيف جديد',
         'edit' => 'تعديل تصنيف ',
         'delete' => 'حذف تصنيف ',
+        'required_options' => ' تصنيفات اجباري علي المستخدم ',
+        'not_required_options' => ' تصنيفات ااختيارية ',
         'last_options' => 'اخر التصنيفات المضافة حديثا',
     ],
     'option_detail' => [
@@ -751,6 +753,10 @@ return [
     'account_statement' => 'كشف حساب للعميل',
     'bids' => 'جميع مزايدات العميل',
     'payment' => 'جميع التحويلات المالية للعميل',
+
+    'is_required/not' => 'تصنيف إجباري/ إختياري',
+    'required'        => ' إجباري',
+    'not_required'    => ' إختياري',
 
     'accept_auction' => 'تم قبول المزاد',
     'need_update' => ' ارسال رسالة لتعديل المزاد',

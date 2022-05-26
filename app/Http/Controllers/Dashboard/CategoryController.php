@@ -49,9 +49,7 @@ class CategoryController extends Controller
             ->log(' قام المشرف' . ' '.auth()->guard('admin')->user()->full_name .' '. ' باضافة قسم '. ($category->$name));
 // ===========================================================
 
-
         return redirect()->route('categories.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
-
     }
 
     public function show($id)
@@ -87,7 +85,6 @@ class CategoryController extends Controller
         }
         $category->update($request_data);
 
-
 // ===========================================================
         $name='name_' . app()->getLocale();
         activity()
@@ -110,7 +107,7 @@ class CategoryController extends Controller
 //            File::delete('uploads/categories/' . $request->image);
             $category->delete();
 
-            // ===========================================================
+// ===========================================================
             $name='name_' . app()->getLocale();
             activity()
                 ->performedOn($category)

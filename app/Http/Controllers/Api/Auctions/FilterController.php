@@ -62,7 +62,19 @@ class FilterController extends PARENT_API
         if (!$category) {
             return responseJson(false, trans('api.not_found_category'), null);  //
         }
-        $category_options = Option::where('category_id', $id)->with('option_details')->get();
+        $category_options = Option::where('category_id', $id)->where('is_required',1)->with('option_details')->get();
+        return responseJson(true, trans('api.category_options'), CategoryOptionsResource::collection($category_options));  //OK
+    }
+
+
+
+    public function get_not_required_options_of_category(Request $request, $id)
+    {
+        $category = Category::find($id);
+        if (!$category) {
+            return responseJson(false, trans('api.not_found_category'), null);  //
+        }
+        $category_options = Option::where('category_id', $id)->where('is_required',0)->with('option_details')->get();
         return responseJson(true, trans('api.category_options'), CategoryOptionsResource::collection($category_options));  //OK
     }
 

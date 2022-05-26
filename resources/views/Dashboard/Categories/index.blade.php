@@ -8,7 +8,6 @@
                 </li>
                 <li class="active">@lang('messages.category.categories')</li>
             </ul>
-
             @include('Dashboard.layouts.parts.quick-links')
         </div>
 @stop

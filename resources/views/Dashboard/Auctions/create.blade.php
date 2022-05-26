@@ -109,10 +109,20 @@
                             </div><br>
                             <div class="form-group mb-4 row">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label for="" class="form-label">{{ trans('messages.option.options') }}</label>
+                                    <label for="" class="form-label">{{ trans('messages.option.required_options') }}</label>
                                 </div>
                                 <div class="col-lg-10 col-md-9">
                                     <div class="select-inputs-options"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group mb-4 row">
+                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                    <label for="" class="form-label">{{ trans('messages.option.not_required_options') }}</label>
+                                </div>
+                                <div class="col-lg-10 col-md-9">
+                                    <div class="not-options"></div>
                                 </div>
                             </div>
                         </div>
@@ -167,9 +177,6 @@
                         </div><hr><br>
 
 
-
-
-
                         <div class="row">
                             <div class="form-group">
                                 <label>@lang('messages.auction.images')</label>
@@ -200,9 +207,6 @@
                                 @error('images')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                         </div><hr><br>
-
-
-
 
 
                         <div class="row">

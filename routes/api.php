@@ -80,6 +80,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('main_filter_category/{id}/auctions', [FilterController::class,'main_filter']);
     Route::post('filter_category/{id}/auctions', [FilterController::class,'filterCategory']);
     Route::post('get_options_of_category/{id}', [FilterController::class,'get_options_of_category']);
+    Route::post('get_not_required_options_of_category/{id}', [FilterController::class,'get_not_required_options_of_category']);
 
     Route::get('success-payment', [PaymentController::class, 'successPayment']);
 

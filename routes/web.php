@@ -134,7 +134,6 @@ Route::group(
         Route::any('choose_available_limit', [UserController::class, 'choose_available_limit'])->name('front.choose_available_limit');
         Route::any('my_wallet', [UserController::class, 'my_wallet'])->name('front.my_wallet');
 
-
         //=========== payment ============
         Route::any('cheque_payment', [PaymentController::class, 'cheque_payment'])->name('front.cheque_payment');
         Route::any('bank_deposit', [PaymentController::class, 'bank_deposit'])->name('front.bank_deposit');

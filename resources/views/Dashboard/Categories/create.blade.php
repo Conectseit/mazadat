@@ -19,7 +19,6 @@
                         class="icon-admin position-left"></i> @lang('messages.category.categories')</a></li>
             <li class="active">@lang('messages.create-var',['var'=>trans('messages.category.category')])</li>
         </ul>
-
         @include('Dashboard.layouts.parts.quick-links')
     </div>
 @endsection
@@ -45,11 +44,8 @@
                             </ul>
                         </div>
                     </div>
-
-
                     <div class="panel-body">
                         <div class="box-body">
-
                             <div class="form-group">
                                     <input type="text" class="form-control"
                                            value="{{ old('name_ar') }}" name="name_ar"
@@ -76,13 +72,6 @@
                                 <span class="label-text"></span>
                                 @error('description_en') <span  class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
-{{--                            <div class="form-group">--}}
-{{--                                <input type="number" class="form-control " value="" name="auction_commission"--}}
-{{--                                       placeholder="@lang('messages.auction_commission')   /100 ريال ">--}}
-{{--                            </div>--}}
-
-
-
                             <div class="form-group">
                                 <input type="text" class="form-control"
                                        value="{{ old('auction_commission') }}" name="auction_commission"
@@ -90,24 +79,18 @@
                                 <span class="label-text"></span>
                                 @error('auction_commission') <span class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
-
-
                             <div class="form-group">
                                 <label>@lang('messages.image')</label>
                                 <input type="file" class="form-control image " name="image">
                                 @error('image')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
                             </div>
-
                             <div class="form-group">
                                 <img src=" {{ asset('uploads/default.png') }} " width=" 100px "
                                      class="thumbnail image-preview">
                             </div>
                         </div>
-
                     </div>
-
-
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
                         <input type="submit" class="btn btn-primary"
                                value=" {{ trans('messages.add_and_forward_to_list') }} "/>
@@ -115,13 +98,9 @@
                     </div>
 
                 </div>
-
-
             </form>
             <!-- /basic layout -->
-
         </div>
-
 
         <div class="col-md-6">
             <div class="panel panel-flat">
@@ -138,7 +117,6 @@
                 </div>
 
                 <div class="panel-body">
-
                     <table class="table table-bordered table-hover">
                         <tr class="text-center">
                             <th> {{ trans('messages.name') }} </th>
@@ -157,8 +135,6 @@
             </div>
         </div>
     </div>
-
-
 
 @stop
 
