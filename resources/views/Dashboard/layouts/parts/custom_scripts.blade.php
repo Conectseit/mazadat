@@ -9,7 +9,8 @@
     //         reader.readAsDataURL(fileName.files[0]);
     //     }
     // }
-    // ======== image preview ====== //
+
+// ======== image preview ================================//
     $(".image").change(function () {
         if (this.files && this.files[0]) {
             var reader = new FileReader();
@@ -19,7 +20,25 @@
             reader.readAsDataURL(this.files[0]);
         }
     });
+// ======== image preview ================================//
+</script>
 
+<script>
+    // ======== image preview ================================//
+    function readURL2(input) {
+        console.log(input.files);
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#img-preview2").attr("src", e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            $("#img-preview2").attr("src", "{{asset('uploads/images.jpg')}}");
+            // $("#img-preview2").attr("src", "https://assets.wasalt.com/others/icons/villas-for-sale-in-makkah.jpeg");
+        }
+    }
+    // ======== image preview ================================//
 </script>
 
 <script>

@@ -185,10 +185,14 @@
 
 
                                 <div class="input-group control-group increment" >
-                                    <input type="file" name="images[]" class="form-control image"><br>
                                     <div class="form-group">
-                                        <img src=" {{ asset('uploads/default.png') }} " width=" 100px "
-                                             class="thumbnail image-preview">
+                                        <div class="row">
+                                            <div class="col-lg-6"> اختر صورة : <input type="file" name="images[]" class=" image"><br>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <img src=" {{ asset('uploads/default.png') }} " width=" 100px " class="thumbnail image-preview">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="input-group-btn">
@@ -196,11 +200,19 @@
                                 </div>
                                 <div class="clone hide">
                                     <div class="control-group input-group" style="margin-top:10px">
-                                        <input type="file"  name="images[]" class="form-control image-x">
-{{--                                            <img src=" {{ asset('uploads/default.png') }} " width=" 100px "--}}
-{{--                                                 class="thumbnail image-preview-x">--}}
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> حذف </button>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <input type="file"  name="images[]" class="form-control" accept="image/*" onchange="readURL2(this)" >
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <img id="img-preview2" style="width: 120px ; height:90px"
+                                                     src="{{ asset('uploads/images.jpg') }}" width="250px"/>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> حذف </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -298,11 +310,10 @@
 
 
 @section('scripts')
-
     @include('Dashboard.layouts.parts.ajax_get_options')
     @include('Dashboard.layouts.parts.map')
     @include('Dashboard.Auctions.parts.ajax_get_options_by_category_id')
-    @include('Dashboard.Auctions.parts.image_preview')
+{{--    @include('Dashboard.Auctions.parts.image_preview')--}}
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -315,21 +326,8 @@
             });
         });
     </script>
+
 @endsection
-
-
-
-{{--<script>--}}
-{{--    function registerClickHandler() {--}}
-{{--        // Implement the click handler here for button of class 'remove'--}}
-{{--        $('.remove').click(function() {--}}
-{{--            $(this).parent().remove();--}}
-{{--        });--}}
-{{--    }--}}
-{{--    registerClickHandler();--}}
-{{--</script>--}}
-
-
 
 
 

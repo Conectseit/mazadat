@@ -9,7 +9,7 @@
             </li>
             <li><a href="{{ route('cities.index') }}"><i
                         class="icon-admin position-left"></i> @lang('messages.inspection_file_names')</a></li>
-            <li class="active">@lang('messages.add')])</li>
+            <li class="active">@lang('messages.add')</li>
         </ul>
 
         @include('Dashboard.layouts.parts.quick-links')
@@ -44,7 +44,7 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <input type="text" class="form-control" value="" name="name"
-                                       placeholder="@lang('messages.name') ">
+                                       placeholder="@lang('messages.name')" required>
                             </div>
                         </div>
                     </div>

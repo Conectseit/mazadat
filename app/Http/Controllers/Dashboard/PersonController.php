@@ -62,7 +62,7 @@ class PersonController extends Controller
             }
             $person = User::create($request_data+['type' => 'buyer', 'is_company' =>'person',
                     'is_appear_name'=>1, 'is_accepted' =>1, 'is_active' =>'active',
-                    'is_verified'=>1,'is_completed' =>1, 'accept_app_terms'=>'yes',
+                    'is_verified'=>1,'is_completed' =>1, 'accept_app_terms'=>'yes','is_checked_account'=>1
 
 //                    'mobile' => $country->phone_code.$request->mobile
                 ]);

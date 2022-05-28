@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Firebase\Firebase;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SmsController;
+use App\Models\Message;
 use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,34 +14,40 @@ class NotificationController extends Controller
 {
 
     public function send_single_notify(Request $request){
+        $message=Message::where('text',$request->text)->first();
         $user=User::find($request->user_id);
         if (is_null($user)){
             return back()->with('class', 'success')->with('message', trans('messages.messages.user_not_found'));
         }
         if ($user->token->fcm != null ) {
             Firebase::send([
-                'title'      => $request->title,
+                'title'      => $message->title,
                 'text'       => $request->text,
                 'auction_id' => $request->auction_id,
                 'fcm_tokens' => $user->token->fcm
             ]);
         }
         Firebase::createWebCurl($user->token->fcm_web_token, [
-            'title' => $request->title,
+            'title' => $message->title,
             'body' => $request->text,
             'icon' => 'https://mzadat.com.sa/Front/assets/imgs/mini-logo.svg'
         ]);
-        Notification::create($request->all() + ['user_id' => $request->user_id]);
-//        Notification::create([
-////            'user_id' => $request->user_id,
-////            'title' => $request->title,
-////            'text' => $request->text,
-//        ]);
+//        Notification::create($request->all() + ['user_id' => $request->user_id]);
+        Notification::create([
+            'user_id' => $request->user_id,
+            'title' => $message->title,
+            'text' => $request->text,
+        ]);
 
         SmsController::send_sms($user->mobile, $request->text);
 
         return back()->with('class', 'success')->with('message', trans('messages.messages.send_successfully'));
     }
+
+
+
+
+
 
 //    protected function sendFCM($token, $data)
 //    {

@@ -93,12 +93,12 @@
                                     <label class="col-form-label col-lg-4">{{ trans('messages.settings.location_on_google_maps') }}:</label>
 
                                         <div class="col-lg-12">
-                                            <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">
+{{--                                            <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -150px;" placeholder=" اختر المكان علي الخريطة " name="other">--}}
                                             <div id="map"></div>
                                         </div>
                                         <div class="col-lg-6">
                                             <input type="text" id="geo_lat" name="latitude" value="{{ settings('latitude') }}"
-                                                   readonly="" placeholder=" latitude" class="form-control">
+                                                   readonly="" placeholder="latitude" class="form-control">
                                         </div>
                                         <div class="col-lg-6">
                                             <input type="text" id="geo_lng" name="longitude" value="{{ settings('longitude') }}"

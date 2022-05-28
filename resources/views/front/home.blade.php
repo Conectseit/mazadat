@@ -46,6 +46,48 @@
             border: 1px solid;
         }
 
+
+
+
+        .notification-message-unread {
+            float: right;
+            text-align: center;
+            color: gainsboro;
+            font-size: 17px;
+            /*color: #666;*/
+            /*background: white;*/
+            padding-left: 10px;
+            display: block;
+            position: relative;
+            width: 200px;
+            height: 45px;
+            background-color: red;
+            animation: blinker 1s linear infinite;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        @keyframes blinker {
+            50% {
+                background-color: blue;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /*.category-items-page .items .card.gallery-card .card-body {*/
         /*    background: #1e3c48;*/
         /*}*/
@@ -74,7 +116,16 @@
     <div class="mt-0">
         <div class="row">
             <div class="col-md-10 col-sm-2 mx-auto" dir="{{ direction() }}">
+
                 <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="3000">
+
+
+                    <div class="row">
+                        <div class=" col-lg-3 col-md-3">
+                                <div class="notification-message-unread ">{{ trans('messages.ad-auctions') }}</div>
+                        </div>
+                    </div>
+
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"
                                 class="active"></button>
@@ -101,10 +152,12 @@
                             @if(!$loop->first)
                                 <div class="carousel-item">
 
-                                    <a href="{{ $advertisement->ImagePath }}" data-popup="lightbox">
-                                        <img class="d-block" src="{{ $advertisement->ImagePath }}"
-                                             alt="Second slide">
-                                    </a>
+                                  <div class="slider_image" style="height: 100%; width: 100%">
+                                      <a href="{{ $advertisement->ImagePath }}" data-popup="lightbox">
+                                          <img class="d-block" src="{{ $advertisement->ImagePath }}"
+                                               alt="Second slide" style="height: 100%; width: 100%">
+                                      </a>
+                                  </div>
                                     <div class="carousel-caption d-none d-md-block">
                                         <h4>{{ isNullable($advertisement->$name) }}</h4>
                                     </div>

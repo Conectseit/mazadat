@@ -52,6 +52,7 @@ class AuctionController extends Controller
 
     public function store(AuctionRequest $request)
     {
+
         DB::beginTransaction();
         try {
             $serial_number = '#' . random_int(00000, 99999);
@@ -332,14 +333,6 @@ class AuctionController extends Controller
     public function get_options_by_category_id(Request $request)
     {
         return Option::getOptionsByCategoryId($request);
-
-//        $category = Category::find($request->category_id);
-//
-//        if (!$category) return response()->json(['status' => false], 500);
-//
-//        $options = Option::where('category_id',$request->category_id)->get();
-//
-//        return response()->json(['options' => $options, 'status' => true]);
     }
 
 

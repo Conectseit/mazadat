@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $data['categories'] = Category:: latest()->get();
+        $data['categories'] = Category:: all();
 //        $data['categories'] = Category::select('id','image','created_at',
 //            'name_' . LaravelLocalization::getCurrentLocale() . ' as name',
 //            'description_' . LaravelLocalization::getCurrentLocale() . ' as description',

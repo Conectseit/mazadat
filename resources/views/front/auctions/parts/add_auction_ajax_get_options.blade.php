@@ -115,7 +115,7 @@
                         $("#not").append('<option value="">اختر </option>');
                         $.each(response.not, function (index, option) {
                             html1 += `
-                                <select class="form-select form-control"  id="not" name="required_options_ids[]" aria-label="Default select example" style="margin-bottom: 17px;">
+                                <select class="form-select form-control"  id="not" name="option_ids[]" aria-label="Default select example" style="margin-bottom: 17px;">
                                     <option value="${option.id}" >${option.name_ar}</option>
 
                                     <optgroup class="form-select form-control" id="not" value="${option.id}">

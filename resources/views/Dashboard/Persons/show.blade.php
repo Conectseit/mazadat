@@ -685,23 +685,23 @@
                                               style="border:1px solid grey;padding:20px 30px">
                                             @csrf
                                             <input type="hidden" name="user_id" value="{{ $person->id }}"/>
-                                            <div class="form-group">
-                                                <label
-                                                    class="col-lg-3 control-label display-block"> {{ trans('messages.message.title') }}
-                                                    : </label>
-                                                <div class="col-lg-6">
-                                                    <select name="title" class="select">
-                                                        <optgroup label="{{ trans('messages.message.title')}}">
-                                                            <option selected
-                                                                    disabled>{{trans('messages.select')}}</option>
+{{--                                            <div class="form-group">--}}
+{{--                                                <label--}}
+{{--                                                    class="col-lg-3 control-label display-block"> {{ trans('messages.message.title') }}--}}
+{{--                                                    : </label>--}}
+{{--                                                <div class="col-lg-6">--}}
+{{--                                                    <select name="title" class="select">--}}
+{{--                                                        <optgroup label="{{ trans('messages.message.title')}}">--}}
+{{--                                                            <option selected--}}
+{{--                                                                    disabled>{{trans('messages.select')}}</option>--}}
 
-                                                            @foreach($messages as $message)
-                                                                <option
-                                                                    value="{{ $message->title }}"> {{ $message->title }} </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
+{{--                                                            @foreach($messages as $message)--}}
+{{--                                                                <option--}}
+{{--                                                                    value="{{ $message->title }}"> {{ $message->title }} </option>--}}
+{{--                                                        @endforeach--}}
+{{--                                                    </select>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
                                             <br>
                                             <div class="form-group">
                                                 <label

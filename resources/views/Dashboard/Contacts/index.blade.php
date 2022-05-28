@@ -12,11 +12,7 @@
         @include('Dashboard.layouts.parts.quick-links')
     </div>
 @stop
-
-
 @section('content')
-
-
     @include('Dashboard.layouts.parts.validation_errors')
 
     <!-- Basic datatable -->

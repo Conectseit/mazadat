@@ -42,7 +42,7 @@
                 </thead>
                 <tbody>
                 @foreach($inspection_file_names as $inspection_file_name)
-                    <tr id="inspection_file_name-row-{{ $inspection_file_name->id }}">
+                    <tr id="filename-row-{{ $inspection_file_name->id }}">
 
                         <td>{{ $inspection_file_name->id }}</td>
                         <td><a href=""> {{ isNullable($inspection_file_name->name) }}</a></td>

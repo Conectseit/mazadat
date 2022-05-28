@@ -36,8 +36,9 @@
 
                         <div class="col-lg-8" dir="{{ direction() }}">
                             <div class="text">
-                                <p><i class="fa fa-bell fa-fw"></i>{{$notification->text}} </p>
-                                <small class="date">{{$notification->created_at->diffForHumans()}}</small>
+                                <p><i class="fa fa-bell fa-fw"></i>{{$notification->title}} </p>
+                                <p>{{$notification->text}} </p>
+                                <small class="date"><i class="fa fa-clock"></i>{{$notification->created_at->diffForHumans()}}</small>
                             </div>
                         </div>
                         @if(isset($notification->auction_id))

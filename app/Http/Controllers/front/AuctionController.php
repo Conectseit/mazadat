@@ -267,6 +267,30 @@ class AuctionController extends Controller
 
             if (count($options) > 0) DB::table('auction_data')->insert($options);
 
+
+
+
+
+
+//            $options = [];
+//            if ($request->has('option_ids')) {
+//                $ids = $request->option_ids ? array_filter($request->option_ids) : [];
+//
+//                if (is_array($ids) && !empty($ids)) {
+//                    // if $request->option_ids is null or equal zero - has zero -> refuse it
+//                    foreach ($ids as $option_detail_id) {
+//                        $options[$option_detail_id] = [
+//                            'auction_id' => $auction->id,
+//                            'option_details_id' => $option_detail_id // <==== arrrray ??,
+//                        ];
+//                    }
+//                }
+//            }
+//
+//            if (count($options) > 0) DB::table('auction_data')->insert($options);
+
+
+
             DB::commit();
             return redirect()->route('front.my_auctions')->with('success', trans('messages.added_successfully_wait_until_admin_accept_your_auction'));
 //            return back()->with('success', trans('messages.added_successfully_wait_until_admin_accept_your_auction'));
@@ -281,10 +305,10 @@ class AuctionController extends Controller
     {
 //        $data['auctions'] =  auth()->user()->seller_auctions()->get();
 //        $data['pending_auctions'] = Auction::where('seller_id', auth()->user()->id)->where('status', 'not_accepted')->paginate('20');
-        $data['pending_auctions'] = auth()->user()->seller_auctions()->where('status', 'not_accepted')->where('is_accepted', 0)->paginate('20');
-        $data['accepted_not_appear_auctions'] = auth()->user()->seller_auctions()->where(['status' => 'not_accepted', 'is_accepted' => 1])->paginate('20');
-        $data['on_progress_auctions'] = auth()->user()->seller_auctions()->where(['status' => 'on_progress', 'is_accepted' => 1])->paginate('20');
-        $data['ended_auctions'] = auth()->user()->seller_auctions()->where('status', 'done')->where('is_accepted', 1)->paginate('20');
+        $data['pending_auctions'] = auth()->user()->seller_auctions()->where('status', 'not_accepted')->where('is_accepted', 0)->latest()->paginate('20');
+        $data['accepted_not_appear_auctions'] = auth()->user()->seller_auctions()->where(['status' => 'not_accepted', 'is_accepted' => 1])->latest()->paginate('20');
+        $data['on_progress_auctions'] = auth()->user()->seller_auctions()->where(['status' => 'on_progress', 'is_accepted' => 1])->latest()->paginate('20');
+        $data['ended_auctions'] = auth()->user()->seller_auctions()->where('status', 'done')->where('is_accepted', 1)->latest()->paginate('20');
         return view('front.user.my_auctions', $data);
     }
 

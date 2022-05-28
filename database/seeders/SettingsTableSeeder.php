@@ -27,8 +27,8 @@ class SettingsTableSeeder extends Seeder
             ['key' => 'email', 'value' => 'mazadat@hr.com.uae', 'created_at' => now(), ],
             ['key' => 'fax', 'value' => '9661111111', 'created_at' => now(), ],
             ['key' => 'address', 'value' => 'جدة', 'created_at' => now(), ],
-            ['key' => 'latitude', 'value' => '46.676497319638656', 'created_at' => now(), ],
-            ['key' => 'longitude', 'value' => '24.712772003587013', 'created_at' => now(), ],
+            ['key' => 'latitude', 'value' => '24.71339576110806', 'created_at' => now(), ],
+            ['key' => 'longitude', 'value' => '46.67563901275389', 'created_at' => now(), ],
 
 
             // bank settings

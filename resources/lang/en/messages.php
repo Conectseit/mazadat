@@ -741,6 +741,8 @@ return [
         'is_required/not' => ' is required / not',
         'required'        => ' required',
         'not_required'    => ' not_required',
+        'ad-auctions'    => ' اعلانات لمزادات قادمة',
+
 
 
 

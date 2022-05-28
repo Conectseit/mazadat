@@ -1,41 +1,87 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.auction.add'))
 @section('style')
-    <style> #map {
-            height: 400px;
-        }
-
-        /*.remove-image {*/
-        /*    display: none;*/
-        /*    position: absolute;*/
-        /*    text-align: center;*/
-        /*    !*top: -10px;*!*/
-        /*    !*right: -10px;*!*/
-        /*    border-radius: 10em;*/
-        /*    padding: 2px 6px 3px;*/
-        /*    text-decoration: none;*/
-        /*    font: 700 21px/20px sans-serif;*/
-        /*    background: #555;*/
-        /*    border: 3px solid #fff;*/
-        /*    color: #FFF;*/
-        /*    box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 2px 4px rgba(0,0,0,0.3);*/
-        /*    text-shadow: 0 1px 2px rgba(0,0,0,0.5);*/
-        /*    -webkit-transition: background 0.5s;*/
-        /*    !*transition: background 0.5s;*!*/
-        /*}*/
-        /*.remove-image:hover {*/
-        /*    background: #E54E4E;*/
-        /*    padding: 3px 7px 5px;*/
-        /*    top: -11px;*/
-        /*    right: -11px;*/
-        /*}*/
-        /*.remove-image:active {*/
-        /*    background: #E54E4E;*/
-        /*    top: -10px;*/
-        /*    right: -11px;*/
-        /*}*/
-
+    <style> #map {height: 400px;}
+    .hide{
+        visibility: hidden;
+    }
     </style>
+
+{{-- ================== Test multi image =================== --}}
+    <style>
+{{--        .upload__box {--}}
+{{--            padding: 40px;--}}
+{{--        }--}}
+{{--        .upload__inputfile {--}}
+{{--            width: 0.1px;--}}
+{{--            height: 0.1px;--}}
+{{--            opacity: 0;--}}
+{{--            overflow: hidden;--}}
+{{--            position: absolute;--}}
+{{--            z-index: -1;--}}
+{{--        }--}}
+{{--        .upload__btn {--}}
+{{--            display: inline-block;--}}
+{{--            font-weight: 600;--}}
+{{--            color: #fff;--}}
+{{--            text-align: center;--}}
+{{--            min-width: 116px;--}}
+{{--            padding: 5px;--}}
+{{--            transition: all 0.3s ease;--}}
+{{--            cursor: pointer;--}}
+{{--            border: 2px solid;--}}
+{{--            background-color: #4045ba;--}}
+{{--            border-color: #4045ba;--}}
+{{--            border-radius: 10px;--}}
+{{--            line-height: 26px;--}}
+{{--            font-size: 14px;--}}
+{{--        }--}}
+{{--        .upload__btn:hover {--}}
+{{--            background-color: unset;--}}
+{{--            color: #4045ba;--}}
+{{--            transition: all 0.3s ease;--}}
+{{--        }--}}
+{{--        .upload__btn-box {--}}
+{{--            margin-bottom: 10px;--}}
+{{--        }--}}
+{{--        .upload__img-wrap {--}}
+{{--            display: flex;--}}
+{{--            flex-wrap: wrap;--}}
+{{--            margin: 0 -10px;--}}
+{{--        }--}}
+{{--        .upload__img-box {--}}
+{{--            width: 200px;--}}
+{{--            padding: 0 10px;--}}
+{{--            margin-bottom: 12px;--}}
+{{--        }--}}
+{{--        .upload__img-close {--}}
+{{--            width: 24px;--}}
+{{--            height: 24px;--}}
+{{--            border-radius: 50%;--}}
+{{--            background-color: rgba(0, 0, 0, 0.5);--}}
+{{--            position: absolute;--}}
+{{--            top: 10px;--}}
+{{--            right: 10px;--}}
+{{--            text-align: center;--}}
+{{--            line-height: 24px;--}}
+{{--            z-index: 1;--}}
+{{--            cursor: pointer;--}}
+{{--        }--}}
+{{--        .upload__img-close:after {--}}
+{{--            content: '\2716';--}}
+{{--            font-size: 14px;--}}
+{{--            color: white;--}}
+{{--        }--}}
+{{--        .img-bg {--}}
+{{--            background-repeat: no-repeat;--}}
+{{--            background-position: center;--}}
+{{--            background-size: cover;--}}
+{{--            position: relative;--}}
+{{--            padding-bottom: 100%;--}}
+{{--        }--}}
+    </style>
+{{-- ================== Test multi image =================== --}}
+
 @endsection
 
 @section('content')
@@ -223,6 +269,7 @@
                                 {{--                                    @endforeach--}}
                                 {{--                                </select>--}}
                                 <div class="select-inputs-options"></div>
+                                <h6 class="group-title">  {{trans('messages.option_terms')}}</h6>
 
                                 {{--                                @foreach ($options as $key => $option)--}}
                                 {{--                                <select class="form-select form-control"  id="options" name="option_ids[]" multiple aria-label="Default select example">--}}
@@ -233,8 +280,6 @@
                                 {{--                                    </optgroup>--}}
                                 {{--                                </select>--}}
                                 {{--                                @endforeach--}}
-
-
                             </div>
                         </div>
 
@@ -255,19 +300,48 @@
 
                         <div class="form-group">
                             <label>@lang('messages.auction.images')</label>
-                            {{--                            <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
-                            <input type="file" multiple id="gallery-photo-add" class="form-control" name="images[]">
-                            {{--                            <input id="btn1" type="button" value="Click me" onclick="onClick1()" style="height: 100px; width: 100px;">--}}
+{{--                            <input type="file" multiple id="gallery-photo-add" class="form-control" name="images[]">--}}
+{{--                            <div class="gallery" id="output">--}}
+{{--                            </div>--}}
 
-                            <div class="gallery" id="output">
+                            <div class="input-group control-group increment" >
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-6"> اختر صورة : <input type="file" name="images[]" class=" image"><br>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <img src=" {{ asset('uploads/default.png') }} " width=" 100px " class="thumbnail image-preview">
+                                        </div>
 
-                            {{--                                <p><button onclick="remove_img()"> remove </button></p>--}}
-                            <!--<a class="remove-image" href="#" style="display: inline;">&#215;</a>-->
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <div class="input-group-btn">
+                                <button class="btn btn-success add" type="button"> <i class="glyphicon glyphicon-plus"> </i> {{trans('messages.add_another_image')}}</button>
+                            </div>
+                            <div class="clone hide">
+                                <div class="control-group input-group" style="margin-top:10px">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <input type="file"  name="images[]" class="form-control" accept="image/*" onchange="readURL2(this)" >
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <img id="img-preview2" style="width: 120px ; height:90px"
+                                                 src="{{ asset('uploads/images.jpg') }}" width="250px"/>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> حذف </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <hr>
-                        <br>
+                        </div> <hr><br>
+
+
+
 
                         <div class="form-group">
                             <h4>@lang('messages.auction.inspection_report_files')</h4><br>
@@ -301,17 +375,6 @@
 
                         </div><hr><br>
 
-
-                        {{--  <div class="form-group">--}}
-                        {{--                            <label>@lang('messages.auction.inspection_report_images')</label>--}}
-                        {{--                            <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
-                        {{--                            <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">--}}
-                        {{--                            <div class="gallery1"></div>--}}
-                        {{--                        </div><br>--}}
-
-
-                        <br>
-                        <br>
                         <div class="form-group">
                             <label>@lang('messages.auction.location'):</label>
                             <div class="col-lg-12">
@@ -344,6 +407,143 @@
 @push('scripts')
     @include('front.layouts.parts.map')
     @include('front.auctions.parts.add_auction_ajax_get_options')
-    @include('front.auctions.parts.image_preview')
+{{--    @include('front.auctions.parts.image_preview')--}}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".btn-success").click(function(){
+                var html = $(".clone").html();
+                $(".increment").after(html);
+            });
+            $("body").on("click",".btn-danger",function(){
+                $(this).parents(".control-group").remove();
+            });
+        });
+    </script>
+
+
+
+
+
+    <script>
+        // ======== image preview ================================//
+        $(".image").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.image-preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+        // ======== image preview ================================//
+    </script>
+
+    <script>
+        // ======== image preview ================================//
+        function readURL2(input) {
+            console.log(input.files);
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#img-preview2").attr("src", e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                $("#img-preview2").attr("src", " {{asset('uploads/images.jpg')}}");
+            }
+        }
+        // ======== image preview ================================//
+    </script>
 @endpush
 
+
+
+
+
+
+
+
+
+
+
+
+{{-- ================== Test multi image =================== --}}
+
+{{--                        <div class="form-group">--}}
+{{--                            <label>@lang('messages.auction.images')</label>--}}
+{{--                            <div class="upload__box">--}}
+{{--                                <div class="upload__btn-box">--}}
+{{--                                    <label class="upload__btn">--}}
+{{--                                        <p>Upload images</p>--}}
+{{--                                        <input type="file" multiple="" data-max_length="20" class="upload__inputfile" name="images[]">--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+{{--                                <div class="upload__img-wrap"></div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+{{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"--}}
+{{--            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>--}}
+{{--    <script>--}}
+{{--        jQuery(document).ready(function () {--}}
+{{--            ImgUpload();--}}
+{{--        });--}}
+{{--        function ImgUpload() {--}}
+{{--            var imgWrap = "";--}}
+{{--            var imgArray = [];--}}
+
+{{--            $('.upload__inputfile').each(function () {--}}
+{{--                $(this).on('change', function (e) {--}}
+{{--                    imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');--}}
+{{--                    var maxLength = $(this).attr('data-max_length');--}}
+
+{{--                    var files = e.target.files;--}}
+{{--                    var filesArr = Array.prototype.slice.call(files);--}}
+{{--                    var iterator = 0;--}}
+{{--                    filesArr.forEach(function (f, index) {--}}
+
+{{--                        if (!f.type.match('image.*')) {--}}
+{{--                            return;--}}
+{{--                        }--}}
+
+{{--                        if (imgArray.length > maxLength) {--}}
+{{--                            return false--}}
+{{--                        } else {--}}
+{{--                            var len = 0;--}}
+{{--                            for (var i = 0; i < imgArray.length; i++) {--}}
+{{--                                if (imgArray[i] !== undefined) {--}}
+{{--                                    len++;--}}
+{{--                                }--}}
+{{--                            }--}}
+{{--                            if (len > maxLength) {--}}
+{{--                                return false;--}}
+{{--                            } else {--}}
+{{--                                imgArray.push(f);--}}
+
+{{--                                var reader = new FileReader();--}}
+{{--                                reader.onload = function (e) {--}}
+{{--                                    var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";--}}
+{{--                                    imgWrap.append(html);--}}
+{{--                                    iterator++;--}}
+{{--                                }--}}
+{{--                                reader.readAsDataURL(f);--}}
+{{--                            }--}}
+{{--                        }--}}
+{{--                    });--}}
+{{--                });--}}
+{{--            });--}}
+
+{{--            $('body').on('click', ".upload__img-close", function (e) {--}}
+{{--                var file = $(this).parent().data("file");--}}
+{{--                for (var i = 0; i < imgArray.length; i++) {--}}
+{{--                    if (imgArray[i].name === file) {--}}
+{{--                        imgArray.splice(i, 1);--}}
+{{--                        break;--}}
+{{--                    }--}}
+{{--                }--}}
+{{--                $(this).parent().parent().remove();--}}
+{{--            });--}}
+{{--        }--}}
+{{--    </script>--}}
+
+{{-- ================== Test multi image =================== --}}

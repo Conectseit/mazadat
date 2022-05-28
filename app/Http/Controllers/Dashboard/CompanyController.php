@@ -67,7 +67,7 @@ class CompanyController extends Controller
 
             $company = User::create($request_data+['type' => 'buyer','is_appear_name'=>1,
                     'is_company'=>'company','accept_app_terms'=>'yes', 'is_accepted' =>1,
-                    'is_active' => 'active', 'is_completed' =>1,'is_verified'=>1
+                    'is_active' => 'active', 'is_completed' =>1,'is_verified'=>1,'is_checked_account'=>1
 //                    'mobile' => $country->phone_code.$request->mobile
                 ]);
             if ($company) {
