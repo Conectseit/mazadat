@@ -26,6 +26,27 @@ class PaymentController extends PARENT_API
         return responseJson(true, trans('api.upload_receipt_successfully'), null); //ACCEPTED
     }
 
+
+
+
+    public function make_online_payment(AmountRequest $request)
+    {
+        $user = auth()->user();
+        $request_data['payment_type'] = 'online';
+        $request_data['amount'] = $request->amount;
+
+        Payment::create($request_data + ['user_id' => $user->id,'is_accepted'=>1]);
+
+        $user->update(['wallet' => (int)($user->wallet + round($request['amount']))]);
+
+        return responseJson(true, trans('api.paid_success'), null); //ACCEPTED
+
+    }
+
+
+
+
+
     public function sendPayment(AmountRequest $request)
     {
         $data = UrwayPayment::getUrwayChargeData([
@@ -33,7 +54,6 @@ class PaymentController extends PARENT_API
             'email' =>  "test@test.com",
             'amount' => (int)$request->amount ?? 0, // temp
         ]);
-
 
         $response = Http::post(UrwayPayment::base(), $data)->object();
 

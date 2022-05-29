@@ -80,7 +80,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('main_filter_category/{id}/auctions', [FilterController::class,'main_filter']);
     Route::post('filter_category/{id}/auctions', [FilterController::class,'filterCategory']);
     Route::post('get_options_of_category/{id}', [FilterController::class,'get_options_of_category']);
-    Route::post('get_not_required_options_of_category/{id}', [FilterController::class,'get_not_required_options_of_category']);
+//    Route::post('get_not_required_options_of_category/{id}', [FilterController::class,'get_not_required_options_of_category']);
 
     Route::get('success-payment', [PaymentController::class, 'successPayment']);
 
@@ -138,6 +138,8 @@ Route::group(['namespace' => 'Api'], function () {
         Route::get('bank', [SettingController::class, 'bank']);
 
         Route::post('upload_payment_receipt', [PaymentController::class, 'upload_payment_receipt']);
+        Route::post('make_online_payment', [PaymentController::class, 'make_online_payment']);
+
 
         Route::post('send_payment', [PaymentController::class, 'sendPayment']);
     });

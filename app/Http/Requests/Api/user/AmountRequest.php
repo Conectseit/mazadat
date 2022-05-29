@@ -28,6 +28,7 @@ class AmountRequest extends REQUEST_API_PARENT
     {
         return [
             'amount'    => 'required|numeric',
+//            'user_id'   =>auth()->user()->id
 
         ];
     }

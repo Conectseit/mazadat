@@ -216,8 +216,8 @@
                         <hr>
                         <div class="form-group">
                             <label>@lang('messages.auction.images')</label>
-{{--                            <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
-                            <input type="file" multiple id="gallery-photo-add"  class="form-control" name="images[]">
+                            {{--                            <input type="file" class="form-control " name="inspection_report_images[]" multiple="multiple"/>--}}
+                            <input type="file" multiple id="gallery-photo-add" class="form-control" name="images[]">
                             <div class="gallery">
                                 @if ($images)
 
@@ -228,9 +228,7 @@
                                     @endforeach
                                 @endif
                             </div>
-                        </div>
-
-<hr>
+                        </div><hr>
 
                         <div class="form-group">
                             <h4>@lang('messages.auction.inspection_report_files')</h4><br>

@@ -27,9 +27,16 @@ class GeneralController extends Controller
     }
     public function condition_and_terms()
     {
-        $about= 'conditions_terms_'.app()->getLocale();
-        $data['conditions_terms'] = Setting::where('key',$about)->first()->value;
+        $conditions_terms= 'conditions_terms_'.app()->getLocale();
+        $data['conditions_terms'] = Setting::where('key',$conditions_terms)->first()->value;
         return view('front.general.condition_and_terms', $data);
+    }
+
+    public function description()
+    {
+        $app_description= 'app_description_'.app()->getLocale();
+        $data['app_description'] = Setting::where('key',$app_description)->first()->value;
+        return view('front.general.description', $data);
     }
 
     public function contact_us(ContactRequest $request)

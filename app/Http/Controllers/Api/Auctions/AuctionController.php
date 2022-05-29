@@ -233,7 +233,6 @@ class AuctionController extends PARENT_API
             }
             if (count($dataa) > 0) DB::table('auction_data')->insert($dataa);
 
-
 //            $auction_options = AuctionData::Create([
 //                'auction_id'        => $auction->id,
 //                'option_id'         => $request->option_id,

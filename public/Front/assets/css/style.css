@@ -682,7 +682,11 @@ footer .rights p {
 .connect_logo{
     background-color: #1e3c48;
     border-radius: 50%;
-    text-align: center;
+    /*text-align: center;*/
+    width: 150px;
+    /*margin: 15px;*/
+    margin-top: 15px;
+
 }
 
 footer .rights .payment-brands {
@@ -705,6 +709,9 @@ footer .rights .payment-brands img:not(:last-of-type) {
   .navbar .navbar-brand img {
     max-width: 100%;
   }
+    .connect_logo{
+        margin: auto;
+        margin-bottom: 7px;    }
 }
 
 @media screen and (max-width: 768px) {

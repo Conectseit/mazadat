@@ -22,36 +22,36 @@
                     {{App\Models\Setting::where('key',$about)->first()->value}}
                 </p>
                 <div class="links">
-{{--                    <a href="#">الشروط والاحكام <i class="fal fa-chevron-left"></i></a>--}}
-{{--                    <a href="#">تعؤف اكثر على مزادات <i class="fal fa-chevron-left"></i></a>--}}
-                    <div class="accordion" id="accordionPanelsStayOpenExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                                    {{trans('messages.terms')}}
+                    <a href="{{route('front.condition_and_terms')}}">{{trans('messages.terms')}} <i class="fal fa-chevron-left"></i></a>
+                    <a href="{{route('front.description')}}">{{ trans('messages.settings.description') }}<i class="fal fa-chevron-left"></i></a>
+{{--                    <div class="accordion" id="accordionPanelsStayOpenExample">--}}
+{{--                        <div class="accordion-item">--}}
+{{--                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">--}}
+{{--                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">--}}
+{{--                                    {{trans('messages.terms')}}--}}
 {{--                                    <i class="fal fa-chevron-left" style="padding: 20px"></i>--}}
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                                <div class="accordion-body">
-                                    <p>{!! substr(App\Models\Setting::where('key',$terms)->first()->value,0,500) !!}</p>
-                                    <a href="{{route('front.condition_and_terms')}}">{{__('messages.more')}}</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                                    {{ trans('messages.settings.description') }}
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-                                <div class="accordion-body">
-                                    <strong>{{App\Models\Setting::where('key',$app_description)->first()->value}}</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                                </button>--}}
+{{--                            </h2>--}}
+{{--                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">--}}
+{{--                                <div class="accordion-body">--}}
+{{--                                    <p>{!! substr(App\Models\Setting::where('key',$terms)->first()->value,0,500) !!}</p>--}}
+{{--                                    <a href="{{route('front.condition_and_terms')}}">{{__('messages.more')}}</a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="accordion-item">--}}
+{{--                            <h2 class="accordion-header" id="panelsStayOpen-headingThree">--}}
+{{--                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">--}}
+{{--                                    {{ trans('messages.settings.description') }}--}}
+{{--                                </button>--}}
+{{--                            </h2>--}}
+{{--                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">--}}
+{{--                                <div class="accordion-body">--}}
+{{--                                    <strong>{{App\Models\Setting::where('key',$app_description)->first()->value}}</strong>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
             <div class="col-lg-5" dir="{{ direction() }}">
@@ -66,7 +66,6 @@
 
                                 @foreach($featured_auctions->where('is_unique', 1)->latest()->take(4)->get() as $auction)
 {{--                                @foreach($featured_auctions->orderBy('count_of_buyer', 'desc')->take(4)->get() as $auction)--}}
-
                                     <li><a href="{{route('front.auction_details',$auction->id)}}"> {{ substr($auction->$name,0,15) }} </a></li>
                                 @endforeach
                             </ul>
@@ -146,17 +145,19 @@
 
                 </div>
                 <div class="col-lg-2">
-{{--                    <div class="connect_logo" style=" background-color: #1e3c48; border-radius: 50%; text-align: center;">--}}
+
                     <div class="connect_logo">
-                        <img src="{{asset('Front/assets/imgs/connect-light-logo.png')}}" alt="mastercard"style="width: 150px;">
+                        <img src="{{asset('Front/assets/imgs/connect_logo/light-logo-sm.png')}}" alt="mastercard"style="width: 150px;">
+                        {{--                        <img src="{{asset('Front/assets/imgs/connect-light-logo.png')}}" alt="mastercard"style="width: 150px;">--}}
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="payment-brands">
 {{--                        <img src="{{asset('Front/assets/imgs/dark-connect-logo.png')}}" alt="mastercard"style="width: 95px;">--}}
-                        <img src="{{asset('Front/assets/imgs/mastercard.svg')}}" alt="mastercard" >
-                        <img src="{{asset('Front/assets/imgs/mastercard.svg')}}" alt="mastercard">
-                        <img src="{{asset('Front/assets/imgs/mastercard.svg')}}" alt="mastercard">
+                        <img src="{{asset('Front/assets/imgs/mastercard-img.svg')}}" alt="mastercard">
+{{--                        <img src="{{asset('Front/assets/imgs/mastercard.svg')}}" alt="mastercard" >--}}
+                        <img src="{{asset('Front/assets/imgs/whiteUrway.png')}}" alt="mastercard" >
+                        <img src="{{asset('Front/assets/imgs/visa-img.svg')}}" alt="mastercard">
                     </div>
                 </div>
             </div>

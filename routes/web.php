@@ -84,6 +84,7 @@ Route::group(
     Route::get('questions', [GeneralController::class, 'questions'])->name('front.questions');
     Route::get('about_app', [GeneralController::class, 'about_app'])->name('front.about_app');
     Route::get('condition_and_terms', [GeneralController::class, 'condition_and_terms'])->name('front.condition_and_terms');
+    Route::get('description', [GeneralController::class, 'description'])->name('front.description');
 
 
     Route::group(['middleware' => 'checkUserAuth'], function () {
