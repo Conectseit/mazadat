@@ -738,16 +738,18 @@ return [
         'bids' => 'client all bids',
         'payment' => 'client all payments',
 
-        'is_required/not' => ' is required / not',
-        'required'        => ' required',
-        'not_required'    => ' not_required',
-        'ad-auctions'    => ' اعلانات لمزادات قادمة',
 
-
-
+        'verify_payment_receipt' => 'تم مراجعة الايداع البنكي واضافة رصيد للمحفظة',
+        'verify_cash' => 'تم مراجعة الدفع الكاش واضافة رصيد للمحفظة',
 
     ],
 
+    'is_required/not' => ' is required / not',
+    'required'        => ' required',
+    'not_required'    => ' not_required',
+    'ad-auctions'    => ' اعلانات لمزادات قادمة',
 
+    'verify' => 'مراجعة المبلغ وقبوله',
+    'not_verify' => 'عدم قبوله',
 
 ];

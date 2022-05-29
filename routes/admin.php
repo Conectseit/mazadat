@@ -128,10 +128,13 @@ Route::group(
 
                 Route::get('user/{id?}/ban', [UserController::class, 'ban'])->name('ban');
                 Route::get('user/{id?}/not_ban', [UserController::class, 'not_ban'])->name('not_ban');
+
                 Route::post('user/{id?}/add_balance', [UserController::class, 'add_balance'])->name('add_balance');
 
 
                 Route::get('transaction/{id?}/verify', [FinancialReviewsController::class, 'verify'])->name('transaction/verify');
+                Route::get('transaction/{id?}/not_verify', [FinancialReviewsController::class, 'not_verify'])->name('transaction/not_verify');
+                Route::get('transaction/{id?}/verify_cash', [FinancialReviewsController::class, 'verify_cash'])->name('transaction/verify_cash');
 
                 Route::get('transaction/{id?}/accept', [TransactionController::class, 'accept'])->name('transaction/accept');
                 Route::get('transaction/{id?}/not_accept', [TransactionController::class, 'not_accept'])->name('transaction/not_accept');

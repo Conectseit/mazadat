@@ -603,6 +603,8 @@ return [
         'bank_deposit' => 'تحويلات عن طريق الايداع البنكي',
         'receipt_image' => 'صورة الفاتورة البنكية',
     ],
+    'verify' => 'مراجعة المبلغ وقبوله',
+    'not_verify' => 'عدم قبوله',
 
 
 
@@ -624,11 +626,13 @@ return [
         'deleted_successfully' => 'تم الحذف بنجاح',
         'invalid_mobile' => 'لا يوجود رقم جوال مسجل لدينا مطابق للرقم الذي ادخلته',
         'try_access_not_found_content' => 'عفوا لا يوجد هذا العنصر',
-        'added_balance_successfully' => 'تم اضافة رصيد لمحظة المستخدم بنجاح',
+        'added_balance_successfully' => ' تم اضافة رصيد لمحظة المستخدم بنجاح وانتظار المراجعة من المراجع المالي',
         'sorry_this_option_added_before_select_another_one' => 'عفوا لقد قمت باضافة هذا التصنيف من قبل,اختر تصنيف اخر',
         'not_accept_deposit_receipt_and_send_SMS' => 'لم يتم قبول  الايداع البنكي وارسال رسالة sms',
-        'accept_payment_receipt' => 'تم  قبول  الايداع البنكي وارسال رسالة sms',
+        'accept_payment_receipt' => 'تم  قبول  الايداع البنكي ',
+//        'accept_payment_receipt' => 'تم  قبول  الايداع البنكي وارسال رسالة sms',
         'verify_payment_receipt' => 'تم مراجعة الايداع البنكي واضافة رصيد للمحفظة',
+        'verify_cash' => 'تم مراجعة الدفع الكاش واضافة رصيد للمحفظة',
     ],
 
 

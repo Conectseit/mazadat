@@ -58,15 +58,9 @@ class TransactionController extends Controller
         $transaction = Payment::find($id);
         $user = User::where('id',$transaction->user_id)->first();
 
-        $user->update(['wallet'=> $transaction->amount +$user->wallet]);
+//        $user->update(['wallet'=> $transaction->amount +$user->wallet]);
         $transaction->update(['is_accepted'=> 1]);
 
-        // ===========================================================
-        activity()
-            ->performedOn($user)
-            ->causedBy(auth()->guard('admin')->user())
-            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بقبول الايداع البنكي للمستخدم'.($user->user_name).''.$transaction->amount.''.'ريال سعودي');
-// ======================
         return back()->with('message', trans('messages.messages.accept_payment_receipt'));
 
     }
@@ -77,7 +71,6 @@ class TransactionController extends Controller
         $transaction = Payment::findOrFail($id);
         $transaction->update(['is_accepted'=> 0]);
         $user = User::where('id',$transaction->user_id)->first();
-
         SmsController::send_sms($user->mobile, 'هناك خطأ في  بيانات فاتورة الايداع البنكي في موقع مزادات من فضلك ارسلها مرة اخري' );
         return back()->with('danger',  trans('messages.messages.not_accept_deposit_receipt_and_send_SMS'));
     }

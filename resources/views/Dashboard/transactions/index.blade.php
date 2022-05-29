@@ -10,7 +10,7 @@
         </ul>
         @include('Dashboard.layouts.parts.quick-links')
     </div>
-@endsection
+@stop
 
 
 @section('content')
@@ -23,10 +23,6 @@
             @include('Dashboard.layouts.parts.table-header', ['collection' => $transactions, 'name' => 'transactions', 'icon' => 'transactions'])
         </div>
         <br>
-{{--        <div class="list-icons" style="padding-right: 10px;">--}}
-{{--            <a href="{{route('transactions.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i--}}
-{{--                        class="icon-plus2"></i></b>{{ trans('messages.transaction.add') }}</a>--}}
-{{--        </div>--}}
 
         <!-- Basic pills -->
         <div class="row" style="padding: 15px;">
@@ -44,22 +40,27 @@
                     <div class="panel-body">
                         <div class="tabbable">
                             <ul class="nav nav-pills nav-pills-bordered nav-justified">
-                                <li class="active"><a href="#online_transactions" data-toggle="tab">{{ trans('messages.transaction.online') }}</a></li>
-                                <li><a href="#bank_deposit_transactions" data-toggle="tab">{{ trans('messages.transaction.bank_deposit') }}</a></li>
-                                <li><a href="#cash_transactions" data-toggle="tab">{{ trans('messages.transaction.cash') }}</a></li>
+                                <li class="active"><a href="#online_transactions"
+                                                      data-toggle="tab">{{ trans('messages.transaction.online') }}</a>
+                                </li>
+                                <li><a href="#bank_deposit_transactions"
+                                       data-toggle="tab">{{ trans('messages.transaction.bank_deposit') }}</a></li>
+                                <li><a href="#cash_transactions"
+                                       data-toggle="tab">{{ trans('messages.transaction.cash') }}</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="online_transactions">
 
                                     <div class="panel-body">
                                         @if($online_transactions->count() > 0)
-                                            <table class="table datatable-basic" id="transactions" style="font-size: 16px;">
+                                            <table class="table datatable-basic" id="transactions"
+                                                   style="font-size: 16px;">
                                                 <thead>
                                                 <tr>
                                                     <th class="text-center">#</th>
                                                     <th class="text-center">{{ trans('messages.user_name') }}</th>
-{{--                                                    <th class="text-center">{{ trans('messages.transaction.user_wallet') }}</th>--}}
-{{--                                                    <th class="text-center">{{ trans('messages.transaction.payment_type') }}</th>--}}
+                                                    {{--                                                    <th class="text-center">{{ trans('messages.transaction.user_wallet') }}</th>--}}
+                                                    {{--                                                    <th class="text-center">{{ trans('messages.transaction.payment_type') }}</th>--}}
                                                     <th class="text-center">{{ trans('messages.transaction.amount') }}</th>
                                                     <th class="text-center">@lang('messages.transaction.since')</th>
                                                 </tr>
@@ -70,12 +71,13 @@
 
                                                         <td class="text-center">{{ $loop->iteration }}</td>
                                                         <td class="text-center">
-{{--                                                            <a href={{ route('buyers.show', $transaction->user->id) }}> {{ isNullable($transaction->user->user_name) }}</a>--}}
+                                                            {{--                                                            <a href={{ route('buyers.show', $transaction->user->id) }}> {{ isNullable($transaction->user->user_name) }}</a>--}}
                                                             <a href=""> {{ isNullable($transaction->user->user_name) }}</a>
                                                         </td>
                                                         {{-- <td class="text-center"><a href=""> {{ isNullable($transaction->user->wallet) }}</a></td>--}}
-{{--                                                        <td class="text-center"><a href=""> {{ isNullable($transaction->payment_type) }}</a></td>--}}
-                                                        <td class="text-center"><a href=""> {{ isNullable($transaction->amount) }}</a></td>
+                                                        {{--                                                        <td class="text-center"><a href=""> {{ isNullable($transaction->payment_type) }}</a></td>--}}
+                                                        <td class="text-center"><a
+                                                                href=""> {{ isNullable($transaction->amount) }}</a></td>
                                                         <td class="text-center">{{isset($transaction->created_at) ?$transaction->created_at->format('y/m/d'):'---' }}</td>
                                                     </tr>
                                                 @endforeach
@@ -90,10 +92,10 @@
                                 <div class="tab-pane" id="bank_deposit_transactions">
                                     <div class="panel-body">
                                         @if($bank_deposit_transactions->count() > 0)
-                                            <table class="table datatable-basic" id="transactions" style="font-size: 16px;">
+                                            <table class="table datatable-basic" id="transactions"
+                                                   style="font-size: 16px;">
                                                 <thead>
                                                 <tr>
-{{--                                                    <th class="text-center">#</th>--}}
                                                     <th class="text-center">{{ trans('messages.user_name') }}</th>
                                                     <th class="text-center">{{ trans('messages.transaction.receipt_image') }}</th>
                                                     <th class="text-center">{{ trans('messages.transaction.amount') }}</th>
@@ -107,42 +109,39 @@
                                                 <tbody>
                                                 @foreach($bank_deposit_transactions as $transaction)
                                                     <tr id="transaction-row-{{ $transaction->id }}">
-
-{{--                                                        <td class="text-center">{{ $loop->iteration }}</td>--}}
                                                         <td class="text-center">
                                                             <a href=""> {{ isNullable($transaction->user->user_name) }}</a>
                                                         </td>
                                                         <td class="text-center">
-                                                            <a href="{{ $transaction->image_path }}" data-popup="lightbox">
-                                                                <img src="{{ $transaction->image_path }}" alt="" width="200" height="100" class="img-thumbnail"></a>
+                                                            <a href="{{ $transaction->image_path }}"
+                                                               data-popup="lightbox">
+                                                                <img src="{{ $transaction->image_path }}" alt=""
+                                                                     width="200" height="100" class="img-thumbnail"></a>
                                                         </td>
                                                         <td class="text-center">{{$transaction->amount}}</td>
                                                         <td class="text-center">{{$transaction->date}}</td>
                                                         <td class="text-center">{{isset($transaction->created_at) ?$transaction->created_at->format('y/m/d'):'---' }}</td>
                                                         <td class="text-center">
                                                             @if($transaction->is_accepted ==0)
-{{--                                                                <a href="seller/{{$seller->id}}/not_accept/" class="btn btn-danger btn-sm"><i--}}
-{{--                                                                        class="icon-close2"></i>{{trans('messages.not_accept')}}</a>--}}
-{{--                                                                <a href="transaction/{{$transaction->id}}/not_accept/" class="btn btn-success btn-sm"> <i--}}
-{{--                                                                        class="icon-check2"></i> {{trans('messages.not_accept')}}</a>--}}
-{{--                                                            @else--}}
-                                                                <a href="transaction/{{$transaction->id}}/accept/" class="btn btn-success btn-sm"> <i
-                                                                        class="icon-check2"></i> {{trans('messages.accept')}}</a>
+                                                                {{--                                                                <a href="seller/{{$seller->id}}/not_accept/" class="btn btn-danger btn-sm"><i--}}
+                                                                {{--                                                                        class="icon-close2"></i>{{trans('messages.not_accept')}}</a>--}}
+                                                                {{--                                                                <a href="transaction/{{$transaction->id}}/not_accept/" class="btn btn-success btn-sm"> <i--}}
+                                                                {{--                                                                        class="icon-check2"></i> {{trans('messages.not_accept')}}</a>--}}
+                                                                {{--                                                            @else--}}
+                                                                <a href="transaction/{{$transaction->id}}/accept/"
+                                                                   class="btn btn-success btn-sm"> <i
+                                                                        class="icon-check2"></i> {{trans('messages.accept')}}
+                                                                </a>
                                                             @endif
                                                         </td>
-
-
                                                         <td class="text-center">
                                                             @if($transaction->is_accepted ==0)
-                                                                <a href="transaction/{{$transaction->id}}/not_accept/" class="btn btn-danger btn-sm">
-                                                                    <i class="icon-check2"></i> {{trans('messages.not_accept')}}</a>
+                                                                <a href="transaction/{{$transaction->id}}/not_accept/"
+                                                                   class="btn btn-danger btn-sm">
+                                                                    <i class="icon-check2"></i> {{trans('messages.not_accept')}}
+                                                                </a>
                                                             @endif
                                                         </td>
-
-
-
-
-
                                                         <td class="text-center">
                                                             <div class="list-icons text-center">
                                                                 <div class="list-icons-item dropdown text-center">
@@ -152,9 +151,9 @@
                                                                         <i class="icon-menu9"></i>
                                                                     </a>
                                                                     <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
-
                                                                         <li>
-                                                                            <a data-id="{{ $transaction->id }}" class="delete-action"
+                                                                            <a data-id="{{ $transaction->id }}"
+                                                                               class="delete-action"
                                                                                href="{{ Url('/transaction/transaction/'.$transaction->id) }}">
                                                                                 <i class="icon-database-remove"></i>@lang('messages.delete')
                                                                             </a>
@@ -170,14 +169,15 @@
                                             </table>
 
                                         @else
-                                            <center><h2> @lang('messages.no_data_found') </h2></center>
+                                            <div style="text-align: center;"><h2> @lang('messages.no_data_found') </h2></div>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="cash_transactions">
                                     <div class="panel-body">
                                         @if($cash_transactions->count() > 0)
-                                            <table class="table datatable-basic" id="transactions" style="font-size: 16px;">
+                                            <table class="table datatable-basic" id="transactions"
+                                                   style="font-size: 16px;">
                                                 <thead>
                                                 <tr>
                                                     <th class="text-center">#</th>
@@ -192,11 +192,10 @@
 
                                                         <td class="text-center">{{ $loop->iteration }}</td>
                                                         <td class="text-center">
-{{--                                                            <a href=--}}
-{{--                                                                {{ route('buyers.show', $transaction->user->id) }}>{{ isNullable($transaction->user->user_name) }}--}}
-{{--                                                            </a>--}}
                                                             <a href=""> {{ isNullable($transaction->user->user_name) }}</a>
-                                                        </td>                                                        <td class="text-center"><a href=""> {{ isNullable($transaction->amount) }}</a></td>
+                                                        </td>
+                                                        <td class="text-center"><a
+                                                                href=""> {{ isNullable($transaction->amount) }}</a></td>
                                                         <td class="text-center">{{isset($transaction->created_at) ?$transaction->created_at->format('y/m/d'):'---' }}</td>
                                                     </tr>
                                                 @endforeach
@@ -204,7 +203,7 @@
                                             </table>
 
                                         @else
-                                            <center><h2> @lang('messages.no_data_found') </h2></center>
+                                            <div style="text-align: center;"><h2> @lang('messages.no_data_found') </h2></div>
                                         @endif
                                     </div>
                                 </div>

@@ -59,7 +59,7 @@ class UserController extends Controller
         activity()
             ->performedOn($user)
             ->causedBy(auth()->guard('admin')->user())
-            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.''.' باضافة رصيد الي محفظة العميل  '.''.($user->user_name).'' .'بمقدار'.$payment->amount.' '.'ريال سعودي');
+            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.''.' باضافة رصيد الي محفظة العميل وانتظار المراجعة من المراجع المالي '.''.($user->user_name).'' .'بمقدار'.$payment->amount.' '.'ريال سعودي');
 // ===========================================================
 
         return back()->with('message', trans('messages.messages.added_balance_successfully'));

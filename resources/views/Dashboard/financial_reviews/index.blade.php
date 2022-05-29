@@ -32,14 +32,18 @@
                     <div class="panel-body">
                         <div class="tabbable">
                             <ul class="nav nav-pills nav-pills-bordered nav-justified">
-                                <li  class="active"><a href="#bank_deposit_transactions" data-toggle="tab">{{ trans('messages.transaction.bank_deposit') }}</a></li>
-                                <li><a href="#cash_transactions" data-toggle="tab">{{ trans('messages.transaction.cash') }}</a></li>
+                                <li class="active"><a href="#bank_deposit_transactions"
+                                                      data-toggle="tab">{{ trans('messages.transaction.bank_deposit') }}</a>
+                                </li>
+                                <li><a href="#cash_transactions"
+                                       data-toggle="tab">{{ trans('messages.transaction.cash') }}</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="bank_deposit_transactions">
                                     <div class="panel-body">
                                         @if($bank_deposit_transactions->count() > 0)
-                                            <table class="table datatable-basic" id="transactions" style="font-size: 16px;">
+                                            <table class="table datatable-basic" id="transactions"
+                                                   style="font-size: 16px;">
                                                 <thead>
                                                 <tr>
                                                     <th class="text-center">{{ trans('messages.user_name') }}</th>
@@ -56,27 +60,33 @@
                                                 @foreach($bank_deposit_transactions as $transaction)
                                                     <tr id="transaction-row-{{ $transaction->id }}">
 
-{{--                                                        <td class="text-center">{{ $loop->iteration }}</td>--}}
+                                                        {{--                                                        <td class="text-center">{{ $loop->iteration }}</td>--}}
                                                         <td class="text-center">
                                                             <a href=""> {{ isNullable($transaction->user->user_name) }}</a>
                                                         </td>
                                                         <td class="text-center">
-                                                            <a href="{{ $transaction->image_path }}" data-popup="lightbox">
-                                                                <img src="{{ $transaction->image_path }}" alt="" width="200" height="100" class="img-thumbnail"></a>
+                                                            <a href="{{ $transaction->image_path }}"
+                                                               data-popup="lightbox">
+                                                                <img src="{{ $transaction->image_path }}" alt=""
+                                                                     width="200" height="100" class="img-thumbnail"></a>
                                                         </td>
                                                         <td class="text-center">{{$transaction->amount}}</td>
                                                         <td class="text-center">{{$transaction->date}}</td>
                                                         <td class="text-center">{{isset($transaction->created_at) ?$transaction->created_at->format('y/m/d'):'---' }}</td>
                                                         <td class="text-center">
                                                             @if($transaction->is_verified ==0)
-                                                                <a href="transaction/{{$transaction->id}}/verify/" class="btn btn-success btn-sm"> <i
-                                                                        class="icon-check2"></i> {{trans('messages.verify')}}</a>
+                                                                <a href="transaction/{{$transaction->id}}/verify/"
+                                                                   class="btn btn-success btn-sm"> <i
+                                                                        class="icon-check2"></i> {{trans('messages.verify')}}
+                                                                </a>
                                                             @endif
                                                         </td>
                                                         <td class="text-center">
                                                             @if($transaction->is_verified ==0)
-                                                                <a href="transaction/{{$transaction->id}}/not_verify/" class="btn btn-danger btn-sm">
-                                                                    <i class="icon-check2"></i> {{trans('messages.not_verify')}}</a>
+                                                                <a href="transaction/{{$transaction->id}}/not_verify/"
+                                                                   class="btn btn-danger btn-sm">
+                                                                    <i class="icon-check2"></i> {{trans('messages.not_verify')}}
+                                                                </a>
                                                             @endif
                                                         </td>
                                                         <td class="text-center">
@@ -89,7 +99,8 @@
                                                                     </a>
                                                                     <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
                                                                         <li>
-                                                                            <a data-id="{{ $transaction->id }}" class="delete-action"
+                                                                            <a data-id="{{ $transaction->id }}"
+                                                                               class="delete-action"
                                                                                href="{{ Url('/transaction/transaction/'.$transaction->id) }}">
                                                                                 <i class="icon-database-remove"></i>@lang('messages.delete')
                                                                             </a>
@@ -105,21 +116,22 @@
                                             </table>
 
                                         @else
-                                            <center><h2> @lang('messages.no_data_found') </h2></center>
+                                            <div style="text-align: center;"><h2> @lang('messages.no_data_found') </h2>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="cash_transactions">
                                     <div class="panel-body">
                                         @if($cash_transactions->count() > 0)
-                                            <table class="table datatable-basic" id="transactions" style="font-size: 16px;">
+                                            <table class="table datatable-basic" id="transactions"
+                                                   style="font-size: 16px;">
                                                 <thead>
                                                 <tr>
                                                     <th class="text-center">#</th>
                                                     <th class="text-center">{{ trans('messages.user_name') }}</th>
                                                     <th class="text-center">{{ trans('messages.transaction.amount') }}</th>
                                                     <th class="text-center">{{ trans('messages.accept') }}</th>
-                                                    <th class="text-center">{{ trans('messages.not_accept') }}</th>
                                                     <th class="text-center">@lang('messages.transaction.date')</th>
                                                 </tr>
                                                 </thead>
@@ -129,22 +141,16 @@
 
                                                         <td class="text-center">{{ $loop->iteration }}</td>
                                                         <td class="text-center">
-{{--                                                            <a href=--}}
-{{--                                                                {{ route('buyers.show', $transaction->user->id) }}>{{ isNullable($transaction->user->user_name) }}--}}
-{{--                                                            </a>--}}
                                                             <a href=""> {{ isNullable($transaction->user->user_name) }}</a>
                                                         </td>
-                                                        <td class="text-center"><a href=""> {{ isNullable($transaction->amount) }}</a></td>
+                                                        <td class="text-center"><a
+                                                                href=""> {{ isNullable($transaction->amount) }}</a></td>
                                                         <td class="text-center">
                                                             @if($transaction->is_verified ==0)
-                                                                <a href="transaction/{{$transaction->id}}/verify/" class="btn btn-success btn-sm"> <i
-                                                                        class="icon-check2"></i> {{trans('messages.verify')}}</a>
-                                                            @endif
-                                                        </td>
-                                                        <td class="text-center">
-                                                            @if($transaction->is_verified ==0)
-                                                                <a href="transaction/{{$transaction->id}}/not_verify/" class="btn btn-danger btn-sm">
-                                                                    <i class="icon-check2"></i> {{trans('messages.not_verify')}}</a>
+                                                                <a href="transaction/{{$transaction->id}}/verify_cash/"
+                                                                   class="btn btn-success btn-sm"> <i
+                                                                        class="icon-check2"></i> {{trans('messages.verify')}}
+                                                                </a>
                                                             @endif
                                                         </td>
                                                         <td class="text-center">{{isset($transaction->created_at) ?$transaction->created_at->format('y/m/d'):'---' }}</td>
@@ -154,7 +160,8 @@
                                             </table>
 
                                         @else
-                                            <center><h2> @lang('messages.no_data_found') </h2></center>
+                                            <div style="text-align: center;"><h2> @lang('messages.no_data_found') </h2>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
