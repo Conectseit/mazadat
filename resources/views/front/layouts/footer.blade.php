@@ -83,10 +83,10 @@
                     </div>
                     <div class="col-md-6">
                         <div class="ul-parent">
-                            <h4 class="footer-title">
+                            <h6 class="footer-title">
                                 <span class="sq"></span>
                                 {{trans('messages.auction.latest_auctions')}}
-                            </h4>
+                            </h6>
                             <ul>
 
                             @foreach(\App\Models\Category::has('auctions')->get() as $category)
@@ -140,18 +140,24 @@
         <div class="container">
             <div class="row" dir="{{ direction() }}">
                 <div class="col-lg-6" >
-                    <p style="font-weight: bold; font-size: 15px;">{{trans('messages.copy_right')}}</p>
+                    <p style="font-weight: bold; font-size: 15px;">{{trans('messages.copy_rights')}}
+                        <b>
+
+                            <img  class="img-circle" src="{{asset('Front/assets/imgs/connect_logo/dark-logoo.png')}}" alt="mastercard"style="width: 100px; height: 40px;">
+                        </b>
+                        {{trans('messages.for')}}
+                    </p>
 {{--                    <h3> {{trans('messages.developers')}}</h3>--}}
 
                 </div>
-                <div class="col-lg-2">
+{{--                <div class="col-lg-2">--}}
 
-                    <div class="connect_logo">
-                        <img src="{{asset('Front/assets/imgs/connect_logo/light-logo-sm.png')}}" alt="mastercard"style="width: 150px;">
-                        {{--                        <img src="{{asset('Front/assets/imgs/connect-light-logo.png')}}" alt="mastercard"style="width: 150px;">--}}
-                    </div>
-                </div>
-                <div class="col-lg-4">
+{{--                    <div class="connect_logo">--}}
+{{--                        <img src="{{asset('Front/assets/imgs/connect_logo/light-logo-sm.png')}}" alt="mastercard"style="width: 150px;">--}}
+{{--                        --}}{{--                        <img src="{{asset('Front/assets/imgs/connect-light-logo.png')}}" alt="mastercard"style="width: 150px;">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+                <div class="col-lg-6">
                     <div class="payment-brands">
 {{--                        <img src="{{asset('Front/assets/imgs/dark-connect-logo.png')}}" alt="mastercard"style="width: 95px;">--}}
                         <img src="{{asset('Front/assets/imgs/mastercard-img.svg')}}" alt="mastercard">
