@@ -66,7 +66,7 @@
 
                                 @foreach($featured_auctions->where('is_unique', 1)->latest()->take(4)->get() as $auction)
 {{--                                @foreach($featured_auctions->orderBy('count_of_buyer', 'desc')->take(4)->get() as $auction)--}}
-                                    <li><a href="{{route('front.auction_details',$auction->id)}}"> {{ substr($auction->$name,0,15) }} </a></li>
+                                    <li><a href="{{route('front.auction_details',$auction->id)}}"> {{ substr($auction->$name,0,25) }} </a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -90,7 +90,7 @@
                             <ul>
 
                             @foreach(\App\Models\Category::has('auctions')->get() as $category)
-                                <li><a href="{{route('front.auction_details',$category->auctions->last()->id)}}">{{ substr($category->auctions->last()->$name,0,15) }}</a></li>
+                                <li><a href="{{route('front.auction_details',$category->auctions->last()->id)}}">{{ substr($category->auctions->last()->$name,0,25) }}</a></li>
                             @endforeach
 
 {{--                                @foreach($latest_auctions ->orderBy('id', 'desc')->take(4)->get() as $auction)--}}
