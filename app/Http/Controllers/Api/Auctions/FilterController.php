@@ -69,15 +69,15 @@ class FilterController extends PARENT_API
 
 
 
-    public function get_not_required_options_of_category(Request $request, $id)
-    {
-        $category = Category::find($id);
-        if (!$category) {
-            return responseJson(false, trans('api.not_found_category'), null);  //
-        }
-        $category_options = Option::where('category_id', $id)->where('is_required',0)->with('option_details')->get();
-        return responseJson(true, trans('api.category_options'), CategoryOptionsResource::collection($category_options));  //OK
-    }
+//    public function get_not_required_options_of_category(Request $request, $id)
+//    {
+//        $category = Category::find($id);
+//        if (!$category) {
+//            return responseJson(false, trans('api.not_found_category'), null);  //
+//        }
+//        $category_options = Option::where('category_id', $id)->where('is_required',0)->with('option_details')->get();
+//        return responseJson(true, trans('api.category_options'), CategoryOptionsResource::collection($category_options));  //OK
+//    }
 
 
     public function filterCategory(FilterRequest $request, $id)
@@ -87,7 +87,7 @@ class FilterController extends PARENT_API
             return responseJson(false, trans('api.not_found_category'), null);  //
         }
 
-        $auctions_count = Auction::where('category_id', $id)->latest()->count();
+        $auctions_count = Auction::where('category_id', $id)->where('status', 'on_progress')->latest()->count();
 
         if ($auctions_count == 0) {
             return responseJson(false, trans('api.there_is_no_auctions_on_this_category'), null);  //
