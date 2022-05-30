@@ -80,7 +80,7 @@ class CategoryController extends Controller
     {
         $request_data = $request->except('image');
         if ($request->hasFile('image')) {
-            if (!is_null($category->image)) unlink('uploads/categories/' . $category->image);
+//            if (!is_null($category->image)) unlink('uploads/categories/' . $category->image);
             $request_data['image'] = uploaded($request->image, 'category');
         }
         $category->update($request_data);
