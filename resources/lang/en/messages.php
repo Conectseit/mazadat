@@ -710,12 +710,17 @@ return [
 
 
 
+    'ad-auctions'    => 'Incoming Auctions  ',
     'no_auctions_yet_for_this_company' => 'no auctions for this company yet',
     'start' => 'start now',
     'accept_terms' => ' you should accept conditions & terms',
     'please_complete_your_address_details' => 'Please Complete Your Account Details  ',
     'developers' => 'Developed By Connect Developers Team',
     'copy_right' => ' All Copyrights Reserved for Connect -©2022 ',
+
+    'copy_rights' => '© All Copyrights Reserved ',
+    'for' => 'for Connect -©2022',
+
 
 
     'messages' => [

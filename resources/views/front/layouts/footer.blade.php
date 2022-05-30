@@ -21,8 +21,8 @@
                 <p class="footer-text">
                     {{App\Models\Setting::where('key',$about)->first()->value}}
                 </p>
-                <div class="links">
-                    <a href="{{route('front.condition_and_terms')}}">{{trans('messages.terms')}} <i class="fal fa-chevron-left"></i></a>
+                <div class="links" >
+                    <a href="{{route('front.condition_and_terms')}}">{{trans('messages.terms')}} <i class="fal fa-chevron-left" ></i></a>
                     <a href="{{route('front.description')}}">{{ trans('messages.settings.description') }}<i class="fal fa-chevron-left"></i></a>
 {{--                    <div class="accordion" id="accordionPanelsStayOpenExample">--}}
 {{--                        <div class="accordion-item">--}}
