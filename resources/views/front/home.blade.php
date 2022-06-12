@@ -49,30 +49,30 @@
 
 
 
-        .notification-message-unread {
-            float: right;
-            text-align: center;
-            color: gainsboro;
-            font-size: 17px;
-            /*color: #666;*/
-            /*background: white;*/
-            padding-left: 10px;
-            display: block;
-            position: relative;
-            width: 200px;
-            height: 45px;
-            background-color: red;
-            animation: blinker 1s linear infinite;
-            border-radius: 20px;
-            margin-bottom: 10px;
-            padding-top: 10px;
-        }
+        /*.notification-message-unread {*/
+        /*    float: right;*/
+        /*    text-align: center;*/
+        /*    color: gainsboro;*/
+        /*    font-size: 17px;*/
+        /*    !*color: #666;*!*/
+        /*    !*background: white;*!*/
+        /*    padding-left: 10px;*/
+        /*    display: block;*/
+        /*    position: relative;*/
+        /*    width: 200px;*/
+        /*    height: 45px;*/
+        /*    background-color: red;*/
+        /*    animation: blinker 1s linear infinite;*/
+        /*    border-radius: 20px;*/
+        /*    margin-bottom: 10px;*/
+        /*    padding-top: 10px;*/
+        /*}*/
 
-        @keyframes blinker {
-            50% {
-                background-color: blue;
-            }
-        }
+        /*@keyframes blinker {*/
+        /*    50% {*/
+        /*        background-color: blue;*/
+        /*    }*/
+        /*}*/
 
 
 
@@ -105,6 +105,40 @@
         /*    border: 10px solid #1e3c48; opacity: .9;*/
         /*}*/
 
+
+        .ad {
+            float: right;
+            text-align: center;
+            color: gainsboro;
+            font-size: 17px;
+            padding-left: 10px;
+            display: block;
+            position: relative;
+            width: 200px;
+            height: 45px;
+            background-color: var(--main-color);
+            border-radius: 20px;
+            margin-bottom: 10px;
+            padding-top: 10px;
+            padding-right: 10px;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-name: hideBtn;
+            opacity: 1;
+        }
+
+        @keyframes hideBtn {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
     </style>
 @endsection
 
@@ -120,12 +154,18 @@
                 <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="3000">
 
 
+{{--                    <div class="row">--}}
+{{--                        <div class=" col-lg-3 col-md-3">--}}
+{{--                                <div class="notification-message-unread ">{{ trans('messages.ad-auctions') }}</div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+
                     <div class="row">
                         <div class=" col-lg-3 col-md-3">
-                                <div class="notification-message-unread ">{{ trans('messages.ad-auctions') }}</div>
+                            <div class="ad">{{ trans('messages.ad-auctions') }}</div>
                         </div>
                     </div>
-
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"
                                 class="active"></button>
