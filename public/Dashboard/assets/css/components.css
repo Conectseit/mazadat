@@ -20417,3 +20417,7 @@ label.display-block {
      background-color: #009688;
     color: black;
 }
+.sidebar-default .navigation > li.active > a, .sidebar-default .navigation > li.active > a:hover, .sidebar-default .navigation > li.active > a:focus {
+    background-color: #009688;
+    color: black;
+}
