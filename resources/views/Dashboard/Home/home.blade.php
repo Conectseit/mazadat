@@ -45,6 +45,7 @@
                     <div class="col-lg-2" style="float: {{ floating('right', 'left') }};">
                         <div class="panel bg-{{ $color }}-400">
                             <div class="panel-body" >
+                                <i class="icon-home2 position-left"></i>
                                 <a href="{{route(Str::plural($model). '.'.'index')}}" style="color: whitesmoke; font-weight: bold;">
                                     <h6 class=""> {{trans('messages.count')}}   @lang('messages.'.$model. '.' .Str::plural($model))({{ model_count($model) ?? 0 }}) </h6>
                                 </a>
@@ -74,8 +75,8 @@
 
 
     <!-- Dashboard content -->
-    <div class="row">
-        <div class="col-lg-8" style="float: {{ floating('right', 'left') }}">
+    <div class="row"style="font-family: Sans-Serif;">
+        <div class="col-lg-6" style="float: {{ floating('right', 'left') }}">
             <!-- Latest Auctions -->
             <div class="panel panel-flat" >
                 <div class="panel-heading">
@@ -109,12 +110,8 @@
                                         <div class="media-body">
                                             <h6 class="media-heading"><a href="#">{{$auction->$name}}</a></h6>
                                             <ul class="list-inline list-inline-separate text-muted mb-5">
-                                                <li>
-                                                    <i class="icon-book-play position-left"></i> {{$auction->seller->user_name}}
-                                                </li>
                                                 <li>{{$auction->created_at->diffForHumans()}}</li>
                                             </ul>
-                                            {{$auction->description_ar}}
                                         </div>
                                     </li>
                                 @endforeach
@@ -125,6 +122,7 @@
             </div>
             <!-- /latest Auctions -->
         </div>
+
 
     </div>
     <!-- /dashboard content -->

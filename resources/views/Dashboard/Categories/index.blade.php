@@ -25,7 +25,7 @@
         </div><br>
 
         @if($categories->count() > 0)
-            <table class="table datatable-basic" id="categories" style="font-size: 16px;">
+            <table class="table  datatable-button-print-basic" id="categories" style="font-size: 16px;">
                 <thead>
                 <tr style="background-color:gainsboro">
                     <th>#</th>

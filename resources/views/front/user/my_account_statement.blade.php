@@ -1,7 +1,13 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.user.my_auctions'))
 @section('style')
-    <style></style>
+    <style>
+        @media print {
+            head ,footer{
+                display: none;
+            }
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -33,6 +39,8 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="pending_auctions" role="tabpanel" aria-labelledby="profile-tab"><br>
                         @if($person_bids->count() > 0)
+                            <a href="" id="printme" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+
                             <table class="table table-striped table-dark datatable"
                                    id="auction_bids"
                                    style="font-size: 16px;">
@@ -64,8 +72,10 @@
                                 <h3> @lang('messages.no_data_found') </h3></div>
                         @endif
                     </div>
-                    <div class="tab-pane fade " id="on_progress_auctions" role="tabpanel" aria-labelledby="home-tab"><br>
-                        <table class="table table-striped datatable-basic"
+                    <div class="tab-pane fade  " id="on_progress_auctions" role="tabpanel" aria-labelledby="home-tab"><br>
+                        <a href="" id="print_transactions" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+
+                        <table class="table table-striped datatable-basic print_transactions"
                                id="transactions" style="font-size: 16px;">
                             <thead>
                             <tr>
@@ -100,3 +110,16 @@
     </section>
 @stop
 
+
+@push('scripts')
+    <script>
+        document.getElementById("printme").onclick = function(){
+           window.print();
+        };
+    </script>
+    <script>
+        document.getElementById("print_transactions").onclick = function(){
+           window.print();
+        };
+    </script>
+@endpush

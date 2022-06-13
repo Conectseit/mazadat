@@ -80,21 +80,17 @@ function model_count($model, $withDeleted = false)
 function checkIfHasRole($role, $crud, $type)
 {
     if($type == 'delete') return in_array('ajax-delete-'.str()->singular($crud), $role->permissions_arr);
-
     return in_array($crud.'.'.$type, $role->permissions_arr);
 }
 
 function uploaded($img, $model)
 {
     $filename =  $model . '_' . Str::random(12) . '_' . date('Y-m-d') . '.' . strtolower($img->getClientOriginalExtension());
-
     if (!file_exists(public_path('uploads/'.Str::plural($model).'/')))
         mkdir(public_path('uploads/'.Str::plural($model).'/'), 0777, true);
     $path = public_path('uploads/'.Str::plural($model).'/');
     $img = Image::make($img)->save($path . $filename);
     return $filename;
-
-
 }
 
 function settings($param)

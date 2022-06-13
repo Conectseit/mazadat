@@ -106,15 +106,10 @@ return [
     'auction_commission_note'              => 'Note: auction commission will deducted from your wallet when you cancel bid before auction ended',
     'send_receipt_note'              => 'You  should accept your uploaded receipt first ',
 
-
-
-
     'days'   => 'days',
     'hours'   => 'hours',
     'min'   => 'min',
     'sec'   => 'sec',
-
-
 
     'description_ar' => 'Arabic description',
     'description_en' => 'English description',

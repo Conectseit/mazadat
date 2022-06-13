@@ -25,12 +25,6 @@ class CreateContactsTable extends Migration
             $table->text('admin_reply')->nullable()->text('');
             $table->timestamps();
             $table->softDeletes();
-
-
-
-
-
-
         });
     }
 

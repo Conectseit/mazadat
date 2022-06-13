@@ -20411,3 +20411,9 @@ label.display-block {
     font-family:Digital-7;
     /*font-family:"fantasy";*/
 }
+
+
+.sidebar-default .navigation li > a:hover, .sidebar-default .navigation li > a:focus {
+     background-color: #009688;
+    color: black;
+}

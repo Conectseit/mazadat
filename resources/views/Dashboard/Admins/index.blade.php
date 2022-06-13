@@ -54,7 +54,8 @@
 
                         <td>{{ $admin->id }}</td>
 
-                        <td><a href={{ route('admins.show', $admin->id) }}> {{ isNullable($admin->full_name) }}</a>
+                        <td><a href="#"> {{ isNullable($admin->full_name) }}</a>
+{{--                        <td><a href={{ route('admins.show', $admin->id) }}> {{ isNullable($admin->full_name) }}</a>--}}
                         </td>
                         <td>
                             <a href="{{ $admin->ImagePath }}" data-popup="lightbox">

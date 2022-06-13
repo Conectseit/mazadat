@@ -53,7 +53,7 @@
                                 <div class="tab-pane active" id="all_auctions">
                                    <div class="row">
                                        @if($auctions->count() > 0)
-                                           <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
+                                           <table class="table datatable-button-print-basic" id="auctions" style="font-size: 16px;">
                                                <thead>
                                                <tr style="background-color:gainsboro">
                                                    <th class="text-center">id</th>
@@ -174,7 +174,7 @@
                                 <div class="tab-pane " id="not_accepted">
                                    <div class="row">
                                        @if($not_accepted_auctions->count() > 0)
-                                           <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
+                                           <table class="table datatable-button-print-basic" id="auctions" style="font-size: 16px;">
                                                <thead>
                                                <tr style="background-color:gainsboro">
                                                    <th class="text-center">قسم</th>
@@ -267,7 +267,7 @@
                                 <div class="tab-pane " id="accepted_not_appear">
                                    <div class="row">
                                        @if($accepted_not_appear->count() > 0)
-                                           <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
+                                           <table class="table datatable-button-print-basic" id="auctions" style="font-size: 16px;">
                                                <thead>
                                                <tr style="background-color:gainsboro">
                                                    <th class="text-center">{{ trans('messages.category.category') }}</th>
@@ -344,7 +344,7 @@
                                 </div>
                                 <div class="tab-pane" id="on_progress_auctions">
                                     @if($on_progress_auctions->count() > 0)
-                                        <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
+                                        <table class="table datatable-button-print-basic" id="auctions" style="font-size: 16px;">
                                             <thead>
                                             <tr style="background-color:gainsboro">
                                                 <th class="text-center">قسم</th>
@@ -428,7 +428,7 @@
                                 </div>
                                 <div class="tab-pane" id="done_auctions">
                                     @if($done_auctions->count() > 0)
-                                        <table class="table datatable-basic" id="auctions" style="font-size: 16px;">
+                                        <table class="table datatable-button-print-basic" id="auctions" style="font-size: 16px;">
                                             <thead>
                                             <tr style="background-color:gainsboro">
                                                 <th class="text-center">Serial number</th>
