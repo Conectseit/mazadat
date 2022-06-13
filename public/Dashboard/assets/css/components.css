@@ -20421,3 +20421,8 @@ label.display-block {
     background-color: #009688;
     color: black;
 }
+
+.sidebar-default {
+    background-color: #009688;
+    color: #333333;
+}
