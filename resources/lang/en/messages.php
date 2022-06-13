@@ -324,6 +324,7 @@ return [
         'images'                  => 'Auction Images',
         'inspection_report_image' => 'inspection report image',
         'inspection_report_files' => 'inspection report files',
+        'additional_file_names'   => 'additional file names',
 
         'seller_full_name'        => 'seller full name',
         'choose_category'         => 'Choose Category',
@@ -439,6 +440,16 @@ return [
         'text' => 'notification text',
         'notifications' => ' Notifications',
     ],
+
+    'message' => [
+        'messages' => 'notification messages',
+        'message' => 'notification message',
+        'title' => 'title',
+        'text' => 'text',
+    ],
+
+    'financial_reviews' => 'financial reviews',
+
 
     'nationality' => [
         'nationality' => 'Nationality',

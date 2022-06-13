@@ -481,6 +481,7 @@ return [
         'images' => 'صور المزاد',
         'inspection_report_image' => 'صورة تقرير الفحص',
         'inspection_report_files' => 'ملفات تقرير الفحص',
+        'additional_file_names' => 'الملفات الاضافية',
         'seller_full_name' => 'اسم صاحب المزاد',
         'choose_category' => 'اختر قسم المزاد',
         'add' => 'اضافة مزاد جديد',

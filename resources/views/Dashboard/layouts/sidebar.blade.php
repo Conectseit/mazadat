@@ -83,7 +83,7 @@
     <li class="nav-item">
         <a href="{{ route('inspection_file_names.index') }}"
            class="nav-link {{ request()->route()->getName() == 'dashboard.inspection_file_names.index' ? 'active' : '' }}">
-            <i class="icon-file-pdf"></i> <span style="font-family: Sans-Serif; color: white">{{ trans('messages.inspection_file_names') }}</span></a>
+            <i class="icon-file-pdf"></i> <span style="font-family: Sans-Serif; color: white">{{ trans('messages.auction.additional_file_names') }}</span></a>
     </li>
 
 

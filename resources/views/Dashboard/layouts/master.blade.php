@@ -82,7 +82,7 @@
 <body style="font-family: Sans-Serif;">
 
 <!-- Main navbar -->
-<div class="navbar navbar-inverse bg-indigo" style="background-color: #0a001f">
+<div class="navbar navbar-inverse bg-indigo" style="background-color: #009688">
     @include('Dashboard.layouts.nav')
 </div>
 <!-- /main navbar -->
