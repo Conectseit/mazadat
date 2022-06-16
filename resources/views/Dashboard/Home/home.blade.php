@@ -5,7 +5,7 @@
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb"style="float: {{ floating('right', 'left') }}">
-            <li><a href="index.html"><i class="icon-home2 position-left"></i> @lang('messages.home')</a></li>
+            <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a></li>
             <li class="active">@lang('messages.Dashboard')</li>
         </ul>
 
@@ -44,10 +44,10 @@
                 @foreach (models(true) as $color => $model)
                     <div class="col-lg-2" style="float: {{ floating('right', 'left') }};">
                         <div class="panel bg-{{ $color }}-400">
-                            <div class="panel-body" >
-                                <i class="icon-home2 position-left"></i>
+                            <div class="panel-body shadow-depth5" style="height: 100px;" >
+                                <i class="icon-home2"></i>
                                 <a href="{{route(Str::plural($model). '.'.'index')}}" style="color: whitesmoke; font-weight: bold;">
-                                    <h6 class=""> {{trans('messages.count')}}   @lang('messages.'.$model. '.' .Str::plural($model))({{ model_count($model) ?? 0 }}) </h6>
+                                    <h6 class=""> {{trans('messages.count')}}   @lang('messages.'.$model. '.' .Str::plural($model))  ({{ model_count($model) ?? 0 }}) </h6>
                                 </a>
                             </div>
                             <div class="container-fluid">
@@ -58,9 +58,10 @@
                 @endforeach
                     <div class="col-lg-2" style="float: {{ floating('right', 'left') }};">
                         <div class="panel bg-green-400">
-                            <div class="panel-body">
+                            <div class="panel-body shadow-depth5" style="height: 100px;">
+                                <i class="icon-home2"></i>
                                 <a href="{{route('persons.index')}}" style="color: whitesmoke;">
-                                <h3 class="no-margin"> {{trans('messages.count')}} @lang('messages.person.persons') ( {{App\Models\User::where('is_company', 'person')->count()}} )  </h3>
+                                <h5 class="no-margin"> {{trans('messages.count')}} @lang('messages.person.persons')  ({{App\Models\User::where('is_company', 'person')->count()}})  </h5>
                                 </a>
                             </div>
                             <div class="container-fluid">
@@ -72,7 +73,8 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <br>
 
     <!-- Dashboard content -->
     <div class="row"style="font-family: Sans-Serif;">
@@ -97,12 +99,11 @@
                                 @foreach($auctions as $auction)
                                     <li class="media stack-media-on-mobile">
                                         <div class="media-left">
-                                            <div class="thumb">
-                                                <a href="#">
-{{--                                                    <img src="{{asset('Dashboard/assets/images/placeholder.jpg')}}"--}}
+                                            <div class="thumb" style="height: 80px;width: 80px;">
+                                                <a href="{{ route('auctions.show', $auction->id) }}">
                                                     <img src="{{ $auction->first_image_path }}"
                                                          class="img-responsive img-rounded media-preview" alt="" >
-                                                    <span class="zoom-image"><i class="icon-play3"></i></span>
+{{--                                                    <span class="zoom-image"><i class="icon-play3"></i></span>--}}
                                                 </a>
                                             </div>
                                         </div>

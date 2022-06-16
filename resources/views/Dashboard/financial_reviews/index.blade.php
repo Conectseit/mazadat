@@ -42,7 +42,7 @@
                                 <div class="tab-pane active" id="bank_deposit_transactions">
                                     <div class="panel-body">
                                         @if($bank_deposit_transactions->count() > 0)
-                                            <table class="table datatable-basic" id="transactions"
+                                            <table class="table datatable-button-print-basic" id="transactions"
                                                    style="font-size: 16px;">
                                                 <thead>
                                                 <tr>
@@ -124,7 +124,7 @@
                                 <div class="tab-pane" id="cash_transactions">
                                     <div class="panel-body">
                                         @if($cash_transactions->count() > 0)
-                                            <table class="table datatable-basic" id="transactions"
+                                            <table class="table datatable-button-print-basic" id="transactions"
                                                    style="font-size: 16px;">
                                                 <thead>
                                                 <tr>

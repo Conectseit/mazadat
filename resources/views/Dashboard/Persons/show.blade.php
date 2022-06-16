@@ -1,9 +1,7 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.person.persons'))
 @section('style')
-    <style> #map {
-            height: 400px;
-        } </style>
+    <style> #map {height: 400px;} </style>
 @endsection
 @section('breadcrumb')
     <div class="breadcrumb-line">
@@ -470,7 +468,7 @@
                                                         </div>
                                                         <div class="panel-body">
                                                             @if($person_bids->count() > 0)
-                                                                <table class="table table-striped table-dark datatable"
+                                                                <table class="table table-striped table-dark datatable-button-print-basic"
                                                                        id="auction_bids"
                                                                        style="font-size: 16px;">
                                                                     <thead class="table-dark">
@@ -517,7 +515,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="panel-body">
-                                                        <table class="table table-striped datatable-basic"
+                                                        <table class="table table-striped datatable-button-print-basic"
                                                                id="transactions" style="font-size: 16px;">
                                                             <thead>
                                                             <tr>

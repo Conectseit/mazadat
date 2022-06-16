@@ -183,14 +183,13 @@
 {{--                                <input type="file" multiple="multiple" id="gallery-photo-add" class="form-control" name="images[]">--}}
 {{--                                <div class="gallery"></div>--}}
 
-
                                 <div class="input-group control-group increment" >
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-6"> اختر صورة : <input type="file" name="images[]" class=" image"><br>
                                             </div>
                                             <div class="col-lg-6">
-                                                <img src=" {{ asset('uploads/default.png') }} " width=" 100px " class="thumbnail image-preview">
+                                                <img src=" {{ asset('uploads/images.jpg') }} " width=" 150px " class="thumbnail image-preview">
                                             </div>
                                         </div>
                                     </div>
@@ -222,7 +221,7 @@
 
 
                         <div class="row">
-                            <h4><i class="icon-file-pdf"> </i> @lang('messages.auction.inspection_report_files')</h4>
+                            <h4><i class="icon-file-pdf"> </i> @lang('messages.auction.additional_file_names')</h4>
                             <div class="form-group">
                                 <div class="col-lg-6">
                                     <select name="file_name_id" class="select form-control">
@@ -276,35 +275,35 @@
 
             </div>
         </div>
-        <div class="col-md-3" dir="{{ direction() }}">
-            <div class="panel panel-flat">
-                <div class="panel-heading">
-                    <h5 class="panel-title"> {{ trans('messages.auction.latest_auctions') }} </h5>
-                    <div class="heading-elements">
-                        <ul class="icons-list">
-                            <li><a data-action="collapse"></a></li>
-                            <li><a data-action="reload"></a></li>
-                            <li><a data-action="close"></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-bordered table-hover">
-                        <tr class="text-center">
-                            <th> {{ trans('messages.name') }} </th>
-                            <th> {{ trans('messages.image') }} </th>
-                        </tr>
-                        @forelse($latest_auctions as $auction)
-                            <tr>
-                                <td> {{ substr($auction->$name,0,15) }} </td>
-                                <td><img src="{{ $auction->first_image_path }}" style="height:50px;"/></td>
-                            </tr>
-                        @empty
-                        @endforelse
-                    </table>
-                </div>
-            </div>
-        </div>
+{{--        <div class="col-md-3" dir="{{ direction() }}">--}}
+{{--            <div class="panel panel-flat">--}}
+{{--                <div class="panel-heading">--}}
+{{--                    <h5 class="panel-title"> {{ trans('messages.auction.latest_auctions') }} </h5>--}}
+{{--                    <div class="heading-elements">--}}
+{{--                        <ul class="icons-list">--}}
+{{--                            <li><a data-action="collapse"></a></li>--}}
+{{--                            <li><a data-action="reload"></a></li>--}}
+{{--                            <li><a data-action="close"></a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="panel-body">--}}
+{{--                    <table class="table table-bordered table-hover">--}}
+{{--                        <tr class="text-center">--}}
+{{--                            <th> {{ trans('messages.name') }} </th>--}}
+{{--                            <th> {{ trans('messages.image') }} </th>--}}
+{{--                        </tr>--}}
+{{--                        @forelse($latest_auctions as $auction)--}}
+{{--                            <tr>--}}
+{{--                                <td> {{ substr($auction->$name,0,15) }} </td>--}}
+{{--                                <td><img src="{{ $auction->first_image_path }}" style="height:50px;"/></td>--}}
+{{--                            </tr>--}}
+{{--                        @empty--}}
+{{--                        @endforelse--}}
+{{--                    </table>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
 @stop
 

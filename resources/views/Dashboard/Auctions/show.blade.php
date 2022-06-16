@@ -71,7 +71,7 @@
                         <span class="badge badge-success badge-inline position-right">{{$images->count()}}</span></a>
                 </li>
                 <li><a href="#inspection_report_image" data-toggle="tab"><i
-                            class="icon-cog3 position-left"></i> {{ trans('messages.auction.inspection_report_files') }}
+                            class="icon-cog3 position-left"></i> {{ trans('messages.auction.additional_file_names') }}
                         <span
                             class="badge badge-success badge-inline position-right">{{$inspection_report_images->count()}}</span></a>
                 </li>
@@ -392,14 +392,14 @@
                                     </div>
                                 </div>
                                 <div class="panel-body">
-                                    <h3>{{ trans('messages.auction.inspection_report_files') }}: </h3>
+{{--                                    <h3>{{ trans('messages.auction.additional_file_names') }}: </h3>--}}
                                     @if($inspection_report_images->count() > 0)
                                         <table class="table datatable" id="inspection_report_images"
                                                style="font-size: 16px;">
                                             <thead>
                                             <tr>
                                                 <th class="text-center">@lang('messages.file_name')</th>
-                                                <th class="text-center">{{ trans('messages.auction.inspection_report_files') }}</th>
+                                                <th class="text-center">{{ trans('messages.auction.additional_file_names') }}</th>
 {{--                                                <th class="text-center">@lang('messages.form-actions')</th>--}}
                                             </tr>
                                             </thead>

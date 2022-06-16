@@ -144,7 +144,6 @@
 <script type="text/javascript" src="{{ asset('assets/js/plugins/forms/selects/select2.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/jquery.printPage.js') }}"></script>
 
-
 @include('Dashboard.layouts.parts.custom_scripts')
 
 </body>

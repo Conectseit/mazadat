@@ -55,7 +55,7 @@
                                 <div class="tab-pane active" id="accepted_persons">
                                     <div class="panel-body">
                                         @if($accepted_persons->count() > 0)
-                                            <table class="table datatable-basic" id="persons" style="font-size: 16px;">
+                                            <table class="table datatable-button-print-basic" id="persons" style="font-size: 16px;">
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
 {{--                                                    <th>#</th>--}}
@@ -156,7 +156,7 @@
                                 <div class="tab-pane" id="not_accepted_persons">
                                     <div class="panel-body">
                                         @if($not_accepted_persons->count() > 0)
-                                            <table class="table datatable-basic" id="persons" style="font-size: 16px;">
+                                            <table class="table datatable-button-print-basic" id="persons" style="font-size: 16px;">
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
 {{--                                                    <th>#</th>--}}
@@ -245,7 +245,7 @@
                                 <div class="tab-pane" id="not_actived_persons">
                                     <div class="panel-body">
                                         @if($not_actived_persons->count() > 0)
-                                            <table class="table datatable-basic" id="persons" style="font-size: 16px;">
+                                            <table class="table datatable-button-print-basic" id="persons" style="font-size: 16px;">
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
                                                     {{--                                                    <th>#</th>--}}

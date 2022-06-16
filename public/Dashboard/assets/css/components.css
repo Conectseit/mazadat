@@ -534,9 +534,7 @@ a.badge,
 .navigation .badge {
   float: left;
 }
-.sidebar-default .navigation li > a {
-  color: #333333;
-}
+
 .sidebar-default .navigation li > a:hover,
 .sidebar-default .navigation li > a:focus {
   background-color: #f8f8f8;
@@ -20425,4 +20423,13 @@ label.display-block {
 .sidebar-default {
     background-color: #009688;
     color: #333333;
+}
+
+
+
+.sidebar-default .navigation li > a {
+    /*color: #333333;*/
+    font-family: Sans-Serif;
+    color: white;
+
 }

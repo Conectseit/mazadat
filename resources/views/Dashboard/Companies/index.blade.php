@@ -52,7 +52,7 @@
 
                                     <div class="panel-body">
                                         @if($accepted_companies->count() > 0)
-                                            <table class="table datatable-basic" id="company" style="font-size: 14px;">
+                                            <table class="table datatable-button-print-basic" id="company" style="font-size: 14px;">
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
 {{--                                                    <th class="text-center">#</th>--}}
@@ -171,7 +171,7 @@
 
                                     <div class="panel-body">
                                         @if($not_accepted_companies->count() > 0)
-                                            <table class="table datatable-basic" id="company" style="font-size: 16px;">
+                                            <table class="table datatable-button-print-basic" id="company" style="font-size: 16px;">
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
 {{--                                                    <th class="text-center">#</th>--}}
@@ -267,7 +267,7 @@
                                 {{--                                <div class="tab-pane" id="not_accepted_companies">--}}
 {{--                                    <div class="panel-body">--}}
 {{--                                        @if($not_accepted_companies->count() > 0)--}}
-{{--                                            <table class="table datatable-basic" id="company" style="font-size: 16px;">--}}
+{{--                                            <table class="table datatable-button-print-basic" id="company" style="font-size: 16px;">--}}
 {{--                                                <thead>--}}
 {{--                                                <tr style="background-color:gainsboro">--}}
 {{--                                                    <th class="text-center">#</th>--}}
