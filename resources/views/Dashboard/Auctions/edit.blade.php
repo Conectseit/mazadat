@@ -231,7 +231,7 @@
                         </div><hr>
 
                         <div class="form-group">
-                            <h4>@lang('messages.auction.inspection_report_files')</h4><br>
+                            <h4>@lang('messages.auction.additional_file_names')</h4><br>
                             @foreach($inspection_report_images as $image)
                                 <div class="row">
                                     <div class="col-lg-2 col-md-3 d-flex align-items-center">
@@ -291,16 +291,6 @@
 {{--                                @endif--}}
 {{--                            </div>--}}
 {{--                        </div>--}}
-
-
-
-
-
-
-
-
-
-
 
 
                         <div class="text-right">
