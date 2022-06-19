@@ -140,6 +140,9 @@ Route::group(
                 Route::get('transaction/{id?}/not_accept', [TransactionController::class, 'not_accept'])->name('transaction/not_accept');
 
                 Route::post('send_single_notify', [NotificationController::class, 'send_single_notify'])->name('send_single_notify');
+                Route::post('send_notify_to_all_users', [NotificationController::class, 'send_notify_to_all_users'])->name('send_notify_to_all_users');
+                Route::post('send_notify_to_all_companies', [NotificationController::class, 'send_notify_to_all_companies'])->name('send_notify_to_all_companies');
+
                 Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
                 Route::put('settings/update', [SettingController::class, 'update'])->name('settings.update');
                 Route::put('add_option_detail/{option_id}', [CategoryController::class, 'add_option_detail'])->name('add_option_detail');
@@ -152,31 +155,3 @@ Route::group(
         });
     });
 });
-
-//Route::get('/test', function () {
-////    return  view('Dashboard.Home.test-table');
-//    return  view('Dashboard.layouts.master');
-//
-//});
-
-
-
-//                'settings'     => SettingsController::class,
-////               'sellers'        => SellerController::class,
-//                 'buyers'         => BuyerController::class,
-
-//                Route::get('seller/{id?}/accept', [SellerController::class, 'accept'])->name('seller/accept');
-//                Route::get('seller/{id?}/not_accept', [SellerController::class, 'not_accept'])->name('seller/not_accept');
-
-//                Route::post('/ajax-delete-seller', [SellerController::class, 'destroy'])->name('ajax-delete-seller');
-//                Route::post('/ajax-delete-buyer', [BuyerController::class, 'destroy'])->name('ajax-delete-buyer');
-
-//                Route::get('person/{id?}/ban', [PersonController::class, 'ban'])->name('ban');
-//                Route::get('person/{id?}/not_ban', [PersonController::class, 'not_ban'])->name('not_ban');
-
-//                Route::post('person/{id?}/add_balance', [PersonController::class, 'add_balance'])->name('add_balance');
-
-//                Route::post('company/{id?}/add_balance', [CompanyController::class, 'add_balance'])->name('add_balance');
-
-//                Route::get('auction/{id?}/not_accept', [AuctionController::class, 'not_accept'])->name('auction/not_accept');
-

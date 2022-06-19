@@ -10,7 +10,7 @@
         </ul>
         @include('Dashboard.layouts.parts.quick-links')
     </div>
-@endsection
+@stop
 
 
 @section('content')

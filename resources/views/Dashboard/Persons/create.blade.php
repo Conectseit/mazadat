@@ -93,13 +93,6 @@
                                            placeholder="{{trans('messages.enter_mobile')}}5xx xxx xxx">
                                 </div>
                             </div>
-{{--                            <div class="form-group">--}}
-{{--                                <label class="col-lg-3 control-label">{{ trans('messages.mobile') }}</label>--}}
-{{--                                <div class="col-lg-9">--}}
-{{--                                    <input type="text" maxlength="14" name="mobile" value="{{ old('mobile') }}" class="form-control"--}}
-{{--                                           placeholder="{{ trans('messages.mobile') }}">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
 
                             <div class="form-group">
                                 <label class="col-lg-3 control-label"> {{ trans('messages.password') }} </label>
@@ -129,8 +122,6 @@
                                     </label>
                                 </label>
                             </div>
-
-
                             <div class="form-group">
                                 <label class="col-lg-3 control-label display-block"> {{ trans('messages.nationality.nationality') }} </label>
                                 <div class="col-lg-9">
@@ -205,7 +196,6 @@
                     </div>
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
                         <input type="submit" class="btn btn-primary" id="save-form-btn" value=" {{ trans('messages.add_and_forward_to_list') }} "/>
-                        {{--                        <input type="submit" class="btn btn-success" name="back" value=" {{ trans('messages.add_and_come_back') }} " />--}}
                     </div>
                 </div>
             </form>
@@ -247,10 +237,6 @@
 @stop
 @section('scripts')
     @include('front.auth.ajax_get_cities')
-
-
-
-
     <script>
         // ======== image preview ====== //
         $(".passport_image").change(function () {

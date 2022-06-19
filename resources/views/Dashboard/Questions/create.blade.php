@@ -24,7 +24,6 @@
 
     @include('Dashboard.layouts.parts.validation_errors')
 
-
     <div class="row" style="padding: 15px;">
         <div class="col-md-6">
 
@@ -62,8 +61,6 @@
                         </div>
 
                     </div>
-
-
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
                         <input type="submit" class="btn btn-primary" value=" {{ trans('messages.add_and_forward_to_list') }} "/>
                     </div>

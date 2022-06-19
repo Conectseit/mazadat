@@ -439,6 +439,7 @@ return [
         'title' => ' notification title',
         'text' => 'notification text',
         'notifications' => ' Notifications',
+        'send_to_all_users' => ' send notification to all users',
     ],
 
     'message' => [
@@ -742,6 +743,8 @@ return [
         'Invalid Email Or Password' => 'Invalid Email Or Password , try again',
 
         'invalid_mobile' => 'invalid mobile',
+        'user_not_found' => 'not found users',
+
         'added_balance_successfully' => 'added balance successfully',
         'not_accept_deposit_receipt_and_send_SMS' => 'not accept deposit receipt and send SMS',
         'add_another_image' => 'add another image',

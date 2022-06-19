@@ -10,12 +10,9 @@
                         class="icon-admin position-left"></i> @lang('messages.question.questions')</a></li>
             <li class="active">@lang('messages.edit-var',['var'=>trans('messages.question.question')])</li>
         </ul>
-
         @include('Dashboard.layouts.parts.quick-links')
     </div>
 @endsection
-
-
 @section('content')
 
     @include('Dashboard.layouts.parts.validation_errors')

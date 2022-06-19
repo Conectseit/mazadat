@@ -16,7 +16,6 @@
 @section('content')
     @include('Dashboard.layouts.parts.validation_errors')
 
-
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
         <div class="panel-heading">

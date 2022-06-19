@@ -10,7 +10,6 @@
             </li>
             <li class="active">@lang('messages.permission.permissions')</li>
         </ul>
-
         @include('Dashboard.layouts.parts.quick-links')
     </div>
 @stop
@@ -36,8 +35,6 @@
             <tr>
                 <th>#</th>
                 <th>@lang('messages.permission.name')</th>
-{{--                <th>@lang('messages.permission.permissions')</th>--}}
-
                 <th>@lang('messages.since')</th>
                 <th class="text-center">@lang('messages.form-actions')</th>
             </tr>
@@ -54,29 +51,9 @@
                         <a href="#">  {{ isNullable($permission->name_ar) }}</a>
                     </td>
 
-{{--                    <td>--}}
-
-{{--                        @if( $permission->id!=1)--}}
-{{--                            @foreach($permission->permissions as $key => $value)--}}
-{{--                                <span class="badge bg-success badge-pill">{{ trans('messages.' . $key) }}</span>--}}
-{{--                            @endforeach--}}
-
-{{--                                                    <span class="badge bg-success badge-pill">{{ trans('messages.permissions') }}</span>--}}
-
-{{--                        @else--}}
-{{--                            كل الصلاحيات--}}
-{{--                        @endif--}}
-
-{{--                    </td>--}}
-
-
                     <td>{{ $permission->created_at->diffForHumans() }}</td>
-
-
                     <td class="text-center">
-                        {{--@include('permission.includes.edit-delete', ['route' => 'permissions', 'model' => $permission])--}}
                         @if( $permission->id!=1)
-
                             <ul class="icons-list">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
@@ -107,8 +84,6 @@
         </table>
     </div>
     <!-- /basic datatable -->
-
-
 @stop
 
 @section('scripts')

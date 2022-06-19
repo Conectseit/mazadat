@@ -2,29 +2,20 @@
 
 @section('title', trans('messages.create-var',['var'=>trans('messages.permission.permission')]))
 
+@section('breadcrumb')
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
+            </li>
+            <li><a href="{{ route('permissions.index') }}"><i
+                        class="icon-admin position-left"></i> @lang('messages.permission.permissions')</a></li>
+            <li class="active">{{ __('messages.permission.add') }}</li>
+        </ul>
 
-<!-- Page header -->
-{{--<div class="page-header page-header-default">--}}
-    @section('breadcrumb')
-        <div class="breadcrumb-line">
-            <ul class="breadcrumb">
-                <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
-                </li>
-                <li><a href="{{ route('permissions.index') }}"><i
-                            class="icon-admin position-left"></i> @lang('messages.permission.permissions')</a></li>
-                <li class="active">{{ __('messages.permission.add') }}</li>
-            </ul>
-
-            @include('Dashboard.layouts.parts.quick-links')
-        </div>
-    @endsection
-{{--</div>--}}
-<!-- /page header -->
+        @include('Dashboard.layouts.parts.quick-links')
+    </div>
+@stop
 @section('content')
-
-
-
-
     @include('Dashboard.layouts.parts.validation_errors')
 
 
@@ -71,7 +62,6 @@
                                        placeholder="{{ trans('messages.description_ar') }}">
                             </div>
                         </div>
-
 
                         @foreach(cruds() as $i => $crud)
                             <div class="panel panel-flat">
@@ -190,9 +180,6 @@
                             </div>
                         @endforeach
 
-
-
-
                         <div class="panel panel-flat">
                             <div class="panel-heading">
                                 <h5 class="panel-title">@lang('messages.user.add_balance')</h5>
@@ -265,29 +252,19 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
                     </div>
 
 
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
                         <input type="submit" class="btn btn-primary" name="forward"
                                value=" {{ trans('messages.add_and_forward_to_list') }} "/>
-{{--                        <input type="submit" class="btn btn-success" name="messages"--}}
-{{--                               value=" {{ trans('messages.added_and_come_messages') }} "/>--}}
                     </div>
                 </div>
             </form>
             <!-- /basic layout -->
 
         </div>
-
     </div>
-
-
-
 @stop
 
 

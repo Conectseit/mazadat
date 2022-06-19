@@ -17,14 +17,14 @@
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
         @include('Dashboard.layouts.parts.validation_errors')
-
-{{--        <div class="panel-heading">--}}
-{{--            @include('Dashboard.layouts.parts.table-header', ['collection' => $persons, 'name' => 'persons', 'icon' => 'person'])--}}
-{{--        </div>--}}
         <br>
         <div class="list-icons" style="padding-right: 10px;">
             <a href="{{route('persons.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i
                         class="icon-plus2"></i></b>{{ trans('messages.person.add_new_person') }}</a>
+            <a href="#" data-toggle="modal" data-target="#send_notify_to_all_users"
+               class="btn btn-primary btn-labeled btn-labeled-left"><b><i
+                        class="icon-bell3 position-left"></i></b>{{ trans('messages.notification.send_to_all_users') }}
+            </a>
         </div>
 
         <div class="panel-heading">
@@ -58,15 +58,11 @@
                                             <table class="table datatable-button-print-basic" id="persons" style="font-size: 16px;">
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
-{{--                                                    <th>#</th>--}}
                                                     <th class="text-center">{{ trans('messages.person.image') }}</th>
 
                                                     <th>{{ trans('messages.full_name') }}</th>
-{{--                                                    <th>{{ trans('messages.mobile') }}</th>--}}
                                                     <th>{{ trans('messages.email') }}</th>
                                                     <th class="text-center">{{ trans('messages.ban/not') }}</th>
-                                                    {{--                        <th class="text-center">{{ trans('messages.verified/not') }}</th>--}}
-
                                                     <th>@lang('messages.since')</th>
                                                     <th class="text-center">@lang('messages.form-actions')</th>
                                                 </tr>
@@ -74,48 +70,22 @@
                                                 <tbody>
                                                 @foreach($accepted_persons as $person)
                                                     <tr id="person-row-{{ $person->id }}">
-{{--                                                        <td>{{ $loop->iteration }}</td>--}}
                                                         <td class="text-center">
                                                             <a href="{{ $person->image_path }}" data-popup="lightbox"><img src="{{ $person->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                         </td>
                                                         <td>
                                                             <a href={{ route('persons.show', $person->id) }}> {{ isNullable($person->full_name) }}</a>
                                                         </td>
-{{--                                                        <td> {{ $person->mobile}}</td>--}}
                                                         <td> {{ $person->email}}</td>
-
-                                                        {{--                            <td class="text-center">--}}
-                                                        {{--                                    <a href="javascript:void(0);" id="change-ban-value" class="btn btn-danger btn-sm">--}}
-                                                        {{--                                        <i class="icon-close2"></i>{{trans('messages.ban')}}</a>--}}
-
-                                                        {{--                                <a href="javascript:void(0);" id="ban{{$person->id}}">--}}
-                                                        {{--                                    <div class="input-group-text">--}}
-                                                        {{--                                        <i class="{{ $person->ban==0 ? 'btn btn-danger btn-sm' : 'btn btn-success btn-sm' }}"--}}
-                                                        {{--                                           id="">{{trans('messages.ban')}}</i>--}}
-                                                        {{--                                    </div>--}}
-                                                        {{--                                </a>--}}
-                                                        {{--                            </td>--}}
-
-
                                                         <td class="text-center">
                                                             @if($person->ban ==1)
-{{--                                                                <a href="person/{{$person->id}}/not_ban/" class="btn btn-danger btn-sm"><i--}}
-{{--                                                                        class="icon-close2"></i>{{trans('messages.not_ban')}}</a>--}}
-
                                                                 <a href="{{route('not_ban',$person->id)}}" class="btn btn-danger btn-sm"><i
                                                                         class="icon-close2"></i>{{trans('messages.not_ban')}}</a>
                                                             @else
-{{--                                                                <a href="person/{{$person->id}}/ban/" class="btn btn-success btn-sm"> <i--}}
-{{--                                                                        class="icon-check2"></i> {{trans('messages.ban')}}</a>--}}
-
                                                                 <a href="{{route('ban',$person->id)}}" class="btn btn-success btn-sm"> <i
                                                                         class="icon-check2"></i> {{trans('messages.ban')}}</a>
                                                             @endif
                                                         </td>
-
-
-
-
                                                         <td>{{isset($person->created_at) ?$person->created_at->diffForHumans():'---' }}</td>
                                                         <td class="text-center">
                                                             <ul class="icons-list">
@@ -152,22 +122,16 @@
                                     </div>
                                 </div>
 
-
                                 <div class="tab-pane" id="not_accepted_persons">
                                     <div class="panel-body">
                                         @if($not_accepted_persons->count() > 0)
                                             <table class="table datatable-button-print-basic" id="persons" style="font-size: 16px;">
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
-{{--                                                    <th>#</th>--}}
                                                     <th class="text-center">{{ trans('messages.person.image') }}</th>
-
                                                     <th>{{ trans('messages.full_name') }}</th>
-{{--                                                    <th>{{ trans('messages.mobile') }}</th>--}}
                                                     <th>{{ trans('messages.email') }}</th>
                                                     <th class="text-center">{{ trans('messages.ban/not') }}</th>
-                                                    {{--                        <th class="text-center">{{ trans('messages.verified/not') }}</th>--}}
-
                                                     <th>@lang('messages.since')</th>
                                                     <th class="text-center">@lang('messages.form-actions')</th>
                                                 </tr>
@@ -175,29 +139,13 @@
                                                 <tbody>
                                                 @foreach($not_accepted_persons as $person)
                                                     <tr id="person-row-{{ $person->id }}">
-{{--                                                        <td>{{ $loop->iteration }}</td>--}}
                                                         <td class="text-center">
                                                             <a href="{{ $person->image_path }}" data-popup="lightbox"><img src="{{ $person->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
                                                         </td>
                                                         <td>
                                                             <a href={{ route('persons.show', $person->id) }}> {{ isNullable($person->full_name) }}</a>
                                                         </td>
-{{--                                                        <td> {{ $person->mobile}}</td>--}}
                                                         <td> {{ $person->email}}</td>
-
-                                                        {{--                            <td class="text-center">--}}
-                                                        {{--                                    <a href="javascript:void(0);" id="change-ban-value" class="btn btn-danger btn-sm">--}}
-                                                        {{--                                        <i class="icon-close2"></i>{{trans('messages.ban')}}</a>--}}
-
-                                                        {{--                                <a href="javascript:void(0);" id="ban{{$person->id}}">--}}
-                                                        {{--                                    <div class="input-group-text">--}}
-                                                        {{--                                        <i class="{{ $person->ban==0 ? 'btn btn-danger btn-sm' : 'btn btn-success btn-sm' }}"--}}
-                                                        {{--                                           id="">{{trans('messages.ban')}}</i>--}}
-                                                        {{--                                    </div>--}}
-                                                        {{--                                </a>--}}
-                                                        {{--                            </td>--}}
-
-
                                                         <td class="text-center">
                                                             @if($person->ban ==1)
                                                                 <a href="{{route('not_ban',$person->id)}}" class="btn btn-danger btn-sm"><i
@@ -248,15 +196,11 @@
                                             <table class="table datatable-button-print-basic" id="persons" style="font-size: 16px;">
                                                 <thead>
                                                 <tr style="background-color:gainsboro">
-                                                    {{--                                                    <th>#</th>--}}
                                                     <th class="text-center">{{ trans('messages.person.image') }}</th>
 
                                                     <th>{{ trans('messages.full_name') }}</th>
-                                                    {{--                                                    <th>{{ trans('messages.mobile') }}</th>--}}
                                                     <th>{{ trans('messages.email') }}</th>
                                                     <th class="text-center">{{ trans('messages.ban/not') }}</th>
-                                                    {{--                        <th class="text-center">{{ trans('messages.verified/not') }}</th>--}}
-
                                                     <th>@lang('messages.since')</th>
                                                     <th class="text-center">@lang('messages.form-actions')</th>
                                                 </tr>
@@ -271,22 +215,7 @@
                                                         <td>
                                                             <a href={{ route('persons.show', $person->id) }}> {{ isNullable($person->full_name) }}</a>
                                                         </td>
-                                                        {{--                                                        <td> {{ $person->mobile}}</td>--}}
                                                         <td> {{ $person->email}}</td>
-
-                                                        {{--                            <td class="text-center">--}}
-                                                        {{--                                    <a href="javascript:void(0);" id="change-ban-value" class="btn btn-danger btn-sm">--}}
-                                                        {{--                                        <i class="icon-close2"></i>{{trans('messages.ban')}}</a>--}}
-
-                                                        {{--                                <a href="javascript:void(0);" id="ban{{$person->id}}">--}}
-                                                        {{--                                    <div class="input-group-text">--}}
-                                                        {{--                                        <i class="{{ $person->ban==0 ? 'btn btn-danger btn-sm' : 'btn btn-success btn-sm' }}"--}}
-                                                        {{--                                           id="">{{trans('messages.ban')}}</i>--}}
-                                                        {{--                                    </div>--}}
-                                                        {{--                                </a>--}}
-                                                        {{--                            </td>--}}
-
-
                                                         <td class="text-center">
                                                             @if($person->ban ==1)
                                                                 <a href="{{route('not_ban',$person->id)}}" class="btn btn-danger btn-sm"><i
@@ -338,7 +267,7 @@
             </div>
         </div>
         <!-- /basic pills -->
-
+@include('Dashboard.Persons.notify')
     </div>
     <!-- /basic datatable -->
 @stop
@@ -346,5 +275,6 @@
 @section('scripts')
     @include('Dashboard.layouts.parts.ajax_delete', ['model' => 'person'])
 @stop
+
 
 

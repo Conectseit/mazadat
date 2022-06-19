@@ -29,6 +29,7 @@ class CompanyController extends Controller
         $data['companies'] = User::where('is_company', 'company')->get();
         $data['accepted_companies'] = User::where(['is_company'=> 'company','is_active'=>'active','is_accepted'=>1])->latest()->get();
         $data['not_accepted_companies'] = User::where(['is_company'=> 'company','is_active'=>'active','is_accepted'=>0])->latest()->get();
+        $data['messages'] = Message::all();
         return view('Dashboard.Companies.index', $data);
     }
 
@@ -75,7 +76,7 @@ class CompanyController extends Controller
                 Token::create(['jwt' => $jwt_token, 'user_id' => $company->id,]);
             }
 
-
+// ===========================================================
             activity()
                 ->performedOn($company)
                 ->causedBy(auth()->guard('admin')->user())
@@ -169,9 +170,6 @@ class CompanyController extends Controller
     }
 
 
-
-
-
     public function unique($id)
     {
         $company = User::findOrFail($id);
@@ -185,8 +183,6 @@ class CompanyController extends Controller
         $company->update(['unique_company'=> 0]);
         return back();
     }
-
-
 
 
     public function accept($id)
@@ -208,47 +204,5 @@ class CompanyController extends Controller
         SmsController::send_sms($company->mobile, 'هناك خطأ في تكملة بيانات حسابك في موقع مزادات من فضلك ارسلها مرة اخري' );
         return back()->with('success',  trans('messages.not_verified_yet_and_send_SMS'));
     }
-
-
-//    public function activation(Request $request)
-//    {
-//
-//        $company = User::findOrFail($request->company_id);
-//
-//        if($company->active == 1){
-//            $company->active = 0;
-//        } else {
-//            $company->active = 1;
-//        }
-//        return response()->json([
-//            'data' => [
-//                'success' => $company->save(),
-//            ]
-//        ]);
-//    }
-
-
-//    public function add_balance(WalletRequest $request,$id)
-//    {
-//        $company = User::findOrFail($id);
-//
-//        $company->update(['wallet'=> $request->wallet +$company->wallet]);
-//
-//       $payment= Payment::Create([
-//            'user_id'     => $company->id,
-//            'date'        => $company->updated_at,
-//            'amount'      => $request->wallet,
-//            'payment_type'=> 'cash'
-//        ]);
-//// ===========================================================
-//        activity()
-//            ->performedOn($company)
-//            ->causedBy(auth()->guard('admin')->user())
-//            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة رصيد الي محفظة المؤسسة '.($company->user_name).''.$payment->amount.'ريال سعودي');
-//// ===========================================================
-//
-//        return back()->with('message', trans('messages.messages.added_balance_successfully'));
-//
-//    }
 
 }

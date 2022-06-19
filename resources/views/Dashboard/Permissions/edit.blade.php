@@ -20,8 +20,6 @@
 
     <div class="row" style="padding: 15px;">
         <div class="col-md-9">
-
-
             <!-- Basic layout-->
             <form action="{{ route('permissions.update',$role->id) }}" class="form-horizontal" method="post"
                   enctype="multipart/form-data">
@@ -73,7 +71,6 @@
                             <div class="panel panel-flat">
                                 <div class="panel-heading">
                                     <h5 class="panel-title">@lang('messages.'.str()->singular($crud).'.' .$crud)</h5>
-{{--                                    <h5 class="panel-title">@lang('messages.'.$crud.'.' .$crud)</h5>--}}
                                     <div class="heading-elements">
                                         <ul class="icons-list">
                                             <li><a data-action="collapse"></a></li>
@@ -248,8 +245,6 @@
                         </div>
 
                         <div class="text-right">
-                            {{--<input type="submit" class="btn btn-primary" name="forward"--}}
-                            {{--value=" {{ trans('messages.update_and_forword_2_list') }} "/>--}}
                             <input type="submit" class="btn btn-success" name="messages"
                                    value=" {{ trans('messages.update_and_forward_to_list') }} "/>
                         </div>

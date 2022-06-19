@@ -17,8 +17,6 @@
     @include('Dashboard.layouts.parts.validation_errors')
     <div class="row" style="padding: 15px;">
         <div class="col-md-9">
-
-
             <!-- Basic layout-->
             <form action="{{ route('persons.update',$person) }}" class="form-horizontal" method="POST"
                   enctype="multipart/form-data">
@@ -42,7 +40,6 @@
 
                         <div class="form-group">
                             <label class="col-lg-3 control-label">{{ trans('messages.first_name') }}</label>
-{{--                            <input type="text" class="form-control" value="{{$person->first_name}}" name="first_name" placeholder="@lang('messages.first_name') ">--}}
                             <div class="col-lg-9">
                                 <input type="text" name="first_name" value="{{ $person->first_name }}" class="form-control"
                                        placeholder="{{ trans('messages.first_name') }}">
@@ -50,7 +47,6 @@
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">{{ trans('messages.last_name') }}</label>
-                            {{--                            <input type="text" class="form-control" value="{{$person->last_name}}" name="last_name" placeholder="@lang('messages.last_name') ">--}}
                             <div class="col-lg-9">
                                 <input type="text" name="last_name" value="{{ $person->last_name }}" class="form-control"
                                        placeholder="{{ trans('messages.last_name') }}">

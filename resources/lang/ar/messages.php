@@ -132,6 +132,7 @@ return [
         'title' => 'عنوان الاشعار',
         'text' => 'نص الاشعار',
         'notifications' => ' الاشعارات',
+        'send_to_all_users' => ' ارسال اشعار لجميع المستخدمين',
     ],
 
 
@@ -625,6 +626,7 @@ return [
         'send_successfully' => 'تم الارسال بنجاح',
         'updated_successfully' => 'تم التحديث بنجاح',
         'deleted_successfully' => 'تم الحذف بنجاح',
+        'user_not_found' => 'لايوجد مستخدم',
         'invalid_mobile' => 'لا يوجود رقم جوال مسجل لدينا مطابق للرقم الذي ادخلته',
         'try_access_not_found_content' => 'عفوا لا يوجد هذا العنصر',
         'added_balance_successfully' => ' تم اضافة رصيد لمحظة المستخدم بنجاح وانتظار المراجعة من المراجع المالي',

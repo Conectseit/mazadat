@@ -1,5 +1,4 @@
 <!-- wallet modal ==-->
-
 <div id="add_wallet" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">

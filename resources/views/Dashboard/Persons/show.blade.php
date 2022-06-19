@@ -41,13 +41,6 @@
                             class="icon-cog3 position-left"></i> {{trans('messages.person.additional_address')}}</a>
                 </li>
 
-                {{--                                <li><a href="#person_auctions" data-toggle="tab"><i--}}
-                {{--                            class="icon-calendar3 position-left"></i> {{ trans('messages.person.person_auctions') }}--}}
-                {{--                        <span class="badge badge-success badge-inline position-right">--}}
-                {{--                            {{$person->person_auctions->count()}}--}}
-                {{--                        </span></a>--}}
-                {{--                </li>--}}
-
                 <li><a href="#person_account_statement" data-toggle="tab"><i
                             class="icon-calendar3 position-left"></i> {{ trans('messages.account_statement') }}
                         <span class="badge badge-success badge-inline position-right">
@@ -58,11 +51,6 @@
                             class="icon-bell3 position-left"></i> {{trans('messages.notification.send')}}</a></li>
                 <li><a href="#wallet" data-toggle="tab"><i
                             class="icon-cog3 position-left"></i> {{trans('messages.wallet')}}</a></li>
-                {{--                <li><a href="#auction_bids" data-toggle="tab"><i--}}
-                {{--                            class="icon-calendar3 position-left"></i> {{ trans('messages.person.bids') }}--}}
-                {{--                        <span class="badge badge-success badge-inline position-right">{{$auction_bids->count()}}</span>--}}
-                {{--                    </a>--}}
-                {{--                </li>--}}
             </ul>
         </div>
     </div>
@@ -311,13 +299,7 @@
                                                             </div>
 
                                                             <div class="form-group row">
-
                                                                 @if($person->is_checked_account ==0)
-                                                                    {{--                                                                    <a href="person/{{$person->id}}/not_verified/" class="btn btn-danger btn-sm"><i--}}
-                                                                    {{--                                                                            class="icon-close2"></i>{{trans('messages.not_verified')}}</a>--}}
-                                                                    {{--                                                                    <a href="person/{{$person->id}}/verified/" class="btn btn-success btn-sm"> <i--}}
-                                                                    {{--                                                                            class="icon-check2"></i> {{trans('messages.verified')}}</a>--}}
-
                                                                     <a href="{{route('not_verified',$person->id)}}"
                                                                        class="btn btn-danger btn-sm"><i
                                                                             class="icon-close2"></i>{{trans('messages.not_verified')}}
@@ -328,8 +310,6 @@
                                                                     </a>
                                                                 @endif
                                                             </div>
-
-
                                                             <div class="form-group row">
                                                                 @if($person->is_checked_account ==1)
                                                                     <div class="btn btn-success btn-sm">
@@ -364,10 +344,7 @@
                                     <h6 class="content-group-sm text-semibold">{{ trans('messages.person.location') }}
                                         :</h6>
                                     <div class="form-group row"><br>
-                                        {{--                                        <label class="col-form-label col-lg-3">{{ trans('messages.person.location') }}:</label>--}}
-
                                         <div class="col-lg-9">
-                                            {{--                                                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -180px;" placeholder=" اختر المكان علي الخريطة " name="other" >--}}
                                             <div id="map"></div>
                                         </div>
                                         <div class="col-lg-6">
@@ -548,122 +525,8 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
-
-                        {{--                        <div class="tab-pane fade" id="person_auctions">--}}
-                        {{--                            <!-- Seller_auctions -->--}}
-                        {{--                            <div class="panel panel-flat">--}}
-                        {{--                                <div class="panel-heading">--}}
-                        {{--                                    <div class="heading-elements">--}}
-                        {{--                                        <ul class="icons-list">--}}
-                        {{--                                            <li><a data-action="collapse"></a></li>--}}
-                        {{--                                            <li><a data-action="reload"></a></li>--}}
-                        {{--                                            <li><a data-action="close"></a></li>--}}
-                        {{--                                        </ul>--}}
-                        {{--                                    </div>--}}
-                        {{--                                </div>--}}
-                        {{--                                <div class="panel-body">--}}
-                        {{--                                    <!-- Palette colors -->--}}
-                        {{--                                    <h6 class="content-group-sm text-semibold">--}}
-                        {{--                                        {{__('messages.person.full_name')}}--}}
-                        {{--                                        <small class="display-block">{{$person->full_name}}</small>--}}
-                        {{--                                    </h6>--}}
-
-                        {{--                                    <div class="row">--}}
-                        {{--                                        @foreach($person_auctions as $person_auction)--}}
-                        {{--                                            <div class="col-sm-4 col-lg-2">--}}
-                        {{--                                                <div class="panel">--}}
-                        {{--                                                    <div class="bg-info-800 demo-color">--}}
-                        {{--                                                        <span>{{$person_auction->$name}}</span></div>--}}
-
-                        {{--                                                    <div class="p-15">--}}
-                        {{--                                                        <div class="media-body">--}}
-                        {{--                                                            <strong>{{$person_auction->start_auction_price}}--}}
-                        {{--                                                                ريال</strong>--}}
-                        {{--                                                            <div--}}
-                        {{--                                                                class="text-muted mt-5">{{$person_auction->value_of_increment}}--}}
-                        {{--                                                                ريال--}}
-                        {{--                                                            </div>--}}
-                        {{--                                                        </div>--}}
-
-                        {{--                                                        <div class="media-right">--}}
-                        {{--                                                            <ul class="icons-list">--}}
-                        {{--                                                                <li><a href="#" data-toggle="modal" data-target="#info_800">--}}
-                        {{--                                                                        <i class="icon-three-bars"></i></a></li>--}}
-                        {{--                                                            </ul>--}}
-                        {{--                                                        </div>--}}
-                        {{--                                                    </div>--}}
-                        {{--                                                </div>--}}
-                        {{--                                                <div>--}}
-                        {{--                                                    <span class="badge  badge-pill" style="background-color: #00838F;">--}}
-                        {{--                                                        <a href={{ route('auctions.show', $person_auction->id) }}>{{__('messages.person.show_auction_bids')}}</a>--}}
-                        {{--                                                    </span>--}}
-                        {{--                                                </div>--}}
-                        {{--                                            </div>--}}
-                        {{--                                            <!-- auction modal -->--}}
-                        {{--                                            <div id="info_800" class="modal fade">--}}
-                        {{--                                                <div class="modal-dialog">--}}
-                        {{--                                                    <div class="modal-content">--}}
-                        {{--                                                        <div class="modal-header">--}}
-                        {{--                                                            <button type="button" class="close" data-dismiss="modal">--}}
-                        {{--                                                                &times;--}}
-                        {{--                                                            </button>--}}
-                        {{--                                                            <h5 class="modal-title">{{__('messages.description')}}:</h5>--}}
-                        {{--                                                        </div>--}}
-
-                        {{--                                                        <div class="modal-body">--}}
-                        {{--                                                            {{$person_auction->$description}}                                                        </div>--}}
-
-                        {{--                                                        <div class="table-responsive content-group">--}}
-                        {{--                                                            <table class="table">--}}
-                        {{--                                                                <tr>--}}
-                        {{--                                                                    <td>{{__('messages.auction.name')}}:</td>--}}
-                        {{--                                                                    <td><code>{{$person_auction->$name}}</code></td>--}}
-                        {{--                                                                </tr>--}}
-                        {{--                                                                <tr>--}}
-                        {{--                                                                    <td>{{__('messages.auction.start_auction_price')}}--}}
-                        {{--                                                                        :--}}
-                        {{--                                                                    </td>--}}
-                        {{--                                                                    <td>--}}
-                        {{--                                                                        <code>{{$person_auction->start_auction_price}}</code>--}}
-                        {{--                                                                    </td>--}}
-                        {{--                                                                </tr>--}}
-                        {{--                                                                <tr>--}}
-                        {{--                                                                    <td>{{__('messages.auction.value_of_increment')}}:--}}
-                        {{--                                                                    </td>--}}
-                        {{--                                                                    <td>--}}
-                        {{--                                                                        <code>.{{$person_auction->value_of_increment}}</code>--}}
-                        {{--                                                                    </td>--}}
-                        {{--                                                                </tr>--}}
-                        {{--                                                            </table>--}}
-                        {{--                                                        </div>--}}
-                        {{--                                                        <div class="modal-footer">--}}
-                        {{--                                                            <div>--}}
-                        {{--                                                                <span class="badge  badge-pill"--}}
-                        {{--                                                                      style="background-color: #00838F;">--}}
-                        {{--                                                                    <a href={{ route('auctions.show', $person_auction->id) }}>{{__('messages.person.show_auction_bids')}}</a>--}}
-                        {{--                                                                </span>--}}
-                        {{--                                                            </div>--}}
-                        {{--                                                            <button type="button"--}}
-                        {{--                                                                    class="btn btn-link btn-xs text-uppercase text-semibold"--}}
-                        {{--                                                                    data-dismiss="modal">Close--}}
-                        {{--                                                            </button>--}}
-                        {{--                                                        </div>--}}
-                        {{--                                                    </div>--}}
-                        {{--                                                </div>--}}
-                        {{--                                            </div>--}}
-                        {{--                                            <!-- /auction modal -->--}}
-                        {{--                                        @endforeach--}}
-                        {{--                                    </div>--}}
-                        {{--                                    <!-- /palette colors -->--}}
-
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-                        {{--                            <!-- /Seller_auctions -->--}}
-
-                        {{--                        </div>--}}
                         <div class="tab-pane fade" id="send_notification">
                             <div class="panel panel-flat">
                                 <div class="panel-heading">
@@ -683,23 +546,6 @@
                                               style="border:1px solid grey;padding:20px 30px">
                                             @csrf
                                             <input type="hidden" name="user_id" value="{{ $person->id }}"/>
-{{--                                            <div class="form-group">--}}
-{{--                                                <label--}}
-{{--                                                    class="col-lg-3 control-label display-block"> {{ trans('messages.message.title') }}--}}
-{{--                                                    : </label>--}}
-{{--                                                <div class="col-lg-6">--}}
-{{--                                                    <select name="title" class="select">--}}
-{{--                                                        <optgroup label="{{ trans('messages.message.title')}}">--}}
-{{--                                                            <option selected--}}
-{{--                                                                    disabled>{{trans('messages.select')}}</option>--}}
-
-{{--                                                            @foreach($messages as $message)--}}
-{{--                                                                <option--}}
-{{--                                                                    value="{{ $message->title }}"> {{ $message->title }} </option>--}}
-{{--                                                        @endforeach--}}
-{{--                                                    </select>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
                                             <br>
                                             <div class="form-group">
                                                 <label
@@ -718,10 +564,6 @@
                                                 </div>
                                             </div>
                                             <br>
-                                            {{--                                            <label> {{ trans('messages.notification.title') }} </label>--}}
-                                            {{--                                            <input type="text" class="form-control" name="title"/><br>--}}
-                                            {{--                                            <label> {{ trans('messages.notification.text') }} </label>--}}
-                                            {{--                                            <textarea class="form-control" name="text"></textarea><br>--}}
 
                                             <div style="text-align: center;">
                                                 <button type="submit"
