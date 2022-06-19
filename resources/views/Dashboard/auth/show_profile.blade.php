@@ -14,19 +14,7 @@
     </div>
 @endsection
 
-
 @section('style')
-{{--    <!-- Theme JS files -->--}}
-{{--    <script type="text/javascript" src="{{ asset('Dashboard/assets/js/plugins/forms/styling/uniform.min.js') }}"></script>--}}
-{{--    <script type="text/javascript" src="{{ asset('Dashboard/assets/js/plugins/forms/styling/switchery.min.js') }}"></script>--}}
-{{--    <script type="text/javascript" src="{{ asset('Dashboard/assets/js/plugins/forms/inputs/touchspin.min.js') }}"></script>--}}
-
-{{--    <script type="text/javascript" src="{{ asset('Dashboard/assets/js/core/app.js') }}"></script>--}}
-{{--    <script type="text/javascript" src="{{ asset('Dashboard/assets/js/pages/form_input_groups.js') }}"></script>--}}
-
-{{--    <script type="text/javascript" src="{{ asset('Dashboard/assets/js/plugins/ui/ripple.min.js') }}"></script>--}}
-{{--    <!-- /theme JS files -->--}}
-
     <style>
         .admin-profile {
             background-image: url('{{url('http://demo.interface.club/limitless/assets/images/bg.png')}}');
@@ -36,44 +24,7 @@
     </style>
 @stop
 
-
-
 @section('content')
-
-
-    <!-- Page header -->
-{{--    <div class="page-header page-header-default" dir="{{ direction() }}">--}}
-{{--        <div class="page-header-content">--}}
-{{--            <div class="page-title">--}}
-{{--                <h4>--}}
-{{--                    <i class="icon-arrow-right6 position-left"></i>--}}
-{{--                    <span class="text-semibold">@lang('messages.dashboard')</span> - @lang('messages.profile')--}}
-{{--                </h4>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-{{--        <div class="breadcrumb-line">--}}
-{{--            <ul class="breadcrumb" style="float: {{ floating('right', 'left') }}">--}}
-{{--                <li><a href=" {{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a></li>--}}
-{{--                <li class="active">@lang('messages.profile')</li>--}}
-{{--            </ul>--}}
-
-{{--            @include('Dashboard.layouts.parts.quick-links')--}}
-{{--        </div>--}}
-{{--    </div>--}}
-    <!-- /page header -->
-
-
-
-
-
-
-
-
-
-
-
-
 
     @include('Dashboard.layouts.parts.validation_errors')
 
@@ -101,21 +52,18 @@
                                     <ul class="navigation">
                                         <li class="navigation-header">@lang('messages.main')</li>
 
-                                        <li class="active">
+                                        <li style="background-color: #009688;" class="active" >
                                             <a href="#profile" data-toggle="tab"><i class="icon-user"></i> @lang('messages.profile')</a>
                                         </li>
 
-                                        <li>
+                                        <li style="background-color: #009688;">
                                             <a href="#schedule" data-toggle="tab"><i class="icon-gear"></i> @lang('messages.edit')</a>
                                         </li>
-
-                                        <li class="navigation-divider"></li>
-
-                                        <li>
+{{--                                        <li class="navigation-divider"></li>--}}
+                                        <li style="background-color: #009688;">
                                             <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form-2').submit();">
                                                 <i class="icon-switch2"></i> @lang('messages.logout')
                                             </a>
-
                                             <form id="logout-form-2" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                                                 @csrf
                                             </form>
