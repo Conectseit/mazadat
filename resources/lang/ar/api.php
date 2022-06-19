@@ -28,9 +28,6 @@ return [
     'sorry_you_cant_make_bid_your_available_limit_less_than_this_value'               =>'عفوا لا يمكنك المزايدة الان لان القيمة المسموحة من محفظتك اقل من قيمة المزايدة ',
 
 
-
-
-
     'deleted_auction_successfully'         	    => 'تم حذف المزاد بنجاح',
 
 
@@ -55,16 +52,7 @@ return [
     'updated_your_auction_successfully_wait_until_admin_accept_it'         	=> ' تم تعديل مزادك بنجاح , انتظر حتي يتم قبوله من ادارة الموقع',
 
 
-
-
-
-
-
-
     'paid_success'=>'تمت عملية التحويل بنجاح',
-
-
-
     'not_paid'=>'غير مدفوع',
     'paid'=>'مدفوع',
     'cash'=>'كاش',

@@ -145,37 +145,3 @@ Route::group(['namespace' => 'Api'], function () {
     });
 });
 
-
-
-
-
-//        Route::get('cities', [CityController::class, 'cities']);
-//        Route::post('add_traffic_file_number', [UserController::class, 'add_traffic_file_number']);
-//        Route::post('upload_passport', [UserController::class, 'upload_passport']);
-//        Route::post('add_document', [UserController::class, 'add_document']);
-//        Route::get('my_document', [UserController::class, 'my_document']);
-//        Route::get('my_passport', [UserController::class, 'my_passport']);
-//        Route::post('update_personal_image', [AuthController::class, 'update_personal_image']);
-
-//        Route::post('complete_company_profile', [CompanyController::class, 'complete_company_Profile']);
-
-//        Route::post('add_additional_contact', [AuthController::class, 'add_additional_contact']);
-
-
-
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//=========== settings ============
-//    Route::get('settings/{key?}', [SettingController::class, 'show']);
-
-
-//        Route::get('update_preferred_language', [UserController::class, 'updatePreferredLanguage']);
-//        Route::get('get_preferred_language', [UserController::class, 'getPreferredLanguage']);
-
-//Route::group([ 'namespace' => 'Api', 'prefix' => 'auth'], function ($router) {
-//    Route::post('/login', [AuthController::class, 'login']);
-//    Route::post('/register', [AuthController::class, 'register']);
-//    Route::post('/logout', [AuthController::class, 'logout']);
-//    Route::post('/refresh', [AuthController::class, 'refresh']);
-//    Route::get('/user-profile', [AuthController::class, 'userProfile']);
-//});

@@ -49,15 +49,6 @@ return [
 
 
 
-
-
-
-
-
-
-
-
-
     'provider-registeration-message' => 'Your data has been sent to the administration to confirm the accuracy of the data and will be answered by e-mail as soon as possible. Thank you for your cooperation with us',
 	'hall-is-not-found' 			=> 'Sorry, this hall is not found',
 	'category-is-not-found' 		=> 'Sorry, this category is not found',
