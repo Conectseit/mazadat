@@ -1,9 +1,5 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.my_profile'))
-@section('style')
-    <style></style>
-@endsection
-
 @section('content')
     <section class="my-wallet-page" dir="{{ direction() }}">
         <div class="container">
@@ -63,20 +59,10 @@
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        {{--                        <div class="links" style="height: 18px; width:auto;">--}}
-                        {{--                            <a href="https://www.riyadbank.com/ar/branches-atms">{{trans('messages.ATM_locations_near_you')}}<br></a>--}}
-                        {{--                        </div>--}}
                         <div class="main-links">
                             <a href="{{route('front.send_sms_bank_info')}}">{{trans('messages.send_sms')}} </a><br>
-
                         </div>
                     </div>
-{{--                    <div class="col-md-3">--}}
-
-{{--                            <a href="https://www.riyadbank.com/ar/branches-atms" style="color: darkblue; text-decoration:underline">{{trans('messages.ATM_locations_near_you')}}--}}
-{{--                                <br></a>--}}
-{{--                            --}}{{--                            <a href="#">ارسال عن طريق البريد<br>الالكترونى</a>--}}
-{{--                    </div>--}}
                 </div>
             </div>
             <div class="bank-form">
@@ -105,15 +91,10 @@
                                 <input type="text" class="form-control" placeholder="" id="datepicker"
                                        name="date" required>
                             </div>
-
-
-
                             <div class="mb-3 form-check form-group">
                                 <a href="javascript:void(0);" id="change-terms-value">
                                     <input type="checkbox" class="form-check-input"
-                                           id="accept-terms" name="checkbox"
-{{--                                    @if(auth()->check()){{ checkIsUserAccept($auction)->count()?'checked':''}}@endif--}}
-                                     required >
+                                           id="accept-terms" name="checkbox" required >
                                 </a>
                                 <label class="form-check-label" for="accept-terms"
                                        style="color: red;">
@@ -127,9 +108,3 @@
         </div>
     </section>
 @stop
-
-@push('scripts')
-    <script>
-
-    </script>
-@endpush

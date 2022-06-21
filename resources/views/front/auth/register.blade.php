@@ -15,7 +15,6 @@
             margin-bottom: .5rem !important;
             padding-top: 56px;
         }
-
     </style>
 @endsection
 
@@ -24,7 +23,6 @@
     <section class="my-wallet-page"  dir="{{ direction() }}">
         <div class="container">
             <h3 class="title"> {{trans('messages.welcome_in_mazadat')}}</h3><br><br>
-
             <div class="">
                 <div class="row">
                     <div class="col-md-6" >
@@ -55,7 +53,6 @@
             </div>
         </div>
     </section>
-
 @stop
 
 

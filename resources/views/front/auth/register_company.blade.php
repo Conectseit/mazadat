@@ -30,7 +30,6 @@
                             <div class="col-lg-2 col-sm-12 d-flex align-items-center">
                                 <img id="img-preview" style="width: 180px ; height:90px"
                                      src={{ asset('uploads/images.jpg') }}
-                                     {{--                                "https://assets.wasalt.com/others/icons/villas-for-sale-in-makkah.jpeg"--}}
                                          width="250px"/>
                             </div>
                             @error('company_authorization_image')<span
@@ -40,7 +39,6 @@
 
                         <div class="form-group mb-4 row">
                             {{--                            <input type="hidden" name="fcm_web_token" value="">--}}
-
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="user_name" class="form-label">{{trans('messages.company_name')}}</label>
                             </div>
@@ -162,24 +160,7 @@
                             @error('latitude')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
                         </div>
-
-
-                        {{--                        </div>--}}
-                        {{--                            <div class="form-group mt-5 row d-lg-flex d-sm-block">--}}
-
-                        {{--                                <div class="col-lg-3 col-md-5">--}}
-                        {{--                                    {!! NoCaptcha::renderJs() !!}--}}
-                        {{--                                                                    {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
-                        {{--                                    {!! NoCaptcha::display() !!}--}}
-                        {{--                                </div>--}}
-                        {{--                                <div class="col-lg-9 col-md-7 my-auto">--}}
-                        {{--                                    <p> {{trans('messages.accept_term')}}</p>--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-
-
                         <br>
-
                         <div class="sign-btn">
                             <div class="col-lg-10 col-md-9">
                                 {!! NoCaptcha::renderJs() !!}
@@ -187,9 +168,6 @@
                                 {!! NoCaptcha::display() !!}
                             </div>
                             @error('g-recaptcha-response')<span style="color: #e81414;">{{ $message }}</span>@enderror
-
-                            {{--                            <p> {{trans('messages.accept_term')}}</p>--}}
-
 
                             <br><br>
                             <div class=" form-check form-group">
@@ -213,9 +191,6 @@
     </section>
 
 @stop
-
-
-
 @push('scripts')
     <script>
         $(function () {
@@ -241,7 +216,6 @@
 
             }
         }
-
         function readURL2(input) {
             console.log(input.files);
             if (input.files && input.files[0]) {

@@ -38,7 +38,7 @@
     @include('Dashboard.layouts.parts.validation_errors')
 
     <div class="row">
-        <p>{{trans('messages.Statistics')}}</p>
+        <h3>{{trans('messages.Statistics')}}</h3>
         <div class="col-lg-12" dir="{{ direction() }}">
             <div class="row">
                 @foreach (models(true) as $color => $model)
@@ -171,7 +171,6 @@
 
 
     </div>
-
     <!-- /dashboard content -->
 
     <!-- Footer -->

@@ -29,13 +29,10 @@
             document.getElementById("geo_lng").value = event.latLng.lng();
             marker.setPosition(event.latLng);
         });
-
-
         marker.addListener('position_changed', printMarkerLocation);
         function printMarkerLocation() {
             document.getElementById('geo_lat').value = marker.position.lat();
             document.getElementById('geo_lng').value = marker.position.lng();
-
             // console.log('Lat: ' + marker.position.lat() + ' Lng:' + marker.position.lng() );
         }
         autocomplete.addListener('place_changed', function () {
@@ -88,12 +85,6 @@
             document.getElementById('location').value = place.formatted_address;
         });
     }
-
-
-
-
-
-
 
 </script>
 {{--<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyDdCP49XcVxRLuY-4CYtxHXxnqucDvQLE8" >--}}

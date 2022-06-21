@@ -15,10 +15,6 @@
 <script src="{{asset('Front/assets/js/lightbox.min.js')}}"></script>
 <script src="{{asset('Front/assets/js/main.js')}}"></script>
 <script type="text/javascript" src="{{ url('assets/js/sweetalert.min.js') }}"></script>
-
-
-
-
 <script>
     $(document).ready(function(e){
         firebase.initializeApp({
@@ -90,13 +86,6 @@
 {{--</script>--}}
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
-
-
-
-
-
-
-
 
 {{--<script>--}}
 {{--    $('.num').keyup(function () {--}}

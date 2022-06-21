@@ -1,8 +1,5 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.register'))
-@section('style')
-@endsection
-
 @section('content')
     @include('front.auctions.parts.head')
     <section class="sign-up-page" dir="{{ direction() }}">
@@ -72,15 +69,6 @@
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 <div class="row">
-{{--                                    <div class="col-xl-3 col-lg-4 col-sm-6">--}}
-{{--                                        <select class="form-select form-control" name="phone_code"--}}
-{{--                                                aria-label="Default select example">--}}
-{{--                                            <option selected disabled> {{ trans('messages.choose_country_code')}}</option>--}}
-{{--                                            @foreach ($countries as $country)--}}
-{{--                                                <option  value="{{ $country->phone_code }}"> {{ $country->$name }}{{ $country->phone_code }} </option>--}}
-{{--                                            @endforeach--}}
-{{--                                        </select>--}}
-{{--                                    </div>--}}
 
                                     <div class="col-xl-3 col-lg-4 col-sm-6">
                                         <select class="form-select form-control" name="country_id"
@@ -120,7 +108,6 @@
                             </div>
                             <div class="col-lg-10 col-md-9">
 {{--                                <input type="hidden" name="fcm_web_token" value="">--}}
-
                                 <input type="password"
                                        class="form-control   @error('password') is-invalid @enderror"  value="{{ old('password') }}"
                                        id="password" name="password" placeholder="{{trans('messages.enter_password')}}">
@@ -159,8 +146,6 @@
                                 <p>{{trans('messages.appear_name_note')}}</p>
                             </div>
                         </div>
-
-
                         <div class=" form-check form-group">
                             <a href="{{route('front.condition_and_terms')}}">
                             <label class="form-check-label"  style="color: white; text-decoration: underline">{{ trans('messages.accept_terms')}} </label>
@@ -169,8 +154,6 @@
                             </a>
                             @error('accept_app_terms')<span style="color: #e81414;">{{ $message }}</span>@enderror
                         </div>
-
-
                         <div class="sign-btn">
                             <div class="col-lg-10 col-md-9">
                                 {!! NoCaptcha::renderJs() !!}
@@ -188,5 +171,4 @@
 
         </div>
     </section>
-
 @stop

@@ -58,16 +58,6 @@ class AuctionController extends Controller
                 return back()->with('error', trans('messages.Sorry_you_should_accept_auction_terms_first'));
             }
 
-//            if( $user->accepted_auctions->count() == 0)
-//            {
-//            }
-
-//            if(is_null($user->passport_image) && $user->documents->count() == 0)
-//            {
-//                return back()->with('warning', trans('messages.Sorry_you_should_upload_document_and_passport_first'));
-//            }
-
-
             $bid = AuctionBuyer::where(['auction_id' => $auction->id, 'buyer_id' => $user->id])->first();
 
             if ($auction->current_price >= $request->buyer_offer)
@@ -168,7 +158,6 @@ class AuctionController extends Controller
         if ((boolean)$check->count()) {
             $check->delete();
             return response()->json(['status' => true, 'is_watched' => false]);
-//            return back();
         }
         WatchedAuction::create(['user_id' => auth()->user()->id, 'auction_id' => $auction->id,]);
         return response()->json(['status' => true, 'is_watched' => true]);
@@ -237,18 +226,6 @@ class AuctionController extends Controller
             }
             DB::table('inspection_images')->insert($dataa);
 
-
-
-//            //======= upload auction inspection_report_images =======
-//            $dataa = [];
-//            if ($request->hasfile('inspection_report_images')) {
-//                foreach ($request->file('inspection_report_images') as $key => $img) {
-//                    $dataa[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
-//                }
-//            }
-//            $auction_inspection_report_images = DB::table('inspection_images')->insert($dataa);
-
-
             //======= upload auction options =======
             $options = [];
             if ($request->has('option_ids')) {
@@ -267,33 +244,8 @@ class AuctionController extends Controller
 
             if (count($options) > 0) DB::table('auction_data')->insert($options);
 
-
-
-
-
-
-//            $options = [];
-//            if ($request->has('option_ids')) {
-//                $ids = $request->option_ids ? array_filter($request->option_ids) : [];
-//
-//                if (is_array($ids) && !empty($ids)) {
-//                    // if $request->option_ids is null or equal zero - has zero -> refuse it
-//                    foreach ($ids as $option_detail_id) {
-//                        $options[$option_detail_id] = [
-//                            'auction_id' => $auction->id,
-//                            'option_details_id' => $option_detail_id // <==== arrrray ??,
-//                        ];
-//                    }
-//                }
-//            }
-//
-//            if (count($options) > 0) DB::table('auction_data')->insert($options);
-
-
-
             DB::commit();
             return redirect()->route('front.my_auctions')->with('success', trans('messages.added_successfully_wait_until_admin_accept_your_auction'));
-//            return back()->with('success', trans('messages.added_successfully_wait_until_admin_accept_your_auction'));
 
         } catch (Exception $e) {
             DB::rollback();
@@ -311,14 +263,6 @@ class AuctionController extends Controller
         $data['ended_auctions'] = auth()->user()->seller_auctions()->where('status', 'done')->where('is_accepted', 1)->latest()->paginate('20');
         return view('front.user.my_auctions', $data);
     }
-
-
-//    public  function deleteAuction (Auction $auction)
-//    {
-//        $auction= Auction::where([ 'id' => $auction->id,]);
-//        $auction->delete();
-//        return back()->with('success', trans('messages.deleted_your_auction_successfully'));
-//    }
 
 
     public function show_auction_update($id)
@@ -367,24 +311,6 @@ class AuctionController extends Controller
             }
              DB::table('inspection_images')->insert($dataa);
         }
-
-
-
-
-
-//        $dataa = [];
-//        if ($request->hasfile('inspection_report_images')) {
-//            foreach ($auction->inspectionimages as $image) {
-//                unlink('uploads/auctions/' . $image->image);
-//                $image->delete();
-//            }
-//            foreach ($request->file('inspection_report_images') as $key => $img) {
-//                $dataa[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
-//            }
-//            $auction_inspection_images = DB::table('inspection_images')->insert($dataa);
-//        }
-
-
 //======= update auction options =======
         $options = [];
         if ($request->has('option_ids')) {
@@ -405,9 +331,6 @@ class AuctionController extends Controller
             }
         }
 
-//        foreach ($auction->option_details as $option_detail) {
-//            $option_detail->delete();
-//        }
 
         if (count($options) > 0) DB::table('auction_data')->insert($options);
 

@@ -30,25 +30,18 @@
 @section('content')
     <section class="sign-up-page" dir="{{ direction() }}">
         <div class="container">
-{{--            <h4 class="title"> {{ trans('messages.activation') }}</h4>--}}
             @include('front.layouts.parts.alert')
-
             <div class="row">
                 <form action="{{route('front.check-reset-code')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="inputs-group">
                         <h5 class="group-title">{{trans('messages.mobile_reset')}}</h5>
-{{--                        <p class="mb-4"> </p>--}}
-
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="full_name" class="form-label">{{trans('messages.activation_code')}}</label>
                             </div>
                             <div class="col-lg-8 col-md-10">
-{{--                                <input type="text" class="form-control d-none" id="activation_code" name="activation_code"--}}
-{{--                                       placeholder="{{trans('messages.activation_code')}}">--}}
                                 <div class="box">
-{{--                                    <strong class="text-dark">{{trans('messages.activation_code')}}</strong>--}}
                                     <input type="text" class="code"  name="code"  maxlength="4" style="width: 120px;"
                                            placeholder="{{trans('messages.enter_activation_code')}}">
                                 </div>
@@ -64,8 +57,4 @@
 
         </div>
     </section>
-
 @stop
-
-@push('scripts')
-@endpush

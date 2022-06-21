@@ -12,7 +12,6 @@
             @include('front.layouts.parts.alert')
                 <div class=" d-flex justify-content-between">
                     <div class="add-auction btn "><b>
-                            {{--                <i class="fal fa-plus-circle"></i>--}}
                         </b>{{ trans('messages.additional_address') }}:
                     </div>
                 </div>

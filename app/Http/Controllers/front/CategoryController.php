@@ -38,17 +38,4 @@ class CategoryController extends Controller
         return view('front.auctions.category_auctions',$data);
     }
 
-
-
-    //            $data['auctions'] = Auction::where('category_id', $id)->get();
-
-//    public function search(SearchRequest $request,$id)
-//    {
-//        $name = 'name_' . app()->getLocale();
-//        $data['auctions'] = Auction::where($name, 'like', '%'. $request->search .'%')->get();
-//        $data['category'] = Category::where('id', $id)->first();
-//        $data['category_options'] = Option::where('category_id', $id)->with('option_details')->get();
-//
-//        return view('front.auctions.category_auctions',$data);
-//    }
 }

@@ -49,9 +49,6 @@
 
                         <div class="mb-4 form-group row">
                             <div class="col-sm-4">
-{{--                                {!! NoCaptcha::renderJs() !!}--}}
-{{--                                {!! NoCaptcha::display(['data-theme' => 'dark']) !!}--}}
-{{--                                {!! NoCaptcha::display() !!}--}}
                             </div>
                             <div class="col-sm-4">
                                 <div class="mb-3 form-check" >
@@ -71,18 +68,12 @@
                         <div class="register">
                             <a href="{{route('front.show_register')}}" >{{trans('messages.register')}}</a>
                         </div>
-
-
-
                     </div>
                 </form>
-
-
             </div>
 
         </div>
         @include('front.layouts.parts.modal')
-
     </section>
 
 @stop

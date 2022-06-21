@@ -48,7 +48,7 @@ return [
     'available_limit'           => 'Available Limit  : ',
     'available_limit_note'      => 'Note: You Should Increase Available Limit First to  can make abid ',
     'choose_payment_method'     => 'Choose Payment Method',
-    'cheque'                    => 'Cheque',
+    'cheque'                    => 'Cash',
     'bank_deposit'              => 'Bank Deposit',
     'online_pay'                => 'Online Payment',
     'online_payment'            => 'Online Payment',

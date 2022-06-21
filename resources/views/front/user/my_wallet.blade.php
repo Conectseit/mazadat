@@ -20,7 +20,6 @@
                     <i class="fal fa-wallet" style="padding:12px; "></i>
                     <h2>{{$user->wallet}} ريال- سعودي</h2>
                 </div>
-
             </div>
         </div>
         <div class="container">
@@ -35,7 +34,6 @@
                     <p>{{$user->available_limit}} ريال- سعودي</p>
                 </li>
             </ul>
-
             <div class="limit-choice">
                 <h5 class="title"> {{__('messages.choose_available_limit')}}</h5>
                 <form action="{{route('front.choose_available_limit')}}" method="post">
@@ -50,7 +48,6 @@
                         <i class="fal fa-plus"></i>
                     </span>
                 </div>
-
                     <button class="submit-btn btn btn-primary submit-btn save-btn"> {{trans('messages.save')}}</button>
                 </form>
             </div>

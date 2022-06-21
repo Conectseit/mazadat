@@ -31,9 +31,7 @@
     @include('front.auctions.parts.head')
     <section class="sign-up-page">
         <div class="container">
-{{--            <h4 class="title"> {{ trans('messages.activation') }}</h4>--}}
             @include('front.layouts.parts.alert')
-
             <div class="row">
                 <form action="{{route('front.resetPassword')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -59,8 +57,6 @@
                                            name="password_confirmation" placeholder="{{trans('messages.confirm-password')}}">
                                 </div>
                             </div>
-
-
                         </div>
 
                         <div class="sign-btn row">
@@ -69,12 +65,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </section>
-
 @stop
-
-@push('scripts')
-
-@endpush

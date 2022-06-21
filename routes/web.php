@@ -112,7 +112,6 @@ Route::group(
         Route::get('my_auctions', [AuctionController::class, 'my_auctions'])->name('front.my_auctions');
         Route::post('ajax/get-options-by-category-id', [AuctionController::class, 'get_options_by_category_id'])->name('front.ajax_get_options_by_category_id');
         Route::post('/ajax-delete-auction', [AuctionController::class, 'destroy'])->name('front.ajax-delete-auction');
-//        Route::any('delete-auction/{auction}', [AuctionController::class, 'deleteAuction'])->name('front.delete-auction');
         Route::any('auction_show_update/{auction}', [AuctionController::class, 'show_auction_update'])->name('front.auction_show_update');
         Route::any('auction_update/{auction}', [AuctionController::class, 'updateAuction'])->name('front.auction_update');
 
@@ -152,23 +151,3 @@ Route::group(
     Route::post('ajax_get_cities_by_country_id', [AuthController::class, 'get_cities_by_country_id'])->name('get_cities_by_country_id');
 
 });
-
-
-//Route::get('/', function () {
-//    return view('front/splash_index');
-//});
-
-
-//        Route::any('update_personal_bio', [UserController::class, 'update_personal_bio'])->name('front.update_personal_bio');
-
-//        Route::any('user_documents', [UserController::class, 'user_documents'])->name('front.user_documents');
-//        Route::any('user_passport', [UserController::class, 'user_passport'])->name('front.user_passport');
-//        Route::any('upload_passport', [UserController::class, 'uploadPassport'])->name('front.upload_passport');
-//        Route::any('upload_documents', [UserController::class, 'uploadDocuments'])->name('front.upload_documents');
-
-
-//Route::get('//', function () {
-//    return view('welcome');
-//});
-//Auth::routes();
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

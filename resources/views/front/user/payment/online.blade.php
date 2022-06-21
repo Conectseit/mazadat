@@ -1,9 +1,5 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.my_profile'))
-@section('style')
-    <style></style>
-@endsection
-
 @section('content')
     <section class="my-wallet-page" dir="{{ direction() }}">
         <div class="container">
@@ -57,9 +53,3 @@
         </div>
     </section>
 @stop
-
-@push('scripts')
-    <script>
-
-    </script>
-@endpush

@@ -22,7 +22,6 @@
         });
     });
 
-
     $(function() {
         // Multiple images preview in browser
         var imagesPreview1 = function(input, placeToInsertImagePreview) {
@@ -40,10 +39,8 @@
                 }
             }
         };
-
         $('#inspection-photo-add').on('change', function() {
             imagesPreview1(this, 'div.gallery1');
         });
     });
-
 </script>

@@ -4,8 +4,6 @@
     <style> #map {
             height: 400px;
         }</style>
-    {{--    <link rel="stylesheet" type="text/css" href="{{ asset('backend/js/plugins/dropzone/dist/min/dropzone.min.css') }}"/>--}}
-
 @endsection
 
 @section('content')
@@ -33,8 +31,6 @@
                                 @error('name_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                         </div>
-
-
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="email" class="form-label">{{trans('messages.name_en')}}</label>
@@ -47,8 +43,6 @@
 
                             </div>
                         </div>
-
-
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                 <label for="email" class="form-label">{{trans('messages.description_ar')}}</label>
@@ -159,13 +153,11 @@
                             <div class="col-lg-10 col-md-9">
                                 <select class="form-select form-control" id="category" name="category_id"
                                         aria-label="Default select example">
-                                    {{--                                    <option selected disabled> {{ trans('messages.auction.choose_category')}}</option>--}}
                                     <option selected
                                             disabled>{{ isset($auction->category_id)? $auction->category->$name :  trans('messages.select') }}
                                     </option>
                                     @foreach ($categories as $category)
                                         <option
-                                            {{--                                            {{isset($auction->category_id) == $category->id ? 'selected' : ''}}--}}
                                             value="{{ $category->id }}"> {{ $category->$name }}
                                         </option>
                                     @endforeach
@@ -187,23 +179,18 @@
 
                         <div class="form-group">
                             <label>@lang('messages.auction.images')</label>
-                            {{--                            <input type="file" class="form-control " name="images[]" multiple="multiple"/>--}}
                             <input type="file" multiple id="gallery-photo-add" class="form-control" name="images[]">
                             <div class="gallery m-2">
                                 @if ($images)
-
                                     @foreach($images as $image)
                                         <img src="{{asset($image->ImagePath) }}"
                                              style="height: 40px; padding-right: 1px;" alt="">
-                                        {{--                                        <button class="btn btn-danger" style="margin-top: 5px;">x</button>--}}
                                     @endforeach
                                 @endif
                             </div>
                         </div>
                         <hr>
                         <br>
-
-
                         <div class="form-group">
                             <h4>@lang('messages.auction.inspection_report_files')</h4><br>
                             @foreach($inspection_report_images as $image)
@@ -246,7 +233,6 @@
                                 </div>
                             </div>
                         </div>
-
                             <hr><br>
                             <div class="form-group">
                                 <label>@lang('messages.auction.location'):</label>
@@ -266,9 +252,7 @@
                                            class="form-control hidden d-none">
                                 </div>
                                 <br>
-
                             </div>
-
                             <div class="sign-btn">
                                 <p> {{trans('messages.wait')}}</p>
                                 <button type="submit" id="save-form-btn"

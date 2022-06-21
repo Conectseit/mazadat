@@ -19,7 +19,6 @@
     <section class="watching-page"  dir="{{ direction() }}">
         <div class="container">
             <h4 class="title">
-                {{--                <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>--}}
                 <a href="{{ route('front.my_profile') }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
                 {{ trans('messages.my_profile') }}
             </h4><br>
@@ -39,8 +38,8 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="pending_auctions" role="tabpanel" aria-labelledby="profile-tab"><br>
                         @if($person_bids->count() > 0)
-                            <a href="" id="printme" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-
+                            <br>
+                            <a href="" id="printme" target="_blank" class="btn btn-default" style="background-color: blue; color: whitesmoke; margin-bottom: 30px; padding: 10px;"><i class="fa fa-print"></i> Print</a>
                             <table class="table table-striped table-dark datatable"
                                    id="auction_bids"
                                    style="font-size: 16px;">
@@ -73,7 +72,7 @@
                         @endif
                     </div>
                     <div class="tab-pane fade  " id="on_progress_auctions" role="tabpanel" aria-labelledby="home-tab"><br>
-                        <a href="" id="print_transactions" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+                        <a href="" id="print_transactions" target="_blank" class="btn btn-default" style="background-color: blue; color: whitesmoke; margin-bottom: 30px; padding: 10px;"><i class="fa fa-print"></i> Print</a>
 
                         <table class="table table-striped datatable-basic print_transactions"
                                id="transactions" style="font-size: 16px;">
@@ -100,8 +99,6 @@
                             @endforeach
                             </tbody>
                         </table>
-
-
                     </div>
                 </div>
             </div>
@@ -116,10 +113,8 @@
         document.getElementById("printme").onclick = function(){
            window.print();
         };
-    </script>
-    <script>
         document.getElementById("print_transactions").onclick = function(){
-           window.print();
+            window.print();
         };
     </script>
 @endpush

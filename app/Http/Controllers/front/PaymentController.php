@@ -45,15 +45,6 @@ class PaymentController extends Controller
     public  function send_sms_bank_info(Request $request)
     {
         $bank_name = 'bank_name_' . app()->getLocale();
-//        $data['bank_name'] = Setting::where('key', 'bank_name_ar')->first()->value;
-//        $data['account_name'] = Setting::where('key', 'account_name')->first()->value;
-
-//        $data['account_number'] = Setting::where('key', 'account_number')->first()->value;
-//        $data['branch'] = Setting::where('key', 'branch')->first()->value;
-//        $data['iban'] = Setting::where('key', 'iban')->first()->value;
-//        $data['swift_code'] = Setting::where('key', 'swift_code')->first()->value;
-//        $data['routing_number'] = Setting::where('key', 'routing_number')->first()->value;
-
         $bank_info= Setting::where('key', $bank_name)->first()->value;
         $account_name= Setting::where('key', 'account_name')->first()->value;
         $account_number= Setting::where('key', 'account_number')->first()->value;
@@ -70,16 +61,13 @@ class PaymentController extends Controller
         $text .= " - IBan :  " . $iban."\n";
         $text .= " - swift code :  " . $swift_code."\n";
         $text .= " - routing number :  " . $routing_number;
-//        dd(auth()->user()->mobile);
         SmsController::send_sms(auth()->user()->mobile, $text);
-
 //        SmsController::send_sms(removePhoneZero(auth()->user()->mobile,'966'), $text);
             return redirect()->route('front.bank_deposit')->with('success', trans('messages.message_sent_success'));
     }
 
     public function upload_receipt(UploadReceiptRequest $request)
     {
-
         $request_data = $request->except(['image','checkbox']);
         if ($request->image) {
             $request_data['image'] = $request_data['image'] = uploaded($request->image, 'payments');
@@ -106,11 +94,8 @@ class PaymentController extends Controller
             'email' =>  "test@test.com",
             'amount' => (int)$request->amount ?? 0, // temp
         ]);
-
         $response = Http::post(UrwayPayment::base(), $data)->object();
-
         $url = UrwayPayment::paymentUrl($response);
-
         return $url == '' ? back() : redirect()->to($url);
     }
 
@@ -137,7 +122,7 @@ class PaymentController extends Controller
         } catch (\Exception $e)
         {
             dd($e->getMessage());
-            //return back();
+            return back();
         }
     }
 }

@@ -2,15 +2,12 @@
     @if($auction)
         get_ajax_request({{ $auction->category_id }}, @json($auction->option_details));
     @endif
-
     // ========= get_options_by_category_id =====
     function get_ajax_request(category_id, options_details)
     {
         let _token = '{{ csrf_token() }}';
         let select_inputs_options = $('.select-inputs-options');
-
         //console.log(category_id);
-
         if (category_id) {
             $.ajax({
                 url: "{{ route('front.ajax_get_options_by_category_id') }}",

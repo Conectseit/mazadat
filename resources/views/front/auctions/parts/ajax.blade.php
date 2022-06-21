@@ -1,4 +1,3 @@
-
 <script>
     $(function () {
         let incrementVal = {{($auction->value_of_increment)}};

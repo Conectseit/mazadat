@@ -39,7 +39,6 @@
                             @if(auth()->user()->is_company =='person')
                               <input type="hidden" name="is_company" value="person"/>
                             @endif
-{{--                            <h5 class="group-title">{{ trans('messages.please_complete_your_address_details')}}</h5>--}}
                             <h5 class="group-title">{{ trans('messages.user.complete_data')}}</h5>
                             <div class="form-group mb-4 row">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
@@ -49,13 +48,9 @@
                                 <div class="col-lg-10 col-md-9" >
                                     <select class=" select form-select form-control" name="nationality_id"
                                             aria-label="Default select example" >
-                                        {{--                                        <option selected disabled>{{trans('messages.select')}}</option>--}}
                                         <option selected
                                                 disabled>{{ isset(auth()->user()->nationality)? auth()->user()->nationality->$name :  trans('messages.select') }}
                                         </option>
-
-                                        {{--                                        <option selected disabled>{{ auth()->user()->nationality->$name }}</option>--}}
-
                                         @foreach ($nationalities as $nationality)
                                             <option
                                                 {{isset(auth()->user()->nationality_id)==$nationality->id? 'selected' : ''}}
@@ -145,43 +140,6 @@
                                     @error('signs')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
                                 </div>
-
-
-
-
-                                {{--                            <div class="form-group mb-4  row ">--}}
-                                {{--                                <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-                                {{--                                    <label>@lang('messages.passport_image')</label>--}}
-                                {{--                                </div>--}}
-                                {{--                                <div class="col-lg-8 col-sm-12 d-flex align-items-center">--}}
-                                {{--                                    <input type="file" class="form-control " name="passport_image" accept="image/*" onchange="readURL(this)" />--}}
-                                {{--                                </div>--}}
-                                {{--                                <div class="col-lg-2 col-sm-12 d-flex align-items-center">--}}
-                                {{--                                    <img  id="img-preview" style="width: 180px ; hight:50px" src="https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png" width="250px" />--}}
-                                {{--                                </div>--}}
-                                {{--                            </div>--}}
-
-
-
-
-                                {{--                                <div class="form-group mb-4 row">--}}
-                                {{--                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
-                                {{--                                        <label for="block" class="form-label"> @lang('messages.passport_image')</label>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <div class="col-lg-10 col-md-9">--}}
-                                {{--                                        <input type="file" class="form-control image " name="passport_image">--}}
-
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
-                                {{--                                <div class="form-group">--}}
-                                {{--                                    <img src=" {{auth()->user()->passport_image_path}} " width=" 100px "--}}
-                                {{--                                         value="{{auth()->user()->passport_image_path}}"--}}
-                                {{--                                         class="thumbnail image-preview">--}}
-                                {{--                                </div>--}}
-
-
-
-
                                 <div class="form-group mb-4  row ">
                                     <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                         <label>@lang('messages.identity')</label>
@@ -201,40 +159,30 @@
                                     <div class="form-group">
                                         <label>{{trans('messages.user_location_on_map')}}:</label>
                                         <div class="col-lg-12">
-                                            {{--                                    <input id="searchInput" class=" form-control"  placeholder=" اختر المكان علي الخريطة " name="other">--}}
                                             <div id="map"></div>
                                         </div>
                                         <div class="col-lg-6">
                                             <input type="text" id="geo_lat" name="latitude"
                                                    value=""
-{{--                                                   value="{{isset(auth()->user()->latitude)?auth()->user()->latitude:'24.7135517'}}"--}}
                                                    readonly="" placeholder=" latitude" class="form-control hidden d-none">
                                         </div>
                                         <div class="col-lg-6">
                                             <input type="text" id="geo_lng" name="longitude"
                                                    value=""
-{{--                                                   value="{{isset(auth()->user()->longitude)?auth()->user()->longitude:'46.67529569'}}"--}}
-                                                   {{--                                   value="{{auth()->user()->longitude}}"--}}
                                                    readonly="" placeholder="longitude" class="form-control hidden d-none">
                                         </div>
                                         @error('latitude')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
                                     </div>
-
                             @endif
-
-
                             <button type="submit" class="btn btn-primary submit-btn">{{__(trans('messages.send'))}}</button>
                         </div>
                     </form>
                 </div>
             </div>
-
-
             @if(auth()->user()->is_company=='person')
                 @include('front.user.add_address_form')
             @endif
-
         </div>
     </section>
 @stop
@@ -242,6 +190,4 @@
 @push('scripts')
     @include('front.user.parts.script_edit')
     @include('front.user.parts.add_location_map')
-    {{--    @include('front.layouts.parts.map')--}}
-    {{--    @include('front.auth.ajax_get_cities')--}}
 @endpush

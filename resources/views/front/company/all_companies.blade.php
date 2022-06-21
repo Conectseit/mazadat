@@ -6,19 +6,16 @@
             width: 300px;
             height: 200px;
         }
-
         .card {
             background: transparent;
             border: 0;
         }
-
         .btn-info {
             font-size: 20px;
             color: #fff;
             background-color: #1e3c48;
             border-color: #1e3c48;
         }
-
         .btn-info:hover {
             color: #1e3c48;
             background-color: #f9e6c6;
@@ -66,6 +63,5 @@
             </div>
         </div>
     </section>
-
 @stop
 

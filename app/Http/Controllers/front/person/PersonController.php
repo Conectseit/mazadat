@@ -53,12 +53,3 @@ class PersonController extends Controller
         }
     }
 }
-
-
-
-
-//            $user = User::where('mobile', $request->mobile)->first();
-//            if ($user) return back()->withInput($request->only('mobile'))->with('error', 'عفوا رقم الجوال مسجل من قبل');
-//
-//            $user = User::where('email', $request->email)->first();
-//            if ($user) return back()->withInput($request->only('email'))->with('error', 'عفوا الايميل  مسجل من قبل');

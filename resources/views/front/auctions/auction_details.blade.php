@@ -80,7 +80,6 @@
                     <div class="col-lg-12" >
                         <h4 class="ad-title">{{ ($auction->category->$description )}}</h4>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="col-lg-3">
@@ -96,11 +95,9 @@
                             <img src="{{$auction->first_image_path}}" alt="image" class="img-thumbnail">
                         </div>
                     </div>
-
                     <div class="col-lg-9">
                         <div class="row ">
                             <div class="col-lg-6">
-
                                 <div class="details" id="details">
                                     <h4>{{$auction->$name}}  </h4>
                                 </div>
@@ -109,7 +106,6 @@
                                         <i class="fal fa-calendar-alt"></i>
                                         {{trans('messages.auction.start_at')}}
                                         : {{isset($auction->start_date)? ($auction->start_date->format('l, m/d/Y') ):''}}
-
                                     </p>
                                 </div>
                                 @if($auction->status=='on_progress')
@@ -120,7 +116,6 @@
                                         </p>
                                     </div>
                                 @endif
-
                                 @if($auction->status=='done')
                                     <div class="details" id="details">
                                         <p><i class="fal fa-clock"></i> {{trans('messages.auction.remaining_time')}}:
@@ -136,14 +131,12 @@
                                         {{($auction->category->auction_commission)}} ريال</h5>
                                     <h6 class="group-title text-primary" >  {{trans('messages.auction_commission_note')}}</h6>
                                 </div>
-
                                 <div class="details" id="details">
                                     <p>
                                         <i class="fal fa-gavel">  </i>{{trans('messages.auction.start_auction_price')}}
                                         :{{($auction->start_auction_price)}}
                                     </p>
                                 </div>
-
                                 <div class="details " id="details">
                                     <p><i class="fa fa-money">  </i> {{trans('messages.auction.current_price')}}
                                         :{{($auction->current_price)}}</p>
@@ -155,9 +148,7 @@
                                     <p class="ticket"><i class="fa fa-users">  </i> {{trans('messages.auction.buyers_count')}}
                                         :{{ ($auction->count_of_buyer ) }}
                                     </p>
-
                                     <p class="ticket"><i class="fal fa-user">  </i> {{trans('messages.auction.seller')}} :
-
                                         @if($auction->seller->is_company=='person' && $auction->seller->is_appear_name==1)
                                             {{ ($auction->seller->full_name ) }}
                                         @else
@@ -214,12 +205,6 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <ul>
-                                                {{--                                                <li>--}}
-                                                {{--                                                    <p>--}}
-                                                {{--                                                        <i class="far fa-clock"></i> {{ trans('messages.auction.remaining_time')}}--}}
-                                                {{--                                                        :{{$auction->remaining_time['days']}}--}}
-                                                {{--                                                    </p>--}}
-                                                {{--                                                </li>--}}
                                                 <li>
                                                     <p class="ticket"><i
                                                             class="far fa-ticket"></i>{{ trans('messages.auction.count_of_buyer')}}
@@ -242,7 +227,6 @@
                     </div>
                 </div>
                 <hr>
-
                 <div class="more">
                     <div class="terms">
                         <h4>{{ trans('messages.auction.images')}}:</h4>
@@ -265,10 +249,6 @@
                                              {{--                                             src="https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide1.jpg"--}}
                                              src="{{$auction->first_image_path}}"
                                              alt="First slide">
-                                        {{--                                        <div class="carousel-caption d-none d-md-block">--}}
-                                        {{--                                            <h5>Social Facilities Center</h5>--}}
-                                        {{--                                            <p>University Campus</p>--}}
-                                        {{--                                        </div>--}}
                                     </div>
                                     @foreach($images as $image)
                                         <div class="carousel-item">
@@ -300,21 +280,17 @@
                     <div class="row">
                         @foreach($auction->inspectionimages as $image)
                             <div class="col-md-3 col-6">
-{{--                                <a href="{{$image->image_path}}">--}}
                                 <p> <i class=" fa fa-file-pdf-o" style="color: red; width: 50px;"></i>@lang('messages.file_name') : {{ isset($image->file->name) ? $image->file->name:'..' }}</p><br>
                                 <div class="image" style="width: 80px; height: 80px;">
                                         <a href="{{route('inspection_view_file',$image->id)}}" target="_blank">
                                             <img src="{{asset('Front/assets/imgs/pdf-icon.jpg')}}" alt="image" style="width: 100%;">
                                         </a>
-                                        {{--                                        <img src="{{$image->image_path}}" alt="image">--}}
                                     </div>
-{{--                                </a>--}}
                             </div>
                         @endforeach
                     </div>
                 </div>
                 <hr>
-
                 <div class="more-imgs">
                     <div class="terms">
                         <h4>{{ trans('messages.auction.options')}}:</h4>
@@ -348,29 +324,6 @@
     </div>
 @stop
 @push('scripts')
-{{--    <script>--}}
-{{--        // Initialize and add the map--}}
-{{--        function initMap() {--}}
-{{--            // The location of Uluru--}}
-{{--            const uluru = { lat: {{ $auction->latitude }}, lng: {{ $auction->longitude }} };--}}
-{{--            // The map, centered at Uluru--}}
-{{--            const map = new google.maps.Map(document.getElementById("map"), {--}}
-{{--                zoom: 4,--}}
-{{--                center: uluru,--}}
-{{--            });--}}
-{{--            // The marker, positioned at Uluru--}}
-{{--            const marker = new google.maps.Marker({--}}
-{{--                position: uluru,--}}
-{{--                map: map,--}}
-{{--            });--}}
-{{--        }--}}
-
-{{--        window.initMap = initMap;--}}
-{{--    </script>--}}
-{{--    <script--}}
-{{--        src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks">--}}
-{{--    </script>--}}
-
     @include('front.auctions.parts.auction_location_on_google_map')
     @include('front.auctions.parts.ajax')
     @include('front.auctions.parts.counter', ['auction' => $auction])

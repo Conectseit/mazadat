@@ -1,9 +1,5 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.question.questions'))
-@section('style')
-    <style></style>
-@endsection
-
 @section('content')
     <main class="categories-bar row" >
         @include('front.layouts.parts.nav_categories')
@@ -42,8 +38,3 @@
 
 @stop
 
-@push('scripts')
-    <script>
-
-    </script>
-@endpush

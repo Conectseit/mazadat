@@ -1,9 +1,5 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.notification.notifications'))
-@section('style')
-    <style></style>
-@endsection
-
 @section('content')
 
     <main class="categories-bar row">
@@ -19,7 +15,6 @@
                         class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
                 {{ trans('messages.my_profile') }}</h5><br>
 
-            {{--                <h5 class="title"><a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>u</h5><br>--}}
             @if($_notifications->count() > 0)
                 @foreach($_notifications as $notification)
                     <div class="notification-item">
@@ -55,12 +50,5 @@
                 <div style="text-align: center;"><h2> @lang('messages.you_dont_have_notifications_yet') </h2></div>
             @endif
         </div>
-
     </section>
 @stop
-
-@push('scripts')
-    <script>
-
-    </script>
-@endpush

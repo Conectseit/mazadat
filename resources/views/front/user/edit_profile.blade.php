@@ -8,32 +8,16 @@
             border-radius: 50%;
             border: 5px solid #eee;
         }
-
-        /*#map {*/
-        /*    height: 400px;*/
-        /*}*/
-
-        /*#add_map {*/
-        /*    height: 400px;*/
-        /*}*/
     </style>
     <link rel="stylesheet" href="{{asset('Front/assets/css/profile_image.css')}}"/>
-
 @endsection
-
 @section('content')
     <section class="my-profile-page edit-profile"  dir="{{ direction() }}">
-
         <div class="container">
-
             @include('front.layouts.parts.alert')
-
             @if(auth()->user()->is_completed==0)
                 <h3>{{ trans('messages.please_complete_your_data')}}</h3>
             @endif
-
-{{--            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i--}}
-{{--                    class="fal fa-arrow-circle-right text-black"></i> </a> حسابي الشخصي--}}
             <h5 class="title">
                 <a href="{{ route('front.my_profile') }}" class="mt-2 mx-1 back"> <i
                         class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
@@ -56,7 +40,6 @@
                                              style="background-image: url({{auth()->user()->image_path}});"
                                         ></div>
                                     </div>
-
                                 </div>
                             </div>
                             @if(auth()->user()->is_company=='person')
@@ -126,7 +109,6 @@
 
                                             <select class="form-select form-control" name="phone_code"
                                                     aria-label="Default select example">
-                                                {{--                                                <option selected disabled >إختر فيمة</option>--}}
                                                 <option selected
                                                         disabled> {{ trans('messages.choose_country_code')}}</option>
                                                 @foreach ($countries as $country)
@@ -159,8 +141,6 @@
                                     <div class="col-lg-2 col-sm-12 d-flex align-items-center">
                                         <img id="img-preview" style="width: 180px ; height:90px"
                                              src={{ auth()->user()->company_authorization_image_path}}
-                                             {{--                                "https://assets.wasalt.com/others/icons/villas-for-sale-in-makkah.jpeg"--}}
-
                                                  width="250px"/>
                                     </div>
                                 </div>
@@ -197,8 +177,6 @@
                                     <br>
                                 </div><br>
                             @endif
-
-
                             <div class="form-group mb-4 row">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                     <label for="password" class="form-label">{{trans('messages.password')}}</label>
@@ -224,23 +202,10 @@
                 </div>
             </div>
 
-            {{--            @include('front.user.complete_profile_form')--}}
-            {{--            @if(auth()->user()->is_company=='person')--}}
-            {{--            @include('front.user.add_address_form')--}}
-            {{--            @endif--}}
-
         </div>
     </section>
 @stop
 
 @push('scripts')
-
-
     @include('front.user.parts.script_edit')
-    {{--    @include('front.user.add_location_map')--}}
-
-
-    {{--    @include('front.layouts.parts.map')--}}
-    {{--    @include('front.auth.ajax_get_cities')--}}
-
 @endpush

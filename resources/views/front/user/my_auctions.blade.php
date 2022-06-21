@@ -1,9 +1,5 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.user.my_auctions'))
-@section('style')
-    <style></style>
-@endsection
-
 @section('content')
     <main class="categories-bar row">
         @include('front.layouts.parts.nav_categories')
@@ -13,7 +9,6 @@
     <section class="watching-page"  dir="{{ direction() }}">
         <div class="container">
             <h4 class="title">
-{{--                <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>--}}
                 <a href="{{ route('front.my_profile') }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
                 {{ trans('messages.my_profile') }}
             </h4><br>
@@ -93,7 +88,6 @@
                                             <div class="buttons ">
                                                 <a href="{{route('front.auction_show_update',$auction->id)}}"
                                                    class="bid">@lang('messages.update')</a>
-                                                {{--                                            <a href="{{route('front.delete-auction',$auction->id)}}" class="remove">@lang('messages.delete')</a>--}}
                                                 <a data-id="{{ $auction->id }}" class="delete-action"
                                                    href="{{ Url('/auction/auction/'.$auction->id) }}"
                                                    style="background-color: #1e3c48;">
@@ -149,11 +143,6 @@
                                                                 <i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}
                                                                 :{{($auction->start_auction_price)}}</p>
                                                         </div>
-                                                        {{--                                                    <div class="col-sm-6">--}}
-                                                        {{--                                                        <p>--}}
-                                                        {{--                                                            <i class="fal fa-clock"></i>{{$auction->remaining_time['days']}}--}}
-                                                        {{--                                                        </p>--}}
-                                                        {{--                                                    </div>--}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -207,11 +196,6 @@
                                                                 <i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}
                                                                 :{{($auction->start_auction_price)}}</p>
                                                         </div>
-                                                        {{--                                                    <div class="col-sm-6">--}}
-                                                        {{--                                                        <p>--}}
-                                                        {{--                                                            <i class="fal fa-clock"></i>{{$auction->remaining_time['days']}}--}}
-                                                        {{--                                                        </p>--}}
-                                                        {{--                                                    </div>--}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -239,7 +223,6 @@
                                                     <h5 class="card-title">{{ ($auction->$name ) }}</h5>
                                                     <p class="start-date info-item">
                                                         <i class="fal fa-calendar-alt"></i>
-                                                        {{--                                                    يبدأ فى الثلاثاء , 16/11/2021 , 10:10--}}
                                                         {{trans('messages.auction.start_at')}}
                                                         : {{  isset($auction->start_date)?$auction->start_date->format('l, m/d/Y'):''  }}
                                                     </p>
@@ -266,18 +249,11 @@
                                                                 <i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}
                                                                 :{{($auction->start_auction_price)}}</p>
                                                         </div>
-                                                        {{--                                                    <div class="col-sm-6">--}}
-                                                        {{--                                                        <p><i class="fal fa-clock"></i>{{$auction->remaining_time['days']}}</p>--}}
-                                                        {{--                                                    </div>--}}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-2">
-                                            {{--                                            <div class="buttons">--}}
-                                            {{--                                                <a href="{{route('front.auction_details',$auction->id)}}" class="bid"> متابعة</a>--}}
-                                            {{--                                                <a href="{{route('front.cancel_bid_auction',$auction->id)}}" class="remove">الخروج</a>--}}
-                                            {{--                                            </div>--}}
                                         </div>
                                     </div>
                                 </div>
@@ -289,7 +265,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 @stop

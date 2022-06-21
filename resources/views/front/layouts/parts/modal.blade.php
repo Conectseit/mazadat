@@ -10,7 +10,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
                     <div class="form-group mb-4 row">
                         <div class="col-lg-12 col-md-12">
                             <input type="text" class="form-control"  name="full_name" dir="{{ direction() }}"
@@ -32,12 +31,6 @@
                             @error('email') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror
                         </div>
                     </div><br>
-                    {{--                            <div class="form-group mb-4 row">--}}
-                    {{--                                <div class="col-lg-10 col-md-9">--}}
-                    {{--                                    <input type="email" class="form-control"  name="email"--}}
-                    {{--                                           placeholder="{{trans('messages.enter_email')}}">--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
                     <div class="form-group ">
                         <div class="col-lg-12 col-md-12">
                             <textarea  cols="50" name="message" placeholder="{{trans('messages.enter_message')}} ">
@@ -55,8 +48,6 @@
     </div>
 </div>
 <!-- contact-modal -->
-
-
 
 <!-- contact-modal -->
 <div class="modal user-modal bio-modal fade" id="contact-modal1" tabindex="-1"
@@ -90,8 +81,6 @@
 </div>
 <!-- contact-modal -->
 
-
-
 <!-- forget_pass-modal -->
 <div class="modal user-modal bio-modal fade" id="forget_pass_modal" tabindex="-1"
      aria-labelledby="exampleModalLabel"
@@ -105,16 +94,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
-{{--                    <div class="form-group">--}}
-{{--                        <div class="col-lg-12 col-md-12">--}}
-{{--                            <input type="text" name="email" value="{{ old('email') }}"--}}
-{{--                                   class="form-control @error('email') is-invalid @enderror"--}}
-{{--                                   placeholder="{{trans('messages.enter_email')}}">--}}
-{{--                            @error('email') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
                     <div class="form-group">
                         <div class="col-lg-12 col-md-12">
                             <input type="text" name="mobile" value="{{ old('mobile') }}"
@@ -123,7 +102,6 @@
                             @error('mobile') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror
                         </div>
                     </div>
-
                     <br>
                 </div>
                 <div class="modal-footer">

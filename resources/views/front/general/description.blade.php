@@ -1,9 +1,5 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.description'))
-@section('style')
-    <style></style>
-@endsection
-
 @section('content')
     <main class="categories-bar row">
         @include('front.layouts.parts.nav_categories')
@@ -29,6 +25,5 @@
             </div>
         </div>
     </section>
-
 @stop
 

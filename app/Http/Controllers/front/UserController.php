@@ -32,7 +32,6 @@ class UserController extends Controller
     {
         $data['user'] = User::where('id', auth()->user()->id)->first();
         $data['nationalities'] = Nationality::all();
-//        $data['cities'] = City::all();
         $data['cities'] = City::where('country_id',auth()->user()->country_id)->get();
         $data['countries'] = Country::all();
         return view('front.user.complete_profile', $data);
@@ -50,8 +49,6 @@ class UserController extends Controller
     public function show_my_addresses()
     {
         $data['user_addresses'] = UserAddress::where('user_id',auth()->user()->id)->get();
-//        $data['user'] = User::where('id', auth()->user()->id)->first();
-
         return view('front.user.my_addresses', $data);
     }
 
@@ -59,8 +56,6 @@ class UserController extends Controller
 
     public function showEditProfile()
     {
-//        $data['nationalities'] = Nationality::all();
-////        $data['cities'] = City::all();
 //        $data['cities'] = City::where('country_id',auth()->user()->country_id)->get();
         $data['countries'] = Country::all();
         return view('front.user.edit_profile',$data);
@@ -77,14 +72,11 @@ class UserController extends Controller
         }
         $user->update($request_data+['is_completed'=>1,'is_verified'=>1]);
          return redirect()->route('front.my_profile')->with('success', trans('messages.complete_profile_success'));
-//        return back()->with('success', trans('messages.updated_success_wait_until_admin_accept_it'));
     }
 
     public function updateProfile(updateProfileRequest $request)
     {
-
-//        $request_data = $request->except(['password', 'password_confirmation', 'submit']);
-        $request_data = $request->except([ 'password', 'password_confirmation','phone_code','mobile','commercial_register_image','company_authorization_image','image']);
+        $request_data = $request->except([ 'password', 'password_confirmation','phone_code','mobile','commercial_register_image','company_authorization_image','image','submit']);
         if ($request->mobile) {
             $request_data['mobile'] =$request->phone_code. $request->mobile ;
         }
@@ -107,12 +99,10 @@ class UserController extends Controller
         if ($request->hasFile('company_authorization_image')) {
             $request_data['company_authorization_image'] = uploaded($request->company_authorization_image, 'user');
         }
-
         if(!is_null($request->password))
         {
             $request_data['password'] = $request->password;
         }
-
         auth()->user()->update($request_data);
 //        $user->update($request_data + ['country_id'=>$country->id]);
 
@@ -129,8 +119,6 @@ class UserController extends Controller
         $user->update($request_data);
         return back()->with('success', trans('messages.updated_success'));
     }
-
-
 
     public function show_add_address()
     {
@@ -161,8 +149,6 @@ class UserController extends Controller
         $data['user'] = User::where('id', auth()->user()->id)->first();
         return view('front.user.my_wallet', $data);
     }
-
-
 
 }
 

@@ -1,9 +1,5 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.auction.my_bids'))
-@section('style')
-    <style></style>
-@endsection
-
 @section('content')
     <main class="categories-bar row">
         @include('front.layouts.parts.nav_categories')
@@ -28,7 +24,6 @@
                                         <h5 class="card-title">{{ ($auction->$name ) }}</h5>
                                         <p class="start-date info-item">
                                             <i class="fal fa-calendar-alt"></i>
-                                            {{--                                    يبدأ فى الثلاثاء , 16/11/2021 , 10:10--}}
                                             {{trans('messages.auction.start_at')}}
                                             : {{ ($auction->start_date->format('l, m/d/Y') ) }}
                                         </p>
@@ -41,7 +36,6 @@
                                                 <p><i class="fal fa-tag"></i>
                                                     {{trans('messages.auction.value_of_increment')}}
                                                     : {{($auction->value_of_increment)}}</p>
-
                                             </div>
                                         </div>
                                         <div class="row">
@@ -49,15 +43,11 @@
                                                 <p><i class="fal fa-gavel"></i>
                                                     {{trans('messages.auction.current_price')}}
                                                     :{{($auction->current_price)}}</p>
-
                                             </div>
                                             <div class="col-sm-6">
                                                 <p>
                                                     <i class="fal fa-gavel"></i>{{trans('messages.auction.start_auction_price')}}
                                                     :{{($auction->start_auction_price)}}</p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                {{--                                                <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -77,13 +67,5 @@
                 <div style="text-align: center;"><h2> @lang('messages.you_dont_have_auctions_yet') </h2></div>
             @endif
         </div>
-
-
     </section>
 @stop
-
-@push('scripts')
-    <script>
-
-    </script>
-@endpush

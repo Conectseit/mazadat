@@ -1,6 +1,5 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.home'))
-
 @section('content')
     <main class="categories-bar row">
         @include('front.layouts.parts.nav_categories')
@@ -83,12 +82,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-
-{{--                                                <div class="col-sm-6">--}}
-{{--                                                    <p>--}}
-{{--                                                        <i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}--}}
-{{--                                                        :{{$auction->remaining_time['days']}}</p>--}}
-{{--                                                </div>--}}
                                                 @if(auth()->check())
                                                     <div class="col-sm-6">
                                                         <div class="container">
@@ -112,7 +105,6 @@
                                     </div>
                                 </div>
                                 @include('front.auctions.parts.ajax-watch', ['auction' => $auction])
-
                             @empty
 
                                 <div style="text-align: center;">
@@ -166,12 +158,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-
-{{--                                                <div class="col-sm-6">--}}
-{{--                                                    <p>--}}
-{{--                                                        <i class="fal fa-clock"></i>{{trans('messages.auction.remaining_time')}}--}}
-{{--                                                        :{{$auction->remaining_time['days']}}</p>--}}
-{{--                                                </div>--}}
                                                 @if(auth()->check())
                                                     <div class="col-sm-6">
                                                         <div class="container">
@@ -195,15 +181,12 @@
                                     </div>
                                 </div>
                                 @include('front.auctions.parts.ajax-watch', ['auction' => $auction])
-
                             @empty
 
                                 <div style="text-align: center;">
                                     <h2> @lang('messages.there_is_no_auctions_on_this_category_yet') </h2></div>
                             @endforelse
-
                         </div>
-
                     </div>
                 </div>
 

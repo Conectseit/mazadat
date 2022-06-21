@@ -100,8 +100,6 @@
 {{--            </h1>--}}
 {{--        </div>--}}
 
-
-
         <div style="padding: 40px;">
             <a href="{{route('front.home')}}">
                 <div class="submit-btn btn btn-primary submit-btn save-btn mx-auto">

@@ -1,9 +1,5 @@
 @extends('front.layouts.master')
 @section('title', trans('messages..my_watched_auctions'))
-@section('style')
-    <style></style>
-@endsection
-
 @section('content')
     <main class="categories-bar row">
         @include('front.layouts.parts.nav_categories')
@@ -11,9 +7,9 @@
     @include('front.layouts.parts.alert')
     <section class="watching-page" dir="{{ direction() }}">
         <div class="container">
-{{--            <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-right text-black"></i> </a> حسابي الشخصي<br><br>--}}
             <h5 class="title">
-                <a href="{{ route('front.my_profile') }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
+                <a href="{{ route('front.my_profile') }}" class="mt-2 mx-1 back"> <i
+                        class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
                 {{ trans('messages.my_profile') }}</h5><br>
             @if($auctions->count() > 0)
                 @foreach($auctions as $auction)
@@ -45,7 +41,6 @@
                                                 <p><i class="fal fa-gavel"></i>{{($auction->start_auction_price)}} $</p>
                                             </div>
                                             <div class="col-sm-6">
-                                                {{--                                        <p><i class="fal fa-clock"></i>{{$auction->remaining_time}}</p>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -67,13 +62,5 @@
                     <h2> @lang('messages.you_dont_have_watched_auctions_yet') </h2></div>
             @endif
         </div>
-
     </section>
-
 @stop
-
-@push('scripts')
-    <script>
-
-    </script>
-@endpush

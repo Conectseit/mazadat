@@ -17,7 +17,6 @@ class CompanyController extends Controller
     public function show_register_company()
     {
         $data['countries'] = Country::all();
-//        $data['nationalities'] = Nationality::all();
         return view('front.auth.register_company', $data);
     }
 

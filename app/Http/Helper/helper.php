@@ -6,7 +6,6 @@ use Illuminate\Support\Str;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
-
 function is_watched_auction($id)
 {
     $user = auth()->user();
@@ -16,8 +15,6 @@ function is_watched_auction($id)
     }
     return false;
 }
-
-
 
 function checkIsUserWatch($auction)
 {
@@ -101,9 +98,6 @@ function settings($param)
 
 
 
-
-
-
 function displayDistance($lat, $lng)
 {
     if(!auth()->check()) return $x = 0;
@@ -135,10 +129,6 @@ function displayDistance($lat, $lng)
 
 
 
-
-
-
-
 function random_colors()
 {
     $color_array = [
@@ -150,10 +140,6 @@ function random_colors()
     ];
     return $color_array[array_rand($color_array)];
 }
-
-
-
-
 
 
 function models($withColors = false)

@@ -21,7 +21,6 @@
             draggable: true
         });
     }
-
 </script>
 <script
     src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks">
