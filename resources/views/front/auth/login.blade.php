@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-    @include('front.auctions.parts.head')
+{{--    @include('front.auctions.parts.head')--}}
     <section class="sign-up-page">
         @include('front.layouts.parts.alert')
         <div class="container" dir="{{ direction() }}">
