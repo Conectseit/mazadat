@@ -1,7 +1,6 @@
 @extends('Dashboard.layouts.master')
 
 @section('title', trans('messages.message.messages'))
-
     @section('breadcrumb')
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
@@ -15,8 +14,6 @@
             @include('Dashboard.layouts.parts.quick-links')
         </div>
     @stop
-
-
 @section('content')
 
     @include('Dashboard.layouts.parts.validation_errors')
@@ -43,12 +40,9 @@
                     <th class="text-center">@lang('messages.form-actions')</th>
                 </tr>
                 </thead>
-
-
                 <tbody>
                 @foreach($messages as $message)
                     <tr id="message-row-{{ $message->id }}">
-
                         <td>{{ $message->id }}</td>
                         <td> {{ $message->title}}</td>
                         <td> {{ $message->text}}</td>
@@ -85,8 +79,6 @@
         @endif
     </div>
     <!-- /basic datatable -->
-
-
 @stop
 
 @section('scripts')

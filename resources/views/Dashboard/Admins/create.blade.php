@@ -8,15 +8,7 @@
 
     <!-- Page header -->
     <div class="page-header page-header-default">
-{{--        <div class="page-header-content">--}}
-{{--            <div class="page-title">--}}
-{{--                <h4>--}}
-{{--                    <i class="icon-arrow-right6 position-left"></i>--}}
-{{--                    <span class="text-semibold">@lang('messages.home')</span>--}}
-{{--                    - @lang('messages.create-var',['var'=>trans('messages.admin')])--}}
-{{--                </h4>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+
         @section('breadcrumb')
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
@@ -55,8 +47,6 @@
                             </ul>
                         </div>
                     </div>
-
-
                     <div class="panel-body">
                         <div class="box-body">
                             <div class="form-group">
@@ -110,12 +100,10 @@
                                 </div>
                             </div>
 
-
                             <div class="form-group">
                                 <label>@lang('messages.image')</label>
                                 <input type="file" class="form-control image " name="image">
                             </div>
-
                             <div class="form-group">
                                 <img src=" {{ asset('uploads/default.png') }} " width=" 100px "
                                      class="thumbnail image-preview">
@@ -123,9 +111,6 @@
                         </div>
 
                     </div>
-
-
-
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
                         <input type="submit" class="btn btn-primary"
                                value=" {{ trans('messages.add_and_forward_to_list') }} "/>

@@ -2,7 +2,6 @@
 @section('title', trans('messages.edit-var',['var'=>trans('messages.nationality.nationality')]))
 @section('content')
 
-
     <!-- Page header -->
     <div class="page-header page-header-default">
         @section('breadcrumb')

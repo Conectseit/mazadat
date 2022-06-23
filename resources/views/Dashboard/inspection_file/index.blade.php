@@ -11,7 +11,7 @@
         </ul>
         @include('Dashboard.layouts.parts.quick-links')
     </div>
-@endsection
+@stop
 
 @section('content')
 
@@ -46,7 +46,6 @@
 
                         <td>{{ $inspection_file_name->id }}</td>
                         <td><a href=""> {{ isNullable($inspection_file_name->name) }}</a></td>
-{{--                        <td><a href=""> {{ isNullable($inspection_file_name->country->$name) }}</a></td>--}}
                         <td>{{isset($inspection_file_name->created_at) ?$inspection_file_name->created_at->diffForHumans():'---' }}</td>
                         <td class="text-center">
                             <div class="list-icons text-center">
@@ -55,10 +54,6 @@
                                         <i class="icon-menu9"></i>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
-{{--                                        <li>--}}
-{{--                                            <a href="{{ route('inspection_file_names.edit',$inspection_file_name->id) }}"> <i--}}
-{{--                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>--}}
-{{--                                        </li>--}}
                                         <li>
                                             <a data-id="{{ $inspection_file_name->id }}" class="delete-action"
                                                href="{{ Url('/inspection_file_name/inspection_file_name/'.$inspection_file_name->id) }}">

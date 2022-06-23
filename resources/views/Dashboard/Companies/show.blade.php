@@ -35,7 +35,6 @@
                             class="icon-calendar3 position-left"></i> {{ trans('messages.company.company_auctions') }}
                         <span
                             class="badge badge-success badge-inline position-right">
-{{--                        {{$company->company_auctions->count()}}--}}
                         </span></a>
                 </li>
                 <li><a href="#company_account_statement" data-toggle="tab"><i
@@ -46,7 +45,6 @@
                 </li>
                 <li><a href="#send_notification" data-toggle="tab"><i
                             class="icon-bell3 position-left"></i> {{trans('messages.notification.send')}}</a></li>
-{{--                <li><a href="#settings" data-toggle="tab"><i class="icon-cog3 position-left"></i> Settings</a></li>--}}
                 <li><a href="#wallet" data-toggle="tab"><i class="icon-cog3 position-left"></i> {{trans('messages.wallet')}}</a></li>
 
             </ul>
@@ -82,34 +80,8 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-{{--                                                                <div class="col-lg-6">--}}
-{{--                                                                    <div class="form-group row">--}}
-
-{{--                                                                        <label class="col-form-label col-lg-3"><span class="badge badge-info" >{{ trans('messages.wallet') }} : </span></label>--}}
-
-{{--                                                                        <div class="col-lg-9">--}}
-{{--                                                                            <input type="text" class="form-control" value="{{ $company->wallet}} /ريال-سعودي/" readonly>--}}
-{{--                                                                        </div>--}}
-{{--                                                                    </div>--}}
-{{--                                                                </div>--}}
                                                             </div>
                                                             <hr>
-{{--                                                            <div class="form-group row">--}}
-{{--                                                                <label class="col-form-label col-lg-3">{{ trans('messages.type') }}:</label>--}}
-{{--                                                                <div class="col-lg-9">--}}
-{{--                                                                    <input type="text" class="form-control" value="{{ $company->is_company=='company'?trans('messages.company'):trans('messages.company')}}" readonly>--}}
-
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="form-group row">--}}
-{{--                                                                <label--}}
-{{--                                                                    class="col-form-label col-lg-3">{{ trans('messages.company.full_name') }}--}}
-{{--                                                                    :</label>--}}
-{{--                                                                <div class="col-lg-9">--}}
-{{--                                                                    <input type="text" class="form-control"--}}
-{{--                                                                           value="{{ $company->full_name }}" readonly>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
                                                             <div class="form-group row">
                                                                 <label
                                                                     class="col-form-label col-lg-3">{{ trans('messages.company.user_name') }}
@@ -210,12 +182,6 @@
                                     </div>
                                 </div>
                                 <div class="panel-body">
-                                    <!-- Palette colors -->
-{{--                                    <h6 class="content-group-sm text-semibold">--}}
-{{--                                        {{__('messages.company.user_name')}}--}}
-{{--                                        <small class="display-block">{{$company->user_name}}</small>--}}
-{{--                                    </h6>--}}
-
                                     <div class="row">
                                         @if($company_auctions->count() > 0)
                                         @foreach($company_auctions as $company_auction)
@@ -228,10 +194,6 @@
                                                         <div class="media-body">
                                                             <strong>{{$company_auction->start_auction_price}}
                                                                 ريال</strong>
-{{--                                                            <div--}}
-{{--                                                                class="text-muted mt-5">{{$company_auction->value_of_increment}}--}}
-{{--                                                                ريال--}}
-{{--                                                            </div>--}}
                                                         </div>
 
                                                         <div class="media-right">

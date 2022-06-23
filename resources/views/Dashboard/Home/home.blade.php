@@ -128,7 +128,7 @@
             <!-- Latest Auctions -->
             <div class="panel panel-flat" >
                 <div class="panel-heading">
-                    <h6 class="panel-title">{{ trans('messages.auction.latest_auctions') }}</h6>
+                    <h6 class="panel-title">{{ trans('messages.person.latest_persons') }}</h6>
                     <div class="heading-elements"style="float: {{ floating('right', 'left') }}">
                         <ul class="icons-list">
                             <li><a data-action="collapse"></a></li>
@@ -141,22 +141,21 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="media-list content-group">
-                                @foreach($auctions as $auction)
+                                @foreach($latest_persons as $person)
                                     <li class="media stack-media-on-mobile">
                                         <div class="media-left">
                                             <div class="thumb" style="height: 80px;width: 80px;">
-                                                <a href="{{ route('auctions.show', $auction->id) }}">
-                                                    <img src="{{ $auction->first_image_path }}"
+                                                <a href="{{ route('persons.show', $person->id) }}">
+                                                    <img src="{{ $person->image_path }}"
                                                          class="img-responsive img-rounded media-preview" alt=""  style="width: 100%">
-                                                    {{--                                                    <span class="zoom-image"><i class="icon-play3"></i></span>--}}
                                                 </a>
                                             </div>
                                         </div>
 
                                         <div class="media-body">
-                                            <h6 class="media-heading"><a href="#">{{$auction->$name}}</a></h6>
+                                            <h6 class="media-heading"><a href="#">{{$person->full_name}}</a></h6>
                                             <ul class="list-inline list-inline-separate text-muted mb-5">
-                                                <i class="icon-hour-glass3"></i> <li>{{$auction->created_at->diffForHumans()}}</li>
+                                                <i class="icon-hour-glass3"></i> <li>{{$person->created_at->diffForHumans()}}</li>
                                             </ul>
                                         </div>
                                     </li>
@@ -168,14 +167,55 @@
             </div>
             <!-- /latest Auctions -->
         </div>
+        <div class="col-lg-6" style="float: {{ floating('right', 'left') }}">
+            <!-- Latest Auctions -->
+            <div class="panel panel-flat" >
+                <div class="panel-heading">
+                    <h6 class="panel-title">{{ trans('messages.company.latest_companies') }}</h6>
+                    <div class="heading-elements"style="float: {{ floating('right', 'left') }}">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+                            <li><a data-action="reload"></a></li>
+                            <li><a data-action="close"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="media-list content-group">
+                                @foreach($latest_companies as $person)
+                                    <li class="media stack-media-on-mobile">
+                                        <div class="media-left">
+                                            <div class="thumb" style="height: 80px;width: 80px;">
+                                                <a href="{{ route('persons.show', $person->id) }}">
+                                                    <img src="{{ $person->image_path }}"
+                                                         class="img-responsive img-rounded media-preview" alt=""  style="width: 100%">
+                                                </a>
+                                            </div>
+                                        </div>
 
-
+                                        <div class="media-body">
+                                            <h6 class="media-heading"><a href="#">{{$person->full_name}}</a></h6>
+                                            <ul class="list-inline list-inline-separate text-muted mb-5">
+                                                <i class="icon-hour-glass3"></i> <li>{{$person->created_at->diffForHumans()}}</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /latest Auctions -->
+        </div>
     </div>
     <!-- /dashboard content -->
 
     <!-- Footer -->
     <div class=" " style="text-align: center; padding: 80px 20px 0 0 ;">
-        <h3> <a href="#">Developed </a> by <a href="" target="_blank"> &copy; Connect Team devlopers</a> 2022.</h3>
+        <h4> <a href="#">Developed </a> by <a href="" target="_blank"> &copy; Connect Team devlopers</a> 2022.</h4>
     </div>
     <!-- /footer -->
 

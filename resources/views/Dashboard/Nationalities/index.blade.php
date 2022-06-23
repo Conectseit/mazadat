@@ -1,7 +1,6 @@
 @extends('Dashboard.layouts.master')
 
 @section('title', trans('messages.nationality.nationalities'))
-
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
@@ -12,13 +11,9 @@
         </ul>
         @include('Dashboard.layouts.parts.quick-links')
     </div>
-@endsection
-
-
+@stop
 @section('content')
-
     @include('Dashboard.layouts.parts.validation_errors')
-
 
     <!-- Basic datatable -->
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
@@ -37,7 +32,6 @@
                 <tr>
                     <th class="text-center">#</th>
                     <th class="text-center">{{ trans('messages.name') }}</th>
-{{--                    <th>{{ trans('messages.name_en') }}</th>--}}
                     <th class="text-center">@lang('messages.since')</th>
                     <th class="text-center">@lang('messages.form-actions')</th>
                 </tr>
@@ -45,10 +39,8 @@
                 <tbody>
                 @foreach($nationalities as $nationality)
                     <tr id="nationality-row-{{ $nationality->id }}">
-
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td class="text-center"><a href=""> {{ isNullable($nationality->$name) }}</a></td>
-{{--                        <td><a href=""> {{ isNullable($nationality->name_en) }}</a></td>--}}
                         <td class="text-center">{{isset($nationality->created_at) ?$nationality->created_at->diffForHumans():'---' }}</td>
                         <td class="text-center">
                             <div class="list-icons text-center">

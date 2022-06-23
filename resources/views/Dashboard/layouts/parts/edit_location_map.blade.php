@@ -1,7 +1,4 @@
 
-
-
-
 {{--    //Map//--}}
 <script>
     function initMap() {

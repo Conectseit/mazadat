@@ -57,39 +57,9 @@
                                         <div class="panel panel-flat timeline-content">
                                             <div class="panel-heading">
                                                 <div class="card">
-{{--                                                    <div class="card-header header-elements-inline">--}}
-{{--                                                        <h3 class="card-title">{{ trans('messages.category.category_data') }}</h3>--}}
-{{--                                                    </div>--}}
                                                     <br>
                                                     <div class="card-body">
                                                         <form action="#">
-{{--                                                            <!-- Cover area -->--}}
-{{--                                                            <div class="profile-cover">--}}
-{{--                                                                <div class="profile-cover-img"--}}
-{{--                                                                                 style="background-image: url({{ $category->image_path }})"--}}
-{{--                                                                ></div>--}}
-{{--                                                                <div class="media">--}}
-{{--                                                                    <div class="media-left">--}}
-{{--                                                                        <a href="#" class="profile-thumb">--}}
-{{--                                                                            <img src="{{ $category->image_path }}" class="img-circle" alt="">--}}
-{{--                                                                        </a>--}}
-{{--                                                                    </div>--}}
-{{--                                                                    --}}{{--            <div class="media-body">--}}
-{{--                                                                    --}}{{--                <h1>{{ trans('messages.category.name') }} :--}}
-{{--                                                                    --}}{{--                    <small class="display-block">{{ $category->$name }}</small>--}}
-{{--                                                                    --}}{{--                </h1>--}}
-{{--                                                                    --}}{{--            </div>--}}
-
-{{--                                                                    <div class="media-right media-middle">--}}
-{{--                                                                        <ul class="list-inline list-inline-condensed no-margin-bottom text-nowrap">--}}
-{{--                                                                            <li><a href="#" class="btn btn-default"><i class="icon-file-picture position-left"></i>  {{ trans('messages.category.name') }} :{{ $category->$name }}</a></li>--}}
-{{--                                                                            --}}{{--                    <li><a href="#" class="btn btn-default"><i class="icon-file-stats position-left"></i> {{ trans('messages.category.name') }} :</a></li>--}}
-{{--                                                                        </ul>--}}
-{{--                                                                    </div>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <!-- /cover area -->--}}
-
                                                             <div class="form-group row">
                                                                 <div class="col-md-12">
                                                                     <label class="col-form-label">{{ trans('messages.category.name') }}:</label>

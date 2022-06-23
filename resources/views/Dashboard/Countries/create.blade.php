@@ -2,7 +2,6 @@
 @section('title', trans('messages.create-var',['var'=>trans('messages.country.country')]))
 @section('content')
 
-
     <!-- Page header -->
     <div class="page-header page-header-default">
         @section('breadcrumb')

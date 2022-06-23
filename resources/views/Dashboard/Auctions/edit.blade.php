@@ -275,24 +275,6 @@
                             </div>
                         </div>
 
-
-
-
-{{--                        <div class="form-group">--}}
-{{--                            <label>@lang('messages.auction.inspection_report_images')</label>--}}
-{{--                            <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">--}}
-{{--                            <div class="gallery1">--}}
-{{--                                @if ($inspection_report_images)--}}
-{{--                                    @foreach($inspection_report_images as $image)--}}
-{{--                                        <img src="{{asset($image->ImagePath) }}" style="height: 40px; padding-right: 1px;"--}}
-{{--                                             alt="">--}}
-{{--                                        --}}{{--                                            <button class="btn btn-danger" style="margin-top: 5px;"></button>--}}
-{{--                                    @endforeach--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-
                         <div class="text-right">
                             <input type="submit" class="btn btn-success"
                                    value=" {{ trans('messages.update_and_come_back') }} "/>

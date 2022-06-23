@@ -20,8 +20,6 @@
     @include('Dashboard.layouts.parts.validation_errors')
     <div class="row" style="padding: 15px;">
         <div class="col-md-9">
-
-
             <!-- Basic layout-->
             <form action="{{ route('companies.update',$company) }}" class="form-horizontal" method="POST"
                   enctype="multipart/form-data">
@@ -139,10 +137,6 @@
                             <img src=" {{$company->company_authorization_image_path}} " width=" 100px " value="{{$company->company_authorization_image_path}}"
                                  class="thumbnail image-preview1">
                         </div>
-
-
-
-
                         <div class="form-group">
                             <label>@lang('messages.company.location'):</label>
                             <div class="col-lg-12">
@@ -176,8 +170,6 @@
 @section('scripts')
     @include('front.auth.ajax_get_cities')
     @include('Dashboard.layouts.parts.edit_location_map')
-
-
 
     <script>
 

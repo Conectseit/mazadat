@@ -1,7 +1,6 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.country.countries'))
 
-
     @section('breadcrumb')
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
@@ -12,9 +11,7 @@
             </ul>
             @include('Dashboard.layouts.parts.quick-links')
         </div>
-    @endsection
-
-
+    @stop
 @section('content')
     @include('Dashboard.layouts.parts.validation_errors')
 
@@ -47,8 +44,6 @@
                         <td class="text-center">{{ $country->id }}</td>
                         <td class="text-center"><a href=""> {{ isNullable($country->phone_code) }}</a></td>
                         <td class="text-center"><a href=""> {{ isNullable($country->$name) }}</a></td>
-
-{{--                        <td class="text-center"><a href=""> {{ isNullable($country->name_en) }}</a></td>--}}
                         <td class="text-center">{{isset($country->created_at) ?$country->created_at->diffForHumans():'---' }}</td>
                         <td class="text-center">
                             <div class="list-icons text-center">

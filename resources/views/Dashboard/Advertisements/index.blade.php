@@ -85,8 +85,6 @@
         @endif
     </div>
     <!-- /basic datatable -->
-
-
 @stop
 
 @section('scripts')

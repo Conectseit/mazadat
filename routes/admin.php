@@ -78,8 +78,8 @@ Route::group(
                     'admins'         => AdminController::class,
                     'activities'     => ActivityController::class,
                     'transactions'   => TransactionController::class,
-                    'financial_reviews'=> FinancialReviewsController::class,
-                    'advertisements' => AdvertisementController::class,
+                    'financial_reviews'     => FinancialReviewsController::class,
+                    'advertisements'        => AdvertisementController::class,
                     'inspection_file_names' => InspectionFileNameController::class,
 
                 ]);

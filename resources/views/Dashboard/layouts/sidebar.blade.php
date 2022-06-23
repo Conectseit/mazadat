@@ -151,30 +151,3 @@
             <span style="font-family: Sans-Serif; color: white">{{ trans('messages.settings.settings') }}</span></a>
     </li>
 </ul>
-
-{{--    <li>--}}
-{{--        --}}{{--        <a href="#"><i class="icon-stack2"></i> <span style="float: {{ floating('left','right') }};">{{ trans('messages.users') }}</span></a>--}}
-{{--        <a href="#"><i class="icon-people"></i> <span style="float: {{ floating('left','right') }};">{{ trans('messages.seller.sellers') }}</span></a>--}}
-{{--        <ul>--}}
-{{--            <li><a href="{{route('sellers.index')}}">{{ trans('messages.all') }}</a></li>--}}
-{{--            <li><a href="{{route('sellers.create')}}">{{ trans('messages.add') }}</a></li>--}}
-{{--        </ul>--}}
-{{--    </li>--}}
-
-{{--        <li><a href="../../RTL/default/index.html"><i class="icon-width"></i> <span style="font-family: Sans-Serif; color: white;">RTL version</span></a></li>--}}
-<!-- /main -->
-
-
-{{--    <li>--}}
-{{--        <a href="#"><i class="icon-archive"></i> <span style="font-family: Sans-Serif; color: white;"> {{ trans('messages.option.options') }} </span></a>--}}
-{{--        <ul>--}}
-{{--            <li><a href="{{route('options.index')}}">{{ trans('messages.all') }}</a></li>--}}
-{{--            <li><a href="{{route('options.create')}}"> {{ trans('messages.add') }}</a></li>--}}
-{{--        </ul>--}}
-{{--    </li>--}}
-{{--    <li>--}}
-{{--        <a href="#"><i class="icon-archive" style="float: {{ floating('right','left') }};"></i> <span style="font-family: Sans-Serif; color: white;"> {{ trans('messages.option.option_details') }} </span></a>--}}
-{{--        <ul>--}}
-{{--            <li><a href="{{route('option_details.index')}}">{{ trans('messages.all') }}</a></li>--}}
-{{--        </ul>--}}
-{{--    </li>--}}

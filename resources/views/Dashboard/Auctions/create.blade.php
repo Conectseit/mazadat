@@ -275,35 +275,6 @@
 
             </div>
         </div>
-{{--        <div class="col-md-3" dir="{{ direction() }}">--}}
-{{--            <div class="panel panel-flat">--}}
-{{--                <div class="panel-heading">--}}
-{{--                    <h5 class="panel-title"> {{ trans('messages.auction.latest_auctions') }} </h5>--}}
-{{--                    <div class="heading-elements">--}}
-{{--                        <ul class="icons-list">--}}
-{{--                            <li><a data-action="collapse"></a></li>--}}
-{{--                            <li><a data-action="reload"></a></li>--}}
-{{--                            <li><a data-action="close"></a></li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="panel-body">--}}
-{{--                    <table class="table table-bordered table-hover">--}}
-{{--                        <tr class="text-center">--}}
-{{--                            <th> {{ trans('messages.name') }} </th>--}}
-{{--                            <th> {{ trans('messages.image') }} </th>--}}
-{{--                        </tr>--}}
-{{--                        @forelse($latest_auctions as $auction)--}}
-{{--                            <tr>--}}
-{{--                                <td> {{ substr($auction->$name,0,15) }} </td>--}}
-{{--                                <td><img src="{{ $auction->first_image_path }}" style="height:50px;"/></td>--}}
-{{--                            </tr>--}}
-{{--                        @empty--}}
-{{--                        @endforelse--}}
-{{--                    </table>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </div>
 @stop
 
@@ -327,54 +298,3 @@
     </script>
 
 @endsection
-
-
-
-
-
-{{--                        <h3>@lang('messages.auction.address'):</h3>--}}
-{{--                        <div class="form-group">--}}
-{{--                            <label--}}
-{{--                                class="col-lg-3 control-label display-block"> {{ trans('messages.city_name') }} </label>--}}
-{{--                            <div class="col-lg-9">--}}
-{{--                                <select name="city_id" class="select form-control" id="cities">--}}
-{{--                                    <option selected disabled>{{trans('messages.select')}}</option>--}}
-{{--                                    @foreach ($cities as $city)--}}
-{{--                                        <option value="{{ $city->id }}"> {{ $city->$name }} </option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                                @error('city_id')<span style="color: #e81414;">{{ $message }}</span>@enderror--}}
-
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="row">--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label class="col-lg-3 control-label"> @lang('messages.auction.address'): </label>--}}
-{{--                                <div class="col-md-6">--}}
-{{--                                    <input type="text" class="form-control" value="{{ old('address')}}" name="address"--}}
-{{--                                           placeholder="@lang('messages.auction.address_details') ">--}}
-{{--                                </div>--}}
-{{--                                @error('address')<span style="color: #e81414;">{{ $message }}</span>@enderror--}}
-
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-
-{{--                    <div class="row">--}}
-{{--                        <div class="form-group">--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label>@lang('messages.auction.inspection_report_images')</label>--}}
-{{--                                <input type="file" multiple id="inspection-photo-add"  class="form-control" name="inspection_report_images[]">--}}
-{{--                                <div class="gallery1"></div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-
-
-{{--<div class="form-group">--}}
-{{--    <label>@lang('messages.auction.images')</label>--}}
-{{--    <input type="file" multiple="multiple" id="gallery-photo-add" class="form-control" name="images[]">--}}
-{{--    <div class="gallery"></div>--}}
-{{--    @error('images')<span style="color: #e81414;">{{ $message }}</span>@enderror--}}
-{{--</div>--}}

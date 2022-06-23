@@ -125,17 +125,6 @@
                                     </select>
                                 </div>
                             </div>
-{{--                            <div class="form-group">--}}
-{{--                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.country.country') }} </label>--}}
-{{--                                <div class="col-lg-9">--}}
-{{--                                    <select name="country_id" class="select form-control"  id="country">--}}
-{{--                                        <option selected disabled>{{trans('messages.select')}}</option>--}}
-{{--                                        @foreach ($countries as $country)--}}
-{{--                                            <option value="{{ $country->id }}"> {{ $country->$name }} </option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <div class="form-group">
                                 <label class="col-lg-3 control-label display-block"> {{ trans('messages.city_name') }} </label>
                                 <div class="col-lg-9">
@@ -236,8 +225,6 @@
 @section('scripts')
     @include('front.auth.ajax_get_cities')
     @include('Dashboard.layouts.parts.map')
-
-
 
     <script>
 

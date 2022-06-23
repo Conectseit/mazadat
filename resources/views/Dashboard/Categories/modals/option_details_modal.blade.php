@@ -36,12 +36,6 @@
                 </div>
                 <div class="modal-footer">
 
-                    {{--                        <div>--}}
-                    {{--                                     <span class="badge  badge-pill" style="background-color: #00838F;">--}}
-                    {{--                                        <a href=>{{__('messages.seller.show_auction_bids')}}</a>--}}
-                    {{--                                      </span>--}}
-                    {{--                        </div>--}}
-
                     <button type="button"
                             class="btn btn-link btn-xs text-uppercase text-semibold" data-dismiss="modal">Close
                     </button>

@@ -59,8 +59,6 @@
                                                 <tbody>
                                                 @foreach($bank_deposit_transactions as $transaction)
                                                     <tr id="transaction-row-{{ $transaction->id }}">
-
-                                                        {{--                                                        <td class="text-center">{{ $loop->iteration }}</td>--}}
                                                         <td class="text-center">
                                                             <a href=""> {{ isNullable($transaction->user->user_name) }}</a>
                                                         </td>
