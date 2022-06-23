@@ -611,6 +611,8 @@ return [
         'last_advertisements' => 'last advertisements',
         'add' => 'add advertisement',
         'edit' => 'edit advertisement',
+        'image' => 'صورة الاعلان ',
+
 
     ],
 

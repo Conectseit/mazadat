@@ -21,7 +21,6 @@
             font-size: 20px;
             background: #1e3c48;
         }
-
         .carousel {
             margin-top: 40px;
         }
@@ -30,14 +29,12 @@
             width: 100%;
             height: 350px;
         }
-
         .carousel-item img {
             height: 100%;
             width: 100%;
             border-radius: 20px;
             border: 1px solid;
         }
-
         .ad {
             float: right;
             text-align: center;
@@ -91,8 +88,10 @@
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"
                                 class="active"></button>
-                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"></button>
-                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>
+                        @foreach($advertisements as $advertisement)
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to={{$advertisement->id}}></button>
+                        @endforeach
+{{--                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>--}}
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
