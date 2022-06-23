@@ -48,7 +48,7 @@ class AdvertisementController extends Controller
         }
         $data['latest_advertisements'] = Advertisement::orderBy('id', 'desc')->take(5)->get();
         $data['advertisement'] = Advertisement::find($id);
-        return view('Dashboard.advertisements.edit', $data);
+        return view('Dashboard.Advertisements.edit', $data);
     }
 
 
