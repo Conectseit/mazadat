@@ -1,10 +1,10 @@
 <!-- Page header -->
 <div class="page-header page-header-default">
-    <div class="page-header-content" style="background-color:#1E3C48FF;">
+    <div class="page-header-content" style="background-color:#009688;">
         <div class="page-title"dir="{{ direction() }}">
             <div class="row"  style="height:60px;">
                 <div class="col-6">
-                    <h3 style="display: inline; color: whitesmoke;">
+                    <h3 style="display: inline; color: #1E3C48FF;">
                         <i class="icon-arrow-right6 position-left"></i>
                         <span class="text-bold" style="color: whitesmoke; ">@lang('messages.Dashboard')</span>
                     </h3>
