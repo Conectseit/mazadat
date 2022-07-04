@@ -8,10 +8,10 @@
                         <i class="icon-arrow-right6 position-left"></i>
                         <span class="text-bold">@lang('messages.Dashboard')</span>
                     </h3>
-{{--                    <div class="image_head" style="display: inline">--}}
-{{--                        <img class="" width="280"--}}
-{{--                             src="{{ asset('Dashboard/assets/images/loogoo.png') }}"/>--}}
-{{--                    </div>--}}
+                    <div class="image_head" style="display: inline;">
+                        <img class="" width="280" height="80" src="{{asset('Front/assets/imgs/logo.svg')}}"/>
+
+                    </div>
                 </div>
             </div>
         </div>
