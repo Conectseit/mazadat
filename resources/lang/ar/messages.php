@@ -733,6 +733,7 @@ return [
     'enter_company_name'        => ' اكتب اسم المؤسسة ',
     'company_name'           	=> ' اسم المؤسسة ',
     'company_location'         	=> ' موقع المؤسسة ',
+    'image_terms'         	    => 'ملحوظة : الصورة يجب ان تكون png,jpg,jpeg ',
     'pass_terms'         	    => 'ملحوظة : كلمة المرور يجب ان لا تقل عن 6احرف او ارقام ',
     'option_terms'         	    => 'ملحوظة : يجب اختيار كل التصنيفات الاجبارية للمزاد',
     'register_success_welcome_in_our_website'         	=> 'تم تسجيل حسابك بنجاح اهلا بك في موقعنا',

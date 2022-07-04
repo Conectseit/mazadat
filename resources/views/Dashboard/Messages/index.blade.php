@@ -30,7 +30,7 @@
         </div>
 
         @if($messages->count() > 0)
-            <table class="table datatable-basic" id="messages" style="font-size: 16px;">
+            <table class="table datatable-button-print-basic" id="messages" style="font-size: 16px;">
                 <thead>
                 <tr>
                     <th>#</th>

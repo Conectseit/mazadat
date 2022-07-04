@@ -642,6 +642,8 @@ return [
     'company_name'         	    => ' Company Name ',
     'company_location'         	=> 'Company Location',
     'pass_terms'         	    => 'Not : password must less than 6 characters',
+    'image_terms'         	    => 'ملحوظة : الصورة يجب ان تكون png,jpg,jpeg ',
+
     'register_success_welcome_in_our_website'     	=> 'register success_welcome_in_our_website',
 
 

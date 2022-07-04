@@ -36,7 +36,9 @@ class PersonRequest extends FormRequest
                         'last_name'   => 'required',
                         'user_name'   => 'required|string|between:2,200|unique:users,user_name',
                         'email'       => 'required|unique:users,email',
-                        'image'       => 'sometimes|image',
+//                        'image'       => 'required|image',
+                        'image'       => ['sometimes','mimes:png,jpg,jpeg'],
+
                         'passport_image' => 'required',
                         'password'    => 'required|min:6|confirmed',
                         'mobile'      => 'required|numeric|min:9|unique:users,mobile',

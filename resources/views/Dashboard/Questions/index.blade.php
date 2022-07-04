@@ -28,7 +28,7 @@
         </div>
 
         @if($questions->count() > 0)
-            <table class="table datatable-basic" id="questions" style="font-size: 16px;">
+            <table class="table datatable-button-print-basic" id="questions" style="font-size: 16px;">
                 <thead>
                 <tr>
                     <th>#</th>

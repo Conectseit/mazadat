@@ -24,15 +24,15 @@
         <br>
 
         @if($activities->count() > 0)
-            <table class="table datatable-basic" id="activities" style="font-size: 16px;">
+            <table class="table datatable-button-print-basic" id="activities" style="font-size: 16px;">
                 <thead>
                 <tr style="background-color:gainsboro">
                     <th class="text-center">#</th>
                     <th class="text-center">{{ trans('messages.activity.description') }}</th>
                     <th class="text-center">{{ trans('messages.activity.admin_name') }}</th>
                     <th class="text-center">@lang('messages.activity.since')</th>
-                    <th class="text-center">@lang('messages.delete')</th>
-                    <th class="text-center">@lang('messages.form-actions')</th>
+{{--                    <th class="text-center">@lang('messages.delete')</th>--}}
+{{--                    <th class="text-center">@lang('messages.form-actions')</th>--}}
                 </tr>
                 </thead>
                 <tbody>
@@ -44,32 +44,32 @@
                         <td class="text-center"> {{ isNullable($activity->description) }}</td>
                         <td class="text-center"><a href=""> {{ isNullable($activity->causer->full_name) }}</a></td>
                         <td class="text-center">{{isset($activity->created_at) ?$activity->created_at->diffForHumans():'---' }}</td>
-                        <td class="text-center">
-                            <div class="list-icons text-center">
-                                <a data-id="{{ $activity->id }}" class="delete-action"
-                                   href="{{ Url('/activity/activity/'.$activity->id) }}">
-                                    <i class="icon-database-remove"></i>
-                                </a>
-                            </div>
-                        </td>
-                        <td class="text-center">
-                            <div class="list-icons text-center">
-                                <div class="list-icons-item dropdown text-center">
-                                    <a href="#" class="list-icons-item caret-0 dropdown-toggle" data-toggle="dropdown">
-                                        <i class="icon-menu9"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
+{{--                        <td class="text-center">--}}
+{{--                            <div class="list-icons text-center">--}}
+{{--                                <a data-id="{{ $activity->id }}" class="delete-action"--}}
+{{--                                   href="{{ Url('/activity/activity/'.$activity->id) }}">--}}
+{{--                                    <i class="icon-database-remove"></i>--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+{{--                        </td>--}}
+{{--                        <td class="text-center">--}}
+{{--                            <div class="list-icons text-center">--}}
+{{--                                <div class="list-icons-item dropdown text-center">--}}
+{{--                                    <a href="#" class="list-icons-item caret-0 dropdown-toggle" data-toggle="dropdown">--}}
+{{--                                        <i class="icon-menu9"></i>--}}
+{{--                                    </a>--}}
+{{--                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">--}}
 
-                                        <li>
-                                            <a data-id="{{ $activity->id }}" class="delete-action"
-                                               href="{{ Url('/activity/activity/'.$activity->id) }}">
-                                                <i class="icon-database-remove"></i>@lang('messages.delete')
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
+{{--                                        <li>--}}
+{{--                                            <a data-id="{{ $activity->id }}" class="delete-action"--}}
+{{--                                               href="{{ Url('/activity/activity/'.$activity->id) }}">--}}
+{{--                                                <i class="icon-database-remove"></i>@lang('messages.delete')--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </td>--}}
                     </tr>
                 @endforeach
                 </tbody>

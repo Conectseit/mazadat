@@ -45,19 +45,19 @@
 
     });
 </script>
-<script>
-    $(function(){
-        clock({!! json_encode(trans('dash.months')) !!}, {!! json_encode(trans('dash.days')) !!});
-    });
-    $(window).on("load", function () {
-        $(".loading").delay(600).fadeOut('slow',function(){
-            $('.loading-page').css('opacity', '1');
-        });
-    });
+{{--<script>--}}
+{{--    $(function(){--}}
+{{--        clock({!! json_encode(trans('dash.months')) !!}, {!! json_encode(trans('dash.days')) !!});--}}
+{{--    });--}}
+{{--    $(window).on("load", function () {--}}
+{{--        $(".loading").delay(600).fadeOut('slow',function(){--}}
+{{--            $('.loading-page').css('opacity', '1');--}}
+{{--        });--}}
+{{--    });--}}
 
-    // Notifucation
-    Noty.overrideDefaults({
-        theme: 'limitless',
-        layout: "{{ LaravelLocalization::getCurrentLocaleDirection() == 'rtl' ? 'topRight' : 'topLeft'}}"
-    });
-</script>
+{{--    // Notifucation--}}
+{{--    Noty.overrideDefaults({--}}
+{{--        theme: 'limitless',--}}
+{{--        layout: "{{ LaravelLocalization::getCurrentLocaleDirection() == 'rtl' ? 'topRight' : 'topLeft'}}"--}}
+{{--    });--}}
+{{--</script>--}}

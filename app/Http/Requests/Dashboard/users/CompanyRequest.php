@@ -31,8 +31,10 @@ class CompanyRequest extends FormRequest
                 }
             case 'POST': {
                     return [
-                        'commercial_register_image'          => 'required|image',
-                        'company_authorization_image'        => 'required|image',
+//                        'commercial_register_image'          => 'required|image',
+                        'commercial_register_image'       => ['required','mimes:png,jpg,jpeg'],
+                        'company_authorization_image'     => ['required','mimes:png,jpg,jpeg'],
+
                         'latitude'         => 'required|numeric',
                         'longitude'        => 'required|numeric',
                         'user_name'        => 'required|string|between:2,200',

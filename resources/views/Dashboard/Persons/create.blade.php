@@ -46,6 +46,8 @@
                                 <label>@lang('messages.person.image'):</label>
                                 <input type="file" class="form-control image " name="image">
                                 <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview">
+                                <p class="text-pink">  {{trans('messages.image_terms')}}</p>
+
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">{{ trans('messages.first_name') }}</label>

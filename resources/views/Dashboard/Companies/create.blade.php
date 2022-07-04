@@ -50,7 +50,9 @@
                                     <div class="col-lg-6">
                                         <input type="file" class="form-control image " name="image">
                                         <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview">
+                                        <p class="text-pink">  {{trans('messages.image_terms')}}</p>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="form-group">
@@ -146,6 +148,8 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview1">
+                                        <p class="text-pink">  {{trans('messages.image_terms')}}</p>
+
                                     </div>
                                 </div>
                             </div>
@@ -157,6 +161,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <img src=" {{ asset('uploads/default.png') }} " width="100px" class="thumbnail image-preview2">
+                                        <p class="text-pink">  {{trans('messages.image_terms')}}</p>
                                     </div>
                                 </div>
                             </div>
