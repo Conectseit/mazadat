@@ -1,12 +1,12 @@
 <!-- Page header -->
 <div class="page-header page-header-default">
-    <div class="page-header-content" style="">
+    <div class="page-header-content" style="background-color:#1E3C48FF;">
         <div class="page-title"dir="{{ direction() }}">
             <div class="row"  style="height:60px;">
                 <div class="col-6">
-                    <h3 style="display: inline;"style="color: black;">
+                    <h3 style="display: inline; color: whitesmoke;">
                         <i class="icon-arrow-right6 position-left"></i>
-                        <span class="text-bold">@lang('messages.Dashboard')</span>
+                        <span class="text-bold" style="color: whitesmoke; ">@lang('messages.Dashboard')</span>
                     </h3>
                     <div class="image_head" style="display: inline;">
                         <img class="" width="280" height="80" src="{{asset('Front/assets/imgs/logo.svg')}}"/>
