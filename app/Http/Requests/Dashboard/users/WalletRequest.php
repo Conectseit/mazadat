@@ -20,6 +20,7 @@ class WalletRequest extends FormRequest
     {
         return [
             'wallet'       => 'required|numeric',
+            'note'         => 'required',
         ];
     }
 

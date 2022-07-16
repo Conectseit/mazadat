@@ -465,8 +465,8 @@
                                            class="btn btn-success btn-labeled btn-labeled-left"><b>
                                                 <i class="icon-plus2"></i></b>{{ trans('messages.person.add_wallet') }}
                                         </a>
-
                                     </div>
+
 
                                 </div>
                             </div>

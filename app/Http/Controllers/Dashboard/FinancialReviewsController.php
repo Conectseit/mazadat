@@ -82,7 +82,9 @@ class FinancialReviewsController extends Controller
             ->causedBy(auth()->guard('admin')->user())
             ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' باضافة رصيد كاش الي محفظة المستخدم'.($user->user_name).''.$transaction->amount.''.'ريال سعودي');
 // ======================
-        return back()->with('message', trans('messages.messages.verify_cash'));
+//        return back()->with('message', trans('messages.messages.verify_cash'));
+        return ['status' => 'true', 'message' => trans('messages.messages.verify_cash')];
+
     }
 
 }

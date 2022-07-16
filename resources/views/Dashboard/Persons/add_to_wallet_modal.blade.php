@@ -24,6 +24,15 @@
                                             <input type="text" name="wallet"  class="form-control" placeholder="{{ trans('messages.balance') }}">
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">{{ trans('messages.note') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" name="note"  class="form-control" placeholder="{{ trans('messages.note') }}">
+                                            <p class="text-pink">  {{trans('messages.noote')}}</p>
+
+                                        </div>
+                                    </div>
                                     <br>
 
                                 </div>

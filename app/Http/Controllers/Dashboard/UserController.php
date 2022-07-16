@@ -50,8 +50,10 @@ class UserController extends Controller
 
         $payment= Payment::Create([
                     'user_id'     => $user->id,
+                    'admin_id'    => auth()->guard('admin')->user()->id,
                     'date'        => $user->updated_at,
                     'amount'      => $request->wallet,
+                    'note'        => $request->note,
                     'payment_type'=> 'cash'
                 ]);
 

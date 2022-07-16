@@ -127,6 +127,8 @@
                                                 <thead>
                                                 <tr>
                                                     <th class="text-center">#</th>
+                                                    <th class="text-center">{{ trans('messages.note') }}</th>
+                                                    <th class="text-center">{{ trans('messages.admin_name') }}</th>
                                                     <th class="text-center">{{ trans('messages.user_name') }}</th>
                                                     <th class="text-center">{{ trans('messages.transaction.amount') }}</th>
                                                     <th class="text-center">{{ trans('messages.accept') }}</th>
@@ -135,22 +137,35 @@
                                                 </thead>
                                                 <tbody>
                                                 @foreach($cash_transactions as $transaction)
-                                                    <tr id="transaction-row-{{ $transaction->id }}">
+                                                    <tr id="row-{{ $transaction->id }}">
 
                                                         <td class="text-center">{{ $loop->iteration }}</td>
+                                                        <td class="text-center">{{ $transaction->note }}</td>
+                                                        <td class="text-center">{{ $transaction->admin->full_name }}</a></td>
+                                                        <td class="text-center">{{ $transaction->user->user_name }}</td>
                                                         <td class="text-center">
                                                             <a href=""> {{ isNullable($transaction->user->user_name) }}</a>
                                                         </td>
                                                         <td class="text-center"><a
                                                                 href=""> {{ isNullable($transaction->amount) }}</a></td>
+{{--                                                        <td class="text-center">--}}
+{{--                                                            @if($transaction->is_verified ==0)--}}
+{{--                                                                <a href="transaction/{{$transaction->id}}/verify_cash/"--}}
+{{--                                                                   class="btn btn-success btn-sm"> <i--}}
+{{--                                                                        class="icon-check2"></i> {{trans('messages.verify')}}--}}
+{{--                                                                </a>--}}
+{{--                                                            @endif--}}
+{{--                                                        </td>--}}
+
+
+
                                                         <td class="text-center">
                                                             @if($transaction->is_verified ==0)
-                                                                <a href="transaction/{{$transaction->id}}/verify_cash/"
-                                                                   class="btn btn-success btn-sm"> <i
-                                                                        class="icon-check2"></i> {{trans('messages.verify')}}
-                                                                </a>
+                                                                <a onclick="sweet_delete('{{ route('transaction/verify_cash', $transaction->id) }}', {{ $transaction->id }})"
+                                                                   class="dropdown-item btn btn-success btn-sm">{{trans('messages.verify')}}</a>
                                                             @endif
                                                         </td>
+
                                                         <td class="text-center">{{isset($transaction->created_at) ?$transaction->created_at->format('y/m/d'):'---' }}</td>
                                                     </tr>
                                                 @endforeach
@@ -175,7 +190,48 @@
 @stop
 
 @section('scripts')
-    @include('Dashboard.layouts.parts.ajax_delete', ['model' => 'transaction'])
+{{--    @include('Dashboard.layouts.parts.ajax_delete', ['transaction' => 'transaction'])--}}
+
+<script>
+    function sweet_delete(url, id)
+    {
+        $( "#row-"+ id ).css('background-color','#000000').css('color','white');
+        swal({
+            title: "هل انت متاكد من عملية التحويل",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        data: {_method: 'delete', _token : '{{ csrf_token() }}' },
+                        success: function (data) {
+                            if(data['status'] == 'true'){
+                                swal({
+                                    text: data['message'],
+                                    icon: "success",
+                                });
+                                $( "#row-" + id ).hide(1000);
+                            }else{
+                                swal({
+                                    title: "تم التحويل بنجاح",
+                                    text: data['message'],
+                                    icon: "warning",
+                                });
+                                $("#row-" + id ).removeAttr('style');
+                            }
+                        }
+                    });
+                }else{
+                    $( "#row-"+id ).removeAttr('style');
+                }
+            });
+    }
+</script>
+
 @stop
 
 

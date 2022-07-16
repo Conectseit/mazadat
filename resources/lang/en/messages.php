@@ -110,6 +110,24 @@ return [
     'hours'   => 'hours',
     'min'   => 'min',
     'sec'   => 'sec',
+    'admin_name'   => 'اسم الادمن الذي قام بعملية التحويل',
+
+
+    'price'        => 'price',
+    'less_price'   => 'less price',
+    'high_price'   => 'high price',
+    'bidss'        => 'bids',
+    'less_bids'    => 'less bids',
+    'high_bids'    => 'high bids',
+    'ending'       => 'ending',
+    'less_ending'       => 'less remaining time',
+    'high_ending'       => 'high remaining time',
+
+
+    'note'              => ' كيفية الدفع',
+    'noote'              => 'من فضلك ادخل معلومة عن كيفية الدفع (كاش او ATMاو غير ذلك)',
+
+
 
     'description_ar' => 'Arabic description',
     'description_en' => 'English description',

@@ -45,24 +45,24 @@
                                 <div class="row">
                                     <div class="col-lg-3 col-md-6">
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected>price</option>
-                                            <option value="less_price">less_price</option>
-                                            <option value="high_price">high_price</option>
+                                            <option selected>{{trans('messages.price')}}</option>
+                                            <option value="less_price">{{trans('messages.less_price')}}</option>
+                                            <option value="high_price">{{trans('messages.high_price')}}</option>
 
                                         </select>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected>bids</option>
-                                            <option value="less_bids">less_bids</option>
-                                            <option value="high_bids">high_bids</option>
+                                            <option selected>{{trans('messages.bidss')}}</option>
+                                            <option value="less_bids">{{trans('messages.less_bids')}}</option>
+                                            <option value="high_bids">{{trans('messages.high_bids')}}</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected>ending</option>
-                                            <option value="less_ending">less_ending</option>
-                                            <option value="high_ending">high_ending</option>
+                                            <option selected>{{trans('messages.ending')}}</option>
+                                            <option value="less_ending">{{trans('messages.less_ending')}}</option>
+                                            <option value="high_ending">{{trans('messages.high_ending')}}</option>
                                         </select>
                                     </div>
                                 </div>
