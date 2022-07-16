@@ -1,7 +1,7 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.register'))
 @section('content')
-    @include('front.auctions.parts.head')
+{{--    @include('front.auctions.parts.head')--}}
     <section class="sign-up-page" dir="{{ direction() }}">
         <div class="container">
             <h4 class="title"> {{ trans('messages.add_new_user') }}</h4>

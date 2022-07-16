@@ -6,7 +6,7 @@
         } </style>
 @endsection
 @section('content')
-    @include('front.auctions.parts.head')
+{{--    @include('front.auctions.parts.head')--}}
     <section class="sign-up-page" dir="{{ direction() }}">
         <div class="container">
             <h4 class="title"> {{ trans('messages.register_company') }}</h4>

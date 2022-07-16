@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-    @include('front.auctions.parts.head')
+{{--    @include('front.auctions.parts.head')--}}
     <section class="my-wallet-page"  dir="{{ direction() }}">
         <div class="container">
             <h3 class="title"> {{trans('messages.welcome_in_mazadat')}}</h3><br><br>
