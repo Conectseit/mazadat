@@ -25,7 +25,7 @@
 
                             <div id="countdown" style="margin-right: -141px; ">
                                 <h5 class="text-center mx-auto my-1 "
-                                    style=" background: black; padding-bottom: 8px;">{{__('messages.auction.remaining_time')}}
+                                    style="  padding-bottom: 8px;">{{__('messages.auction.remaining_time')}}
                                     : <i class="fal fa-clock"> </i>
                                 </h5>
                                 <div class="labels">
