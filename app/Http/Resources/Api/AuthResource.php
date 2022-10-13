@@ -30,6 +30,7 @@ class AuthResource extends JsonResource
             'ban'                 => $this->ban,
             'token'               => $this->token->jwt,
 
+
         ];
 
     }
