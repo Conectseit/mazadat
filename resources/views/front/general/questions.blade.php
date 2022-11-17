@@ -23,7 +23,7 @@
                 <div class="notification-item">
                     <i class="fal fa-question-circle"></i>
                     <div class="text">
-                        <p>
+                        <p style="color: var(--main-color);">
                             {{$questionn->$question}}
                         </p><hr>
                         <p>

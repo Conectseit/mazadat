@@ -71,7 +71,12 @@
                                                         <td class="text-center">{{ $loop->iteration }}</td>
                                                         <td class="text-center">
                                                             {{--                                                            <a href={{ route('buyers.show', $transaction->user->id) }}> {{ isNullable($transaction->user->user_name) }}</a>--}}
-                                                            <a href=""> {{ isNullable($transaction->user->user_name) }}</a>
+
+                                                            @if($transaction->user->is_company=='person')
+                                                                <a href="{{ route('persons.show', $transaction->user->id) }}"> {{ isNullable($transaction->user->user_name) }}</a>
+                                                            @else
+                                                                <a href="{{ route('companies.show', $transaction->user->id) }}"> {{ isNullable($transaction->user->user_name) }}</a>
+                                                            @endif
                                                         </td>
                                                         {{-- <td class="text-center"><a href=""> {{ isNullable($transaction->user->wallet) }}</a></td>--}}
                                                         {{--                                                        <td class="text-center"><a href=""> {{ isNullable($transaction->payment_type) }}</a></td>--}}
@@ -109,7 +114,11 @@
                                                 @foreach($bank_deposit_transactions as $transaction)
                                                     <tr id="transaction-row-{{ $transaction->id }}">
                                                         <td class="text-center">
-                                                            <a href=""> {{ isNullable($transaction->user->user_name) }}</a>
+                                                            @if($transaction->user->is_company=='person')
+                                                                <a href="{{ route('persons.show', $transaction->user->id) }}"> {{ isNullable($transaction->user->user_name) }}</a>
+                                                            @else
+                                                                <a href="{{ route('companies.show', $transaction->user->id) }}"> {{ isNullable($transaction->user->user_name) }}</a>
+                                                            @endif
                                                         </td>
                                                         <td class="text-center">
                                                             <a href="{{ $transaction->image_path }}"
@@ -168,7 +177,8 @@
                                             </table>
 
                                         @else
-                                            <div style="text-align: center;"><h2> @lang('messages.no_data_found') </h2></div>
+                                            <div style="text-align: center;"><h2> @lang('messages.no_data_found') </h2>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
@@ -179,7 +189,7 @@
                                                    style="font-size: 16px;">
                                                 <thead>
                                                 <tr>
-{{--                                                    <th class="text-center">#</th>--}}
+                                                    {{--                                                    <th class="text-center">#</th>--}}
                                                     <th class="text-center">{{ trans('messages.note') }}</th>
                                                     <th class="text-center">{{ trans('messages.admin_name') }}</th>
                                                     <th class="text-center">{{ trans('messages.user_name') }}</th>
@@ -191,10 +201,16 @@
                                                 @foreach($cash_transactions as $transaction)
                                                     <tr id="transaction-row-{{ $transaction->id }}">
 
-{{--                                                        <td class="text-center">{{ $loop->iteration }}</td>--}}
+                                                        {{--                                                        <td class="text-center">{{ $loop->iteration }}</td>--}}
                                                         <td class="text-center">{{ $transaction->note }}</td>
                                                         <td class="text-center">{{ $transaction->admin->full_name }}</a></td>
-                                                        <td class="text-center">{{ $transaction->user->user_name }}</td>
+                                                        <td class="text-center">
+                                                            @if($transaction->user->is_company=='person')
+                                                                <a href="{{ route('persons.show', $transaction->user->id) }}"> {{ isNullable($transaction->user->user_name) }}</a>
+                                                            @else
+                                                                <a href="{{ route('companies.show', $transaction->user->id) }}"> {{ isNullable($transaction->user->user_name) }}</a>
+                                                            @endif
+                                                        </td>
                                                         <td class="text-center"><a
                                                                 href=""> {{ isNullable($transaction->amount) }}</a></td>
                                                         <td class="text-center">{{isset($transaction->created_at) ?$transaction->created_at->format('y/m/d'):'---' }}</td>
@@ -204,7 +220,8 @@
                                             </table>
 
                                         @else
-                                            <div style="text-align: center;"><h2> @lang('messages.no_data_found') </h2></div>
+                                            <div style="text-align: center;"><h2> @lang('messages.no_data_found') </h2>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>

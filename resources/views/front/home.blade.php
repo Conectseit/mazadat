@@ -8,9 +8,10 @@
             padding: 3px;
             margin-top: 10px;
             margin-bottom: 10px;
-            color: #1e3c48;
+            background-color: #1e3c48;
             font-size: 12px;
             width: 220px;
+            color: white;
         }
 
         .add-auction.btn {
@@ -27,7 +28,7 @@
 
         .carousel-item {
             width: 100%;
-            height: 350px;
+            height: 450px;
         }
         .carousel-item img {
             height: 100%;
@@ -35,38 +36,40 @@
             border-radius: 20px;
             border: 1px solid;
         }
-        .ad {
-            float: right;
-            text-align: center;
-            color: gainsboro;
-            font-size: 17px;
-            padding-left: 10px;
-            display: block;
-            position: relative;
-            width: 200px;
-            height: 45px;
-            background-color: var(--main-color);
-            border-radius: 20px;
-            margin-bottom: 10px;
-            padding-top: 10px;
-            padding-right: 10px;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-name: hideBtn;
-            opacity: 1;
-        }
 
-        @keyframes hideBtn {
-            0% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
+
+        /*.ad {*/
+        /*    float: right;*/
+        /*    text-align: center;*/
+        /*    color: gainsboro;*/
+        /*    font-size: 17px;*/
+        /*    padding-left: 10px;*/
+        /*    display: block;*/
+        /*    position: relative;*/
+        /*    width: 200px;*/
+        /*    height: 45px;*/
+        /*    background-color: var(--main-color);*/
+        /*    border-radius: 20px;*/
+        /*    margin-bottom: 10px;*/
+        /*    padding-top: 10px;*/
+        /*    padding-right: 10px;*/
+        /*    animation-duration: 2s;*/
+        /*    animation-iteration-count: infinite;*/
+        /*    animation-name: hideBtn;*/
+        /*    opacity: 1;*/
+        /*}*/
+
+        /*@keyframes hideBtn {*/
+        /*    0% {*/
+        /*        opacity: 1;*/
+        /*    }*/
+        /*    50% {*/
+        /*        opacity: 0;*/
+        /*    }*/
+        /*    100% {*/
+        /*        opacity: 1;*/
+        /*    }*/
+        /*}*/
     </style>
 @endsection
 
@@ -80,11 +83,11 @@
             <div class="col-md-10 col-sm-2 mx-auto" dir="{{ direction() }}">
 
                 <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="3000">
-                    <div class="row">
-                        <div class=" col-lg-3 col-md-3">
-                            <div class="ad">{{ trans('messages.ad-auctions') }}</div>
-                        </div>
-                    </div>
+{{--                    <div class="row">--}}
+{{--                        <div class=" col-lg-3 col-md-3">--}}
+{{--                            <div class="ad">{{ trans('messages.ad-auctions') }}</div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"
                                 class="active"></button>
@@ -143,22 +146,29 @@
                 @inject('auctions', 'App\Models\Auction')
                 <div class="row">
                     <div class=" col-lg-3 col-md-3">
-                        <div class=" statistics "><b>
+                        <div class=" statistics ">
+                            <img src="{{asset('Front/assets/imgs/icon/p_auction.png')}}" alt="logo" width="50" height="50">
+
+                            <b>
                             </b>{{ trans('messages.auction.count_of_on_progress') }}
                             :({{$auctions->where(['status'=>'on_progress','is_accepted'=>1])->count()}})
                         </div>
-                        <div class=" statistics "><b><i class="fal fa-check-circle"
-                                                        style="color: white;background-color: green;"></i>
+                        <div class=" statistics ">
+                            <img src="{{asset('Front/assets/imgs/icon/d_auction.png')}}" alt="logo" width="50" height="50">
+
+                            <b>
+{{--                                <i class="fal fa-check-circle" style="color: white;background-color: green;"></i>--}}
+                                <i class="fal fa-done" style="color: white;background-color: green;"></i>
                             </b>{{ trans('messages.auction.count_of_done') }}
                             :({{$auctions->where(['status'=>'done'])->count()}})
                         </div>
                     </div>
                     <div class=" col-lg-6 col-md-6">
                     </div>
-                    <div class=" col-lg-3 col-md-3">
-                        <a href="{{route('front.unique_auction')}}" class="add-auction btn"><b> <i
-                                    class="fal fa-gavel"></i> </b>{{trans('messages.auction.unique')}}</a>
-                    </div>
+{{--                    <div class=" col-lg-3 col-md-3">--}}
+{{--                        <a href="{{route('front.unique_auction')}}" class="add-auction btn"><b> <i--}}
+{{--                                    class="fal fa-gavel"></i> </b>{{trans('messages.auction.unique')}}</a>--}}
+{{--                    </div>--}}
                 </div>
                 <h2 style="color: var(--main-color); text-align: center"> {{__('messages.categories')}}</h2><br>
                 <div class="row">

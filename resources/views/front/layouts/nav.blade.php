@@ -13,8 +13,7 @@
                     <p class="clock" id="time"></p>
                     <p class="day"><span class="name px-2" id="day_d">الثلاثاء</span><span class="number"
                                                                                            id="day_n">02</span></p>
-                    <h3 class="month-year"><span class="month px-2" id="day_m">نوفمبر</span><span class="year"
-                                                                                                  id="year_h"></span>
+                    <h3 class="month-year"><span class="month px-2" id="day_m">نوفمبر</span><span class="year" id="year_h"></span>
                     </h3>
                 </div>
             </div>
@@ -93,6 +92,11 @@
                                              </span>
                                         </div>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link hvr-shutter-out-horizontal"
+                                           href="{{route('front.unique_auction')}}" ><b> <i
+                                                    class="fal fa-gavel"></i> </b>{{trans('messages.auction.unique')}}</a>
+                                    </li>
                                     {{--when authinticate--}}
                                     @if(auth()->check())
 
@@ -117,7 +121,9 @@
                                             <a class="nav-link hvr-shutter-out-horizontal"
                                                href="{{route('front.show_login')}}">@lang('messages.login')</a>
                                         </li>
+
                                     @endif
+
                                 </ul>
                             </div>
                         </div>
