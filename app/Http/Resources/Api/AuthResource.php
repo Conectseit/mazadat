@@ -29,8 +29,6 @@ class AuthResource extends JsonResource
             'is_verified'         => $this->is_verified,
             'ban'                 => $this->ban,
             'token'               => $this->token->jwt,
-
-
         ];
 
     }
