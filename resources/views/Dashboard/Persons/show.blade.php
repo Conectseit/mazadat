@@ -1,7 +1,14 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.person.persons'))
 @section('style')
-    <style> #map {height: 400px;} </style>
+    <style> #map {height: 400px;}
+
+        @media print {
+            head, breadcrumb,nav, ul, .test_print {
+                display: none;
+            }
+        }
+    </style>
 @endsection
 @section('breadcrumb')
     <div class="breadcrumb-line">
@@ -425,7 +432,7 @@
                             <div class="panel panel-flat">
                                 <div class="panel-body">
                                     <div class="tabbable">
-                                        <ul class="nav nav-pills nav-pills-bordered nav-justified">
+                                        <ul class="nav nav-pills nav-pills-bordered nav-justified test_print">
                                             <li class="active"><a href="#user_bids" data-toggle="tab">{{ trans('messages.bids') }}</a></li>
                                             <li><a href="#transactions" data-toggle="tab">{{ trans('messages.payment') }}</a></li>
                                         </ul>
@@ -445,7 +452,11 @@
                                                         </div>
                                                         <div class="panel-body">
                                                             @if($person_bids->count() > 0)
-                                                                <table class="table table-striped table-dark datatable-button-print-basic"
+
+                                                                <a href="" id="printme" target="_blank" class="btn btn-info printme"><i
+                                                                        class="fa fa-print"></i> Print</a>
+
+                                                                <table class="table table-striped table-dark "
                                                                        id="auction_bids"
                                                                        style="font-size: 16px;">
                                                                     <thead class="table-dark">
@@ -492,7 +503,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="panel-body">
-                                                        <table class="table table-striped datatable-button-print-basic"
+
+                                                        <a href="" id="print_transactions" target="_blank" class="btn btn-info print_transactions"><i
+                                                                class="fa fa-print"></i> Print</a>
+
+                                                        <table class="table table-striped "
                                                                id="transactions" style="font-size: 16px;">
                                                             <thead>
                                                             <tr>
@@ -627,5 +642,19 @@
     </script>
     <script
         src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks">
+    </script>
+
+    <script>
+        $(".print_transactions").click(function (e) {
+            e.preventDefault();
+
+            window.print();
+        });
+
+        $(".printme").click(function (e) {
+            e.preventDefault();
+
+            window.print();
+        });
     </script>
 @stop

@@ -2,7 +2,6 @@
 @section('title', trans('messages.user.my_auctions'))
 @section('style')
     <style>
-
         @media print {
             head, footer {
                 display: none;
@@ -129,9 +128,6 @@
         // document.getElementById("print_transactions").onclick = function () {
         //     window.print();
         // };
-
-
-
 
         $(".print_transactions").click(function (e) {
             e.preventDefault();
