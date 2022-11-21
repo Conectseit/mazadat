@@ -33,6 +33,11 @@ class SettingController extends Controller
         if ($request->conditions_terms_en)
             Setting::where('key', 'conditions_terms_en')->update(['value' => $request->conditions_terms_en]);
 
+        if ($request->quote_name_ar)
+            Setting::where('key', 'quote_name_ar')->update(['value' => $request->quote_name_ar]);
+        if ($request->quote_name_en)
+            Setting::where('key', 'quote_name_en')->update(['value' => $request->quote_name_en]);
+
 
         if ($request->mobile)
             Setting::where('key', 'mobile')->update(['value' => $request->mobile]);

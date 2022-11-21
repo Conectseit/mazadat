@@ -180,8 +180,6 @@
         </div>
     </div>
 
-
-
 {{--//bank--}}
     <div class="row">
         <div class="col-md-12">
@@ -282,6 +280,60 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
+                <div class="panel-heading">
+
+                    <!-- Basic layout-->
+                    <div class="card">
+                        <div class="card-header header-elements-inline">
+                            <h5 class="card-title">{{ trans('messages.settings.quote') }}</h5>
+                        </div>
+                        <br>
+                        <div class="card-body">
+                            <form action="{{ route('settings.update') }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('PUT') }}
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-3">{{ trans('messages.settings.quote_name_ar') }}:</label><br>
+                                    <div class="col-lg-9">
+                                                <textarea rows="4" cols="4" name="quote_name_ar" class="form-control"
+                                                          placeholder="{{ trans('messages.settings.quote_name_ar') }}">{{ settings('quote_name_ar') }}
+                                                </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-3">{{ trans('messages.settings.quote_name_en') }}:</label><br>
+                                    <div class="col-lg-9">
+                                                <textarea rows="4" cols="4" name="quote_name_en" class="form-control"
+                                                          placeholder="{{ trans('messages.settings.quote_name_en') }}">{{ settings('quote_name_en') }}
+                                                </textarea>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-success"><i
+                                            class="icon-paperplane mr-2"></i>{{ trans('messages.buttons.submit_back_to_list') }}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /basic layout -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
@@ -326,8 +378,6 @@
                 </div>
             </div>
         </div>
-
-
         <div class="col-md-6">
             <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
                 <div class="panel-heading">
@@ -371,7 +421,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">

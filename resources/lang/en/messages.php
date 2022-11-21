@@ -203,6 +203,13 @@ return [
         'iban'                    => 'IBAN',
 
 
+        'quote' => 'وصف مزادات في الصفحلة الرئيسية ',
+        'quote_name_ar' => 'وصف مزادات في الصفحلة الرئيسية باللغة العربية',
+        'quote_name_en' => 'وصف مزادات في الصفحلة الرئيسية باللغة الإنجليزية',
+
+        'project_name_ar' => 'اسم المشروع باللغة العربية',
+        'project_name_en' => 'اسم المشروع باللغة الإنجليزية',
+
         'facebook_url' =>'application facebook account',
         'twitter_url' => 'application twitter account',
         'youtube_url' => 'youtube_url',

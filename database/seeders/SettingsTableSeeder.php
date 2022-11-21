@@ -15,8 +15,9 @@ class SettingsTableSeeder extends Seeder
     public function run()
     {
         DB::table('settings')->insert([
-            ['key' => 'dashboard_name_ar', 'value' => 'لوحة تحكم موقع وتطبيق مزادات', 'created_at' => now(), ],
-            ['key' => 'dashboard_name_en', 'value' => 'Mazadat Dashboard', 'created_at' => now(), ],
+//            ['key' => 'dashboard_name_ar', 'value' => 'لوحة تحكم موقع وتطبيق مزادات', 'created_at' => now(), ],
+//            ['key' => 'dashboard_name_en', 'value' => 'Mazadat Dashboard', 'created_at' => now(), ],
+//
             ['key' => 'project_name_ar', 'value' => 'موقع وتطبيق مزادات', 'created_at' => now(), ],
             ['key' => 'project_name_en', 'value' => 'Mazadat Website & App', 'created_at' => now(), ],
             ['key' => 'app_description_ar', 'value' => 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء', 'created_at' => now(), ],
@@ -62,6 +63,11 @@ class SettingsTableSeeder extends Seeder
             ['key' => 'about_app_en', 'value' => 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable.', 'created_at' => now(), ],
             ['key' => 'conditions_terms_ar', 'value' => 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء.', 'created_at' => now(), ],
             ['key' => 'conditions_terms_en', 'value' => 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable.', 'created_at' => now(), ],
+
+            ['key' => 'quote_name_ar', 'value' => 'لوحة تحكم موقع وتطبيق مزادات', 'created_at' => now(), ],
+            ['key' => 'quote_name_en', 'value' => 'Mazadat Dashboard', 'created_at' => now(), ],
+
+
             //online_payment_conditions
             ['key' => 'online_payment_conditions_ar', 'value' => 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable.', 'created_at' => now(), ],
             ['key' => 'online_payment_conditions_en', 'value' => 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable.', 'created_at' => now(), ],

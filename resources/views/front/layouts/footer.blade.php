@@ -13,13 +13,15 @@
     @php($about= 'about_app_'.app()->getLocale())
     @php($terms= 'conditions_terms_'.app()->getLocale())
     @php($app_description= 'app_description_'.app()->getLocale())
+    @php($quote_name= 'quote_name_'.app()->getLocale())
 
     <div class="container" >
         <div class="row">
             <div class="col-lg-7 slog-right" dir="{{ direction() }}">
                 <img class="logo" src="{{asset('Front/assets/imgs/logo-text.svg')}}" alt="logo">
                 <p class="footer-text">
-                    {{App\Models\Setting::where('key',$about)->first()->value}}
+{{--                    {{App\Models\Setting::where('key',$about)->first()->value}}--}}
+                    {{App\Models\Setting::where('key',$quote_name)->first()->value}}
                 </p>
                 <div class="links" >
                     <a href="{{route('front.condition_and_terms')}}">{{trans('messages.terms')}} <i class="fal fa-chevron-left" ></i></a>
