@@ -18,7 +18,10 @@
             </div>
             <br>
             <div class="text">
-                <p>{{$about_app}}</p>
+                <p>
+{{--                    {{$about_app}}--}}
+
+                    {!! $about_app !!}</p>
             </div>
         </div>
     </section>
