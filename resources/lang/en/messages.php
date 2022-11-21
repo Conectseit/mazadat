@@ -210,6 +210,12 @@ return [
         'project_name_ar' => 'اسم المشروع باللغة العربية',
         'project_name_en' => 'اسم المشروع باللغة الإنجليزية',
 
+
+        'privacy' => 'سياسة الخصوصية',
+        'privacy_ar' => ' سياسة الخصوصية باللغة العربية',
+        'privacy_en' => 'سياسة الخصوصية باللغة الإنجليزية',
+
+
         'facebook_url' =>'application facebook account',
         'twitter_url' => 'application twitter account',
         'youtube_url' => 'youtube_url',

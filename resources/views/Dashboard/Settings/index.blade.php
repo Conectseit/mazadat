@@ -30,26 +30,26 @@
                             <form action="{{ route('settings.update') }}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('PUT') }}
-                                <div class="form-group row">
-                                    <label
-                                        class="col-form-label col-lg-4">{{ trans('messages.settings.project_name_ar') }}
-                                        :</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" name="project_name_ar"
-                                               value="{{ settings('project_name_ar') }}" class="form-control"
-                                               placeholder="{{ trans('messages.settings.project_name_ar') }}">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label
-                                        class="col-form-label col-lg-4">{{ trans('messages.settings.project_name_en') }}
-                                        :</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" name="project_name_en"
-                                               value="{{ settings('project_name_en') }}" class="form-control"
-                                               placeholder="{{ trans('messages.settings.project_name_en') }}">
-                                    </div>
-                                </div>
+{{--                                <div class="form-group row">--}}
+{{--                                    <label--}}
+{{--                                        class="col-form-label col-lg-4">{{ trans('messages.settings.project_name_ar') }}--}}
+{{--                                        :</label>--}}
+{{--                                    <div class="col-lg-8">--}}
+{{--                                        <input type="text" name="project_name_ar"--}}
+{{--                                               value="{{ settings('project_name_ar') }}" class="form-control"--}}
+{{--                                               placeholder="{{ trans('messages.settings.project_name_ar') }}">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="form-group row">--}}
+{{--                                    <label--}}
+{{--                                        class="col-form-label col-lg-4">{{ trans('messages.settings.project_name_en') }}--}}
+{{--                                        :</label>--}}
+{{--                                    <div class="col-lg-8">--}}
+{{--                                        <input type="text" name="project_name_en"--}}
+{{--                                               value="{{ settings('project_name_en') }}" class="form-control"--}}
+{{--                                               placeholder="{{ trans('messages.settings.project_name_en') }}">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 <div class="form-group row">
                                     <label class="col-form-label col-lg-4">{{ trans('messages.settings.mobile') }}
                                         :</label>
@@ -281,10 +281,6 @@
         </div>
     </div>
 
-
-
-
-
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
@@ -329,10 +325,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
-
 
     <div class="row">
         <div class="col-md-6">
@@ -518,12 +511,63 @@
         </div>
     </div>
 
+
+    <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Basic layout-->
+                    <div class="card">
+                        <div class="card-header header-elements-inline">
+                            <h5 class="card-title">{{ trans('messages.settings.privacy') }}</h5>
+                        </div><br>
+                        <div class="card-body">
+                            <form action="{{ route('settings.update') }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('PUT') }}
+                                <div class="form-group row" >
+                                    <label class="col-form-label col-lg-3">{{ trans('messages.settings.privacy_ar') }}
+                                        :</label>
+                                    <div class="col-lg-9">
+                                        <textarea rows="5" cols="5" name="privacy_ar" class="  form-control "
+                                                  placeholder="{{ trans('messages.settings.privacy_ar') }}">{{ settings('privacy_ar') }}
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label
+                                        class="col-form-label col-lg-3">{{ trans('messages.settings.privacy_en') }}
+                                        :</label>
+                                    <div class="col-lg-9">
+                                                <textarea rows="5" cols="5" name="privacy_en"
+                                                          class="form-control"
+                                                          placeholder="{{ trans('messages.settings.privacy_en') }}">{{ settings('privacy_en') }}
+                                                </textarea>
+                                    </div>
+                                </div>
+                                <legend class="font-weight-semibold text-uppercase font-size-sm"></legend>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-success"><i
+                                            class="icon-paperplane mr-2"></i>{{ trans('messages.buttons.submit_back_to_list') }}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /basic layout -->
+                </div>
+            </div>
+        </div>
+    </div>
+
 @stop
 
 @section('scripts')
     <script>
-        CKEDITOR.replace('conditions_terms_ar', { height: '400px' });
-        CKEDITOR.replace('conditions_terms_en', { height: '400px' });
+        CKEDITOR.replace('conditions_terms_ar', { height: '300px' });
+        CKEDITOR.replace('conditions_terms_en', { height: '300px' });
+        CKEDITOR.replace('privacy_ar', { height: '300px' });
+        CKEDITOR.replace('privacy_en', { height: '300px' });
         CKEDITOR.replace('about_app_ar', { height: '300px' });
         CKEDITOR.replace('about_app_en', { height: '300px' });
         {{--CKEDITOR.instances.about_app_ar.setData(`{!! isset($setting) ? $setting->value : '' !!}`);--}}

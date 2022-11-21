@@ -20,7 +20,7 @@
             </div>
             <br>
             <div class="text"style="height: 500px;overflow-y: auto !important;" >
-                <h3>{{trans('messages.description')}}</h3>{!! $app_description!!}
+                <h3 style="color: var(--main-color)">{{trans('messages.description')}}</h3>{!! $app_description!!}
 
             </div>
         </div>

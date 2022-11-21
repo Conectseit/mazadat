@@ -39,6 +39,13 @@ class GeneralController extends Controller
         return view('front.general.description', $data);
     }
 
+    public function privacy()
+    {
+        $privacy = 'privacy_' . app()->getLocale();
+        $data['privacy'] = Setting::where('key', $privacy)->first()->value;
+        return view('front.general.privacy', $data);
+    }
+
     public function contact_us(ContactRequest $request)
     {
          Contact::create($request->all());

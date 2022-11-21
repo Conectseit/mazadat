@@ -1,12 +1,14 @@
 @extends('front.layouts.master')
-@section('title', trans('messages.about_app'))
+@section('title', trans('messages.privacy'))
 @section('content')
     <main class="categories-bar row">
         @include('front.layouts.parts.nav_categories')
     </main>
     @include('front.layouts.parts.alert')
+
     <section class="about-us-page" dir="{{ direction() }}">
         <div class="container">
+
             <div class="row">
                 <div class=" d-flex justify-content-between">
                     <h4>
@@ -17,13 +19,11 @@
                 </div>
             </div>
             <br>
-
-
-
             <div class="text"style="height: 500px;overflow-y: auto !important;" >
-                <h3 style="color: var(--main-color)">{{trans('messages.about_app')}}</h3>{!! $about_app !!}
+                <h3 style="color: var(--main-color)">{{trans('messages.settings.privacy')}}</h3>{!! $privacy !!}
 
             </div>
         </div>
     </section>
 @stop
+

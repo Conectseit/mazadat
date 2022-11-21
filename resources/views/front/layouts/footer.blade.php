@@ -26,6 +26,7 @@
                 <div class="links" >
                     <a href="{{route('front.condition_and_terms')}}">{{trans('messages.terms')}} <i class="fal fa-chevron-left" ></i></a>
                     <a href="{{route('front.description')}}">{{ trans('messages.settings.description') }}<i class="fal fa-chevron-left"></i></a>
+                    <a href="{{route('front.privacy')}}">{{ trans('messages.settings.privacy') }}<i class="fal fa-chevron-left"></i></a>
                 </div>
             </div>
             <div class="col-lg-5" dir="{{ direction() }}">
