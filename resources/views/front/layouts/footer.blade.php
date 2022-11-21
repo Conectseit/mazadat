@@ -105,8 +105,7 @@
                 <div class="col-lg-6" >
                     <p style="font-weight: bold; font-size: 14px;">{{trans('messages.copy_rights')}}
                         <b>
-
-                            <img  class="img-circle" src="{{asset('Front/assets/imgs/connect_logo/dark-logoo.png')}}" alt="mastercard"style="width: 100px; height: 35px;">
+                            <img  class="img-circle" src="{{asset('Front/assets/imgs/icon/dark-logoo.png')}}" alt="mastercard"style="width: 100px; height: 35px;">
                         </b>
                         {{trans('messages.for')}}
                     </p>

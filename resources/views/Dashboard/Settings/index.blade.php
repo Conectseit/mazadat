@@ -87,8 +87,6 @@
                                     </div>
                                 </div>
 
-
-
                                 <div class="form-group row">
                                     <label class="col-form-label col-lg-4">{{ trans('messages.settings.location_on_google_maps') }}:</label>
 
@@ -476,6 +474,9 @@
 @section('scripts')
     <script>
         CKEDITOR.replace('conditions_terms_ar', { height: '400px' });
+        CKEDITOR.replace('conditions_terms_en', { height: '400px' });
+        CKEDITOR.replace('about_app_ar', { height: '300px' });
+        CKEDITOR.replace('about_app_en', { height: '300px' });
         {{--CKEDITOR.instances.about_app_ar.setData(`{!! isset($setting) ? $setting->value : '' !!}`);--}}
     </script>
     @include('Dashboard.Settings.app_location_map')
