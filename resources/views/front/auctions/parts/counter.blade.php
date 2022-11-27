@@ -45,28 +45,6 @@
     }, 1000);
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {{--<script>--}}
 {{--    var target_date = {{ strtotime($auction->end_date) }}; // set the countdown date--}}
 {{--    var days, hours, minutes, seconds; // variables for time units--}}

@@ -18,8 +18,6 @@
             </div>
             <br>
 
-
-
             <div class="text"style="height: 500px;overflow-y: auto !important;" >
                 <h3 style="color: var(--main-color)">{{trans('messages.about_app')}}</h3>{!! $about_app !!}
 

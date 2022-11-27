@@ -80,13 +80,17 @@ class PersonController extends Controller
             $request_data['image']  = uploaded($request->image, 'user');
         }
 
-        if ( $update_user=User::where('mobile', $request_data['mobile'])->first()) {
-            if($update_user->id == $user->id){
-                $user->update($request_data);
-                return responseJson(true, trans('api.request_done_successfully'), new PersonResource($user)); //ACCEPTED
-            }
-            return responseJson(false, 'قيمة الجوال مستخدمة من قبل', null);  //
-        }
+//        if ( $update_user=User::where('mobile', $request_data['mobile'])->first()) {
+//            if($update_user->id == $user->id){
+//                $user->update($request_data);
+//                return responseJson(true, trans('api.request_done_successfully'), new PersonResource($user)); //ACCEPTED
+//            }
+//            return responseJson(false, 'قيمة الجوال مستخدمة من قبل', null);  //
+//        }
+
+
+        $user->update($request_data);
+        return responseJson(true, trans('api.request_done_successfully'), new PersonResource($user)); //ACCEPTED
 
 //        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));
     }
