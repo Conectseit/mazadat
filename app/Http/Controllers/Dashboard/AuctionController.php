@@ -52,7 +52,6 @@ class AuctionController extends Controller
 
     public function store(AuctionRequest $request)
     {
-
         DB::beginTransaction();
         try {
             $serial_number = '#' . random_int(00000, 99999);

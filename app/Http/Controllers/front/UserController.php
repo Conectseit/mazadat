@@ -4,17 +4,13 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\ComplteProfileRequest;
-use App\Http\Requests\Front\updatePersonalBioRequest;
 use App\Http\Requests\Front\updatePersonalImageRequest;
 use App\Http\Requests\Front\updateProfileRequest;
 use App\Http\Requests\Front\user\AdditionalAddressRequest;
 use App\Http\Requests\Front\user\AvailableLimitRequest;
-use App\Http\Requests\Front\user\UploadDocumentRequest;
-use App\Http\Requests\Front\user\UploadPassportRequest;
 use App\Models\AuctionBuyer;
 use App\Models\City;
 use App\Models\Country;
-use App\Models\Document;
 use App\Models\Nationality;
 use App\Models\User;
 use App\Models\UserAddress;
@@ -133,7 +129,7 @@ class UserController extends Controller
     }
 
 
-// =============== user wallete ===========================================
+// =============== user wallet ===========================================
     public function choose_available_limit(AvailableLimitRequest$request)
     {
         $user = auth()->user();
