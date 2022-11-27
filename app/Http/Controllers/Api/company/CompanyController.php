@@ -92,12 +92,16 @@ class CompanyController extends Controller
         }
 
         if ( $update_user=User::where('mobile', $request_data['mobile'])->first()) {
-            if($update_user->id == $user->id){
-                $user->update($request_data+['is_completed'=>1]);
+            if($update_user->id == $user->id) {
+                $user->update($request_data+['is_completed'=>1,'mobile'=>$request->phone_code. $request->mobile]);
                 return responseJson(true, trans('api.request_done_successfully'), new CompanyResource($user)); //ACCEPTED
             }
             return responseJson(false, 'قيمة الجوال مستخدمة من قبل', null);  //
         }
+
+        $user->update($request_data+['mobile'=>$request->phone_code. $request->mobile]);
+        return responseJson(true, trans('api.request_done_successfully'), new CompanyResource($user)); //ACCEPTED
+
 
 //        $user->update($request->only(['full_name', 'user_name', 'email', 'mobile', 'password']));
     }
