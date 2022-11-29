@@ -129,15 +129,6 @@
                                 {{ csrf_field() }}
                                 {{ method_field('PUT') }}
                                 <div class="form-group row">
-                                    <label class="col-form-label col-lg-4">{{ trans('messages.settings.facebook_url') }}
-                                        :</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" name="facebook_url" value="{{ settings('facebook_url') }}"
-                                               class="form-control"
-                                               placeholder="{{ trans('messages.settings.facebook_url') }}">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
                                     <label class="col-form-label col-lg-4">{{ trans('messages.settings.twitter_url') }}
                                         :</label>
                                     <div class="col-lg-8">
@@ -146,15 +137,15 @@
                                                placeholder="{{ trans('messages.settings.twitter_url') }}">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-form-label col-lg-4">{{ trans('messages.settings.youtube_url') }}
-                                        :</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" name="youtube_url" value="{{ settings('youtube_url') }}"
-                                               class="form-control"
-                                               placeholder="{{ trans('messages.settings.youtube_url') }}">
-                                    </div>
-                                </div>
+{{--                                <div class="form-group row">--}}
+{{--                                    <label class="col-form-label col-lg-4">{{ trans('messages.settings.youtube_url') }}--}}
+{{--                                        :</label>--}}
+{{--                                    <div class="col-lg-8">--}}
+{{--                                        <input type="text" name="youtube_url" value="{{ settings('youtube_url') }}"--}}
+{{--                                               class="form-control"--}}
+{{--                                               placeholder="{{ trans('messages.settings.youtube_url') }}">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 <div class="form-group row">
                                     <label
                                         class="col-form-label col-lg-4">{{ trans('messages.settings.instagram_url') }}
@@ -163,6 +154,16 @@
                                         <input type="text" name="instagram_url" value="{{ settings('instagram_url') }}"
                                                class="form-control"
                                                placeholder="{{ trans('messages.settings.instagram_url') }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-4">{{ trans('messages.settings.snapchat_url') }}
+                                        :</label>
+                                    <div class="col-lg-8">
+                                        <input type="text" name="facebook_url" value="{{ settings('facebook_url') }}"
+                                               class="form-control"
+                                               placeholder="{{ trans('messages.settings.snapchat_url') }}">
                                     </div>
                                 </div>
                                 <legend class="font-weight-semibold text-uppercase font-size-sm"></legend>

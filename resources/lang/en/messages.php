@@ -215,7 +215,7 @@ return [
         'privacy_ar' => ' سياسة الخصوصية باللغة العربية',
         'privacy_en' => 'سياسة الخصوصية باللغة الإنجليزية',
 
-
+        'snapchat_url' =>'application snapchat account',
         'facebook_url' =>'application facebook account',
         'twitter_url' => 'application twitter account',
         'youtube_url' => 'youtube_url',

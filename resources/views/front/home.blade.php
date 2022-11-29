@@ -22,14 +22,16 @@
             font-size: 20px;
             background: #1e3c48;
         }
+
         .carousel {
             margin-top: 40px;
         }
 
         .carousel-item {
             width: 100%;
-            height: 450px;
+            height: 520px;
         }
+
         .carousel-item img {
             height: 100%;
             width: 100%;
@@ -83,27 +85,30 @@
             <div class="col-md-10 col-sm-2 mx-auto" dir="{{ direction() }}">
 
                 <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="3000">
-{{--                    <div class="row">--}}
-{{--                        <div class=" col-lg-3 col-md-3">--}}
-{{--                            <div class="ad">{{ trans('messages.ad-auctions') }}</div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="row">--}}
+                    {{--                        <div class=" col-lg-3 col-md-3">--}}
+                    {{--                            <div class="ad">{{ trans('messages.ad-auctions') }}</div>--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"
                                 class="active"></button>
                         @foreach($advertisements as $advertisement)
-                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to={{$advertisement->id}}></button>
+                            <button type="button" data-bs-target="#carouselExample"
+                                    data-bs-slide-to={{$advertisement->id}}></button>
                         @endforeach
-{{--                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>--}}
+                        {{--                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>--}}
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <a href="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
-                               data-popup="lightbox">
-                                <img class="d-block"
-                                     src="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
-                                     alt="First slide">
-                            </a>
+                            <div class="slider_image" style="height: 100%; width: 100%">
+                                <a href="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
+                                   data-popup="lightbox">
+                                    <img class="d-block"
+                                         src="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
+                                         alt="First slide" style="height: 100%; width: 100%">
+                                </a>
+                            </div>
 
                             <div class="carousel-caption d-none d-md-block">
                                 <h4>{{$advertisements->count() > 0 ? $advertisements->first()->$name : 'mazadat' }}</h4>
@@ -147,17 +152,19 @@
                 <div class="row">
                     <div class=" col-lg-3 col-md-3">
                         <div class=" statistics ">
-                            <img src="{{asset('Front/assets/imgs/icon/p_auction.png')}}" alt="logo" width="50" height="50">
+                            <img src="{{asset('Front/assets/imgs/icon/p_auction.png')}}" alt="logo" width="50"
+                                 height="50">
 
                             <b>
                             </b>{{ trans('messages.auction.count_of_on_progress') }}
                             :({{$auctions->where(['status'=>'on_progress','is_accepted'=>1])->count()}})
                         </div>
                         <div class=" statistics ">
-                            <img src="{{asset('Front/assets/imgs/icon/d_auction.png')}}" alt="logo" width="50" height="50">
+                            <img src="{{asset('Front/assets/imgs/icon/d_auction.png')}}" alt="logo" width="50"
+                                 height="50">
 
                             <b>
-{{--                                <i class="fal fa-check-circle" style="color: white;background-color: green;"></i>--}}
+                                {{--                                <i class="fal fa-check-circle" style="color: white;background-color: green;"></i>--}}
                                 <i class="fal fa-done" style="color: white;background-color: green;"></i>
                             </b>{{ trans('messages.auction.count_of_done') }}
                             :({{$auctions->where(['status'=>'done'])->count()}})
@@ -165,10 +172,10 @@
                     </div>
                     <div class=" col-lg-6 col-md-6">
                     </div>
-{{--                    <div class=" col-lg-3 col-md-3">--}}
-{{--                        <a href="{{route('front.unique_auction')}}" class="add-auction btn"><b> <i--}}
-{{--                                    class="fal fa-gavel"></i> </b>{{trans('messages.auction.unique')}}</a>--}}
-{{--                    </div>--}}
+                    {{--                    <div class=" col-lg-3 col-md-3">--}}
+                    {{--                        <a href="{{route('front.unique_auction')}}" class="add-auction btn"><b> <i--}}
+                    {{--                                    class="fal fa-gavel"></i> </b>{{trans('messages.auction.unique')}}</a>--}}
+                    {{--                    </div>--}}
                 </div>
                 <h2 style="color: var(--main-color); text-align: center"> {{__('messages.categories')}}</h2><br>
                 <div class="row">

@@ -17,7 +17,6 @@ use App\Models\InspectionImage;
 use App\Models\Notification;
 use App\Models\Option;
 use App\Models\OptionDetail;
-use App\Models\Setting;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
