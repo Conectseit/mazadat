@@ -237,7 +237,7 @@
                                 <div class="owl-carousel owl-theme">
                                     @foreach($images as $image)
                                         <div class="item text-center">
-                                            <div class="project-img ui-card shadow-lg mx-3">
+                                            <div class="image  shadow-lg mx-3">
                                                 <img src="{{$image->image_path}}" alt="">
                                             </div>
                                         </div>
