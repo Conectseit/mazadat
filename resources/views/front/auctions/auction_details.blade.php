@@ -245,10 +245,9 @@
                                 </div>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img class="d-block w-100"
-                                             {{--                                             src="https://www.cs.ucy.ac.cy/courses/EPL425/labs/LAB10/slide1.jpg"--}}
-                                             src="{{$auction->first_image_path}}"
-                                             alt="First slide">
+                                        <a href="{{$auction->first_image_path}}" data-popup="lightbox">
+                                        <img class="d-block w-100 h-100" src="{{$auction->first_image_path}}" alt="First slide">
+                                        </a>
                                     </div>
                                     @foreach($images as $image)
                                         <div class="carousel-item">
