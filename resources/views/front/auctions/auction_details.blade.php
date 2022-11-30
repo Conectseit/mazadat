@@ -3,7 +3,7 @@
 @section('style')
     <style>
         #map { height: 400px; border: solid 1px; padding-right: 20px; }
-        .carousel-item  {  width: 100%; height: 520px;  }
+        .carousel-item  {  width: 100%; height: 700px;  }
     </style>
 @endsection
 
@@ -55,7 +55,7 @@
                             @if(auth()->user()->is_verified == 0 )
                                 <div class="col-lg-6 d-flex align-items-center">
                                     <a href="{{route('front.show_complete_profile')}}"> {{ trans('messages.please_complete_your_data_to_could_make_bid')}}
-                                        --></a>
+                                    </a>
                                 </div>
                             @endif
 
@@ -253,7 +253,7 @@
                                     @foreach($images as $image)
                                         <div class="carousel-item">
                                             <a href="{{$image->image_path}}" data-popup="lightbox">
-                                                <img class="d-block w-100" src="{{$image->image_path}}" alt="image">
+                                                <img class="d-block w-100 h-100" src="{{$image->image_path}}" alt="image">
                                             </a>
                                         </div>
                                     @endforeach
