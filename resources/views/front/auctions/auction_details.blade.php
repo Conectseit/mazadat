@@ -3,7 +3,7 @@
 @section('style')
     <style>
         #map { height: 400px; border: solid 1px; padding-right: 20px; }
-        .carousel-item img { height: 400px; border: solid 1px; }
+        .carousel-item  {  width: 100%; height: 520px;  }
     </style>
 @endsection
 
@@ -252,7 +252,7 @@
                                     </div>
                                     @foreach($images as $image)
                                         <div class="carousel-item">
-                                            <a href="{{$image->image_path}}" data-lightbox="roadtrip">
+                                            <a href="{{$image->image_path}}" data-popup="lightbox">
                                                 <img class="d-block w-100" src="{{$image->image_path}}" alt="image">
                                             </a>
                                         </div>
