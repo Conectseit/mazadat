@@ -232,43 +232,62 @@
                         <h4>{{ trans('messages.auction.images')}}:</h4>
                     </div>
                     <div class="row">
-                        <div class="col-md-10 col-10 mx-auto">
-                            <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel"
-                                 data-bs-interval="3000">
-                                <div class="carousel-indicators">
-                                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"
-                                            class="active"></button>
-                                    <button type="button" data-bs-target="#carouselExample"
-                                            data-bs-slide-to="1"></button>
-                                    <button type="button" data-bs-target="#carouselExample"
-                                            data-bs-slide-to="2"></button>
-                                </div>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <a href="{{$auction->first_image_path}}" data-popup="lightbox">
-                                        <img class="d-block w-100 h-100" src="{{$auction->first_image_path}}" alt="First slide">
-                                        </a>
-                                    </div>
+                        <div class="col-md-12 " data-aos="zoom-in">
+                            @if($images->count() > 0)
+                                <div class="owl-carousel owl-theme">
                                     @foreach($images as $image)
-                                        <div class="carousel-item">
-                                            <a href="{{$image->image_path}}" data-popup="lightbox">
-                                                <img class="d-block w-100 h-100" src="{{$image->image_path}}" alt="image">
-                                            </a>
+                                        <div class="item text-center">
+                                            <div class="project-img ui-card shadow-lg mx-3">
+                                                <img src="{{$image->image_path}}" alt="">
+                                            </div>
                                         </div>
                                     @endforeach
                                 </div>
-                                <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button"
-                                        data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" data-bs-target="#carouselExample" type="button"
-                                        data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
+                            @endif
                         </div>
+
+
+
+
+
+
+{{--                        <div class="col-md-10 col-10 mx-auto">--}}
+{{--                            <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel"--}}
+{{--                                 data-bs-interval="3000">--}}
+{{--                                <div class="carousel-indicators">--}}
+{{--                                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"--}}
+{{--                                            class="active"></button>--}}
+{{--                                    <button type="button" data-bs-target="#carouselExample"--}}
+{{--                                            data-bs-slide-to="1"></button>--}}
+{{--                                    <button type="button" data-bs-target="#carouselExample"--}}
+{{--                                            data-bs-slide-to="2"></button>--}}
+{{--                                </div>--}}
+{{--                                <div class="carousel-inner">--}}
+{{--                                    <div class="carousel-item active">--}}
+{{--                                        <a href="{{$auction->first_image_path}}" data-popup="lightbox">--}}
+{{--                                        <img class="d-block w-100 h-100" src="{{$auction->first_image_path}}" alt="First slide">--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                    @foreach($images as $image)--}}
+{{--                                        <div class="carousel-item">--}}
+{{--                                            <a href="{{$image->image_path}}" data-popup="lightbox">--}}
+{{--                                                <img class="d-block w-100 h-100" src="{{$image->image_path}}" alt="image">--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                    @endforeach--}}
+{{--                                </div>--}}
+{{--                                <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button"--}}
+{{--                                        data-bs-slide="prev">--}}
+{{--                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
+{{--                                    <span class="visually-hidden">Previous</span>--}}
+{{--                                </button>--}}
+{{--                                <button class="carousel-control-next" data-bs-target="#carouselExample" type="button"--}}
+{{--                                        data-bs-slide="next">--}}
+{{--                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>--}}
+{{--                                    <span class="visually-hidden">Next</span>--}}
+{{--                                </button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <hr>
