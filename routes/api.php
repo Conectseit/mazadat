@@ -88,11 +88,15 @@ Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::post('auth_contact', [QuestionController::class, 'auth_contact']);
 
+
+        Route::post('delete_account', [UserController::class,'delete_account']);
+
         //=========== Person_profile ============
         Route::get('person_profile', [PersonController::class, 'person_profile']);
         Route::post('update_person_profile', [PersonController::class, 'update_person_profile']);
         Route::post('complete_person_profile', [PersonController::class, 'completePersonProfile']);
         Route::post('cities_by_country_id', [CityController::class, 'cities_by_country_id']);
+
 
         //=========== Company_profile ============
         Route::get('company_profile', [CompanyController::class, 'company_profile']);

@@ -127,7 +127,26 @@ class UserController extends PARENT_API
     }
 
 
+    public function delete_account(Request $request)
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return responseJson(false, trans('api.messages.The user has been found but it is not a user...'), null);//NOT_FOUND
+        }
 
+        if ($user->wallet != 0) {
+            return responseJson(false, trans('api.sorry_you_cant_delete_your_account_before_you_finish_your_transaction'), null);
+        }
+
+        if ($user->seller_auctions->count() > 0) {
+
+            return responseJson(false, trans('api.sorry_you_cant_delete_your_account_before_you_finish_your_transaction'), null);
+        }
+
+        User::find($user->id)->forceDelete();
+        auth()->logout();
+        return responseJson(true, trans('api.messages.deleted_successfully'), null);  //OK don-successfully
+    }
 
 
 

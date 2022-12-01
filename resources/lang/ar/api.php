@@ -18,6 +18,8 @@ return [
     'The_user_has_not_passport_yet'         	=> 'لا يوجد صورة جواز السفر من فضلك قم بتحميلها ',
     'upload_receipt_successfully'           	=> 'تم رفع الفاتورة',
 
+    'sorry_you_cant_delete_your_account_before_you_finish_your_transaction'           	=> 'عفوا لا يمكنك حذف حسابك من قبل ان تنتهي من معاملاتك المالية',
+
 
     'please_wait_your_account_not_activated_yet'         	        => 'من فضلك انتظر حتي يتم قبول حسابك من الادارة',
     'please_active_your_account_by_activation_code_first'         	=> 'من فضلك قم بتفعيل حسابك من خلال كود التفعيل المرسل علي جوالك اولا',
