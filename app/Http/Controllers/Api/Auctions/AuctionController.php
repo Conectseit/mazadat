@@ -172,6 +172,10 @@ class AuctionController extends PARENT_API
         $auctionn = AuctionBuyer::where(['buyer_id' => auth()->user()->id, 'auction_id' => $id])->first();
         $auction = Auction::find($id);
         $auction->update(['current_price' => $auction->current_price - $auctionn->buyer_offer]);
+
+        $user_current_wallet = auth()->user()->wallet + ($auctionn->buyer_offer);
+        auth()->user()->update(['wallet' => $user_current_wallet]);
+
         $auctionn->delete();
         return responseJson(true, trans('api.request_done_successfully'), null); //OK
     }

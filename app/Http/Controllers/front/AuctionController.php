@@ -135,6 +135,10 @@ class AuctionController extends Controller
     {
         $auctionn = AuctionBuyer::where(['buyer_id' => auth()->user()->id, 'auction_id' => $auction->id]);
         $auction->update(['current_price' => $auction->current_price - $auctionn->buyer_offer]);
+
+        $user_current_wallet = auth()->user()->wallet + ($auctionn->buyer_offer);
+        auth()->user()->update(['wallet' => $user_current_wallet]);
+
         $auctionn->delete();
         return back();
     }
