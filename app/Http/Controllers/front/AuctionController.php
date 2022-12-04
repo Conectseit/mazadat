@@ -9,7 +9,6 @@ use App\Http\Requests\Front\auction\MakeBidRequest;
 use App\Models\AcceptedAuction;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
-use App\Models\AuctionData;
 use App\Models\AuctionImage;
 use App\Models\Category;
 use App\Models\FileName;
@@ -133,13 +132,13 @@ class AuctionController extends Controller
 
     public function cancel_bid_auction(Auction $auction)
     {
-        $auctionn = AuctionBuyer::where(['buyer_id' => auth()->user()->id, 'auction_id' => $auction->id]);
-        $auction->update(['current_price' => $auction->current_price - $auctionn->buyer_offer]);
+        $auction_n = AuctionBuyer::where(['buyer_id' => auth()->user()->id, 'auction_id' => $auction->id]);
+        $auction->update(['current_price' => $auction->current_price - $auction_n->buyer_offer]);
 
-        $user_current_wallet = auth()->user()->wallet + ($auctionn->buyer_offer);
+        $user_current_wallet = auth()->user()->wallet + ($auction_n->buyer_offer);
         auth()->user()->update(['wallet' => $user_current_wallet]);
 
-        $auctionn->delete();
+        $auction_n->delete();
         return back();
     }
 

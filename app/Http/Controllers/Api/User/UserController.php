@@ -4,15 +4,11 @@ namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PARENT_API;
-use App\Http\Requests\Api\user\UploadPaymentReceiptRequest;
-use App\Http\Resources\Api\auction\PendingAuctionsResource;
-use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Http\Resources\Api\collections\AuctionsCollection;
 use App\Http\Resources\Api\collections\MyAuctionsCollection;
 use App\Http\Resources\Api\collections\MyPendingAuctionsCollection;
 use App\Http\Resources\Api\UserBidsResource;
 use App\Http\Resources\Api\UserTransactionsResource;
-use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\Payment;
 use App\Models\User;

@@ -91,7 +91,7 @@ Route::group(['namespace' => 'Api'], function () {
 
         Route::post('delete_account', [UserController::class,'delete_account']);
 
-        //=========== Person_profile ============
+        //========== Person_profile ============
         Route::get('person_profile', [PersonController::class, 'person_profile']);
         Route::post('update_person_profile', [PersonController::class, 'update_person_profile']);
         Route::post('complete_person_profile', [PersonController::class, 'completePersonProfile']);

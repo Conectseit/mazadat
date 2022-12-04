@@ -12,7 +12,6 @@ use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Http\Resources\Api\FileNamesResource;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
-use App\Models\AuctionData;
 use App\Models\FileName;
 use App\Models\Notification;
 use App\Models\WatchedAuction;
@@ -169,14 +168,14 @@ class AuctionController extends PARENT_API
 
     public function cancel_bid_auction(Request $request, $id)
     {
-        $auctionn = AuctionBuyer::where(['buyer_id' => auth()->user()->id, 'auction_id' => $id])->first();
+        $auction_n = AuctionBuyer::where(['buyer_id' => auth()->user()->id, 'auction_id' => $id])->first();
         $auction = Auction::find($id);
-        $auction->update(['current_price' => $auction->current_price - $auctionn->buyer_offer]);
+        $auction->update(['current_price' => $auction->current_price - $auction_n->buyer_offer]);
 
-        $user_current_wallet = auth()->user()->wallet + ($auctionn->buyer_offer);
+        $user_current_wallet = auth()->user()->wallet + ($auction_n->buyer_offer);
         auth()->user()->update(['wallet' => $user_current_wallet]);
 
-        $auctionn->delete();
+        $auction_n->delete();
         return responseJson(true, trans('api.request_done_successfully'), null); //OK
     }
 
@@ -375,23 +374,6 @@ class AuctionController extends PARENT_API
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //    public function make_offer(Request $request, $id)
 //    {
 //        $user = auth()->user();
@@ -408,7 +390,6 @@ class AuctionController extends PARENT_API
 //            return responseJson(false, trans('api.not_found_auction'), null);  //NOT_FOUND
 //    }
 //
-
 
 //               if($total < $user->available_limit){
 //                   if (is_null($bid)) {
