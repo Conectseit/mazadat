@@ -39,6 +39,7 @@ return [
 
 
     'all_category_auctions'         	=> 'كل مزادات القسم',
+
     'not_found_category'         	    => ' هذاالقسم غير موجود',
     'not_found_auction'         	    => ' هذاالمزاد غير موجود',
     'auction_details'                	=> ' تفاصيل المزاد',
@@ -48,6 +49,14 @@ return [
     'there_is_done_auctions'         	                => 'لايوجد مزادات منتهية لهذا المستخدم',
     'there_is_on_progress_auctions'         	        => 'لايوجد مزادات حالية لهذا المستخدم',
     'there_is_no_auctions_on_this_category'         	=> ' لا يوجد مزادات في هذا القسم حتي الان',
+    /////////////////////////////////////////////////////////////////////////////////////////////
+
+    'there_is_no_ended_auctions_on_this_category'         	=> 'لايوجد مزادات منتهية لهذا القسم',
+    'there_is_no_on_progress_auctions_on_this_category'     => 'لايوجد مزادات حالية لهذا القسم',
+    'there_is_no_unique_auctions_on_this_category'          => 'لايوجد مزادات مميزة لهذا القسم',
+    'there_is_no_companies_yet'                             => 'لايوجد مؤسسات',
+
+
 
 
     'added_your_auction_successfully_wait_until_admin_accept_it'         	=> ' تم رفع مزادك بنجاح , انتظر حتي يتم قبوله من ادارة الموقع',

@@ -40,6 +40,13 @@ return [
     'there_is_no_auctions_on_this_category'         	=> ' لا يوجد مزادات في هذا القسم حتي الان',
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+    'there_is_no_ended_auctions_on_this_category'         	=> 'لايوجد مزادات منتهية لهذا القسم',
+    'there_is_no_on_progress_auctions_on_this_category'     => 'لايوجد مزادات حالية لهذا القسم',
+    'there_is_no_unique_auctions_on_this_category'          => 'لايوجد مزادات حالية لهذا القسم',
+    'there_is_no_companies_yet'                             => 'لايوجد مؤسسات',
+
+
     'added_your_auction_successfully_wait_until_admin_accept_it'         	=> ' تم رفع مزادك بنجاح , انتظر حتي يتم قبوله من ادارة الموقع',
     'updated_your_auction_successfully_wait_until_admin_accept_it'         	=> ' تم تعديل مزادك بنجاح , انتظر حتي يتم قبوله من ادارة الموقع',
     'sorry_wrong_activation_code_try_again' 	=> 'Sorry wrong activation code try again',
