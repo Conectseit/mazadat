@@ -24,24 +24,45 @@ class SettingController extends Controller
             Setting::where('key', 'app_description_ar')->update(['value' => $request->app_description_ar]);
         if ($request->app_description_en)
             Setting::where('key', 'app_description_en')->update(['value' => $request->app_description_en]);
+
+
         if ($request->about_app_ar)
             Setting::where('key', 'about_app_ar')->update(['value' => $request->about_app_ar]);
         if ($request->about_app_en)
             Setting::where('key', 'about_app_en')->update(['value' => $request->about_app_en]);
+
         if ($request->conditions_terms_ar)
             Setting::where('key', 'conditions_terms_ar')->update(['value' => $request->conditions_terms_ar]);
         if ($request->conditions_terms_en)
             Setting::where('key', 'conditions_terms_en')->update(['value' => $request->conditions_terms_en]);
 
-        if ($request->quote_name_ar)
-            Setting::where('key', 'quote_name_ar')->update(['value' => $request->quote_name_ar]);
-        if ($request->quote_name_en)
-            Setting::where('key', 'quote_name_en')->update(['value' => $request->quote_name_en]);
-
         if ($request->privacy_ar)
             Setting::where('key', 'privacy_ar')->update(['value' => $request->privacy_ar]);
         if ($request->privacy_en)
             Setting::where('key', 'privacy_en')->update(['value' => $request->privacy_en]);
+
+
+        if ($request->site_about_app_ar)
+            Setting::where('key', 'site_about_app_ar')->update(['value' => $request->site_about_app_ar]);
+        if ($request->site_about_app_en)
+            Setting::where('key', 'site_about_app_en')->update(['value' => $request->site_about_app_en]);
+
+        if ($request->site_conditions_terms_ar)
+            Setting::where('key', 'site_conditions_terms_ar')->update(['value' => $request->site_conditions_terms_ar]);
+        if ($request->site_conditions_terms_en)
+            Setting::where('key', 'site_conditions_terms_en')->update(['value' => $request->site_conditions_terms_en]);
+
+
+        if ($request->site_privacy_ar)
+            Setting::where('key', 'site_privacy_ar')->update(['value' => $request->site_privacy_ar]);
+        if ($request->site_privacy_en)
+            Setting::where('key', 'site_privacy_en')->update(['value' => $request->site_privacy_en]);
+
+
+        if ($request->quote_name_ar)
+            Setting::where('key', 'quote_name_ar')->update(['value' => $request->quote_name_ar]);
+        if ($request->quote_name_en)
+            Setting::where('key', 'quote_name_en')->update(['value' => $request->quote_name_en]);
 
 
         if ($request->mobile)
@@ -57,7 +78,6 @@ class SettingController extends Controller
             Setting::where('key', 'latitude')->update(['value' => $request->latitude]);
         if ($request->longitude)
             Setting::where('key', 'longitude')->update(['value' => $request->longitude]);
-
 
 
         if ($request->bank_name_ar)
@@ -78,7 +98,6 @@ class SettingController extends Controller
             Setting::where('key', 'routing_number')->update(['value' => $request->routing_number]);
 
 
-
         if ($request->facebook_url)
             Setting::where('key', 'facebook_url')->update(['value' => $request->facebook_url]);
         if ($request->twitter_url)
@@ -91,14 +110,11 @@ class SettingController extends Controller
             Setting::where('key', 'whatsapp_phone')->update(['value' => $request->whatsapp_phone]);
 
 
-
-
         // online_payment_conditions
         if ($request->online_payment_conditions_ar)
             Setting::where('key', 'online_payment_conditions_ar')->update(['value' => $request->online_payment_conditions_ar]);
         if ($request->online_payment_conditions_en)
             Setting::where('key', 'online_payment_conditions_en')->update(['value' => $request->online_payment_conditions_en]);
-
 
 
 //        if ($request->min_time_unit)

@@ -15,22 +15,38 @@ class GeneralController extends Controller
     public function questions()
     {
         $data['questions'] = CommonQuestion::all();
-        $about= 'about_app_'.app()->getLocale();
-        $data['about_app'] = Setting::where('key',$about)->first()->value;
+//        $about= 'site_about_app_'.app()->getLocale();
+//        $data['site_about_app'] = Setting::where('key',$about)->first()->value;
         return view('front.general.questions', $data);
     }
+
+
     public function about_app()
     {
-        $about= 'about_app_'.app()->getLocale();
-        $data['about_app'] = Setting::where('key',$about)->first()->value;
+        $site_about_app= 'site_about_app_'.app()->getLocale();
+        $data['site_about_app'] = Setting::where('key',$site_about_app)->first()->value;
         return view('front.general.about_app', $data);
     }
+
+
+
     public function condition_and_terms()
     {
-        $conditions_terms= 'conditions_terms_'.app()->getLocale();
-        $data['conditions_terms'] = Setting::where('key',$conditions_terms)->first()->value;
+        $site_conditions_terms= 'site_conditions_terms_'.app()->getLocale();
+        $data['site_conditions_terms'] = Setting::where('key',$site_conditions_terms)->first()->value;
         return view('front.general.condition_and_terms', $data);
     }
+
+
+
+    public function privacy()
+    {
+        $site_privacy = 'site_privacy_' . app()->getLocale();
+        $data['site_privacy'] = Setting::where('key', $site_privacy)->first()->value;
+        return view('front.general.privacy', $data);
+    }
+
+
 
     public function description()
     {
@@ -39,12 +55,7 @@ class GeneralController extends Controller
         return view('front.general.description', $data);
     }
 
-    public function privacy()
-    {
-        $privacy = 'privacy_' . app()->getLocale();
-        $data['privacy'] = Setting::where('key', $privacy)->first()->value;
-        return view('front.general.privacy', $data);
-    }
+
 
     public function contact_us(ContactRequest $request)
     {

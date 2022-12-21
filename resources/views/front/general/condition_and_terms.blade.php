@@ -20,7 +20,10 @@
             </div>
             <br>
             <div class="text"style="height: 500px;overflow-y: auto !important;" >
-                <h3 style="color: var(--main-color)">{{trans('messages.condition_and_terms')}}</h3>{!! $conditions_terms !!}
+                <h3 style="color: var(--main-color)">{{trans('messages.condition_and_terms')}}</h3>
+
+                {!! $site_conditions_terms !!}
+{{--                {{$conditions_terms }}--}}
 
             </div>
         </div>

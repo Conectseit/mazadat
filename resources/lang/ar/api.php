@@ -55,6 +55,7 @@ return [
     'there_is_no_on_progress_auctions_on_this_category'     => 'لايوجد مزادات حالية لهذا القسم',
     'there_is_no_unique_auctions_on_this_category'          => 'لايوجد مزادات مميزة لهذا القسم',
     'there_is_no_companies_yet'                             => 'لايوجد مؤسسات',
+    'not_found_company'                                     => 'لايوجد مؤسسات',
 
 
 

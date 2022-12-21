@@ -424,7 +424,7 @@
                     <!-- Basic layout-->
                     <div class="card">
                         <div class="card-header header-elements-inline">
-                            <h5 class="card-title">{{ trans('messages.settings.about_app_settings') }}</h5>
+                            <h5 class="card-title">{{ trans('messages.settings.about_app_settings') }}  تعرض في تطبيق الموبايل  </h5>
                         </div><br>
                         <div class="card-body">
                             <form action="{{ route('settings.update') }}" method="POST">
@@ -469,7 +469,7 @@
                     <!-- Basic layout-->
                     <div class="card">
                         <div class="card-header header-elements-inline">
-                            <h5 class="card-title">{{ trans('messages.settings.conditions_app_settings') }}</h5>
+                            <h5 class="card-title">{{ trans('messages.settings.conditions_app_settings') }}  تعرض في تطبيق الموبايل</h5>
                         </div><br>
                         <div class="card-body">
                             <form action="{{ route('settings.update') }}" method="POST">
@@ -520,7 +520,7 @@
                     <!-- Basic layout-->
                     <div class="card">
                         <div class="card-header header-elements-inline">
-                            <h5 class="card-title">{{ trans('messages.settings.privacy') }}</h5>
+                            <h5 class="card-title">{{ trans('messages.settings.privacy') }} تعرض في تطبيق الموبايل </h5>
                         </div><br>
                         <div class="card-body">
                             <form action="{{ route('settings.update') }}" method="POST">
@@ -561,16 +561,21 @@
         </div>
     </div>
 
+
+
+    @include('Dashboard.Settings.app_terms')
+
+
 @stop
 
 @section('scripts')
     <script>
-        CKEDITOR.replace('conditions_terms_ar', { height: '300px' });
-        CKEDITOR.replace('conditions_terms_en', { height: '300px' });
-        CKEDITOR.replace('privacy_ar', { height: '300px' });
-        CKEDITOR.replace('privacy_en', { height: '300px' });
-        CKEDITOR.replace('about_app_ar', { height: '300px' });
-        CKEDITOR.replace('about_app_en', { height: '300px' });
+        CKEDITOR.replace('site_conditions_terms_ar', { height: '300px' });
+        CKEDITOR.replace('site_conditions_terms_en', { height: '300px' });
+        CKEDITOR.replace('site_privacy_ar', { height: '300px' });
+        CKEDITOR.replace('site_privacy_en', { height: '300px' });
+        CKEDITOR.replace('site_about_app_ar', { height: '300px' });
+        CKEDITOR.replace('site_about_app_en', { height: '300px' });
         {{--CKEDITOR.instances.about_app_ar.setData(`{!! isset($setting) ? $setting->value : '' !!}`);--}}
     </script>
     @include('Dashboard.Settings.app_location_map')

@@ -20,7 +20,10 @@
             </div>
             <br>
             <div class="text"style="height: 500px;overflow-y: auto !important;" >
-                <h3 style="color: var(--main-color)">{{trans('messages.settings.privacy')}}</h3>{!! $privacy !!}
+                <h3 style="color: var(--main-color)">{{trans('messages.settings.privacy')}}</h3>
+
+                {!! $site_privacy !!}
+{{--                {{$privacy}}--}}
 
             </div>
         </div>
