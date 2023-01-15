@@ -14,7 +14,9 @@ return [
     'The_user_has_not_passport_yet'         	=> 'لا يوجد صورة جواز السفر من فضلك قم بتحميلها ',
     'upload_receipt_successfully'           	=> 'تم رفع الفاتورة',
 
-    'sorry_you_cant_delete_your_account_before_you_finish_your_transaction'           	=> 'sorry you cant delete your account before you finish your transaction',
+    'sorry_you_cant_delete_your_account_before_you_finish_your_transaction'     => 'sorry you cant delete your account before you finish your transaction',
+    'sorry_your_account_is_baned_from_admin_contact_with_customer_service_team' => 'sorry your account is baned from admin contact with customer service team',
+    'please_wait_until_admin_accept_your_data_yet'                           	=> 'please wait until admin accept your data yet',
 
 
 

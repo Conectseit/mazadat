@@ -18,7 +18,9 @@ return [
     'The_user_has_not_passport_yet'         	=> 'لا يوجد صورة جواز السفر من فضلك قم بتحميلها ',
     'upload_receipt_successfully'           	=> 'تم رفع الفاتورة',
 
-    'sorry_you_cant_delete_your_account_before_you_finish_your_transaction'           	=> 'عفوا لا يمكنك حذف حسابك من قبل ان تنتهي من معاملاتك المالية',
+    'sorry_you_cant_delete_your_account_before_you_finish_your_transaction'          => 'عفوا لا يمكنك حذف حسابك من قبل ان تنتهي من معاملاتك المالية',
+    'sorry_your_account_is_baned_from_admin_contact_with_customer_service_team'      => 'عفوا تم حظر حسابك من قبل ادارة الموقع من فضلك تواصل مع خدمة العملا',
+    'please_wait_until_admin_accept_your_data_yet'           	                     => 'من فضلك انتظر حتي يتم قبول حسابك من ادارة الموقع',
 
 
     'please_wait_your_account_not_activated_yet'         	        => 'من فضلك انتظر حتي يتم قبول حسابك من الادارة',
