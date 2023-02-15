@@ -1,13 +1,13 @@
 @extends('Dashboard.layouts.master')
-@section('title', trans('back.edit-var',['var'=>trans('back.blog.blog')]))
+@section('title', trans('messages.edit-var',['var'=>trans('messages.blog.blog')]))
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
-            <li><a href="{{route('admin.index')}}"><i class="icon-home2 position-left"></i> @lang('back.home')</a>
+            <li><a href="{{route('admin.index')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
             </li>
             <li><a href="{{ route('blogs.index') }}"><i
-                        class="icon-admin position-left"></i> @lang('back.blog.blogs')</a></li>
-            <li class="active">@lang('back.edit-var',['var'=>trans('back.blog.blog')])</li>
+                        class="icon-admin position-left"></i> @lang('messages.blog.blogs')</a></li>
+            <li class="active">@lang('messages.edit-var',['var'=>trans('messages.blog.blog')])</li>
         </ul>
         @include('Dashboard.layouts.parts.quick-links')
     </div>
@@ -27,7 +27,7 @@
                 <input type="hidden" name="blog_id" value="{{$blog->id}}"/>
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-                        <h5 class="panel-title">{{ trans('back.edit') }} </h5>
+                        <h5 class="panel-title">{{ trans('messages.edit') }} </h5>
                         <div class="heading-elements">
                             <ul class="icons-list">
                                 <li><a data-action="collapse"></a></li>
@@ -40,28 +40,28 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <input type="text" class="form-control" value="{{$blog->name_ar}}" name="name_ar"
-                                   placeholder="@lang('back.name_ar') ">
+                                   placeholder="@lang('messages.name_ar') ">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" value="{{$blog->name_en}}" name="name_en"
-                                   placeholder="@lang('back.name_en') ">
+                                   placeholder="@lang('messages.name_en') ">
                         </div>
 
 
                         <div class="form-group">
-                            <label><strong>{{ trans('back.description_ar') }}</strong></label>
+                            <label><strong>{{ trans('messages.description_ar') }}</strong></label>
                             <textarea class=" form-control"
                                       name="description_ar">{{ $blog->description_ar }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label><strong>{{ trans('back.description_en') }}</strong></label>
+                            <label><strong>{{ trans('messages.description_en') }}</strong></label>
                             <textarea class=" form-control"
                                       name="description_en">{{ $blog->description_en }}</textarea>
                         </div>
 
 
                         <div class="form-group">
-                            <label>@lang('back.main_image')</label>
+                            <label>@lang('messages.main_image')</label>
                             <input type="file" class="form-control image " name="image">
                         </div>
                         <div class="form-group">
@@ -72,17 +72,17 @@
 
                         <div class="form-group">
                             <input type="text" class="form-control" value="{{$blog->meta_title}}" name="meta_title"
-                                   placeholder="@lang('back.meta_title') ">
+                                   placeholder="@lang('messages.meta_title') ">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" value="{{$blog->meta_description}}" name="meta_description"
-                                   placeholder="@lang('back.meta_description') ">
+                                   placeholder="@lang('messages.meta_description') ">
                         </div>
 
                         <div class="text-right">
                             {{--<input type="submit" class="btn btn-primary" name="forward"--}}{{--value=" {{ trans('dash.update_and_forword_2_list') }} "/>--}}
                             <input type="submit" class="btn btn-success"
-                                   value=" {{ trans('back.update_and_forward_to_list') }} "/>
+                                   value=" {{ trans('messages.update_and_forward_to_list') }} "/>
                         </div>
                     </div>
                 </div>

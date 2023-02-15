@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\dashboard;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\BlogRequest;
 use App\Models\Blog;
-use App\Models\Service;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -20,7 +20,7 @@ class BlogController extends Controller
 
     public function create()
     {
-        $data['services'] = Service::all();
+        $data['categories'] = Category::all();
         return view('Dashboard.blogs.create', $data);
     }
 
@@ -41,7 +41,7 @@ class BlogController extends Controller
     public function edit($id)
     {
         if (!Blog::find($id)) {
-            return redirect()->route('blogs.index')->with('class', 'danger')->with('message', trans('back.messages.try_2_access_not_found_content'));
+            return redirect()->route('blogs.index')->with('class', 'danger')->with('message', trans('messages.messages.try_2_access_not_found_content'));
         }
         $data['blog'] = Blog::find($id);
         return view('Dashboard.blogs.edit', $data);
@@ -58,7 +58,7 @@ class BlogController extends Controller
 
         $blog->update($request_data);
 
-        return redirect()->route('blogs.index')->with('message', trans('back.messages.updated_successfully'));
+        return redirect()->route('blogs.index')->with('message', trans('messages.messages.updated_successfully'));
     }
 
 

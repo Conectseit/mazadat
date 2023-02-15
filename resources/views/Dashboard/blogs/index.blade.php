@@ -1,5 +1,5 @@
 @extends('Dashboard.layouts.master')
-@section('title', trans('back.blog.blogs'))
+@section('title', trans('messages.blog.blogs'))
 @section('files_scripts')
     <script type="text/javascript" src="{{asset('Dashboard/assets/js/pages/form_checkboxes_radios.js')}}"></script>
 @stop
@@ -8,10 +8,10 @@
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
-            <li><a href="{{route('admin.index')}}"><i class="icon-home2 position-left"></i> @lang('back.home')
+            <li><a href="{{route('admin.index')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')
                 </a>
             </li>
-            <li class="active">@lang('back.blog.blogs')</li>
+            <li class="active">@lang('messages.blog.blogs')</li>
         </ul>
         @include('Dashboard.layouts.parts.quick-links')
     </div>
@@ -27,19 +27,19 @@
         <br>
         <div class="list-icons" style="padding-right: 10px;">
             <a href="{{route('blogs.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i
-                        class="icon-plus2"></i></b>{{ trans('back.add') }}</a>
+                        class="icon-plus2"></i></b>{{ trans('messages.add') }}</a>
         </div>
         <br>
 
 {{--        @include('Dashboard.layouts.parts.flash')--}}
         <table class="table datatable-basic" id="blogs" style="font-size: 16px;">
             <thead>
-            <tr style="background-color:gainsboro">
+            <tr style="messagesground-color:gainsboro">
                 <th>#</th>
-                <th>{{ trans('back.image') }}</th>
-                <th>{{ trans('back.name') }}</th>
-                <th>@lang('back.since')</th>
-                <th class="text-center">@lang('back.form-actions')</th>
+                <th>{{ trans('messages.image') }}</th>
+                <th>{{ trans('messages.name') }}</th>
+                <th>@lang('messages.since')</th>
+                <th class="text-center">@lang('messages.form-actions')</th>
             </tr>
             </thead>
             @if($blogs->count() > 0)
@@ -68,16 +68,16 @@
                                     <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
 {{--                                        <li>--}}
 {{--                                            <a href="{{ route('blogs.show', $blog->id) }}"> <i--}}
-{{--                                                    class="icon-eye"></i>@lang('back.show') </a>--}}
+{{--                                                    class="icon-eye"></i>@lang('messages.show') </a>--}}
 {{--                                        </li>--}}
                                         <li>
                                             <a href="{{ route('blogs.edit',$blog->id) }}"> <i
-                                                    class="icon-database-edit2"></i>@lang('back.edit') </a>
+                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>
                                         </li>
                                         <li>
                                             <a data-id="{{ $blog->id }}" class="delete-action"
                                                href="{{ Url('/blog/blog/'.$blog->id) }}">
-                                                <i class="icon-database-remove"></i>@lang('back.delete')
+                                                <i class="icon-database-remove"></i>@lang('messages.delete')
                                             </a>
                                         </li>
                                     </ul>

@@ -25,7 +25,10 @@ function checkIsUserAccept($auction)
     return DB::table('accepted_auctions')->where(['user_id' => auth()->user()->id, 'auction_id' => $auction->id]);
 }
 
-
+function translated($type, $obj)
+{
+    return trans('messages.'.$type.'-done',['var'=>trans('messages.'.$obj. '.'.$obj)]);
+}
 function create_rand_numbers($digits = 4){ return rand(pow(10, $digits-1), pow(10, $digits)-1); }
 
 function removePhoneZero($number, $country_code): string
