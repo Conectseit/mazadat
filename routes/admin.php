@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\ActivityController;
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\AdvertisementController;
 use App\Http\Controllers\Dashboard\AuctionDataController;
+use App\Http\Controllers\dashboard\BlogController;
 use App\Http\Controllers\Dashboard\CompanyController;
 use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\FinancialReviewsController;
@@ -81,6 +82,8 @@ Route::group(
                     'financial_reviews'     => FinancialReviewsController::class,
                     'advertisements'        => AdvertisementController::class,
                     'inspection_file_names' => InspectionFileNameController::class,
+                    'blogs'                 => BlogController::class,
+
 
                 ]);
 

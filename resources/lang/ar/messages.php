@@ -441,6 +441,14 @@ return [
 
 
 
+    //=================== blogs ==========================
+    'blog' => [
+        'blog' => 'مدونة',
+        'blogs' => 'المدونات',
+        'meta_title' => 'meta title',
+        'meta_description' => 'meta description',
+
+    ],
     //======= contacts========
 
     'contact' => [

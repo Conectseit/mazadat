@@ -131,6 +131,16 @@
         </ul>
     </li>
 
+
+    <li>
+        <a href="#"><i class="icon-archive"></i>
+            <span> {{ trans('messages.blog.blogs') }} </span></a>
+        <ul>
+            <li><a href="{{route('blogs.index')}}">{{ trans('messages.all') }}</a></li>
+            <li><a href="{{route('blogs.create')}}"> {{ trans('messages.add') }}</a></li>
+        </ul>
+    </li>
+
     <li class="nav-item">
         <a href="{{ route('contacts.index') }}"
            class="nav-link {{ request()->route()->getName() == 'dashboard.contact.index' ? 'active' : '' }}">

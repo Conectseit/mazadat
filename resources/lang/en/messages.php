@@ -315,6 +315,14 @@ return [
         'reply_done' => ' reply done',
     ],
 
+    //=================== blogs ==========================
+    'blog' => [
+        'blog' => 'مدونة',
+        'blogs' => 'المدونات',
+        'meta_title' => 'meta title',
+        'meta_description' => 'meta description',
+
+    ],
 
     'admin' => [
         'admin' => 'admin',
