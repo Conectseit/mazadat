@@ -107,6 +107,7 @@ Route::group(
                 Route::post('/ajax-delete-advertisement', [AdvertisementController::class, 'destroy'])->name('ajax-delete-advertisement');
                 Route::post('/ajax-delete-file_name', [InspectionFileNameController::class, 'destroy'])->name('ajax-delete-filename');
                 Route::post('/ajax-delete-message', [MessageController::class, 'destroy'])->name('ajax-delete-message');
+                Route::post('/ajax-delete-blog', [BlogController::class, 'destroy'])->name('ajax-delete-blog');
 
                 Route::get('company/{id?}/unique', [CompanyController::class, 'unique'])->name('company/unique');
                 Route::get('company/{id?}/not_unique', [CompanyController::class, 'not_unique'])->name('company/not_unique');

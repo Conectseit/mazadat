@@ -8,7 +8,7 @@
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
-            <li><a href="{{route('admin.index')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')
+            <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')
                 </a>
             </li>
             <li class="active">@lang('messages.blog.blogs')</li>
@@ -34,7 +34,7 @@
 {{--        @include('Dashboard.layouts.parts.flash')--}}
         <table class="table datatable-basic" id="blogs" style="font-size: 16px;">
             <thead>
-            <tr style="messagesground-color:gainsboro">
+            <tr style="background-color:gainsboro">
                 <th>#</th>
                 <th>{{ trans('messages.image') }}</th>
                 <th>{{ trans('messages.name') }}</th>

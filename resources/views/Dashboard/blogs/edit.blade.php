@@ -3,7 +3,7 @@
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
-            <li><a href="{{route('admin.index')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
+            <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
             </li>
             <li><a href="{{ route('blogs.index') }}"><i
                         class="icon-admin position-left"></i> @lang('messages.blog.blogs')</a></li>
