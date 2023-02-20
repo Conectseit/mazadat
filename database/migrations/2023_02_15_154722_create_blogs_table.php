@@ -18,10 +18,13 @@ class CreateBlogsTable extends Migration
             $table->bigInteger('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->string('image')->nullable();
+            $table->string('image2')->nullable();
+
             $table->string('name_ar')->nullable();
             $table->string('name_en')->nullable();
             $table->text('description_ar')->nullable();
             $table->text('description_en')->nullable();
+            $table->string('slug')->unique()->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();
             $table->timestamps();

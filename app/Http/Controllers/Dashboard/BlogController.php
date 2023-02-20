@@ -27,10 +27,12 @@ class BlogController extends Controller
     public function store(BlogRequest $request)
     {
 
-        $request_data = $request->except(['image']);
+        $request_data = $request->except(['image','image2']);
 
         if ($request->image) $request_data['image'] = uploaded($request->image, 'blog');
-
+        if ($request->hasFile('image2')) {
+            $request_data['image2'] = uploaded($request->image2, 'blog');
+        }
         Blog::create($request_data);
         return redirect()->route('blogs.index')->with('message', translated('add', 'blog'));
     }
@@ -60,8 +62,6 @@ class BlogController extends Controller
 
         return redirect()->route('blogs.index')->with('message', trans('messages.messages.updated_successfully'));
     }
-
-
 
 
 

@@ -323,6 +323,8 @@ return [
         'meta_description' => 'meta description',
 
     ],
+    'there_is_no_blogs_yet'=>'لا يوجد مدونات حتي الان',
+
 
     'admin' => [
         'admin' => 'admin',

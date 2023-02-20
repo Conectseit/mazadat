@@ -67,7 +67,7 @@
                                 <label class="col-lg-3 control-label display-block"> {{ trans('messages.category.category') }}
                                     : </label>
                                 <div class="col-lg-6">
-                                    <select name="service_id" class="selectpicker">
+                                    <select name="category_id" class="selectpicker">
                                         <optgroup label="{{ trans('messages.category.category')}}">
                                             <option selected disabled>{{trans('messages.select')}}</option>
 
@@ -91,7 +91,7 @@
 
 
                             <div class="form-group">
-                                <label>@lang('messages.image')</label>
+                                <label>الصورة الاساسية</label>
                                 <input type="file" class="form-control image " name="image">
                                 @error('image')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
@@ -105,6 +105,21 @@
                                 @enderror
                             </div>
 
+
+                            <div class="form-group">
+                                <label>صورة اخري للمقالة</label>
+                                <input type="file" class="form-control image2 " name="image2">
+                                @error('image2')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
+                            </div>
+                            <div class="form-group">
+                                <img src=" {{ asset('default.png') }} " width=" 100px "
+                                     class="thumbnail image-preview2">
+
+                                @error('image2')
+                                <span><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
 
                             <div class="form-group">
                                 <input type="text" class="form-control" value="{{ old('meta_title') }}" name="meta_title"
@@ -144,6 +159,21 @@
     <script>
         CKEDITOR.replace('description_ar', {height: '300px'});
         CKEDITOR.replace('description_en', {height: '300px'});
+
+    </script>
+
+    <script>
+        // ======== image preview ====== //
+        $(".image2").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.image-preview2').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
 
     </script>
 

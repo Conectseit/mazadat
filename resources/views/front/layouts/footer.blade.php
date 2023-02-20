@@ -78,6 +78,7 @@
                                        data-bs-target="#forget_pass_modal"> {{trans('messages.forget_password')}}</a>
                                 </li>
                                 <li><a href="{{route('front.questions')}}">{{trans('messages.question.questions')}} </a></li>
+                                <li><a href="{{route('front.blogs')}}">{{trans('messages.blog.blogs')}} </a></li>
 
                             </ul>
                         </div>
