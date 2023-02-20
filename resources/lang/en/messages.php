@@ -250,6 +250,7 @@ return [
     'file_name'              => 'file type',
     'extra_file_only_to_admin'             => 'extra file only_to_admin',
 
+    'share' => 'Share',
 
 
 
@@ -317,8 +318,10 @@ return [
 
     //=================== blogs ==========================
     'blog' => [
-        'blog' => 'مدونة',
-        'blogs' => 'المدونات',
+        'blog' => 'Blog',
+        'blogs' => 'Blogs',
+        'related_blogs' => 'Related Blogs',
+
         'meta_title' => 'meta title',
         'meta_description' => 'meta description',
 

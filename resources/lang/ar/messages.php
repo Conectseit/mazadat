@@ -440,11 +440,14 @@ return [
 
 
 
+    'share' => 'مشاركة',
 
     //=================== blogs ==========================
     'blog' => [
         'blog' => 'مدونة',
+
         'blogs' => 'المدونات',
+        'related_blogs' => 'مقالات ذات صلة ',
         'meta_title' => 'meta title',
         'meta_description' => 'meta description',
 

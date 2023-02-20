@@ -15,7 +15,6 @@
 
         .title-blog-page .blog-title {
             width: 65%;
-
         }
 
         .title-blog-page span {
@@ -72,18 +71,18 @@
         /*    transition: all .3s ease;*/
         /*}*/
 
-        .rtl .blog-sidebar {
-            border-right: 1px solid #eee;
-            padding: 0 20px 0 0;
-            border-left: 0;
-        }
+        /*.blog-sidebar {*/
+        /*    border-right: 1px solid red;*/
+        /*    padding: 0 20px 0 0;*/
+        /*    border-left: 0;*/
+        /*}*/
 
-        .rtl .all-title h1, .rtl .all-title h3 {
+        .rtl .all-title h1,  .all-title h2 {
             letter-spacing: 5px;
-
+            color: red;
         }
 
-        .all-title h3 span.tit-color {
+        .all-title h2 span.tit-color {
             color: #ffc907;
         }
 
@@ -113,6 +112,10 @@
             align-items: center;
             border-bottom: 1px solid #d1915c;
         }
+        .media {
+            display: flex;
+            align-items: flex-start;
+        }
 
         .blog-sidebar .blog-side .media img {
             width: 90px;
@@ -122,11 +125,10 @@
             border-radius: 10px;
         }
 
-        .rtl .blog-sidebar .blog-side .media .media-body {
-            margin-right: 10px;
+        .blog-side .media .media-body {
+            margin-right: 20px;
             margin-left: 0;
         }
-
 
         .blog-sidebar .blog-side .media .media-body h4 {
             font-size: 22px;
@@ -153,9 +155,8 @@
     <section class="notifications-page" dir="{{ direction() }}">
         <div class="row">
             <div class="blog-head">
-                <div class="image-blog"><img alt="{{$blog_details->$name}}"
-                                             src="{{$blog_details->image_path}}"
-                                             class="lazyLoad isLoaded"></div>
+                <div class="image-blog">
+                    <img alt="{{$blog_details->$name}}" src="{{$blog_details->image_path}}" class="lazyLoad isLoaded"></div>
             </div>
         </div>
         <div class="container">
@@ -171,36 +172,27 @@
                                                 class="d-block mb-5 mt-3">{{$blog_details->created_at->format('Y-m-d')}}</span>
                                         </div>
                                         <div class="icons-share float-right">
-                                            <div class="share-button"><small class="custom-btn btn-14">
-                                                    مشاركة
-                                                </small> <!----></div>
+                                            <div class="share-button"><small class="custom-btn btn-14">{{trans('messages.share')}}</small> </div>
                                         </div>
                                     </div>
 
-                                    <div class="text" style="overflow-y: auto !important;">
+                                    <div class="text" >
                                         <h3 style="color: var(--main-color)"></h3>{!! $blog_details->$description !!}
-
                                     </div>
                                 </div>
 
-
-
-
-
-
                                 <div class="row">
                                     <div class="blog-head">
-                                        <div class="image2-blog"><img alt="{{$blog_details->$name}}"
-                                                                     src="{{$blog_details->image2_path}}"
-                                                                     class="lazyLoad isLoaded"></div>
+                                        <div class="image2-blog">
+                                            <img alt="{{$blog_details->$name}}" src="{{$blog_details->image2_path}}" class="lazyLoad isLoaded"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-4" style="padding-right: 50px;">
                                 <div class="pad-40">
-                                    <div class="blog-sidebar">
-                                        <div class="all-title">
-                                            <h2>مقالات ذات صلة<span class="tit-color">.</span></h2>
+                                    <div class="blog-sidebar" >
+                                        <div class="all-title" >
+                                            <h2>  {{trans('messages.blog.related_blogs')}}<span class="tit-color">.</span></h2>
                                         </div>
 
                                         @foreach($related_blogs as $related_blog)
@@ -214,30 +206,6 @@
                                             </a>
                                         </div>
                                         @endforeach
-
-
-
-{{--                                        <div class="blog-side"><a--}}
-{{--                                                href="/blog/astdaf-moakaa-aloyb-aldlyl-alshaml-aan-astdaf-almoakaa-119"--}}
-{{--                                                class="">--}}
-{{--                                                <div class="media"><img--}}
-{{--                                                        alt="استضافة مواقع الويب | الدليل الشامل عن استضافة المواقع"--}}
-{{--                                                        src="https://alalmyia.t-demo.alalmiyalhura.com/storage/images/blog/ggEiRTCHtEnfrhSVwtabytlo0wQYQDxyeg9d8Xyt.jpg"--}}
-{{--                                                        class="lazyLoad isLoaded">--}}
-{{--                                                    <div class="media-body"><h4>استضافة مواقع الويب | الدليل الشامل عن--}}
-{{--                                                            استضافة المواقع</h4> <span>2022-01-04</span></div>--}}
-{{--                                                </div>--}}
-{{--                                            </a></div>--}}
-{{--                                        <div class="blog-side"><a--}}
-{{--                                                href="/blog/alaaalmy-alhr-opro-max-shrak-mtog-balngah-49" class="">--}}
-{{--                                                <div class="media"><img--}}
-{{--                                                        alt="العالمية الحرة وPro Max شراكة متوجة بالنجاح"--}}
-{{--                                                        src="https://alalmyia.t-demo.alalmiyalhura.com/storage/images/blog/TIlbfwvFIf6Y52P37lahT2cYiuLJmuZwngV95XiS.jpg"--}}
-{{--                                                        class="lazyLoad isLoaded">--}}
-{{--                                                    <div class="media-body"><h4>العالمية الحرة وPro Max شراكة متوجة--}}
-{{--                                                            بالنجاح</h4> <span>2021-06-07</span></div>--}}
-{{--                                                </div>--}}
-{{--                                            </a></div>--}}
                                     </div>
                                 </div>
                             </div>
@@ -245,9 +213,7 @@
                         </div>
 
                 </div>
-                {{--                <div class="cookieControl__BlockedIframe" height="0" width="0" style="display: none; visibility: hidden;"><p>--}}
-                {{--                        لرؤية هذا ، يرجى تمكين ملفات تعريف الارتباط الوظيفية--}}
-                {{--                        <a href="#">هنا</a></p></div>--}}
+
             </div>
         </div>
     </section>
