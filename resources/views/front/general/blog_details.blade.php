@@ -8,6 +8,10 @@
             -o-object-fit: cover;
             object-fit: cover;
         }
+        .blog-head .image2-blog img {
+            width: 100%;
+            height: 100%;
+        }
 
         .title-blog-page .blog-title {
             width: 65%;
@@ -176,6 +180,19 @@
                                     <div class="text" style="overflow-y: auto !important;">
                                         <h3 style="color: var(--main-color)"></h3>{!! $blog_details->$description !!}
 
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <div class="row">
+                                    <div class="blog-head">
+                                        <div class="image2-blog"><img alt="{{$blog_details->$name}}"
+                                                                     src="{{$blog_details->image2_path}}"
+                                                                     class="lazyLoad isLoaded"></div>
                                     </div>
                                 </div>
                             </div>
