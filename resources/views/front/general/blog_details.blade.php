@@ -142,6 +142,12 @@
             color: #8f98c5;
         }
 
+        .text a {
+             text-decoration: underline;
+            color: #464b8d;
+            font-size: 25px;
+        }
+
     </style>
 
 
