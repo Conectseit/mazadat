@@ -150,7 +150,10 @@
             font-size: 25px;
         }
 
-
+        .text h1 {
+            color: #2a398c;
+            font-size: 30px;
+        }
 
 
     </style>
