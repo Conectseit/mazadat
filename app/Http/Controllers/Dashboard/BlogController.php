@@ -52,12 +52,16 @@ class BlogController extends Controller
 
     public function update(BlogRequest $request, Blog$blog)
     {
-        $request_data = $request->except('image');
+        $request_data = $request->except('image','image2');
         if ($request->hasFile('image')) {
             if (!is_null($blog->image)) unlink('uploads/blogs/' . $blog->image);
             $request_data['image'] = uploaded($request->image, 'blog');
         }
 
+        if ($request->hasFile('image2')) {
+            if (!is_null($blog->image2)) unlink('uploads/blogs/' . $blog->image2);
+            $request_data['image2'] = uploaded($request->image2, 'blog');
+        }
         $blog->update($request_data);
 
         return redirect()->route('blogs.index')->with('message', trans('messages.messages.updated_successfully'));

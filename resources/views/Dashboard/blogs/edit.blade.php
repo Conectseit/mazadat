@@ -61,12 +61,22 @@
 
 
                         <div class="form-group">
-                            <label>@lang('messages.main_image')</label>
+                            <label>الصورة الاساسية</label>
                             <input type="file" class="form-control image " name="image">
                         </div>
                         <div class="form-group">
                             <img src=" {{$blog->image_path}} " width=" 100px " value="{{$blog->image_path}}"
                                  class="thumbnail image-preview">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>صورة صفحة تفاصيل المقالة</label>
+                            <input type="file" class="form-control image2 " name="image2">
+                        </div>
+                        <div class="form-group">
+                            <img src=" {{$blog->image2_path}} " width=" 100px " value="{{$blog->image2_path}}"
+                                 class="thumbnail image-preview2">
                         </div>
 
 
@@ -99,6 +109,18 @@
     </script>
     <script>
         CKEDITOR.replace('description_en', {height: '300px'});
+    </script>
+    <script>
+        // ======== image preview ====== //
+        $(".image2").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.image-preview2').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
     </script>
 
 @stop

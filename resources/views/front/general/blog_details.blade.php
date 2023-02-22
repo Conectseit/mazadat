@@ -3,8 +3,10 @@
 @section('style')
     <style>
         .blog-head .image-blog img {
-            width: 65%;
-            height: 550px;
+            width: 100%;
+            height: 400px;
+
+            margin-top: -49px;
             -o-object-fit: cover;
             object-fit: cover;
         }
@@ -148,6 +150,9 @@
             font-size: 25px;
         }
 
+
+
+
     </style>
 
 
@@ -162,7 +167,7 @@
         <div class="row">
             <div class="blog-head">
                 <div class="image-blog">
-                    <img alt="{{$blog_details->$name}}" src="{{$blog_details->image_path}}" class="lazyLoad isLoaded"></div>
+                    <img alt="{{$blog_details->$name}}" src="{{$blog_details->image2_path}}" class="lazyLoad isLoaded"></div>
             </div>
         </div>
         <div class="container">

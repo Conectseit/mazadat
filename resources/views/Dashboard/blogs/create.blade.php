@@ -107,7 +107,7 @@
 
 
                             <div class="form-group">
-                                <label>صورة اخري للمقالة</label>
+                                <label>صورة صفحة تفاصيل المقالة</label>
                                 <input type="file" class="form-control image2 " name="image2">
                                 @error('image2')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
