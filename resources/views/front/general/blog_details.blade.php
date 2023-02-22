@@ -3,8 +3,8 @@
 @section('style')
     <style>
         .blog-head .image-blog img {
-            width: 100%;
-            height: 400px;
+            width: 65%;
+            height: 550px;
             -o-object-fit: cover;
             object-fit: cover;
         }
@@ -187,12 +187,12 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="blog-head">
-                                        <div class="image2-blog">
-                                            <img alt="{{$blog_details->$name}}" src="{{$blog_details->image2_path}}" class="lazyLoad isLoaded"></div>
-                                    </div>
-                                </div>
+{{--                                <div class="row">--}}
+{{--                                    <div class="blog-head">--}}
+{{--                                        <div class="image2-blog">--}}
+{{--                                            <img alt="{{$blog_details->$name}}" src="{{$blog_details->image2_path}}" class="lazyLoad isLoaded"></div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                             <div class="col-sm-4" style="padding-right: 50px;">
                                 <div class="pad-40">
@@ -215,9 +215,7 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
                 </div>
 
             </div>

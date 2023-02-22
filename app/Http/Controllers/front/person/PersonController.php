@@ -10,7 +10,11 @@ use App\Models\Token;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Tymon\JWTAuth\Facades\JWTAuth;
+
+//use apimatic/unifonicnextgen;
+
 
 class PersonController extends Controller
 {
@@ -43,8 +47,34 @@ class PersonController extends Controller
                 $jwt_token = JWTAuth::fromUser($user);
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
             }
+
+
+//
+//            $body = trans('messages.activation_code_is'( $activation_code));
+//
+//            $recipient = (int) ($request_data['mobile']);
+//            $appSid = config('sms.unifonic.app_sid');
+//            $senderID = config('sms.unifonic.sender');
+//            $username = config('sms.unifonic.username');
+//            $password = config('sms.unifonic.password');
+//            $client = new UnifonicNextGenClient($username, $password);
+//
+//
+//            $response = $client->getRest()->createSendMessage($appSid, $senderID, $body, $recipient);
+
+
+
+
+
+//            Http::get("http://api.unifonic.com/wrapper/sendSMS.php?userid=admin&password=pass&msg={$activation_code}&sender=f&to={$request_data['mobile']}&encoding=utf-8”)->throw();
+
+
+
+
+            SmsController::sendSms(($request_data['mobile']), trans('messages.activation_code_is', ['code' => $activation_code]));
+
+//            SmsController::sendSms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
             DB::commit();
-            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
 
 //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
             return redirect()->route('front.show_activation', $request_data['mobile']);
