@@ -1,7 +1,7 @@
 
 <!-- Main navbar -->
 <div class="navbar-header navbar-dark  navbar-{{ floating('left', 'right') }}">
-    <a class="navbar-brand" href="">
+    <a class="navbar-brand" href="{{route('front.home')}}">
 {{--        <img src="{{ asset('Dashboard/assets/images/logo_light.png') }}" alt="logo">--}}
         <h3 style="margin:auto; padding-right:40px; font-weight: bold;"> MAZADAT</h3>
     </a>

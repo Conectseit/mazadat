@@ -130,6 +130,7 @@
         .blog-side .media .media-body {
             margin-right: 20px;
             margin-left: 0;
+            padding: 0px 10px;
         }
 
         .blog-sidebar .blog-side .media .media-body h4 {
@@ -149,13 +150,10 @@
             color: #464b8d;
             font-size: 25px;
         }
-
         .text h1 {
             color: #2a398c;
             font-size: 30px;
         }
-
-
     </style>
 
 
@@ -191,7 +189,10 @@
                                     </div>
 
                                     <div class="text" >
-                                        <h3 style="color: var(--main-color)"></h3>{!! $blog_details->$description !!}
+                                        <h3 ></h3>
+                                        {!! $description !!}
+
+{{--                                        <h3 style="color: var(--main-color)"></h3>{!! $blog_details->$description !!}--}}
                                     </div>
                                 </div>
 

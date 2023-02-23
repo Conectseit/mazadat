@@ -70,7 +70,8 @@ body {
 
 main.categories-bar {
   background-color: var(--secondary-color);
-  padding: 20px;
+  /*padding: 2px;*/
+    padding-top: 10px;
 }
 
 main.categories-bar .categories-bar-carousel .owl-item {
@@ -531,7 +532,7 @@ main.sign-in-form.active {
 /*footer*/
 footer {
   background-color: var(--main-color);
-  padding-top: 100px;
+  padding-top: 25px;
 }
 
 footer .footer-title {
@@ -539,6 +540,7 @@ footer .footer-title {
   align-items: center;
   margin-bottom: 20px;
   color: var(--body-color);
+    font-size: 17px;
 }
 footer .footer-title .sq {
   width: 20px;
@@ -546,6 +548,7 @@ footer .footer-title .sq {
   border-bottom-right-radius: 10px;
   background-color: var(--secondary-color);
   margin-left: 10px;
+  margin-right: 10px;
 }
 
 footer a {
@@ -568,11 +571,11 @@ footer p {
 
 footer ul {
   list-style: none;
-  line-height: 2.5;
+  line-height: 2;
 }
 
 footer .ul-parent {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 footer .ul-parent:hover .footer-title .sq {
@@ -604,9 +607,9 @@ footer .slog-right .logo {
 }
 
 footer .slog-right .footer-text {
-  line-height: 1.8;
-  margin-bottom: 40px;
-  padding-left: 60px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  /*padding-left: 60px;*/
 }
 
 footer .slog-right .links a {
@@ -622,6 +625,7 @@ footer .slog-right .links a i {
   color: var(--body-color);
   margin-right: 20px;
   font-size: 12px;
+    padding-left: 10px;
 }
 
 footer .slog-right .links a:hover i {
@@ -2565,7 +2569,7 @@ a.ui-button:active,
     font-size: 44px;
     color: #fff;
     padding: 4px 9px;
-    background: #eeeeee47;
+    /*background: #eeeeee47;*/
 }
 
 a:hover {

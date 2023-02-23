@@ -101,7 +101,12 @@ class HomeController extends Controller
 
     public function blog_details($id)
     {
+
         $data['blog_details'] = Blog::where('id',$id)->first();
+
+        $description= 'description_'.app()->getLocale();
+        $data['description'] =  $data['blog_details']->$description ;
+
         $data['related_blogs'] = Blog::where('category_id',$data['blog_details']->category->id)->take(3)->get();
 
         return view('front.general.blog_details', $data);

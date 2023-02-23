@@ -11,7 +11,7 @@
             @foreach( App\Models\Category::all() as $category)
                 <div class="item">
                     <a class="hoome_icon" href="{{route('front.category_auctions',$category->id)}}">
-                        <h4>{{$category->$name}}</h4>
+                        <h5>{{$category->$name}}</h5>
                     </a>
                 </div>
             @endforeach

@@ -55,6 +55,13 @@ function floating($right, $left){
     return app()->isLocale('ar') ? $right : $left;
 }
 
+
+
+function arrow($right, $left){
+    return app()->isLocale('ar') ? $right : $left;
+}
+
+
 function isLocalized($lang) { return LaravelLocalization::getLocalizedURL($lang); }
 
 
