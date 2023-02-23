@@ -79,9 +79,10 @@
         /*    border-left: 0;*/
         /*}*/
 
-        .rtl .all-title h1,  .all-title h2 {
+         .all-title h1,  .all-title h2 {
             letter-spacing: 5px;
             color: red;
+            font-size: 25px;
         }
 
         .all-title h2 span.tit-color {

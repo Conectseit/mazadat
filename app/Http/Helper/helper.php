@@ -69,9 +69,21 @@ function str(){ return new \Illuminate\Support\Str(); }
 function isNullable($text){ return (!isset($text) || $text == null || $text == '') ? trans('messages.no_value') : ucwords($text); }
 
 
+
+
+function permission_route_checker($route)
+{
+    $auth = auth()->guard('admin')->user();
+
+    if($auth->admin_role_id == 1) return true;
+
+    return in_array($route, json_decode($auth->admin_role->permissions));
+}
+
+
 function cruds()
 {
-    return ['persons','companies','categories','cities','admins','auctions','permissions','contacts','transactions','advertisements'];
+    return ['persons','companies','categories','cities','admins','auctions','permissions','contacts','transactions','advertisements','blogs'];
 }
 
 function model_count($model, $withDeleted = false)
