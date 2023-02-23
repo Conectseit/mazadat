@@ -25,9 +25,9 @@
         }
 
         .title-blog-page h1 {
-            font-size: 37px;
+            font-size: 40px;
             color: var(--main-color);
-            font-family: "Mon-bold";
+            /*font-family: "Mon-bold";*/
             margin-bottom: 0;
             line-height: 50px;
         }
