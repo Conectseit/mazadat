@@ -169,7 +169,11 @@
         <div class="row">
             <div class="blog-head">
                 <div class="image-blog">
-                    <img alt="{{$blog_details->$name}}" src="{{$blog_details->image2_path}}" class="lazyLoad isLoaded"></div>
+                    <a class="" href="{{route('front.home')}}" title="MZADAT!" class="title-tip">
+                    <img alt="{{$blog_details->$name}}" src="{{$blog_details->image2_path}}" class="lazyLoad isLoaded">
+                    </a>
+                </div>
+
             </div>
         </div>
         <div class="container">

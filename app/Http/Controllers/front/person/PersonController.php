@@ -59,7 +59,6 @@ class PersonController extends Controller
 //            $password = config('sms.unifonic.password');
 //            $client = new UnifonicNextGenClient($username, $password);
 //
-//
 //            $response = $client->getRest()->createSendMessage($appSid, $senderID, $body, $recipient);
 
 
@@ -69,7 +68,7 @@ class PersonController extends Controller
 //            Http::get("http://api.unifonic.com/wrapper/sendSMS.php?userid=admin&password=pass&msg={$activation_code}&sender=f&to={$request_data['mobile']}&encoding=utf-8”)->throw();
 
 
-
+           // https://el.cloud.unifonic.com/rest/SMS/messages?AppSid=gcGmMrYf4gfgJNyoV4MBxwfIx6SjNp&SenderID=MZADAT&Body=Test message&Recipient=971507679351&responseType=JSON&CorrelationID=q1&baseEncode=true&statusCallback=sent&async=false
 
             SmsController::sendSms(($request_data['mobile']), trans('messages.activation_code_is', ['code' => $activation_code]));
 

@@ -4,6 +4,7 @@
         <div class="page-title"dir="{{ direction() }}">
             <div class="row"  style="height:60px;">
                 <div class="col-6">
+                    <a class="" href="{{route('front.home')}}">
                     <h3 style="display: inline; color: #1E3C48FF;">
                         <i class="icon-arrow-right6 position-left"></i>
                         <span class="text-bold" style="color: whitesmoke; ">@lang('messages.Dashboard')</span>
@@ -12,6 +13,7 @@
                         <img class="" width="280" height="80" src="{{asset('Front/assets/imgs/logo.svg')}}"/>
 
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
