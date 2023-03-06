@@ -8,26 +8,18 @@ use Illuminate\Support\Facades\Log;
 
 class SmsController extends Controller
 {
-
-
     public static function sendSms($recipient, $body)
     {
         $requestData = self::unifonic_parmeters('gcGmMrYf4gfgJNyoV4MBxwfIx6SjNp','MZADAT', $recipient, $body);
 
         $response = Http::post('https://el.cloud.unifonic.com/rest/SMS/messages', $requestData);
 
-
-
-
-
-        dd($response->errorCode);
         Log::info($response);
 
-        Log::info(self::get_unifonic_message_by_code($response));
+//        Log::info(self::get_unifonic_message_by_code($response));
         return ['code' => $response, 'message' => self::get_unifonic_message_by_code($response)];
 
     }
-
 
 
     public static function unifonic_parmeters( $appSid, $senderID, $recipient,$body, $responseType = null, $correlationID = null, $baseEncode = null, $statusCallback = null, $async = false)
@@ -48,10 +40,7 @@ class SmsController extends Controller
             return "Message send successfully";
         }
         return "Unknown Errorrr !.";
-
     }
-
-
 }
 
 //966546130952

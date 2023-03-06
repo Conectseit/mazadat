@@ -59,7 +59,6 @@ class HomeController extends Controller
 //        }
 //    }
 
-
     public function home()
     {
         $data['categories'] = Category::all();

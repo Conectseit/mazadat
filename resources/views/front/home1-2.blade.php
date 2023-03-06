@@ -23,42 +23,7 @@
             background: #1e3c48;
         }
 
-        .carousel {
-            /*margin-top: 40px;*/
-            /*background-color: var(--secondary-color);*/
-        }
 
-        .carousel-item {
-            width: 100%;
-            height: 380px;
-            /*background-color: rgba(0, 0, 0, 0.5);*/
-
-        }
-
-        .carousel-item img {
-            height: 100%;
-            width: 100%;
-            border-radius: 10px;
-            border: 1px solid;
-        }
-        .slider_image{
-            width: 750px;
-        }
-
-        .carousel img {
-
-            /*width: 100vw;*/
-            /*height: 100vh;*/
-            /*object-fit: cover;*/
-            /*transition: all .5s ease-in-out;*/
-        }
-
-        .carousel img:hover {
-            color: white;
-            transform: scale(1.3);
-            transition: .5s;
-
-        }
         /*.ad {*/
         /*    float: right;*/
         /*    text-align: center;*/
@@ -95,6 +60,15 @@
             background-color: var(--main-color);
         }
 
+        .owl-carousel{
+            background-color: var(--secondary-color);
+            height: 400px;
+        }
+        .owl-carousel img{
+            width: 80%;
+            height: 100%;
+        }
+
     </style>
 @endsection
 
@@ -108,64 +82,19 @@
     <div class="row">
         <div class="col-md-12 col-sm-2 mx-auto" dir="{{ direction() }}">
 
-                <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel"
-                     data-bs-interval="3000">
-{{--                                        <div class="row">--}}
-{{--                                            <div class=" col-lg-3 col-md-3">--}}
-{{--                                                <div class="ad">{{ trans('messages.ad-auctions') }}</div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"
-                                class="active"></button>
-                        @foreach($advertisements as $advertisement)
-                            <button type="button" data-bs-target="#carouselExample"
-                                    data-bs-slide-to={{$advertisement->id}}></button>
-                        @endforeach
-                        {{--                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>--}}
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="slider_image" style="height: 100%; width: 100%;">
-                                <a href="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
-                                   data-popup="lightbox">
-                                    <img class="d-block"
-                                         src="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
-                                         alt="First slide" style="height: 100%; width: auto;">
-                                </a>
-                            </div>
+                <div class="owl-carousel categories-bar-carousel owl-theme">
 
-                            <div class="carousel-caption d-none d-md-block" >
-                                <h4>{{$advertisements->count() > 0 ? $advertisements->first()->$name : 'mazadat' }}</h4>
-                            </div>
+                    @foreach($advertisements as $advertisement)
+                        <div class="item">
+                            <a class="" href="{{ $advertisement->ImagePath }}" data-popup="lightbox">
+                                <img src="{{ $advertisement->ImagePath }}" alt="image" />
+                            </a>
+
                         </div>
-                        @foreach($advertisements as $advertisement)
-                            @if(!$loop->first)
-                                <div class="carousel-item" >
-                                    <div class="slider_image" style="height: 100%; width: 100%;">
-                                        <a href="{{ $advertisement->ImagePath }}" data-popup="lightbox">
-                                            <img class="d-block" src="{{ $advertisement->ImagePath }}"
-                                                 alt="Second slide" style="height: 100%; width: auto;">
-                                        </a>
-                                    </div>
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h4>{{ isNullable($advertisement->$name) }}</h4>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                    <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button"
-                            data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" data-bs-target="#carouselExample" type="button"
-                            data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    @endforeach
                 </div>
+
+
 
         </div>
     </div>
@@ -244,5 +173,5 @@
 @stop
 
 @push('scripts')
-    <script></script>
+
 @endpush
