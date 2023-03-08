@@ -136,7 +136,7 @@
                             </div>
                             <div class="col-lg-3 col-md-3">
                                 <label class="radio-inline">
-                                    <label class="radio-inline">
+                                    <label class="radio-inline mx-2">
                                         <input type="radio" value="0" class="styled" name="is_appear_name" checked="checked">{{trans('messages.No')}}
                                     </label>
                                     <input type="radio"  value="1" class="styled" name="is_appear_name" >{{trans('messages.Yes')}}
@@ -146,6 +146,24 @@
                                 <p>{{trans('messages.appear_name_note')}}</p>
                             </div>
                         </div>
+
+
+
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3">
+                                <label for="is_appear_name" class="form-label">{{ trans('messages.activation_by')}}</label>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <label class="radio-inline">
+                                    <label class="radio-inline mx-2">
+                                        <input type="radio" value="email" class="styled " name="activation_by" checked="checked">{{trans('messages.email')}}
+                                    </label>
+                                    <input type="radio"  value="mobile" class="styled" name="activation_by" >{{trans('messages.mobile')}}
+                                </label>
+                            </div>
+
+                        </div>
+                        <br>
                         <div class=" form-check form-group">
                             <a href="{{route('front.condition_and_terms')}}">
                             <label class="form-check-label"  style="color: white; text-decoration: underline">{{ trans('messages.accept_terms')}} </label>

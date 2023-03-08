@@ -9,5 +9,13 @@
 {{--@endcomponent--}}
 
 
-<h1>Hello,</h1>
-<p>Your code is: {{$code}}</p>
+@component('mail::message')
+    {{ config('app.name') }}
+    # Hi Dear welcome from MAZADAT website
+
+
+    <p>Your Activation_code is: {{$code}}</p>
+
+    Thanks,<br>
+    {{ config('app.name') }}
+@endcomponent

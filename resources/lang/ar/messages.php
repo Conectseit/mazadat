@@ -120,8 +120,7 @@ return [
 
 
 
-
-
+    'activation_by' => 'إرسال كود التفعيل علي ',
 
     'description_ar' => 'الوصف العربي',
     'description_en' => 'الوصف الانجليزية',

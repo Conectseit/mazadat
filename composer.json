@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "aws/aws-sdk-php": "^3.241",
         "anhskohbo/no-captcha": "^3.4",
         "edujugon/push-notification": "^5.0",
         "fruitcake/laravel-cors": "^2.0",
@@ -15,6 +16,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
+        "league/flysystem-aws-s3-v3": "1.0.29",
         "laravelcollective/html": "^6.2",
         "mcamara/laravel-localization": "^1.6",
         "mckenziearts/laravel-notify": "^2.2",

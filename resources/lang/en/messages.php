@@ -127,6 +127,8 @@ return [
     'note'              => ' كيفية الدفع',
     'noote'              => 'من فضلك ادخل معلومة عن كيفية الدفع (كاش او ATMاو غير ذلك)',
 
+    'activation_by' => 'Send activation to ',
+
 
 
     'description_ar' => 'Arabic description',
@@ -240,7 +242,7 @@ return [
     'about_app' => ' About Us',
     'condition_and_terms' => 'Condition & Terms',
     'mobile_terms' =>'ملحوظة: رقم الجوال يجب ان يكون ساري ولا يقل عن 9ارقام',
-    'appear_name_note' => 'ملحوظة : باختياراخفاء الاسم سوف يظهر للعملاء اسمك المستعار الذي ادخلته بدلا من اسمك الاول الاخير  ',
+    'appear_name_note' => 'note: when you choice hide your name the username will appear to clients instead of first and middle name',
 
     'download'               => 'download',
     'extra_file'             => 'extra file',
@@ -352,7 +354,7 @@ return [
         'all_auctions'    => 'all auctions',
         'done'            => 'Done Auctions',
         'on_progress'     => 'On Progress Auctions',
-        'count_of_on_progress'     => 'Count Of On Progress Auctions',
+        'count_of_on_progress'     => 'On Progress Auctions',
         'count_of_done'     => 'Count Of Done Auctions',
 
         'not_accepted'    => 'not accepted',

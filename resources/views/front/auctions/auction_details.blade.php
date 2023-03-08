@@ -301,7 +301,7 @@
                         @foreach($auction->inspectionimages as $image)
                             <div class="col-md-3 col-6">
                                 <p> <i class=" fa fa-file-pdf-o" style="color: red; width: 50px;"></i>@lang('messages.file_name') : {{ isset($image->file->name) ? $image->file->name:'..' }}</p><br>
-                                <div class="image" style="width: 80px; height: 80px;">
+                                <div class="image" style="width: 65px;height: 80px;">
                                         <a href="{{route('inspection_view_file',$image->id)}}" target="_blank">
                                             <img src="{{asset('Front/assets/imgs/pdf-icon.jpg')}}" alt="image" style="width: 100%;">
                                         </a>

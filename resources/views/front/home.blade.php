@@ -34,7 +34,6 @@
             /*background-color: rgba(0, 0, 0, 0.5);*/
 
         }
-
         .carousel-item img {
             height: 100%;
             width: 100%;
@@ -43,14 +42,6 @@
         }
         .slider_image{
             width: 750px;
-        }
-
-        .carousel img {
-
-            /*width: 100vw;*/
-            /*height: 100vh;*/
-            /*object-fit: cover;*/
-            /*transition: all .5s ease-in-out;*/
         }
 
         .carousel img:hover {
@@ -106,7 +97,7 @@
 
 <center>
     <div class="row">
-        <div class="col-md-12 col-sm-2 mx-auto" dir="{{ direction() }}">
+        <div class="col-md-12 col-sm-2 mx-auto w-100" dir="{{ direction() }}">
 
                 <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel"
                      data-bs-interval="3000">
@@ -131,7 +122,7 @@
                                    data-popup="lightbox">
                                     <img class="d-block"
                                          src="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
-                                         alt="First slide" style="height: 100%; width: auto;">
+                                         alt="First slide" style="height: 100%; width: 100%;">
                                 </a>
                             </div>
 
@@ -145,7 +136,7 @@
                                     <div class="slider_image" style="height: 100%; width: 100%;">
                                         <a href="{{ $advertisement->ImagePath }}" data-popup="lightbox">
                                             <img class="d-block" src="{{ $advertisement->ImagePath }}"
-                                                 alt="Second slide" style="height: 100%; width: auto;">
+                                                 alt="Second slide" style="height: 100%; width: 100%;">
                                         </a>
                                     </div>
                                     <div class="carousel-caption d-none d-md-block">
@@ -169,14 +160,7 @@
 
         </div>
     </div>
-
-
 </center>
-
-
-
-
-
 
     <div class="category-items-page">
         <section class="categories" dir="{{ direction() }}">
@@ -209,7 +193,6 @@
                         <div class="statistics ">
                             <img src="{{asset('Front/assets/imgs/icon/d_auction.png')}}" alt="logo" width="50"
                                  height="50">
-
                             <b>
                                 {{--                                <i class="fal fa-check-circle" style="color: white;background-color: green;"></i>--}}
                                 <i class="fal fa-done" style="color: white;background-color: green;"></i>
@@ -217,8 +200,6 @@
                             :({{$auctions->where(['status'=>'done'])->count()}})
                         </div>
                     </div>
-
-
 {{--                                        <div class=" col-lg-3 col-md-3">--}}
 {{--                                            <a href="{{route('front.unique_auction')}}" class="add-auction btn"><b> <i--}}
 {{--                                                        class="fal fa-gavel"></i> </b>{{trans('messages.auction.unique')}}</a>--}}
