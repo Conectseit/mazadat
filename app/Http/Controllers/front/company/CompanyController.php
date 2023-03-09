@@ -5,11 +5,13 @@ namespace App\Http\Controllers\front\company;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SmsController;
 use App\Http\Requests\Front\RegisterCompanyRequest;
+use App\Mail\ConfirmCode;
 use App\Models\Country;
 use App\Models\Token;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class CompanyController extends Controller
@@ -52,9 +54,14 @@ class CompanyController extends Controller
 //                    'fcm_web_token'=>$request->fcm_web_token
                 ]);
             }
+            if ($request->activation_by == 'email') {
+                Mail::to($request->email)->send(new ConfirmCode($code));
+            }
+
             if ($request->activation_by == 'mobile') {
                 SmsController::sendSms(($request_data['mobile']), trans('messages.activation_code_is', ['code' => $code]));
             }
+
             DB::commit();
             return redirect()->route('front.show_activation', $request_data['mobile']);
 
