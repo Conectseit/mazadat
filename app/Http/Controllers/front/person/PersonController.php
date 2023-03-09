@@ -52,18 +52,19 @@ class PersonController extends Controller
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
             }
 
-dd(env('AWS_SES_ACCESS_KEY_ID'));
-            if ($request->activation_by == 'email') {
-                Mail::to('elshenaweymona92@gmail.com')->send(new ConfirmCode());
 
-//                Mail::to($request->email)->send(new ConfirmCode($code));
-            }
+//            if ($request->activation_by == 'email') {
+//                Mail::to('elshenaweymona92@gmail.com')->send(new ConfirmCode($code));
+//
+////                Mail::to($request->email)->send(new ConfirmCode($code));
+//            }
 
 
 //            if ($request->activation_by == 'mobile') {
 //                SmsController::sendSms(($request_data['mobile']), trans('messages.activation_code_is', ['code' => $code]));
 //            }
 //
+            Mail::to('elshenaweymona92@gmail.com')->send(new ConfirmCode($code));
 
 
 //            SmsController::sendSms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
