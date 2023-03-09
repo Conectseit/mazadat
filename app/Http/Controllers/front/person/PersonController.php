@@ -53,18 +53,16 @@ class PersonController extends Controller
             }
 
 
-//            if ($request->activation_by == 'email') {
+            if ($request->activation_by == 'email') {
 //                Mail::to('elshenaweymona92@gmail.com')->send(new ConfirmCode($code));
-//
-////                Mail::to($request->email)->send(new ConfirmCode($code));
-//            }
+
+                Mail::to($request->email)->send(new ConfirmCode($code));
+            }
 
 
-//            if ($request->activation_by == 'mobile') {
-//                SmsController::sendSms(($request_data['mobile']), trans('messages.activation_code_is', ['code' => $code]));
-//            }
-//
-            Mail::to('elshenaweymona92@gmail.com')->send(new ConfirmCode($code));
+            if ($request->activation_by == 'mobile') {
+                SmsController::sendSms(($request_data['mobile']), trans('messages.activation_code_is', ['code' => $code]));
+            }
 
 
 //            SmsController::sendSms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
