@@ -52,7 +52,13 @@ return [
     |
     */
 
+//    'url' => env('APP_URL', 'http://localhost'),
+//
+//    'asset_url' => env('ASSET_URL', null),
+
     'url' => env('APP_URL', 'http://localhost'),
+
+    'short_url' => preg_replace('#^https?://#', '', rtrim(env('APP_URL', 'http://localhost'),'/')),
 
     'asset_url' => env('ASSET_URL', null),
 

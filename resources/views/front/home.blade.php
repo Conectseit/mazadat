@@ -46,7 +46,7 @@
 
         .carousel img:hover {
             color: white;
-            transform: scale(1.3);
+            transform: scale(1.2);
             transition: .5s;
 
         }
@@ -113,7 +113,6 @@
                             <button type="button" data-bs-target="#carouselExample"
                                     data-bs-slide-to={{$advertisement->id}}></button>
                         @endforeach
-                        {{--                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>--}}
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">

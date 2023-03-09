@@ -125,6 +125,27 @@
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
 
+
+
+
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3">
+                                <label for="is_appear_name" class="form-label">{{ trans('messages.activation_by')}}</label>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <label class="radio-inline">
+                                    <label class="radio-inline mx-2">
+                                        <input type="radio" value="email" class="styled " name="activation_by" checked="checked">{{trans('messages.email')}}
+                                    </label>
+                                    <input type="radio"  value="mobile" class="styled" name="activation_by" >{{trans('messages.mobile')}}
+                                </label>
+                            </div>
+                        </div>
+                        <br>
+
+
+
+
                         {{--                        <div id="location" style="display:block;">--}}
                         <div class="form-group row ">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
@@ -158,9 +179,20 @@
                                        class="form-control hidden d-none">
                             </div>
                             @error('latitude')<span style="color: #e81414;">{{ $message }}</span>@enderror
-
                         </div>
                         <br>
+                        <br>
+                        <div class=" form-check form-group">
+                            <a href="{{route('front.condition_and_terms')}}" style="font-size: 20px;">
+                                <label class="form-check-label"
+                                       style="color: white; text-decoration: underline">{{ trans('messages.accept_terms')}} </label>
+                                <input type="checkbox"
+                                       class="form-check-input  @error('accept_app_terms') is-invalid @enderror"
+                                       value="yes" name="accept_app_terms">
+
+                            </a>
+                            @error('accept_app_terms')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                        </div>
                         <div class="sign-btn">
                             <div class="col-lg-10 col-md-9">
                                 {!! NoCaptcha::renderJs() !!}
@@ -169,17 +201,9 @@
                             </div>
                             @error('g-recaptcha-response')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
+
                             <br><br>
-                            <div class=" form-check form-group">
-                                <a href="{{route('front.condition_and_terms')}}">
-                                    <label class="form-check-label"
-                                           style="color: white; text-decoration: underline">{{ trans('messages.accept_terms')}} </label>
-                                    <input type="checkbox"
-                                           class="form-check-input  @error('accept_app_terms') is-invalid @enderror"
-                                           value="yes" name="accept_app_terms">
-                                </a>
-                                @error('accept_app_terms')<span style="color: #e81414;">{{ $message }}</span>@enderror
-                            </div>
+
                             <button type="submit" id="save-form-btn"
                                     class="btn btn-primary submit-btn">{{trans('messages.register_your_account')}}</button>
                         </div>

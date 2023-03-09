@@ -42,6 +42,8 @@ Route::group(
 //    Route::group(['prefix' => 'front'], function () {
     Route::get('/home', [HomeController::class, 'home'])->name('front.home');
     Route::get('unique_auction', [HomeController::class, 'unique_auction'])->name('front.unique_auction');
+    Route::get('latest_auctions', [HomeController::class, 'latest_auctions'])->name('front.latest_auctions');
+
     Route::get('all_companies', [HomeController::class, 'all_companies'])->name('front.all_companies');
     Route::get('company/{id}/auctions', [HomeController::class, 'companyAuctions'])->name('front.company_auctions');
     Route::get('blogs', [HomeController::class, 'blogs'])->name('front.blogs');

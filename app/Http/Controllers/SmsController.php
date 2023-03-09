@@ -43,24 +43,5 @@ class SmsController extends Controller
     }
 }
 
-//966546130952
-//966546130952
-//966505980169
-//
-//
-//  function createSendMessage(
-//      $appSid,
-//      $senderID,
-//      $body,
-//      $recipient,
-//      $responseType = null,
-//      $correlationID = null,
-//      $baseEncode = null,
-//      $statusCallback = null,
-//      $async = false)
-//  {
-//
-//  }
-
 
 //    https://el.cloud.unifonic.com/rest/SMS/messages?AppSid=6v253153s1g7831s5&SenderID=sender&Body=Test&Recipient=966546130952&responseType=JSON&CorrelationID=CorrelationID&baseEncode=true&statusCallback=sent&async=false

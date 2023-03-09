@@ -71,6 +71,14 @@ class HomeController extends Controller
         $unique_auction = Auction::where('is_unique', 1)->get();
         return view('front.auctions.all_unique_auctions', compact('unique_auction'));
     }
+    public function latest_auctions()
+    {
+        $latest_auctions=[];
+        foreach(Category::has('auctions')->get() as $category){
+            $latest_auctions =  $category->auctions->last()->get()->where('status','!=','not_accepted');
+        }
+        return view('front.auctions.latest_auctions', compact('latest_auctions'));
+    }
 
     public function all_companies()
     {

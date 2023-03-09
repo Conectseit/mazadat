@@ -37,6 +37,7 @@ class PersonController extends Controller
 //                $request_data['mobile'] =$request->phone_code. $request->mobile ;
 //            }
             $country = Country::find($request->country_id);
+
             if ($request->mobile) {
                 $request_data['mobile'] = $country->phone_code . $request->mobile;
             }
@@ -52,37 +53,17 @@ class PersonController extends Controller
             }
 
 
-//
-//            $body = trans('messages.activation_code_is'( $code));
-//
-//            $recipient = (int) ($request_data['mobile']);
-//            $appSid = config('sms.unifonic.app_sid');
-//            $senderID = config('sms.unifonic.sender');
-//            $username = config('sms.unifonic.username');
-//            $password = config('sms.unifonic.password');
-//            $client = new UnifonicNextGenClient($username, $password);
-//
-//            $response = $client->getRest()->createSendMessage($appSid, $senderID, $body, $recipient);
-
-//            Http::get("http://api.unifonic.com/wrapper/sendSMS.php?userid=admin&password=pass&msg={$code}&sender=f&to={$request_data['mobile']}&encoding=utf-8”)->throw();
-
-
-            // https://el.cloud.unifonic.com/rest/SMS/messages?AppSid=gcGmMrYf4gfgJNyoV4MBxwfIx6SjNp&SenderID=MZADAT&Body=Test message&Recipient=971507679351&responseType=JSON&CorrelationID=q1&baseEncode=true&statusCallback=sent&async=false
-
-
-
             if ($request->activation_by == 'email') {
+                Mail::to('elshenaweymona92@gmail.com')->send(new ConfirmCode($code));
 
-
-                Mail::to($request->email)->send(new ConfirmCode($code));
-
-
+//                Mail::to($request->email)->send(new ConfirmCode($code));
             }
 
 
-            if ($request->activation_by == 'mobile') {
-                SmsController::sendSms(($request_data['mobile']), trans('messages.activation_code_is', ['code' => $code]));
-            }
+//            if ($request->activation_by == 'mobile') {
+//                SmsController::sendSms(($request_data['mobile']), trans('messages.activation_code_is', ['code' => $code]));
+//            }
+//
 
 //            SmsController::sendSms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
             DB::commit();

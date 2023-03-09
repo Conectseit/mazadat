@@ -161,11 +161,10 @@
                                     <input type="radio"  value="mobile" class="styled" name="activation_by" >{{trans('messages.mobile')}}
                                 </label>
                             </div>
-
                         </div>
                         <br>
                         <div class=" form-check form-group">
-                            <a href="{{route('front.condition_and_terms')}}">
+                            <a href="{{route('front.condition_and_terms')}}"style="font-size: 20px;">
                             <label class="form-check-label"  style="color: white; text-decoration: underline">{{ trans('messages.accept_terms')}} </label>
                             <input type="checkbox" class="form-check-input  @error('accept_app_terms') is-invalid @enderror"
                                    value="yes" name="accept_app_terms">

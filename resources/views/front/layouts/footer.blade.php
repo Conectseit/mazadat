@@ -63,7 +63,7 @@
                     <div class="col-md-6">
                         <div class="ul-parent">
                             <a class=""
-                               href="{{route('front.unique_auction')}}">
+                               href="{{route('front.latest_auctions')}}">
                                 <h6 class="footer-title">
                                     <span class="sq"></span>
                                     {{trans('messages.auction.latest_auctions')}}

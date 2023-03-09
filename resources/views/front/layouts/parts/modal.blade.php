@@ -98,7 +98,7 @@
                         <div class="col-lg-12 col-md-12">
                             <input type="text" name="mobile" value="{{ old('mobile') }}"
                                    class="form-control @error('mobile') is-invalid @enderror"
-                                   placeholder="{{trans('messages.enter_mobile')}} 966 xx xxx">
+                                   placeholder="{{trans('messages.enter_mobile')}} 966  xxxx xxx xx ">
                             @error('mobile') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror
                         </div>
                     </div>

@@ -7,8 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SmsController;
 use App\Http\Requests\Front\user\ForgetPassRequest;
 use App\Http\Requests\Front\user\resetPasswordRequest;
-use App\Mail\ConfirmCode;
-
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -29,7 +27,10 @@ class ForgetPassController extends Controller
 
         $code = create_rand_numbers();
         $user->update(['reset_password_code' => $code]);
-        SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
+
+        SmsController::sendSms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
+
+//        MalthSmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
         return redirect()->route('front.reset-code-page', $request->mobile);
     }
 

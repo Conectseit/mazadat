@@ -30,6 +30,7 @@ class ConfirmCode extends Mailable
      */
     public function build()
     {
+
         return $this->markdown('mails.emails.auth.confirm',['code'=>$this->code]);
 
 //        return $this->view('view.name');
