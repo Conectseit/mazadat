@@ -30,6 +30,7 @@ return [
 //        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
 //    ],
 
+    'default' => env('MAIL_MAILER', 'ses'),
     'ses' => [
         'key' => env('AWS_SES_ACCESS_KEY_ID'),
         'secret' => env('AWS_SES_SECRET_ACCESS_KEY'),
