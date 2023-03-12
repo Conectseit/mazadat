@@ -17,8 +17,8 @@
     {{ config('app.name') }}
     # Hi Dear welcome from MAZADAT website
 
-    <p>Your Activation_code is: {{$code}}</p>
+    Your Activation Code is: {{$code}}
 
-    Thanks,<br>
+    Thanks,
     {{ config('app.name') }}
 @endcomponent

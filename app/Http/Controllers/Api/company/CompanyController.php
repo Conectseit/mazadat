@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SmsController;
 use App\Http\Requests\Api\company\RegisterCompanyRequest;
 use App\Http\Requests\Api\company\UpdateCompanyProfileRequest;
-use App\Http\Requests\Api\person\CompletePersonProfileRequest;
 use App\Http\Resources\Api\auth\CompanyResource;
 use App\Models\Token;
 use App\Models\User;

@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-//use apimatic/unifonicnextgen;
 
 
 class PersonController extends Controller
