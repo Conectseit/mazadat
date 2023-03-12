@@ -19,7 +19,7 @@ class PersonController extends Controller
 
     public function register_person(RegisterUserRequest $request)
     {
-        $activation_code = random_int(0000, 9999);
+        $code = random_int(0000, 9999);
 
         DB::beginTransaction();
         try {
@@ -36,7 +36,7 @@ class PersonController extends Controller
                 return responseJson(false, 'قيمة الجوال مستخدمة من قبل', null);  //
             }
 
-            $user = User::create($request_data + ['activation_code' => $activation_code,'send_at'=>now(),'is_accepted'=>1,'type'=>'buyer','is_company'=>'person','accept_app_terms'=>'yes']);
+            $user = User::create($request_data + ['activation_code' => $code,'send_at'=>now(),'is_accepted'=>1,'type'=>'buyer','is_company'=>'person','accept_app_terms'=>'yes']);
 
             if ($user) {
                 $jwt_token = JWTAuth::fromUser($user);
@@ -44,8 +44,8 @@ class PersonController extends Controller
             }
             DB::commit();
 
-            SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
-//            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $activation_code]));
+            SmsController::sendSms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
+//            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $code]));
 
             return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_sent'),$activation_code); //OK
 
