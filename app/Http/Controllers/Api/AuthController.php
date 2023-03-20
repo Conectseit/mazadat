@@ -165,7 +165,9 @@ class AuthController extends PARENT_API
         $code = create_rand_numbers();
 
         $user->update(['reset_password_code' => $code]);
-        SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
+        SmsController::sendSms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
+
+//        SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
         return responseJson(true, trans('api.send_token'), $code); //
     }
 
