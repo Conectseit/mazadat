@@ -10,7 +10,6 @@
     <meta name="google-site-verification" content="O-IsvjsFUeuJMYfdKVO6FXZj45J7yaGXzNOF9ypXe-k" />
 
 {{--    //connect--}}
-{{--    <meta name="google-site-verification" content="qMicb0sCDsx3OuwzR6qh50sNFTBWEKhNiGIKkLIxvmo" />--}}
     <meta name="google-site-verification" content="qMicb0sCDsx3OuwzR6qh50sNFTBWEKhNiGIKkLIxvmo" />
 
 
