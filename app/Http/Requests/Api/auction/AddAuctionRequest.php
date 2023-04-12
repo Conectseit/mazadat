@@ -34,8 +34,12 @@ class AddAuctionRequest extends REQUEST_API_PARENT
             'description_en'    => 'required',
             'auction_terms_ar'  => 'required',
             'auction_terms_en'  => 'required',
-            'latitude'          => 'required',
-            'longitude'         => 'required',
+            'is_appear_location'=> 'required|in:0,1',
+            'latitude'          => 'required_if:is_appear_location,1|numeric',
+            'longitude'         => 'required_if:is_appear_location,1|numeric',
+
+//            'latitude'          => 'required',
+//            'longitude'         => 'required',
 
             'start_auction_price'        => ['required','numeric'],
             'value_of_increment'         => ['required','numeric'],

@@ -32,6 +32,7 @@ class PendingAuctionsResource extends JsonResource
             'description_en'              => $this->description_en,
             'auction_terms_ar'            => $this->auction_terms_ar,
             'auction_terms_en'            => $this->auction_terms_en,
+            'is_appear_location'          => $this->is_appear_location,
             'latitude'                    => $this->latitude,
             'longitude'                   => $this->longitude,
             'allowed_take_photo'          => $this->allowed_take_photo,

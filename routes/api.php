@@ -37,6 +37,7 @@ Route::group(['namespace' => 'Api'], function () {
 
     //=========== auth ============
     Route::post('register_person', [PersonController::class, 'register_person']);
+    Route::post('register_person', [PersonController::class, 'register_person']);
     Route::post('register_company', [CompanyController::class, 'register_company']);
     Route::post('activation', [AuthController::class, 'activation']);
     Route::post('resend-sms', [AuthController::class, 'resendSms']);

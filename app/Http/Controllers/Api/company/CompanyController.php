@@ -7,10 +7,12 @@ use App\Http\Controllers\SmsController;
 use App\Http\Requests\Api\company\RegisterCompanyRequest;
 use App\Http\Requests\Api\company\UpdateCompanyProfileRequest;
 use App\Http\Resources\Api\auth\CompanyResource;
+use App\Mail\ConfirmCode;
 use App\Models\Token;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class CompanyController extends Controller
@@ -44,10 +46,18 @@ class CompanyController extends Controller
                 $jwt_token = JWTAuth::fromUser($user);
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id]);
             }
+
             DB::commit();
 
+            if ($request->activation_by == 'email') {
+                Mail::to($request->email)->send(new ConfirmCode($code));
+            }
 
-            SmsController::sendSms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
+            if ($request->activation_by == 'mobile') {
+                SmsController::sendSms(($request_data['mobile']), trans('messages.activation_code_is', ['code' => $code]));
+            }
+
+//            SmsController::sendSms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
 //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $code]));
 
             return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_sent'),$code); //OK

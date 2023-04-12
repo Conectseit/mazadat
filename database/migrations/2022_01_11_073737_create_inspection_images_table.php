@@ -16,6 +16,7 @@ class CreateInspectionImagesTable extends Migration
         Schema::create('inspection_images', function (Blueprint $table) {
             $table->id();
             $table->string('image')->nullable();
+            $table->string('description')->nullable();
             $table->bigInteger('auction_id')->unsigned()->nullable();
             $table->foreign('auction_id')->references('id')->on('auctions')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
