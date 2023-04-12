@@ -5,7 +5,6 @@
     .hide{
         visibility: hidden;
     }
-
         .hide-file{
             visibility: hidden;
         }
@@ -193,6 +192,36 @@
                         @include('front.auctions.parts.add_auction_images_and_files')
 
 
+
+
+
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label class="form-label">{{trans('messages.auction.is_appear_location')}}</label>
+                            </div>
+                            <div class="col-lg-5 col-md-4">
+{{--                                <label class="radio-inline">--}}
+{{--                                    <input type="radio" value="0" class="styled" name="is_appear_location"--}}
+{{--                                           checked="checked">--}}
+{{--                                    {{trans('messages.No')}}--}}
+{{--                                </label>--}}
+{{--                                <label class="radio-inline">--}}
+{{--                                    <input type="radio" value="1" class="styled" name="is_appear_location">--}}
+{{--                                    {{trans('messages.Yes')}}--}}
+{{--                                </label>--}}
+
+
+                                <select class="form-select" id="is_appear_location" name="is_appear_location" data-placeholder="{{trans('back.select')}}">
+{{--                                    <option selected disabled>{{ trans('back.type')}}</option>--}}
+                                    <option value="0">{{trans('messages.No')}}</option>
+                                    <option value="1" id="yes">{{trans('messages.Yes')}}</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="map" id="map-section" style="display:none;">
+
                         <div class="form-group">
                             <label>@lang('messages.auction.location'):</label>
                             <div class="col-lg-12">
@@ -207,6 +236,7 @@
                                        class="form-control hidden d-none">
                             </div>
                         </div>
+{{--                        </div>--}}
 
 
 
@@ -278,5 +308,21 @@
             }
         }
         // ======== image preview ================================//
+    </script>
+
+    <script>
+        $('select#is_appear_location').on('change', function () {
+            let is_appear_location = $(this).val();
+            if (is_appear_location) {
+                optionValue = document.getElementById("yes").value;
+                if (optionValue === is_appear_location) {
+                    document.getElementById("map-section").style.display = "block";
+                } else {
+                    document.getElementById("map-section").style.display = "none";
+                }
+            } else {
+                document.getElementById("map-section").style.display = "block";
+            }
+        });
     </script>
 @endpush

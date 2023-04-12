@@ -143,7 +143,13 @@ return [
     'description' => 'description',
     'edit-var' => 'edit :var',
 
-
+    'add_another_image' => 'add another image',
+    'add_another_file' => 'add another file',
+    'select_file_type' => 'select file type',
+    'file_type' => ' file type',
+    'file_name' => ' file name',
+    'file_desc' => ' file description',
+    'select_file' => '  select file  pdf',
 
 
 
@@ -251,7 +257,7 @@ return [
     'select_file'            => ' select pdf file',
     'inspection_file_names'  => 'inspection file names',
     'select_file_name'       => 'select file name',
-    'file_name'              => 'file type',
+//    'file_name'              => 'file type',
     'extra_file_only_to_admin'             => 'extra file only_to_admin',
 
     'share' => 'Share',
@@ -420,6 +426,7 @@ return [
         'pending'              => 'pending auctions',
         'selled'               => 'selled auctions',
         'location'             => ' Auction Location on map',
+        'is_appear_location'   => 'Add Auction Location on map',
 
         'address_details'      => ' / البلد/الحي',
         'unique'               => 'Unique Auctions',

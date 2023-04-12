@@ -113,15 +113,15 @@ class AuthController extends Controller
             Auth::logout();
             return back()->withInput($request->only('email'))->with('error', trans('api.please_wait_your_account_not_activated_yet'));
         }
-
-        if ($user->is_completed == 0) {
-            return redirect()->route('front.show_complete_profile')
-                ->with('error', trans('api.please_complete_your_account_first'));
-        }
-
-        if ($user->is_verified == 0) {
-            return back()->with('error', trans('messages.please_wait_your_account_not_verified_to_participate_yet'));
-        }
+//
+//        if ($user->is_completed == 0) {
+//            return redirect()->route('front.show_complete_profile')
+//                ->with('error', trans('api.please_complete_your_account_first'));
+//        }
+//
+//        if ($user->is_verified == 0) {
+//            return back()->with('error', trans('messages.please_wait_your_account_not_verified_to_participate_yet'));
+//        }
 
         $jwt_token = JWTAuth::fromUser($user);
         auth()->user()->token->update(['jwt' => $jwt_token, 'fcm_web_token' => $request->fcm_web_token ?? 'none']);

@@ -187,6 +187,16 @@ class AuctionController extends Controller
 
     public function show_add_auction()
     {
+
+        if (auth()->user()->is_completed == 0) {
+            return redirect()->route('front.show_complete_profile')
+                ->with('error', trans('api.please_complete_your_account_first'));
+        }
+
+        if (auth()->user()->is_verified == 0) {
+            return back()->with('error', trans('messages.please_wait_your_account_not_verified_to_participate_yet'));
+        }
+
         $data['categories'] = Category::all();
         $data['options'] = Option::all();
         $data['inspection_file_names'] = FileName::all();
@@ -196,6 +206,8 @@ class AuctionController extends Controller
 
     public function add_auction(AddAuctionRequest $request)
     {
+
+
         DB::beginTransaction();
         try {
             $serial_number = '#' . random_int(00000, 99999);

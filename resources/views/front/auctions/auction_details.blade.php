@@ -333,11 +333,14 @@
                     <h4>{{ trans('messages.auction.terms')}}:</h4>
                     <p>{{$auction->$auction_terms}}</p>
                 </div>
+
+                @if($auction->is_appear_location==1)
                 <hr>
                 <div class="terms">
                     <h4>{{ trans('messages.auction.location')}}:</h4>
                     <div id="map" class="m-6"></div>
                 </div>
+                @endif
             </div>
 
         </section>
