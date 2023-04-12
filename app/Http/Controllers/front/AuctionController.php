@@ -216,6 +216,10 @@ class AuctionController extends Controller
             $auction_images = DB::table('auction_images')->insert($data);
 
 
+
+
+
+
             //======= upload auction inspection_report_images =======
             $dataa = [];
             if ($request->hasfile('inspection_report_images')) {
@@ -228,6 +232,9 @@ class AuctionController extends Controller
                 }
             }
             DB::table('inspection_images')->insert($dataa);
+
+
+
 
             //======= upload auction options =======
             $options = [];
@@ -364,3 +371,19 @@ class AuctionController extends Controller
     }
 
 }
+
+
+
+
+//======= upload auction inspection_report_images =======
+//$dataa = [];
+//if ($request->hasfile('inspection_report_images')) {
+//    foreach ($request->file('inspection_report_images') as $key => $img) {
+//        $file=$img;
+//        $file_image=time().'.'.$file->getClientOriginalExtension();
+//        $img->move('uploads/inspection_report_pdf',$file_image);
+//        $dataa[$key] =['image' =>$file_image,'auction_id' => $auction->id,'file_name_id'=>$request->file_name_id,'description'=>$request->description];
+//
+//    }
+//}
+//DB::table('inspection_images')->insert($dataa);

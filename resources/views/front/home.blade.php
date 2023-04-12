@@ -32,15 +32,16 @@
             width: 100%;
             height: 380px;
             /*background-color: rgba(0, 0, 0, 0.5);*/
-
         }
+
         .carousel-item img {
             height: 100%;
             width: 100%;
             border-radius: 10px;
             border: 1px solid;
         }
-        .slider_image{
+
+        .slider_image {
             width: 750px;
         }
 
@@ -50,6 +51,7 @@
             transition: .5s;
 
         }
+
         /*.ad {*/
         /*    float: right;*/
         /*    text-align: center;*/
@@ -82,7 +84,7 @@
         /*        opacity: 1;*/
         /*    }*/
         /*}*/
-        .carousel-control-prev-icon,.carousel-control-next-icon {
+        .carousel-control-prev-icon, .carousel-control-next-icon {
             background-color: var(--main-color);
         }
 
@@ -95,17 +97,17 @@
     {{--    @include('front.layouts.parts.nav_home')--}}
     @include('front.layouts.parts.alert')
 
-<center>
-    <div class="row">
-        <div class="col-md-12 col-sm-2 mx-auto w-100" dir="{{ direction() }}">
+    <center>
+        <div class="row">
+            <div class="col-md-12 col-sm-2 mx-auto w-100" dir="{{ direction() }}">
 
                 <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel"
                      data-bs-interval="3000">
-{{--                                        <div class="row">--}}
-{{--                                            <div class=" col-lg-3 col-md-3">--}}
-{{--                                                <div class="ad">{{ trans('messages.ad-auctions') }}</div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
+                    {{--                                        <div class="row">--}}
+                    {{--                                            <div class=" col-lg-3 col-md-3">--}}
+                    {{--                                                <div class="ad">{{ trans('messages.ad-auctions') }}</div>--}}
+                    {{--                                            </div>--}}
+                    {{--                                        </div>--}}
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"
                                 class="active"></button>
@@ -125,13 +127,13 @@
                                 </a>
                             </div>
 
-                            <div class="carousel-caption d-none d-md-block" >
+                            <div class="carousel-caption d-none d-md-block">
                                 <h4>{{$advertisements->count() > 0 ? $advertisements->first()->$name : 'mazadat' }}</h4>
                             </div>
                         </div>
                         @foreach($advertisements as $advertisement)
                             @if(!$loop->first)
-                                <div class="carousel-item" >
+                                <div class="carousel-item">
                                     <div class="slider_image" style="height: 100%; width: 100%;">
                                         <a href="{{ $advertisement->ImagePath }}" data-popup="lightbox">
                                             <img class="d-block" src="{{ $advertisement->ImagePath }}"
@@ -157,9 +159,9 @@
                     </button>
                 </div>
 
+            </div>
         </div>
-    </div>
-</center>
+    </center>
 
     <div class="category-items-page">
         <section class="categories" dir="{{ direction() }}">
@@ -175,20 +177,20 @@
                             </b>{{ trans('messages.auction.count_of_on_progress') }}
                             :({{$auctions->where(['status'=>'on_progress','is_accepted'=>1])->count()}})
                         </div>
-{{--                        <div class="statistics ">--}}
-{{--                            <img src="{{asset('Front/assets/imgs/icon/d_auction.png')}}" alt="logo" width="50"--}}
-{{--                                 height="50">--}}
+                        {{--                        <div class="statistics ">--}}
+                        {{--                            <img src="{{asset('Front/assets/imgs/icon/d_auction.png')}}" alt="logo" width="50"--}}
+                        {{--                                 height="50">--}}
 
-{{--                            <b>--}}
-{{--                                --}}{{--                                <i class="fal fa-check-circle" style="color: white;background-color: green;"></i>--}}
-{{--                                <i class="fal fa-done" style="color: white;background-color: green;"></i>--}}
-{{--                            </b>{{ trans('messages.auction.count_of_done') }}--}}
-{{--                            :({{$auctions->where(['status'=>'done'])->count()}})--}}
-{{--                        </div>--}}
+                        {{--                            <b>--}}
+                        {{--                                                                <i class="fal fa-check-circle" style="color: white;background-color: green;"></i>--}}
+                        {{--                                <i class="fal fa-done" style="color: white;background-color: green;"></i>--}}
+                        {{--                            </b>{{ trans('messages.auction.count_of_done') }}--}}
+                        {{--                            :({{$auctions->where(['status'=>'done'])->count()}})--}}
+                        {{--                        </div>--}}
                     </div>
+
+
                     <div class=" col-lg-6 col-md-6">
-                    </div>
-                    <div class=" col-lg-3 col-md-3">
                         <div class="statistics ">
                             <img src="{{asset('Front/assets/imgs/icon/d_auction.png')}}" alt="logo" width="50"
                                  height="50">
@@ -199,11 +201,39 @@
                             :({{$auctions->where(['status'=>'done'])->count()}})
                         </div>
                     </div>
-{{--                                        <div class=" col-lg-3 col-md-3">--}}
-{{--                                            <a href="{{route('front.unique_auction')}}" class="add-auction btn"><b> <i--}}
-{{--                                                        class="fal fa-gavel"></i> </b>{{trans('messages.auction.unique')}}</a>--}}
-{{--                                        </div>--}}
+
+
+                    <div class=" col-lg-3 col-md-3">
+                        @if(auth()->check())
+
+                            @if(auth()->user()->is_verified==1)
+                                <a class="add-auction btn"
+                                   href="{{route('front.show_add_auction')}}" style=" box-shadow: 5px 10px #888888;"> <i
+                                        class="fal fa-plus-circle"> </i> @lang('messages.auction.add_your_auction')</a>
+                            @endif
+                        @endif
+                    </div>
+
+
+                    {{--                    <div class=" col-lg-3 col-md-3">--}}
+                    {{--                        <div class="statistics ">--}}
+                    {{--                            <img src="{{asset('Front/assets/imgs/icon/d_auction.png')}}" alt="logo" width="50"--}}
+                    {{--                                 height="50">--}}
+                    {{--                            <b>--}}
+                    {{--                                --}}{{--                                <i class="fal fa-check-circle" style="color: white;background-color: green;"></i>--}}
+                    {{--                                <i class="fal fa-done" style="color: white;background-color: green;"></i>--}}
+                    {{--                            </b>{{ trans('messages.auction.count_of_done') }}--}}
+                    {{--                            :({{$auctions->where(['status'=>'done'])->count()}})--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
+                    {{--                                        <div class=" col-lg-3 col-md-3">--}}
+                    {{--                                            <a href="{{route('front.unique_auction')}}" class="add-auction btn"><b> <i--}}
+                    {{--                                                        class="fal fa-gavel"></i> </b>{{trans('messages.auction.unique')}}</a>--}}
+                    {{--                                        </div>--}}
                 </div>
+
+
+                <br>
                 <br>
                 <br>
                 <h2 style="color: var(--main-color); text-align: center"> {{__('messages.categories')}}</h2><br>

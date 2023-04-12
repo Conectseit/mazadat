@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\PARENT_API;
 use App\Http\Controllers\SmsController;
 use App\Http\Requests\Api\ActivationCodeRequest;
-use App\Http\Requests\Api\AdditionalContactRequest;
 use App\Http\Requests\Api\ChangePasswordRequest;
 use App\Http\Requests\Api\ForgetPasswordRequest;
 use App\Http\Requests\Api\LoginRequest;
@@ -15,17 +14,9 @@ use App\Http\Requests\Api\user\AddAddressRequest;
 use App\Http\Requests\Api\user\ResendSmsRequest;
 use App\Http\Requests\Api\VerficationTokenRequest;
 use App\Http\Resources\Api\auth\AdditionalAddressResource;
-use App\Http\Resources\Api\auth\PersonResource;
 use App\Http\Resources\Api\AuthResource;
-use App\Models\PasswordReset;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Validator;
 
@@ -45,7 +36,7 @@ class AuthController extends PARENT_API
 
         $user->update(['activation_code' => $activation_code,'send_at'=>now()]);
 
-        SmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
+        SmsController::sendSms(($request->mobile), trans('messages.activation_code_is', ['code' => $activation_code]));
 
         return responseJson(true, trans('api.please_check_your_mobile_activation_code_has_Resend'), $activation_code); //OK
 

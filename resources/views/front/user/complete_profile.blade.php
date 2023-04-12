@@ -33,7 +33,7 @@
 
             <div class="row">
                 <div class="edit-form">
-                    <form action="{{route('front.complete_profile')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('front.complete_profile')}}" method="post"  id="submitted-form"  enctype="multipart/form-data">
                         @csrf
                         <div class="inputs-group">
                             @if(auth()->user()->is_company =='person')
@@ -85,7 +85,9 @@
                                 <div class="col-lg-10 col-md-9">
                                     <input type="text" class="form-control" id="name" name="P_O_Box"
                                            placeholder="{{trans('messages.P_O_Box')}}"
-                                           value={{ auth()->user()->P_O_Box}}>
+{{--                                           value={{ auth()->user()->P_O_Box}}>--}}
+                                    value={{ isset(auth()->user()->P_O_Box)?auth()->user()->P_O_Box: old('P_O_Box')}}>
+
                                 </div>
                                 @error('P_O_Box')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
@@ -111,7 +113,9 @@
                                     <div class="col-lg-10 col-md-9">
                                         <input type="text" class="form-control" id="name" name="street"
                                                placeholder="{{trans('messages.street')}}"
-                                               value={{ auth()->user()->street}}>
+{{--                                               value={{ auth()->user()->street}}>--}}
+                                        value={{ isset(auth()->user()->street)?auth()->user()->street: old('street')}}>
+
                                     </div>
                                     @error('street')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
@@ -123,7 +127,9 @@
                                     <div class="col-lg-10 col-md-9">
                                         <input type="text" class="form-control" id="name" name="block_num"
                                                placeholder="{{trans('messages.block_num')}}"
-                                               value={{ auth()->user()->block_num}}>
+{{--                                               value={{ auth()->user()->block_num}}>--}}
+                                        value={{ isset(auth()->user()->block_num)?auth()->user()->block_num: old('block_num')}}>
+
                                     </div>
                                     @error('block_num')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
@@ -135,7 +141,9 @@
                                     <div class="col-lg-10 col-md-9">
                                         <input type="text" class="form-control" id="name" name="signs"
                                                placeholder="{{trans('messages.signs')}}"
-                                               value={{ auth()->user()->signs}}>
+{{--                                               value={{ auth()->user()->signs}}>--}}
+                                        value={{ isset(auth()->user()->signs)?auth()->user()->signs: old('signs')}}>
+
                                     </div>
                                     @error('signs')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
@@ -175,7 +183,9 @@
 
                                     </div>
                             @endif
-                            <button type="submit" class="btn btn-primary submit-btn">{{__(trans('messages.send'))}}</button>
+                                <button type="submit" id="save-form-btn" class="btn btn-primary submit-btn">{{__(trans('messages.send'))}}</button>
+
+{{--                                <button type="submit" class="btn btn-primary submit-btn">{{__(trans('messages.send'))}}</button>--}}
                         </div>
                     </form>
                 </div>

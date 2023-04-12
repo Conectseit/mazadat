@@ -37,6 +37,9 @@ class PersonController extends Controller
 //            }
             $country = Country::find($request->country_id);
 
+
+            //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $code]));
+
             if ($request->mobile) {
                 $request_data['mobile'] = $country->phone_code . $request->mobile;
             }
@@ -51,18 +54,15 @@ class PersonController extends Controller
                 Token::create(['jwt' => $jwt_token, 'user_id' => $user->id,]);
             }
 
-
             if ($request->activation_by == 'email') {
 //                Mail::to('elshenaweymona92@gmail.com')->send(new ConfirmCode($code));
 
                 Mail::to($request->email)->send(new ConfirmCode($code));
             }
 
-
             if ($request->activation_by == 'mobile') {
                 SmsController::sendSms(($request_data['mobile']), trans('messages.activation_code_is', ['code' => $code]));
             }
-
 
 //            SmsController::sendSms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
             DB::commit();

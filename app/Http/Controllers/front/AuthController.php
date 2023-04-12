@@ -50,7 +50,11 @@ class AuthController extends Controller
         if (!$user) return back()->with('error', trans('messages.wrong_code'));
 
         if (!$user->update(['activation_code' => null, 'is_active' => 'active'])) return back()->with('error', 'حدث خطا, حاول مره اخري');
-        return redirect()->route('front.show_login')->with('success', trans('messages.register_success_welcome_in_our_website'));
+
+        Auth::login($user);
+        return redirect()->route('front.home')->with('success', trans('messages.register_success_welcome_in_our_website'));
+
+//        return redirect()->route('front.show_login')->with('success', trans('messages.register_success_welcome_in_our_website'));
     }
 
     public function resendSms($mobile)

@@ -125,9 +125,6 @@
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
 
-
-
-
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3">
                                 <label for="is_appear_name" class="form-label">{{ trans('messages.activation_by')}}</label>
@@ -142,8 +139,6 @@
                             </div>
                         </div>
                         <br>
-
-
 
 
                         {{--                        <div id="location" style="display:block;">--}}

@@ -43,39 +43,40 @@
                                 </div>
                             </div>
                             @if(auth()->user()->is_company=='person')
+
                                 <div class="form-group mb-4 row">
                                     <div class="col-lg-2 col-md-3 d-flex align-items-center">
                                         <label for="name"
-                                               class="form-label">{{trans('messages.enter_first_name')}}</label>
+                                               class="form-label">{{trans('messages.enter_full_name')}}</label>
                                     </div>
                                     <div class="col-lg-10 col-md-9">
-                                        <input type="text" class="form-control" id="name" name="first_name"
-                                               placeholder="{{trans('messages.enter_first_name')}}"
-                                               value={{ auth()->user()->first_name}}>
+                                        <input type="text" class="form-control"  name="full_name"
+                                               placeholder="{{trans('messages.enter_full_name')}}"
+                                               value="{{ auth()->user()->full_name}}">
                                     </div>
                                 </div>
-                                <div class="form-group mb-4 row">
-                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                        <label for="name"
-                                               class="form-label">{{trans('messages.enter_middle_name')}}</label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-9">
-                                        <input type="text" class="form-control" id="name" name="middle_name"
-                                               placeholder="{{trans('messages.enter_middle_name')}}"
-                                               value={{ auth()->user()->middle_name}}>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-4 row">
-                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                        <label for="name"
-                                               class="form-label">{{trans('messages.enter_last_name')}}</label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-9">
-                                        <input type="text" class="form-control" id="name" name="last_name"
-                                               placeholder="{{trans('messages.enter_last_name')}}"
-                                               value={{ auth()->user()->last_name}}>
-                                    </div>
-                                </div>
+{{--                                <div class="form-group mb-4 row">--}}
+{{--                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                        <label for="name"--}}
+{{--                                               class="form-label">{{trans('messages.enter_middle_name')}}</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-lg-10 col-md-9">--}}
+{{--                                        <input type="text" class="form-control" id="name" name="middle_name"--}}
+{{--                                               placeholder="{{trans('messages.enter_middle_name')}}"--}}
+{{--                                               value={{ auth()->user()->middle_name}}>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="form-group mb-4 row">--}}
+{{--                                    <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                        <label for="name"--}}
+{{--                                               class="form-label">{{trans('messages.enter_last_name')}}</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-lg-10 col-md-9">--}}
+{{--                                        <input type="text" class="form-control" id="name" name="last_name"--}}
+{{--                                               placeholder="{{trans('messages.enter_last_name')}}"--}}
+{{--                                               value={{ auth()->user()->last_name}}>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             @endif
 
                             <div class="form-group mb-4 row">
@@ -83,9 +84,9 @@
                                     <label for="name" class="form-label">{{trans('messages.user_name')}}</label>
                                 </div>
                                 <div class="col-lg-10 col-md-9">
-                                    <input type="text" class="form-control" id="name" name="user_name"
+                                    <input type="text" class="form-control"  name="user_name"
                                            placeholder="{{trans('messages.enter_user_name')}}"
-                                           value={{ auth()->user()->user_name}}>
+                                           value="{{ auth()->user()->user_name}}" >
                                 </div>
                             </div>
                             <div class="form-group mb-4 row">

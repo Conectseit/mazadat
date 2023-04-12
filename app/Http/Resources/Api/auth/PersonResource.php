@@ -20,9 +20,7 @@ class PersonResource extends JsonResource
 //            'type'                => $this->type,
             'is_company'           => $this->is_company,
             'is_completed'         => $this->is_completed,
-            'first_name'           => $this->first_name,
-            'middle_name'          => $this->middle_name,
-            'last_name'            => $this->last_name,
+            'full_name'            => $this->full_name,
             'user_name'            => $this->user_name ,
             'email'                => $this->email,
             'is_appear_name'       => (int)$this->is_appear_name,
@@ -45,9 +43,6 @@ class PersonResource extends JsonResource
             'identity'                => $this->passport_image_path,
             'ban'                     => $this->ban,
             'is_verified'             => $this->is_verified,
-
-
-
 
 //            'nationality_id'      => $this->nationality->id,
 //            'city'                => $this->city->$name,

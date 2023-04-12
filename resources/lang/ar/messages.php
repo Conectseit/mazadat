@@ -260,6 +260,8 @@ return [
         'online_payment' => ' اعدادات الدفع الالكتروني ',
         'online_payment_conditions_ar' => ' شروط الدفع الالكتروني باللغة العربية',
         'online_payment_conditions_en' => ' شروط الدفع الالكتروني باللغة الانجليزية',
+
+        'wait_to_verify_new_auction' => 'تفعيل ميزة التحقق من المزادات الجديدة اولا',
     ],
     'mobile_terms' =>'ملحوظة: رقم الجوال يجب ان يكون ساري ولا يقل عن 9ارقام',
     'condition_and_terms' => 'الشروط والأحكام',
@@ -269,8 +271,10 @@ return [
     'download' => 'تنزيل',
     'extra_file' => 'ملف للادارة',
     'extra_file_only_to_admin' => 'ملف استخدام رسمي يظهر لادارة الموقع فقط',
-    'select_file_name' => 'اختر اسم الملف',
-    'file_name' => ' نوع الملف',
+    'select_file_type' => 'اختر نوع الملف',
+    'file_type' => ' نوع الملف',
+    'file_name' => ' اسم الملف',
+    'file_desc' => ' وصف الملف',
     'select_file' => '  اختر ملف pdf',
     'inspection_file_names' => 'اسماء ملفات تقارير الفحص',
 
@@ -520,7 +524,8 @@ return [
         'seller_full_name' => 'اسم صاحب المزاد',
         'choose_category' => 'اختر قسم المزاد',
         'add' => 'اضافة مزاد جديد',
-        'add_new' => 'اضافة مزاد جديد',
+        'add' => 'اضافة مزاد جديد',
+        'add_your_auction' => 'أضف مزادك الأن',
         'edit' => 'تعديل مزاد ',
         'show' => 'عرض تفاصيل المزاد',
         'latest_auctions' => 'احدث المزادات المضافة',
@@ -798,6 +803,7 @@ return [
 
 
     'add_another_image' => 'اضافة صورة اخري',
+    'add_another_file' => 'اضافة ملف اخر',
     'account_statement' => 'كشف حساب للعميل',
     'bids' => 'جميع مزايدات العميل',
     'payment' => 'جميع التحويلات المالية للعميل',

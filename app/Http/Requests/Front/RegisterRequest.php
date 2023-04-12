@@ -31,9 +31,9 @@ class RegisterRequest extends FormRequest
                 }
             case 'POST': {
                     return [
-                        'first_name'  => 'required',
-                        'middle_name' => 'sometimes',
-                        'last_name'   => 'required',
+                        'full_name'  => 'required',
+//                        'middle_name' => 'sometimes',
+//                        'last_name'   => 'required',
                         'user_name'   => 'required|string|between:2,200|unique:users,user_name',
                         'country_id'  => 'required|numeric|exists:countries,id',
                         'mobile'      => 'required|min:9|numeric|unique:users,mobile',

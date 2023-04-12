@@ -238,6 +238,8 @@ return [
         'online_payment' => 'online payment settings',
         'online_payment_conditions_ar' => ' online payment conditions in arabic',
         'online_payment_conditions_en' => ' online payment conditions in english',
+        'wait_to_verify_new_auction' => 'wait to verify new auction first',
+
     ],
     'about_app' => ' About Us',
     'condition_and_terms' => 'Condition & Terms',
@@ -375,6 +377,8 @@ return [
         'seller_full_name'        => 'seller full name',
         'choose_category'         => 'Choose Category',
         'add'                     => 'add new',
+        'add_your_auction'        => 'Add your auction now',
+
         'add_new'                 => 'Add New Auction',
         'edit'                    => 'edit',
         'show'                    => 'show auction details',
@@ -798,6 +802,8 @@ return [
         'added_balance_successfully' => 'added balance successfully',
         'not_accept_deposit_receipt_and_send_SMS' => 'not accept deposit receipt and send SMS',
         'add_another_image' => 'add another image',
+        'add_another_file' => 'add another file',
+
         'account_statement' => 'client account statement',
         'bids' => 'client all bids',
         'payment' => 'client all payments',

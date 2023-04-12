@@ -74,6 +74,10 @@ class SettingController extends Controller
         if ($request->address)
             Setting::where('key', 'address')->update(['value' => $request->address]);
 
+
+        if ($request->wait_to_verify_new_auction)
+            Setting::where('key', 'wait_to_verify_new_auction')->update(['value' => $request->wait_to_verify_new_auction]);
+
         if ($request->latitude)
             Setting::where('key', 'latitude')->update(['value' => $request->latitude]);
         if ($request->longitude)

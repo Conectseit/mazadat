@@ -26,9 +26,9 @@ class RegisterUserRequest extends REQUEST_API_PARENT
     {
         return [
 
-            'first_name'       => 'required|string|between:2,200',
-            'middle_name'      => 'sometimes',
-            'last_name'        => 'required|string|between:2,200',
+            'full_name'        => 'required|string|between:2,200',
+//            'middle_name'      => 'sometimes',
+//            'last_name'        => 'required|string|between:2,200',
             'user_name'        => 'required|string|between:2,200|unique:users,user_name',
             'email'            => 'required|email|max:100|unique:users,email',
             'country_id'       => 'required|numeric|exists:countries,id',

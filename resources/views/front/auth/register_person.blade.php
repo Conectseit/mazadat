@@ -16,40 +16,40 @@
 
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="full_name" class="form-label">{{trans('messages.first_name')}}</label>
+                                <label for="full_name" class="form-label">{{trans('messages.full_name')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-                                <input type="text"   name="first_name"
-                                       class="form-control   @error('first_name') is-invalid @enderror"  value="{{ old('first_name') }}"
-                                       placeholder="{{trans('messages.enter_first_name')}}">
-                                @error('first_name')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                                <input type="text"   name="full_name"
+                                       class="form-control   @error('full_name') is-invalid @enderror"  value="{{ old('full_name') }}"
+                                       placeholder="{{trans('messages.enter_full_name')}}">
+                                @error('full_name')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
                             </div>
                         </div>
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="full_name" class="form-label">{{trans('messages.middle_name')}}</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <input type="text"   name="middle_name"
-                                       class="form-control   @error('middle_name') is-invalid @enderror"  value="{{ old('middle_name') }}"
-                                       placeholder="{{trans('messages.enter_middle_name')}}">
-                                @error('middle_name')<span style="color: #e81414;">{{ $message }}</span>@enderror
+{{--                        <div class="form-group mb-4 row">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                <label for="full_name" class="form-label">{{trans('messages.middle_name')}}</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-10 col-md-9">--}}
+{{--                                <input type="text"   name="middle_name"--}}
+{{--                                       class="form-control   @error('middle_name') is-invalid @enderror"  value="{{ old('middle_name') }}"--}}
+{{--                                       placeholder="{{trans('messages.enter_middle_name')}}">--}}
+{{--                                @error('middle_name')<span style="color: #e81414;">{{ $message }}</span>@enderror--}}
 
-                            </div>
-                        </div>
-                        <div class="form-group mb-4 row">
-                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="full_name" class="form-label">{{trans('messages.last_name')}}</label>
-                            </div>
-                            <div class="col-lg-10 col-md-9">
-                                <input type="text"   name="last_name"
-                                       class="form-control   @error('last_name') is-invalid @enderror"  value="{{ old('last_name') }}"
-                                       placeholder="{{trans('messages.enter_last_name')}}">
-                                @error('last_name')<span style="color: #e81414;">{{ $message }}</span>@enderror
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="form-group mb-4 row">--}}
+{{--                            <div class="col-lg-2 col-md-3 d-flex align-items-center">--}}
+{{--                                <label for="full_name" class="form-label">{{trans('messages.last_name')}}</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-10 col-md-9">--}}
+{{--                                <input type="text"   name="last_name"--}}
+{{--                                       class="form-control   @error('last_name') is-invalid @enderror"  value="{{ old('last_name') }}"--}}
+{{--                                       placeholder="{{trans('messages.enter_last_name')}}">--}}
+{{--                                @error('last_name')<span style="color: #e81414;">{{ $message }}</span>@enderror--}}
 
-                            </div>
-                        </div>
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
@@ -80,7 +80,7 @@
                                         </select>
                                     </div>
                                     <div class="col-xl-9 col-lg-8 col-sm-6">
-                                        <input type="text"  name="mobile"  maxlength="9" minlength="9"
+                                        <input type="text"  name="mobile"  maxlength="12" minlength="9"
                                                class="form-control   @error('mobile') is-invalid @enderror"  value="{{ old('mobile') }}"
                                                placeholder="{{trans('messages.enter_mobile')}}5xx xxx xxx">
                                         <h6 class="group-title">  {{trans('messages.mobile_terms')}}</h6>

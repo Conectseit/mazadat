@@ -324,10 +324,6 @@ class AuctionController extends Controller
 
 
 
-
-
-
-
     public function get_options_by_category_id(Request $request)
     {
         return Option::getOptionsByCategoryId($request);
@@ -348,7 +344,8 @@ class AuctionController extends Controller
         $text = 'تم قبول مزادك من ادرة موقع مزادات' . "\n";
         $text .= " - سوف يبدأ :  " . $auction->start_date;
 
-        SmsController::send_sms($auction->seller->mobile, $text);
+
+        SmsController::sendSms($auction->seller->mobile, $text);
 
         Notification::sendNewAuctionNotification($auction->id);
 
@@ -360,7 +357,7 @@ class AuctionController extends Controller
         $auction = Auction::findOrFail($id);
 
         $user = User::where('id', $auction->seller_id)->first();
-        SmsController::send_sms($user->mobile, trans('messages.update_your_auction_and_send_it_again'));
+        SmsController::sendSms($user->mobile, trans('messages.update_your_auction_and_send_it_again'));
 
         return back()->with('success', trans('messages.send_sms_to_auction_owner_successfully'));
     }

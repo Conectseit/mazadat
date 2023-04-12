@@ -5,6 +5,10 @@
     .hide{
         visibility: hidden;
     }
+
+        .hide-file{
+            visibility: hidden;
+        }
     </style>
 
 @endsection
@@ -184,72 +188,10 @@
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
 
-                        <div class="form-group">
-                            <label>@lang('messages.auction.images')</label>
-                            <div class="input-group control-group increment" >
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-lg-6"> اختر صورة : <input type="file" name="images[]" class=" image"><br>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <img src=" {{ asset('uploads/default.png') }} " width=" 100px " class="thumbnail image-preview">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="input-group-btn">
-                                <button class="btn btn-success add" type="button"> <i class="glyphicon glyphicon-plus"> </i> {{trans('messages.add_another_image')}}</button>
-                            </div>
-                            <div class="clone hide">
-                                <div class="control-group input-group" style="margin-top:10px">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <input type="file"  name="images[]" class="form-control" accept="image/*" onchange="readURL2(this)" >
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <img id="img-preview2" style="width: 120px ; height:90px"
-                                                 src="{{ asset('uploads/images.jpg') }}" width="250px"/>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> حذف </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <hr><br>
-                        <div class="form-group">
-                            <h4>@lang('messages.auction.inspection_report_files')</h4><br>
-                            <div class="row">
-                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label>@lang('messages.file_name')</label>
-                                </div>
-                                <div class="col-lg-10 col-md-9">
-                                    <select name="file_name_id" class="form-select form-control">
-                                        <option selected disabled>{{trans('messages.select_file_name')}}</option>
-                                        @foreach ($inspection_file_names as $inspection_file_name)
-                                            <option
-                                                value="{{ $inspection_file_name->id }}"> {{ $inspection_file_name->name }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            @error('file_name_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
 
-                            <br>
-                            <div class="row">
-                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label>@lang('messages.select_file')</label>
-                                </div>
-                                <div class="col-lg-10 col-md-9">
-                                    <input type="file" class="form-control" name="inspection_report_images[]">
-                                </div>
-                            </div>
-                            @error('inspection_report_images')<span
-                                style="color: #e81414;">{{ $message }}</span>@enderror
 
-                        </div><hr><br>
+                        @include('front.auctions.parts.add_auction_images_and_files')
+
 
                         <div class="form-group">
                             <label>@lang('messages.auction.location'):</label>
@@ -265,6 +207,9 @@
                                        class="form-control hidden d-none">
                             </div>
                         </div>
+
+
+
                         <div class="sign-btn">
                             <p> {{trans('messages.wait')}}</p>
                             <button type="submit" id="save-form-btn"
@@ -291,6 +236,19 @@
             });
         });
     </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".btn-file").click(function(){
+                var x = $(".clone-file").html();
+                $(".increment-file").after(x);
+            });
+            $("body").on("click",".btn-danger-file",function(){
+                $(this).parents(".control-group").remove();
+            });
+        });
+    </script>
+
     <script>
         // ======== image preview ================================//
         $(".image").change(function () {
