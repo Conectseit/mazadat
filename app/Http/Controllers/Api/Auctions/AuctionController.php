@@ -13,6 +13,7 @@ use App\Http\Resources\Api\FileNamesResource;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\FileName;
+use App\Models\InspectionImage;
 use App\Models\Notification;
 use App\Models\WatchedAuction;
 use Exception;
@@ -207,19 +208,43 @@ class AuctionController extends PARENT_API
             }
             DB::table('auction_images')->insert($_data);
 
+//
+//            //======= upload auction inspection_report_images =======
+//            $data = [];
+//            if ($request->hasfile('inspection_report_images')) {
+//                foreach ($request->file('inspection_report_images') as $key => $img) {
+//                    $file = $img;
+//                    $file_image = time() . '.' . $file->getClientOriginalExtension();
+//                    $img->move('uploads/inspection_report_pdf', $file_image);
+//                    $data[$key] = ['image' => $file_image, 'auction_id' => $auction->id, 'file_name_id' => $request->file_name_id];
+////                    $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
+//                }
+//            }
+//            DB::table('inspection_images')->insert($data);
+
 
             //======= upload auction inspection_report_images =======
-            $data = [];
-            if ($request->hasfile('inspection_report_images')) {
-                foreach ($request->file('inspection_report_images') as $key => $img) {
-                    $file = $img;
-                    $file_image = time() . '.' . $file->getClientOriginalExtension();
-                    $img->move('uploads/inspection_report_pdf', $file_image);
-                    $data[$key] = ['image' => $file_image, 'auction_id' => $auction->id, 'file_name_id' => $request->file_name_id];
+            $data = $request->all();
+
+            $files = $data['files'];
+            foreach ($files as $file) {
+
+                $filee = $file['image'];
+                $file_image = time() . '.' . $filee->getClientOriginalExtension();
+                $file['image']->move('uploads/inspection_report_pdf', $file_image);
+//                    $data[$key] = ['image' => $file_image, 'auction_id' => $auction->id, 'file_name_id' => $request->file_name_id];
 //                    $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
-                }
+
+                InspectionImage::create([
+
+                    'auction_id' => $auction->id,
+                    'file_name_id' => $file['file_name_id'],
+                    'image' => $file_image,
+                    'description' => $file['description'],
+
+                ]);
+
             }
-            DB::table('inspection_images')->insert($data);
 
 
             //======= upload auction options =======

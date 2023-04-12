@@ -45,8 +45,14 @@ class AddAuctionRequest extends REQUEST_API_PARENT
             'option_details_id.*'        => 'required',
             'file_name_id'               =>['required'],
 //            'inspection_report_images.*' => 'sometimes',
-            'inspection_report_images' => ['required'],
-            'inspection_report_images.*' => ['required','mimes:pdf'],
+
+            'files.*'                  => 'required',
+            'files.*.image'            => ['required','mimes:pdf'],
+            'files.*.file_name_id'     => ['required'],
+            'files.*.description'      => ['required'],
+
+//            'inspection_report_images' => ['required'], ***********
+//            'inspection_report_images.*' => ['required','mimes:pdf'],
 
 
 //            'inspection_report_images.*' => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
