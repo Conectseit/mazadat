@@ -20,6 +20,7 @@ class InspectionImagesResource extends JsonResource
             'image'                   => $this->file_path,
             'file_id'                 => $this->file->id,
             'file_name'               => $this->file->name,
+            'file_description'        => $this->description,
         ];
 
     }

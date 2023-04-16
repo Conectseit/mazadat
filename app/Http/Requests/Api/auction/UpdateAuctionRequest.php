@@ -44,7 +44,12 @@ class UpdateAuctionRequest extends REQUEST_API_PARENT
             'images.*'                   => 'sometimes',
 //            'option_id.*'                => 'sometimes',
             'option_details_id.*'        => 'sometimes',
-            'inspection_report_images.*' => 'sometimes',
+
+//            'inspection_report_images.*' => 'sometimes',
+            'files.*'                  => 'sometimes',
+            'files.*.image'            => ['sometimes','mimes:pdf'],
+            'files.*.file_name_id'     => ['sometimes'],
+            'files.*.description'      => ['sometimes'],
 
 
         ];

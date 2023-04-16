@@ -207,7 +207,6 @@ class AuctionController extends Controller
     public function add_auction(AddAuctionRequest $request)
     {
 
-
         DB::beginTransaction();
         try {
             $serial_number = '#' . random_int(00000, 99999);
@@ -232,19 +231,79 @@ class AuctionController extends Controller
 
 
 
-            //======= upload auction inspection_report_images =======
-            $dataa = [];
-            if ($request->hasfile('inspection_report_images')) {
-                foreach ($request->file('inspection_report_images') as $key => $img) {
-                    $file=$img;
-                    $file_image=time().'.'.$file->getClientOriginalExtension();
-                    $img->move('uploads/inspection_report_pdf',$file_image);
-                    $dataa[$key] =['image' =>$file_image,'auction_id' => $auction->id,'file_name_id'=>$request->file_name_id];
 
-                }
+
+
+
+//
+//            //1 ======= upload auction inspection_report_images =======
+//            $dataa = [];
+//            if ($request->hasfile('inspection_report_images')) {
+//                foreach ($request->file('inspection_report_images') as $key => $img) {
+//                    $file=$img;
+//                    $file_image=time().'.'.$file->getClientOriginalExtension();
+//                    $img->move('uploads/inspection_report_pdf',$file_image);
+//                    $dataa[$key] =['image' =>$file_image,'auction_id' => $auction->id,'file_name_id'=>$request->file_name_id];
+//
+//                }
+//            }
+//            DB::table('inspection_images')->insert($dataa);
+
+
+
+
+
+
+
+//            $inspection_reports = [];
+//
+//            $file_name_ids = $request->input('file_name_id');
+//            dd($file_name_ids);
+//            $descriptions = $request->input('description');
+////            $images = $request->file('image');
+//
+//            foreach ($file_name_ids as $key => $file_name_id) {
+//
+////                $filee = $file['image'];
+////                $file_image = time() . '.' . $filee->getClientOriginalExtension();
+////                $file['image']->move('uploads/inspection_report_pdf', $file_image);
+//
+//                $inspection_report = new InspectionImage();
+//
+////                $inspection_report->description = $request->input('description');
+//                $inspection_report->file_name_id = $file_name_id;
+//                $inspection_report->auction_id = $auction->id;
+////                $inspection_report->image = $file_image;
+//
+//                $inspection_report->save();
+//                array_push($inspection_reports, $inspection_report);
+//            }
+
+
+
+
+
+
+
+            $inspection_reports = [];
+            $files = $request['files'];
+            foreach (array($files) as $file) {
+
+                // Save report image
+                $filee = $file['image'];
+                $file_image = time() . '.' . $filee->getClientOriginalExtension();
+                $file['image']->move('uploads/inspection_report_pdf', $file_image);
+
+                $inspection_report = new InspectionImage();
+
+                        $inspection_report->auction_id = $auction->id;
+                        $inspection_report->description = ($file['description']);
+                        $inspection_report->file_name_id = $file['file_name_id'];// <==== arrrray ??,
+                        $inspection_report->image = $file_image;
+                        $inspection_report->save();
+
             }
-            DB::table('inspection_images')->insert($dataa);
-
+            array_push($inspection_reports, $inspection_report);
 
 
 

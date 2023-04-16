@@ -159,3 +159,30 @@ Route::group(
         });
     });
 });
+
+
+
+//$inspection_reports = [];
+//
+//$file_name_ids = $request->input('file_name_id');
+//dd($file_name_ids);
+//$descriptions = $request->input('description');
+////            $images = $request->file('image');
+//
+//foreach ($file_name_ids as $key => $file_name_id) {
+//
+//    $inspection_report = new InspectionImage();
+//
+////                $inspection_report->description = $request->input('description');
+//    $inspection_report->file_name_id = $file_name_id;
+//    $inspection_report->auction_id = $auction->id;
+//
+////                // Save product image
+////                $image = $request->file('image')[$key];
+////                $filename = time() . '_' . $image->getClientOriginalName();
+////                Storage::disk('public')->putFileAs('images', $image, $filename);
+////                $inspection_report->image = 'images/' . $filename;
+//
+//    $inspection_report->save();
+//    array_push($inspection_reports, $inspection_report);
+//}

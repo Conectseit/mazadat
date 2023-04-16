@@ -75,9 +75,11 @@
                         <span
                             class="badge badge-success badge-inline position-right">{{$inspection_report_images->count()}}</span></a>
                 </li>
-
+                @if($auction->is_appear_location ==1)
                 <li><a href="#location" data-toggle="tab"><i
                             class="icon-cog3 position-left"></i> {{ trans('messages.auction.location') }}</a></li>
+                @endif
+
                 @if($auction->is_accepted ==1)
                     <li><a href="#auction_bids" data-toggle="tab"><i
                                 class="icon-calendar3 position-left"></i> {{ trans('messages.auction.bids') }} <span
@@ -420,8 +422,6 @@
                                                         <a href="{{route('download',$image->image)}}"><i class="icon-download4"> </i> {{trans('messages.download')}}</a>
                                                     </td>
 
-
-
                                                     {{--                                                    <td class="text-center">--}}
                                                     {{--                                                        <ul class="icons-list">--}}
                                                     {{--                                                            <li class="dropdown">--}}
@@ -449,7 +449,7 @@
                             </div>
                             <!-- /inspection_report_images -->
                         </div>
-
+                        @if($auction->is_appear_location ==1)
                         <div class="tab-pane fade" id="location">
                             <!-- inspection_report_images -->
                             <div class="panel panel-flat">
@@ -464,15 +464,15 @@
                                 </div>
                                 <div class="panel-body">
 
-                                    <div class="form-group row"><br>
-                                        <label class="col-form-label col-lg-3">{{ trans('messages.auction.address') }}
-                                            :</label>
+{{--                                    <div class="form-group row"><br>--}}
+{{--                                        <label class="col-form-label col-lg-3">{{ trans('messages.auction.address') }}--}}
+{{--                                            :</label>--}}
 
-                                        <div class="col-lg-9">
-                                            {{ $auction->address }}
-                                        </div>
+{{--                                        <div class="col-lg-9">--}}
+{{--                                            {{ $auction->address }}--}}
+{{--                                        </div>--}}
 
-                                    </div><br>
+{{--                                    </div><br>--}}
                                     <div class="form-group row"><br>
                                         <label class="col-form-label col-lg-3">{{ trans('messages.auction.location') }}
                                             :</label>
@@ -497,6 +497,8 @@
                             </div>
                             <!-- /inspection_report_images -->
                         </div>
+
+                        @endif
                         <div class="tab-pane fade" id="auction_bids">
                             <!-- auction_bids -->
                             <div class="panel panel-flat">
