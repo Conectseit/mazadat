@@ -51,7 +51,8 @@ class AddAuctionRequest extends REQUEST_API_PARENT
 //            'inspection_report_images.*' => 'sometimes',
 
             'files.*'                  => 'required',
-            'files.*.image'            => ['required','mimes:pdf'],
+//            'files.*.image'            => ['required','mimes:pdf'],
+            'files.*.image'            => ['required'],
             'files.*.file_name_id'     => ['required'],
             'files.*.description'      => ['required'],
 
