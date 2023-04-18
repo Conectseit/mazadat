@@ -40,8 +40,19 @@ class AddAuctionRequest extends FormRequest
                         'value_of_increment' => ['required','numeric'],
 //                        'delivery_charge' => ['required','numeric'],
 //                        'option_ids.*' => ['required'],
+
+//
                         'images' => ['required'],
                         'images.*' => ['required','mimes:png,jpg,jpeg'],
+
+
+//                        'files.*'                  => 'required',
+//                      'files.*.image'            => ['required','mimes:pdf'],
+//                        'files.*.image'            => ['required'],
+//                        'files.*.file_name_id'     => ['required'],
+//                        'files.*.description'      => ['required'],
+
+
 
 //                        'file_name_id'=>['required'],
 //                        'inspection_report_images' => ['required'],

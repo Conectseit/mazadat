@@ -300,7 +300,9 @@
                     <div class="row">
                         @foreach($auction->inspectionimages as $image)
                             <div class="col-md-3 col-6">
-                                <p> <i class=" fa fa-file-pdf-o" style="color: red; width: 50px;"></i>@lang('messages.file_name') : {{ isset($image->file->name) ? $image->file->name:'..' }}</p><br>
+                                {{--                                <p> <i class=" fa fa-file-pdf-o" style="color: red; width: 50px;"></i>@lang('messages.file_name') : {{ isset($image->file->name) ? $image->file->name:'..' }}</p><br>--}}
+                                <p style="color: red;"> @lang('messages.file_type') : {{ isset($image->file->name) ? $image->file->name:'..' }}</p><br>
+                                <p> @lang('messages.file_desc') : {{ isset($image->description) ? $image->description:'..' }}</p><br>
                                 <div class="image" style="width: 65px;height: 80px;">
                                         <a href="{{route('inspection_view_file',$image->id)}}" target="_blank">
                                             <img src="{{asset('Front/assets/imgs/pdf-icon.jpg')}}" alt="image" style="width: 100%;">

@@ -209,12 +209,13 @@ class AuctionController extends Controller
 
         DB::beginTransaction();
         try {
-            $serial_number = '#' . random_int(00000, 99999);
+//            $serial_number = '#' . random_int(00000, 99999);
+
             //======= create auction =======
             $request_data = $request->except(['inspection_report_images' . 'images']);
 
             $auction = Auction::create($request_data + ['seller_id' => auth()->user()->id,
-                    'current_price' => $request->start_auction_price, 'status' => 'not_accepted', 'serial_number' => $serial_number]);
+                    'current_price' => $request->start_auction_price, 'status' => 'not_accepted']);
 
 
             //======= upload auction images =======
@@ -225,13 +226,6 @@ class AuctionController extends Controller
                 }
             }
             $auction_images = DB::table('auction_images')->insert($data);
-
-
-
-
-
-
-
 
 
 
@@ -254,11 +248,11 @@ class AuctionController extends Controller
 
 
 
-
+//
 //            $inspection_reports = [];
 //
 //            $file_name_ids = $request->input('file_name_id');
-//            dd($file_name_ids);
+////            dd($file_name_ids);
 //            $descriptions = $request->input('description');
 ////            $images = $request->file('image');
 //
@@ -285,25 +279,46 @@ class AuctionController extends Controller
 
 
 
-            $inspection_reports = [];
-            $files = $request['files'];
-            foreach (array($files) as $file) {
 
-                // Save report image
-                $filee = $file['image'];
-                $file_image = time() . '.' . $filee->getClientOriginalExtension();
-                $file['image']->move('uploads/inspection_report_pdf', $file_image);
 
-                $inspection_report = new InspectionImage();
 
-                        $inspection_report->auction_id = $auction->id;
-                        $inspection_report->description = ($file['description']);
-                        $inspection_report->file_name_id = $file['file_name_id'];// <==== arrrray ??,
-                        $inspection_report->image = $file_image;
-                        $inspection_report->save();
+//            foreach ($data['files'] as $key => $val){
+//                if(!empty($val)) {
+//
+//
+//                    $inspection_report = new InspectionImage();
+//                    $inspection_report->auction_id = $auction->id;
+//                    $inspection_report->item_id = $data['invoice'][$key]['item_id'];
+//                    $inspection_report->save();
+//
+//                }}
 
-            }
-            array_push($inspection_reports, $inspection_report);
+
+
+
+
+
+//            $inspection_reports = [];
+//            $files = $request['files'];
+//            foreach (array($files) as $file) {
+//
+//                // Save report image
+//                $filee = $file['image'];
+//                $file_image = time() . '.' . $filee->getClientOriginalExtension();
+//                $file['image']->move('uploads/inspection_report_pdf', $file_image);
+//
+//                $inspection_report = new InspectionImage();
+//
+//                        $inspection_report->auction_id = $auction->id;
+//                        $inspection_report->description = ($file['description']);
+//                        $inspection_report->file_name_id = $file['file_name_id'];// <==== arrrray ??,
+//                        $inspection_report->image = $file_image;
+//                        $inspection_report->save();
+//
+//            }
+//            array_push($inspection_reports, $inspection_report);
+
+
 
 
 

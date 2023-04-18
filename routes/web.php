@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\front\AddAuctionController;
 use App\Http\Controllers\front\AuctionController;
 use App\Http\Controllers\front\AuthController;
 use App\Http\Controllers\front\CategoryController;
@@ -114,6 +115,13 @@ Route::group(
         // ============ // auctions ================
         Route::get('show_add_auction', [AuctionController::class, 'show_add_auction'])->name('front.show_add_auction');
         Route::post('add_auction', [AuctionController::class, 'add_auction'])->name('front.add_auction');
+
+
+//        Route::get('show_add_auction1', [AddAuctionController::class, 'show_add_auction1'])->name('front.show_add_auction1');
+//        Route::post('add_auction1', [AddAuctionController::class, 'add_auction1'])->name('front.add_auction1');
+
+
+
         Route::get('my_auctions', [AuctionController::class, 'my_auctions'])->name('front.my_auctions');
         Route::post('ajax/get-options-by-category-id', [AuctionController::class, 'get_options_by_category_id'])->name('front.ajax_get_options_by_category_id');
         Route::post('/ajax-delete-auction', [AuctionController::class, 'destroy'])->name('front.ajax-delete-auction');

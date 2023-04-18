@@ -338,33 +338,29 @@ class AuctionController extends PARENT_API
 //            }
 
 
-
 //2======= upload auction inspection_report_files =======
-                if (is_array($request->files)) {
+            if (is_array($request->files)) {
 
                 $data = $request->all();
 
-            foreach ($auction->inspectionimages as $file) {
+                foreach ($auction->inspectionimages as $file) {
                     $file->delete();
                 }
 
-            $files = $data['files'];
-            foreach ($files as $file) {
-                $filee = $file['image'];
-                $file_image = time() . '.' . $filee->getClientOriginalExtension();
-                $file['image']->move('uploads/inspection_report_pdf', $file_image);
+                $files = $data['files'];
+                foreach ($files as $file) {
+                    $filee = $file['image'];
+                    $file_image = time() . '.' . $filee->getClientOriginalExtension();
+                    $file['image']->move('uploads/inspection_report_pdf', $file_image);
 
-                InspectionImage::create([
-                    'auction_id'   => $auction->id,
-                    'file_name_id' => $file['file_name_id'],
-                    'image'        => $file_image,
-                    'description'  => $file['description'],
-                ]);
+                    InspectionImage::create([
+                        'auction_id' => $auction->id,
+                        'file_name_id' => $file['file_name_id'],
+                        'image' => $file_image,
+                        'description' => $file['description'],
+                    ]);
+                }
             }
-         }
-
-
-
 
 
 //======= upload auction options =======

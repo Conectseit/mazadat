@@ -1,5 +1,4 @@
 <div class="form-group">
-    {{--                            <label>@lang('messages.auction.images')</label>--}}
     <div class="input-group control-group increment" >
         <div class="form-group">
             <h5>@lang('messages.auction.images')</h5>
@@ -46,8 +45,8 @@
                 <label>@lang('messages.file_type')</label>
             </div>
             <div class="col-lg-10 col-md-9">
-{{--                <select name="file_name_id[]" class="form-select form-control">--}}
-                <select name="files[file_name_id]" class="form-select form-control">
+                <select name="file_name_id[]" class="form-select form-control">
+{{--                <select name="files[file_name_id]" class="form-select form-control">--}}
                     <option selected disabled>{{trans('messages.select_file_type')}}</option>
                     @foreach ($inspection_file_names as $inspection_file_name)
                         <option
@@ -64,7 +63,8 @@
                 <label>@lang('messages.select_file')</label>
             </div>
             <div class="col-lg-10 col-md-9">
-                <input type="file" class="form-control" name="files[image]">
+                <input type="file" class="form-control" name="image[]">
+{{--                <input type="file" class="form-control" name="files[image]">--}}
             </div>
         </div>
         @error('inspection_report_images')<span
@@ -72,7 +72,8 @@
 
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <input type="text" class="form-control" name="files[description]"placeholder="@lang('messages.file_desc')">
+                <input type="text" class="form-control" name="description[]"placeholder="@lang('messages.file_desc')">
+{{--                <input type="text" class="form-control" name="files[description]"placeholder="@lang('messages.file_desc')">--}}
             </div>
         </div>
 
@@ -80,6 +81,8 @@
         <div class="input-group-btn border" style="background: green; margin: 5px; padding: 5px;">
             <button class="btn   btn-file add-file btn-white" type="button"> <i class="fal fa-plus-circle"> </i> {{trans('messages.add_another_file')}}</button>
         </div>
+
+
         <div class="clone-file hide-file">
             <div class="control-group input-group" >
 
@@ -88,8 +91,8 @@
                         <label>@lang('messages.file_type')</label>
                     </div>
                     <div class="col-lg-10 col-md-9">
-{{--                        <select name="file_name_id[]" class="form-select form-control">--}}
-                        <select name="files[file_name_id]" class="form-select form-control">
+                        <select name="file_name_id[]" class="form-select form-control">
+{{--                        <select name="files[file_name_id]" class="form-select form-control">--}}
                             <option selected disabled>{{trans('messages.select_file_type')}}</option>
                             @foreach ($inspection_file_names as $inspection_file_name)
                                 <option
@@ -102,12 +105,14 @@
                 <br>
                 <div class="row">
                     <div class="col-lg-6">
-                        <input type="file" class="form-control" name="files[image]">
+                        <input type="file" class="form-control" name="image[]">
+{{--                        <input type="file" class="form-control" name="files[image]">--}}
                     </div>
 
 
                         <div class="col-lg-4 ">
-                            <input type="text" class="form-control" name="files[description]" placeholder="@lang('messages.file_desc')">
+                            <input type="text" class="form-control" name="description[]" placeholder="@lang('messages.file_desc')">
+{{--                            <input type="text" class="form-control" name="files[description]" placeholder="@lang('messages.file_desc')">--}}
                         </div>
 
                     <div class="col-lg-2">
