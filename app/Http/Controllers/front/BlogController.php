@@ -7,6 +7,7 @@ use App\Models\Advertisement;
 use App\Models\Auction;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Page;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ class BlogController extends Controller
 
     public function pages()
     {
-        $data['pages'] = Blog::all();
+        $data['pages'] = Page::all();
         return view('front.general.pages', $data);
     }
 
