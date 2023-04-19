@@ -8,6 +8,7 @@ use App\Models\Auction;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Page;
+use App\Models\PageImage;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -51,12 +52,13 @@ class BlogController extends Controller
     public function page_details($id)
     {
 
-        $data['page_details'] = Blog::where('id',$id)->first();
+        $data['page_details'] = Page::where('id',$id)->first();
 
-        $description= 'description_'.app()->getLocale();
-        $data['description'] =  $data['page_details']->$description ;
+        $data['description'] = 'description_'.app()->getLocale();
 
-        $data['related_pages'] = Blog::where('category_id',$data['page_details']->category->id)->take(3)->get();
+        $data['related_pages'] = Page::where('category_id',$data['page_details']->category->id)->take(3)->get();
+        $data['page_images'] = PageImage::where(['page_id' => $id])->get();
+
 
         return view('front.general.page_details', $data);
     }

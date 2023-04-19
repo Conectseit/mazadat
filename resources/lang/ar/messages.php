@@ -140,6 +140,7 @@ return [
      'send_receipt_note'              => ' يجب عليك  الإقرار بصحة البيانات المرفوعة في الدفع البنكي أولا',
 
      'there_is_no_blogs_yet'=>'لا يوجد مدونات حتي الان',
+     'there_is_no_pages_yet'=>'لا يوجد صفحات حتي الان',
 
     'notification'=>[
         'send' => 'ارسال اشعار',

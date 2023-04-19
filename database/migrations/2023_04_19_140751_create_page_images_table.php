@@ -16,8 +16,8 @@ class CreatePageImagesTable extends Migration
         Schema::create('page_images', function (Blueprint $table) {
             $table->id();
             $table->string('image')->nullable();
-            $table->string('description_ar')->nullable();
-            $table->string('description_en')->nullable();
+            $table->text('description_ar')->nullable();
+            $table->text('description_en')->nullable();
             $table->bigInteger('page_id')->unsigned()->nullable();
             $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

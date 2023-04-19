@@ -1,5 +1,5 @@
 @extends('front.layouts.master')
-@section('title', trans('messages.blog.blogs'))
+@section('title', trans('messages.page.pages'))
 @section('style')
     <style>
         .our-blog .blog {
@@ -67,7 +67,7 @@
                                     <div class="blog mb-4"><a href="{{route('front.page_details',$page->id)}}"
                                                               class="">
                                             <div class="blog-img"><img alt="{{$page->$name}}"
-                                                                       src="{{$page->image_path}}" class="lazyLoad isLoaded"></div>
+                                                                       src="{{$page->main_image_path}}" class="lazyLoad isLoaded"></div>
                                             <div class="blog-des"><h4>{{$page->$name}}</h4>
                                                 <p class="first-p"></p>
                                                 <span>{{$page->created_at->format('Y-m-d')}}</span></div>
@@ -75,7 +75,7 @@
                                 </div>
                             @empty
                                 <div style="text-align: center;">
-                                    <h2> @lang('messages.there_is_no_blogs_yet') </h2></div>
+                                    <h2> @lang('messages.there_is_no_pages_yet') </h2></div>
                             @endforelse
                         </div>
                     </div>

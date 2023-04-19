@@ -349,6 +349,8 @@ return [
 
 
     'there_is_no_blogs_yet'=>'لا يوجد مدونات حتي الان',
+    'there_is_no_pages_yet'=>'لا يوجد صفحات حتي الان',
+
 
 
     'admin' => [
