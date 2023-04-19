@@ -331,11 +331,23 @@ return [
         'blog' => 'Blog',
         'blogs' => 'Blogs',
         'related_blogs' => 'Related Blogs',
-
         'meta_title' => 'meta title',
         'meta_description' => 'meta description',
-
     ],
+
+    //=================== pages ==========================
+    'page' => [
+        'page' => 'Page',
+        'pages' => 'Pages',
+        'images' => 'صور سكاشن الصفحة',
+        'related_pages' => 'Related Pages',
+        'meta_title' => 'meta title',
+        'meta_description' => 'meta description',
+    ],
+
+
+
+
     'there_is_no_blogs_yet'=>'لا يوجد مدونات حتي الان',
 
 

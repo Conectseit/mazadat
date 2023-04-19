@@ -89,7 +89,8 @@
                                 </li>
                                 <li><a href="{{route('front.questions')}}">{{trans('messages.question.questions')}} </a>
                                 </li>
-                                <li><a href="{{route('front.blogs')}}">{{trans('messages.blog.blogs')}} </a></li>
+                                <li><a href="{{route('front.show_blogs')}}">{{trans('messages.blog.blogs')}} </a></li>
+{{--                                <li><a href="{{route('front.blogs')}}">{{trans('messages.blog.blogs')}} </a></li>--}}
 
                             </ul>
                         </div>

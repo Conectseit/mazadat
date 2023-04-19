@@ -440,23 +440,32 @@ return [
     'enter_name_ar' => 'ادخل اسم المزاد باللغة العربية',
     'enter_name_en' => 'ادخل اسم المزاد باللغة الانجليزية',
 
-
-
-
     'share' => 'مشاركة',
 
     //=================== blogs ==========================
     'blog' => [
         'blog' => 'مدونة',
-
         'blogs' => 'المدونات',
         'related_blogs' => 'مقالات ذات صلة ',
         'meta_title' => 'meta title',
         'meta_description' => 'meta description',
-
     ],
-    //======= contacts========
 
+    //=================== pages ==========================
+    'page' => [
+        'page' => 'صفحة',
+        'pages' => 'الصفحات',
+        'images' => ' سكاشن الصفحة',
+        'add_image_section' => 'اضافة سكشن للصفحة',
+        'related_pages' => 'صفحات ذات صلة ',
+        'meta_title' => 'meta title',
+        'meta_description' => 'meta description',
+    ],
+    'page-image' => [
+        'page-image' => 'سكشن الصفحة',
+    ],
+
+    //======= contacts========
     'contact' => [
         'contact' => 'الرسالة',
         'contacts' => 'رسائل التواصل',

@@ -4,7 +4,7 @@
 <body>
 <!--==========================================================================-->
 <div class="splash">
-    <img src="{{'Front/assets/imgs/splash-logo.svg'}}" class="t-logo" alt="منصة مزادات ">
+    <img src="{{'Front/assets/imgs/splash-logo.svg'}}" class="t-logo" alt="منصة مزادات">
     <div class="text-logo">
         <svg xmlns="http://www.w3.org/2000/svg" class="svg-logo" width="475.54400634765625"
              height="297.5260009765625" viewBox="0 0 475.544 297.526">
@@ -114,17 +114,3 @@
 <!--==========================================================================-->
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

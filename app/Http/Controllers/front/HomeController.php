@@ -5,13 +5,13 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
 use App\Models\Auction;
-use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -99,25 +99,6 @@ class HomeController extends Controller
         return view('front.company.company_auctions',$data);
     }
 
-
-    public function blogs()
-    {
-        $data['blogs'] = Blog::all();
-        return view('front.general.blogs', $data);
-    }
-
-    public function blog_details($id)
-    {
-
-        $data['blog_details'] = Blog::where('id',$id)->first();
-
-        $description= 'description_'.app()->getLocale();
-        $data['description'] =  $data['blog_details']->$description ;
-
-        $data['related_blogs'] = Blog::where('category_id',$data['blog_details']->category->id)->take(3)->get();
-
-        return view('front.general.blog_details', $data);
-    }
 
 
 }

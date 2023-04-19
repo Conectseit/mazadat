@@ -3,6 +3,7 @@
 use App\Http\Controllers\front\AddAuctionController;
 use App\Http\Controllers\front\AuctionController;
 use App\Http\Controllers\front\AuthController;
+use App\Http\Controllers\front\BlogController;
 use App\Http\Controllers\front\CategoryController;
 use App\Http\Controllers\front\company\CompanyController;
 use App\Http\Controllers\front\FilterController;
@@ -47,8 +48,12 @@ Route::group(
 
     Route::get('all_companies', [HomeController::class, 'all_companies'])->name('front.all_companies');
     Route::get('company/{id}/auctions', [HomeController::class, 'companyAuctions'])->name('front.company_auctions');
-    Route::get('blogs', [HomeController::class, 'blogs'])->name('front.blogs');
-    Route::get('blog_details/{id}', [HomeController::class, 'blog_details'])->name('front.blog_details');
+
+    Route::get('show_blogs', [BlogController::class, 'show_blogs'])->name('front.show_blogs');
+    Route::get('blogs', [BlogController::class, 'blogs'])->name('front.blogs');
+    Route::get('blog_details/{id}', [BlogController::class, 'blog_details'])->name('front.blog_details');
+    Route::get('pages', [BlogController::class, 'pages'])->name('front.pages');
+    Route::get('page_details/{id}', [BlogController::class, 'page_details'])->name('front.page_details');
 
 
     // ============ // category ================

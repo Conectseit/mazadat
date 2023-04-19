@@ -171,6 +171,16 @@
             </ul>
         </li>
     @endif
+    @if(permission_route_checker('pages'.'.index') )
+        <li>
+            <a href="#"><i class="icon-archive"></i>
+                <span> {{ trans('messages.page.pages') }} </span></a>
+            <ul>
+                <li><a href="{{route('pages.index')}}">{{ trans('messages.all') }}</a></li>
+                <li><a href="{{route('pages.create')}}"> {{ trans('messages.add') }}</a></li>
+            </ul>
+        </li>
+    @endif
     @if(permission_route_checker('contacts'.'.index') )
         <li class="nav-item">
             <a href="{{ route('contacts.index') }}"

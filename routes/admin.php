@@ -14,6 +14,7 @@ use App\Http\Controllers\Dashboard\NationalityController;
 use App\Http\Controllers\Dashboard\NotificationController;
 use App\Http\Controllers\Dashboard\OptionController;
 use App\Http\Controllers\Dashboard\OptionDetailController;
+use App\Http\Controllers\Dashboard\PageController;
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\AuctionController;
 use App\Http\Controllers\Dashboard\AuthController;
@@ -83,6 +84,7 @@ Route::group(
                     'advertisements'        => AdvertisementController::class,
                     'inspection_file_names' => InspectionFileNameController::class,
                     'blogs'                 => BlogController::class,
+                    'pages'                 => PageController::class,
 
 
                 ]);
@@ -108,6 +110,16 @@ Route::group(
                 Route::post('/ajax-delete-file_name', [InspectionFileNameController::class, 'destroy'])->name('ajax-delete-filename');
                 Route::post('/ajax-delete-message', [MessageController::class, 'destroy'])->name('ajax-delete-message');
                 Route::post('/ajax-delete-blog', [BlogController::class, 'destroy'])->name('ajax-delete-blog');
+                Route::post('/ajax-delete-page', [PageController::class, 'destroy'])->name('ajax-delete-page');
+
+
+                Route::post('/ajax-delete-page-image', [PageController::class, 'deleteImage'])->name('ajax-delete-page-image');
+
+                Route::post('/addImage', [PageController::class, 'addImage'])->name('addPageImage');
+
+
+
+
 
                 Route::get('company/{id?}/unique', [CompanyController::class, 'unique'])->name('company/unique');
                 Route::get('company/{id?}/not_unique', [CompanyController::class, 'not_unique'])->name('company/not_unique');
