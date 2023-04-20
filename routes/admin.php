@@ -111,8 +111,6 @@ Route::group(
                 Route::post('/ajax-delete-message', [MessageController::class, 'destroy'])->name('ajax-delete-message');
                 Route::post('/ajax-delete-blog', [BlogController::class, 'destroy'])->name('ajax-delete-blog');
                 Route::post('/ajax-delete-page', [PageController::class, 'destroy'])->name('ajax-delete-page');
-
-
                 Route::post('/ajax-delete-page-image', [PageController::class, 'deleteImage'])->name('ajax-delete-page-image');
 
                 Route::post('/addImage', [PageController::class, 'addImage'])->name('addPageImage');

@@ -44,9 +44,6 @@ class PaymentController extends PARENT_API
     }
 
 
-
-
-
     public function sendPayment(AmountRequest $request)
     {
         $data = UrwayPayment::getUrwayChargeData([

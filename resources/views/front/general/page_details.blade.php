@@ -160,20 +160,19 @@
                                 @foreach($page_images as $page_image)
 
                                     <div class="row">
+                                        <div class="text">
+                                            <h3></h3>
+                                            {!!$page_image->$description !!}
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
                                         <div class="blog-head">
                                             <div class="page-image">
                                                 <img alt="{{$page_image->$name}}" src="{{$page_image->image_path}}"
                                                      class="lazyLoad isLoaded"></div>
                                         </div>
                                     </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="text">
-                                            <h3></h3>
-                                            {!!$page_image->$description !!}
-                                        </div>
-                                    </div>
-
                                     <hr>
                                 @endforeach
                             </div>

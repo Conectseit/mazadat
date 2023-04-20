@@ -61,7 +61,7 @@ class PaymentController extends Controller
         $text .= " - IBan :  " . $iban."\n";
         $text .= " - swift code :  " . $swift_code."\n";
         $text .= " - routing number :  " . $routing_number;
-        SmsController::send_sms(auth()->user()->mobile, $text);
+        SmsController::sendSms(auth()->user()->mobile, $text);
 //        SmsController::send_sms(removePhoneZero(auth()->user()->mobile,'966'), $text);
             return redirect()->route('front.bank_deposit')->with('success', trans('messages.message_sent_success'));
     }
