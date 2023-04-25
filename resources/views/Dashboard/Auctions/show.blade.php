@@ -71,13 +71,15 @@
                         <span class="badge badge-success badge-inline position-right">{{$images->count()}}</span></a>
                 </li>
                 <li><a href="#inspection_report_image" data-toggle="tab"><i
-                            class="icon-cog3 position-left"></i> {{ trans('messages.auction.additional_file_names') }}
+                            class="icon-cog3 position-left"></i>
+                        {{ trans('messages.auction.inspection_report_files') }}
+                        {{--                        {{ trans('messages.auction.additional_file_names') }}--}}
                         <span
                             class="badge badge-success badge-inline position-right">{{$inspection_report_images->count()}}</span></a>
                 </li>
                 @if($auction->is_appear_location ==1)
-                <li><a href="#location" data-toggle="tab"><i
-                            class="icon-cog3 position-left"></i> {{ trans('messages.auction.location') }}</a></li>
+                    <li><a href="#location" data-toggle="tab"><i
+                                class="icon-cog3 position-left"></i> {{ trans('messages.auction.location') }}</a></li>
                 @endif
 
                 @if($auction->is_accepted ==1)
@@ -235,13 +237,19 @@
 
                                                     <hr>
                                                     @if(isset($auction->extra))
-                                                    <div class="form-group row">
-                                                        <label class="col-form-label col-lg-4">{{ trans('messages.extra_file') }}:</label>
-                                                        <div class="col-lg-8">
-                                                            <a href="{{route('view',$auction->id)}}" target="_blank"> <i class="icon-file-pdf" style="color: red;"> </i></a>
-                                                            <a href="{{route('download',$auction->extra)}}"><i class="icon-download4"> </i> {{trans('messages.download')}}</a>
+                                                        <div class="form-group row">
+                                                            <label
+                                                                class="col-form-label col-lg-4">{{ trans('messages.extra_file') }}
+                                                                :</label>
+                                                            <div class="col-lg-8">
+                                                                <a href="{{route('view',$auction->id)}}"
+                                                                   target="_blank"> <i class="icon-file-pdf"
+                                                                                       style="color: red;"> </i></a>
+                                                                <a href="{{route('download',$auction->extra)}}"><i
+                                                                        class="icon-download4"> </i> {{trans('messages.download')}}
+                                                                </a>
+                                                            </div>
                                                         </div>
-                                                    </div>
                                                     @endif
 
                                                 </div>
@@ -253,7 +261,7 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="auction_options">
-                            <!-- auction_images -->
+                            <!-- auction_options -->
                             <div class="panel panel-flat">
                                 <div class="panel-heading">
                                     <div class="heading-elements">
@@ -319,7 +327,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <!-- /auction_images -->
+                            <!-- /auction_options -->
                         </div>
                         <div class="tab-pane fade" id="auction_images">
                             <!-- auction_images -->
@@ -393,35 +401,66 @@
                                         </ul>
                                     </div>
                                 </div>
+
+                                <div class="list-icons" style="padding-right: 10px;">
+                                    <a href="#" data-toggle="modal" data-target="#addReportFile"
+                                       class="btn btn-success btn-labeled btn-labeled-left"><b><i
+                                                class="icon-plus2"></i></b>{{ trans('messages.auction.addReportFile') }}
+                                    </a>
+                                </div>
+                                <br>
                                 <div class="panel-body">
-{{--                                    <h3>{{ trans('messages.auction.additional_file_names') }}: </h3>--}}
+                                    {{--                                    <h3>{{ trans('messages.auction.additional_file_names') }}: </h3>--}}
                                     @if($inspection_report_images->count() > 0)
                                         <table class="table datatable" id="inspection_report_images"
                                                style="font-size: 16px;">
                                             <thead>
                                             <tr>
                                                 <th class="text-center">@lang('messages.file_name')</th>
-                                                <th class="text-center">{{ trans('messages.auction.additional_file_names') }}</th>
-{{--                                                <th class="text-center">@lang('messages.form-actions')</th>--}}
+                                                <th class="text-center">{{ trans('messages.file_desc') }}</th>
+                                                <th class="text-center">{{ trans('messages.auction.inspection_report_files') }}</th>
+                                                {{--                                                <th class="text-center">@lang('messages.form-actions')</th>--}}
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($inspection_report_images as $image)
-                                                <tr id="image-row-{{ $image->id }}">
-{{--                                                    <td>--}}
-{{--                                                        <a href="{{asset($image->ImagePath) }}" data-popup="lightbox">--}}
-{{--                                                            <img src="{{asset($image->ImagePath) }}" alt="" width="80"--}}
-{{--                                                                 height="70" class="img-preview rounded">--}}
-{{--                                                        </a>--}}
-{{--                                                    </td>--}}
+                                            @foreach($inspection_report_images as $inspection_report_image)
+                                                <tr id="inspection_report_image-row-{{ $inspection_report_image->id }}">
+
+                                                    {{--                                                    <td>--}}
+                                                    {{--                                                        <a href="{{asset($inspection_report_image->ImagePath) }}" data-popup="lightbox">--}}
+                                                    {{--                                                            <img src="{{asset($inspection_report_image->ImagePath) }}" alt="" width="80"--}}
+                                                    {{--                                                                 height="70" class="img-preview rounded">--}}
+                                                    {{--                                                        </a>--}}
+                                                    {{--                                                    </td>--}}
 
 
-                                                    <td class="text-center">{{ isset($image->file->name) ? $image->file->name:'..' }}</td>
+                                                    <td class="text-center">{{ isset($inspection_report_image->file->name) ? $inspection_report_image->file->name:'..' }}</td>
+                                                    <td class="text-center">{{ isset($inspection_report_image->description) ? $inspection_report_image->description:'..' }}</td>
                                                     <td class="text-center">
-                                                        <a href="{{route('inspection_view_file',$image->id)}}" target="_blank"> <i class="icon-file-pdf" style="color: red;"> </i></a>
-                                                        <a href="{{route('download',$image->image)}}"><i class="icon-download4"> </i> {{trans('messages.download')}}</a>
+                                                        <a href="{{route('inspection_view_file',$inspection_report_image->id)}}"
+                                                           target="_blank"> <i class="icon-file-pdf"
+                                                                               style="color: red;"> </i></a>
+                                                        <a href="{{route('download',$inspection_report_image->inspection_report_image)}}"><i
+                                                                class="icon-download4"> </i> {{trans('messages.download')}}
+                                                        </a>
                                                     </td>
 
+                                                    <td class="text-center">
+                                                        <ul class="icons-list">
+                                                            <li class="dropdown">
+                                                                <a href="#" class="dropdown-toggle"
+                                                                   data-toggle="dropdown"><i class="icon-menu9"></i></a>
+                                                                <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
+                                                                    <li>
+                                                                        <a data-id="{{ $inspection_report_image->id }}"
+                                                                           class="delete-report-file">
+                                                                            <i class="icon-database-remove"></i>@lang('messages.delete')
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
                                                     {{--                                                    <td class="text-center">--}}
                                                     {{--                                                        <ul class="icons-list">--}}
                                                     {{--                                                            <li class="dropdown">--}}
@@ -450,53 +489,54 @@
                             <!-- /inspection_report_images -->
                         </div>
                         @if($auction->is_appear_location ==1)
-                        <div class="tab-pane fade" id="location">
-                            <!-- inspection_report_images -->
-                            <div class="panel panel-flat">
-                                <div class="panel-heading">
-                                    <div class="heading-elements">
-                                        <ul class="icons-list">
-                                            <li><a data-action="collapse"></a></li>
-                                            <li><a data-action="reload"></a></li>
-                                            <li><a data-action="close"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="panel-body">
-
-{{--                                    <div class="form-group row"><br>--}}
-{{--                                        <label class="col-form-label col-lg-3">{{ trans('messages.auction.address') }}--}}
-{{--                                            :</label>--}}
-
-{{--                                        <div class="col-lg-9">--}}
-{{--                                            {{ $auction->address }}--}}
-{{--                                        </div>--}}
-
-{{--                                    </div><br>--}}
-                                    <div class="form-group row"><br>
-                                        <label class="col-form-label col-lg-3">{{ trans('messages.auction.location') }}
-                                            :</label>
-
-                                        <div class="col-lg-9">
-                                            {{--                                                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -180px;" placeholder=" اختر المكان علي الخريطة " name="other" >--}}
-                                            <div id="map"></div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <input type="text" id="geo_lat" value="{{ $auction->latitude }}"
-                                                   name="latitude" readonly="" placeholder=" latitude "
-                                                   class="form-control">
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <input type="text" id="geo_lng" value="{{ $auction->longitude }}"
-                                                   name="longitude" readonly="" placeholder="longitude"
-                                                   class="form-control">
+                            <div class="tab-pane fade" id="location">
+                                <!-- inspection_report_images -->
+                                <div class="panel panel-flat">
+                                    <div class="panel-heading">
+                                        <div class="heading-elements">
+                                            <ul class="icons-list">
+                                                <li><a data-action="collapse"></a></li>
+                                                <li><a data-action="reload"></a></li>
+                                                <li><a data-action="close"></a></li>
+                                            </ul>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="panel-body">
 
+                                        {{--                                    <div class="form-group row"><br>--}}
+                                        {{--                                        <label class="col-form-label col-lg-3">{{ trans('messages.auction.address') }}--}}
+                                        {{--                                            :</label>--}}
+
+                                        {{--                                        <div class="col-lg-9">--}}
+                                        {{--                                            {{ $auction->address }}--}}
+                                        {{--                                        </div>--}}
+
+                                        {{--                                    </div><br>--}}
+                                        <div class="form-group row"><br>
+                                            <label
+                                                class="col-form-label col-lg-3">{{ trans('messages.auction.location') }}
+                                                :</label>
+
+                                            <div class="col-lg-9">
+                                                {{--                                                                    <input id="searchInput" class=" form-control"   style="background-color: #FFF;margin-left: -180px;" placeholder=" اختر المكان علي الخريطة " name="other" >--}}
+                                                <div id="map"></div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <input type="text" id="geo_lat" value="{{ $auction->latitude }}"
+                                                       name="latitude" readonly="" placeholder=" latitude "
+                                                       class="form-control">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <input type="text" id="geo_lng" value="{{ $auction->longitude }}"
+                                                       name="longitude" readonly="" placeholder="longitude"
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /inspection_report_images -->
                             </div>
-                            <!-- /inspection_report_images -->
-                        </div>
 
                         @endif
                         <div class="tab-pane fade" id="auction_bids">
@@ -541,7 +581,8 @@
 
                                             <i class="icon-cog3 position-left"></i>
                                             <h1>{{ trans('messages.auction.winner') }}</h1>
-                                            <a href="{{ route('persons.show', $auction_bids->last()->buyer->id) }}"  class="btn btn-success">
+                                            <a href="{{ route('persons.show', $auction_bids->last()->buyer->id) }}"
+                                               class="btn btn-success">
                                                 {{$auction_bids->last()->buyer->full_name}}
                                             </a>
                                         @endif
@@ -550,7 +591,8 @@
 
                                             <i class="icon-cog3 position-left"></i>
                                             <h1>{{ trans('messages.auction.winner') }}</h1>
-                                            <a href="{{ route('companies.show', $auction_bids->last()->buyer->id) }}"  class="btn btn-success">
+                                            <a href="{{ route('companies.show', $auction_bids->last()->buyer->id) }}"
+                                               class="btn btn-success">
                                                 {{$auction_bids->last()->buyer->user_name}}
                                             </a>
                                         @endif
@@ -569,6 +611,83 @@
                     </div>
                 </div>
             </div>
+
+            <!-- modal -->
+            <div id="addReportFile" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-responsive content-group">
+                                <!-- Basic layout-->
+                                <form action="{{ route('addReportFile') }}" class="form-horizontal" method="post"
+                                      enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="panel panel-flat">
+                                        <div class="panel-heading">
+                                            <h5 class="panel-title">{{ trans('messages.auction.addReportFile') }}</h5>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="box-body">
+                                                <input type="hidden" name="auction_id" value="{{$auction->id}}">
+
+                                                <div class="row">
+                                                    <h4>
+                                                        <i class="icon-file-pdf"> </i> @lang('messages.auction.inspection_report_files')
+                                                    </h4>
+                                                    <div class="form-group">
+                                                        <div class="col-lg-6">
+                                                            <select name="file_name_id" class="select form-control">
+                                                                <option selected
+                                                                        disabled>{{trans('messages.select_file_name')}}</option>
+                                                                @foreach ($inspection_file_names as $inspection_file_name)
+                                                                    <option
+                                                                        value="{{ $inspection_file_name->id }}"> {{ $inspection_file_name->name }} </option>
+                                                                @endforeach
+                                                            </select>
+                                                            @error('file_name_id')<span
+                                                                style="color: #e81414;">{{ $message }}</span>@enderror
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <input type="file" multiple class="form-control"
+                                                                   name="inspection_report_images[]">
+                                                        </div>
+                                                        @error('inspection_report_images')<span
+                                                            style="color: #e81414;">{{ $message }}</span>@enderror
+                                                        <div class="col-lg-6">
+                                                            <input type="text" class="form-control" name="description"
+                                                                   placeholder="@lang('messages.file_desc')" required>
+                                                        </div>
+                                                        @error('description')<span
+                                                            style="color: #e81414;">{{ $message }}</span>@enderror
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
+                                        <input type="submit" class="btn btn-primary"
+                                               value=" {{ trans('messages.add_and_forward_to_list') }} "/>
+                                    </div>
+
+                                </form>
+                                <!-- /basic layout -->
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-link btn-xs text-uppercase text-semibold"
+                                        data-dismiss="modal">Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- / modal -->
         </div>
         @include('Dashboard.Auctions.parts.option_modal')
     </div>

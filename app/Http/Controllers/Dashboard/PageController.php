@@ -73,7 +73,7 @@ class PageController extends Controller
         return view('Dashboard.pages.show', $data);
     }
 
-    public function addImage(PageImageRequest $request)
+    public function addPageImage(PageImageRequest $request)
     {
         $request_data = $request->except(['image']);
 

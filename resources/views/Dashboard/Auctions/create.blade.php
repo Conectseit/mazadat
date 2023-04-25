@@ -221,9 +221,10 @@
 
 
                         <div class="row">
-                            <h4><i class="icon-file-pdf"> </i> @lang('messages.auction.additional_file_names')</h4>
+                            <h4><i class="icon-file-pdf"> </i> @lang('messages.auction.inspection_report_files')</h4>
+{{--                            <h4><i class="icon-file-pdf"> </i> @lang('messages.auction.additional_file_names')</h4>--}}
                             <div class="form-group">
-                                <div class="col-lg-6">
+                                <div class="col-lg-3">
                                     <select name="file_name_id" class="select form-control">
                                         <option selected disabled>{{trans('messages.select_file_name')}}</option>
                                         @foreach ($inspection_file_names as $inspection_file_name)
@@ -232,10 +233,17 @@
                                     </select>
                                     @error('file_name_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
                                 </div>
-                                <div class="col-lg-6">
+{{--                                <div class="col-lg-3">--}}
+{{--                                    <input type="file"  class="form-control" name="image">--}}
+{{--                                </div>--}}
+                                <div class="col-lg-3">
                                     <input type="file" multiple class="form-control" name="inspection_report_images[]">
                                 </div>
                                 @error('inspection_report_images')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" name="description" placeholder="@lang('messages.file_desc')" required>
+                                </div>
+                                @error('description')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <hr><br><br>
@@ -246,25 +254,68 @@
                                 <input type="file" class="form-control " name="extra">
                             </div>
                         </div><hr><br>
-                        <div class="row">
+
+
+                        <div class="form-group mb-4 row">
+                            <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                <label class="form-label">{{trans('messages.auction.is_appear_location')}}</label>
+                            </div>
+                            <div class="col-lg-5 col-md-4">
+                                <select class="form-select" id="is_appear_location" name="is_appear_location"
+                                        data-placeholder="{{trans('back.select')}}">
+                                    <option value="0">{{trans('messages.No')}}</option>
+                                    <option value="1" id="yes">{{trans('messages.Yes')}}</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="map" id="map-section" style="display:none;">
+
                             <div class="form-group">
                                 <label>@lang('messages.auction.location'):</label>
-                                @error('latitude')<span style="color: #e81414;">{{ $message }}</span>@enderror
-
                                 <div class="col-lg-12">
-{{--                                    <input id="searchInput" class=" form-control"--}}
-{{--                                           style="background-color: #FFF;margin-left: -150px;"--}}
-{{--                                           placeholder=" اختر المكان علي الخريطة " name="other">--}}
                                     <div id="map"></div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control">
+                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude"
+                                           class="form-control hidden d-none">
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">
+                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude"
+                                           class="form-control hidden d-none">
                                 </div>
-                            </div><br>
+                            </div>
                         </div>
+
+
+
+
+
+
+{{--                        <div class="row">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label>@lang('messages.auction.location'):</label>--}}
+{{--                                @error('latitude')<span style="color: #e81414;">{{ $message }}</span>@enderror--}}
+
+{{--                                <div class="col-lg-12">--}}
+{{--                                    <input id="searchInput" class=" form-control"--}}
+{{--                                           style="background-color: #FFF;margin-left: -150px;"--}}
+{{--                                           placeholder=" اختر المكان علي الخريطة " name="other">--}}
+{{--                                    <div id="map"></div>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-lg-6">--}}
+{{--                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control">--}}
+{{--                                </div>--}}
+{{--                                <div class="col-lg-6">--}}
+{{--                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">--}}
+{{--                                </div>--}}
+{{--                            </div><br>--}}
+{{--                        </div>--}}
+
+
+
+
                         <button type="submit" class="btn btn-primary stepy-finish mt-5"
                                 id="save-form-btn">{{ trans('messages.add_and_forward_to_list') }}
                             <i class="icon-check position-right"></i>
@@ -294,6 +345,21 @@
             $("body").on("click",".btn-danger",function(){
                 $(this).parents(".control-group").remove();
             });
+        });
+    </script>
+    <script>
+        $('select#is_appear_location').on('change', function () {
+            let is_appear_location = $(this).val();
+            if (is_appear_location) {
+                optionValue = document.getElementById("yes").value;
+                if (optionValue === is_appear_location) {
+                    document.getElementById("map-section").style.display = "block";
+                } else {
+                    document.getElementById("map-section").style.display = "none";
+                }
+            } else {
+                document.getElementById("map-section").style.display = "block";
+            }
         });
     </script>
 

@@ -84,7 +84,7 @@ class AuctionController extends Controller
                     $file=$img;
                     $file_image=time().'.'.$file->getClientOriginalExtension();
                     $img->move('uploads/inspection_report_pdf',$file_image);
-                    $dataa[$key] =['image' =>$file_image,'auction_id' => $auction->id,'file_name_id'=>$request->file_name_id];
+                    $dataa[$key] =['image' =>$file_image,'auction_id' => $auction->id,'file_name_id'=>$request->file_name_id,'description'=>$request->description];
 
                 }
             }
@@ -156,6 +156,7 @@ class AuctionController extends Controller
         $data['inspection_report_images'] = InspectionImage::where(['auction_id' => $id])->get();
         $data['auction_bids'] = AuctionBuyer::where(['auction_id' => $id])->get();
         $data['auction_option_details'] = AuctionData::where(['auction_id' => $id])->get();
+        $data['inspection_file_names'] = FileName::all();
 
         return view('Dashboard.Auctions.show', $data);
     }
@@ -291,7 +292,21 @@ class AuctionController extends Controller
 
     public function deleteImage(Request $request)
     {
+
         $auctionimage = AuctionImage::find($request->id);
+
+        if (!$auctionimage) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, image is not exists !!']);
+        try {
+            $auctionimage->delete();
+            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
+        } catch (Exception $e) {
+            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
+        }
+    }
+
+    public function deleteInspectionReportImage(Request $request)
+    {
+        $auctionimage = InspectionImage::find($request->id);
 
         if (!$auctionimage) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, image is not exists !!']);
         try {
@@ -318,6 +333,27 @@ class AuctionController extends Controller
 
     public function download(Request $request,$extra){
         return response()->download(public_path('uploads/auction_pdf/'.$extra));
+    }
+
+
+
+    public function addReportFile(Request $request)
+    {
+
+        //======= upload auction inspection_report_images =======
+        $dataa = [];
+        if ($request->hasfile('inspection_report_images')) {
+            foreach ($request->file('inspection_report_images') as $key => $img) {
+                $file=$img;
+                $file_image=time().'.'.$file->getClientOriginalExtension();
+                $img->move('uploads/inspection_report_pdf',$file_image);
+                $dataa[$key] =['image' =>$file_image,'auction_id' => $request->auction_id,'file_name_id'=>$request->file_name_id,'description'=>$request->description];
+
+            }
+        }
+        DB::table('inspection_images')->insert($dataa);
+
+        return back()->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
     }
 
 

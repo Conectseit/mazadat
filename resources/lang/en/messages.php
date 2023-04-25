@@ -446,7 +446,8 @@ return [
         'unique'               => 'Unique Auctions',
         'update'               => ' update auction',
         'bid_now'              => ' Bid now',
-        'done_auction'          => 'done auction',
+        'done_auction'         => 'done auction',
+        'addReportFile'        => 'إضافة ملف تقرير فحص',
 
     ],
     'terms' => 'Terms & Conditions ',

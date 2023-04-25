@@ -1,10 +1,14 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.auction.add'))
 @section('style')
-    <style> #map {height: 400px;}
-    .hide{
-        visibility: hidden;
-    }
+    <style> #map {
+            height: 400px;
+        }
+
+        .hide {
+            visibility: hidden;
+        }
+
         /*.hide-file{*/
         /*    visibility: hidden;*/
         /*}*/
@@ -167,7 +171,8 @@
                         </div>
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="email" class="form-label">{{ trans('messages.option.required_options') }}</label>
+                                <label for="email"
+                                       class="form-label">{{ trans('messages.option.required_options') }}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 <div class="select-inputs-options"></div>
@@ -177,7 +182,8 @@
 
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="email" class="form-label">{{ trans('messages.option.not_required_options') }}</label>
+                                <label for="email"
+                                       class="form-label">{{ trans('messages.option.not_required_options') }}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
                                 <div class="not-options"></div>
@@ -188,7 +194,6 @@
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
 
 
-
                         @include('front.auctions.parts.add_auction_images_and_files')
 
 
@@ -197,7 +202,8 @@
                                 <label class="form-label">{{trans('messages.auction.is_appear_location')}}</label>
                             </div>
                             <div class="col-lg-5 col-md-4">
-                                <select class="form-select" id="is_appear_location" name="is_appear_location" data-placeholder="{{trans('back.select')}}">
+                                <select class="form-select" id="is_appear_location" name="is_appear_location"
+                                        data-placeholder="{{trans('back.select')}}">
                                     <option value="0">{{trans('messages.No')}}</option>
                                     <option value="1" id="yes">{{trans('messages.Yes')}}</option>
                                 </select>
@@ -207,22 +213,21 @@
 
                         <div class="map" id="map-section" style="display:none;">
 
-                        <div class="form-group">
-                            <label>@lang('messages.auction.location'):</label>
-                            <div class="col-lg-12">
-                                <div id="map"></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude"
-                                       class="form-control hidden d-none">
-                            </div>
-                            <div class="col-lg-6">
-                                <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude"
-                                       class="form-control hidden d-none">
+                            <div class="form-group">
+                                <label>@lang('messages.auction.location'):</label>
+                                <div class="col-lg-12">
+                                    <div id="map"></div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude"
+                                           class="form-control hidden d-none">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude"
+                                           class="form-control hidden d-none">
+                                </div>
                             </div>
                         </div>
-                        </div>
-
 
 
                         <div class="sign-btn">
@@ -241,13 +246,13 @@
     @include('front.layouts.parts.map')
     @include('front.auctions.parts.add_auction_ajax_get_options')
     <script type="text/javascript">
-// ======== repeat upload iamge ================================//
-        $(document).ready(function() {
-            $(".btn-success").click(function(){
+        // ======== repeat upload iamge ================================//
+        $(document).ready(function () {
+            $(".btn-success").click(function () {
                 var html = $(".clone").html();
                 $(".increment").after(html);
             });
-            $("body").on("click",".btn-danger",function(){
+            $("body").on("click", ".btn-danger", function () {
                 $(this).parents(".control-group").remove();
             });
         });
@@ -256,20 +261,20 @@
 
 
     <script type="text/javascript">
-// ======== repeat upload file ================================//
-        $(document).ready(function() {
-            $(".btn-file").click(function(){
+        // ======== repeat upload file ================================//
+        $(document).ready(function () {
+            $(".btn-file").click(function () {
                 var x = $(".clone-file").html();
                 $(".increment-file").after(x);
             });
-            $("body").on("click",".btn-danger-file",function(){
+            $("body").on("click", ".btn-danger-file", function () {
                 $(this).parent(".control-group").remove();
             });
         });
     </script>
 
     <script>
-// ======== image preview ================================//
+        // ======== image preview ================================//
         $(".image").change(function () {
             if (this.files && this.files[0]) {
                 var reader = new FileReader();
@@ -282,7 +287,7 @@
     </script>
 
     <script>
-// ======== image preview ================================//
+        // ======== image preview ================================//
         function readURL2(input) {
             console.log(input.files);
             if (input.files && input.files[0]) {

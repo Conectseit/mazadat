@@ -38,6 +38,11 @@ class AddAuctionRequest extends FormRequest
 //                        'end_date' => 'required',
                         'start_auction_price'   => ['required','numeric'],
                         'value_of_increment' => ['required','numeric'],
+
+                        'is_appear_location'=> 'required|in:0,1',
+                        'latitude'          => 'required_if:is_appear_location,1|numeric',
+                        'longitude'         => 'required_if:is_appear_location,1|numeric',
+
 //                        'delivery_charge' => ['required','numeric'],
 //                        'option_ids.*' => ['required'],
 

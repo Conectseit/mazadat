@@ -44,6 +44,12 @@ class AuctionRequest extends FormRequest
                         'start_auction_price'   => ['required','numeric'],
                         'value_of_increment' => ['required','numeric'],
                         'delivery_charge' => ['required','numeric'],
+
+
+                        'is_appear_location'=> 'required|in:0,1',
+                        'latitude'          => 'required_if:is_appear_location,1|numeric',
+                        'longitude'         => 'required_if:is_appear_location,1|numeric',
+
 //                        'address'         => 'required',
                         'extra'           => 'sometimes|max:2048',
 //                        'extra'           => 'sometimes|mimes:pdf|max:2048',
@@ -51,10 +57,13 @@ class AuctionRequest extends FormRequest
 //                        'option_ids' => ['required'],
 //                        'option_ids.*' => ['required'],
                         'images' => ['required'],
-                        'images.*' => ['required','mimes:png,jpg,jpeg'],
+                        'images.*' => ['required'],
+//                        'images.*' => ['required','mimes:png,jpg,jpeg'],
+
                         'file_name_id'=>['required'],
-                        'inspection_report_images' => ['required'],
-                        'inspection_report_images.*' => ['required'],
+//                        'inspection_report_images' => ['required'],
+//                        'inspection_report_images.*' => ['required'],
+
 //                        'inspection_report_images.*' => ['required','mimes:pdf'],
                     ];
 

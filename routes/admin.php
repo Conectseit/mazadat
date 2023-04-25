@@ -98,8 +98,11 @@ Route::group(
                 Route::post('/ajax-delete-country', [CountryController::class, 'destroy'])->name('ajax-delete-country');
                 Route::post('/ajax-delete-city', [CityController::class, 'destroy'])->name('ajax-delete-city');
                 Route::post('/ajax-delete-auction', [AuctionController::class, 'destroy'])->name('ajax-delete-auction');
+
                 Route::post('/ajax-delete-image', [AuctionController::class, 'deleteImage'])->name('ajax-delete-image');
+                Route::post('/ajax-delete-inspection_report_image', [AuctionController::class, 'deleteInspectionReportImage'])->name('ajax-delete-inspection-report-image');
                 Route::post('/ajax-delete-auction_data', [AuctionDataController::class, 'delete_auction_data'])->name('ajax-delete-auction_data');
+
                 Route::post('/ajax-delete-permission', [PermissionController::class, 'destroy'])->name('ajax-delete-permission');
                 Route::post('/ajax-delete-admin', [AdminController::class, 'destroy'])->name('ajax-delete-admin');
                 Route::post('/ajax-delete-activity', [ActivityController::class, 'destroy'])->name('ajax-delete-activity');
@@ -113,7 +116,8 @@ Route::group(
                 Route::post('/ajax-delete-page', [PageController::class, 'destroy'])->name('ajax-delete-page');
                 Route::post('/ajax-delete-page-image', [PageController::class, 'deleteImage'])->name('ajax-delete-page-image');
 
-                Route::post('/addImage', [PageController::class, 'addImage'])->name('addPageImage');
+                Route::post('/addImage', [PageController::class, 'addPageImage'])->name('addPageImage');
+                Route::post('/addReportFile', [AuctionController::class, 'addReportFile'])->name('addReportFile');
 
 
 
