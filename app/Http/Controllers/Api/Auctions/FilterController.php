@@ -5,17 +5,13 @@ namespace App\Http\Controllers\Api\Auctions;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PARENT_API;
 use App\Http\Requests\Api\user\FilterRequest;
-use App\Http\Resources\Api\CategoryAuctionsResource;
 use App\Http\Resources\Api\CategoryOptionsResource;
-use App\Http\Resources\Api\CategoryResource;
 use App\Http\Resources\Api\collections\AuctionsCollection;
 use App\Http\Resources\Api\UserAuctionsResource;
 use App\Models\Auction;
 use App\Models\AuctionData;
 use App\Models\Category;
 use App\Models\Option;
-use App\Models\OptionDetail;
-use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class FilterController extends PARENT_API
@@ -66,7 +62,6 @@ class FilterController extends PARENT_API
         $category_options = Option::where('category_id', $id)->with('option_details')->get();
         return responseJson(true, trans('api.category_options'), CategoryOptionsResource::collection($category_options));  //OK
     }
-
 
 
 //    public function get_not_required_options_of_category(Request $request, $id)

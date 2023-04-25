@@ -4,7 +4,6 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\auction\SearchRequest;
-use App\Models\Auction;
 use App\Models\Category;
 use App\Models\Option;
 use Illuminate\Http\Request;

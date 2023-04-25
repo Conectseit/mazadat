@@ -135,7 +135,6 @@ Route::group(
                 Route::get('auction/{id?}/unique', [AuctionController::class, 'unique'])->name('auction/unique');
                 Route::get('auction/{id?}/not_unique', [AuctionController::class, 'not_unique'])->name('auction/not_unique');
 
-
                 Route::get('download/{extra?}', [AuctionController::class, 'download'])->name('download');
 
 

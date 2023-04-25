@@ -4,9 +4,6 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SmsController;
-use App\Http\Requests\Dashboard\CityRequest;
-use App\Models\City;
-use App\Models\Country;
 use App\Models\Payment;
 use App\Models\Transaction;
 use App\Models\User;
@@ -43,7 +40,7 @@ class FinancialReviewsController extends Controller
         $user = User::where('id',$transaction->user_id)->first();
         $user->update(['wallet'=> $transaction->amount +$user->wallet]);
         $transaction->update(['is_verified'=> 1]);
-        SmsController::send_sms($user->mobile, 'تم قبول الايداع البنكي  واضافة رصيد الي محفظتك في موقع مزادات' );
+        SmsController::sendSms($user->mobile, 'تم قبول الايداع البنكي  واضافة رصيد الي محفظتك في موقع مزادات' );
 
 // ===========================================================
         activity()
@@ -61,7 +58,7 @@ class FinancialReviewsController extends Controller
         $transaction->update(['is_accepted'=> 0,'is_verified'=> 0]);
         $user = User::where('id',$transaction->user_id)->first();
 
-        SmsController::send_sms($user->mobile, 'هناك خطأ في  بيانات فاتورة الايداع البنكي في موقع مزادات من فضلك ارسلها مرة اخري' );
+        SmsController::sendSms($user->mobile, 'هناك خطأ في  بيانات فاتورة الايداع البنكي في موقع مزادات من فضلك ارسلها مرة اخري' );
         return back()->with('danger',  trans('messages.messages.not_accept_deposit_receipt_and_send_SMS'));
     }
 
@@ -74,7 +71,7 @@ class FinancialReviewsController extends Controller
         $user = User::where('id',$transaction->user_id)->first();
         $user->update(['wallet'=> $transaction->amount +$user->wallet]);
         $transaction->update(['is_verified'=> 1]);
-            SmsController::send_sms($user->mobile, 'تم اضافة رصيد كاش الي محفظتك في موقع مزادات' );
+            SmsController::sendSms($user->mobile, 'تم اضافة رصيد كاش الي محفظتك في موقع مزادات' );
 
 // ===========================================================
         activity()

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
 use App\Models\Auction;
 use App\Models\Category;
-use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;

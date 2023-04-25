@@ -4,16 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SmsController;
-use App\Http\Requests\Dashboard\SellerRequest;
-use App\Http\Requests\Dashboard\users\PersonRequest;
 use App\Http\Requests\Dashboard\users\WalletRequest;
-use App\Models\Auction;
-use App\Models\AuctionBuyer;
-use App\Models\City;
-use App\Models\Country;
-use App\Models\Nationality;
 use App\Models\Payment;
-use App\Models\Token;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +19,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->update(['ban'=> 1]);
-        SmsController::send_sms($user->mobile, 'تم حظر حسابك  من ادرة موقع مزادات' );
+        SmsController::sendSms($user->mobile, 'تم حظر حسابك  من ادرة موقع مزادات' );
         return back()->with('success',  trans('messages.ban_user_and_send_SMS_successfully'));
 
     }
@@ -35,7 +27,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->update(['ban'=> 0]);
-        SmsController::send_sms($user->mobile, 'تم رفع الحظر وتفعيل حسابك  من ادرة موقع مزادات' );
+        SmsController::sendSms($user->mobile, 'تم رفع الحظر وتفعيل حسابك  من ادرة موقع مزادات' );
         return back()->with('success',  trans('messages.active_user_again_and_send_SMS_successfully'));
     }
 
@@ -74,14 +66,14 @@ class UserController extends Controller
 //    {
 //        $person = User::findOrFail($id);
 //        $person->update(['is_verified'=> 1]);
-//        SmsController::send_sms($person->mobile, 'تم الموافقة علي بيانات حسابك من ادارة موقع مزادات' );
+//        SmsController::sendSms($person->mobile, 'تم الموافقة علي بيانات حسابك من ادارة موقع مزادات' );
 //        return back()->with('success',  trans('messages.active_user_and_send_SMS_successfully'));
 //    }
 //    public function not_verified($id)
 //    {
 //        $person = User::findOrFail($id);
 //        $person->update(['is_verified'=> 0]);
-//        SmsController::send_sms($person->mobile, 'هناك خطأ في تكملة بيانات حسابك في موقع مزادات من فضلك ارسلها مرة اخري' );
+//        SmsController::sendSms($person->mobile, 'هناك خطأ في تكملة بيانات حسابك في موقع مزادات من فضلك ارسلها مرة اخري' );
 //        return back()->with('success',  trans('messages.not_verified_yet_and_send_SMS'));
 //    }
 

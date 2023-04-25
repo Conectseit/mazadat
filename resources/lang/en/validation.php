@@ -155,6 +155,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'file_name_id'         	=> 'ملفات تقارير الفحص',
+
+    ],
 
 ];

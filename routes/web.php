@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\front\AddAuction1Controller;
 use App\Http\Controllers\front\AddAuctionController;
 use App\Http\Controllers\front\AuctionController;
 use App\Http\Controllers\front\AuthController;
@@ -59,13 +60,13 @@ Route::group(
     // ============ // category ================
     Route::get('category/{category}/auctions', [CategoryController::class, 'categoryAuctions'])->name('front.category_auctions');
 //    Route::post('search/{id}', [CategoryController::class, 'search'])->name('front.search');
-    Route::post('main_filter_category/{id}/auctions', [FilterController::class, 'main_filter'])->name('front.main_filter');
+    Route::post('main_filter_category/{id}/auctions', [FilterController::class, 'mainFilter'])->name('front.main_filter');
     Route::post('filter_category/{id}/auctions', [FilterController::class, 'filterCategory'])->name('front.filter_category');
     Route::get('auction_details/{id}', [AuctionController::class, 'auction_details'])->name('front.auction_details');
 
 
 // ============ for authentication ================
-    Route::get('show_register', [AuthController::class, 'show_register'])->name('front.show_register');
+    Route::get('show_register', [AuthController::class, 'showRegister'])->name('front.show_register');
 
 // ============ register_person ================
     Route::get('show_register_person', [PersonController::class, 'show_register_person'])->name('front.show_register_person');
@@ -118,20 +119,15 @@ Route::group(
 
 
         // ============ // auctions ================
-        Route::get('show_add_auction', [AuctionController::class, 'show_add_auction'])->name('front.show_add_auction');
-        Route::post('add_auction', [AuctionController::class, 'add_auction'])->name('front.add_auction');
+        Route::get('show_add_auction', [AddAuctionController::class, 'show_add_auction'])->name('front.show_add_auction');
+        Route::post('add_auction', [AddAuctionController::class, 'add_auction'])->name('front.add_auction');
 
-
-//        Route::get('show_add_auction1', [AddAuctionController::class, 'show_add_auction1'])->name('front.show_add_auction1');
-//        Route::post('add_auction1', [AddAuctionController::class, 'add_auction1'])->name('front.add_auction1');
-
-
+        Route::any('auction_show_update/{auction}', [AddAuctionController::class, 'show_auction_update'])->name('front.auction_show_update');
+        Route::any('auction_update/{auction}', [AddAuctionController::class, 'updateAuction'])->name('front.auction_update');
 
         Route::get('my_auctions', [AuctionController::class, 'my_auctions'])->name('front.my_auctions');
         Route::post('ajax/get-options-by-category-id', [AuctionController::class, 'get_options_by_category_id'])->name('front.ajax_get_options_by_category_id');
-        Route::post('/ajax-delete-auction', [AuctionController::class, 'destroy'])->name('front.ajax-delete-auction');
-        Route::any('auction_show_update/{auction}', [AuctionController::class, 'show_auction_update'])->name('front.auction_show_update');
-        Route::any('auction_update/{auction}', [AuctionController::class, 'updateAuction'])->name('front.auction_update');
+        Route::post('/ajax-delete-auction', [AddAuctionController::class, 'destroy'])->name('front.ajax-delete-auction');
 
 
         // ============ // profile ================

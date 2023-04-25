@@ -2,7 +2,6 @@
 
 @section('title', trans('messages.create-var',['var'=>trans('messages.admin.admins')]))
 
-
 @section('content')
 
 

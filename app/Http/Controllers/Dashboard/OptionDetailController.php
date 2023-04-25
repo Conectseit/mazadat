@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\OptionDetailRequest;
-use App\Models\Category;
 use App\Models\Option;
 use App\Models\OptionDetail;
 use Illuminate\Http\Request;
@@ -36,12 +35,6 @@ class OptionDetailController extends Controller
     }
 
 
-
-
-
-
-
-
     public function edit($id)
     {
         if (!OptionDetail::find($id)) {
@@ -60,14 +53,7 @@ class OptionDetailController extends Controller
         $option->update($request->all());
 //        return back()->with('success', 'تم تعديل القسم بنجاح');
         return redirect()->route('categories.show',$option->option->category->id)->with('success', 'تم تعديل بنجاح');
-
     }
-
-    public function show($id)
-    {
-        //
-    }
-
 
     public function destroy(Request $request)
     {

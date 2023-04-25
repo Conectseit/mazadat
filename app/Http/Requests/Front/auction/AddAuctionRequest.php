@@ -47,14 +47,14 @@ class AddAuctionRequest extends FormRequest
 
 
 //                        'files.*'                  => 'required',
-//                      'files.*.image'            => ['required','mimes:pdf'],
-//                        'files.*.image'            => ['required'],
+//                      'files.*.image'              => ['required','mimes:pdf'],
+////                        'files.*.image'            => ['required'],
 //                        'files.*.file_name_id'     => ['required'],
 //                        'files.*.description'      => ['required'],
 
 
 
-//                        'file_name_id'=>['required'],
+                        'file_name_id'=>['required'],
 //                        'inspection_report_images' => ['required'],
 //                        'inspection_report_images.*' => ['required','mimes:pdf'],
 

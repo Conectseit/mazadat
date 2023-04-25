@@ -5,9 +5,9 @@
     .hide{
         visibility: hidden;
     }
-        .hide-file{
-            visibility: hidden;
-        }
+        /*.hide-file{*/
+        /*    visibility: hidden;*/
+        /*}*/
     </style>
 
 @endsection
@@ -241,6 +241,7 @@
     @include('front.layouts.parts.map')
     @include('front.auctions.parts.add_auction_ajax_get_options')
     <script type="text/javascript">
+// ======== repeat upload iamge ================================//
         $(document).ready(function() {
             $(".btn-success").click(function(){
                 var html = $(".clone").html();
@@ -252,20 +253,23 @@
         });
     </script>
 
+
+
     <script type="text/javascript">
+// ======== repeat upload file ================================//
         $(document).ready(function() {
             $(".btn-file").click(function(){
                 var x = $(".clone-file").html();
                 $(".increment-file").after(x);
             });
             $("body").on("click",".btn-danger-file",function(){
-                $(this).parents(".control-group").remove();
+                $(this).parent(".control-group").remove();
             });
         });
     </script>
 
     <script>
-        // ======== image preview ================================//
+// ======== image preview ================================//
         $(".image").change(function () {
             if (this.files && this.files[0]) {
                 var reader = new FileReader();
@@ -275,11 +279,10 @@
                 reader.readAsDataURL(this.files[0]);
             }
         });
-        // ======== image preview ================================//
     </script>
 
     <script>
-        // ======== image preview ================================//
+// ======== image preview ================================//
         function readURL2(input) {
             console.log(input.files);
             if (input.files && input.files[0]) {
@@ -292,7 +295,6 @@
                 $("#img-preview2").attr("src", " {{asset('uploads/images.jpg')}}");
             }
         }
-        // ======== image preview ================================//
     </script>
 
     <script>

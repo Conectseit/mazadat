@@ -213,6 +213,7 @@ return [
         'inspection_report_images'         	=> 'ملفات تقارير الفحص ',
         'images'            	=> 'صورالمزاد ',
         'option_ids'         	=> 'تصنيفات المزاد ',
+        'file_name_id'         	=> 'ملفات تقارير الفحص',
 
 
 

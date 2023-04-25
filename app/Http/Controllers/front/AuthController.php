@@ -27,7 +27,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class AuthController extends Controller
 {
 
-    public function show_register()
+    public function showRegister()
     {
         return view('front.auth.register');
     }

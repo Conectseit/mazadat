@@ -1,7 +1,6 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.edit-var',['var'=>trans('messages.admin.admin')]))
 
-
 @section('content')
 
 

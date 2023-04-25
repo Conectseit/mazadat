@@ -27,7 +27,7 @@ class FilterController extends Controller
         return view('front.auctions.category_auctions',$data);
     }
 
-    public function main_filter(Request $request, $id)
+    public function mainFilter(Request $request, $id)
     {
         $query = Auction::query();
         $data['category'] = Category::find($id);

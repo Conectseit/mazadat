@@ -191,7 +191,7 @@ class CompanyController extends Controller
         $company->update(['is_accepted'=> 1,'is_verified'=> 1]);
         Notification::sendAcceptAccountNotify($company->id);
 
-        SmsController::send_sms($company->mobile, 'تم قبول حسابك  من ادرة موقع مزادات' );
+        SmsController::sendSms($company->mobile, 'تم قبول حسابك  من ادرة موقع مزادات' );
 
         return back()->with('success',  trans('messages.active_user_and_send_SMS_successfully'));
     }
@@ -201,7 +201,7 @@ class CompanyController extends Controller
         $company->update(['is_accepted'=> 0]);
         Notification::sendNotAcceptAccountNotify($company->id);
 
-        SmsController::send_sms($company->mobile, 'هناك خطأ في تكملة بيانات حسابك في موقع مزادات من فضلك ارسلها مرة اخري' );
+        SmsController::sendSms($company->mobile, 'هناك خطأ في تكملة بيانات حسابك في موقع مزادات من فضلك ارسلها مرة اخري' );
         return back()->with('success',  trans('messages.not_verified_yet_and_send_SMS'));
     }
 

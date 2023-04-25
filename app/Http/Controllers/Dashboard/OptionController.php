@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\OptionRequest;
-use App\Models\Category;
 use App\Models\Option;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -13,31 +12,12 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 class OptionController extends Controller
 {
 
-//    public function index()
-//    {
-//         $data['options'] = Option::latest()->paginate(200);
-//        return view('Dashboard.Options.index', $data);
-//    }
-//
-//
-//    public function create()
-//    {
-//        $data['latest_options'] = Option::orderBy('id', 'desc')->take(5)->get();
-//        $data['categories'] = Category::all();
-//        return view('Dashboard.Options.create', $data);
-//    }
-
     public function store(OptionRequest $request)
     {
          $option= Option::create($request->all());
         return back()->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
 //        return redirect()->route('options.index')->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
     }
-
-//    public function show($id)
-//    {
-//        //
-//    }
 
     public function edit($id)
     {
