@@ -73,7 +73,21 @@ class PageController extends Controller
         return view('Dashboard.pages.show', $data);
     }
 
-    public function addPageImage(PageImageRequest $request)
+    public function edit_page_section(Request $request)
+    {
+        $page_section= PageImage::where('id',$request->image_id)->first();
+
+        if ($request->hasFile('image')) {
+            if (!is_null($page_section->image)) unlink('uploads/pages/' . $page_section->image);
+            $request_data['image'] = uploaded($request->image, 'page');
+            $page_section->update(['image'=> $request_data['image'],'description_ar'=>$request->description_ar,'description_en'=>$request->description_en]);
+
+        }
+        return back()->with('class', 'success')->with('message', trans('messages.messages.updated_successfully'));
+    }
+
+
+        public function addPageImage(PageImageRequest $request)
     {
         $request_data = $request->except(['image']);
 
@@ -81,7 +95,9 @@ class PageController extends Controller
             $request_data['image'] = uploaded($request->image, 'page');
         }
         PageImage::create($request_data +['description_ar'=>$request->description_ar,'description_en'=>$request->description_en]);
-        return redirect()->route('pages.index')->with('message', translated('add', 'page'));
+//        return redirect()->route('pages.index')->with('message', translated('add', 'page'));
+        return back()->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
+
     }
 
     public function deleteImage(Request $request)

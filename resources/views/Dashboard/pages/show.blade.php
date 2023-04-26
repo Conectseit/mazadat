@@ -1,5 +1,21 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.page.pages'))
+@section('style')
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/editors/wysihtml5/wysihtml5.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/editors/wysihtml5/toolbar.js')}}"></script>
+    <script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/editors/wysihtml5/parsers.js')}}"></script>
+    <script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/editors/wysihtml5/locales/bootstrap-wysihtml5.ua-UA.js')}}"></script>
+    <script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/notifications/jgrowl.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{asset('Dashboard/assets/js/core/app.js')}}"></script>
+    <script type="text/javascript" src="{{asset('Dashboard/assets/js/pages/editor_wysihtml5.js')}}"></script>
+
+    {{--    <script type="text/javascript" src="{{asset('Dashboard/ckeditor/ckeditor.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{asset('Dashboard/assets/js/pages/editor_ckeditor.js')}}"></script>--}}
+
+@stop
 @section('breadcrumb')
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
@@ -21,7 +37,8 @@
     <!-- Toolbar -->
     <div class="navbar navbar-default navbar-xs content-group">
         <ul class="nav navbar-nav visible-xs-block">
-            <li class="full-width text-center"><a data-toggle="collapse" data-target="#navbar-filter"><i class="icon-menu7"></i></a></li>
+            <li class="full-width text-center"><a data-toggle="collapse" data-target="#navbar-filter"><i
+                        class="icon-menu7"></i></a></li>
         </ul>
         <div class="navbar-collapse collapse" id="navbar-filter">
             <ul class="nav navbar-nav">
@@ -57,7 +74,8 @@
 
                                     <div class="card-header header-elements-inline">
                                         <h3 class="card-title">{{ trans('messages.page.images')}}:</h3>
-                                    </div><br>
+                                    </div>
+                                    <br>
 
 
                                     <div class="list-icons" style="padding-right: 10px;">
@@ -65,7 +83,8 @@
                                            class="btn btn-success btn-labeled btn-labeled-left"><b><i
                                                     class="icon-plus2"></i></b>{{ trans('messages.page.add_image_section') }}
                                         </a>
-                                    </div><br>
+                                    </div>
+                                    <br>
                                     <table class="table datatable-basic" id="page-images" style="font-size: 16px;">
                                         <thead>
                                         <tr style="background-color:gainsboro">
@@ -79,7 +98,8 @@
                                             <tr id="page-image-row-{{ $image->id }}">
                                                 <td>
                                                     <a href="{{ $image->image_path }}" data-popup="lightbox">
-                                                        <img src="{{ $image->image_path }}" alt="" width="80" height="80" class="img-circle"></a>
+                                                        <img src="{{ $image->image_path }}" alt="" width="80"
+                                                             height="80" class="img-circle"></a>
                                                 </td>
 
                                                 <td class="text-center">
@@ -91,12 +111,13 @@
                                                                 <i class="icon-menu9"></i>
                                                             </a>
                                                             <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
-                                                               <li>
-{{--                                                                <a  href="javascript:void(0);"--}}
-{{--                                                                    data-toggle="modal" data-target="#edit_option_details_modal-{{$image->id}}">--}}
-{{--                                                                    <i class="icon-database-edit2"></i>@lang('messages.edit_option_details')--}}
-{{--                                                                </a>--}}
-                                                               </li>
+                                                                <li>
+                                                                    <a href="javascript:void(0);"
+                                                                       data-toggle="modal"
+                                                                       data-target="#edit_section_modal-{{$image->id}}">
+                                                                        <i class="icon-database-edit2"></i>@lang('messages.edit')
+                                                                    </a>
+                                                                </li>
                                                                 <li>
                                                                     <a data-id="{{ $image->id }}"
                                                                        class="delete-action">
@@ -108,6 +129,8 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            @include('Dashboard.pages.modal.edit_section_modal', ['id' => $image->id])
+
                                         @endforeach
                                         </tbody>
                                     </table>
@@ -122,7 +145,7 @@
         </div>
 
 
-    <!-- option modal -->
+        <!-- option modal -->
         <div id="add_images" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -141,22 +164,36 @@
                                     </div>
                                     <div class="panel-body">
                                         <div class="box-body">
-                                            <input type="hidden" name="page_id" value="{{$page->id}}" >
+                                            <input type="hidden" name="page_id" value="{{$page->id}}">
+{{--                                            <div class="form-group">--}}
+{{--                                                <label><strong>{{ trans('messages.description_ar') }}</strong></label>--}}
+{{--                                                <textarea class=" form-control"--}}
+{{--                                                          name="description_ar">{{ old('description_ar') }}</textarea>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="form-group">--}}
+{{--                                                <label><strong>{{ trans('messages.description_en') }}</strong></label>--}}
+{{--                                                <textarea class=" form-control"--}}
+{{--                                                          name="description_en">{{ old('description_en') }}</textarea>--}}
+{{--                                            </div>--}}
+
+
                                             <div class="form-group">
                                                 <label><strong>{{ trans('messages.description_ar') }}</strong></label>
-                                                <textarea class=" form-control"
-                                                          name="description_ar">{{ old('description_ar') }}</textarea>
+                                                <textarea cols="18" rows="18" class="wysihtml5 wysihtml5-default form-control"
+                                                          name="description_ar" placeholder="Enter text ..."></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label><strong>{{ trans('messages.description_en') }}</strong></label>
-                                                <textarea class=" form-control"
-                                                          name="description_en">{{ old('description_en') }}</textarea>
+                                                <textarea cols="18" rows="18" class="wysihtml5 wysihtml5-default form-control"
+                                                              name="description_en" placeholder="Enter text ..."></textarea>
                                             </div>
+
 
                                             <div class="form-group">
                                                 <label>صورة السكشن</label>
                                                 <input type="file" class="form-control image " name="image">
-                                                @error('image')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                                                @error('image')<span
+                                                    style="color: #e81414;">{{ $message }}</span>@enderror
 
                                             </div>
                                             <div class="form-group">
@@ -171,7 +208,8 @@
 
                                     </div>
                                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
-                                        <input type="submit" class="btn btn-primary" value=" {{ trans('messages.add_and_forward_to_list') }} "/>
+                                        <input type="submit" class="btn btn-primary"
+                                               value=" {{ trans('messages.add_and_forward_to_list') }} "/>
                                     </div>
                                 </div>
                             </form>
@@ -179,7 +217,8 @@
                         </div>
                         <div class="modal-footer">
 
-                            <button type="button" class="btn btn-link btn-xs text-uppercase text-semibold" data-dismiss="modal">Close
+                            <button type="button" class="btn btn-link btn-xs text-uppercase text-semibold"
+                                    data-dismiss="modal">Close
                             </button>
                         </div>
                     </div>
@@ -190,14 +229,15 @@
     </div>
 
 
-    @stop
+@stop
 
-    @section('scripts')
-        @include('Dashboard.layouts.parts.ajax_delete', ['model' => 'page-image'])
-        <script>
-            CKEDITOR.replace('description_ar', {height: '300px'});
-            CKEDITOR.replace('description_en', {height: '300px'});
-        </script>
-    @stop
+@section('scripts')
+    @include('Dashboard.layouts.parts.ajax_delete', ['model' => 'page-image'])
+    {{--        <script>--}}
+    {{--            CKEDITOR.replace('description_ar', {height: '300px'});--}}
+    {{--            CKEDITOR.replace('description_en', {height: '300px'});--}}
+    {{--        </script>--}}
+
+@stop
 
 

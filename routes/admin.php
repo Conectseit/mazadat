@@ -117,6 +117,7 @@ Route::group(
                 Route::post('/ajax-delete-page-image', [PageController::class, 'deleteImage'])->name('ajax-delete-page-image');
 
                 Route::post('/addImage', [PageController::class, 'addPageImage'])->name('addPageImage');
+                Route::any('/edit_page_section', [PageController::class, 'edit_page_section'])->name('edit_page_section');
                 Route::post('/addReportFile', [AuctionController::class, 'addReportFile'])->name('addReportFile');
 
 
