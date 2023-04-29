@@ -112,6 +112,14 @@ function uploaded($img, $model)
     return $filename;
 }
 
+
+function uploaded_file($file)
+{
+    $filename = time() . '_' . $file->getClientOriginalName();
+    $file->move('uploads/inspection_report_pdf',$filename);
+    return $filename;
+}
+
 function settings($param)
 {
     return App\Models\Setting::where('key', $param)->first()->value;

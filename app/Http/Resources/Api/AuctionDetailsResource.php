@@ -29,9 +29,11 @@ class AuctionDetailsResource extends JsonResource
             'start_auction_price'         => $this->start_auction_price,
             'current_price'               => $this->current_price,
             'value_of_increment'          =>(int) $this->value_of_increment,
-            'start_date'                  => $this->start_date->format('Y-m-d TH:i:s'),
+//            'start_date'                  => $this->start_date->format('Y-m-d TH:i:s'),
 //            'start_date'                  => $this->start_date->format('l m-d-Y'),
-            'end_date'                    => $this->end_date->format('Y-m-d TH:i:s'),
+//            'end_date'                    => $this->end_date->format('Y-m-d TH:i:s'),
+            'start_date'                  => isset($this->start_date) ? $this->start_date->format('Y-m-d TH:i:s') : null,
+            'end_date'                    => isset($this->end_date) ? $this->end_date->format('Y-m-d TH:i:s') : null,
 
             'remaining_time'              => $this->remaining_time,
             'delivery_charge'             => $this->delivery_charge ,

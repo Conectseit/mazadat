@@ -48,7 +48,7 @@
 
             <div class="col-lg-3 col-md-3">
                 <label>@lang('messages.file_type')</label>
-                <select name="file_name_id[]" class="form-select form-control" required>
+                <select name="file_name_ids[]" class="form-select form-control" required>
 {{--                                    <select name="files[file_name_id]" class="form-select form-control">--}}
                     <option selected disabled > {{trans('messages.select_file_type')}}</option>
                     @foreach ($inspection_file_names as $inspection_file_name)
@@ -61,7 +61,7 @@
             </div>
             <div class="col-lg-3 col-md-3">
                 <label>@lang('messages.select_file')</label>
-                <input type="file" class="form-control" name="image[]"required>
+                <input type="file" class="form-control" name="pdf_files[]"required>
                 {{--                <input type="file" class="form-control" name="files[image]">--}}
                 @error('inspection_report_images')<span
                     style="color: #e81414;">{{ $message }}</span>@enderror
@@ -70,7 +70,7 @@
 
             <div class="col-lg-5 col-md-5">
                 <label>@lang('messages.file_desc')</label>
-                <input type="text" class="form-control" name="description[]" placeholder="@lang('messages.file_desc')" required>
+                <input type="text" class="form-control" name="descriptions[]" placeholder="@lang('messages.file_desc')" required>
                 {{--                <input type="text" class="form-control" name="files[description]"placeholder="@lang('messages.file_desc')">--}}
 
             </div>

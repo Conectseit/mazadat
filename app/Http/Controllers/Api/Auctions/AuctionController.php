@@ -227,21 +227,12 @@ class AuctionController extends PARENT_API
             $data = $request->all();
             $files = $data['files'];
             foreach ($files as $file) {
-
                 $filee = $file['image'];
-                $file_image = time() . '.' . $filee->getClientOriginalExtension();
+                $file_image = time() . '_' . $filee->getClientOriginalName();
                 $file['image']->move('uploads/inspection_report_pdf', $file_image);
 //                    $data[$key] = ['image' => $file_image, 'auction_id' => $auction->id, 'file_name_id' => $request->file_name_id];
-//                    $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
-
                 InspectionImage::create([
-
-                    'auction_id' => $auction->id,
-                    'file_name_id' => $file['file_name_id'],
-                    'image' => $file_image,
-                    'description' => $file['description'],
-
-                ]);
+                    'auction_id' => $auction->id, 'file_name_id' => $file['file_name_id'], 'image' => $file_image, 'description' => $file['description'],]);
             }
 
 
@@ -260,10 +251,7 @@ class AuctionController extends PARENT_API
             if (count($dataa) > 0) DB::table('auction_data')->insert($dataa);
 
 //            $auction_options = AuctionData::Create([
-//                'auction_id'        => $auction->id,
-//                'option_id'         => $request->option_id,
-//                'option_details_id' => $request->option_details_id,
-//            ]);
+//                'auction_id'=> $auction->id,'option_id'=> $request->option_id,'option_details_id' => $request->option_details_id,]);
 
 
             DB::commit();
@@ -307,58 +295,21 @@ class AuctionController extends PARENT_API
                 $auction_images = DB::table('auction_images')->insert($_data);
             }
 
-//======= upload auction inspection_report_images =======
-//            $data = [];
-//            if ($request->hasfile('inspection_report_images')) {
-//                foreach ($auction->inspectionimages as $image) {
-////                    unlink('uploads/auctions/' . $image->image);
-//                    $image->delete();
-//                }
-//                foreach ($request->file('inspection_report_images') as $key => $img) {
-//                    $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
-//                }
-//                $auction_inspection_images = DB::table('inspection_images')->insert($data);
-//            }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//=======1 upload auction inspection_report_files =======
-//            $data = [];
-//            if ($request->hasfile('inspection_report_images')) {
-//                foreach ($auction->inspectionimages as $image) {
-//                    unlink('uploads/inspection_report_pdf/' . $image->image);
-//                    $image->delete();
-//                }
-//                foreach ($request->file('inspection_report_images') as $key => $img) {
-//                    $file = $img;
-//                    $file_image = time() . '.' . $file->getClientOriginalExtension();
-//                    $img->move('uploads/inspection_report_pdf', $file_image);
-//                    $data[$key] = ['image' => $file_image, 'auction_id' => $auction->id, 'file_name_id' => $request->file_name_id];
-//                }
-//                DB::table('inspection_images')->insert($data);
-//            }
-
 
 //2======= upload auction inspection_report_files =======
-            if (is_array($request->files)) {
-
-                $data = $request->all();
+            if (is_array($request['files'])) {
 
                 foreach ($auction->inspectionimages as $file) {
+                   unlink('uploads/inspection_report_pdf/' . $file->image);
                     $file->delete();
                 }
 
-                $files = $data['files'];
-                foreach ($files as $file) {
-                    $filee = $file['image'];
-                    $file_image = time() . '.' . $filee->getClientOriginalExtension();
-                    $file['image']->move('uploads/inspection_report_pdf', $file_image);
+                foreach ($request['files'] as $file) {
 
+                    $file_image = time() . '_' . $file['image']->getClientOriginalName();
+                    $file['image']->move('uploads/inspection_report_pdf', $file_image);
                     InspectionImage::create([
-                        'auction_id' => $auction->id,
-                        'file_name_id' => $file['file_name_id'],
-                        'image' => $file_image,
-                        'description' => $file['description'],
-                    ]);
+                        'auction_id' => $auction->id, 'file_name_id' => $file['file_name_id'], 'image' => $file_image, 'description' => $file['description'],]);
                 }
             }
 
@@ -466,3 +417,34 @@ class AuctionController extends PARENT_API
 
 
 }
+
+
+// teeeest ======= upload auction inspection_report_images =======
+//            $data = [];
+//            if ($request->hasfile('inspection_report_images')) {
+//                foreach ($auction->inspectionimages as $image) {
+////                    unlink('uploads/auctions/' . $image->image);
+//                    $image->delete();
+//                }
+//                foreach ($request->file('inspection_report_images') as $key => $img) {
+//                    $data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $id];
+//                }
+//                $auction_inspection_images = DB::table('inspection_images')->insert($data);
+//            }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//=======1 upload auction inspection_report_files =======
+//            $data = [];
+//            if ($request->hasfile('inspection_report_images')) {
+//                foreach ($auction->inspectionimages as $image) {
+//                    unlink('uploads/inspection_report_pdf/' . $image->image);
+//                    $image->delete();
+//                }
+//                foreach ($request->file('inspection_report_images') as $key => $img) {
+//                    $file = $img;
+//                    $file_image = time() . '.' . $file->getClientOriginalExtension();
+//                    $img->move('uploads/inspection_report_pdf', $file_image);
+//                    $data[$key] = ['image' => $file_image, 'auction_id' => $auction->id, 'file_name_id' => $request->file_name_id];
+//                }
+//                DB::table('inspection_images')->insert($data);
+//            }

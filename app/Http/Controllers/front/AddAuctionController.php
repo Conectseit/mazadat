@@ -14,6 +14,7 @@ use App\Models\InspectionImage;
 use App\Models\Option;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class AddAuctionController extends Controller
 {
@@ -74,33 +75,16 @@ class AddAuctionController extends Controller
 //            DB::table('inspection_images')->insert($dataa);
 
 
+            if ($request->hasfile('pdf_files')) {
+                foreach ($request->file('pdf_files') as $key => $file) {
 
-            $inspection_reports = [];
-
-            $file_name_ids = $request->input('file_name_id');
-            $descriptions = $request->input('description');
-//            dd($descriptions[1]);
-            $images = $request->file('image');
-
-            foreach ($file_name_ids as $key => $val) {
-
-                $file_image = time() . '.' . $images[$key]->getClientOriginalExtension();
-
-                $images[$key]->move('uploads/inspection_report_pdf', $file_image[$key]);
-
-                $inspection_report = new InspectionImage();
-
-                $inspection_report->file_name_id = $file_name_ids[$key];
-                $inspection_report->description = $descriptions[$key];
-                $inspection_report->image = $file_image[$key];
-//                $inspection_report->file_name_id = $file_name_id;
-//                $inspection_report->description = $request->input('description');
-                    $inspection_report->auction_id = $auction->id;
-//                $inspection_report->image = $file_image;
-
-                    $inspection_report->save();
-                    array_push($inspection_reports, $inspection_report);
+                    DB::table('inspection_images')->insert([
+                        'image' =>  uploaded_file($file), 'auction_id' => $auction->id,
+                        'file_name_id'=>$request['file_name_ids'][$key], 'description'=>$request['descriptions'][$key], 'created_at' => now(), 'updated_at' => now()
+                    ]);
+                }
             }
+
 
 
             //======= upload auction options =======

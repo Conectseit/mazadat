@@ -187,3 +187,115 @@
 ////            }
 ////            array_push($inspection_reports, $inspection_report);
 //
+
+
+
+
+
+
+
+
+$inspection_reports = [];
+
+$file_name_ids = $request->input('file_name_id');
+$descriptions = $request->input('description');
+//            dd($descriptions[1]);
+$images = $request->file('image');
+
+foreach ($file_name_ids as $key => $val) {
+
+    $file_image = time() . '.' . $images[$key]->getClientOriginalExtension();
+
+    $images[$key]->move('uploads/inspection_report_pdf', $file_image[$key]);
+
+    $inspection_report = new InspectionImage();
+
+    $inspection_report->file_name_id = $file_name_ids[$key];
+    $inspection_report->description = $descriptions[$key];
+    $inspection_report->image = $file_image[$key];
+//                $inspection_report->file_name_id = $file_name_id;
+//                $inspection_report->description = $request->input('description');
+    $inspection_report->auction_id = $auction->id;
+//                $inspection_report->image = $file_image;
+
+    $inspection_report->save();
+    array_push($inspection_reports, $inspection_report);
+}
+
+
+
+
+
+
+$data = $request->all();
+
+foreach ($data['file_name_ids'] as $key => $file_name_id) {
+    // Handle image upload
+    if ($request->hasFile('files.'.$key)) {
+        $image = $request->file('files.'.$key);
+        dd($request->file('files.'.$key));
+        $filename = time().'.'.$image->getClientOriginalExtension();
+
+        $image->move('uploads/inspection_report_pdf', $filename);
+
+        $data['files'][$key] = $filename;
+
+
+        // Insert row into database
+        DB::table('inspection_images')->insert([
+            'file_name_id' => $file_name_id,
+            'auction_id'   => $auction->id,
+            'description'  => $data['descriptions'][$key],
+            'image' => isset($data['files'][$key]) ? $data['files'][$key] : null,
+        ]);
+    }}
+
+
+//            if ($request->hasfile('pdf_files')) {
+//                foreach ($request->file('pdf_files') as $key => $file) {
+//                    $filename = time() . '_' . $file->getClientOriginalName();
+//                    $file->move('uploads/inspection_report_pdf',$filename);
+//
+//                    // Insert into database
+//                    DB::table('inspection_images')->insert([
+//                        'image' => $filename,
+//                        'auction_id' => $auction->id,
+//                        'file_name_id'=>$data['file_name_ids'][$key], 'description'=>$data['descriptions'][$key], 'created_at' => now(), 'updated_at' => now()
+//                    ]);
+//                }
+//            }
+
+//            $dataa = [];
+//            if ($request->hasfile('files')) {
+//                foreach ($data['files'] as $key => $img) {
+////                    $file=$img;
+////                    $file_image=time().'.'.$file->getClientOriginalExtension();
+////                    $img->move('uploads/inspection_report_pdf',$file_image);
+////                    $dataa[$key] =['image' =>$file_image,'auction_id' => $auction->id,
+////                        'file_name_id'=>$data['file_name_ids'][$key], 'description'  => $data['descriptions'][$key]];
+////
+////                    $dataa[$key] = ['image' => uploaded_file($img), 'auction_id' => $auction->id,'file_name_id'=>$data['file_name_ids'][$key], 'description'=>$data['descriptions'][$key]];
+//
+//                }
+//            }
+//            DB::table('inspection_images')->insert($dataa);
+//
+//            $data = $request->all();
+
+//
+//            foreach ($data['files'] as $key => $img) {
+//                // Handle image upload
+//
+//                $file=$img;
+//                    $file_image=time().'.'.$file->getClientOriginalExtension();
+//                    $img->move('uploads/inspection_report_pdf',$file_image);
+//                $data['files'][$key]=$file_image;
+//
+//                // Insert row into database
+//                DB::table('inspection_images')->insert([
+//                    'file_name_id' => $data['file_name_ids'][$key],
+//                    'auction_id'   => $auction->id,
+//                    'description'  => $data['descriptions'][$key],
+//                    'image' => $data['files'][$key],
+//                ]);
+//            }

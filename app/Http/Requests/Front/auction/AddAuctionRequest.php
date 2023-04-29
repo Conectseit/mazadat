@@ -40,8 +40,8 @@ class AddAuctionRequest extends FormRequest
                         'value_of_increment' => ['required','numeric'],
 
                         'is_appear_location'=> 'required|in:0,1',
-                        'latitude'          => 'required_if:is_appear_location,1|numeric',
-                        'longitude'         => 'required_if:is_appear_location,1|numeric',
+                        'latitude'          => 'required_if:is_appear_location,1',
+                        'longitude'         => 'required_if:is_appear_location,1',
 
 //                        'delivery_charge' => ['required','numeric'],
 //                        'option_ids.*' => ['required'],
@@ -59,7 +59,7 @@ class AddAuctionRequest extends FormRequest
 
 
 
-                        'file_name_id'=>['required'],
+                        'file_name_ids'=>['required'],
 //                        'inspection_report_images' => ['required'],
 //                        'inspection_report_images.*' => ['required','mimes:pdf'],
 
