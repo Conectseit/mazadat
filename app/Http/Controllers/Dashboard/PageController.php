@@ -75,14 +75,18 @@ class PageController extends Controller
 
     public function edit_page_section(Request $request)
     {
+        $request_data = $request->except('image','image_id');
+
         $page_section= PageImage::where('id',$request->image_id)->first();
 
         if ($request->hasFile('image')) {
             if (!is_null($page_section->image)) unlink('uploads/pages/' . $page_section->image);
             $request_data['image'] = uploaded($request->image, 'page');
-            $page_section->update(['image'=> $request_data['image'],'description_ar'=>$request->description_ar,'description_en'=>$request->description_en]);
+//            $page_section->update(['image'=> $request_data['image'],'description_ar'=>$request->description_ar,'description_en'=>$request->description_en]);
 
         }
+        $page_section->update($request_data);
+
         return back()->with('class', 'success')->with('message', trans('messages.messages.updated_successfully'));
     }
 
