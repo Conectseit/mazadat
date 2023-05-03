@@ -212,6 +212,20 @@ class AddAuctionController extends Controller
         }
     }
 
+
+    public function destroy_file(Request $request)
+    {
+        $auctionimage = InspectionImage::find($request->id);
+
+        if (!$auctionimage) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, image is not exists !!']);
+        try {
+            $auctionimage->delete();
+            return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
+        } catch (Exception $e) {
+            return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
+        }
+    }
+
 }
 
 

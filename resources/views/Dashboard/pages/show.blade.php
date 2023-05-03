@@ -15,6 +15,14 @@
     {{--    <script type="text/javascript" src="{{asset('Dashboard/ckeditor/ckeditor.js')}}"></script>--}}
     {{--    <script type="text/javascript" src="{{asset('Dashboard/assets/js/pages/editor_ckeditor.js')}}"></script>--}}
 
+
+    <!-- Theme JS files   class="summernote"  -->
+{{--    <script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/editors/summernote/summernote.min.js')}}"></script>--}}
+{{--    <script type="text/javascript" src="{{asset('Dashboard/assets/js/plugins/forms/styling/uniform.min.js')}}"></script>--}}
+
+{{--    <script type="text/javascript" src="{{asset('Dashboard/assets/js/core/app.js')}}"></script>--}}
+{{--    <script type="text/javascript" src="{{asset('Dashboard/assets/js/pages/editor_summernote.js')}}"></script>--}}
+
 @stop
 @section('breadcrumb')
     <div class="breadcrumb-line">

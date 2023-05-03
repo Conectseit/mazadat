@@ -2,8 +2,16 @@
 @section('title', trans('messages.auction.auction_details'))
 @section('style')
     <style>
-        #map { height: 400px; border: solid 1px; padding-right: 20px; }
-        .carousel-item  {  width: 100%; height: 700px;  }
+        #map {
+            height: 400px;
+            border: solid 1px;
+            padding-right: 20px;
+        }
+
+        .carousel-item {
+            width: 100%;
+            height: 700px;
+        }
     </style>
 @endsection
 
@@ -58,7 +66,6 @@
                                     </a>
                                 </div>
                             @endif
-
                         @endif
                     @endif
                     <div class="col-lg-6 d-flex align-items-center justify-content-end" id="bidMainInfo">
@@ -76,8 +83,8 @@
         </main>
         <section class="ad-info" dir="{{ direction() }}">
             <div class="container">
-                <div class="row"style="margin-bottom:20px ;">
-                    <div class="col-lg-12" >
+                <div class="row" style="margin-bottom:20px ;">
+                    <div class="col-lg-12">
                         <h4 class="ad-title">{{ ($auction->category->$description )}}</h4>
                     </div>
                 </div>
@@ -129,36 +136,43 @@
                                 <div class="details" id="details">
                                     <h5>{{trans('messages.auction_commission')}} :
                                         {{($auction->category->auction_commission)}} ريال</h5>
-                                    <h6 class="group-title text-primary" >  {{trans('messages.auction_commission_note')}}</h6>
+                                    <h6 class="group-title text-primary">  {{trans('messages.auction_commission_note')}}</h6>
                                 </div>
                                 <div class="details" id="details">
                                     <p>
-                                        <i class="fal fa-gavel">  </i>{{trans('messages.auction.start_auction_price')}}
+                                        <i class="fa fa-money"> </i>{{trans('messages.auction.start_auction_price')}}
                                         :{{($auction->start_auction_price)}}
                                     </p>
                                 </div>
                                 <div class="details " id="details">
-                                    <p><i class="fa fa-money">  </i> {{trans('messages.auction.current_price')}}
+                                    <p><i class="fa fa-money"> </i> {{trans('messages.auction.current_price')}}
                                         :{{($auction->current_price)}}</p>
                                 </div>
                                 <div class="details" id="details">
-                                    <p><i class="fal fa-tag">  </i>{{trans('messages.auction.value_of_increment')}}
+                                    <p><i class="fal fa-gavel"> </i>{{trans('messages.auction.value_of_increment')}}
                                         :{{($auction->value_of_increment)}}</p>
 
-                                    <p class="ticket"><i class="fa fa-users">  </i> {{trans('messages.auction.buyers_count')}}
+                                    <p class="ticket"><i
+                                            class="fa fa-users"> </i> {{trans('messages.auction.buyers_count')}}
                                         :{{ ($auction->count_of_buyer ) }}
                                     </p>
-                                    <p class="ticket"><i class="fal fa-user">  </i> {{trans('messages.auction.seller')}} :
-                                        @if($auction->seller->is_company=='person' && $auction->seller->is_appear_name==1)
-                                            {{ ($auction->seller->full_name ) }}
-                                        @else
-                                            {{ ($auction->seller->user_name ) }}
-                                        @endif
-                                    </p>
+
+                                    <br>
+                                    <div class="details" id="details">
+                                        <h5>  <i class="fal fa-user"> </i> {{trans('messages.auction.seller')}}
+                                            :
+                                            @if($auction->seller->is_company=='person' && $auction->seller->is_appear_name==1)
+                                                {{ ($auction->seller->full_name ) }}
+                                            @else
+                                                {{ ($auction->seller->user_name ) }}
+                                            @endif
+
+                                        </h5>
+                                    </div>
 
                                     <div class="details" id="details">
-                                        <h5>{{trans('messages.auction.delivery_charge')}} :
-                                            {{($auction->delivery_charge)}}</h5>
+                                        <h6>{{trans('messages.auction.delivery_charge')}} :
+                                            {{($auction->delivery_charge)}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -226,65 +240,63 @@
                         </div>
                     </div>
                 </div>
-{{--                <hr>--}}
+                {{--                <hr>--}}
                 <div class="more">
                     <div class="terms">
                         <h4>{{ trans('messages.auction.images')}}:</h4>
                     </div>
                     <div class="row">
-{{--                        <div class="col-md-10 col-10 mx-auto">--}}
-{{--                            <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel"--}}
-{{--                                 data-bs-interval="3000">--}}
-{{--                                <div class="carousel-indicators">--}}
-{{--                                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"--}}
-{{--                                            class="active"></button>--}}
-{{--                                    <button type="button" data-bs-target="#carouselExample"--}}
-{{--                                            data-bs-slide-to="1"></button>--}}
-{{--                                    <button type="button" data-bs-target="#carouselExample"--}}
-{{--                                            data-bs-slide-to="2"></button>--}}
-{{--                                </div>--}}
-{{--                                <div class="carousel-inner">--}}
-{{--                                    <div class="carousel-item active">--}}
-{{--                                        <a href="{{$auction->first_image_path}}" data-popup="lightbox">--}}
-{{--                                        <img class="d-block w-100 h-100" src="{{$auction->first_image_path}}" alt="First slide">--}}
-{{--                                        </a>--}}
-{{--                                    </div>--}}
-{{--                                    @foreach($images as $image)--}}
-{{--                                        <div class="carousel-item">--}}
-{{--                                            <a href="{{$image->image_path}}" data-popup="lightbox">--}}
-{{--                                                <img class="d-block w-100 h-100" src="{{$image->image_path}}" alt="image">--}}
-{{--                                            </a>--}}
-{{--                                        </div>--}}
-{{--                                    @endforeach--}}
-{{--                                </div>--}}
-{{--                                <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button"--}}
-{{--                                        data-bs-slide="prev">--}}
-{{--                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
-{{--                                    <span class="visually-hidden">Previous</span>--}}
-{{--                                </button>--}}
-{{--                                <button class="carousel-control-next" data-bs-target="#carouselExample" type="button"--}}
-{{--                                        data-bs-slide="next">--}}
-{{--                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>--}}
-{{--                                    <span class="visually-hidden">Next</span>--}}
-{{--                                </button>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-
-
+                        {{--                        <div class="col-md-10 col-10 mx-auto">--}}
+                        {{--                            <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel"--}}
+                        {{--                                 data-bs-interval="3000">--}}
+                        {{--                                <div class="carousel-indicators">--}}
+                        {{--                                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"--}}
+                        {{--                                            class="active"></button>--}}
+                        {{--                                    <button type="button" data-bs-target="#carouselExample"--}}
+                        {{--                                            data-bs-slide-to="1"></button>--}}
+                        {{--                                    <button type="button" data-bs-target="#carouselExample"--}}
+                        {{--                                            data-bs-slide-to="2"></button>--}}
+                        {{--                                </div>--}}
+                        {{--                                <div class="carousel-inner">--}}
+                        {{--                                    <div class="carousel-item active">--}}
+                        {{--                                        <a href="{{$auction->first_image_path}}" data-popup="lightbox">--}}
+                        {{--                                        <img class="d-block w-100 h-100" src="{{$auction->first_image_path}}" alt="First slide">--}}
+                        {{--                                        </a>--}}
+                        {{--                                    </div>--}}
+                        {{--                                    @foreach($images as $image)--}}
+                        {{--                                        <div class="carousel-item">--}}
+                        {{--                                            <a href="{{$image->image_path}}" data-popup="lightbox">--}}
+                        {{--                                                <img class="d-block w-100 h-100" src="{{$image->image_path}}" alt="image">--}}
+                        {{--                                            </a>--}}
+                        {{--                                        </div>--}}
+                        {{--                                    @endforeach--}}
+                        {{--                                </div>--}}
+                        {{--                                <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button"--}}
+                        {{--                                        data-bs-slide="prev">--}}
+                        {{--                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
+                        {{--                                    <span class="visually-hidden">Previous</span>--}}
+                        {{--                                </button>--}}
+                        {{--                                <button class="carousel-control-next" data-bs-target="#carouselExample" type="button"--}}
+                        {{--                                        data-bs-slide="next">--}}
+                        {{--                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>--}}
+                        {{--                                    <span class="visually-hidden">Next</span>--}}
+                        {{--                                </button>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
 
 
                         <div class="container col-md-12 col-10">
                             <div class="owl-carousel categories-bar-carousel owl-theme">
 
                                 @foreach($images as $image)
-                                    <div class="item"style="height: 150px; width: 150px;">
-                                        <div class="image w-100 h-100" >
-                                            <a class="" href="{{$image->image_path}}"  target="_blank"  data-popup="lightbox">
-                                                <img class="d-block w-100 h-100" src="{{$image->image_path}}" alt="image">
+                                    <div class="item" style="height: 150px; width: 150px;">
+                                        <div class="image w-100 h-100">
+                                            <a class="" href="{{$image->image_path}}" target="_blank"
+                                               data-popup="lightbox">
+                                                <img class="d-block w-100 h-100" src="{{$image->image_path}}"
+                                                     alt="image">
                                             </a>
                                         </div>
-
                                     </div>
                                 @endforeach
                             </div>
@@ -298,18 +310,83 @@
                         <h4>{{ trans('messages.auction.inspection_report_files')}}:</h4>
                     </div>
                     <div class="row">
-                        @foreach($auction->inspectionimages as $image)
-                            <div class="col-md-3 col-6">
-                                {{--                                <p> <i class=" fa fa-file-pdf-o" style="color: red; width: 50px;"></i>@lang('messages.file_name') : {{ isset($image->file->name) ? $image->file->name:'..' }}</p><br>--}}
-                                <p style="color: red;"> @lang('messages.file_type') : {{ isset($image->file->name) ? $image->file->name:'..' }}</p><br>
-                                <p> @lang('messages.file_desc') : {{ isset($image->description) ? $image->description:'..' }}</p><br>
-                                <div class="image" style="width: 65px;height: 80px;">
-                                        <a href="{{route('inspection_view_file',$image->id)}}" target="_blank">
-                                            <img src="{{asset('Front/assets/imgs/pdf-icon.jpg')}}" alt="image" style="width: 100%;">
-                                        </a>
-                                    </div>
+
+                        @if($auction->inspectionimages->count() > 0)
+                            <table class="table datatable" id="inspection_report_images"
+                                   style="font-size: 16px;">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">{{ trans('messages.auction.file') }}</th>
+                                    <th class="text-center">@lang('messages.file_name')</th>
+                                    <th class="text-center">{{ trans('messages.file_desc') }}</th>
+                                    @if(auth()->user()->id == $auction->seller_id)
+                                    <th class="text-center">@lang('messages.form-actions')</th>
+                                    @endif
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($auction->inspectionimages as $file)
+                                    <tr id="inspection_report_image-row-{{ $file->id }}">
+                                        <td class="text-center">
+                                            <a href="{{route('inspection_view_file',$file->id)}}" target="_blank">
+                                                <img src="{{asset('Front/assets/imgs/pdf-icon.jpg')}}" alt="image"
+                                                     style="width: 50px;">
+                                            </a>
+                                        </td>
+                                        <td class="text-center">{{ isset($file->file->name) ? $file->file->name:'..' }}</td>
+                                        <td class="text-center">{{ isset($file->description) ? $file->description:'..' }}</td>
+
+                                        @if(auth()->user()->id == $auction->seller_id)
+                                        <td class="text-center">
+                                            <div class="buttons ">
+                                                {{--                                <a href="{{route('front.auction_show_update',$auction->id)}}"--}}
+                                                {{--                                   class="bid">@lang('messages.update')</a>--}}
+                                                <a data-id="{{ $file->id }}" class="delete-report-file"
+                                                   href="{{route('inspection_view_file',$file->id)}}"
+                                                   style="background-color: #1e3c48;">
+                                                    <i class="icon-database-remove"></i>@lang('messages.delete')
+                                                </a>
+
+                                            </div>
+                                        </td>
+                                        @endif
+
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <div style="text-align: center;"><h3> @lang('messages.no_data_found') </h3>
                             </div>
-                        @endforeach
+                        @endif
+
+
+{{--                            <hr>--}}
+{{--                        @foreach($auction->inspectionimages as $image)--}}
+{{--                            <div class="col-md-3 col-6">--}}
+{{--                                --}}{{--                                <p> <i class=" fa fa-file-pdf-o" style="color: red; width: 50px;"></i>@lang('messages.file_name') : {{ isset($image->file->name) ? $image->file->name:'..' }}</p><br>--}}
+{{--                                <p style="color: red;"> @lang('messages.file_type')--}}
+{{--                                    : {{ isset($image->file->name) ? $image->file->name:'..' }}</p><br>--}}
+{{--                                <p> @lang('messages.file_desc')--}}
+{{--                                    : {{ isset($image->description) ? $image->description:'..' }}</p><br>--}}
+{{--                                <div class="image" style="width: 65px;height: 80px;">--}}
+{{--                                    <a href="{{route('inspection_view_file',$image->id)}}" target="_blank">--}}
+{{--                                        <img src="{{asset('Front/assets/imgs/pdf-icon.jpg')}}" alt="image"--}}
+{{--                                             style="width: 100%;">--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+{{--                            <div class="buttons ">--}}
+{{--                                --}}{{--                                <a href="{{route('front.auction_show_update',$auction->id)}}"--}}
+{{--                                --}}{{--                                   class="bid">@lang('messages.update')</a>--}}
+{{--                                <a data-id="{{ $image->id }}" class="delete-action"--}}
+{{--                                   href="{{route('inspection_view_file',$image->id)}}"--}}
+{{--                                   style="background-color: #1e3c48;">--}}
+{{--                                    <i class="icon-database-remove"></i>@lang('messages.delete')--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
                     </div>
                 </div>
                 <hr>
@@ -337,11 +414,11 @@
                 </div>
 
                 @if($auction->is_appear_location==1)
-                <hr>
-                <div class="terms">
-                    <h4>{{ trans('messages.auction.location')}}:</h4>
-                    <div id="map" class="m-6"></div>
-                </div>
+                    <hr>
+                    <div class="terms">
+                        <h4>{{ trans('messages.auction.location')}}:</h4>
+                        <div id="map" class="m-6"></div>
+                    </div>
                 @endif
             </div>
 
@@ -352,4 +429,51 @@
     @include('front.auctions.parts.auction_location_on_google_map')
     @include('front.auctions.parts.ajax')
     @include('front.auctions.parts.counter', ['auction' => $auction])
+     <script>
+            $('a.delete-report-file').on('click', function (e) {
+                var id = $(this).data('id');
+                var tbody = $('table#inspection_report_images tbody');
+                var count = tbody.data('count');
+
+                e.preventDefault();
+
+                swal({
+                    title: "هل انت متأكد من حذف هذه الفايل ",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            var tbody = $('table#auctionimages tbody');
+                            var count = tbody.data('count');
+
+                            $.ajax({
+                                type: 'POST',
+                                url: '{{ route('front.ajax-delete-auction-file') }}',
+                                data: {id: id, "_token": "{{ csrf_token() }}",},
+                                success: function (response) {
+                                    if (response.deleteStatus) {
+                                        // $('#post-row-'+id).fadeOut(); count = count - 1;tbody.attr('data-count', count);
+                                        $('#inspection_report_image-row-' + id).remove();
+                                        count = count - 1;
+                                        tbody.attr('data-count', count);
+                                        swal(response.message, {icon: "success"});
+                                    } else {
+                                        swal(response.error);
+                                    }
+                                },
+                                error: function (x) {
+                                    crud_handle_server_errors(x);
+                                },
+                                complete: function () {
+                                    if (count == 1) tbody.append(`<tr><td colspan="5"><strong>No data available in table</strong></td></tr>`);
+                                }
+                            });
+                        } else {
+                            swal("تم الغاء العمليه");
+                        }
+                    });
+            });
+        </script>
 @endpush

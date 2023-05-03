@@ -246,7 +246,7 @@
     @include('front.layouts.parts.map')
     @include('front.auctions.parts.add_auction_ajax_get_options')
     <script type="text/javascript">
-        // ======== repeat upload iamge ================================//
+        // ======== repeat upload image ================================//
         $(document).ready(function () {
             $(".btn-success").click(function () {
                 var html = $(".clone").html();

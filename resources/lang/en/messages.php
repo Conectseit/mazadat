@@ -448,6 +448,10 @@ return [
         'bid_now'              => ' Bid now',
         'done_auction'         => 'done auction',
         'addReportFile'        => 'إضافة ملف تقرير فحص',
+        'file'                 => 'file',
+        'delete_file' => 'هل انت متاكد من حذف الملف',
+
+
 
     ],
     'terms' => 'Terms & Conditions ',
