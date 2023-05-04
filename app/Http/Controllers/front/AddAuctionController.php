@@ -183,7 +183,6 @@ class AddAuctionController extends Controller
             }
         }
 
-
         if (count($options) > 0) DB::table('auction_data')->insert($options);
 
         $auction = $auction->update($request_data + ['current_price' => $request->start_auction_price, 'status' => 'not_accepted',]);
@@ -224,6 +223,52 @@ class AddAuctionController extends Controller
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);
         }
+    }
+
+    public function addFile(Request $request)
+    {
+        //======= upload auction inspection_report_images =======
+//        $dataa = [];
+//        if ($request->hasfile('inspection_report_images')) {
+//            foreach ($request->file('inspection_report_images') as $key => $img) {
+//                $file=$img;
+//                $file_image=time().'.'.$file->getClientOriginalExtension();
+//                $img->move('uploads/inspection_report_pdf',$file_image);
+//                $dataa[$key] =['image' =>$file_image,'auction_id' => $request->auction_id,'file_name_id'=>$request->file_name_id,'description'=>$request->description];
+//            }
+//        }
+//
+//        DB::table('inspection_images')->insert($dataa);
+
+
+//
+//            foreach ($request->inspection_report_images as $key => $file) {
+
+//                DB::table('inspection_images')->insert([
+//                    'image' =>  uploaded_file($file),
+//                    'auction_id' => $request->auction_id,
+//                    'file_name_id'=>$request->file_name_id,'description'=>$request->description, 'created_at' => now(), 'updated_at' => now()
+//                ]);
+//            }
+//           $dataa = [];
+//        if ($request->hasfile('inspection_report_images')) {
+//
+//        dd($request->('inspection_report_images'));
+//            foreach ($request->file('inspection_report_images') as $key => $img) {
+//                $file=$img;
+//                $file_image=time().'.'.$file->getClientOriginalExtension();
+//                $img->move('uploads/inspection_report_pdf',$file_image);
+
+                $dataa =['image' =>uploaded_file($request->inspection_report_images),
+                    'auction_id' => $request->auction_id,'file_name_id'=>$request->file_name_id,'description'=>$request->description];
+//            }
+             DB::table('inspection_images')->insert($dataa);
+//        }
+
+
+
+
+        return back()->with('class', 'success')->with('message', trans('messages.messages.added_successfully'));
     }
 
 }

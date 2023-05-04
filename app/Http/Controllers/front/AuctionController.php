@@ -9,6 +9,7 @@ use App\Models\AcceptedAuction;
 use App\Models\Auction;
 use App\Models\AuctionBuyer;
 use App\Models\AuctionImage;
+use App\Models\FileName;
 use App\Models\Notification;
 use App\Models\Option;
 use App\Models\WatchedAuction;
@@ -22,6 +23,8 @@ class AuctionController extends Controller
         $data['auction'] = Auction::where('id', $id)->first();
         $data['images'] = AuctionImage::where(['auction_id' => $id])->get();
 //        $data['options'] = AuctionData::where(['auction_id' => $id])->get();
+        $data['inspection_file_names'] = FileName::all();
+
         return view('front.auctions.auction_details', $data);
     }
 

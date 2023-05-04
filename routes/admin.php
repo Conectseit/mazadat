@@ -85,8 +85,6 @@ Route::group(
                     'inspection_file_names' => InspectionFileNameController::class,
                     'blogs'                 => BlogController::class,
                     'pages'                 => PageController::class,
-
-
                 ]);
 
                 Route::post('/ajax-delete-person', [PersonController::class, 'destroy'])->name('ajax-delete-person');
@@ -121,9 +119,6 @@ Route::group(
                 Route::post('/addReportFile', [AuctionController::class, 'addReportFile'])->name('addReportFile');
 
 
-
-
-
                 Route::get('company/{id?}/unique', [CompanyController::class, 'unique'])->name('company/unique');
                 Route::get('company/{id?}/not_unique', [CompanyController::class, 'not_unique'])->name('company/not_unique');
 
@@ -141,7 +136,6 @@ Route::group(
                 Route::get('auction/{id?}/not_unique', [AuctionController::class, 'not_unique'])->name('auction/not_unique');
 
                 Route::get('download/{extra?}', [AuctionController::class, 'download'])->name('download');
-
 
 
                 Route::get('user/{id?}/ban', [UserController::class, 'ban'])->name('ban');
@@ -167,7 +161,6 @@ Route::group(
 
                 Route::post('ajax_get_options_by_category_id', [AuctionController::class, 'get_options_by_category_id'])->name('ajax_get_options_by_category_id');
                 Route::post('ajax_get_option_details_by_option_id', [AuctionController::class, 'get_option_details_by_option_id'])->name('ajax_get_option_details_by_option_id');
-
 
             });
         });

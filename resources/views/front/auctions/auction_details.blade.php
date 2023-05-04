@@ -310,6 +310,14 @@
                         <h4>{{ trans('messages.auction.inspection_report_files')}}:</h4>
                     </div>
                     <div class="row">
+                            <div>
+                                @if(auth()->user()->id == $auction->seller_id)
+                                <a href="#" class="btn btn-success m-1 p-2"
+                                   data-bs-toggle="modal"
+                                   data-bs-target="#upload-file-modal"><i class="fal fa-plus-circle"> </i>
+                                    {{trans('messages.auction.addReportFile')}}</a>
+                                @endif
+                            </div>
 
                         @if($auction->inspectionimages->count() > 0)
                             <table class="table datatable" id="inspection_report_images"
@@ -423,7 +431,9 @@
             </div>
 
         </section>
+
     </div>
+
 @stop
 @push('scripts')
     @include('front.auctions.parts.auction_location_on_google_map')

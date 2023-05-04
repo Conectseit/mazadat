@@ -129,6 +129,7 @@ Route::group(
         Route::post('ajax/get-options-by-category-id', [AuctionController::class, 'get_options_by_category_id'])->name('front.ajax_get_options_by_category_id');
         Route::post('/ajax-delete-auction', [AddAuctionController::class, 'destroy'])->name('front.ajax-delete-auction');
         Route::post('/ajax-delete-auction-file', [AddAuctionController::class, 'destroy_file'])->name('front.ajax-delete-auction-file');
+        Route::post('/addFile', [AddAuctionController::class, 'addFile'])->name('front.addFile');
 
 
         // ============ // profile ================
