@@ -79,7 +79,7 @@ class NotificationController extends Controller
     }
 
 
-    public function send_single_notify(Request $request)
+    public function send_single_notify(NotifyRequest $request)
     {
         $message = Message::where('text', $request->text)->first();
         $user = User::find($request->user_id);
