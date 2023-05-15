@@ -40,7 +40,7 @@ class NotificationController extends Controller
                     'title' => $message->title,
                     'text' => $request->text,
                 ]);
-                SmsController::sendSms($user->mobile, $request->text);
+//                SmsController::sendSms($user->mobile, $request->text);
             }
             return back()->with('class', 'success')->with('message', trans('messages.messages.send_successfully'));
         }
@@ -106,7 +106,7 @@ class NotificationController extends Controller
             'text' => $request->text,
         ]);
 
-        SmsController::sendSms($user->mobile, $request->text);
+//        SmsController::sendSms($user->mobile, $request->text);
         return back()->with('class', 'success')->with('message', trans('messages.messages.send_successfully'));
     }
 }
