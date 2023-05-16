@@ -2,8 +2,6 @@
 @section('title', trans('messages.blog.blogs'))
 @section('style')
     <style>
-
-
         .title-blog-page .blog-title {
             width: 65%;
         }

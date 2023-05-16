@@ -1,10 +1,6 @@
 @extends('front.layouts.master')
 @section('title', trans('messages.blog.blogs'))
 @section('style')
-    <style>
-    </style>
-
-
 @stop
 @section('content')
     <main class="categories-bar row">
