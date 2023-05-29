@@ -95,11 +95,11 @@
                                                                        <i class="icon-menu9"></i>
                                                                    </a>
                                                                    <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
-                                                                       <li>
-                                                                           <a href="{{ route('auctions.edit',$auction->id) }}">
-                                                                               <i class="icon-database-edit2"></i>@lang('messages.edit')
-                                                                           </a>
-                                                                       </li>
+{{--                                                                       <li>--}}
+{{--                                                                           <a href="{{ route('auctions.edit',$auction->id) }}">--}}
+{{--                                                                               <i class="icon-database-edit2"></i>@lang('messages.edit')--}}
+{{--                                                                           </a>--}}
+{{--                                                                       </li>--}}
                                                                        <li>
                                                                            <a href="{{ route('auctions.show',$auction->id) }}">
                                                                                <i class="icon-eye"></i>@lang('messages.show')
@@ -320,11 +320,11 @@
                                                                 </a>
 
                                                                 <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
-                                                                    <li>
-                                                                        <a href="{{ route('auctions.edit',$auction->id) }}">
-                                                                            <i class="icon-database-edit2"></i>@lang('messages.edit')
-                                                                        </a>
-                                                                    </li>
+{{--                                                                    <li>--}}
+{{--                                                                        <a href="{{ route('auctions.edit',$auction->id) }}">--}}
+{{--                                                                            <i class="icon-database-edit2"></i>@lang('messages.edit')--}}
+{{--                                                                        </a>--}}
+{{--                                                                    </li>--}}
                                                                     <li>
                                                                         <a href="{{ route('auctions.show',$auction->id) }}">
                                                                             <i class="icon-eye"></i>@lang('messages.show')
@@ -387,12 +387,12 @@
                                                                     <i class="icon-menu9"></i>
                                                                 </a>
                                                                 <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
-                                                                    <li>
-                                                                        <a href="{{ route('auctions.edit',$auction->id) }}">
-                                                                            <i
-                                                                                class="icon-database-edit2"></i>@lang('messages.edit')
-                                                                        </a>
-                                                                    </li>
+{{--                                                                    <li>--}}
+{{--                                                                        <a href="{{ route('auctions.edit',$auction->id) }}">--}}
+{{--                                                                            <i--}}
+{{--                                                                                class="icon-database-edit2"></i>@lang('messages.edit')--}}
+{{--                                                                        </a>--}}
+{{--                                                                    </li>--}}
                                                                     <li>
                                                                         <a href="{{ route('auctions.show',$auction->id) }}">
                                                                             <i
