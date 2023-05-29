@@ -47,16 +47,16 @@
                     <div class="panel-body">
                         <div class="box-body">
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="question_ar" placeholder="@lang('messages.question.question_ar') ">
+                                <input type="text" class="form-control" value="" name="question_ar" placeholder="@lang('messages.question.question_ar')"required>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="question_en" placeholder="@lang('messages.question.question_en') ">
+                                <input type="text" class="form-control" value="" name="question_en" placeholder="@lang('messages.question.question_en')"required>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="replay_ar" placeholder="@lang('messages.question.replay_ar') ">
+                                <input type="text" class="form-control" value="" name="replay_ar" placeholder="@lang('messages.question.replay_ar')"required>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="" name="replay_en" placeholder="@lang('messages.question.replay_en') ">
+                                <input type="text" class="form-control" value="" name="replay_en" placeholder="@lang('messages.question.replay_en')"required>
                             </div>
                         </div>
 

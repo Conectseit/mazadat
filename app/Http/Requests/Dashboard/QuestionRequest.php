@@ -33,13 +33,17 @@ class QuestionRequest extends FormRequest
                     return [
                         'question_ar' => 'required',
                         'question_en' => 'required',
+                        'replay_ar' => 'required',
+                        'replay_en' => 'required',
                     ];
                 }
             case 'PUT':
             case 'PATCH': {
                     return [
                         'question_ar' => 'required',
-                        'question_en' => 'required'
+                        'question_en' => 'required',
+                        'replay_ar' => 'required',
+                        'replay_en' => 'required'
 
                     ];
                 }
@@ -51,8 +55,8 @@ class QuestionRequest extends FormRequest
     public function attributes()
     {
         return [
-            'question_ar' => ' الاسم بالعربيه',
-            'question_en' => ' الاسم بالانجليزية',
+            'question_ar' => ' السؤال بالعربيه',
+            'question_en' => ' السؤال بالانجليزية',
         ];
     }
 }
