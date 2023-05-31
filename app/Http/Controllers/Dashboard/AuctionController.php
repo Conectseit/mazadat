@@ -46,6 +46,7 @@ class AuctionController extends Controller
         $data['inspection_file_names'] = FileName::all();
         $data['users'] = User::where('is_verified', 1)->get();
 //        $data['users'] = User::where('type', 'seller')->get();
+
         return view('Dashboard.Auctions.create', $data);
     }
 

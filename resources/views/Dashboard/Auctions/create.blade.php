@@ -288,11 +288,6 @@
                             </div>
                         </div>
 
-
-
-
-
-
 {{--                        <div class="row">--}}
 {{--                            <div class="form-group">--}}
 {{--                                <label>@lang('messages.auction.location'):</label>--}}
@@ -314,8 +309,6 @@
 {{--                        </div>--}}
 
 
-
-
                         <button type="submit" class="btn btn-primary stepy-finish mt-5"
                                 id="save-form-btn">{{ trans('messages.add_and_forward_to_list') }}
                             <i class="icon-check position-right"></i>
@@ -333,6 +326,29 @@
 @section('scripts')
     @include('Dashboard.layouts.parts.ajax_get_options')
     @include('Dashboard.layouts.parts.map')
+
+{{--    <script type="text/javascript">--}}
+{{--        function initMap() {--}}
+{{--            const myLatLng = { lat: 24.7135517, lng: 46.67529569 };--}}
+{{--            const map = new google.maps.Map(document.getElementById("map"), {--}}
+{{--                zoom: 5,--}}
+{{--                center: myLatLng,--}}
+{{--            });--}}
+
+{{--            new google.maps.Marker({--}}
+{{--                position: myLatLng,--}}
+{{--                map,--}}
+{{--                title: "Hello Rajkot!",--}}
+{{--            });--}}
+{{--        }--}}
+
+{{--        window.initMap = initMap;--}}
+{{--    </script>--}}
+
+{{--    <script type="text/javascript"--}}
+{{--            src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" >--}}
+{{--    </script>--}}
+
     @include('Dashboard.Auctions.parts.ajax_get_options_by_category_id')
 {{--    @include('Dashboard.Auctions.parts.image_preview')--}}
 

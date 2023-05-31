@@ -257,7 +257,6 @@ class AuctionController extends PARENT_API
 //            $auction_options = AuctionData::Create([
 //                'auction_id'=> $auction->id,'option_id'=> $request->option_id,'option_details_id' => $request->option_details_id,]);
 
-
             DB::commit();
             return responseJson(true, trans('api.added_your_auction_successfully_wait_until_admin_accept_it'), null); //OK
 

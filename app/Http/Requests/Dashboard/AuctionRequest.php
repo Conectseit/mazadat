@@ -54,8 +54,13 @@ class AuctionRequest extends FormRequest
                         'extra'           => 'sometimes|max:2048',
 //                        'extra'           => 'sometimes|mimes:pdf|max:2048',
 //                        'latitude'         => 'required|numeric',
-//                        'option_ids' => ['required'],
-//                        'option_ids.*' => ['required'],
+                        'option_ids' => ['required'],
+                        'option_ids.*' => ['required'],
+
+
+
+
+
                         'images' => ['required'],
                         'images.*' => ['required'],
 //                        'images.*' => ['required','mimes:png,jpg,jpeg'],

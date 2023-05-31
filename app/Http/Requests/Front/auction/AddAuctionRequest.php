@@ -44,8 +44,8 @@ class AddAuctionRequest extends FormRequest
                         'longitude'         => 'required_if:is_appear_location,1',
 
 //                        'delivery_charge' => ['required','numeric'],
-//                        'option_ids.*' => ['required'],
-
+                        'option_ids' => ['required'],
+                        'option_ids.*' => ['required'],
 //
                         'images' => ['required'],
                         'images.*' => ['required','mimes:png,jpg,jpeg'],
