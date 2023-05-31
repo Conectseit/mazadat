@@ -27,7 +27,7 @@ class AuctionController extends PARENT_API
     {
 
 //        dd( Carbon::now('UTC')(Carbon::now()->format('P'));
-        dd(Carbon::now('Asia/Riyadh')->toTimeString());
+//        dd(Carbon::now('Asia/Riyadh')->toTimeString());
         if ($auction = Auction::where('id', $id)->find($id)) {
             $auction->get();
             return responseJson(true, trans('api.auction_details'), new AuctionDetailsResource($auction));  //OK don-successfully

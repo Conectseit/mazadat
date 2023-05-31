@@ -4,6 +4,7 @@ namespace App\Http\Resources\Api;
 
 use App\Http\Resources\Api\auction\auctionbuyersResource;
 use App\Http\Resources\Api\auction\InspectionImagesResource;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AuctionDetailsResource extends JsonResource
@@ -44,6 +45,7 @@ class AuctionDetailsResource extends JsonResource
             'is_appear_location'          => $this->is_appear_location,
             'latitude'                    =>(float) $this->latitude,
             'longitude'                   => (float)$this->longitude,
+            'saudi_current_time'          => Carbon::now('Asia/Riyadh')->toTimeString(),
 
             'is_watched_auction'          => auth()->guard('api')->check() ? is_watched_auction($this->id) : false,
 
