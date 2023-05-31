@@ -16,6 +16,7 @@ use App\Models\FileName;
 use App\Models\InspectionImage;
 use App\Models\Notification;
 use App\Models\WatchedAuction;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,6 +25,9 @@ class AuctionController extends PARENT_API
 {
     public function auction($id)
     {
+
+//        dd( Carbon::now('UTC')(Carbon::now()->format('P'));
+        dd(Carbon::now('Asia/Riyadh')->toTimeString());
         if ($auction = Auction::where('id', $id)->find($id)) {
             $auction->get();
             return responseJson(true, trans('api.auction_details'), new AuctionDetailsResource($auction));  //OK don-successfully

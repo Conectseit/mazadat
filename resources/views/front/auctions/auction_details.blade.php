@@ -311,12 +311,15 @@
                     </div>
                     <div class="row">
                             <div>
+                                @if(auth()->check())
                                 @if(auth()->user()->id == $auction->seller_id)
                                 <a href="#" class="btn btn-success m-1 p-2"
                                    data-bs-toggle="modal"
                                    data-bs-target="#upload-file-modal"><i class="fal fa-plus-circle"> </i>
                                     {{trans('messages.auction.addReportFile')}}</a>
                                 @endif
+                                @endif
+
                             </div>
 
                         @if($auction->inspectionimages->count() > 0)
@@ -327,9 +330,12 @@
                                     <th class="text-center">{{ trans('messages.auction.file') }}</th>
                                     <th class="text-center">@lang('messages.file_name')</th>
                                     <th class="text-center">{{ trans('messages.file_desc') }}</th>
+                                    @if(auth()->check())
                                     @if(auth()->user()->id == $auction->seller_id)
                                     <th class="text-center">@lang('messages.form-actions')</th>
                                     @endif
+                                    @endif
+
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -343,7 +349,7 @@
                                         </td>
                                         <td class="text-center">{{ isset($file->file->name) ? $file->file->name:'..' }}</td>
                                         <td class="text-center">{{ isset($file->description) ? $file->description:'..' }}</td>
-
+                                        @if(auth()->check())
                                         @if(auth()->user()->id == $auction->seller_id)
                                         <td class="text-center">
                                             <div class="buttons ">
@@ -357,6 +363,7 @@
 
                                             </div>
                                         </td>
+                                        @endif
                                         @endif
 
                                     </tr>
