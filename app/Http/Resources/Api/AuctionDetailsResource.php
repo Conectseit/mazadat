@@ -45,7 +45,7 @@ class AuctionDetailsResource extends JsonResource
             'is_appear_location'          => $this->is_appear_location,
             'latitude'                    =>(float) $this->latitude,
             'longitude'                   => (float)$this->longitude,
-            'saudi_current_time'          => Carbon::now('Asia/Riyadh')->toTimeString(),
+            'saudi_current_time'          => Carbon::now('Asia/Riyadh')->toDateTimeString(),
 
             'is_watched_auction'          => auth()->guard('api')->check() ? is_watched_auction($this->id) : false,
 
