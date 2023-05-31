@@ -19,6 +19,7 @@ class CategoryOptionsResource extends JsonResource
         return [
             'id'       => $this->id,
             'name'     => $this->$name,
+            'is_required' => $this->is_required,
             'option_details'     => OptionDetailsResource::collection($this->option_details),
 
         ];
