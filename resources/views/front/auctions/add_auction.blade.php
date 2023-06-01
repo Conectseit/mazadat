@@ -4,14 +4,9 @@
     <style> #map {
             height: 400px;
         }
-
         .hide {
             visibility: hidden;
         }
-
-        /*.hide-file{*/
-        /*    visibility: hidden;*/
-        /*}*/
     </style>
 
 @endsection
@@ -175,6 +170,7 @@
                                        class="form-label">{{ trans('messages.option.required_options') }}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
+                                {{--    for required input options--}}
                                 <div class="select-inputs-options"></div>
                                 <h6 class="group-title">  {{trans('messages.option_terms')}}</h6>
                             </div>
@@ -186,16 +182,14 @@
                                        class="form-label">{{ trans('messages.option.not_required_options') }}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
+{{--                                for optional input options--}}
                                 <div class="not-options"></div>
                             </div>
                         </div>
                     </div>
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
-
-
                         @include('front.auctions.parts.add_auction_images_and_files')
-
 
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
@@ -207,12 +201,10 @@
                                     <option value="0">{{trans('messages.No')}}</option>
                                     <option value="1" id="yes">{{trans('messages.Yes')}}</option>
                                 </select>
-
                             </div>
                         </div>
 
                         <div class="map" id="map-section" style="display:none;">
-
                             <div class="form-group">
                                 <label>@lang('messages.auction.location'):</label>
                                 <div class="col-lg-12">
@@ -228,7 +220,6 @@
                                 </div>
                             </div>
                         </div>
-
 
                         <div class="sign-btn">
                             <p> {{trans('messages.wait')}}</p>
@@ -257,8 +248,6 @@
             });
         });
     </script>
-
-
 
     <script type="text/javascript">
         // ======== repeat upload file ================================//

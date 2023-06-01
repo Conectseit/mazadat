@@ -212,7 +212,6 @@ class AuctionController extends PARENT_API
             }
             DB::table('auction_images')->insert($_data);
 
-//
 //            //1 ======= upload auction inspection_report_images =======
 //            $data = [];
 //            if ($request->hasfile('inspection_report_images')) {
@@ -239,7 +238,6 @@ class AuctionController extends PARENT_API
                     'auction_id' => $auction->id, 'file_name_id' => $file['file_name_id'], 'image' => $file_image, 'description' => $file['description'],]);
             }
 
-
             //======= upload auction options =======
             $dataa = [];
             if ($request->has('option_details_id')) {
@@ -253,6 +251,21 @@ class AuctionController extends PARENT_API
                 }
             }
             if (count($dataa) > 0) DB::table('auction_data')->insert($dataa);
+
+
+            //======= upload auction optional options =======
+            $dataaa = [];
+            if ($request->has('optional_option_details_id')) {
+                if (is_array($request->optional_option_details_id)) {
+                    foreach ($request->optional_option_details_id as $optional_option_detail_id) {
+                        $dataaa[$optional_option_detail_id] = [
+                            'auction_id' => $auction->id,
+                            'option_details_id' => $optional_option_detail_id // <==== arrrray ??,
+                        ];
+                    }
+                }
+            }
+            if (count($dataaa) > 0) DB::table('auction_data')->insert($dataaa);
 
 //            $auction_options = AuctionData::Create([
 //                'auction_id'=> $auction->id,'option_id'=> $request->option_id,'option_details_id' => $request->option_details_id,]);
@@ -277,7 +290,6 @@ class AuctionController extends PARENT_API
         if ($auction->seller_id != (auth()->user()->id))
             return responseJson(false, trans('api.sorry you cant delete this auction'), null);  //NOT_FOUND
 
-
         DB::beginTransaction();
         try {
             //======= update auction =======
@@ -286,12 +298,11 @@ class AuctionController extends PARENT_API
 //======= upload auction images =======
             $_data = [];
             if ($request->hasfile('images')) {
-
-                foreach ($auction->auctionimages as $image) {
-                    unlink('uploads/auctions/' . $image->image);
-                    $image->delete();
-                }
-
+                if (!is_null($auction->auctionimages))
+                    foreach ($auction->auctionimages as $image) {
+                        unlink('uploads/auctions/'.$image->image);
+                        $image->delete();
+                    }
                 foreach ($request->file('images') as $key => $img) {
                     $_data[$key] = ['image' => uploaded($img, 'auction'), 'auction_id' => $auction->id];
                 }
@@ -301,21 +312,18 @@ class AuctionController extends PARENT_API
 
 //2======= upload auction inspection_report_files =======
             if (is_array($request['files'])) {
-
-                foreach ($auction->inspectionimages as $file) {
-                   unlink('uploads/inspection_report_pdf/' . $file->image);
-                    $file->delete();
-                }
-
+                if (!is_null($auction->inspectionimages))
+                    foreach ($auction->inspectionimages as $file) {
+                        unlink('uploads/inspection_report_pdf/'. $file->image);
+                        $file->delete();
+                    }
                 foreach ($request['files'] as $file) {
-
                     $file_image = time() . '_' . $file['image']->getClientOriginalName();
                     $file['image']->move('uploads/inspection_report_pdf', $file_image);
                     InspectionImage::create([
                         'auction_id' => $auction->id, 'file_name_id' => $file['file_name_id'], 'image' => $file_image, 'description' => $file['description'],]);
                 }
             }
-
 
 //======= upload auction options =======
             $dataa = [];
@@ -332,6 +340,22 @@ class AuctionController extends PARENT_API
                 }
             }
             if (count($dataa) > 0) DB::table('auction_data')->insert($dataa);
+
+
+
+            //======= upload auction optional options =======
+            $dataaa = [];
+            if (is_array($request->optional_option_details_id)) {
+
+                foreach ($request->optional_option_details_id as $optional_option_detail_id) {
+                    $dataaa[$optional_option_detail_id] = [
+                        'auction_id' => $auction->id,
+                        'option_details_id' => $optional_option_detail_id
+                    ];
+                }
+            }
+            if (count($dataaa) > 0) DB::table('auction_data')->insert($dataaa);
+
 
             $auction->update($request_data + ['current_price' => $request->start_auction_price,]);
 

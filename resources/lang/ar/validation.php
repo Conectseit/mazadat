@@ -199,6 +199,7 @@ return [
         'start_date' => 'وقت ابتداء المزاد',
         'end_date' => 'وقت انتهاء المزاد',
         'images.*' => 'صور المزاد',
+        'option_ids' => 'التصنيفات الاجبارية للمزاد',
 
         'passport_expiry_date'         	=> ' تاريخ انتهاء جواز السفر',
         'is_company'         	=> 'النوع',
@@ -211,9 +212,10 @@ return [
         'seller_id'         	=> ' صاحب المزاد',
         'category_id'         	=> 'القسم ',
         'inspection_report_images'         	=> 'ملفات تقارير الفحص ',
-        'images'            	=> 'صورالمزاد ',
-        'option_ids'         	=> 'تصنيفات المزاد ',
-        'file_name_id'         	=> 'ملفات تقارير الفحص',
+        'images'            	=> 'صورالمزاد',
+        'file_name_ids'         	=> 'ملفات تقارير الفحص',
+        'files.*.image'         	=> 'ملفات تقارير الفحص',
+        'option_details_id'         	=> 'التصنيفات الاجبارية للمزاد',
 
 
 

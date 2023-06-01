@@ -156,8 +156,8 @@ return [
     */
 
     'attributes' => [
-        'file_name_id'         	=> 'ملفات تقارير الفحص',
-
+        'file_name_ids'         	=> 'ملفات تقارير الفحص',
+        'option_details_id'         	=> 'التصنيفات الاجبارية للمزاد',
     ],
 
 ];

@@ -38,14 +38,10 @@
     </div>
 </div>
 <hr><br>
-
 <div class="form-group">
     <h4>@lang('messages.auction.inspection_report_files')</h4><br>
-
     <div class=" input-group  clone-file hide-file">
-
         <div class="row control-group" >
-
             <div class="col-lg-3 col-md-3">
                 <label>@lang('messages.file_type')</label>
                 <select name="file_name_ids[]" class="form-select form-control" required>
@@ -67,7 +63,6 @@
                     style="color: #e81414;">{{ $message }}</span>@enderror
             </div>
 
-
             <div class="col-lg-5 col-md-5">
                 <label>@lang('messages.file_desc')</label>
                 <input type="text" class="form-control" name="descriptions[]" placeholder="@lang('messages.file_desc')" required>
@@ -82,8 +77,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
     <div class=" increment-file">
         <div class="input-group-btn border" style="background: green; margin: 5px; padding: 5px; width: 20%;">
@@ -91,10 +84,7 @@
                     class="fal fa-plus-circle"> </i> {{trans('messages.add_another_file')}}</button>
         </div>
     </div>
-
-
-    <hr>
-    <br>
+    <hr><br>
 </div>
 
 
@@ -209,7 +199,6 @@
 {{--                        <input type="file" class="form-control" name="files[image]">--}}
 {{--                    </div>--}}
 
-
 {{--                        <div class="col-lg-4 ">--}}
 {{--                            <input type="text" class="form-control" name="description[]" placeholder="@lang('messages.file_desc')">--}}
 {{--                            <input type="text" class="form-control" name="files[description]" placeholder="@lang('messages.file_desc')">--}}
@@ -227,11 +216,3 @@
 
 {{--    </div><hr><br>--}}
 {{--</div>--}}
-
-
-
-
-
-
-
-

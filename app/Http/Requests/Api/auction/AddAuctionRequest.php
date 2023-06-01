@@ -35,8 +35,8 @@ class AddAuctionRequest extends REQUEST_API_PARENT
             'auction_terms_ar'  => 'required',
             'auction_terms_en'  => 'required',
             'is_appear_location'=> 'required|in:0,1',
-            'latitude'          => 'required_if:is_appear_location,1|numeric',
-            'longitude'         => 'required_if:is_appear_location,1|numeric',
+            'latitude'          => 'required_if:is_appear_location,1',
+            'longitude'         => 'required_if:is_appear_location,1',
 
 //            'latitude'          => 'required',
 //            'longitude'         => 'required',
@@ -44,21 +44,25 @@ class AddAuctionRequest extends REQUEST_API_PARENT
             'start_auction_price'        => ['required','numeric'],
             'value_of_increment'         => ['required','numeric'],
             'allowed_take_photo'         => 'required|in:0,1',
+            'images' => ['required'],
             'images.*'                   => 'sometimes',
+
+
             'option_id.*'                => 'required',
+            'option_details_id'          => 'required',
             'option_details_id.*'        => 'required',
+
 //            'file_name_id'               =>['required'],
 //            'inspection_report_images.*' => 'sometimes',
 
             'files.*'                  => 'required',
 //            'files.*.image'            => ['required','mimes:pdf'],
-            'files.*.image'            => ['required'],
+            'files.*.image'            => ['required','mimes:pdf'],
             'files.*.file_name_id'     => ['required'],
             'files.*.description'      => ['required'],
 
 //            'inspection_report_images' => ['required'], ***********
 //            'inspection_report_images.*' => ['required','mimes:pdf'],
-
 
 //            'inspection_report_images.*' => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
 //            'start_date'        => 'required',

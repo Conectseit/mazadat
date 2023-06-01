@@ -22,7 +22,7 @@
                         $("#options").append('<option value="">اختر </option>');
                         $.each(response.options, function (index, option) {
                             html += `
-                                <select class="form-select form-control"  id="options" name="option_ids[]" aria-label="Default select example" style="margin-bottom: 17px;">
+                                <select class="form-select form-control"  id="options" name="option_ids[]" aria-label="Default select example" style="margin-bottom: 17px;"required>
                                     <option value="${option.id}" >${option.name_ar}</option>
 
                                     <optgroup class="form-select form-control" id="options" value="${option.id}">

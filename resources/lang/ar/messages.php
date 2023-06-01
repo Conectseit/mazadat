@@ -187,8 +187,8 @@ return [
         'add' => 'اضافة تصنيف جديد',
         'edit' => 'تعديل تصنيف ',
         'delete' => 'حذف تصنيف ',
-        'required_options' => ' تصنيفات اجباري علي المستخدم ',
-        'not_required_options' => ' تصنيفات ااختيارية ',
+        'required_options' => ' تصنيفات اجباري علي المستخدم',
+        'not_required_options' => ' تصنيفات اختيارية',
         'last_options' => 'اخر التصنيفات المضافة حديثا',
     ],
     'option_detail' => [

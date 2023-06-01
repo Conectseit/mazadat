@@ -47,8 +47,8 @@ class AuctionRequest extends FormRequest
 
 
                         'is_appear_location'=> 'required|in:0,1',
-                        'latitude'          => 'required_if:is_appear_location,1|numeric',
-                        'longitude'         => 'required_if:is_appear_location,1|numeric',
+                        'latitude'          => 'required_if:is_appear_location,1',
+                        'longitude'         => 'required_if:is_appear_location,1',
 
 //                        'address'         => 'required',
                         'extra'           => 'sometimes|max:2048',
