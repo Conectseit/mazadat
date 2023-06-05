@@ -107,7 +107,6 @@ class AuctionController extends Controller
                     }
                 }
             }
-
 //            if(is_array($request->option_ids))
 //            {
 //                foreach ($request->option_ids as $option_detail_id) {
@@ -372,14 +371,18 @@ class AuctionController extends Controller
 //        $auction->update(['is_accepted'=> 1,'status'=>'on_progress']);
         $auction->update($request->all() + ['is_accepted' => 1]);
 
-
         $text = 'تم قبول مزادك من ادرة موقع مزادات' . "\n";
         $text .= " - سوف يبدأ :  " . $auction->start_date;
-
 
         SmsController::sendSms($auction->seller->mobile, $text);
 
         Notification::sendNewAuctionNotification($auction->id);
+
+        $name='name_' . app()->getLocale();
+        activity()
+            ->performedOn($auction)
+            ->causedBy(auth()->guard('admin')->user())
+            ->log('قام المشرف'.auth()->guard('admin')->user()->full_name.' بقبول مزاد'.($auction->$name));
 
         return redirect()->route('auctions.index')->with('success', trans('messages.accept_auction'));
     }
