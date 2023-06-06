@@ -24,7 +24,7 @@ class OptionResource extends JsonResource
             'option_name'                 => $this->option_detail->option->$name,
             'option_details_name'         => $this->option_detail->$value,
             'option_detail_id'            => $this->option_detail->id,
-            'is_required'                 => $this->is_required,
+            'is_required'                 => $this->option_detail->option->is_required,
 
         ];
     }
