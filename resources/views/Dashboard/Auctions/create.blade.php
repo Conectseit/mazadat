@@ -1,7 +1,9 @@
 @extends('Dashboard.layouts.master')
 @section('title', trans('messages.create-var',['var'=>trans('messages.auction.auction')]))
 @section('style')
-    <style> #map {height: 400px;} </style>
+    <style> #map {
+            height: 400px;
+        } </style>
 @endsection
 @section('breadcrumb')
     <div class="breadcrumb-line">
@@ -40,7 +42,8 @@
 
                         <div class="row">
                             <div class="form-group">
-                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.seller_full_name') }} </label>
+                                <label
+                                    class="col-lg-3 control-label display-block"> {{ trans('messages.auction.seller_full_name') }} </label>
                                 <div class="col-md-6">
                                     <select name="seller_id" class="select">
                                         <option selected disabled>{{trans('messages.select')}}</option>
@@ -94,7 +97,8 @@
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <label class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_category') }} </label>
+                                <label
+                                    class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_category') }} </label>
                                 <div class="col-lg-6">
                                     <select name="category_id" id="category" class="select">
                                         <optgroup label="{{ trans('messages.auction.choose_category') }}}">
@@ -106,10 +110,12 @@
                                     </select>
                                 </div>
                                 @error('category_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
-                            </div><br>
+                            </div>
+                            <br>
                             <div class="form-group mb-4 row">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label for="" class="form-label">{{ trans('messages.option.required_options') }}</label>
+                                    <label for=""
+                                           class="form-label">{{ trans('messages.option.required_options') }}</label>
                                 </div>
                                 <div class="col-lg-10 col-md-9">
                                     <div class="select-inputs-options"></div>
@@ -119,7 +125,8 @@
 
                             <div class="form-group mb-4 row">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label for="" class="form-label">{{ trans('messages.option.not_required_options') }}</label>
+                                    <label for=""
+                                           class="form-label">{{ trans('messages.option.not_required_options') }}</label>
                                 </div>
                                 <div class="col-lg-10 col-md-9">
                                     <div class="not-options"></div>
@@ -174,34 +181,41 @@
                                     {{trans('messages.auction.company')}}
                                 </label>
                             </div>
-                        </div><hr><br>
+                        </div>
+                        <hr>
+                        <br>
 
 
                         <div class="row">
                             <div class="form-group">
                                 <label>@lang('messages.auction.images')</label>
-{{--                                <input type="file" multiple="multiple" id="gallery-photo-add" class="form-control" name="images[]">--}}
-{{--                                <div class="gallery"></div>--}}
+                                {{--                                <input type="file" multiple="multiple" id="gallery-photo-add" class="form-control" name="images[]">--}}
+                                {{--                                <div class="gallery"></div>--}}
 
-                                <div class="input-group control-group increment" >
+                                <div class="input-group control-group increment">
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-lg-6"> اختر صورة : <input type="file" name="images[]" class=" image"><br>
+                                            <div class="col-lg-6"> اختر صورة : <input type="file" name="images[]"
+                                                                                      class=" image"><br>
                                             </div>
                                             <div class="col-lg-6">
-                                                <img src=" {{ asset('uploads/images.jpg') }} " width=" 150px " class="thumbnail image-preview">
+                                                <img src=" {{ asset('uploads/images.jpg') }} " width=" 150px "
+                                                     class="thumbnail image-preview">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="input-group-btn">
-                                    <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>{{trans('messages.add_another_image')}}</button>
+                                    <button class="btn btn-success" type="button"><i
+                                            class="glyphicon glyphicon-plus"></i>{{trans('messages.add_another_image')}}
+                                    </button>
                                 </div>
                                 <div class="clone hide">
                                     <div class="control-group input-group" style="margin-top:10px">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <input type="file"  name="images[]" class="form-control" accept="image/*" onchange="readURL2(this)" >
+                                                <input type="file" name="images[]" class="form-control" accept="image/*"
+                                                       onchange="readURL2(this)">
                                             </div>
                                             <div class="col-lg-4">
                                                 <img id="img-preview2" style="width: 120px ; height:90px"
@@ -209,7 +223,9 @@
                                             </div>
                                             <div class="col-lg-2">
                                                 <div class="input-group-btn">
-                                                    <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> حذف </button>
+                                                    <button class="btn btn-danger" type="button"><i
+                                                            class="glyphicon glyphicon-remove"></i> حذف
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -217,43 +233,51 @@
                                 </div>
                                 @error('images')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
-                        </div><hr><br>
+                        </div>
+                        <hr>
+                        <br>
 
 
                         <div class="row">
                             <h4><i class="icon-file-pdf"> </i> @lang('messages.auction.inspection_report_files')</h4>
-{{--                            <h4><i class="icon-file-pdf"> </i> @lang('messages.auction.additional_file_names')</h4>--}}
+                            {{--                            <h4><i class="icon-file-pdf"> </i> @lang('messages.auction.additional_file_names')</h4>--}}
                             <div class="form-group">
                                 <div class="col-lg-3">
                                     <select name="file_name_id" class="select form-control">
                                         <option selected disabled>{{trans('messages.select_file_name')}}</option>
                                         @foreach ($inspection_file_names as $inspection_file_name)
-                                            <option value="{{ $inspection_file_name->id }}"> {{ $inspection_file_name->name }} </option>
+                                            <option
+                                                value="{{ $inspection_file_name->id }}"> {{ $inspection_file_name->name }} </option>
                                         @endforeach
                                     </select>
                                     @error('file_name_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
                                 </div>
-{{--                                <div class="col-lg-3">--}}
-{{--                                    <input type="file"  class="form-control" name="image">--}}
-{{--                                </div>--}}
+                                {{--                                <div class="col-lg-3">--}}
+                                {{--                                    <input type="file"  class="form-control" name="image">--}}
+                                {{--                                </div>--}}
                                 <div class="col-lg-3">
                                     <input type="file" multiple class="form-control" name="inspection_report_images[]">
                                 </div>
-                                @error('inspection_report_images')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                                @error('inspection_report_images')<span
+                                    style="color: #e81414;">{{ $message }}</span>@enderror
                                 <div class="col-lg-6">
-                                    <input type="text" class="form-control" name="description" placeholder="@lang('messages.file_desc')" required>
+                                    <input type="text" class="form-control" name="description"
+                                           placeholder="@lang('messages.file_desc')" required>
                                 </div>
                                 @error('description')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                         </div>
-                        <hr><br><br>
+                        <hr>
+                        <br><br>
                         <div class="row">
                             <div class="form-group">
                                 <label> <i class="icon-file-pdf"></i> @lang('messages.extra_file_only_to_admin'):
                                 </label>
                                 <input type="file" class="form-control " name="extra">
                             </div>
-                        </div><hr><br>
+                        </div>
+                        <hr>
+                        <br>
 
 
                         <div class="form-group mb-4 row">
@@ -271,44 +295,25 @@
                         </div>
 
                         <div class="map" id="map-section" style="display:none;">
-
-                            <div class="form-group">
-                                <label>@lang('messages.auction.location'):</label>
+                            <div class="form-group row ">
                                 <div class="col-lg-12">
+                                    <input id="searchInput" class=" form-control"
+                                           style="background-color: #FFF;margin-left: -350px;"
+                                           placeholder=" اختر المكان علي الخريطة " name="other">
                                     <div id="map"></div>
                                 </div>
+
                                 <div class="col-lg-6">
-                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude"
-                                           class="form-control hidden d-none">
+                                    <input type="text" id="geo_lat" name="latitude"
+                                           readonly="" placeholder=" latitude" class="form-control">
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude"
-                                           class="form-control hidden d-none">
+                                    <input type="text" id="geo_lng" name="longitude"
+                                           readonly="" placeholder="longitude" class="form-control">
                                 </div>
                             </div>
                         </div>
-
-{{--                        <div class="row">--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label>@lang('messages.auction.location'):</label>--}}
-{{--                                @error('latitude')<span style="color: #e81414;">{{ $message }}</span>@enderror--}}
-
-{{--                                <div class="col-lg-12">--}}
-{{--                                    <input id="searchInput" class=" form-control"--}}
-{{--                                           style="background-color: #FFF;margin-left: -150px;"--}}
-{{--                                           placeholder=" اختر المكان علي الخريطة " name="other">--}}
-{{--                                    <div id="map"></div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-6">--}}
-{{--                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude" class="form-control">--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-6">--}}
-{{--                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude" class="form-control">--}}
-{{--                                </div>--}}
-{{--                            </div><br>--}}
-{{--                        </div>--}}
-
-
+                        <br>
                         <button type="submit" class="btn btn-primary stepy-finish mt-5"
                                 id="save-form-btn">{{ trans('messages.add_and_forward_to_list') }}
                             <i class="icon-check position-right"></i>
@@ -325,40 +330,19 @@
 
 @section('scripts')
     @include('Dashboard.layouts.parts.ajax_get_options')
-    @include('Dashboard.layouts.parts.map')
-
-{{--    <script type="text/javascript">--}}
-{{--        function initMap() {--}}
-{{--            const myLatLng = { lat: 24.7135517, lng: 46.67529569 };--}}
-{{--            const map = new google.maps.Map(document.getElementById("map"), {--}}
-{{--                zoom: 5,--}}
-{{--                center: myLatLng,--}}
-{{--            });--}}
-
-{{--            new google.maps.Marker({--}}
-{{--                position: myLatLng,--}}
-{{--                map,--}}
-{{--                title: "Hello Rajkot!",--}}
-{{--            });--}}
-{{--        }--}}
-
-{{--        window.initMap = initMap;--}}
-{{--    </script>--}}
-
-{{--    <script type="text/javascript"--}}
-{{--            src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" >--}}
-{{--    </script>--}}
+    @include('Maps.map')
+    {{--    @include('Dashboard.layouts.parts.map')--}}
 
     @include('Dashboard.Auctions.parts.ajax_get_options_by_category_id')
-{{--    @include('Dashboard.Auctions.parts.image_preview')--}}
+    {{--    @include('Dashboard.Auctions.parts.image_preview')--}}
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            $(".btn-success").click(function(){
+        $(document).ready(function () {
+            $(".btn-success").click(function () {
                 var html = $(".clone").html();
                 $(".increment").after(html);
             });
-            $("body").on("click",".btn-danger",function(){
+            $("body").on("click", ".btn-danger", function () {
                 $(this).parents(".control-group").remove();
             });
         });
@@ -380,3 +364,25 @@
     </script>
 
 @endsection
+
+{{--                        <div class="map" id="map-section" style="display:none;">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label>@lang('messages.auction.location'):</label>--}}
+{{--                                <div class="col-lg-12">--}}
+{{--                                    <input id="searchInput" class=" form-control"--}}
+{{--                                           style="background-color: #FFF;margin-left: -350px;"--}}
+{{--                                           placeholder=" اختر المكان علي الخريطة " name="other">--}}
+{{--                                    <div id="map"></div>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-lg-6">--}}
+{{--                                    <input type="text" id="geo_lat" name="latitude" readonly="" placeholder=" latitude"--}}
+{{--                                           class="form-control hidden d-none">--}}
+{{--                                </div>--}}
+{{--                                <div class="col-lg-6">--}}
+{{--                                    <input type="text" id="geo_lng" name="longitude" readonly="" placeholder="longitude"--}}
+{{--                                           class="form-control hidden d-none">--}}
+{{--                                </div>--}}
+
+
+{{--                            </div>--}}
+{{--                        </div>--}}

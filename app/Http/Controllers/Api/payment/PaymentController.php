@@ -70,7 +70,7 @@ class PaymentController extends PARENT_API
 
             // in case of failure
             if($request['Result'] != 'Successful')
-                return responseJson(false, trans('api.paid_fail'), null); //ACCEPTED
+                return responseJson(false, trans('api.paid_fail'), null); //failure
 
             $request_data['payment_type'] = 'online';
 

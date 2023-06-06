@@ -1,29 +1,10 @@
-
-{{--for select company--}}
-{{--<script>--}}
-{{--    $('select#is_company').on('change', function(){--}}
-{{--        let is_company = $(this).val();--}}
-{{--        if (is_company)--}}
-{{--        {--}}
-{{--            optionValue = document.getElementById("option").value;--}}
-{{--            if (optionValue === is_company) {--}}
-{{--                document.getElementById("location").style.display = "block";--}}
-{{--            } else {--}}
-{{--                document.getElementById("location").style.display = "none";--}}
-{{--            }--}}
-{{--        } else {--}}
-{{--            document.getElementById("location").style.display = "none";--}}
-{{--        }--}}
-{{--    });--}}
-{{--</script>--}}
-
-
-
-{{--    //Map//--}}
 <script>
     function initMap() {
-        let lat_val = 24.7135517;
-        let lng_val = 46.67529569;
+
+        $latitude = 24.7135517;
+        $longitude = 46.67529569;
+        let lat_val = $latitude;
+        let lng_val = $longitude;
         var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: lat_val, lng: lng_val},
             zoom: 13
@@ -37,7 +18,12 @@
 
         var infowindow = new google.maps.InfoWindow();
 
-        var marker = new google.maps.Marker({ position: {lat: lat_val, lng: lng_val}, map: map, anchorPoint: new google.maps.Point(0, -29), draggable :true });
+        var marker = new google.maps.Marker({
+            position: {lat: lat_val, lng: lng_val},
+            map: map,
+            anchorPoint: new google.maps.Point(0, -29),
+            draggable: true
+        });
 
         google.maps.event.addListener(map, 'click', function (event) {
             document.getElementById("geo_lat").value = event.latLng.lat();
@@ -47,12 +33,14 @@
 
 
         marker.addListener('position_changed', printMarkerLocation);
+
         function printMarkerLocation() {
             document.getElementById('geo_lat').value = marker.position.lat();
             document.getElementById('geo_lng').value = marker.position.lng();
 
             // console.log('Lat: ' + marker.position.lat() + ' Lng:' + marker.position.lng() );
         }
+
         autocomplete.addListener('place_changed', function () {
             infowindow.close();
             marker.setVisible(false);
@@ -103,11 +91,33 @@
             document.getElementById('location').value = place.formatted_address;
         });
     }
-
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks" >
+{{--     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyDdCP49XcVxRLuY-4CYtxHXxnqucDvQLE8" >--}}
 
-// <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyDdCP49XcVxRLuY-4CYtxHXxnqucDvQLE8" >
-
-// <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=AIzaSyBzIZuaInB0vFf3dl0_Ya7r96rywFeZLks" >
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key={{env('GOOGLE_MAP_KEY')}}" >
 </script>
+
+
+
+
+{{--    <script type="text/javascript">--}}
+{{--        function initMap() {--}}
+{{--            const myLatLng = { lat: 24.7135517, lng: 46.67529569 };--}}
+{{--            const map = new google.maps.Map(document.getElementById("map"), {--}}
+{{--                zoom: 5,--}}
+{{--                center: myLatLng,--}}
+{{--            });--}}
+
+{{--            new google.maps.Marker({--}}
+{{--                position: myLatLng,--}}
+{{--                map,--}}
+{{--                title: "Hello Rajkot!",--}}
+{{--            });--}}
+{{--        }--}}
+
+{{--        window.initMap = initMap;--}}
+{{--    </script>--}}
+
+{{--    <script type="text/javascript"--}}
+{{--            src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" >--}}
+{{--    </script>--}}
