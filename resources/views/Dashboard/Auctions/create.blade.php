@@ -331,7 +331,7 @@
 @section('scripts')
     @include('Dashboard.layouts.parts.ajax_get_options')
     @include('Maps.map')
-    {{--    @include('Dashboard.layouts.parts.map')--}}
+{{--        @include('Dashboard.layouts.parts.map')--}}
 
     @include('Dashboard.Auctions.parts.ajax_get_options_by_category_id')
     {{--    @include('Dashboard.Auctions.parts.image_preview')--}}

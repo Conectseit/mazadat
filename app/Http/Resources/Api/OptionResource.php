@@ -19,7 +19,7 @@ class OptionResource extends JsonResource
         $name = 'name_' . app()->getLocale();
         $value = 'value_' . app()->getLocale();
         return [
-//            'option_id'                   => $this->option_detail->option->id,
+            'option_id'                   => $this->option_detail->option->id,
 //            'name'                      => $this->$name,
             'option_name'                 => $this->option_detail->option->$name,
             'option_details_name'         => $this->option_detail->$value,
