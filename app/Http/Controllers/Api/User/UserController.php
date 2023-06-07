@@ -32,9 +32,10 @@ class UserController extends PARENT_API
 //            $user->update(['available_limit' => $available_limit]);
         }
         if ($request->increment) {
-            if ($available_limit >= $wallet) {
-                return responseJson(false, trans('api.Sorry_you_cant_increase_more_your_wallet_less_than_this_value'), null);
+            if ($available_limit +100 > $wallet) {
+                return responseJson(false, trans('api.Sorry_you_cant_increase_more_because_your_wallet_less_than_this_value'), null);
             }
+
             $user->increment('available_limit', 100);
         }
         return responseJson(true, trans('api.updated_successfully'), $user->available_limit); //ACCEPTED
