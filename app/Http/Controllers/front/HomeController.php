@@ -44,8 +44,6 @@ class HomeController extends Controller
         }
     }
 
-
-
 //    public function cronJobAppearAuctions()
 //    {
 //        $auctions = Auction::query()
@@ -97,7 +95,5 @@ class HomeController extends Controller
         }
         return view('front.company.company_auctions',$data);
     }
-
-
 
 }
