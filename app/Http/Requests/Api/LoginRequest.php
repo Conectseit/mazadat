@@ -27,7 +27,7 @@ class LoginRequest extends REQUEST_API_PARENT
         return [
             'email'            => 'required|string',
             'password'         => 'required',
-            'fcm'              => 'required',
+//            'fcm'              => 'required',
         ];
     }
 }
