@@ -65,52 +65,48 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
-                <div class="panel-heading">
+{{--        <div class="col-md-6">--}}
+{{--            <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">--}}
+{{--                <div class="panel-heading">--}}
+{{--                    <!-- Basic layout-->--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-body">--}}
+{{--                            <form action="{{ route('settings.update') }}" method="POST">--}}
+{{--                                {{ csrf_field() }}--}}
+{{--                                {{ method_field('PUT') }}--}}
+{{--                                <div class="form-group row">--}}
+{{--                                    <label class="col-form-label col-lg-4"style="font-size: 17px;">{{ trans('messages.settings.wait_to_verify_new_auction') }}--}}
+{{--                                        :</label>--}}
+{{--                                    <div class="col-lg-8">--}}
+{{--                                        <div  class=" mx-2">--}}
 
-                    <!-- Basic layout-->
-                    <div class="card">
-                        <div class="card-body">
-                            <form action="{{ route('settings.update') }}" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('PUT') }}
+{{--                                            <input type="radio"  name="wait_to_verify_new_auction" value="yes"--}}
+{{--                                                {{ App\Models\Setting::where('key', 'wait_to_verify_new_auction')->first()->value=="yes"?'checked':'' }}  >--}}
+{{--                                            <label for="wait_to_verify_new_auction" style="padding-{{ floating('left', 'right') }}: 25px;">{{trans('messages.Yes')}}</label>--}}
 
+{{--                                            <input type="radio"  name="wait_to_verify_new_auction" value="no"--}}
+{{--                                                {{ App\Models\Setting::where('key', 'wait_to_verify_new_auction')->first()->value=="no"?'checked':'' }}  >--}}
 
+{{--                                            <label for="wait_to_verify_new_auction">{{trans('messages.No')}}</label>--}}
 
-                                <div class="form-group row">
-                                    <label class="col-form-label col-lg-4"style="font-size: 17px;">{{ trans('messages.settings.wait_to_verify_new_auction') }}
-                                        :</label>
-                                    <div class="col-lg-8">
-                                        <div  class=" mx-2">
+{{--                                        </div>--}}
 
-                                            <input type="radio"  name="wait_to_verify_new_auction" value="yes"
-                                                {{ App\Models\Setting::where('key', 'wait_to_verify_new_auction')->first()->value=="yes"?'checked':'' }}  >
-                                            <label for="wait_to_verify_new_auction" style="padding-{{ floating('left', 'right') }}: 25px;">{{trans('messages.Yes')}}</label>
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                                            <input type="radio"  name="wait_to_verify_new_auction" value="no"
-                                                {{ App\Models\Setting::where('key', 'wait_to_verify_new_auction')->first()->value=="no"?'checked':'' }}  >
+{{--                                <div class="text-right">--}}
+{{--                                    <button type="submit" class="btn btn-success"><i--}}
+{{--                                            class="icon-paperplane mr-2"></i>{{ trans('messages.buttons.submit_back_to_list') }}--}}
+{{--                                    </button>--}}
+{{--                                </div>--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <!-- /basic layout -->--}}
 
-                                            <label for="wait_to_verify_new_auction">{{trans('messages.No')}}</label>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="text-right">
-                                    <button type="submit" class="btn btn-success"><i
-                                            class="icon-paperplane mr-2"></i>{{ trans('messages.buttons.submit_back_to_list') }}
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- /basic layout -->
-
-                </div>
-            </div>
-        </div>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
 
 
@@ -350,7 +346,7 @@
         </div>
     </div>
 
-    @include('Dashboard.Settings.app_terms')
+{{--    @include('Dashboard.Settings.app_terms')--}}
 
 
 @stop
