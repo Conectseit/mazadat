@@ -216,6 +216,7 @@ return [
         'file_name_ids'         	=> 'ملفات تقارير الفحص',
         'files.*.image'         	=> 'ملفات تقارير الفحص',
         'option_details_id'         	=> 'التصنيفات الاجبارية للمزاد',
+        'required_option_details_id'    => 'التصنيفات الاجبارية للمزاد',
 
 
 

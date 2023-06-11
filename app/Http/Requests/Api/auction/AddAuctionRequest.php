@@ -50,8 +50,15 @@ class AddAuctionRequest extends REQUEST_API_PARENT
 
 //            'option_id'                  => 'required',
 //            'option_id.*'                => 'required',
-            'option_details_id'          => 'required',
-            'option_details_id.*'        => 'required',
+
+
+//            'option_details_id'          => 'required',
+//            'option_details_id.*'        => 'required',
+
+
+
+            'required_option_details_id'          => 'required',
+            'required_option_details_id.*'        => 'required',
 
 //            'file_name_id'               =>['required'],
 //            'inspection_report_images.*' => 'sometimes',

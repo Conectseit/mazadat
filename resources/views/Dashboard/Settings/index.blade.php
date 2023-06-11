@@ -16,11 +16,8 @@
 
 @section('content')
     @include('Dashboard.layouts.parts.validation_errors')
-
     @include('Dashboard.Settings.main_settings')
     @include('Dashboard.Settings.bank_settings')
-
-
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
@@ -108,11 +105,6 @@
 {{--            </div>--}}
 {{--        </div>--}}
     </div>
-
-
-
-
-
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
@@ -296,8 +288,6 @@
             </div>
         </div>
     </div>
-
-
     <div class="panel panel-flat" dir="{{ direction() }}" style="margin: 20px;">
         <div class="panel-heading">
             <div class="row">
@@ -345,10 +335,7 @@
             </div>
         </div>
     </div>
-
     @include('Dashboard.Settings.app_terms')
-
-
 @stop
 
 @section('scripts')

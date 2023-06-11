@@ -238,20 +238,35 @@ class AuctionController extends PARENT_API
                     'auction_id' => $auction->id, 'file_name_id' => $file['file_name_id'], 'image' => $file_image, 'description' => $file['description'],]);
             }
 
+//            //======= upload auction options =======
+//            $dataa = [];
+//            if ($request->has('option_details_id')) {
+//                if (is_array($request->option_details_id)) {
+//                    foreach ($request->option_details_id as $option_detail_id) {
+//                        $dataa[$option_detail_id] = [
+//                            'auction_id' => $auction->id,
+//                            'option_details_id' => $option_detail_id // <==== arrrray ??,
+//                        ];
+//                    }
+//                }
+//            }
+//            if (count($dataa) > 0) DB::table('auction_data')->insert($dataa);
+
+
+
             //======= upload auction options =======
             $dataa = [];
-            if ($request->has('option_details_id')) {
-                if (is_array($request->option_details_id)) {
-                    foreach ($request->option_details_id as $option_detail_id) {
-                        $dataa[$option_detail_id] = [
+            if ($request->has('required_option_details_id')) {
+                if (is_array($request->required_option_details_id)) {
+                    foreach ($request->required_option_details_id as $required_option_detail_id) {
+                        $dataa[$required_option_detail_id] = [
                             'auction_id' => $auction->id,
-                            'option_details_id' => $option_detail_id // <==== arrrray ??,
+                            'option_details_id' => $required_option_detail_id // <==== arrrray ??,
                         ];
                     }
                 }
             }
             if (count($dataa) > 0) DB::table('auction_data')->insert($dataa);
-
 
             //======= upload auction optional options =======
             $dataaa = [];

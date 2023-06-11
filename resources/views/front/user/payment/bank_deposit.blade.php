@@ -96,6 +96,7 @@
                                     <input type="checkbox" class="form-check-input"
                                            id="accept-terms" name="checkbox" required >
                                 </a>
+                                <br>
                                 <label class="form-check-label" for="accept-terms"
                                        style="color: red;">
                                     {{ trans('messages.send_receipt_note')}} </label>
