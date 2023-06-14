@@ -43,7 +43,12 @@ class UpdateAuctionRequest extends REQUEST_API_PARENT
             'allowed_take_photo'         => 'sometimes|in:0,1',
             'images.*'                   => 'sometimes',
 //            'option_id.*'                => 'sometimes',
-            'option_details_id.*'        => 'sometimes',
+//            'option_details_id.*'        => 'sometimes',
+
+
+            'required_option_details_id'          => 'required',
+            'required_option_details_id.*'        => 'required',
+
 
 //            'inspection_report_images.*' => 'sometimes',
             'files.*'                  => 'sometimes',
