@@ -25,7 +25,6 @@ class AddStartDateAuctionRequest extends FormRequest
     {
 
         return [
-
             'start_date'  => ['required','date','after_or_equal:'. now()->format('Y-m-d H:i:s')],
 //         'start_date'  => 'required|date_format:Y-m-d|after:today',
             'end_date'    =>  'required|date|after:start_date',

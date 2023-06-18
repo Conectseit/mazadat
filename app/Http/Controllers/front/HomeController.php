@@ -96,4 +96,8 @@ class HomeController extends Controller
         return view('front.company.company_auctions',$data);
     }
 
+    public function sitemap()
+    {
+        SitemapGenerator::create(env('SITE_URL'))->writeToFile(public_path('sitemap.xml'));
+    }
 }

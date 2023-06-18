@@ -32,7 +32,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-
 Route::group(['namespace' => 'Api'], function () {
 
     //=========== auth ============
