@@ -1,4 +1,15 @@
 @extends('front.layouts.master')
+
+@section('meta_description')
+    <meta name="description" content="{{App\Models\Setting::where('key',$site_meta_description)->first()->value}}"/>
+@stop
+@section('meta_title')
+    <meta name="title" content="{{App\Models\Setting::where('key',$site_meta_title)->first()->value}}"/>
+@stop
+@section('meta_keywords')
+    <meta name="keywords" content="{{App\Models\Setting::where('key',$site_meta_keywords)->first()->value}}"/>
+@stop
+
 @section('title', trans('messages.home'))
 @section('style')
     <style>

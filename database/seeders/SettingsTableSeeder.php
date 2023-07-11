@@ -82,6 +82,15 @@ class SettingsTableSeeder extends Seeder
 
 //            ['key' => 'auto_active_client', 'value' => 'false', 'created_at' => now(), ], // علشان المستخدمين كلهم يتعملهم active
 //            ['key' => 'distance_search_for_stores', 'value' => '100', 'created_at' => now(), ],
+
+            ['key' => 'site_meta_title_ar', 'value' => '', 'created_at' => now(),],
+            ['key' => 'site_meta_description_ar', 'value' => '', 'created_at' => now(),],
+            ['key' => 'site_meta_keywords_ar', 'value' => '', 'created_at' => now(),],
+            ['key' => 'site_meta_title_en', 'value' => '', 'created_at' => now(),],
+            ['key' => 'site_meta_description_en', 'value' => '', 'created_at' => now(),],
+            ['key' => 'site_meta_keywords_en', 'value' => '', 'created_at' => now(),],
+
+
         ]);
 
     }

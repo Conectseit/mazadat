@@ -336,6 +336,8 @@
         </div>
     </div>
     @include('Dashboard.Settings.app_terms')
+    @include('Dashboard.Settings.meta_settings')
+
 @stop
 
 @section('scripts')

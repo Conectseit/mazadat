@@ -12,6 +12,12 @@
 {{--    //connect--}}
     <meta name="google-site-verification" content="qMicb0sCDsx3OuwzR6qh50sNFTBWEKhNiGIKkLIxvmo" />
 
+    <!-- google-site-verification -->
+    @yield('meta_description')
+    @yield('meta_title')
+    @yield('meta_keywords')
+    <meta name="msvalidate.01" content="AD410815756F6B5FCF147F390A696886" />
+    {{--=======================================================================================--}}
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"

@@ -104,7 +104,7 @@ function checkIfHasRole($role, $crud, $type)
 
 function uploaded($img, $model)
 {
-    $filename =  $model . '_' . Str::random(12) . '_' . date('Y-m-d') . '.' . strtolower($img->getClientOriginalExtension());
+    $filename =  $model . '-' . Str::random(12) . '-' . date('Y-m-d') . '.' . strtolower($img->getClientOriginalExtension());
     if (!file_exists(public_path('uploads/'.Str::plural($model).'/')))
         mkdir(public_path('uploads/'.Str::plural($model).'/'), 0777, true);
     $path = public_path('uploads/'.Str::plural($model).'/');

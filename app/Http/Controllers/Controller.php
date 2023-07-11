@@ -27,6 +27,10 @@ class Controller extends BaseController
             $auction_terms = 'auction_terms_ar';
             $about_app = 'about_app_ar';
 
+            $site_meta_description = 'site_meta_description_ar';
+            $site_meta_title = 'site_meta_title_ar';
+            $site_meta_keywords = 'site_meta_keywords_ar';
+
         } elseif (LaravelLocalization::getCurrentLocale() == 'en') {
             $name = 'name_en';
             $value = 'value_en';
@@ -36,6 +40,10 @@ class Controller extends BaseController
             $conditions_terms = 'conditions_terms_en';
             $auction_terms = 'auction_terms_en';
             $about_app = 'about_app_en';
+
+            $site_meta_description = 'site_meta_description_en';
+            $site_meta_title = 'site_meta_title_en';
+            $site_meta_keywords = 'site_meta_keywords_en';
         }
         View::share('name', $name);
         View::share('value', $value);
@@ -45,6 +53,11 @@ class Controller extends BaseController
         View::share('conditions_terms', $conditions_terms);
         View::share('auction_terms', $auction_terms);
         View::share('about_app', $about_app);
+
+        View::share('site_meta_description', $site_meta_description);
+        View::share('site_meta_title', $site_meta_title);
+        View::share('site_meta_keywords', $site_meta_keywords);
+
 
     }
 }
