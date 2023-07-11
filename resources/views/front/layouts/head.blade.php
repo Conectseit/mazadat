@@ -51,8 +51,9 @@
 {{--    <link rel="icon" href="{{asset('Front/assets/imgs/mini-logo.svg')}}">--}}
 
 
-    <title>Mazadat/@yield('title')</title>
-{{--    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">--}}
+    <title>{{trans('messages.site_name')}}/@yield('title')</title>
+
+    {{--    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">--}}
 
     {{--    // dropzon --}}
 

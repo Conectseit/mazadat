@@ -38,6 +38,7 @@ return [
     'bio'                   => ' Bio',
     'activation_code_is_var'  => 'Activation code is : :code',
     'personal_image'          => '  personal image',
+    'site_name'             => 'Mzadat website',
 
 //    'active'                => 'فعال',
 
