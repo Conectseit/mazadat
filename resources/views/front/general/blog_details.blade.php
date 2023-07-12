@@ -1,6 +1,6 @@
 @extends('front.layouts.master')
 {{--@section('title', trans('messages.blog.blogs'))--}}
-@section('title', trans('back.blog.blogs').'/'.$blog_details->$name)
+@section('title', trans('messages.blog.blogs').'/'.$blog_details->$name)
 
 @section('style')
     <style>

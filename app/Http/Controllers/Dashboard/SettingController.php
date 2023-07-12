@@ -121,6 +121,27 @@ class SettingController extends Controller
             Setting::where('key', 'online_payment_conditions_en')->update(['value' => $request->online_payment_conditions_en]);
 
 
+//========================Meta =================================================
+        if ($request->site_meta_title_ar)
+            Setting::where('key', 'site_meta_title_ar')->update(['value' => $request->site_meta_title_ar]);
+
+        if ($request->site_meta_description_ar)
+            Setting::where('key', 'site_meta_description_ar')->update(['value' => $request->site_meta_description_ar]);
+
+        if ($request->site_meta_keywords_ar)
+            Setting::where('key', 'site_meta_keywords_ar')->update(['value' => $request->site_meta_keywords_ar]);
+
+        if ($request->site_meta_title_en)
+            Setting::where('key', 'site_meta_title_en')->update(['value' => $request->site_meta_title_en]);
+
+        if ($request->site_meta_description_en)
+            Setting::where('key', 'site_meta_description_en')->update(['value' => $request->site_meta_description_en]);
+
+        if ($request->site_meta_keywords_en)
+            Setting::where('key', 'site_meta_keywords_en')->update(['value' => $request->site_meta_keywords_en]);
+//=========================================================================
+
+
 //        if ($request->min_time_unit)
 //            Setting::where('key', 'min_time_unit')->update(['value' => $request->min_time_unit]);
 //
