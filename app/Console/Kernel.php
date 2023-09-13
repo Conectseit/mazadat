@@ -2,7 +2,9 @@
 
 namespace App\Console;
 
-use App\Console\Commands\Update_auction_satus;
+use App\Console\Commands\MakeActivationCodeExpire;
+use App\Console\Commands\UpdateAuctionSatusDone;
+use App\Console\Commands\UpdateAuctionsStatusOnProgress;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\App;
@@ -18,12 +20,19 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('auction:update_status')->everyMinute();
+
+        $schedule->command('auction:update_status_on_progress');
+        $schedule->command('auction:update_status_done');
+//        $schedule->command('auction:update_status_done')->everyMinute();
+//        $schedule->command('user:make-activation_code-expired');
+
     }
 
     protected $commands = [
         //
-        Update_auction_satus::class ,
+        UpdateAuctionsStatusOnProgress::class ,
+        UpdateAuctionSatusDone::class ,
+//        MakeActivationCodeExpire::class ,
     ];
     /**
      * Register the commands for the application.
@@ -37,9 +46,6 @@ class Kernel extends ConsoleKernel
         require base_path('routes/console.php');
 
     }
-
-
-
 
 
 }

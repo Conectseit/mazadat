@@ -2,25 +2,25 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Auction;
+use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 
-class Update_auction_satus extends Command
+class MakeActivationCodeExpire extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'auction:update_status';
+    protected $signature = 'user:make-activation_code-expired';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'update auction status after end_date';
+    protected $description = 'make-activation_code-expired';
 
     /**
      * Create a new command instance.
@@ -39,12 +39,11 @@ class Update_auction_satus extends Command
      */
     public function handle()
     {
-        //return Command::SUCCESS;
-//        )
-        $on_progress_auctions= Auction::where('status','on_progress')->where('end_date','<' ,Carbon::now())->get();
-        foreach ($on_progress_auctions as $on_progress_auction){
-            $on_progress_auction->update(['status'=>'done']);
+        $users = User::where('activation_code' ,'!=',null)->get();
+        foreach ($users as $user)
+        {
+            if(Carbon::parse($user->send_at)->addMinutes(5) < now())
+                $user->update(['activation_code'=>null]);
         }
-
     }
 }
