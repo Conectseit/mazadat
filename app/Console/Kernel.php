@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('auction:update_status_on_progress');
         $schedule->command('auction:update_status_done');
 //        $schedule->command('auction:update_status_done')->everyMinute();
-//        $schedule->command('user:make-activation_code-expired');
+        $schedule->command('user:make-activation_code-expired');
 
     }
 
@@ -32,7 +32,7 @@ class Kernel extends ConsoleKernel
         //
         UpdateAuctionsStatusOnProgress::class ,
         UpdateAuctionSatusDone::class ,
-//        MakeActivationCodeExpire::class ,
+        MakeActivationCodeExpire::class ,
     ];
     /**
      * Register the commands for the application.

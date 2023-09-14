@@ -44,11 +44,6 @@ class HomeController extends Controller
         }
     }
 
-
-
-
-
-
 //    public function cronJobAppearAuctions()
 //    {
 //        $auctions = Auction::query()
