@@ -83,12 +83,17 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="slider_image" style="height: 100%; width: 100%;">
-                                <a href="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
-                                   data-popup="lightbox">
-                                    <img class="d-block"
-                                         src="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
+                                <a href="#" class="carousel-image-link" data-bs-toggle="modal"
+                                   data-bs-target="#imageModal" data-image="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}">
+                                    <img class="d-block" src="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"
                                          alt="First slide" style="height: 100%; width: 100%;">
                                 </a>
+                                {{--<a href="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"--}}
+                                   {{--data-popup="lightbox">--}}
+                                    {{--<img class="d-block"--}}
+                                         {{--src="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"--}}
+                                         {{--alt="First slide" style="height: 100%; width: 100%;">--}}
+                                {{--</a>--}}
                             </div>
 
                             <div class="carousel-caption d-none d-md-block">
@@ -99,10 +104,15 @@
                             @if(!$loop->first)
                                 <div class="carousel-item">
                                     <div class="slider_image" style="height: 100%; width: 100%;">
-                                        <a href="{{ $advertisement->ImagePath }}" data-popup="lightbox">
+                                        <a href="#" class="carousel-image-link" data-bs-toggle="modal"
+                                           data-bs-target="#imageModal" data-image="{{ $advertisement->ImagePath }}">
                                             <img class="d-block" src="{{ $advertisement->ImagePath }}"
                                                  alt="Second slide" style="height: 100%; width: 100%;">
                                         </a>
+                                        {{--<a href="{{ $advertisement->ImagePath }}" data-popup="lightbox">--}}
+                                            {{--<img class="d-block" src="{{ $advertisement->ImagePath }}"--}}
+                                                 {{--alt="Second slide" style="height: 100%; width: 100%;">--}}
+                                        {{--</a>--}}
                                     </div>
                                     <div class="carousel-caption d-none d-md-block">
                                         <h4>{{ isNullable($advertisement->$name) }}</h4>
@@ -126,6 +136,32 @@
             </div>
         </div>
     </center>
+
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 800px !important;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img id="modalImage" src="" alt="Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        $(document).ready(function () {
+            $('.carousel-image-link').click(function () {
+                var imagePath = $(this).data('image');
+                $('#modalImage').attr('src', imagePath);
+            });
+
+            // Optional: Clear modal image when the modal is hidden
+            $('#imageModal').on('hidden.bs.modal', function () {
+                $('#modalImage').attr('src', '');
+            });
+        });
+
+    </script>
+
     <div class="category-items-page">
         <section class="categories" dir="{{ direction() }}">
             <div class="container">

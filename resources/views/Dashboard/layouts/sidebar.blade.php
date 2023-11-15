@@ -1,12 +1,13 @@
 <ul class="navigation navigation-main navigation-accordion" style="font-family: Sans-Serif; background-color: #26A69A;">
 
     <!-- Main -->
-    <li class="navigation-header"><span style="font-family: Sans-Serif; color: white">Main</span> <i class="icon-menu"
-                                                                                                     title="Main pages"></i>
+    <li class="navigation-header">
+        <span style="font-family: Sans-Serif; color: black">Main</span>
+        <i class="icon-menu" title="Main pages" style="color: #d1915c;"></i>
     </li>
     <li class="active">
         <a href="{{route('admin.home')}}">
-            <i class="icon-home4"></i>
+            <i class="icon-home4" style="color: #d1915c;"></i>
             <span style="font-family: Sans-Serif;">{{ trans('messages.home') }}</span>
         </a>
     </li>
@@ -14,89 +15,176 @@
     @if(permission_route_checker('persons'.'.index') )
         <li>
             <a href="#">
-                <i class="icon-people"></i>
-                <span
-                    style="font-family: Sans-Serif; color: white">{{ trans('messages.person.persons') }} / {{ trans('messages.company.companies') }}</span></a>
+                <i class="icon-people" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">{{ trans('messages.person.persons') }}
+                    / {{ trans('messages.company.companies') }}</span>
+            </a>
             <ul>
-                <li><a href="{{route('persons.index')}}">{{ trans('messages.person.persons') }}</a></li>
-                <li><a href="{{route('companies.index')}}">{{ trans('messages.company.companies') }}</a></li>
+                <li>
+                    <a href="{{route('persons.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.person.persons') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('companies.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.company.companies') }}
+                    </a>
+                </li>
 
             </ul>
         </li>
     @endif
     @if(permission_route_checker('auctions'.'.index') )
         <li>
-            <a href="#"><i class="icon-stack2"></i>
-                <span style="font-family: Sans-Serif; color: white">{{ trans('messages.auction.auctions') }}</span></a>
+            <a href="#">
+                <i class="icon-stack2" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">{{ trans('messages.auction.auctions') }}</span>
+            </a>
             <ul>
-                <li><a href="{{route('auctions.index')}}">{{ trans('messages.all') }}</a></li>
-                <li><a href="{{route('auctions.create')}}">{{ trans('messages.add') }}</a></li>
+                <li>
+                    <a href="{{route('auctions.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.all') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('auctions.create')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.add') }}
+                    </a>
+                </li>
 
             </ul>
         </li>
     @endif
     @if(permission_route_checker('categories'.'.index') )
         <li>
-            <a href="#"><i class="icon-archive"></i>
-                <span style="font-family: Sans-Serif; color: white"> {{ trans('messages.category.categories') }} </span></a>
+            <a href="#">
+                <i class="icon-archive" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.category.categories') }}
+                </span>
+            </a>
             <ul>
-                <li><a href="{{route('categories.index')}}">{{ trans('messages.all') }}</a></li>
-                <li><a href="{{route('categories.create')}}"> {{ trans('messages.add') }}</a></li>
+                <li>
+                    <a href="{{route('categories.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.all') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('categories.create')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.add') }}
+                    </a>
+                </li>
             </ul>
         </li>
     @endif
     @if(permission_route_checker('advertisements'.'.index') )
         <li>
-            <a href="#"><i class="icon-archive"></i>
-                <span
-                    style="font-family: Sans-Serif; color: white"> {{ trans('messages.advertisement.advertisements') }} </span></a>
+            <a href="#">
+                <i class="icon-dice" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.advertisement.advertisements') }}
+                </span>
+            </a>
             <ul>
-                <li><a href="{{route('advertisements.index')}}">{{ trans('messages.all') }}</a></li>
-                <li><a href="{{route('advertisements.create')}}"> {{ trans('messages.add') }}</a></li>
+                <li>
+                    <a href="{{route('advertisements.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.all') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('advertisements.create')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.add') }}
+                    </a>
+                </li>
             </ul>
         </li>
     @endif
 
     @if(permission_route_checker('nationalities'.'.index') )
         <li>
-            <a href="#"><i class="icon-archive"></i>
-                <span
-                    style="font-family: Sans-Serif; color: white"> {{ trans('messages.nationality.nationalities') }} </span></a>
+            <a href="#">
+                <i class="icon-person" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.nationality.nationalities') }}
+                </span>
+            </a>
             <ul>
-                <li><a href="{{route('nationalities.index')}}">{{ trans('messages.all') }}</a></li>
-                <li><a href="{{route('nationalities.create')}}"> {{ trans('messages.add') }}</a></li>
+                <li>
+                    <a href="{{route('nationalities.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.all') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('nationalities.create')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.add') }}
+                    </a>
+                </li>
             </ul>
         </li>
     @endif
     @if(permission_route_checker('countries'.'.index') )
         <li>
-            <a href="#"><i class="icon-archive"></i>
-                <span
-                    style="font-family: Sans-Serif; color: white"> {{ trans('messages.country.countries') }} </span></a>
+            <a href="#">
+                <i class="icon-earth" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.country.countries') }}
+                </span>
+            </a>
             <ul>
-                <li><a href="{{route('countries.index')}}">{{ trans('messages.all') }}</a></li>
-                <li><a href="{{route('countries.create')}}"> {{ trans('messages.add') }}</a></li>
+                <li>
+                    <a href="{{route('countries.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.all') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('countries.create')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.add') }}
+                    </a>
+                </li>
             </ul>
         </li>
     @endif
     @if(permission_route_checker('cities'.'.index') )
         <li>
-            <a href="#"><i class="icon-archive"></i>
-                <span style="font-family: Sans-Serif; color: white"> {{ trans('messages.city.cities') }} </span></a>
+            <a href="#">
+                <i class="icon-city" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.city.cities') }}
+                </span>
+            </a>
             <ul>
-                <li><a href="{{route('cities.index')}}">{{ trans('messages.all') }}</a></li>
-                <li><a href="{{route('cities.create')}}"> {{ trans('messages.add') }}</a></li>
+                <li>
+                    <a href="{{route('cities.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.all') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('cities.create')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.add') }}
+                    </a>
+                </li>
             </ul>
         </li>
     @endif
     @if(permission_route_checker('messages'.'.index') )
         <li>
-            <a href="#"><i class="icon-archive"></i>
-                <span
-                    style="font-family: Sans-Serif; color: white"> {{ trans('messages.message.messages') }} </span></a>
+            <a href="#">
+                <i class="icon-bubbles" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.message.messages') }}
+                </span>
+            </a>
             <ul>
-                <li><a href="{{route('messages.index')}}">{{ trans('messages.all') }}</a></li>
-                <li><a href="{{route('messages.create')}}"> {{ trans('messages.add') }}</a></li>
+                <li>
+                    <a href="{{route('messages.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.all') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('messages.create')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.add') }}
+                    </a>
+                </li>
             </ul>
         </li>
     @endif
@@ -104,80 +192,147 @@
         <li class="nav-item">
             <a href="{{ route('inspection_file_names.index') }}"
                class="nav-link {{ request()->route()->getName() == 'dashboard.inspection_file_names.index' ? 'active' : '' }}">
-                <i class="icon-file-pdf"></i> <span
-                    style="font-family: Sans-Serif; color: white">{{ trans('messages.auction.additional_file_names') }}</span></a>
+                <i class="icon-file-pdf" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.auction.additional_file_names') }}
+                </span>
+            </a>
         </li>
     @endif
     @if(permission_route_checker('admins'.'.index') )
         <li>
-            <a href="#"><i class="icon-people"></i>
-                <span style="font-family: Sans-Serif; color: white">{{ trans('messages.admin.admins') }}</span></a>
+            <a href="#">
+                <i class="icon-people" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.admin.admins') }}
+                </span>
+            </a>
             <ul>
-                <li><a href="{{route('admins.index')}}">{{ trans('messages.all') }}</a></li>
-                <li><a href="{{route('admins.index')}}">{{ trans('messages.add') }}</a></li>
+                <li>
+                    <a href="{{route('admins.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.all') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('admins.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.add') }}
+                    </a>
+                </li>
 
             </ul>
         </li>
     @endif
     @if(permission_route_checker('permissions'.'.index') )
         <li>
-            <a href="#"><i class="icon-archive"></i>
-                <span
-                    style="font-family: Sans-Serif; color: white"> {{ trans('messages.permission.permissions') }} </span></a>
+            <a href="#">
+                <i class="icon-eye-blocked" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.permission.permissions') }}
+                </span>
+            </a>
             <ul>
-                <li><a href="{{route('permissions.index')}}">{{ trans('messages.all') }}</a></li>
-                <li><a href="{{route('permissions.create')}}"> {{ trans('messages.add') }}</a></li>
+                <li>
+                    <a href="{{route('permissions.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.all') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('permissions.create')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.add') }}
+                    </a>
+                </li>
             </ul>
         </li>
     @endif
     @if(permission_route_checker('activities'.'.index') )
         <li>
-            <a href="#"><i class="icon-people"></i>
-                <span
-                    style="font-family: Sans-Serif; color: white">{{ trans('messages.activity.activities') }}</span></a>
+            <a href="#">
+                <i class="icon-people" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.activity.activities') }}
+                </span>
+            </a>
             <ul>
-                <li><a href="{{route('activities.index')}}">{{ trans('messages.all') }}</a></li>
+                <li>
+                    <a href="{{route('activities.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.all') }}
+                    </a>
+                </li>
 
             </ul>
         </li>
     @endif
     @if(permission_route_checker('transactions'.'.index') )
         <li>
-            <a href="#"><i class="icon-archive"></i>
-                <span
-                    style="font-family: Sans-Serif; color: white"> {{ trans('messages.transaction.transactions') }} </span></a>
+            <a href="#">
+                <i class="icon-paypal" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.transaction.transactions') }}
+                </span>
+            </a>
             <ul>
-                <li><a href="{{ route('transactions.index')}}">{{ trans('messages.show') }}</a></li>
+                <li>
+                    <a href="{{ route('transactions.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.show') }}
+                    </a>
+                </li>
             </ul>
         </li>
     @endif
     @if(permission_route_checker('financial_reviews'.'.index') )
         <li>
-            <a href="#"><i class="icon-archive"></i>
-                <span
-                    style="font-family: Sans-Serif; color: white"> {{ trans('messages.financial_reviews') }} </span></a>
+            <a href="#">
+                <i class="icon-finder" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.financial_reviews') }} </span>
+            </a>
             <ul>
-                <li><a href="{{ route('financial_reviews.index')}}">{{ trans('messages.show') }}</a></li>
+                <li>
+                    <a href="{{ route('financial_reviews.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.show') }}
+                    </a>
+                </li>
             </ul>
         </li>
     @endif
     @if(permission_route_checker('blogs'.'.index') )
         <li>
-            <a href="#"><i class="icon-archive"></i>
-                <span> {{ trans('messages.blog.blogs') }} </span></a>
+            <a href="#">
+                <i class="icon-blog" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black"> {{ trans('messages.blog.blogs') }} </span></a>
             <ul>
-                <li><a href="{{route('blogs.index')}}">{{ trans('messages.all') }}</a></li>
-                <li><a href="{{route('blogs.create')}}"> {{ trans('messages.add') }}</a></li>
+                <li>
+                    <a href="{{route('blogs.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.all') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('blogs.create')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.add') }}
+                    </a>
+                </li>
             </ul>
         </li>
     @endif
     @if(permission_route_checker('pages'.'.index') )
         <li>
-            <a href="#"><i class="icon-archive"></i>
-                <span> {{ trans('messages.page.pages') }} </span></a>
+            <a href="#">
+                <i class="icon-page-break" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.page.pages') }}
+                </span>
+            </a>
             <ul>
-                <li><a href="{{route('pages.index')}}">{{ trans('messages.all') }}</a></li>
-                <li><a href="{{route('pages.create')}}"> {{ trans('messages.add') }}</a></li>
+                <li>
+                    <a href="{{route('pages.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.all') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('pages.create')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.add') }}
+                    </a>
+                </li>
             </ul>
         </li>
     @endif
@@ -185,25 +340,33 @@
         <li class="nav-item">
             <a href="{{ route('contacts.index') }}"
                class="nav-link {{ request()->route()->getName() == 'dashboard.contact.index' ? 'active' : '' }}">
-                <i class="icon-comment-discussion"></i> <span
-                    style="font-family: Sans-Serif; color: white">{{ trans('messages.contact.contacts') }}</span></a>
+                <i class="icon-comment-discussion" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.contact.contacts') }}
+                </span>
+            </a>
         </li>
     @endif
     @if(permission_route_checker('questions'.'.index') )
         <li>
             @inject('questions', 'App\Models\CommonQuestion')
-            <a href="{{ route('questions.index') }}"><i class="icon-list-unordered"></i>
-                <span style="font-family: Sans-Serif; color: white">{{trans('messages.question.questions')}}
-                <span class="label bg-blue-400">{{$questions->count()}}</span>
-            </span></a>
+            <a href="{{ route('questions.index') }}">
+                <i class="icon-list-unordered" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">{{trans('messages.question.questions')}}
+                    <span class="label bg-blue-400">{{$questions->count()}}</span>
+                </span>
+            </a>
         </li>
     @endif
     @if(permission_route_checker('settings'.'.index') )
         <li class="nav-item">
             <a href="{{ route('settings.index') }}"
-               class="nav-link {{ request()->route()->getName() == 'dashboard.setting.index' ? 'active' : '' }}"><i
-                    class="icon-gear"></i>
-                <span style="font-family: Sans-Serif; color: white">{{ trans('messages.settings.settings') }}</span></a>
+               class="nav-link {{ request()->route()->getName() == 'dashboard.setting.index' ? 'active' : '' }}">
+                <i class="icon-gear" style="color: #d1915c;"></i>
+                <span style="font-family: Sans-Serif; color: black">
+                    {{ trans('messages.settings.settings') }}
+                </span>
+            </a>
         </li>
     @endif
 

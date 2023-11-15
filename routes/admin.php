@@ -62,23 +62,23 @@ Route::group(
 
             Route::group(['middleware' => 'CheckPermission'], function () {
                 Route::resources([
-                    'persons'        => PersonController::class,
-                    'companies'      => CompanyController::class,
-                    'categories'     => CategoryController::class,
-                    'options'        => OptionController::class,
-                    'option_details' => OptionDetailController::class,
-                    'messages'       => MessageController::class,
-                    'cities'         => CityController::class,
-                    'countries'      => CountryController::class,
-                    'nationalities'  => NationalityController::class,
-                    'questions'      => QuestionController::class,
-                    'contacts'       => ContactController::class,
-                    'auctions'       => AuctionController::class,
-                    'auction_data'   => AuctionDataController::class,
-                    'permissions'    => PermissionController::class,
-                    'admins'         => AdminController::class,
-                    'activities'     => ActivityController::class,
-                    'transactions'   => TransactionController::class,
+                    'persons'               => PersonController::class,
+                    'companies'             => CompanyController::class,
+                    'categories'            => CategoryController::class,
+                    'options'               => OptionController::class,
+                    'option_details'        => OptionDetailController::class,
+                    'messages'              => MessageController::class,
+                    'cities'                => CityController::class,
+                    'countries'             => CountryController::class,
+                    'nationalities'         => NationalityController::class,
+                    'questions'             => QuestionController::class,
+                    'contacts'              => ContactController::class,
+                    'auctions'              => AuctionController::class,
+                    'auction_data'          => AuctionDataController::class,
+                    'permissions'           => PermissionController::class,
+                    'admins'                => AdminController::class,
+                    'activities'            => ActivityController::class,
+                    'transactions'          => TransactionController::class,
                     'financial_reviews'     => FinancialReviewsController::class,
                     'advertisements'        => AdvertisementController::class,
                     'inspection_file_names' => InspectionFileNameController::class,
@@ -86,77 +86,77 @@ Route::group(
                     'pages'                 => PageController::class,
                 ]);
 
-                Route::post('/ajax-delete-person', [PersonController::class, 'destroy'])->name('ajax-delete-person');
-                Route::post('/ajax-delete-company', [CompanyController::class, 'destroy'])->name('ajax-delete-company');
-                Route::post('/ajax-delete-category', [CategoryController::class, 'destroy'])->name('ajax-delete-category');
-                Route::post('/ajax-delete-option', [OptionController::class, 'destroy'])->name('ajax-delete-option');
-                Route::post('/ajax-delete-option_detail', [OptionDetailController::class, 'destroy'])->name('ajax-delete-option_detail');
-                Route::post('/ajax-delete-nationality', [NationalityController::class, 'destroy'])->name('ajax-delete-nationality');
-                Route::post('/ajax-delete-country', [CountryController::class, 'destroy'])->name('ajax-delete-country');
-                Route::post('/ajax-delete-city', [CityController::class, 'destroy'])->name('ajax-delete-city');
-                Route::post('/ajax-delete-auction', [AuctionController::class, 'destroy'])->name('ajax-delete-auction');
+                Route::post('/ajax-delete-person',          [PersonController::class, 'destroy'])->name('ajax-delete-person');
+                Route::post('/ajax-delete-company',         [CompanyController::class, 'destroy'])->name('ajax-delete-company');
+                Route::post('/ajax-delete-category',        [CategoryController::class, 'destroy'])->name('ajax-delete-category');
+                Route::post('/ajax-delete-option',          [OptionController::class, 'destroy'])->name('ajax-delete-option');
+                Route::post('/ajax-delete-option_detail',   [OptionDetailController::class, 'destroy'])->name('ajax-delete-option_detail');
+                Route::post('/ajax-delete-nationality',     [NationalityController::class, 'destroy'])->name('ajax-delete-nationality');
+                Route::post('/ajax-delete-country',         [CountryController::class, 'destroy'])->name('ajax-delete-country');
+                Route::post('/ajax-delete-city',            [CityController::class, 'destroy'])->name('ajax-delete-city');
+                Route::post('/ajax-delete-auction',         [AuctionController::class, 'destroy'])->name('ajax-delete-auction');
 
-                Route::post('/ajax-delete-image', [AuctionController::class, 'deleteImage'])->name('ajax-delete-image');
+                Route::post('/ajax-delete-image',           [AuctionController::class, 'deleteImage'])->name('ajax-delete-image');
                 Route::post('/ajax-delete-inspection_report_image', [AuctionController::class, 'deleteInspectionReportImage'])->name('ajax-delete-inspection-report-image');
-                Route::post('/ajax-delete-auction_data', [AuctionDataController::class, 'delete_auction_data'])->name('ajax-delete-auction_data');
+                Route::post('/ajax-delete-auction_data',    [AuctionDataController::class, 'delete_auction_data'])->name('ajax-delete-auction_data');
 
-                Route::post('/ajax-delete-permission', [PermissionController::class, 'destroy'])->name('ajax-delete-permission');
-                Route::post('/ajax-delete-admin', [AdminController::class, 'destroy'])->name('ajax-delete-admin');
-                Route::post('/ajax-delete-activity', [ActivityController::class, 'destroy'])->name('ajax-delete-activity');
-                Route::post('/ajax-delete-contact', [ContactController::class, 'destroy'])->name('ajax-delete-contact');
-                Route::post('/ajax-delete-question', [QuestionController::class, 'destroy'])->name('ajax-delete-question');
-                Route::post('/ajax-delete-transaction', [TransactionController::class, 'destroy'])->name('ajax-delete-transaction');
-                Route::post('/ajax-delete-advertisement', [AdvertisementController::class, 'destroy'])->name('ajax-delete-advertisement');
-                Route::post('/ajax-delete-file_name', [InspectionFileNameController::class, 'destroy'])->name('ajax-delete-filename');
-                Route::post('/ajax-delete-message', [MessageController::class, 'destroy'])->name('ajax-delete-message');
-                Route::post('/ajax-delete-blog', [BlogController::class, 'destroy'])->name('ajax-delete-blog');
-                Route::post('/ajax-delete-page', [PageController::class, 'destroy'])->name('ajax-delete-page');
-                Route::post('/ajax-delete-page-image', [PageController::class, 'deleteImage'])->name('ajax-delete-page-image');
+                Route::post('/ajax-delete-permission',      [PermissionController::class, 'destroy'])->name('ajax-delete-permission');
+                Route::post('/ajax-delete-admin',           [AdminController::class, 'destroy'])->name('ajax-delete-admin');
+                Route::post('/ajax-delete-activity',        [ActivityController::class, 'destroy'])->name('ajax-delete-activity');
+                Route::post('/ajax-delete-contact',         [ContactController::class, 'destroy'])->name('ajax-delete-contact');
+                Route::post('/ajax-delete-question',        [QuestionController::class, 'destroy'])->name('ajax-delete-question');
+                Route::post('/ajax-delete-transaction',     [TransactionController::class, 'destroy'])->name('ajax-delete-transaction');
+                Route::post('/ajax-delete-advertisement',   [AdvertisementController::class, 'destroy'])->name('ajax-delete-advertisement');
+                Route::post('/ajax-delete-file_name',       [InspectionFileNameController::class, 'destroy'])->name('ajax-delete-filename');
+                Route::post('/ajax-delete-message',         [MessageController::class, 'destroy'])->name('ajax-delete-message');
+                Route::post('/ajax-delete-blog',            [BlogController::class, 'destroy'])->name('ajax-delete-blog');
+                Route::post('/ajax-delete-page',            [PageController::class, 'destroy'])->name('ajax-delete-page');
+                Route::post('/ajax-delete-page-image',      [PageController::class, 'deleteImage'])->name('ajax-delete-page-image');
 
-                Route::post('/addImage', [PageController::class, 'addPageImage'])->name('addPageImage');
-                Route::any('/edit_page_section', [PageController::class, 'edit_page_section'])->name('edit_page_section');
+                Route::post('/addImage',                    [PageController::class, 'addPageImage'])->name('addPageImage');
+                Route::any('/edit_page_section',            [PageController::class, 'edit_page_section'])->name('edit_page_section');
 
-                Route::post('/addReportFile', [AuctionController::class, 'addReportFile'])->name('addReportFile');
+                Route::post('/addReportFile',               [AuctionController::class, 'addReportFile'])->name('addReportFile');
 
 
-                Route::get('company/{id?}/unique', [CompanyController::class, 'unique'])->name('company/unique');
-                Route::get('company/{id?}/not_unique', [CompanyController::class, 'not_unique'])->name('company/not_unique');
+                Route::get('company/{id?}/unique',          [CompanyController::class, 'unique'])->name('company/unique');
+                Route::get('company/{id?}/not_unique',      [CompanyController::class, 'not_unique'])->name('company/not_unique');
 
-                Route::get('company/{id?}/accept', [CompanyController::class, 'accept'])->name('company/accept');
-                Route::get('company/{id?}/not_accept', [CompanyController::class, 'not_accept'])->name('company/not_accept');
+                Route::get('company/{id?}/accept',          [CompanyController::class, 'accept'])->name('company/accept');
+                Route::get('company/{id?}/not_accept',      [CompanyController::class, 'not_accept'])->name('company/not_accept');
 
-                Route::get('person/{id?}/verified', [PersonController::class, 'verified'])->name('verified');
-                Route::get('person/{id?}/not_verified', [PersonController::class, 'not_verified'])->name('not_verified');
+                Route::get('person/{id?}/verified',         [PersonController::class, 'verified'])->name('verified');
+                Route::get('person/{id?}/not_verified',     [PersonController::class, 'not_verified'])->name('not_verified');
 
 
 //                Route::get('auction/{id?}/done', [AuctionController::class, 'make_done'])->name('auction/done');
-                Route::any('auction/{id?}/accept', [AuctionController::class, 'accept'])->name('auction/accept');
-                Route::get('auction/{id?}/need_update', [AuctionController::class, 'need_update'])->name('auction/need_update');
-                Route::get('auction/{id?}/unique', [AuctionController::class, 'unique'])->name('auction/unique');
-                Route::get('auction/{id?}/not_unique', [AuctionController::class, 'not_unique'])->name('auction/not_unique');
+                Route::any('auction/{id?}/accept',          [AuctionController::class, 'accept'])->name('auction/accept');
+                Route::get('auction/{id?}/need_update',     [AuctionController::class, 'need_update'])->name('auction/need_update');
+                Route::get('auction/{id?}/unique',          [AuctionController::class, 'unique'])->name('auction/unique');
+                Route::get('auction/{id?}/not_unique',      [AuctionController::class, 'not_unique'])->name('auction/not_unique');
 
-                Route::get('download/{extra?}', [AuctionController::class, 'download'])->name('download');
-
-
-                Route::get('user/{id?}/ban', [UserController::class, 'ban'])->name('ban');
-                Route::get('user/{id?}/not_ban', [UserController::class, 'not_ban'])->name('not_ban');
-
-                Route::post('user/{id?}/add_balance', [UserController::class, 'add_balance'])->name('add_balance');
+                Route::get('download/{extra?}',             [AuctionController::class, 'download'])->name('download');
 
 
-                Route::get('transaction/{id?}/verify', [FinancialReviewsController::class, 'verify'])->name('transaction/verify');
-                Route::get('transaction/{id?}/not_verify', [FinancialReviewsController::class, 'not_verify'])->name('transaction/not_verify');
+                Route::get('user/{id?}/ban',                [UserController::class, 'ban'])->name('ban');
+                Route::get('user/{id?}/not_ban',            [UserController::class, 'not_ban'])->name('not_ban');
+
+                Route::post('user/{id?}/add_balance',       [UserController::class, 'add_balance'])->name('add_balance');
+
+
+                Route::get('transaction/{id?}/verify',      [FinancialReviewsController::class, 'verify'])->name('transaction/verify');
+                Route::get('transaction/{id?}/not_verify',  [FinancialReviewsController::class, 'not_verify'])->name('transaction/not_verify');
                 Route::any('transaction/{id?}/verify_cash', [FinancialReviewsController::class, 'verify_cash'])->name('transaction/verify_cash');
 
-                Route::get('transaction/{id?}/accept', [TransactionController::class, 'accept'])->name('transaction/accept');
-                Route::get('transaction/{id?}/not_accept', [TransactionController::class, 'not_accept'])->name('transaction/not_accept');
+                Route::get('transaction/{id?}/accept',      [TransactionController::class, 'accept'])->name('transaction/accept');
+                Route::get('transaction/{id?}/not_accept',  [TransactionController::class, 'not_accept'])->name('transaction/not_accept');
 
-                Route::post('send_single_notify', [NotificationController::class, 'send_single_notify'])->name('send_single_notify');
-                Route::post('send_notify_to_all_users', [NotificationController::class, 'send_notify_to_all_users'])->name('send_notify_to_all_users');
+                Route::post('send_single_notify',           [NotificationController::class, 'send_single_notify'])->name('send_single_notify');
+                Route::post('send_notify_to_all_users',     [NotificationController::class, 'send_notify_to_all_users'])->name('send_notify_to_all_users');
                 Route::post('send_notify_to_all_companies', [NotificationController::class, 'send_notify_to_all_companies'])->name('send_notify_to_all_companies');
 
-                Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
-                Route::put('settings/update', [SettingController::class, 'update'])->name('settings.update');
+                Route::get('settings',                      [SettingController::class, 'index'])->name('settings.index');
+                Route::put('settings/update',               [SettingController::class, 'update'])->name('settings.update');
                 Route::put('add_option_detail/{option_id}', [CategoryController::class, 'add_option_detail'])->name('add_option_detail');
 
                 Route::post('ajax_get_options_by_category_id', [AuctionController::class, 'get_options_by_category_id'])->name('ajax_get_options_by_category_id');

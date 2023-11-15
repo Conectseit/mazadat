@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
 use App\Models\Auction;
 use App\Models\Category;
+use App\Models\Country;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -59,6 +60,7 @@ class HomeController extends Controller
     public function home()
     {
         $data['categories'] = Category::all();
+        $data['countries'] = Country::all();
         $data['advertisements'] = Advertisement::all();
         return view('front.home',$data);
     }

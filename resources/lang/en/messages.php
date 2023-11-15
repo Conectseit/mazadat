@@ -806,8 +806,8 @@ return [
     'developers' => 'Developed By Connect Developers Team',
     'copy_right' => ' All Copyrights Reserved for Connect -©2022 ',
 
-    'copy_rights' => '© All Copyrights Reserved ',
-    'for' => 'for Connect -©2022',
+    'copy_rights' => '© All Copyrights Reserved MZADAT',
+
 
 
 

@@ -12,7 +12,7 @@
                 <div class="row">
                     @forelse($unique_auction as $auction)
                         <div class="col-lg-4 col-md-6" id="viewItem">
-                            <div class="card gallery-card" id="itemCard">
+                            <div class="card gallery-card" id="itemCard" style="height: 367px !important;">
                                 <a href="{{route('front.auction_details',$auction->id)}}" class="image">
                                     <div class="overlay"></div>
                                     <img src="{{$auction->first_image_path}}" alt="card-img">

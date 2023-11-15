@@ -122,12 +122,7 @@
         <div class="container">
             <div class="row" dir="{{ direction() }}">
                 <div class="col-lg-6">
-                    <p style="font-weight: bold; font-size: 14px;">{{trans('messages.copy_rights')}}
-                        <b>
-                            <img class="img-circle" src="{{asset('Front/assets/imgs/icon/dark-logoo.png')}}"
-                                 alt="mastercard" style="width: 100px; height: 35px;">
-                        </b>
-                        {{trans('messages.for')}}
+                    <p style="font-weight: bold; font-size: 14px;">{{trans('messages.copy_rights')}} - {{ date('Y') }}
                     </p>
                 </div>
                 <div class="col-lg-6">

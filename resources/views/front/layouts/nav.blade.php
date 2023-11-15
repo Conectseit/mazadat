@@ -186,4 +186,39 @@
             dayList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         show3.innerHTML = dayList[day];
     });
+
 </script>
+@section('script')
+    <script>
+
+        $(document).ready(function () {
+
+            function updateFormValidation() {
+                var contactNameHasValue    = $('#contact_name').val().trim();
+                var contactMobileHasValue  = $('#contact_mobile').val().trim();
+                var contactEmailHasValue   = $('#contact_email').val().trim();
+                var contactMessageHasValue = $('#contact_message').val().trim();
+
+                if (contactNameHasValue && contactMobileHasValue && contactEmailHasValue &&contactMessageHasValue) {
+                    // If any input has a value, remove required and enable properties
+                    $('#contact_name, #contact_mobile, #contact_email, #contact_message').prop('required', false);
+                    $('#submit_contact_model').prop('disabled', false);
+                } else {
+                    // If all inputs are empty, set required and disable properties
+                    $('#contact_name, #contact_mobile, #contact_email, #contact_message').prop('required', true);
+                    $('#submit_contact_model').prop('disabled', true);
+                }
+            }
+
+            // Bind the function to the shown.bs.modal event of #contact-modal
+            $('#contact-modal').on('shown.bs.modal', function () {
+                $('#contact_name, #contact_mobile, #contact_email, #contact_message').prop('required', true);
+                $('#submit_contact_model').prop('disabled', true);
+            });
+
+
+            // Bind the function to the input event of other input fields
+            $(' #contact_name, #contact_mobile, #contact_email, #contact_message').on('input', updateFormValidation);
+        });
+
+    </script>

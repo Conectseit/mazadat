@@ -14,7 +14,17 @@
 
 <div class="navigation-wrapper collapse" id="user-nav">
     <ul class="navigation">
-        <li><a href="{{ route('admin.showProfile') }}"><i class="icon-user-plus"></i> <span>My profile</span></a></li>
-        <li><a href="{{ route('admin.logout') }}"><i class="icon-switch2"></i> <span>Logout</span></a></li>
+        <li>
+            <a href="{{ route('admin.showProfile') }}"
+               style="font-family: Sans-Serif; color: black">
+                <i class="icon-user-plus"></i> <span>My profile</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.logout') }}"
+               style="font-family: Sans-Serif; color: black">
+                <i class="icon-switch2"></i> <span>Logout</span>
+            </a>
+        </li>
     </ul>
 </div>
