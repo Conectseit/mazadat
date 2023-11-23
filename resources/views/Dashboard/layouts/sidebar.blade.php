@@ -6,16 +6,16 @@
         <i class="icon-menu" title="Main pages" style="color: #d1915c;"></i>
     </li>
     <li class="active">
-        <a href="{{route('admin.home')}}">
-            <i class="icon-home4" style="color: #d1915c;"></i>
+        <a href="{{route('admin.home')}}" style="color: #d1915c;">
+            <i class="icon-home4"></i>
             <span style="font-family: Sans-Serif;">{{ trans('messages.home') }}</span>
         </a>
     </li>
 
     @if(permission_route_checker('persons'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-people" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-people"></i>
                 <span style="font-family: Sans-Serif; color: black">{{ trans('messages.person.persons') }}
                     / {{ trans('messages.company.companies') }}</span>
             </a>
@@ -36,8 +36,8 @@
     @endif
     @if(permission_route_checker('auctions'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-stack2" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-stack2"></i>
                 <span style="font-family: Sans-Serif; color: black">{{ trans('messages.auction.auctions') }}</span>
             </a>
             <ul>
@@ -57,8 +57,8 @@
     @endif
     @if(permission_route_checker('categories'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-archive" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-archive"></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.category.categories') }}
                 </span>
@@ -79,8 +79,8 @@
     @endif
     @if(permission_route_checker('advertisements'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-dice" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-dice"></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.advertisement.advertisements') }}
                 </span>
@@ -102,8 +102,8 @@
 
     @if(permission_route_checker('nationalities'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-person" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-person"></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.nationality.nationalities') }}
                 </span>
@@ -124,8 +124,8 @@
     @endif
     @if(permission_route_checker('countries'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-earth" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-earth"></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.country.countries') }}
                 </span>
@@ -146,8 +146,8 @@
     @endif
     @if(permission_route_checker('cities'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-city" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-city"></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.city.cities') }}
                 </span>
@@ -168,8 +168,8 @@
     @endif
     @if(permission_route_checker('messages'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-bubbles" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-bubbles"></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.message.messages') }}
                 </span>
@@ -190,9 +190,9 @@
     @endif
     @if(permission_route_checker('inspection_file_names'.'.index') )
         <li class="nav-item">
-            <a href="{{ route('inspection_file_names.index') }}"
+            <a href="{{ route('inspection_file_names.index') }}" style="color: #d1915c;"
                class="nav-link {{ request()->route()->getName() == 'dashboard.inspection_file_names.index' ? 'active' : '' }}">
-                <i class="icon-file-pdf" style="color: #d1915c;"></i>
+                <i class="icon-file-pdf" ></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.auction.additional_file_names') }}
                 </span>
@@ -201,8 +201,8 @@
     @endif
     @if(permission_route_checker('admins'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-people" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-people"></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.admin.admins') }}
                 </span>
@@ -224,8 +224,8 @@
     @endif
     @if(permission_route_checker('permissions'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-eye-blocked" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-eye-blocked" ></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.permission.permissions') }}
                 </span>
@@ -246,8 +246,8 @@
     @endif
     @if(permission_route_checker('activities'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-people" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-people"></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.activity.activities') }}
                 </span>
@@ -264,8 +264,8 @@
     @endif
     @if(permission_route_checker('transactions'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-paypal" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-paypal" ></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.transaction.transactions') }}
                 </span>
@@ -281,8 +281,8 @@
     @endif
     @if(permission_route_checker('financial_reviews'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-finder" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-finder" ></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.financial_reviews') }} </span>
             </a>
@@ -297,8 +297,8 @@
     @endif
     @if(permission_route_checker('blogs'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-blog" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-blog"></i>
                 <span style="font-family: Sans-Serif; color: black"> {{ trans('messages.blog.blogs') }} </span></a>
             <ul>
                 <li>
@@ -316,8 +316,8 @@
     @endif
     @if(permission_route_checker('pages'.'.index') )
         <li>
-            <a href="#">
-                <i class="icon-page-break" style="color: #d1915c;"></i>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-page-break"></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.page.pages') }}
                 </span>
@@ -338,9 +338,9 @@
     @endif
     @if(permission_route_checker('contacts'.'.index') )
         <li class="nav-item">
-            <a href="{{ route('contacts.index') }}"
+            <a href="{{ route('contacts.index') }}" style="color: #d1915c;"
                class="nav-link {{ request()->route()->getName() == 'dashboard.contact.index' ? 'active' : '' }}">
-                <i class="icon-comment-discussion" style="color: #d1915c;"></i>
+                <i class="icon-comment-discussion"></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.contact.contacts') }}
                 </span>
@@ -350,8 +350,8 @@
     @if(permission_route_checker('questions'.'.index') )
         <li>
             @inject('questions', 'App\Models\CommonQuestion')
-            <a href="{{ route('questions.index') }}">
-                <i class="icon-list-unordered" style="color: #d1915c;"></i>
+            <a href="{{ route('questions.index') }}" style="color: #d1915c;">
+                <i class="icon-list-unordered"></i>
                 <span style="font-family: Sans-Serif; color: black">{{trans('messages.question.questions')}}
                     <span class="label bg-blue-400">{{$questions->count()}}</span>
                 </span>
@@ -360,9 +360,9 @@
     @endif
     @if(permission_route_checker('settings'.'.index') )
         <li class="nav-item">
-            <a href="{{ route('settings.index') }}"
+            <a href="{{ route('settings.index') }}" style="color: #d1915c;"
                class="nav-link {{ request()->route()->getName() == 'dashboard.setting.index' ? 'active' : '' }}">
-                <i class="icon-gear" style="color: #d1915c;"></i>
+                <i class="icon-gear"></i>
                 <span style="font-family: Sans-Serif; color: black">
                     {{ trans('messages.settings.settings') }}
                 </span>

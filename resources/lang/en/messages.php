@@ -804,7 +804,7 @@ return [
     'accept_terms' => ' you should accept conditions & terms',
     'please_complete_your_address_details' => 'Please Complete Your Account Details  ',
     'developers' => 'Developed By Connect Developers Team',
-    'copy_right' => ' All Copyrights Reserved for Connect -©2022 ',
+    'copy_right' => ' All Copyrights Reserved for Connect -©2020 ',
 
     'copy_rights' => '© All Copyrights Reserved MZADAT',
 

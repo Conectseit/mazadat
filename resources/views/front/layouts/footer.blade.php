@@ -122,7 +122,7 @@
         <div class="container">
             <div class="row" dir="{{ direction() }}">
                 <div class="col-lg-6">
-                    <p style="font-weight: bold; font-size: 14px;">{{trans('messages.copy_rights')}} - {{ date('Y') }}
+                    <p style="font-weight: bold; font-size: 14px;">{{trans('messages.copy_rights')}} - 2020
                     </p>
                 </div>
                 <div class="col-lg-6">
