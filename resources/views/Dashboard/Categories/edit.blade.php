@@ -63,6 +63,21 @@
                                    placeholder="@lang('messages.auction_commission')   /100 ريال ">
                         </div>
                         <div class="form-group">
+                            <input type="text" class="form-control" value="{{ $category->meta_title }}" name="meta_title"
+                                   placeholder="@lang('messages.blog.meta_title')">
+                            <span class="label-text"></span>
+                            @error('meta_title') <span class="label-text"
+                                                    style="color: #e81414;">{{ $message }}</span>@enderror
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" value="{{ $category->meta_description }}" name="meta_description"
+                                   placeholder="@lang('messages.blog.meta_description')">
+                            <span class="label-text"></span>
+                            @error('meta_description') <span class="label-text"
+                                                       style="color: #e81414;">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="form-group">
                             <label>@lang('messages.category.image')</label>
                             <input type="file" class="form-control image " name="image">
                         </div>

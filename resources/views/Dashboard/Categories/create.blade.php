@@ -79,6 +79,29 @@
                                 <span class="label-text"></span>
                                 @error('auction_commission') <span class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{ old('meta_title') }}" name="meta_title"
+                                       placeholder="@lang('messages.blog.meta_title')">
+                                <span class="label-text"></span>
+                                @error('meta_title')
+                                    <span class="label-text" style="color: #e81414;">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{ old('meta_description') }}" name="meta_description"
+                                       placeholder="@lang('messages.blog.meta_description')">
+                                <span class="label-text"></span>
+                                @error('meta_description')
+                                    <span class="label-text" style="color: #e81414;">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+
                             <div class="form-group">
                                 <label>@lang('messages.image')</label>
                                 <input type="file" class="form-control image " name="image">
@@ -89,12 +112,13 @@
                                 <img src=" {{ asset('uploads/default.png') }} " width=" 100px "
                                      class="thumbnail image-preview">
                             </div>
+
                         </div>
                     </div>
                     <div class="text-right" style="padding-bottom: 10px; padding-left: 10px;">
                         <input type="submit" class="btn btn-primary"
                                value=" {{ trans('messages.add_and_forward_to_list') }} "/>
-                        {{--                        <input type="submit" class="btn btn-success" name="messages" value=" {{ trans('messages.add_and_come_messages') }} " />--}}
+                        {{--<input type="submit" class="btn btn-success" name="messages" value=" {{ trans('messages.add_and_come_messages') }} " />--}}
                     </div>
 
                 </div>

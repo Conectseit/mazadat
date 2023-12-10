@@ -1,5 +1,13 @@
 @extends('front.layouts.master')
 {{--@section('title', trans('messages.blog.blogs'))--}}
+@section('meta_title')
+    <meta name="title" content="{{$blog_details->meta_title}}"/>
+
+@stop
+@section('meta_description')
+    <meta name="description" content="{{$blog_details->meta_description}}"/>
+
+@stop
 @section('title', trans('messages.blog.blogs').'/'.$blog_details->$name)
 
 @section('style')

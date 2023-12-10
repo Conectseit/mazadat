@@ -1,4 +1,10 @@
 @extends('front.layouts.master')
+@section('meta_title')
+    <meta name="title" content="{{$category->meta_title}}"/>
+@stop
+@section('meta_description')
+    <meta name="description" content="{{$category->meta_description}}"/>
+@stop
 @section('title', trans('messages.category.auctions'))
 @section('content')
     <main class="categories-bar row">
