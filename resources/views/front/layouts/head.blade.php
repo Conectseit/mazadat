@@ -8,7 +8,9 @@
     <meta name="google-site-verification" content="O-IsvjsFUeuJMYfdKVO6FXZj45J7yaGXzNOF9ypXe-k" />
 
 {{--    //connect--}}
-    <meta name="google-site-verification" content="qMicb0sCDsx3OuwzR6qh50sNFTBWEKhNiGIKkLIxvmo" />
+    {{--<meta name="google-site-verification" content="qMicb0sCDsx3OuwzR6qh50sNFTBWEKhNiGIKkLIxvmo" />--}}
+    <meta name="google-site-verification" content="wfCXZ5w3LA0aNhohdwHVHMmveHF4zDG9SVH2yvkeQ3s" />
+
 
     <!-- google-site-verification -->
     @yield('meta_description')
