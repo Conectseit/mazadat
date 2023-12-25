@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <meta name="google-site-verification" content="19Kfi14EEMfk6neUWxz7RSKvsXnAXQEaBqz5cHrJddc" />
-    <meta name="google-site-verification" content="O-IsvjsFUeuJMYfdKVO6FXZj45J7yaGXzNOF9ypXe-k" />
+    {{--<meta name="google-site-verification" content="19Kfi14EEMfk6neUWxz7RSKvsXnAXQEaBqz5cHrJddc" />--}}
+    {{--<meta name="google-site-verification" content="O-IsvjsFUeuJMYfdKVO6FXZj45J7yaGXzNOF9ypXe-k" />--}}
 
 {{--    //connect--}}
     {{--<meta name="google-site-verification" content="qMicb0sCDsx3OuwzR6qh50sNFTBWEKhNiGIKkLIxvmo" />--}}
