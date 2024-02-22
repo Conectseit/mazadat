@@ -13,6 +13,7 @@
 <script src="{{asset('Front/assets/js/bootstrap/popper.min.js')}}"></script>
 
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D7LNDF7MCK"></script>
 {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>--}}
 
 <script src="{{asset('Front/assets/js/owl.carousel.min.js')}}"></script>
@@ -20,6 +21,7 @@
 <script src="{{asset('Front/assets/js/lightbox.min.js')}}"></script>
 <script src="{{asset('Front/assets/js/main.js')}}"></script>
 <script type="text/javascript" src="{{ url('assets/js/sweetalert.min.js') }}"></script>
+
 <script>
     $(document).ready(function(e){
         firebase.initializeApp({
@@ -61,6 +63,15 @@
 // ====================================
 
     });
+</script>
+<!-- Google tag (gtag.js) -->
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-D7LNDF7MCK');
 </script>
 
 
