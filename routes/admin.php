@@ -134,6 +134,8 @@ Route::group(
                 Route::get('auction/{id?}/need_update',     [AuctionController::class, 'need_update'])->name('auction/need_update');
                 Route::get('auction/{id?}/unique',          [AuctionController::class, 'unique'])->name('auction/unique');
                 Route::get('auction/{id?}/not_unique',      [AuctionController::class, 'not_unique'])->name('auction/not_unique');
+                Route::get('auction/{id?}/end_auction',     [AuctionController::class, 'end_auction'])->name('auction/end_auction');
+                Route::post('auction/{id?}/re_auction',      [AuctionController::class, 're_auction'])->name('auction/re_auction');
 
                 Route::get('download/{extra?}',             [AuctionController::class, 'download'])->name('download');
 

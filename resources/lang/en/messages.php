@@ -123,6 +123,7 @@ return [
     'ending'       => 'ending',
     'less_ending'       => 'less remaining time',
     'high_ending'       => 'high remaining time',
+    'end_auction'       => 'End auction',
 
 
     'note'              => ' كيفية الدفع',
@@ -435,13 +436,15 @@ return [
         'choose_location'           => 'choose location',
         'allowed_take_photo'        => 'Allowed Take Photo',
 
-        'winner'               => ' winner of auction until mow is: ',
-        'add_time/accept'      => 'add_time and accept auction',
-        'accepted_not_appear'  => ' accepted auctions & not appear',
-        'pending'              => 'pending auctions',
-        'selled'               => 'selled auctions',
-        'location'             => ' Auction Location on map',
-        'is_appear_location'   => 'Add Auction Location on map',
+        'winner'                    => ' winner of auction until mow is: ',
+        'add_time/accept'           => 'Add time and accept auction',
+        'add_end_time/re_auction'   => 'Add End time and Re_auction ',
+        're_auction'                => 'Re_auction ',
+        'accepted_not_appear'       => ' accepted auctions & not appear',
+        'pending'                   => 'pending auctions',
+        'selled'                    => 'selled auctions',
+        'location'                  => ' Auction Location on map',
+        'is_appear_location'        => 'Add Auction Location on map',
 
         'address_details'      => ' / البلد/الحي',
         'unique'               => 'Unique Auctions',

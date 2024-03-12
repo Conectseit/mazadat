@@ -284,7 +284,7 @@
                                                 <th class="text-center">{{ trans('messages.auction.start_auction_price') }}</th>
                                                 <th class="text-center">{{ trans('messages.unique') }}</th>
 
-{{--                                                <th class="text-center">{{ trans('messages.auction.make_done') }}</th>--}}
+                                               <th class="text-center">{{ trans('messages.auction.make_done') }}</th>
                                                 <th class="text-center">@lang('messages.since')</th>
                                                 <th class="text-center">@lang('messages.form-actions')</th>
                                             </tr>
@@ -311,6 +311,13 @@
                                                                </a>
                                                            @endif
                                                     </td>
+                                                    <td class="text-center">
+
+                                                        <a href="auction/{{$auction->id}}/end_auction/">
+                                                            <span class="badge badge-danger" >  <i class="icon-close2"> </i>@lang('messages.end_auction') </span>
+                                                        </a>
+
+                                                 </td>
                                                     <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
                                                     <td class="text-center">
                                                         <div class="list-icons text-center">
@@ -360,6 +367,7 @@
                                                 <th class="text-center">{{ trans('messages.image') }}</th>
                                                 <th class="text-center">{{ trans('messages.name') }}</th>
                                                 <th class="text-center">{{ trans('messages.auction.start_auction_price') }}</th>
+                                                <th class="text-center">{{ trans('messages.auction.re_auction') }}</th>
                                                 <th class="text-center">@lang('messages.since')</th>
                                                 <th class="text-center">@lang('messages.form-actions')</th>
                                             </tr>
@@ -377,6 +385,12 @@
                                                     </td>
                                                     <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
                                                     <td class="text-center"> {{ ($auction->start_auction_price ) }}</a></td>
+                                                    <td class="text-center">
+                                                        <a href="#" data-toggle="modal" data-target="#re_auction_modal"
+                                                           class="btn btn-success btn-labeled btn-labeled-left">
+                                                            <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.auction.add_end_time/re_auction')}} </span>
+                                                        </a>
+                                                    </td>
                                                     <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
                                                     <td class="text-center">
                                                         <div class="list-icons text-center">
@@ -412,6 +426,7 @@
 
 
                                                     </td>
+                                                    @include('Dashboard.Auctions.parts.re_auction_modal')
                                                 </tr>
                                             @endforeach
                                             </tbody>

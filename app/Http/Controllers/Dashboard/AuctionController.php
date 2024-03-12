@@ -411,6 +411,19 @@ class AuctionController extends Controller
         return back()->with('success', trans('messages.updated_success'));
     }
 
+    public function end_auction($id)
+    {
+        $auction = Auction::findOrFail($id);
+        $auction->update(['end_date' => Carbon::now() , 'status' => 'done']);
+        return back()->with('success', trans('messages.updated_success'));
+    }
+    public function re_auction(Request $request)
+    {
+        $auction = Auction::findOrFail($request->id);
+        $auction->update(['end_date' => $request->end_date , 'status' => 'on_progress']);
+        return back()->with('success', trans('messages.updated_success'));
+    }
+
 
 }
 
