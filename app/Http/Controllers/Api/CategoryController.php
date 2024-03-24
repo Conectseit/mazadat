@@ -21,7 +21,7 @@ class CategoryController extends PARENT_API
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::where('menu',1)->get();
         if ($categories->count() > 0) {
             return responseJson(true, trans('api.all_categories'), CategoryResource::collection($categories));  //OK don-successfully
         }

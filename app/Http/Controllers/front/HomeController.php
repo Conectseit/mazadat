@@ -59,7 +59,7 @@ class HomeController extends Controller
 
     public function home()
     {
-        $data['categories'] = Category::all();
+        $data['categories'] = Category::where('menu',1)->get();
         $data['countries'] = Country::all();
         $data['advertisements'] = Advertisement::all();
         return view('front.home',$data);
