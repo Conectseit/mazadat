@@ -59,10 +59,19 @@ class HomeController extends Controller
 
     public function home()
     {
-        $data['categories'] = Category::where('menu',1)->get();
+        $data['categories'] = Category::where(['parent_id' => null , 'menu' => 1])->get();
         $data['countries'] = Country::all();
         $data['advertisements'] = Advertisement::all();
         return view('front.home',$data);
+    }
+    public function sub_categories($id)
+    {
+        $data['category'] = Category::find($id);
+        $data['sub_categories'] =  $data['category']->children;
+        $data['countries'] = Country::all();
+        $data['advertisements'] = Advertisement::all();
+//        dd($data);
+        return view('front.sub_categories',$data);
     }
 
     public function unique_auction()

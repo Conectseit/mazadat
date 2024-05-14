@@ -24,6 +24,12 @@ return [
         'token' => env('POSTMARK_TOKEN'),
     ],
 
+    'nafath' => [
+        'client_id' => env('NAFATH_CLIENT_ID'),
+        'client_secret' => env('NAFATH_CLIENT_SECRET'),
+        'redirect' => env('NAFATH_REDIRECT_URI'),
+    ],
+
 //    'ses' => [
 //        'key' => env('AWS_ACCESS_KEY_ID'),
 //        'secret' => env('AWS_SECRET_ACCESS_KEY'),

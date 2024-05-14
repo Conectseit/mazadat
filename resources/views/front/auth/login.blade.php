@@ -68,6 +68,9 @@
                         <div class="register">
                             <a href="{{route('front.show_register')}}" >{{trans('messages.register')}}</a>
                         </div>
+                        {{--<div class="register">--}}
+                            {{--<a href="{{route('nafath.page.login')}}" >{{trans('messages.nafath')}}</a>--}}
+                        {{--</div>--}}
                     </div>
                 </form>
             </div>

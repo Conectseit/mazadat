@@ -9,10 +9,10 @@
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
             <li><a href="{{route('admin.home')}}"><i
-                        class="icon-home2 position-left"></i> @lang('messages.home')</a>
+                            class="icon-home2 position-left"></i> @lang('messages.home')</a>
             </li>
             <li><a href="{{ route('auctions.index') }}"><i
-                        class="icon-admin position-left"></i> @lang('messages.auction.auctions')</a></li>
+                            class="icon-admin position-left"></i> @lang('messages.auction.auctions')</a></li>
             <li class="active">@lang('messages.create-var',['var'=>trans('messages.auction.auction')])</li>
         </ul>
         @include('Dashboard.layouts.parts.quick-links')
@@ -39,11 +39,12 @@
                     <form action="{{ route('auctions.store') }}" method="post" id="submitted-form"
                           class=" stepy-basic wizard-form steps-validation" enctype="multipart/form-data">
                         @csrf
-
+                        <input type="hidden" name="userType" value="{{auth()->user()->is_company}}">
                         <div class="row">
                             <div class="form-group">
-                                <label
-                                    class="col-lg-3 control-label display-block"> {{ trans('messages.auction.seller_full_name') }} </label>
+                                <label class="col-lg-3 control-label display-block">
+                                    {{ trans('messages.auction.seller_full_name') }}
+                                </label>
                                 <div class="col-md-6">
                                     <select name="seller_id" class="select">
                                         <option selected disabled>{{trans('messages.select')}}</option>
@@ -51,7 +52,8 @@
                                         <optgroup label="{{ trans('messages.auction.seller_full_name') }}">
                                             @foreach ($users as $user)
                                                 <option value="{{ $user->id }}"> {{ $user->user_name }} </option>
-                                        @endforeach
+                                            @endforeach
+                                        </optgroup>
                                     </select>
                                     @error('seller_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
                                 </div>
@@ -78,10 +80,41 @@
                                        placeholder="@lang('messages.description_en') ">
                                 @error('description_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
+
+
+                            @if(auth()->user()->is_company == 'person')
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" value="{{ old('name_of_the_licensor')}}"
+                                           name="name_of_the_licensor"
+                                           placeholder="@lang('messages.auction.name_of_the_licensor') ">
+                                    @error('name_of_the_licensor')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" value="{{ old('license_number')}}"
+                                           name="license_number"
+                                           placeholder="@lang('messages.auction.enter_license_number') ">
+                                    @error('license_number')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                                </div>
+                            @elseif(auth()->user()->is_company == 'company')
+                                <div class="form-group">
+                                    <input type="number" class="form-control"
+                                           value="{{ old('brokerage_license_number')}}"
+                                           name="brokerage_license_number"
+                                           placeholder="@lang('messages.auction.brokerage_license_number_for_brokers') ">
+                                    @error('brokerage_license_number')<span
+                                            style="color: #e81414;">{{ $message }}</span>@enderror
+                                </div>
+
+
+                            @endif
+
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <label class="control-label"> {{ trans('messages.auction.auction_terms_ar') }}: </label>
+                                <label class="control-label">
+                                    {{ trans('messages.auction.auction_terms_ar') }}:
+                                </label>
                                 <textarea rows="2" cols="2" name="auction_terms_ar"
                                           class="form-control  @error('auction_terms_ar') is-invalid @enderror">
                                     {{ old('auction_terms_ar') }}</textarea>
@@ -97,16 +130,20 @@
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <label
-                                    class="col-lg-3 control-label display-block"> {{ trans('messages.auction.choose_category') }} </label>
+                                <label class="col-lg-3 control-label display-block">
+                                    {{ trans('messages.auction.choose_category') }}
+                                </label>
                                 <div class="col-lg-6">
                                     <select name="category_id" id="category" class="select">
                                         <optgroup label="{{ trans('messages.auction.choose_category') }}}">
                                             <option selected disabled>{{trans('messages.select')}}</option>
 
                                             @foreach($categories as $category)
-                                                <option value="{{ $category->id }}"> {{ $category->$name }} </option>
-                                        @endforeach
+                                                <option value="{{ $category->id }}" data-status="{{ $category->status }}">
+                                                    {{ $category->$name }}
+                                                </option>
+                                            @endforeach
+                                        </optgroup>
                                     </select>
                                 </div>
                                 @error('category_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
@@ -114,8 +151,9 @@
                             <br>
                             <div class="form-group mb-4 row">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label for=""
-                                           class="form-label">{{ trans('messages.option.required_options') }}</label>
+                                    <label for="" class="form-label">
+                                        {{ trans('messages.option.required_options') }}
+                                    </label>
                                 </div>
                                 <div class="col-lg-10 col-md-9">
                                     <div class="select-inputs-options"></div>
@@ -125,24 +163,35 @@
 
                             <div class="form-group mb-4 row">
                                 <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                    <label for=""
-                                           class="form-label">{{ trans('messages.option.not_required_options') }}</label>
+                                    <label for="" class="form-label">
+                                        {{ trans('messages.option.not_required_options') }}
+                                    </label>
                                 </div>
                                 <div class="col-lg-10 col-md-9">
                                     <div class="not-options"></div>
                                 </div>
                             </div>
                         </div>
+                        <div class="row" id="real_estate" style="display: none;">
 
+                            @include('front.auctions.parts.real_estate_page')
+
+                        </div>
+                        <hr>
+                        <br>
                         <div class="row">
                             <div class="form-group">
-                                <label class="display-block">{{ trans('messages.auction.start_date') }}:</label>
+                                <label class="display-block">
+                                    {{ trans('messages.auction.start_date') }}:
+                                </label>
                                 <input type="datetime-local" class="form-control" value="" name="start_date"
                                        placeholder="@lang('messages.auction.start_date') ">
                                 @error('start_date')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
-                                <label class="display-block">{{ trans('messages.auction.end_date') }}:</label>
+                                <label class="display-block">
+                                    {{ trans('messages.auction.end_date') }}:
+                                </label>
                                 <input type="datetime-local" class="form-control" value="" name="end_date"
                                        placeholder="@lang('messages.auction.end_date') ">
                                 @error('end_date')<span style="color: #e81414;">{{ $message }}</span>@enderror
@@ -152,7 +201,7 @@
                                        name="start_auction_price"
                                        placeholder="@lang('messages.auction.start_auction_price') ">
                                 @error('start_auction_price')<span
-                                    style="color: #e81414;">{{ $message }}</span>@enderror
+                                        style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
                                 <input type="number" class="form-control" value="{{ old('value_of_increment')}}"
@@ -167,7 +216,9 @@
                                 @error('delivery_charge')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
-                                <label class="display-block">{{ trans('messages.auction.who_can_see') }}:</label>
+                                <label class="display-block">
+                                    {{ trans('messages.auction.who_can_see') }}:
+                                </label>
                                 <label class="radio-inline">
                                     <input type="radio" value="all" class="styled" name="who_can_see" checked="checked">
                                     {{trans('messages.all')}}
@@ -189,8 +240,9 @@
                         <div class="row">
                             <div class="form-group">
                                 <label>@lang('messages.auction.images')</label>
-                                {{--                                <input type="file" multiple="multiple" id="gallery-photo-add" class="form-control" name="images[]">--}}
-                                {{--                                <div class="gallery"></div>--}}
+                                {{--<input type="file" multiple="multiple"
+                                id="gallery-photo-add" class="form-control" name="images[]">--}}
+                                {{-- <div class="gallery"></div>--}}
 
                                 <div class="input-group control-group increment">
                                     <div class="form-group">
@@ -207,7 +259,7 @@
                                 </div>
                                 <div class="input-group-btn">
                                     <button class="btn btn-success" type="button"><i
-                                            class="glyphicon glyphicon-plus"></i>{{trans('messages.add_another_image')}}
+                                                class="glyphicon glyphicon-plus"></i>{{trans('messages.add_another_image')}}
                                     </button>
                                 </div>
                                 <div class="clone hide">
@@ -224,7 +276,7 @@
                                             <div class="col-lg-2">
                                                 <div class="input-group-btn">
                                                     <button class="btn btn-danger" type="button"><i
-                                                            class="glyphicon glyphicon-remove"></i> حذف
+                                                                class="glyphicon glyphicon-remove"></i> حذف
                                                     </button>
                                                 </div>
                                             </div>
@@ -239,27 +291,30 @@
 
 
                         <div class="row">
-                            <h4><i class="icon-file-pdf"> </i> @lang('messages.auction.inspection_report_files')</h4>
-                            {{--                            <h4><i class="icon-file-pdf"> </i> @lang('messages.auction.additional_file_names')</h4>--}}
+                            <h4>
+                                <i class="icon-file-pdf"> </i>
+                                @lang('messages.auction.inspection_report_files')
+                            </h4>
+
                             <div class="form-group">
                                 <div class="col-lg-3">
                                     <select name="file_name_id" class="select form-control">
                                         <option selected disabled>{{trans('messages.select_file_name')}}</option>
                                         @foreach ($inspection_file_names as $inspection_file_name)
                                             <option
-                                                value="{{ $inspection_file_name->id }}"> {{ $inspection_file_name->name }} </option>
+                                                    value="{{ $inspection_file_name->id }}"> {{ $inspection_file_name->name }} </option>
                                         @endforeach
                                     </select>
                                     @error('file_name_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
                                 </div>
-                                {{--                                <div class="col-lg-3">--}}
-                                {{--                                    <input type="file"  class="form-control" name="image">--}}
-                                {{--                                </div>--}}
+                                {{--<div class="col-lg-3">--}}
+                                {{--<input type="file"  class="form-control" name="image">--}}
+                                {{--</div>--}}
                                 <div class="col-lg-3">
                                     <input type="file" multiple class="form-control" name="inspection_report_images[]">
                                 </div>
                                 @error('inspection_report_images')<span
-                                    style="color: #e81414;">{{ $message }}</span>@enderror
+                                        style="color: #e81414;">{{ $message }}</span>@enderror
                                 <div class="col-lg-6">
                                     <input type="text" class="form-control" name="description"
                                            placeholder="@lang('messages.file_desc')" required>
@@ -330,8 +385,8 @@
 
 @section('scripts')
     @include('Dashboard.layouts.parts.ajax_get_options')
-{{--    @include('Maps.map')--}}
-        @include('Dashboard.layouts.parts.map')
+    {{--    @include('Maps.map')--}}
+    @include('Dashboard.layouts.parts.map')
 
     @include('Dashboard.Auctions.parts.ajax_get_options_by_category_id')
     {{--    @include('Dashboard.Auctions.parts.image_preview')--}}
@@ -359,6 +414,17 @@
                 }
             } else {
                 document.getElementById("map-section").style.display = "block";
+            }
+        });
+    </script>
+    <script>
+        $('select#category').on('change', function () {
+            let selectedOption = $(this).find('option:selected');
+            let categoryStatus = selectedOption.data('status');
+            if (categoryStatus === 'real_estate') {
+                document.getElementById("real_estate").style.display = "block";
+            } else {
+                document.getElementById("real_estate").style.display = "none";
             }
         });
     </script>

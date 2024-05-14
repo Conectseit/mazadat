@@ -31,14 +31,17 @@ class CategoryController extends Controller
     public function create()
     {
         $data['latest_categories'] = Category::orderBy('id', 'desc')->take(5)->get();
+        $data['categories'] = Category::where(['parent_id' => null , 'menu' => 1])->get();
         return view('Dashboard.Categories.create', $data);
     }
 
     public function store(CategoryRequest $request)
     {
+//        dd($request->menu);
         $request_data = $request->except(['image']);
 
         if ($request->image) $request_data['image'] = uploaded($request->image, 'category');
+        if ($request->menu != null) $request_data['menu'] = 1;
         $category = Category::create($request_data);
 
 // ===========================================================
@@ -67,11 +70,14 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
+
         if (!Category::find($id)) {
             return redirect()->route('categories.index')->with('class', 'danger')->with('message', trans('dash.messages.try_2_access_not_found_content'));
         }
-        $data['latest_categories'] = Category::orderBy('id', 'desc')->take(5)->get();
+        $data['categories'] = Category::all();
         $data['category'] = Category::find($id);
+        $data['sub_categories'] = $data['category']->children;
+
         return view('Dashboard.Categories.edit', $data);
     }
 
@@ -79,6 +85,15 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         $request_data = $request->except('image');
+        if($request->menu != null){
+            $request_data['menu'] = 1;
+        }elseif ($request->menu == null){
+            $request_data['menu'] = 0;
+        }
+        if($request->parent_id != null){
+            $request_data['parent_id'] = $request->parent_id;
+        }
+
         if ($request->hasFile('image')) {
             if (!is_null($category->image)) unlink('uploads/categories/' . $category->image);
             $request_data['image'] = uploaded($request->image, 'category');

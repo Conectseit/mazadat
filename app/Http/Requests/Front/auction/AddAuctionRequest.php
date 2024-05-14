@@ -12,9 +12,15 @@ class AddAuctionRequest extends FormRequest
      *
      * @return bool
      */
+    protected $userType;
+
     public function authorize()
     {
         return true;
+    }
+    public function __construct()
+    {
+        $this->userType = auth()->user()->is_company;
     }
     /**
      * Get the validation rules that apply to the request.
@@ -23,6 +29,7 @@ class AddAuctionRequest extends FormRequest
      */
     public function rules()
     {
+
         switch ($this->method()) {
 
             case 'POST': {
@@ -32,6 +39,9 @@ class AddAuctionRequest extends FormRequest
                         'category_id' => 'required',
                         'description_ar' => 'required',
                         'description_en' => 'required',
+                        'name_of_the_licensor' => 'required_if:userType,person',
+                        'license_number' => 'required_if:userType,person',
+                        'brokerage_license_number' => 'required_if:userType,company',
                         'auction_terms_ar' => 'required',
                         'auction_terms_en' => 'required',
 //                        'start_date' => 'required',

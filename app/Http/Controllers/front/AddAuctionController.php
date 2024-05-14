@@ -9,6 +9,7 @@ use App\Http\Requests\Front\auction\AddAuctionRequest;
 use App\Models\Auction;
 use App\Models\AuctionImage;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\FileName;
 use App\Models\InspectionImage;
 use App\Models\Option;
@@ -30,7 +31,8 @@ class AddAuctionController extends Controller
             return back()->with('error', trans('messages.please_wait_your_account_not_verified_to_participate_yet'));
         }
 
-        $data['categories'] = Category::all();
+        $data['categories'] = Category::where(['parent_id' => !null , 'menu' => 1 , 'status' => 'mazadat'])->get();
+        $data['cities'] = City::all();
         $data['options'] = Option::all();
         $data['inspection_file_names'] = FileName::all();
 
@@ -117,7 +119,8 @@ class AddAuctionController extends Controller
     public function show_auction_update($id)
     {
         $data['auction'] = Auction::find($id);
-        $data['categories'] = Category::all();
+        $data['categories'] = Category::where(['parent_id' => !null , 'menu' => 1  , 'status' => 'mazadat'])->get();
+        $data['cities'] = City::all();
         $data['options'] = Option::all();
         $data['inspection_file_names'] = FileName::all();
 //        $data['users'] = User::where('is_verified', 1)->get();

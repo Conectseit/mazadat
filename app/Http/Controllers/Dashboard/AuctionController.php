@@ -33,13 +33,14 @@ class AuctionController extends Controller
         $data['accepted_not_appear'] = Auction::where('status', 'not_accepted')->where('is_accepted', 1)->latest()->get();
         $data['on_progress_auctions'] = Auction::where('status', 'on_progress')->where('is_accepted', 1)->latest()->get();
         $data['done_auctions'] = Auction::where('status', 'done')->where('is_accepted', 1)->latest()->get();
+        $data['deleted_auctions'] = Auction::where('status', 'deleted')->latest()->get();
         return view('Dashboard.Auctions.index', $data);
     }
 
     public function create()
     {
         $data['latest_auctions'] = Auction::orderBy('id', 'desc')->take(5)->get();
-        $data['categories'] = Category::with('options')->get();
+        $data['categories'] = Category::where(['parent_id' => !null , 'menu' => 1])->with('options')->get();
         $data['options'] = Option::all();
         $data['option_details'] = OptionDetail::all();
         $data['cities'] = City::all();
@@ -168,7 +169,7 @@ class AuctionController extends Controller
         }
         $data['latest_auctions'] = Auction::orderBy('id', 'desc')->take(10)->get();
         $data['auction'] = Auction::find($id);
-        $data['categories'] = Category::all();
+        $data['categories'] = Category::where(['parent_id' => !null , 'menu' => 1])->get();
 //        $data['sellers'] = User::where('type', 'seller')->get();
         $data['users'] = User::where('is_verified', 1)->get();
         $data['inspection_file_names'] = FileName::all();
@@ -267,19 +268,31 @@ class AuctionController extends Controller
     public function destroy(Request $request,Auction $auction)
     {
         $auction = Auction::find($request->id);
+
         if (!$auction) return response()->json(['deleteStatus' => false, 'error' => 'Sorry, auction is not exists !!']);
 
         try {
 
-            if (!is_null($auction->auctionimages))
-                foreach ($auction->auctionimages as $image) {
-                    unlink('uploads/auctions/' . $image->image);
-                }
-            if (!is_null($auction->inspectionimages))
-                foreach ($auction->inspectionimages as $image) {
-                    unlink('uploads/inspection_report_pdf/' . $image->image);
-                }
-            $auction->delete();
+//            if (!is_null($auction->auctionimages))
+//                foreach ($auction->auctionimages as $image) {
+//                    unlink('uploads/auctions/' . $image->image);
+//                }
+//            if (!is_null($auction->inspectionimages))
+//                foreach ($auction->inspectionimages as $image) {
+//                    unlink('uploads/inspection_report_pdf/' . $image->image);
+//                }
+//            $auction->delete();
+            if($auction->status == 'done'){
+                $auction->update(['status' => 'deleted']);
+            }else{
+                $auction->update(['end_date' => Carbon::now() ,'status' => 'deleted']);
+            }
+
+            $name = 'name_' . app()->getLocale();
+            activity()
+                ->performedOn($auction)
+                ->causedBy(auth()->guard('admin')->user())
+                ->log('قام المشرف' . auth()->guard('admin')->user()->full_name . ' بحذف المزاد' . ($auction->$name));
             return response()->json(['deleteStatus' => true, 'message' => 'تم الحذف  بنجاح']);
         } catch (Exception $e) {
             return response()->json(['deleteStatus' => false, 'error' => 'Server Internal Error 500']);

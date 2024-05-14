@@ -16,7 +16,7 @@
             <li><a href="{{route('admin.home')}}"><i class="icon-home2 position-left"></i> @lang('messages.home')</a>
             </li>
             <li><a href="{{ route('categories.index') }}"><i
-                        class="icon-admin position-left"></i> @lang('messages.category.categories')</a></li>
+                            class="icon-admin position-left"></i> @lang('messages.category.categories')</a></li>
             <li class="active">@lang('messages.create-var',['var'=>trans('messages.category.category')])</li>
         </ul>
         @include('Dashboard.layouts.parts.quick-links')
@@ -24,7 +24,7 @@
 @endsection
 
 @section('content')
-{{--    @include('Dashboard.layouts.parts.validation_errors')--}}
+    {{--    @include('Dashboard.layouts.parts.validation_errors')--}}
 
     <div class="row" style="padding: 15px;">
         <div class="col-md-6">
@@ -47,59 +47,115 @@
                     <div class="panel-body">
                         <div class="box-body">
                             <div class="form-group">
-                                    <input type="text" class="form-control"
-                                           value="{{ old('name_ar') }}" name="name_ar"
-                                           placeholder="@lang('messages.name_ar')" required>
-                                    <span class="label-text"></span>
-                                @error('name_ar') <span  class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
+                                <label class="col-lg-3 control-label display-block">
+                                    {{ trans('messages.category.status') }}
+                                </label>
+                                <div class="col-md-6">
+                                    <select name="status" class="select" required>
+                                        <option selected disabled>{{trans('messages.select')}}</option>
+
+                                        <optgroup label="{{ trans('messages.category.status') }}">
+
+                                            <option value="real_estate">
+                                                {{trans('messages.category.real_estate')}}
+                                            </option>
+                                            <option value="cars">
+                                                {{trans('messages.category.cars') }}
+                                            </option>
+                                            <option value="mazadat">
+                                                {{trans('messages.mazadat') }}
+                                            </option>
+
+                                        </optgroup>
+                                    </select>
+                                    @error('status')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                                </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="{{ old('name_en') }}"  name="name_en"
+                                <input type="text" class="form-control"
+                                       value="{{ old('name_ar') }}" name="name_ar"
+                                       placeholder="@lang('messages.name_ar')" required>
+                                <span class="label-text"></span>
+                                @error('name_ar') <span class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{ old('name_en') }}" name="name_en"
                                        placeholder="@lang('messages.name_en')" required>
                                 <span class="label-text"></span>
-                                @error('name_en') <span  class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
+                                @error('name_en') <span class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="{{ old('description_ar') }}"  name="description_ar"
+                                <label class="col-lg-3 control-label display-block">
+                                    {{ trans('messages.category.choose_category') }}
+                                </label>
+                                <div class="col-lg-6">
+                                    <select name="parent_id" id="category" class="select">
+                                        <optgroup label="{{ trans('messages.category.choose_category') }}">
+                                            <option selected disabled>{{trans('messages.select')}}</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}"> {{ $category->$name }} </option>
+                                            @endforeach
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                @error('parent_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{ old('description_ar') }}"
+                                       name="description_ar"
                                        placeholder="@lang('messages.description_ar')" required>
                                 <span class="label-text"></span>
-                                @error('description_ar') <span  class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
+                                @error('description_ar') <span class="label-text"
+                                                               style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control" value="{{ old('description_en') }}"  name="description_en"
+                                <input type="text" class="form-control" value="{{ old('description_en') }}"
+                                       name="description_en"
                                        placeholder="@lang('messages.description_en')" required>
                                 <span class="label-text"></span>
-                                @error('description_en') <span  class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
+                                @error('description_en') <span class="label-text"
+                                                               style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control"
                                        value="{{ old('auction_commission') }}" name="auction_commission"
                                        placeholder="@lang('messages.auction_commission')" required>
                                 <span class="label-text"></span>
-                                @error('auction_commission') <span class="label-text" style="color: #e81414;">{{ $message }}</span>@enderror
+                                @error('auction_commission') <span class="label-text"
+                                                                   style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control" value="{{ old('meta_title') }}" name="meta_title"
+                                <input type="text" class="form-control" value="{{ old('meta_title') }}"
+                                       name="meta_title"
                                        placeholder="@lang('messages.blog.meta_title')">
                                 <span class="label-text"></span>
                                 @error('meta_title')
-                                    <span class="label-text" style="color: #e81414;">
+                                <span class="label-text" style="color: #e81414;">
                                         {{ $message }}
                                     </span>
                                 @enderror
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control" value="{{ old('meta_description') }}" name="meta_description"
+                                <input type="text" class="form-control" value="{{ old('meta_description') }}"
+                                       name="meta_description"
                                        placeholder="@lang('messages.blog.meta_description')">
                                 <span class="label-text"></span>
                                 @error('meta_description')
-                                    <span class="label-text" style="color: #e81414;">
+                                <span class="label-text" style="color: #e81414;">
                                         {{ $message }}
                                     </span>
                                 @enderror
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" id="menu" name="menu"/>
+                                        @lang('messages.category.menu')
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -149,7 +205,7 @@
                         @forelse($latest_categories as $category)
                             <tr>
                                 <td> {{ $category->name_ar }} </td>
-                                <td><img  src="{{ $category->ImagePath }}" style="height:50px;"/></td>
+                                <td><img src="{{ $category->ImagePath }}" style="height:50px;"/></td>
                             </tr>
                         @empty
                         @endforelse

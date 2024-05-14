@@ -26,6 +26,8 @@ class Controller extends BaseController
             $conditions_terms = 'conditions_terms_ar';
             $auction_terms = 'auction_terms_ar';
             $about_app = 'about_app_ar';
+            $district = 'district_ar';
+            $property_type = 'property_type_ar';
 
             $site_meta_description = 'site_meta_description_ar';
             $site_meta_title = 'site_meta_title_ar';
@@ -40,6 +42,8 @@ class Controller extends BaseController
             $conditions_terms = 'conditions_terms_en';
             $auction_terms = 'auction_terms_en';
             $about_app = 'about_app_en';
+            $district = 'district_en';
+            $property_type = 'property_type_en';
 
             $site_meta_description = 'site_meta_description_en';
             $site_meta_title = 'site_meta_title_en';
@@ -53,6 +57,9 @@ class Controller extends BaseController
         View::share('conditions_terms', $conditions_terms);
         View::share('auction_terms', $auction_terms);
         View::share('about_app', $about_app);
+        View::share('district', $district);
+        View::share('property_type', $property_type);
+
 
         View::share('site_meta_description', $site_meta_description);
         View::share('site_meta_title', $site_meta_title);

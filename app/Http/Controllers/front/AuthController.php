@@ -20,9 +20,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Ramsey\Uuid\Uuid;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Laravel\Socialite\Facades\Socialite;
+use Exception;
 
 class AuthController extends Controller
 {
@@ -152,5 +156,178 @@ class AuthController extends Controller
 //        return preg_match('/^([a-zA-Z0-9_.]*)@.*\.com$/i', $value);
         return preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i', $value);
     }
+
+
+    public function nafath()
+    {
+        return view('front.auth.login_nafath');
+    }
+
+
+    public function nafathLogin(Request $request)
+    {
+
+        $request->validate([
+            'nationalId' => 'required',
+        ]);
+        $requestId = Uuid::uuid4()->toString();
+
+        $nafathData = [
+            'nationalId' => $request->nationalId,
+            'service' => 'Login',
+        ];
+        $local = app()->getLocale();
+
+
+        $response = Http::withHeaders([
+            'APP-ID' => '2896f9aa',
+            'APP-KEY' => '8fdd84f548d5d4670e809b0d77eab976',
+        ])->post("https://nafath.api.elm.sa/stg/api/v1/mfa/request?local={$local}&requestId={$requestId}", $nafathData);
+
+        $responseBody = $response->body();
+        $errorData = json_decode($responseBody, true);
+
+        dd($errorData);
+        // Check if the request was successful
+        if ($response->successful()) {
+            // Extract the transaction ID and random number from the response
+            $nationalId = $response['nationalId'];
+            $transId = $response['transId'];
+            $random = $response['random'];
+
+            // Redirect the user to the Nafath app using the deep link URL
+            // Replace 'nafath://home' with the actual deep link URL provided by Nafath
+            return redirect('nafath://home');
+        } else {
+            // Handle the case where the request failed
+            return back()->with('error', 'Failed to initiate Nafath authentication');
+        }
+    }
+
+
+
+//    public function handleNafathCallback(Request $request)
+//    {
+//        $token = $request->input('token');
+//        $transId = $request->input('transId');
+//        $requestId = $request->input('requestId');
+//
+//        try {
+//            $decodedToken = JWTAuth::setToken($token)->getPayload();
+//
+//            $userNationalId = $decodedToken->get('national_id');
+//
+//            $user = User::where('national_id', $userNationalId)->first();
+//
+//            if ($user) {
+//                Auth::login($user);
+//                return redirect()->route('dashboard')->with('success', 'Logged in successfully');
+//            } else {
+//
+//                return redirect()->route('register')->with('error', 'User not found. Please register.');
+//            }
+//        } catch (JWTException $e) {
+//
+//            return redirect()->route('login')->with('error', 'Failed to verify token. Please try again.');
+//        }
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    public function redirectToNafathProvider()
+//    {
+//        return Socialite::driver('nafath')->redirect();
+//    }
+//
+//    public function handleNafathCallback()
+//    {
+//        try {
+//            $nafathUser = Socialite::driver('nafath')->user();
+//        } catch (Exception $e) {
+//            // Handle any potential errors, such as authentication failure
+//            return redirect()->route('login')->with('error', 'Failed to authenticate with NaFath.');
+//        }
+//
+//        // Check if the user exists in your database based on their unique identifier (e.g., email)
+//        $user = User::where('email', $nafathUser->email)->first();
+//
+//        if (!$user) {
+//            // If the user does not exist, create a new user record
+//            $user = User::create([
+//                'name' => $nafathUser->name,
+//                'email' => $nafathUser->email,
+//                // Additional user data if needed
+//            ]);
+//        }
+//
+//        // Log the user in
+//        auth()->login($user);
+//
+//        // Redirect the user to the intended page after login
+//        return redirect()->intended('/dashboard');
+//
+//    }
+
+
+//    public function redirectToNafathProvider(Request $request)
+//    {
+//        $clientId = '2896f9aa';
+//        $scopes = 'login';
+//
+//        // Redirect the user to the OAuth provider's authorization URL
+//        $authorizationUrl = "https://nafath.api.elm.sa/oauth/authorize?client_id={$clientId}&response_type=code&scope={$scopes}";
+//        return redirect()->away($authorizationUrl);
+//    }
+//
+//    public function handleNafathCallback(Request $request)
+//    {
+//        $clientId = '2896f9aa';
+//        $clientSecret = '8fdd84f548d5d4670e809b0d77eab976';
+//        $redirectUri = 'https://nafath.api.elm.sa/stg/';
+//
+//        // Ensure the request has an authorization code
+//        if (!$request->has('code')) {
+//            return redirect()->route('login')->withErrors(['error' => 'Authorization code not provided.']);
+//        }
+//
+//        // Exchange authorization code for an access token
+//        $response = Http::post('https://nafath.api.elm.sa/oauth/token', [
+//            'grant_type' => 'authorization_code',
+//            'client_id' => $clientId,
+//            'client_secret' => $clientSecret,
+//            'redirect_uri' => $redirectUri,
+//            'code' => $request->input('code'),
+//        ]);
+//
+//        // Check if the request was successful
+//        if ($response->successful()) {
+//            $accessToken = $response->json()['access_token'];
+//
+//            // Store the access token securely, e.g., in session or database
+//            session(['access_token' => $accessToken]);
+//
+//            return redirect()->route('dashboard')->with('success', 'Authenticated successfully.');
+//        } else {
+//            // Handle authentication errors
+//            $error = $response->json()['error'] ?? 'Unknown error occurred.';
+//            return redirect()->route('login')->withErrors(['error' => $error]);
+//        }
+//    }
+//
+
+
+
 }
 

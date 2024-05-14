@@ -24,6 +24,7 @@
             width: 220px;
             color: white;
         }
+
         .add-auction.btn {
             text-align: center;
             border: 1px solid #fff;
@@ -32,30 +33,36 @@
             font-size: 20px;
             background: #1e3c48;
         }
+
         .carousel {
             /*margin-top: 40px;*/
             /*background-color: var(--secondary-color);*/
         }
+
         .carousel-item {
             width: 100%;
             height: 380px;
             /*background-color: rgba(0, 0, 0, 0.5);*/
         }
+
         .carousel-item img {
             height: 100%;
             width: 100%;
             border-radius: 10px;
             border: 1px solid;
         }
+
         .slider_image {
             width: 750px;
         }
+
         .carousel img:hover {
             color: white;
             transform: scale(1.2);
             transition: .5s;
 
         }
+
         .carousel-control-prev-icon, .carousel-control-next-icon {
             background-color: var(--main-color);
         }
@@ -91,14 +98,9 @@
 
                                     <img class="d-block" src="{{$advertisements->count() > 0
                                     ? $advertisements->first()->ImagePath
-                                    : asset('uploads/mazadat_logo.jpg') }}" alt="First slide" style="height: 100%; width: 100%;">
+                                    : asset('uploads/mazadat_logo.jpg') }}" alt="First slide"
+                                         style="height: 100%; width: 100%;">
                                 </a>
-                                {{--<a href="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"--}}
-                                   {{--data-popup="lightbox">--}}
-                                    {{--<img class="d-block"--}}
-                                         {{--src="{{$advertisements->count() > 0 ? $advertisements->first()->ImagePath : asset('uploads/mazadat_logo.jpg') }}"--}}
-                                         {{--alt="First slide" style="height: 100%; width: 100%;">--}}
-                                {{--</a>--}}
                             </div>
 
                             <div class="carousel-caption d-none d-md-block">
@@ -114,10 +116,6 @@
                                             <img class="d-block" src="{{ $advertisement->ImagePath }}"
                                                  alt="Second slide" style="height: 100%; width: 100%;">
                                         </a>
-                                        {{--<a href="{{ $advertisement->ImagePath }}" data-popup="lightbox">--}}
-                                            {{--<img class="d-block" src="{{ $advertisement->ImagePath }}"--}}
-                                                 {{--alt="Second slide" style="height: 100%; width: 100%;">--}}
-                                        {{--</a>--}}
                                     </div>
                                     <div class="carousel-caption d-none d-md-block">
                                         <h4>{{ isNullable($advertisement->$name) }}</h4>
@@ -158,7 +156,6 @@
                 var imagePath = $(this).data('image');
                 $('#modalImage').attr('src', imagePath);
             });
-
             // Optional: Clear modal image when the modal is hidden
             $('#imageModal').on('hidden.bs.modal', function () {
                 $('#modalImage').attr('src', '');
@@ -180,24 +177,12 @@
                             </b>{{ trans('messages.auction.count_of_on_progress') }}
                             :({{$auctions->where(['status'=>'on_progress','is_accepted'=>1])->count()}})
                         </div>
-                        {{--                        <div class="statistics ">--}}
-                        {{--                            <img src="{{asset('Front/assets/imgs/icon/d_auction.png')}}" alt="logo" width="50"--}}
-                        {{--                                 height="50">--}}
-
-                        {{--                            <b>--}}
-                        {{--                                                                <i class="fal fa-check-circle" style="color: white;background-color: green;"></i>--}}
-                        {{--                                <i class="fal fa-done" style="color: white;background-color: green;"></i>--}}
-                        {{--                            </b>{{ trans('messages.auction.count_of_done') }}--}}
-                        {{--                            :({{$auctions->where(['status'=>'done'])->count()}})--}}
-                        {{--                        </div>--}}
                     </div>
                     <div class=" col-lg-6 col-md-6">
                         <div class="statistics ">
                             <img src="{{asset('Front/assets/imgs/icon/d_auction.png')}}" alt="logo" width="50"
                                  height="50">
                             <b>
-                                {{--  <i class="fal fa-check-circle" style="color:
-                                 white;background-color: green;"></i>--}}
                                 <i class="fal fa-done" style="color: white;background-color: green;"></i>
                             </b>{{ trans('messages.auction.count_of_done') }}
                             :({{$auctions->where(['status'=>'done'])->count()}})
@@ -209,35 +194,48 @@
                             @if(auth()->user()->is_verified==1)
                                 <a class="add-auction btn"
                                    href="{{route('front.show_add_auction')}}" style=" box-shadow: 5px 10px #888888;"> <i
-                                        class="fal fa-plus-circle"> </i> @lang('messages.auction.add_your_auction')</a>
+                                            class="fal fa-plus-circle"> </i> @lang('messages.auction.add_your_auction')
+                                </a>
                             @endif
                         @endif
                     </div>
-                    {{--                    <div class=" col-lg-3 col-md-3">--}}
-                    {{--                        <div class="statistics ">--}}
-                    {{--                            <img src="{{asset('Front/assets/imgs/icon/d_auction.png')}}" alt="logo" width="50"--}}
-                    {{--                                 height="50">--}}
-                    {{--                            <b>--}}
-                    {{--                                --}}{{--                                <i class="fal fa-check-circle" style="color: white;background-color: green;"></i>--}}
-                    {{--                                <i class="fal fa-done" style="color: white;background-color: green;"></i>--}}
-                    {{--                            </b>{{ trans('messages.auction.count_of_done') }}--}}
-                    {{--                            :({{$auctions->where(['status'=>'done'])->count()}})--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
-                    {{--                                        <div class=" col-lg-3 col-md-3">--}}
-                    {{--                                            <a href="{{route('front.unique_auction')}}" class="add-auction btn"><b> <i--}}
-                    {{--                                                        class="fal fa-gavel"></i> </b>{{trans('messages.auction.unique')}}</a>--}}
-                    {{--                                        </div>--}}
-                </div><br><br><br>
-                <h2 style="color: var(--main-color); text-align: center"> {{__('messages.categories')}}</h2><br>
+
+                </div>
+                <br><br><br>
+                <h2 style="color: var(--main-color); text-align: center">
+                    {{__('messages.sub_categories'). ' ( ' . $category->$name . ' )'}}
+                </h2>
+                <br>
                 <div class="row">
-                    @foreach($categories as $category)
+                    @foreach($sub_categories as $category)
                         <div class="col-lg-3 col-md-6">
-                            <a href="{{route('front.sub_categories',$category->id)}}" class="cate-card"
-                               dir="{{ direction() }}">
-                                <img src="{{ $category->ImagePath }}" alt="" width="80" height="80" class="img-circle">
-                                <h4 style="padding-top: 30px;">{{$category->$name}}</h4>
-                            </a>
+                            {{--<a href="{{route('front.category_auctions',$category->id)}}" class="cate-card"--}}
+                            @if(!$category->children->Empty())
+                                <a href="{{route('front.sub_categories',$category->id)}}" class="cate-card"
+                                   dir="{{ direction() }}">
+                                    <img src="{{ $category->ImagePath }}" alt="" width="80" height="80"
+                                         class="img-circle">
+                                    <h4 style="padding-top: 30px;">{{$category->$name}}</h4>
+                                </a>
+                            @else
+                                @if($category->status == 'mazadat')
+                                    <a href="{{route('front.category_auctions',$category->id)}}" class="cate-card"
+                                       dir="{{ direction() }}">
+                                        <img src="{{ $category->ImagePath }}" alt="" width="80" height="80"
+                                             class="img-circle">
+                                        <h4 style="padding-top: 30px;">{{$category->$name}}</h4>
+                                    </a>
+                                @elseif($category->status == 'real_estate')
+                                    <a href="#" class="cate-card"
+                                       dir="{{ direction() }}">
+                                        <img src="{{ $category->ImagePath }}" alt="" width="80" height="80"
+                                             class="img-circle">
+                                        <h4 style="padding-top: 30px;">{{$category->$name}}</h4>
+                                    </a>
+                                @endif
+
+                            @endif
+
                         </div>
                     @endforeach
                 </div>

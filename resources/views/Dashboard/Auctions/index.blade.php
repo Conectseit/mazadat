@@ -41,14 +41,40 @@
                     <div class="panel-body">
                         <div class="tabbable">
                             <ul class="nav nav-pills nav-pills-bordered nav-justified">
-                                <li class="active"><a href="#all_auctions" data-toggle="tab">{{ trans('messages.auction.all_auctions') }}</a></li>
-                                <li><a href="#not_accepted" data-toggle="tab">{{ trans('messages.auction.not_accepted') }}</a></li>
-                                <li><a href="#accepted_not_appear" data-toggle="tab">{{ trans('messages.auction.accepted_not_appear') }}</a></li>
-                                <li><a href="#on_progress_auctions" data-toggle="tab">{{ trans('messages.auction.on_progress') }}</a></li>
-                                <li><a href="#done_auctions" data-toggle="tab">{{ trans('messages.auction.done') }}</a></li>
+                                <li class="active">
+                                    <a href="#all_auctions" data-toggle="tab">
+                                        {{ trans('messages.auction.all_auctions') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#not_accepted" data-toggle="tab">
+                                        {{ trans('messages.auction.not_accepted') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#accepted_not_appear" data-toggle="tab">
+                                        {{ trans('messages.auction.accepted_not_appear') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#on_progress_auctions" data-toggle="tab">
+                                        {{ trans('messages.auction.on_progress') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#done_auctions" data-toggle="tab">
+                                        {{ trans('messages.auction.done') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#deleted_auctions" data-toggle="tab">
+                                        {{ trans('messages.auction.deleted') }}
+                                    </a>
+                                </li>
                             </ul>
 
                             <div class="tab-content">
+<!----------ALL_Auctions----------------------------------------------------------------------------------------------->
                                 <div class="tab-pane active" id="all_auctions">
                                    <div class="row">
                                        @if($auctions->count() > 0)
@@ -74,18 +100,33 @@
                                                        <td class="text-center">{{ $auction->category->$name }}</td>
                                                        <td class="text-center">
                                                            @if(isset($auction->extra))
-                                                           <a href="{{route('view',$auction->id)}}" target="_blank"> <i class="icon-file-pdf" style="color: red;"> </i></a>
+                                                           <a href="{{route('view',$auction->id)}}" target="_blank">
+                                                               <i class="icon-file-pdf" style="color: red;"> </i>
+                                                           </a>
 
-                                                           <a href="{{route('download',$auction->extra)}}"><i class="icon-download4"> </i> {{trans('messages.download')}}</a>
+                                                           <a href="{{route('download',$auction->extra)}}">
+                                                               <i class="icon-download4"> </i> {{trans('messages.download')}}
+                                                           </a>
                                                            @else لا يوجد
                                                            @endif
                                                        </td>
                                                        <td class="text-center">
-                                                           <a href="{{ $auction->first_image_path }}" data-popup="lightbox"><img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle"></a>
+                                                           <a href="{{ $auction->first_image_path }}" data-popup="lightbox">
+                                                               <img src="{{ $auction->first_image_path }}" alt=""
+                                                                    width="80" height="80" class="img-circle">
+                                                           </a>
                                                        </td>
-                                                       <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
-                                                       <td class="text-center"> {{ ($auction->start_auction_price ) }}</a></td>
-                                                       <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
+                                                       <td class="text-center">
+                                                           <a href={{ route('auctions.show', $auction->id) }}>
+                                                               {{ isNullable(substr($auction->$name,0,15)) }}
+                                                           </a>
+                                                       </td>
+                                                       <td class="text-center">
+                                                           {{ ($auction->start_auction_price ) }}
+                                                       </td>
+                                                       <td class="text-center">
+                                                           {{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}
+                                                       </td>
                                                        <td class="text-center">
                                                            <div class="list-icons text-center">
                                                                <div class="list-icons-item dropdown text-center">
@@ -124,6 +165,7 @@
                                        @endif
                                    </div>
                                 </div>
+<!----------NOT_Accepted----------------------------------------------------------------------------------------------->
                                 <div class="tab-pane " id="not_accepted">
                                    <div class="row">
                                        @if($not_accepted_auctions->count() > 0)
@@ -142,25 +184,44 @@
                                                <tbody>
                                                @foreach($not_accepted_auctions as $auction)
                                                    <tr id="auction-row-{{ $auction->id }}">
-                                                       <td class="text-center">{{ $auction->category->$name }}</td>
                                                        <td class="text-center">
-                                                           <a href="{{ $auction->first_image_path }}" data-popup="lightbox"><img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle"></a>
+                                                           {{ $auction->category->$name }}
                                                        </td>
-                                                       <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
+                                                       <td class="text-center">
+                                                           <a href="{{ $auction->first_image_path }}" data-popup="lightbox">
+                                                               <img src="{{ $auction->first_image_path }}" alt=""
+                                                                    width="80" height="80" class="img-circle">
+                                                           </a>
+                                                       </td>
+                                                       <td class="text-center">
+                                                           <a href={{ route('auctions.show', $auction->id) }}>
+                                                               {{ isNullable(substr($auction->$name,0,15)) }}
+                                                           </a>
+                                                       </td>
                                                        <td class="text-center">
                                                            <a href="#" data-toggle="modal" data-target="#add_start_time_modal"
                                                               class="btn btn-success btn-labeled btn-labeled-left">
-                                                               <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.auction.add_time/accept')}} </span>
+                                                               <span class="badge badge-success" >
+                                                                   <i class="icon-check2"> </i>
+                                                                   {{trans('messages.auction.add_time/accept')}}
+                                                               </span>
                                                            </a>
                                                        </td>
 
                                                        <td class="text-center">
                                                                <a href="auction/{{$auction->id}}/need_update/">
-                                                                   <span class="badge badge-primary" >  <i class="icon-close2"> </i>  {{trans('messages.need_update')}} </span>
+                                                                   <span class="badge badge-primary" >
+                                                                       <i class="icon-close2"> </i>
+                                                                       {{trans('messages.need_update')}}
+                                                                   </span>
                                                                </a>
                                                        </td>
 
-                                                       <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
+                                                       <td class="text-center">
+                                                           {{isset($auction->created_at)
+                                                           ? $auction->created_at->diffForHumans()
+                                                           :'---' }}
+                                                       </td>
                                                        <td class="text-center">
                                                            <div class="list-icons text-center">
                                                                <div class="list-icons-item dropdown text-center">
@@ -197,6 +258,7 @@
                                        @endif
                                    </div>
                                 </div>
+<!----------Accepted_Not_Appear---------------------------------------------------------------------------------------->
                                 <div class="tab-pane " id="accepted_not_appear">
                                    <div class="row">
                                        @if($accepted_not_appear->count() > 0)
@@ -215,25 +277,46 @@
                                                <tbody>
                                                @foreach($accepted_not_appear as $auction)
                                                    <tr id="auction-row-{{ $auction->id }}">
-                                                       <td class="text-center">{{ $auction->category->$name }}</td>
                                                        <td class="text-center">
-                                                           <a href="{{ $auction->first_image_path }}" data-popup="lightbox"><img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle"></a>
+                                                           {{ $auction->category->$name }}
                                                        </td>
-                                                       <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
-                                                       <td class="text-center"> {{ ($auction->start_auction_price ) }}</a></td>
+                                                       <td class="text-center">
+                                                           <a href="{{ $auction->first_image_path }}" data-popup="lightbox">
+                                                               <img src="{{ $auction->first_image_path }}" alt=""
+                                                                    width="80" height="80" class="img-circle">
+                                                           </a>
+                                                       </td>
+                                                       <td class="text-center">
+                                                           <a href={{ route('auctions.show', $auction->id) }}>
+                                                               {{ isNullable(substr($auction->$name,0,15)) }}
+                                                           </a>
+                                                       </td>
+                                                       <td class="text-center">
+                                                           {{ ($auction->start_auction_price ) }}
+                                                       </td>
                                                        <td class="text-center">
                                                            @if($auction->is_unique ==0)
                                                                <a href="auction/{{$auction->id}}/unique/">
-                                                                   <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.unique')}} </span>
+                                                                   <span class="badge badge-success" >
+                                                                       <i class="icon-check2"> </i>
+                                                                       {{trans('messages.unique')}}
+                                                                   </span>
                                                                </a>
                                                            @else
                                                                <a href="auction/{{$auction->id}}/not_unique/">
-                                                                   <span class="badge badge-danger" >  <i class="icon-close2"> </i>  {{trans('messages.not_unique')}} </span>
+                                                                   <span class="badge badge-danger" >
+                                                                       <i class="icon-close2"> </i>
+                                                                       {{trans('messages.not_unique')}}
+                                                                   </span>
                                                                </a>
                                                            @endif
                                                        </td>
 
-                                                       <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
+                                                       <td class="text-center">
+                                                           {{isset($auction->created_at)
+                                                           ? $auction->created_at->diffForHumans()
+                                                           : '---' }}
+                                                       </td>
                                                        <td class="text-center">
                                                            <div class="list-icons text-center">
                                                                <div class="list-icons-item dropdown text-center">
@@ -273,6 +356,7 @@
                                        @endif
                                    </div>
                                 </div>
+<!----------ON_Progress_Auctions--------------------------------------------------------------------------------------->
                                 <div class="tab-pane" id="on_progress_auctions">
                                     @if($on_progress_auctions->count() > 0)
                                         <table class="table datatable-button-print-basic" id="auctions" style="font-size: 16px;">
@@ -292,37 +376,60 @@
                                             <tbody>
                                             @foreach($on_progress_auctions as $auction)
                                                 <tr id="auction-row-{{ $auction->id }}">
-                                                    <td class="text-center">{{ $auction->category->$name }}</td>
+                                                    <td class="text-center">
+                                                        {{ $auction->category->$name }}
+                                                    </td>
                                                     <td class="text-center">
                                                         <a href="{{ $auction->first_image_path }}" data-popup="lightbox">
-                                                            <img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle">
+                                                            <img src="{{ $auction->first_image_path }}" alt=""
+                                                                 width="80" height="80" class="img-circle">
                                                         </a>
                                                     </td>
-                                                    <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
-                                                    <td class="text-center"> {{ ($auction->start_auction_price ) }}</a></td>
+                                                    <td class="text-center">
+                                                        <a href={{ route('auctions.show', $auction->id) }}>
+                                                            {{ isNullable(substr($auction->$name,0,15)) }}
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        {{ ($auction->start_auction_price ) }}
+                                                    </td>
                                                     <td class="text-center">
                                                            @if($auction->is_unique ==0)
                                                                <a href="auction/{{$auction->id}}/unique/">
-                                                                   <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.unique')}} </span>
+                                                                   <span class="badge badge-success" >
+                                                                       <i class="icon-check2"> </i>
+                                                                       {{trans('messages.unique')}}
+                                                                   </span>
                                                                </a>
                                                            @else
                                                                <a href="auction/{{$auction->id}}/not_unique/">
-                                                                   <span class="badge badge-danger" >  <i class="icon-close2"> </i>  {{trans('messages.not_unique')}} </span>
+                                                                   <span class="badge badge-danger" >
+                                                                       <i class="icon-close2"> </i>
+                                                                       {{trans('messages.not_unique')}}
+                                                                   </span>
                                                                </a>
                                                            @endif
                                                     </td>
                                                     <td class="text-center">
 
                                                         <a href="auction/{{$auction->id}}/end_auction/">
-                                                            <span class="badge badge-danger" >  <i class="icon-close2"> </i>@lang('messages.end_auction') </span>
+                                                            <span class="badge badge-danger" >
+                                                                <i class="icon-close2"> </i>
+                                                                @lang('messages.end_auction')
+                                                            </span>
                                                         </a>
 
                                                  </td>
-                                                    <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
+                                                    <td class="text-center">
+                                                        {{isset($auction->created_at)
+                                                        ? $auction->created_at->diffForHumans()
+                                                        : '---' }}
+                                                    </td>
                                                     <td class="text-center">
                                                         <div class="list-icons text-center">
                                                             <div class="list-icons-item dropdown text-center">
-                                                                <a href="#" class="list-icons-item caret-0 dropdown-toggle" data-toggle="dropdown">
+                                                                <a href="#" class="list-icons-item caret-0 dropdown-toggle"
+                                                                   data-toggle="dropdown">
                                                                     <i class="icon-menu9"></i>
                                                                 </a>
 
@@ -357,6 +464,7 @@
                                             style="text-align: center;"><h3> @lang('messages.no_data_found') </h3></div>
                                     @endif
                                 </div>
+<!----------DONE_Auctions---------------------------------------------------------------------------------------------->
                                 <div class="tab-pane" id="done_auctions">
                                     @if($done_auctions->count() > 0)
                                         <table class="table datatable-button-print-basic" id="auctions" style="font-size: 16px;">
@@ -376,22 +484,40 @@
                                             @foreach($done_auctions as $auction)
 
                                                 <tr id="auction-row-{{ $auction->id }}">
-                                                    <td class="text-center">{{ $auction->serial_number }}</td>
-                                                    <td class="text-center">{{ $auction->category->$name }}</td>
+                                                    <td class="text-center">
+                                                        {{ $auction->serial_number }}
+                                                    </td>
+                                                    <td class="text-center">
+                                                        {{ $auction->category->$name }}
+                                                    </td>
                                                     <td class="text-center">
                                                         <a href="{{ $auction->first_image_path }}" data-popup="lightbox">
-                                                            <img src="{{ $auction->first_image_path }}" alt="" width="80" height="80" class="img-circle">
+                                                            <img src="{{ $auction->first_image_path }}" alt=""
+                                                                 width="80" height="80" class="img-circle">
                                                         </a>
                                                     </td>
-                                                    <td class="text-center"><a href={{ route('auctions.show', $auction->id) }}>{{ isNullable(substr($auction->$name,0,15)) }} </a></td>
-                                                    <td class="text-center"> {{ ($auction->start_auction_price ) }}</a></td>
+                                                    <td class="text-center">
+                                                        <a href={{ route('auctions.show', $auction->id) }}>
+                                                            {{ isNullable(substr($auction->$name,0,15)) }}
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        {{ ($auction->start_auction_price ) }}
+                                                    </td>
                                                     <td class="text-center">
                                                         <a href="#" data-toggle="modal" data-target="#re_auction_modal"
                                                            class="btn btn-success btn-labeled btn-labeled-left">
-                                                            <span class="badge badge-success" >  <i class="icon-check2"> </i>  {{trans('messages.auction.add_end_time/re_auction')}} </span>
+                                                            <span class="badge badge-success" >
+                                                                <i class="icon-check2"> </i>
+                                                                {{trans('messages.auction.add_end_time/re_auction')}}
+                                                            </span>
                                                         </a>
                                                     </td>
-                                                    <td class="text-center">{{isset($auction->created_at) ?$auction->created_at->diffForHumans():'---' }}</td>
+                                                    <td class="text-center">
+                                                        {{isset($auction->created_at)
+                                                        ? $auction->created_at->diffForHumans()
+                                                        : '---' }}
+                                                    </td>
                                                     <td class="text-center">
                                                         <div class="list-icons text-center">
                                                             <div class="list-icons-item dropdown text-center">
@@ -420,6 +546,98 @@
                                                                             <i class="icon-database-remove"></i>@lang('messages.delete')
                                                                         </a>
                                                                     </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </td>
+                                                    @include('Dashboard.Auctions.parts.re_auction_modal')
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    @else
+                                        <div style="text-align: center;"><h3> @lang('messages.no_data_found') </h3></div>
+                                    @endif
+                                </div>
+<!----------DELETED_Auctions---------------------------------------------------------------------------------------------->
+                                <div class="tab-pane" id="deleted_auctions">
+                                    @if($deleted_auctions->count() > 0)
+                                        <table class="table datatable-button-print-basic" id="auctions" style="font-size: 16px;">
+                                            <thead>
+                                            <tr style="background-color:gainsboro">
+                                                <th class="text-center">Serial number</th>
+                                                <th class="text-center">قسم</th>
+                                                <th class="text-center">{{ trans('messages.image') }}</th>
+                                                <th class="text-center">{{ trans('messages.name') }}</th>
+                                                <th class="text-center">{{ trans('messages.auction.start_auction_price') }}</th>
+                                                <th class="text-center">{{ trans('messages.auction.re_auction') }}</th>
+                                                <th class="text-center">@lang('messages.since')</th>
+                                                <th class="text-center">@lang('messages.form-actions')</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($deleted_auctions as $auction)
+
+                                                <tr id="auction-row-{{ $auction->id }}">
+                                                    <td class="text-center">
+                                                        {{ $auction->serial_number }}
+                                                    </td>
+                                                    <td class="text-center">
+                                                        {{ $auction->category->$name }}
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href="{{ $auction->first_image_path }}" data-popup="lightbox">
+                                                            <img src="{{ $auction->first_image_path }}" alt=""
+                                                                 width="80" height="80" class="img-circle">
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href={{ route('auctions.show', $auction->id) }}>
+                                                            {{ isNullable(substr($auction->$name,0,15)) }}
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        {{ ($auction->start_auction_price ) }}
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href="#" data-toggle="modal" data-target="#re_auction_modal"
+                                                           class="btn btn-success btn-labeled btn-labeled-left">
+                                                            <span class="badge badge-success" >
+                                                                <i class="icon-check2"> </i>
+                                                                {{trans('messages.auction.add_end_time/re_auction')}}
+                                                            </span>
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        {{isset($auction->created_at)
+                                                        ? $auction->created_at->diffForHumans()
+                                                        : '---' }}
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="list-icons text-center">
+                                                            <div class="list-icons-item dropdown text-center">
+                                                                <a href="#"
+                                                                   class="list-icons-item caret-0 dropdown-toggle"
+                                                                   data-toggle="dropdown">
+                                                                    <i class="icon-menu9"></i>
+                                                                </a>
+                                                                <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
+
+                                                                    <li>
+                                                                        <a href="{{ route('auctions.show',$auction->id) }}">
+                                                                            <i
+                                                                                class="icon-eye"></i>@lang('messages.show')
+                                                                        </a>
+                                                                    </li>
+                                                                    {{--<li>--}}
+                                                                        {{--<a data-id="{{ $auction->id }}"--}}
+                                                                           {{--class="delete-action"--}}
+                                                                           {{--href="{{ Url('/auction/auction/'.$auction->id) }}">--}}
+                                                                            {{--<i class="icon-database-remove"></i>@lang('messages.delete')--}}
+                                                                        {{--</a>--}}
+                                                                    {{--</li>--}}
                                                                 </ul>
                                                             </div>
                                                         </div>

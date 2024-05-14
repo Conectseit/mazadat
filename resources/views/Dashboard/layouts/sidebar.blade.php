@@ -55,6 +55,27 @@
             </ul>
         </li>
     @endif
+    @if(permission_route_checker('auctions'.'.index') )
+        <li>
+            <a href="#" style="color: #d1915c;">
+                <i class="icon-package"></i>
+                <span style="font-family: Sans-Serif; color: black">{{ trans('messages.product.products') }}</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{route('products.index')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.all') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('products.create')}}" style="font-family: Sans-Serif; color: black">
+                        {{ trans('messages.add') }}
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+    @endif
     @if(permission_route_checker('categories'.'.index') )
         <li>
             <a href="#" style="color: #d1915c;">

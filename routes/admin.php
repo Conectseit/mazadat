@@ -22,6 +22,7 @@ use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\CityController;
 use App\Http\Controllers\Dashboard\ContactController;
 use App\Http\Controllers\Dashboard\PersonController;
+use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\QuestionController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\TransactionController;
@@ -74,6 +75,7 @@ Route::group(
                     'questions'             => QuestionController::class,
                     'contacts'              => ContactController::class,
                     'auctions'              => AuctionController::class,
+                    'products'              => ProductController::class,
                     'auction_data'          => AuctionDataController::class,
                     'permissions'           => PermissionController::class,
                     'admins'                => AdminController::class,
@@ -95,6 +97,7 @@ Route::group(
                 Route::post('/ajax-delete-country',         [CountryController::class, 'destroy'])->name('ajax-delete-country');
                 Route::post('/ajax-delete-city',            [CityController::class, 'destroy'])->name('ajax-delete-city');
                 Route::post('/ajax-delete-auction',         [AuctionController::class, 'destroy'])->name('ajax-delete-auction');
+                Route::post('/ajax-delete-product',         [ProductController::class, 'destroy'])->name('ajax-delete-product');
 
                 Route::post('/ajax-delete-image',           [AuctionController::class, 'deleteImage'])->name('ajax-delete-image');
                 Route::post('/ajax-delete-inspection_report_image', [AuctionController::class, 'deleteInspectionReportImage'])->name('ajax-delete-inspection-report-image');

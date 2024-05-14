@@ -8,7 +8,7 @@
     <div class="container col-lg-10">
         <div class="owl-carousel categories-bar-carousel owl-theme">
 
-            @foreach( App\Models\Category::where('menu',1)->get() as $category)
+            @foreach( App\Models\Category::where(['parent_id' => null , 'menu' => 1])->get() as $category)
                 <div class="item">
                     <a class="hoome_icon" href="{{route('front.category_auctions',$category->id)}}">
                         <h5>{{$category->$name}}</h5>

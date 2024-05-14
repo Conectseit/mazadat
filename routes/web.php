@@ -43,18 +43,19 @@ Route::group(
         return view('front/splash_index');
     });
 //    Route::group(['prefix' => 'front'], function () {
-    Route::get('/home', [HomeController::class, 'home'])->name('front.home');
-    Route::get('unique-auction', [HomeController::class, 'unique_auction'])->name('front.unique_auction');
-    Route::get('latest-auctions', [HomeController::class, 'latest_auctions'])->name('front.latest_auctions');
+    Route::get('/home',                 [HomeController::class, 'home'])->name('front.home');
+    Route::get('/sub_categories/{id}',  [HomeController::class, 'sub_categories'])->name('front.sub_categories');
+    Route::get('unique-auction',        [HomeController::class, 'unique_auction'])->name('front.unique_auction');
+    Route::get('latest-auctions',       [HomeController::class, 'latest_auctions'])->name('front.latest_auctions');
 
-    Route::get('all-companies', [HomeController::class, 'all_companies'])->name('front.all_companies');
+    Route::get('all-companies',         [HomeController::class, 'all_companies'])->name('front.all_companies');
     Route::get('company/{id}/auctions', [HomeController::class, 'companyAuctions'])->name('front.company_auctions');
 
-    Route::get('show-blogs', [BlogController::class, 'show_blogs'])->name('front.show_blogs');
-    Route::get('blogs', [BlogController::class, 'blogs'])->name('front.blogs');
-    Route::get('blog-details/{id}', [BlogController::class, 'blog_details'])->name('front.blog_details');
-    Route::get('pages', [BlogController::class, 'pages'])->name('front.pages');
-    Route::get('page-details/{id}', [BlogController::class, 'page_details'])->name('front.page_details');
+    Route::get('show-blogs',            [BlogController::class, 'show_blogs'])->name('front.show_blogs');
+    Route::get('blogs',                 [BlogController::class, 'blogs'])->name('front.blogs');
+    Route::get('blog-details/{id}',     [BlogController::class, 'blog_details'])->name('front.blog_details');
+    Route::get('pages',                 [BlogController::class, 'pages'])->name('front.pages');
+    Route::get('page-details/{id}',     [BlogController::class, 'page_details'])->name('front.page_details');
 
 
     // ============ // category ================
@@ -82,6 +83,16 @@ Route::group(
 //    Route::post('resend-code', [AuthController::class, 'resendCode'])->name('front.resend-code');
     Route::get('show-login', [AuthController::class, 'show_login'])->name('front.show_login');
     Route::post('login', [AuthController::class, 'login'])->name('front.login');
+// ============ // auth-nafath ================
+//    Route::get('login/nafath', [AuthController::class, 'redirectToNafathProvider'])->name('nafath.page.login');
+//    Route::get('login/nafath/callback', [AuthController::class, 'handleNafathCallback']);
+//
+//    Route::get('/auth/nafath', 'AuthController@redirectToNafathProvider')->name('nafath.redirect');
+//    Route::get('/auth/nafath/callback', 'AuthController@handleNafathCallback')->name('nafath.callback');
+
+    Route::get('/nafath', [AuthController::class, 'nafath'])->name('nafath.page.login');
+    Route::post('/nafath/login', [AuthController::class, 'nafathLogin'])->name('nafath.login');
+    Route::get('/nafath/callback', [AuthController::class, 'handleNafathCallback'])->name('nafath.callback');
 
     Route::post('forget-pass', [ForgetPassController::class, 'forget_pass'])->name('front.forget_pass');
     Route::get('reset-code-page/{email}', [ForgetPassController::class, 'resetCodePage'])->name('front.reset-code-page');

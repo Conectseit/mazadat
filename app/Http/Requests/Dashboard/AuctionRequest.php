@@ -36,6 +36,9 @@ class AuctionRequest extends FormRequest
                         'category_id' => 'required',
                         'description_ar' => 'required',
                         'description_en' => 'required',
+                        'name_of_the_licensor' => 'required_if:userType,person',
+                        'license_number' => 'required_if:userType,person',
+                        'brokerage_license_number' => 'required_if:userType,company',
                         'auction_terms_ar' => 'required',
                         'auction_terms_en' => 'required',
 

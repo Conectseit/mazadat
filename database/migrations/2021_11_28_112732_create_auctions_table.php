@@ -25,7 +25,10 @@ class CreateAuctionsTable extends Migration
             $table->string('name_en')->nullable();
             $table->longText('description_ar')->nullable();
             $table->longText('description_en')->nullable();
-            $table->enum('status', ['on_progress', 'done','not_accepted'])->default('on_progress');
+            $table->string('name_of_the_licensor')->nullable();
+            $table->integer('license_number')->nullable();
+            $table->integer('brokerage_license_number')->nullable();
+            $table->enum('status', ['on_progress', 'done','not_accepted','deleted'])->default('on_progress');
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
             $table->boolean('is_accepted')->default(0); // when user not admin  will add auction later //

@@ -57,9 +57,6 @@
                                         <option value="cars" {{$category->status == 'cars' ? 'selected disabled' : ''}}>
                                             {{trans('messages.category.cars') }}
                                         </option>
-                                        <option value="mazadat" {{$category->status == 'mazadat' ? 'selected disabled' : ''}}>
-                                            {{trans('messages.mazadat') }}
-                                        </option>
 
                                     </optgroup>
                                 </select>

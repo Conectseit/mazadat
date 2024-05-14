@@ -4,6 +4,7 @@
     <style> #map {
             height: 400px;
         }
+
         .hide {
             visibility: hidden;
         }
@@ -18,13 +19,14 @@
         <div class="container">
             <h4 class="title">
                 <a href="{{ url()->previous() }}" class="mt-2 mx-1 back"> <i
-                        class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
+                            class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
 
                 {{ trans('messages.auction.add_new') }}</h4>
             <div class="row">
                 <form action="{{route('front.add_auction')}}" method="post" id="submitted-form"
                       enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="userType" value="{{auth()->user()->is_company}}">
                     <div class="inputs-group">
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
@@ -72,6 +74,53 @@
                                 @error('description_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                         </div>
+                        @if(auth()->user()->is_company == 'person')
+                            <div class="form-group mb-4 row">
+                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                    <label for="name_of_the_licensor" class="form-label">
+                                        {{trans('messages.auction.name_of_the_licensor')}}
+                                    </label>
+                                </div>
+                                <div class="col-lg-10 col-md-9">
+                                    <input type="text" id="name_of_the_licensor" name="name_of_the_licensor"
+                                           class="form-control   @error('name_of_the_licensor') is-invalid @enderror"
+                                           value="{{ old('name_of_the_licensor') }}"
+                                           placeholder="{{trans('messages.auction.enter_name_of_the_licensor')}}">
+                                    @error('name_of_the_licensor')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                                </div>
+                            </div>
+                            <div class="form-group mb-4 row">
+                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                    <label for="license_number" class="form-label">
+                                        {{trans('messages.auction.license_number')}}
+                                    </label>
+                                </div>
+                                <div class="col-lg-10 col-md-9">
+                                    <input type="number" id="name_ar" name="license_number"
+                                           class="form-control   @error('license_number') is-invalid @enderror"
+                                           value="{{ old('license_number') }}"
+                                           placeholder="{{trans('messages.auction.enter_license_number')}}">
+                                    @error('license_number')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                                </div>
+                            </div>
+                        @elseif(auth()->user()->is_company == 'company')
+                            <div class="form-group mb-4 row">
+                                <div class="col-lg-2 col-md-3 d-flex align-items-center">
+                                    <label for="brokerage_license_number" class="form-label">
+                                        {{trans('messages.auction.brokerage_license_number_for_brokers')}}</label>
+                                </div>
+                                <div class="col-lg-10 col-md-9">
+                                    <input type="number" id="brokerage_license_number"
+                                           name="brokerage_license_number"
+                                           class="form-control   @error('brokerage_license_number') is-invalid @enderror"
+                                           value="{{ old('brokerage_license_number') }}"
+                                           placeholder="{{trans('messages.auction.enter_brokerage_license_number_for_brokers')}}">
+                                    @error('brokerage_license_number')
+                                    <span style="color: #e81414;">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endif
                     </div>
                     <div class="inputs-group">
                         <h5 class="group-title"> {{ trans('messages.auction.auction_terms') }}</h5>
@@ -84,7 +133,9 @@
                                 <textarea name="auction_terms_ar"
                                           class="form-control @error('auction_terms_ar') is-invalid @enderror"
                                           cols="100"
-                                          placeholder="{{trans('messages.auction.auction_terms_ar')}}">{{ old('auction_terms_ar') }}</textarea>
+                                          placeholder="{{trans('messages.auction.auction_terms_ar')}}">
+                                    {{ old('auction_terms_ar') }}
+                                </textarea>
                                 @error('auction_terms_ar')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                         </div>
@@ -97,7 +148,9 @@
                                 <textarea name="auction_terms_en"
                                           class="form-control @error('auction_terms_en') is-invalid @enderror"
                                           cols="100"
-                                          placeholder="{{trans('messages.auction.auction_terms_en')}}">{{ old('auction_terms_en') }}</textarea>
+                                          placeholder="{{trans('messages.auction.auction_terms_en')}}">
+                                    {{ old('auction_terms_en') }}
+                                </textarea>
                                 @error('auction_terms_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                         </div>
@@ -112,7 +165,7 @@
                                        value="{{ old('start_auction_price') }}"
                                        placeholder="{{trans('messages.auction.start_auction_price')}}">
                                 @error('start_auction_price')<span
-                                    style="color: #e81414;">{{ $message }}</span>@enderror
+                                        style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="form-group mb-4 row">
@@ -149,7 +202,7 @@
                         <h5 class="group-title"> {{ trans('messages.auction.options') }}</h5>
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">
-                                <label for="email"
+                                <label for="category_id"
                                        class="form-label">{{ trans('messages.auction.choose_category')}}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
@@ -157,7 +210,9 @@
                                         aria-label="Default select example">
                                     <option selected disabled> {{ trans('messages.auction.choose_category')}}</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}"> {{ $category->$name }} </option>
+                                        <option value="{{ $category->id }} " data-status="{{ $category->parent->status }}">
+                                            {{ $category->$name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -182,11 +237,18 @@
                                        class="form-label">{{ trans('messages.option.not_required_options') }}</label>
                             </div>
                             <div class="col-lg-10 col-md-9">
-{{--                                for optional input options--}}
+                                {{--                                for optional input options--}}
                                 <div class="not-options"></div>
                             </div>
                         </div>
                     </div>
+                    <div class="inputs-group" id="real_estate" style="display: none;">
+
+                       @include('front.auctions.parts.real_estate_page')
+
+                    </div>
+
+
                     <div class="inputs-group">
                         <h5 class="group-title"> {{trans('messages.enter_other_user_data')}}</h5>
                         @include('front.auctions.parts.add_auction_images_and_files')
@@ -227,6 +289,7 @@
                                     class="btn btn-primary submit-btn">{{trans('messages.auction.add')}}</button>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>
@@ -303,6 +366,17 @@
                 }
             } else {
                 document.getElementById("map-section").style.display = "block";
+            }
+        });
+    </script>
+    <script>
+        $('select#category').on('change', function () {
+            let selectedOption = $(this).find('option:selected');
+            let categoryStatus = selectedOption.data('status');
+            if (categoryStatus === 'real_estate') {
+                document.getElementById("real_estate").style.display = "block";
+            } else {
+                document.getElementById("real_estate").style.display = "none";
             }
         });
     </script>
