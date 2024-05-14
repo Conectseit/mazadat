@@ -189,7 +189,7 @@ class CompanyController extends Controller
     {
         $company = User::findOrFail($id);
         $company->update(['is_accepted'=> 1,'is_verified'=> 1]);
-        Notification::sendAcceptAccountNotify($company->id);
+        (new \App\Models\Notification)->sendAcceptAccountNotify($company->id);
 
         SmsController::sendSms($company->mobile, 'تم قبول حسابك  من ادرة موقع مزادات' );
 
@@ -199,7 +199,7 @@ class CompanyController extends Controller
     {
         $company = User::findOrFail($id);
         $company->update(['is_accepted'=> 0]);
-        Notification::sendNotAcceptAccountNotify($company->id);
+        (new \App\Models\Notification)->sendNotAcceptAccountNotify($company->id);
 
         SmsController::sendSms($company->mobile, 'هناك خطأ في تكملة بيانات حسابك في موقع مزادات من فضلك ارسلها مرة اخري' );
         return back()->with('success',  trans('messages.not_verified_yet_and_send_SMS'));
