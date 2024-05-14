@@ -39,19 +39,21 @@
                     <form action="{{ route('auctions.store') }}" method="post" id="submitted-form"
                           class=" stepy-basic wizard-form steps-validation" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="userType" value="{{auth()->user()->is_company}}">
+
+                        <input type="hidden" name="userType" id="userType" value="">
                         <div class="row">
                             <div class="form-group">
                                 <label class="col-lg-3 control-label display-block">
                                     {{ trans('messages.auction.seller_full_name') }}
                                 </label>
                                 <div class="col-md-6">
-                                    <select name="seller_id" class="select">
+                                    <select name="seller_id" id="seller_id"  onchange="updateAdditionalFields(this)">
                                         <option selected disabled>{{trans('messages.select')}}</option>
 
                                         <optgroup label="{{ trans('messages.auction.seller_full_name') }}">
                                             @foreach ($users as $user)
-                                                <option value="{{ $user->id }}"> {{ $user->user_name }} </option>
+                                                <option value="{{ $user->id }}" data-is-company="{{ $user->is_company }}">
+                                                    {{ $user->user_name }} </option>
                                             @endforeach
                                         </optgroup>
                                     </select>
@@ -81,33 +83,35 @@
                                 @error('description_en')<span style="color: #e81414;">{{ $message }}</span>@enderror
                             </div>
 
+                            <div id="additionalFields">
+                                {{--@if($user->is_company == 'person')--}}
 
-                            @if(auth()->user()->is_company == 'person')
+                                    {{--<div class="form-group">--}}
+                                        {{--<input type="text" class="form-control" value="{{ old('name_of_the_licensor')}}"--}}
+                                               {{--name="name_of_the_licensor"--}}
+                                               {{--placeholder="@lang('messages.auction.name_of_the_licensor') ">--}}
+                                        {{--@error('name_of_the_licensor')<span--}}
+                                                {{--style="color: #e81414;">{{ $message }}</span>@enderror--}}
+                                    {{--</div>--}}
+                                    {{--<div class="form-group">--}}
+                                        {{--<input type="number" class="form-control" value="{{ old('license_number')}}"--}}
+                                               {{--name="license_number"--}}
+                                               {{--placeholder="@lang('messages.auction.enter_license_number') ">--}}
+                                        {{--@error('license_number')<span style="color: #e81414;">{{ $message }}</span>@enderror--}}
+                                    {{--</div>--}}
+                                {{--@elseif($user->is_company == 'company')--}}
+                                    {{--<div class="form-group">--}}
+                                        {{--<input type="number" class="form-control"--}}
+                                               {{--value="{{ old('brokerage_license_number')}}"--}}
+                                               {{--name="brokerage_license_number"--}}
+                                               {{--placeholder="@lang('messages.auction.brokerage_license_number_for_brokers') ">--}}
+                                        {{--@error('brokerage_license_number')<span--}}
+                                                {{--style="color: #e81414;">{{ $message }}</span>@enderror--}}
+                                    {{--</div>--}}
 
-                                <div class="form-group">
-                                    <input type="text" class="form-control" value="{{ old('name_of_the_licensor')}}"
-                                           name="name_of_the_licensor"
-                                           placeholder="@lang('messages.auction.name_of_the_licensor') ">
-                                    @error('name_of_the_licensor')<span style="color: #e81414;">{{ $message }}</span>@enderror
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" class="form-control" value="{{ old('license_number')}}"
-                                           name="license_number"
-                                           placeholder="@lang('messages.auction.enter_license_number') ">
-                                    @error('license_number')<span style="color: #e81414;">{{ $message }}</span>@enderror
-                                </div>
-                            @elseif(auth()->user()->is_company == 'company')
-                                <div class="form-group">
-                                    <input type="number" class="form-control"
-                                           value="{{ old('brokerage_license_number')}}"
-                                           name="brokerage_license_number"
-                                           placeholder="@lang('messages.auction.brokerage_license_number_for_brokers') ">
-                                    @error('brokerage_license_number')<span
-                                            style="color: #e81414;">{{ $message }}</span>@enderror
-                                </div>
 
-
-                            @endif
+                                {{--@endif--}}
+                            </div>
 
                         </div>
                         <div class="row">
@@ -139,7 +143,8 @@
                                             <option selected disabled>{{trans('messages.select')}}</option>
 
                                             @foreach($categories as $category)
-                                                <option value="{{ $category->id }}" data-status="{{ $category->status }}">
+                                                <option value="{{ $category->id }}"
+                                                        data-status="{{ $category->status }}">
                                                     {{ $category->$name }}
                                                 </option>
                                             @endforeach
@@ -390,6 +395,39 @@
 
     @include('Dashboard.Auctions.parts.ajax_get_options_by_category_id')
     {{--    @include('Dashboard.Auctions.parts.image_preview')--}}
+
+    <script type="text/javascript">
+        function updateAdditionalFields(selectElement) {
+            var userType = selectElement.options[selectElement.selectedIndex].getAttribute('data-is-company');
+            document.getElementById('userType').value = userType;
+
+            // Show/hide additional fields based on the selected user type
+            if (userType === 'person') {
+                document.getElementById('additionalFields').innerHTML = `
+                <div class="form-group">
+                    <input type="text" class="form-control"
+                    value="{{ old('name_of_the_licensor')}}" name="name_of_the_licensor"
+                     placeholder="@lang('messages.auction.name_of_the_licensor') ">
+                    @error('name_of_the_licensor')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control"
+                    value="{{ old('license_number')}}" name="license_number"
+                    placeholder="@lang('messages.auction.enter_license_number') ">
+                    @error('license_number')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                </div>
+            `;
+            } else if (userType === 'company') {
+                document.getElementById('additionalFields').innerHTML = `
+                <div class="form-group">
+                    <input type="number" class="form-control" value="{{ old('brokerage_license_number')}}"
+                    name="brokerage_license_number" placeholder="@lang('messages.auction.brokerage_license_number_for_brokers') ">
+                    @error('brokerage_license_number')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                </div>
+            `;
+            }
+        }
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function () {
