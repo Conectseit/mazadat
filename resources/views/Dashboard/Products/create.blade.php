@@ -54,7 +54,8 @@
                                         <optgroup label="{{ trans('messages.category.choose_category') }}">
                                             <option selected disabled>{{trans('messages.select')}}</option>
                                             @foreach($categories as $category)
-                                                <option value="{{ $category->id }}" data-status="{{ $category->parent->status }}">
+                                                <option value="{{ $category->id }}" data-status="{{ $category->status }}">
+{{--                                                <option value="{{ $category->id }}" data-status="{{ $category->parent->status }}">--}}
                                                     {{ $category->$name }} </option>
                                             @endforeach
                                         </optgroup>

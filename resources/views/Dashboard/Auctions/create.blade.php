@@ -47,7 +47,7 @@
                                     {{ trans('messages.auction.seller_full_name') }}
                                 </label>
                                 <div class="col-md-6">
-                                    <select name="seller_id" id="seller_id"  onchange="updateAdditionalFields(this)">
+                                    <select name="seller_id" id="seller_id" class="select" onchange="updateAdditionalFields(this)">
                                         <option selected disabled>{{trans('messages.select')}}</option>
 
                                         <optgroup label="{{ trans('messages.auction.seller_full_name') }}">
