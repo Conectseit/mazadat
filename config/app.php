@@ -74,7 +74,7 @@ return [
     */
 
    'timezone' => 'UTC',
-    // 'timezone' => 'Asia/Riyadh',
+     'timezone' => 'Asia/Riyadh',
 
     /*
     |--------------------------------------------------------------------------
