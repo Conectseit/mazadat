@@ -245,21 +245,21 @@
                         <div class="col-lg-3 col-md-6">
                             <a href="{{route('front.rent_products')}}" class="cate-card"
                                dir="{{ direction() }}">
-                                <img src="{{asset('uploads/categories/rent.png')}}" alt="" width="80" height="80" class="img-circle">
+                                <img src="{{asset('rent.png')}}" alt="" width="80" height="80" class="img-circle">
                                 <h4 style="padding-top: 30px;">@lang('messages.product.rent')</h4>
                             </a>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <a href="sale_products" class="cate-card"
                                dir="{{ direction() }}">
-                                <img src="{{asset('uploads/categories/sell.png')}}" alt="" width="80" height="80" class="img-circle">
+                                <img src="{{asset('sell.png')}}" alt="" width="80" height="80" class="img-circle">
                                 <h4 style="padding-top: 30px;">@lang('messages.product.sale')</h4>
                             </a>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <a href="{{route('front.category_person_auctions' , 1)}}" class="cate-card"
                                dir="{{ direction() }}">
-                                <img src="{{asset('uploads/categories/auction.png')}}" alt="" width="80" height="80" class="img-circle">
+                                <img src="{{asset('auction.png')}}" alt="" width="80" height="80" class="img-circle">
                                 <h4 style="padding-top: 30px;">@lang('messages.mazadat')</h4>
                             </a>
                         </div>
