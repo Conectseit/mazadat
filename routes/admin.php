@@ -21,6 +21,8 @@ use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\CityController;
 use App\Http\Controllers\Dashboard\ContactController;
+use App\Http\Controllers\Dashboard\PersonAuctionController;
+use App\Http\Controllers\Dashboard\PersonAuctionDataController;
 use App\Http\Controllers\Dashboard\PersonController;
 use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\QuestionController;
@@ -55,6 +57,11 @@ Route::group(
         Route::get('view/{id?}', [AuctionController::class, 'view'])->name('view');
         Route::get('inspection_view_file/{id?}', [AuctionController::class, 'inspection_view_file'])->name('inspection_view_file');
 
+        Route::get('person_auction/view/{id?}',
+            [PersonAuctionController::class, 'view'])->name('person_auction_view');
+        Route::get('person_auction/inspection_view_file/{id?}',
+            [PersonAuctionController::class, 'inspection_view_file'])->name('person_auction_inspection_view_file');
+
         Route::group(['middleware' => 'CheckAuthAdmin'], function () {
             Route::any('/logout', [AuthController::class, 'logout'])->name('admin.logout');
             Route::get('home', [HomeController::class, 'home'])->name('admin.home');
@@ -75,8 +82,10 @@ Route::group(
                     'questions'             => QuestionController::class,
                     'contacts'              => ContactController::class,
                     'auctions'              => AuctionController::class,
+                    'person_auctions'       => PersonAuctionController::class,
                     'products'              => ProductController::class,
                     'auction_data'          => AuctionDataController::class,
+                    'person.auction_data'   => PersonAuctionDataController::class,
                     'permissions'           => PermissionController::class,
                     'admins'                => AdminController::class,
                     'activities'            => ActivityController::class,
@@ -142,7 +151,29 @@ Route::group(
 
                 Route::get('download/{extra?}',             [AuctionController::class, 'download'])->name('download');
 
+//===================================person auction===================================================================
 
+                Route::any('person-auction/{id?}/accept',
+                    [PersonAuctionController::class, 'accept'])->name('person/auction/accept');
+                Route::get('person-auction/{id?}/need_update',
+                    [PersonAuctionController::class, 'need_update'])->name('person/auction/need_update');
+                Route::get('person-auction/{id?}/unique',
+                    [PersonAuctionController::class, 'unique'])->name('person/auction/unique');
+                Route::get('person-auction/{id?}/not_unique',
+                    [PersonAuctionController::class, 'not_unique'])->name('person/auction/not_unique');
+                Route::get('person-auction/{id?}/end_auction',
+                    [PersonAuctionController::class, 'end_auction'])->name('person/auction/end_auction');
+                Route::post('person-auction/{id?}/re_auction',
+                    [PersonAuctionController::class, 're_auction'])->name('person/auction/re_auction');
+                Route::get('person-auction/download/{extra?}',
+                    [PersonAuctionController::class, 'download'])->name('person/download');
+                Route::post('person/addReportFile',
+                    [PersonAuctionController::class, 'addReportFile'])->name('person_addReportFile');
+
+                Route::post('/ajax-delete-person-auction_data',
+                    [PersonAuctionDataController::class, 'delete_auction_data'])->name('ajax-delete-person-auction_data');
+
+//=================================== end person auction==============================================================
                 Route::get('user/{id?}/ban',                [UserController::class, 'ban'])->name('ban');
                 Route::get('user/{id?}/not_ban',            [UserController::class, 'not_ban'])->name('not_ban');
 

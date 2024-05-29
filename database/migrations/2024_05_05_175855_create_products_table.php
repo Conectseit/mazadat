@@ -33,6 +33,7 @@ class CreateProductsTable extends Migration
             $table->text('services_related_ar');
             $table->text('services_related_en');
             $table->enum('purpose_of_the_advertisement' ,['sale','rent'])->default('sale');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -44,7 +44,10 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
 //        dd($request->all());
-        Product::create($request->all());
+        $request_data = $request->except(['image']);
+
+        if ($request->image) $request_data['image'] = uploaded($request->image, 'product');
+        Product::create($request_data);
         return redirect()->route('products.index')->with('message', trans('messages.messages.added_successfully'));
     }
 

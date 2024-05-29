@@ -28,6 +28,7 @@ class Controller extends BaseController
             $about_app = 'about_app_ar';
             $district = 'district_ar';
             $property_type = 'property_type_ar';
+            $street = 'street_ar';
 
             $site_meta_description = 'site_meta_description_ar';
             $site_meta_title = 'site_meta_title_ar';
@@ -44,6 +45,7 @@ class Controller extends BaseController
             $about_app = 'about_app_en';
             $district = 'district_en';
             $property_type = 'property_type_en';
+            $street = 'street_en';
 
             $site_meta_description = 'site_meta_description_en';
             $site_meta_title = 'site_meta_title_en';
@@ -59,6 +61,7 @@ class Controller extends BaseController
         View::share('about_app', $about_app);
         View::share('district', $district);
         View::share('property_type', $property_type);
+        View::share('street', $street);
 
 
         View::share('site_meta_description', $site_meta_description);

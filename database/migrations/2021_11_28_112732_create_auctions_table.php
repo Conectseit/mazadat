@@ -39,6 +39,22 @@ class CreateAuctionsTable extends Migration
             $table->string('value_of_increment')->nullable(); //قيمة المزايدة في كل مرة
             $table->integer('start_auction_price')->default(0);  //القيمة الابتدائية للمزاد
             $table->integer('current_price')->default(0);
+            $table->text('district_ar')->nullable();
+            $table->text('district_en')->nullable();
+            $table->text('street_ar')->nullable();
+            $table->text('street_en')->nullable();
+            $table->text('property_facade_ar')->nullable();
+            $table->text('property_facade_en')->nullable();
+            $table->integer('space')->nullable();
+            $table->enum('purpose', ['residential','commercial'])->default('residential');
+            $table->integer('price_per_meter_of_land')->nullable();
+            $table->integer('unit_price')->nullable();
+            $table->text('property_type_ar')->nullable();
+            $table->text('property_type_en')->nullable();
+            $table->integer('age_of_the_property')->nullable();
+            $table->text('services_related_ar')->nullable();
+            $table->text('services_related_en')->nullable();
+            $table->enum('purpose_of_the_advertisement' ,['sale','rent'])->default('sale');
 
             $table->softDeletes();
             $table->timestamps();

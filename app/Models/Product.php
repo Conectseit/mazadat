@@ -18,4 +18,13 @@ class Product extends Model
     {
         return $this->belongsTo(City::class);
     }
+    public function getImagePathAttribute()
+    {
+        $image = Product::where('id', $this->id)->first()->image;
+        if (!$image) {
+            return asset('uploads/default.png');
+        }
+        return asset('uploads/products/' . $this->image);
+    }
+
 }

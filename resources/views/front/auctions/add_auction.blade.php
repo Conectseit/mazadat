@@ -210,7 +210,7 @@
                                         aria-label="Default select example">
                                     <option selected disabled> {{ trans('messages.auction.choose_category')}}</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }} " data-status="{{ $category->parent->status }}">
+                                        <option value="{{ $category->id }} " data-status="{{ $category->status }}">
                                             {{ $category->$name }}
                                         </option>
                                     @endforeach

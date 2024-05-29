@@ -66,7 +66,7 @@ class CompanyController extends Controller
             return redirect()->route('front.show_activation', $request_data['mobile']);
 
         } catch (\Exception $e) {
-            return back();
+            return back()->with('message' , $e->getMessage());
         }
     }
 

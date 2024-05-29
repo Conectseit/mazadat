@@ -20,8 +20,8 @@
         </div>
         <br>
         <div class="list-icons" style="padding-right: 10px;">
-            <a href="{{route('categories.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i
-                        class="icon-plus2"></i></b>{{ trans('messages.category.add') }}</a>
+            {{--<a href="{{route('categories.create')}}" class="btn btn-success btn-labeled btn-labeled-left"><b><i--}}
+                        {{--class="icon-plus2"></i></b>{{ trans('messages.category.add') }}</a>--}}
         </div><br>
 
         @if($categories->count() > 0)
@@ -64,16 +64,21 @@
 
                                     <ul class="dropdown-menu dropdown-menu-{{ floating('right', 'left') }}">
                                         <li>
-                                            <a href="{{ route('categories.show', $category->id) }}"> <i
-                                                    class="icon-eye"></i>@lang('messages.show') </a>
+                                            {{--<a href="{{ route('categories.show', $category->id) }}">--}}
+                                                 <a href="#">
+                                                <i class="icon-eye"></i>@lang('messages.show')
+                                            </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('categories.edit',$category->id) }}"> <i
-                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>
+                                            {{--<a href="{{ route('categories.edit',$category->id) }}"> --}}
+                                            <a href="#">
+                                                <i class="icon-database-edit2"></i>@lang('messages.edit')
+                                            </a>
                                         </li>
                                         <li>
                                             <a data-id="{{ $category->id }}" class="delete-action"
-                                               href="{{ Url('/category/category/'.$category->id) }}">
+                                               {{--href="{{ Url('/category/category/'.$category->id) }}">--}}
+                                               href="#">
                                                 <i class="icon-database-remove"></i>@lang('messages.delete')
                                             </a>
                                         </li>

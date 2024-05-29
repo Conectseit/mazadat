@@ -44,6 +44,10 @@ class Category extends Model
     {
         return $this->hasMany(Auction::class);
     }
+    public function personAuctions()
+    {
+        return $this->hasMany(InPersonAuction::class);
+    }
     public function parent()
     {
 

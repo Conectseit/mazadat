@@ -69,6 +69,9 @@
                                 <a href="{{route('front.my_auctions')}}"> {{ trans('messages.user.my_auctions')}}</a>
                             </div>
                             <div class="col-sm-6">
+                                <a href="{{route('front.my_auctions_person')}}"> {{ trans('messages.user.my_person_auctions')}}</a>
+                            </div>
+                            <div class="col-sm-6">
                                 <a href="{{route('front.my_account_statement')}}"> {{ trans('messages.account_statement')}}</a>
                             </div>
                         </div>

@@ -17,6 +17,8 @@ class CreateAuctionDataTable extends Migration
             $table->id();
             $table->bigInteger('auction_id')->unsigned()->nullable();
             $table->foreign('auction_id')->references('id')->on('auctions')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('person_auction_id')->unsigned()->nullable();
+            $table->foreign('person_auction_id')->references('id')->on('in_person_auctions')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('option_id')->unsigned()->nullable();
             $table->foreign('option_id')->references('id')->on('options')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('option_details_id')->unsigned()->nullable();

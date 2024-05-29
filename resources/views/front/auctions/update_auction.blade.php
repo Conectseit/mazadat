@@ -156,14 +156,20 @@
                                     <option selected
                                             disabled>{{ isset($auction->category_id)? $auction->category->$name :  trans('messages.select') }}
                                     </option>
-                                    @foreach ($categories as $category)
-                                        <option
-                                            value="{{ $category->id }}"> {{ $category->$name }}
-                                        </option>
-                                    @endforeach
+                                    {{--@foreach ($categories as $category)--}}
+                                        {{--<option--}}
+                                            {{--value="{{ $category->id }}"> {{ $category->$name }}--}}
+                                        {{--</option>--}}
+                                    {{--@endforeach--}}
                                 </select>
                             </div>
                             @error('category_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                        </div>
+
+                        <div class="inputs-group" id="real_estate">
+
+                            @include('front.auctions.parts.update_real_estate')
+
                         </div>
                         <div class="form-group mb-4 row">
                             <div class="col-lg-2 col-md-3 d-flex align-items-center">

@@ -143,6 +143,7 @@ return [
 
      'there_is_no_blogs_yet'=>'لا يوجد مدونات حتي الان',
      'there_is_no_pages_yet'=>'لا يوجد صفحات حتي الان',
+     'property'=>'عقارات',
 
     'notification'=>[
         'send' => 'ارسال اشعار',
@@ -387,6 +388,7 @@ return [
         'bids' => 'مشاركاتي',
         'watched_auctions' => 'مشاهداتي',
         'my_auctions' => 'مزاداتي',
+        'my_person_auctions' => 'مزاداتي الحضورية',
         'wallet' => 'المحفظة',
         'my_wallet' => 'محفظتي',
         'addresses' => 'عناويني',
