@@ -15,7 +15,7 @@ class ForgetPassRequest extends FormRequest
     {
         return [
 //            'email'             => 'required',
-            'mobile'             => 'required',
+            'mobile'      => 'required|min:9|numeric|unique:users,mobile',
             ];
     }
 }

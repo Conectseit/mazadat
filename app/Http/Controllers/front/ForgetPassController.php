@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SmsController;
 use App\Http\Requests\Front\user\ForgetPassRequest;
 use App\Http\Requests\Front\user\resetPasswordRequest;
+use App\Models\Country;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,9 @@ class ForgetPassController extends Controller
 // =========== reset password ===========================
     public function forget_pass(ForgetPassRequest $request)
     {
-        $user = User::where('mobile', $request->mobile)->first();
+        $country = Country::find($request->country_id);
+        $request_data['mobile'] = $country->phone_code . $request->mobile;
+        $user = User::where('mobile', $request_data['mobile'])->first();
 
         if (!$user) {
             return back()->with('error', trans('messages.messages.invalid_mobile'));

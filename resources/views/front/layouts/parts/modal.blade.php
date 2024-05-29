@@ -114,13 +114,35 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <div class="col-lg-12 col-md-12">
-                            <input type="text" name="mobile" value="{{ old('mobile') }}"
-                                   class="form-control @error('mobile') is-invalid @enderror"
-                                   placeholder="{{trans('messages.enter_mobile')}} 966  xxxx xxx xx ">
-                            @error('mobile') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror
+                        {{--<div class="col-lg-12 col-md-12">--}}
+                            {{--<input type="text" name="mobile" value="{{ old('mobile') }}"--}}
+                                   {{--class="form-control @error('mobile') is-invalid @enderror"--}}
+                                   {{--placeholder="{{trans('messages.enter_mobile')}} 966  xxxx xxx xx ">--}}
+                            {{--@error('mobile') <span class="invalid-feedback"><strong>{{ $message }}</strong></span> @enderror--}}
+                        {{--</div>--}}
+                        <div class="col-lg-10 col-md-9">
+                            <div class="row">
+
+                                <div class="col-xl-3 col-lg-4 col-sm-6">
+                                    <select class="form-select form-control" name="country_id"
+                                            aria-label="Default select example">
+                                        <option selected disabled> {{ trans('messages.choose_country_code')}}</option>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}"> {{ $country->$name }}{{ $country->phone_code }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-xl-9 col-lg-8 col-sm-6">
+                                    <input type="text"  name="mobile"  maxlength="12" minlength="9"
+                                           class="form-control   @error('mobile') is-invalid @enderror"  value="{{ old('mobile') }}"
+                                           placeholder="{{trans('messages.enter_mobile')}}5xx xxx xxx">
+                                    <h6 class="group-title">  {{trans('messages.mobile_terms')}}</h6>
+                                    @error('mobile')<span style="color: #e81414;">{{ $message }}</span>@enderror
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                     <br>
                 </div>
                 <div class="modal-footer">
