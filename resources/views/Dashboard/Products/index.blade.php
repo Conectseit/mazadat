@@ -47,7 +47,7 @@
                             {{ isNullable($product->city->$name) }}
                         </td>
                         <td>
-                            {{ isNullable($product->category->$name) }}
+{{--                            {{ isNullable($product->category->$name) }}--}}
                         </td>
 
                         <td>
@@ -68,10 +68,10 @@
                                             <a href="{{ route('products.show', $product->id) }}"> <i
                                                     class="icon-eye"></i>@lang('messages.show') </a>
                                         </li>
-                                        <li>
-                                            <a href="{{ route('products.edit',$product->id) }}"> <i
-                                                    class="icon-database-edit2"></i>@lang('messages.edit') </a>
-                                        </li>
+                                        {{--<li>--}}
+                                            {{--<a href="{{ route('products.edit',$product->id) }}"> <i--}}
+                                                    {{--class="icon-database-edit2"></i>@lang('messages.edit') </a>--}}
+                                        {{--</li>--}}
                                         <li>
                                             <a data-id="{{ $product->id }}" class="delete-action"
                                                href="{{ Url('/product/product/'.$product->id) }}">

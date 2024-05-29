@@ -98,11 +98,11 @@
 <div class="form-group mb-4 row">
     <div class="col-lg-2 col-md-3 d-flex align-items-center">
         <label for="space"
-               class="form-label">{{trans('messages.product.space')}}
+               class="form-label">{{trans('messages.auction.space')}}
         </label>
     </div>
     <div class="col-lg-10 col-md-9">
-        <input type="text" id="space" name="space"
+        <input type="number" id="space" name="space"
                class="form-control   @error('space') is-invalid @enderror"
                value="{{ old('space') }}"
                placeholder="{{trans('messages.product.enter_space')}}">

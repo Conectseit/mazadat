@@ -84,6 +84,10 @@ class Auction extends Model
     {
         return $this->belongsTo('App\Models\Category', 'category_id')->withDefault(['name_ar' => '== ']);
     }
+    public function city()
+    {
+        return $this->belongsTo('App\Models\City', 'city_id')->withDefault(['name_ar' => '== ']);
+    }
 
     public function auctiondata()
     {

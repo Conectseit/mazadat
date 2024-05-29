@@ -45,26 +45,37 @@
                     <div class="panel-body">
                         <div class="box-body">
 
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label display-block">
-                                    {{ trans('messages.category.choose_category') }}
-                                </label>
-                                <div class="col-lg-6">
-                                    <select name="category_id" id="category" class="select">
-                                        <optgroup label="{{ trans('messages.category.choose_category') }}">
-                                            <option selected disabled>{{trans('messages.select')}}</option>
-                                            @foreach($categories as $category)
-                                                <option value="{{ $category->id }}" data-status="{{ $category->status }}">
+                            {{--<div class="form-group">--}}
+                                {{--<label class="col-lg-3 control-label display-block">--}}
+                                    {{--{{ trans('messages.category.choose_category') }}--}}
+                                {{--</label>--}}
+                                {{--<div class="col-lg-6">--}}
+                                    {{--<select name="category_id" id="category" class="select">--}}
+                                        {{--<optgroup label="{{ trans('messages.category.choose_category') }}">--}}
+                                            {{--<option selected disabled>{{trans('messages.select')}}</option>--}}
+                                            {{--@foreach($categories as $category)--}}
+                                                {{--<option value="{{ $category->id }}" data-status="{{ $category->status}}">--}}
 {{--                                                <option value="{{ $category->id }}" data-status="{{ $category->parent->status }}">--}}
-                                                    {{ $category->$name }} </option>
-                                            @endforeach
-                                        </optgroup>
-                                    </select>
-                                </div>
-                                @error('category_id')<span style="color: #e81414;">{{ $message }}</span>@enderror
-                            </div>
-                            <div class="row" id="real_estate" style="display: none;">
+                                                    {{--{{ $category->$name }} </option>--}}
+                                            {{--@endforeach--}}
+                                        {{--</optgroup>--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                                {{--@error('category_id')<span style="color: #e81414;">{{ $message }}</span>@enderror--}}
+                            {{--</div>--}}
+                            {{--<div class="row" id="real_estate" style="display: none;">--}}
+                            <div class="row" id="real_estate">
                                 @include('Dashboard.Products.parts.real_estate_page')
+                                <div class="form-group">
+                                    <label>@lang('messages.image')</label>
+                                    <input type="file" class="form-control image " name="image">
+                                    @error('image')<span style="color: #e81414;">{{ $message }}</span>@enderror
+
+                                </div>
+                                <div class="form-group">
+                                    <img src=" {{ asset('uploads/default.png') }} " width=" 100px "
+                                         class="thumbnail image-preview">
+                                </div>
                             </div>
 
 
@@ -116,17 +127,17 @@
 
 @stop
 @section('scripts')
-    <script>
-        $('select#category').on('change', function () {
-            let selectedOption = $(this).find('option:selected');
-            let categoryStatus = selectedOption.data('status');
-            if (categoryStatus === 'real_estate') {
-                document.getElementById("real_estate").style.display = "block";
-            } else {
-                document.getElementById("real_estate").style.display = "none";
-            }
-        });
-    </script>
+    {{--<script>--}}
+        {{--$('select#category').on('change', function () {--}}
+            {{--let selectedOption = $(this).find('option:selected');--}}
+            {{--let categoryStatus = selectedOption.data('status');--}}
+            {{--if (categoryStatus === 'real_estate') {--}}
+                {{--document.getElementById("real_estate").style.display = "block";--}}
+            {{--} else {--}}
+                {{--document.getElementById("real_estate").style.display = "none";--}}
+            {{--}--}}
+        {{--});--}}
+    {{--</script>--}}
 @stop
 
 

@@ -152,6 +152,7 @@ return [
     'file_name' => ' file name',
     'file_desc' => ' file description',
     'select_file' => '  select file  pdf',
+    'property'=>'Property',
 
 
 
@@ -793,6 +794,7 @@ return [
         'bids' => 'My Bids',
         'watched_auctions' => 'My Watched Auctions',
         'my_auctions' => 'My Auctions',
+        'my_person_auctions' => 'My Person Auctions',
         'wallet' => 'My Wallet',
         'my_wallet' => 'My Wallet',
         'addresses' => 'My Addresses',

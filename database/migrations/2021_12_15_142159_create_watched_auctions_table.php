@@ -19,6 +19,8 @@ class CreateWatchedAuctionsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('auction_id')->unsigned()->nullable();
             $table->foreign('auction_id')->references('id')->on('auctions')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('person_auction_id')->unsigned()->nullable();
+            $table->foreign('person_auction_id')->references('id')->on('in_person_auctions')->onDelete('cascade')->onUpdate('cascade');
 //            $table->enum('accept_auction_terms', ['yes','no'])->default('no');
             $table->timestamps();
             $table->softDeletes();

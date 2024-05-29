@@ -31,7 +31,7 @@ class AddAuctionController extends Controller
             return back()->with('error', trans('messages.please_wait_your_account_not_verified_to_participate_yet'));
         }
 
-        $data['categories'] = Category::where(['parent_id' => !null , 'menu' => 1 , 'status' => 'mazadat'])->get();
+        $data['categories'] = Category::where(['parent_id' => null , 'menu' => 1 ])->get();
         $data['cities'] = City::all();
         $data['options'] = Option::all();
         $data['inspection_file_names'] = FileName::all();

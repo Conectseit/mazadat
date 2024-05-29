@@ -17,7 +17,7 @@
             <p class="mb-8 text-center text-gray-500 md:text-lg">
                 @yield('message')
             </p>
-            <a href="{{route('front.index')}}" class="px-6 py-2 text-sm font-semibold text-blue-800 bg-blue-100">Go home</a>
+            <a href="{{route('front.home')}}" class="px-6 py-2 text-sm font-semibold text-blue-800 bg-blue-100">Go home</a>
         </div>
     </div>
 </div>

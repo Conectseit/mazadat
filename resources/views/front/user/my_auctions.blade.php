@@ -6,27 +6,31 @@
     </main>
     @include('front.layouts.parts.alert')
 
-    <section class="watching-page"  dir="{{ direction() }}">
+    <section class="watching-page" dir="{{ direction() }}">
         <div class="container">
             <h4 class="title">
-                <a href="{{ route('front.my_profile') }}" class="mt-2 mx-1 back"> <i class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
+                <a href="{{ route('front.my_profile') }}" class="mt-2 mx-1 back"> <i
+                            class="fal fa-arrow-circle-{{ floating('right','left') }}" style="color: black;"></i> </a>
                 {{ trans('messages.my_profile') }}
             </h4><br>
             <div class="row">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#pending_auctions"
+                        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#pending_auctions"
                                 type="button" role="tab" aria-controls="profile"
                                 aria-selected="false">{{ trans('messages.auction.pending') }}</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="profile-tab" data-bs-toggle="tab" data-bs-target="#accepted_not_appear"
+                        <button class="nav-link " id="profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#accepted_not_appear"
                                 type="button" role="tab" aria-controls="accepted_not_appear"
                                 aria-selected="false">{{ trans('messages.auction.accepted_not_appear') }}</button>
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="home-tab" data-bs-toggle="tab" data-bs-target="#on_progress_auctions"
+                        <button class="nav-link " id="home-tab" data-bs-toggle="tab"
+                                data-bs-target="#on_progress_auctions"
                                 type="button" role="tab" aria-controls="home"
                                 aria-selected="true">{{ trans('messages.auction.on_progress') }}</button>
                     </li>
@@ -37,7 +41,8 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="pending_auctions" role="tabpanel" aria-labelledby="profile-tab"><br>
+                    <div class="tab-pane fade show active" id="pending_auctions" role="tabpanel"
+                         aria-labelledby="profile-tab"><br>
 
                         @if($pending_auctions->count() > 0)
                             @foreach($pending_auctions as $auction)
@@ -86,23 +91,37 @@
                                         </div>
                                         <div class="col-lg-2">
                                             <div class="buttons ">
-                                                <a href="{{route('front.auction_show_update',$auction->id)}}"
-                                                   class="bid">@lang('messages.update')</a>
-                                                <a data-id="{{ $auction->id }}" class="delete-action"
-                                                   href="{{ Url('/auction/auction/'.$auction->id) }}"
-                                                   style="background-color: #1e3c48;">
-                                                    <i class="icon-database-remove"></i>@lang('messages.delete')
-                                                </a>
+                                                @if($q == 'person_auction')
+                                                    <a href="{{route('front.auction_show_update_person',$auction->id)}}"
+                                                       class="bid">@lang('messages.update')</a>
+
+                                                    <a data-id="{{ $auction->id }}" class="delete-person-auction"
+                                                       href="{{ Url('/person_auction/person_auction/'.$auction->id) }}"
+                                                       style="background-color: #1e3c48;">
+                                                        <i class="icon-database-remove"></i>@lang('messages.delete')
+                                                    </a>
+                                                @elseif($q == 'auction')
+                                                    <a href="{{route('front.auction_show_update',$auction->id)}}"
+                                                       class="bid">@lang('messages.update')</a>
+
+                                                    <a data-id="{{ $auction->id }}" class="delete-action"
+                                                       href="{{ Url('/auction/auction/'.$auction->id) }}"
+                                                       style="background-color: #1e3c48;">
+                                                        <i class="icon-database-remove"></i>@lang('messages.delete')
+                                                    </a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         @else
-                            <div style="text-align: center;"><h2> @lang('messages.you_dont_have_auctions_yet') </h2></div>
+                            <div style="text-align: center;"><h2> @lang('messages.you_dont_have_auctions_yet') </h2>
+                            </div>
                         @endif
                     </div>
-                    <div class="tab-pane fade  " id="on_progress_auctions" role="tabpanel" aria-labelledby="home-tab"><br>
+                    <div class="tab-pane fade" id="on_progress_auctions" role="tabpanel" aria-labelledby="home-tab">
+                        <br>
                         @if($on_progress_auctions->count() > 0)
                             @foreach($on_progress_auctions as $auction)
                                 <div class="watching-card">
@@ -151,11 +170,13 @@
                                 </div>
                             @endforeach
                         @else
-                            <div style="text-align: center;"><h2> @lang('messages.you_dont_have_auctions_yet') </h2></div>
+                            <div style="text-align: center;"><h2> @lang('messages.you_dont_have_auctions_yet') </h2>
+                            </div>
                         @endif
 
                     </div>
-                    <div class="tab-pane fade  " id="accepted_not_appear" role="tabpanel" aria-labelledby="accepted_not_appear-tab"><br>
+                    <div class="tab-pane fade" id="accepted_not_appear" role="tabpanel"
+                         aria-labelledby="accepted_not_appear-tab"><br>
                         @if($accepted_not_appear_auctions->count() > 0)
                             @foreach($accepted_not_appear_auctions as $auction)
                                 <div class="watching-card">
@@ -204,7 +225,8 @@
                                 </div>
                             @endforeach
                         @else
-                            <div style="text-align: center;"><h2> @lang('messages.you_dont_have_auctions_yet') </h2></div>
+                            <div style="text-align: center;"><h2> @lang('messages.you_dont_have_auctions_yet') </h2>
+                            </div>
                         @endif
 
                     </div>
@@ -259,7 +281,8 @@
                                 </div>
                             @endforeach
                         @else
-                            <div style="text-align: center;"><h2> @lang('messages.you_dont_have_auctions_yet') </h2></div>
+                            <div style="text-align: center;"><h2> @lang('messages.you_dont_have_auctions_yet') </h2>
+                            </div>
                         @endif
 
                     </div>
@@ -292,6 +315,46 @@
                                 type: 'POST',
                                 {{--                        url: '{{ Url('/ajax-delete-auction') }}',--}}
                                 url: '{{ route('front.ajax-delete-auction') }}',
+                                data: {id, _token},
+                                success: function (response) {
+                                    if (response.deleteStatus) {
+                                        $(`#pending-item-${id}`).fadeOut();
+                                        swal(response.message, {icon: "success"});
+                                    }
+                                },
+                                error: (x) => swal(x, {icon: 'warning'}),
+                                complete: function () {
+                                    if (count === 1) tbody.append(`<tr><td colspan="5"><strong>No data available in table</strong></td></tr>`);
+                                }
+                            });
+                        } else {
+                            swal("تم الغاء الحذف");
+                        }
+                    });
+            });
+
+        </script>
+        <script>
+            // let modelTable = 'in_person_auctions';
+            // let currentModel = 'InPersonAuction';
+
+            $(document).on('click', 'a.delete-person-auction', function (e) {
+                var id = $(this).data('id');
+                let _token = '{{ csrf_token() }}';
+                e.preventDefault();
+
+                swal({
+                    title: "{{ trans('messages.confirm-delete-message-var', ['var' => trans('messages.'.'auction'.'.'.'auction')]) }}",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.ajax({
+                                type: 'POST',
+                                {{--                        url: '{{ Url('/ajax-delete-auction') }}',--}}
+                                url: '{{ route('front.ajax-delete-auction_person') }}',
                                 data: {id, _token},
                                 success: function (response) {
                                     if (response.deleteStatus) {

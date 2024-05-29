@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\front\AddAuction1Controller;
 use App\Http\Controllers\front\AddAuctionController;
+use App\Http\Controllers\front\AddInPersonAuctionController;
 use App\Http\Controllers\front\AuctionController;
 use App\Http\Controllers\front\AuthController;
 use App\Http\Controllers\front\BlogController;
@@ -11,9 +12,11 @@ use App\Http\Controllers\front\FilterController;
 use App\Http\Controllers\front\ForgetPassController;
 use App\Http\Controllers\front\GeneralController;
 use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\InPersonAuctionController;
 use App\Http\Controllers\front\NotificationController;
 use App\Http\Controllers\front\PaymentController;
 use App\Http\Controllers\front\person\PersonController;
+use App\Http\Controllers\front\ProductController;
 use App\Http\Controllers\front\UserController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -43,23 +46,25 @@ Route::group(
         return view('front/splash_index');
     });
 //    Route::group(['prefix' => 'front'], function () {
-    Route::get('/home',                 [HomeController::class, 'home'])->name('front.home');
-    Route::get('/sub_categories/{id}',  [HomeController::class, 'sub_categories'])->name('front.sub_categories');
-    Route::get('unique-auction',        [HomeController::class, 'unique_auction'])->name('front.unique_auction');
-    Route::get('latest-auctions',       [HomeController::class, 'latest_auctions'])->name('front.latest_auctions');
+    Route::get('/home', [HomeController::class, 'home'])->name('front.home');
+    Route::get('/sub_categories/{id}', [HomeController::class, 'sub_categories'])->name('front.sub_categories');
+    Route::get('unique-auction', [HomeController::class, 'unique_auction'])->name('front.unique_auction');
+    Route::get('latest-auctions', [HomeController::class, 'latest_auctions'])->name('front.latest_auctions');
 
-    Route::get('all-companies',         [HomeController::class, 'all_companies'])->name('front.all_companies');
+    Route::get('all-companies', [HomeController::class, 'all_companies'])->name('front.all_companies');
     Route::get('company/{id}/auctions', [HomeController::class, 'companyAuctions'])->name('front.company_auctions');
 
-    Route::get('show-blogs',            [BlogController::class, 'show_blogs'])->name('front.show_blogs');
-    Route::get('blogs',                 [BlogController::class, 'blogs'])->name('front.blogs');
-    Route::get('blog-details/{id}',     [BlogController::class, 'blog_details'])->name('front.blog_details');
-    Route::get('pages',                 [BlogController::class, 'pages'])->name('front.pages');
-    Route::get('page-details/{id}',     [BlogController::class, 'page_details'])->name('front.page_details');
+    Route::get('show-blogs', [BlogController::class, 'show_blogs'])->name('front.show_blogs');
+    Route::get('blogs', [BlogController::class, 'blogs'])->name('front.blogs');
+    Route::get('blog-details/{id}', [BlogController::class, 'blog_details'])->name('front.blog_details');
+    Route::get('pages', [BlogController::class, 'pages'])->name('front.pages');
+    Route::get('page-details/{id}', [BlogController::class, 'page_details'])->name('front.page_details');
 
 
     // ============ // category ================
     Route::get('category/{category}/auctions', [CategoryController::class, 'categoryAuctions'])->name('front.category_auctions');
+    Route::get('category/{category}/person_auctions',
+        [CategoryController::class, 'categoryPersonAuctions'])->name('front.category_person_auctions');
 //    Route::post('search/{id}', [CategoryController::class, 'search'])->name('front.search');
     Route::post('main-filter-category/{id}/auctions', [FilterController::class, 'mainFilter'])->name('front.main_filter');
     Route::post('filter-category/{id}/auctions', [FilterController::class, 'filterCategory'])->name('front.filter_category');
@@ -109,6 +114,10 @@ Route::group(
     Route::get('description', [GeneralController::class, 'description'])->name('front.description');
     Route::get('privacy', [GeneralController::class, 'privacy'])->name('front.privacy');
 
+    // ============ // products ================
+    Route::get('rent_products', [ProductController::class, 'rent_products'])->name('front.rent_products');
+    Route::get('sale_products', [ProductController::class, 'sale_products'])->name('front.sale_products');
+
 
     Route::group(['middleware' => 'checkUserAuth'], function () {
         Route::any('/logout', [AuthController::class, 'logout'])->name('front.logout');
@@ -136,11 +145,56 @@ Route::group(
         Route::any('auction-show-update/{auction}', [AddAuctionController::class, 'show_auction_update'])->name('front.auction_show_update');
         Route::any('auction-update/{auction}', [AddAuctionController::class, 'updateAuction'])->name('front.auction_update');
 
+
         Route::get('my_auctions', [AuctionController::class, 'my_auctions'])->name('front.my_auctions');
         Route::post('ajax/get-options-by-category-id', [AuctionController::class, 'get_options_by_category_id'])->name('front.ajax_get_options_by_category_id');
         Route::post('/ajax-delete-auction', [AddAuctionController::class, 'destroy'])->name('front.ajax-delete-auction');
         Route::post('/ajax-delete-auction-file', [AddAuctionController::class, 'destroy_file'])->name('front.ajax-delete-auction-file');
         Route::post('/addFile', [AddAuctionController::class, 'addFile'])->name('front.addFile');
+
+        // ============ // person watched ================
+        Route::get('my-watched-person',
+            [InPersonAuctionController::class, 'my_watched'])->name('front.my_watched_person');
+        Route::get('watch-auction/{auction}',
+            [InPersonAuctionController::class, 'watch_auction'])->name('front.watch_auction_person');
+        Route::any('delete-watch-auction/{auction}',
+            [InPersonAuctionController::class, 'delete_watch_auction'])->name('front.delete_watch_auction_person');
+
+        Route::get('accept-auction-terms/{auction}',
+            [InPersonAuctionController::class, 'accept_auction_terms'])->name('front.accept_auction_terms_person');
+
+        // ============ // Person auctions ================
+        Route::get('show-add-person-auction',
+            [AddInPersonAuctionController::class, 'show_add_auction'])->name('front.show_add_auction_person');
+        Route::post('add-auction-person',
+            [AddInPersonAuctionController::class, 'add_auction'])->name('front.add_auction_person');
+
+        Route::get('person-auction-details/{id}',
+            [InPersonAuctionController::class, 'auction_details'])->name('front.auction_details_person');
+
+        Route::any('person-auction-show-update/{auction}',
+            [AddInPersonAuctionController::class, 'show_auction_update'])->name('front.auction_show_update_person');
+        Route::any('person-auction-update/{auction}',
+            [AddInPersonAuctionController::class, 'updateAuction'])->name('front.auction_update_person');
+
+        Route::get('my_person_auctions',
+            [InPersonAuctionController::class, 'my_auctions'])->name('front.my_auctions_person');
+
+        Route::post('ajax/get-options-by-category-id-to-person',
+            [AddInPersonAuctionController::class, 'get_options_by_category_id'])->name('front.ajax_get_options_by_category_id_person');
+
+        Route::post('/ajax-delete-person-auction',
+            [AddInPersonAuctionController::class, 'destroy'])->name('front.ajax-delete-auction_person');
+
+        Route::post('/ajax-delete-person-auction-file',
+            [AddInPersonAuctionController::class, 'destroy_file'])->name('front.ajax-delete-auction-file-person');
+
+        Route::post('/addFile-to-person',
+            [AddAuctionController::class, 'addFile'])->name('front.addFile_person');
+
+//        // ============ // products ================
+//        Route::get('rent_products', [ProductController::class, 'rent_products'])->name('front.rent_products');
+//        Route::get('sale_products', [ProductController::class, 'sale_products'])->name('front.sale_products');
 
 
         // ============ // profile ================

@@ -32,7 +32,7 @@ class ProductRequest extends FormRequest
             case 'POST':
                 {
                     return [
-                        'category_id' => 'required',
+//                        'category_id' => 'required',
                         'city_id' => 'required',
                         'district_ar' => 'required',
                         'district_en' => 'required',
@@ -50,6 +50,7 @@ class ProductRequest extends FormRequest
                         'services_related_ar' => 'required',
                         'services_related_en' => 'required',
                         'purpose_of_the_advertisement' => 'required',
+                        'image' => 'required',
                     ];
                 }
             case 'PUT':

@@ -206,31 +206,31 @@ class AuthController extends Controller
 
 
 
-//    public function handleNafathCallback(Request $request)
-//    {
-//        $token = $request->input('token');
-//        $transId = $request->input('transId');
-//        $requestId = $request->input('requestId');
-//
-//        try {
-//            $decodedToken = JWTAuth::setToken($token)->getPayload();
-//
-//            $userNationalId = $decodedToken->get('national_id');
-//
-//            $user = User::where('national_id', $userNationalId)->first();
-//
-//            if ($user) {
-//                Auth::login($user);
-//                return redirect()->route('dashboard')->with('success', 'Logged in successfully');
-//            } else {
-//
-//                return redirect()->route('register')->with('error', 'User not found. Please register.');
-//            }
-//        } catch (JWTException $e) {
-//
-//            return redirect()->route('login')->with('error', 'Failed to verify token. Please try again.');
-//        }
-//    }
+    public function handleNafathCallback(Request $request)
+    {
+        $token = $request->input('token');
+        $transId = $request->input('transId');
+        $requestId = $request->input('requestId');
+
+        try {
+            $decodedToken = JWTAuth::setToken($token)->getPayload();
+
+            $userNationalId = $decodedToken->get('national_id');
+
+            $user = User::where('national_id', $userNationalId)->first();
+
+            if ($user) {
+                Auth::login($user);
+                return redirect()->route('dashboard')->with('success', 'Logged in successfully');
+            } else {
+
+                return redirect()->route('register')->with('error', 'User not found. Please register.');
+            }
+        } catch (JWTException $e) {
+
+            return redirect()->route('login')->with('error', 'Failed to verify token. Please try again.');
+        }
+    }
 
 
 

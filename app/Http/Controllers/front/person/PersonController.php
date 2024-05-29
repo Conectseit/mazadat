@@ -70,7 +70,7 @@ class PersonController extends Controller
 //            SmsController::send_sms(removePhoneZero($request->mobile,'966'), trans('messages.activation_code_is', ['code' => $code]));
             return redirect()->route('front.show_activation', $request_data['mobile']);
         } catch (\Exception $e) {
-            return back();
+            return back()->with('message' , $e->getMessage());
         }
     }
 }

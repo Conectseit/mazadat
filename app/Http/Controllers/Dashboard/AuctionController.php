@@ -40,7 +40,7 @@ class AuctionController extends Controller
     public function create()
     {
         $data['latest_auctions'] = Auction::orderBy('id', 'desc')->take(5)->get();
-        $data['categories'] = Category::where(['parent_id' => !null , 'menu' => 1])->with('options')->get();
+        $data['categories'] = Category::where(['parent_id' => null , 'menu' => 1])->with('options')->get();
         $data['options'] = Option::all();
         $data['option_details'] = OptionDetail::all();
         $data['cities'] = City::all();

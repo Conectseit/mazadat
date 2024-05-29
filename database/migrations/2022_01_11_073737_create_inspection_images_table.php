@@ -19,6 +19,8 @@ class CreateInspectionImagesTable extends Migration
             $table->string('description')->nullable();
             $table->bigInteger('auction_id')->unsigned()->nullable();
             $table->foreign('auction_id')->references('id')->on('auctions')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('person_auction_id')->unsigned()->nullable();
+            $table->foreign('person_auction_id')->references('id')->on('in_person_auctions')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
