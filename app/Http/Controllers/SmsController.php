@@ -38,7 +38,8 @@ class SmsController extends Controller
     {
         if ($response)
         {
-            return "Message send successfully";
+            return $response;
+//            return "Message send successfully";
         }
         return "Unknown Errorrr !.";
     }
