@@ -31,7 +31,7 @@ class ForgetPassController extends Controller
         $code = create_rand_numbers();
         $user->update(['reset_password_code' => $code]);
 
-        SmsController::sendSms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
+        SmsController::sendSms(($request_data['mobile']), trans('messages.activation_code_is', ['code' => $code]));
 
 //        MalthSmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
         return redirect()->route('front.reset-code-page', $request->mobile);
