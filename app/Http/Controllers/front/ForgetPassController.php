@@ -22,7 +22,9 @@ class ForgetPassController extends Controller
     {
         $country = Country::find($request->country_id);
         $request_data['mobile'] = $country->phone_code . $request->mobile;
+        
         $user = User::where('mobile', $request_data['mobile'])->first();
+
 
         if (!$user) {
             return back()->with('error', trans('messages.messages.invalid_mobile'));
@@ -30,8 +32,8 @@ class ForgetPassController extends Controller
 
         $code = create_rand_numbers();
         $user->update(['reset_password_code' => $code]);
-
-        SmsController::sendSms(($request_data['mobile']), trans('messages.activation_code_is', ['code' => $code]));
+        $mobile = preg_replace('/^\+/', '',  $user->mobile);
+        SmsController::sendSms(($mobile), trans('messages.activation_code_is', ['code' => $code]));
 
 //        MalthSmsController::send_sms(($request->mobile), trans('messages.activation_code_is', ['code' => $code]));
         return redirect()->route('front.reset-code-page', $request->mobile);
