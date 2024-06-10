@@ -10,8 +10,8 @@ class SmsController extends Controller
 {
     public static function sendSms($recipient, $body)
     {
-//        $requestData = self::unifonic_parmeters('gcGmMrYf4gfgJNyoV4MBxwfIx6SjNp','MZADAT', $recipient, $body);
-        $requestData = self::unifonic_parmeters('hiiNptN0BgWapNhNVhtqx0P8N1XZD1','MZADAT', $recipient, $body);
+        $requestData = self::unifonic_parmeters('gcGmMrYf4gfgJNyoV4MBxwfIx6SjNp','MZADAT', $recipient, $body);
+//        $requestData = self::unifonic_parmeters('hiiNptN0BgWapNhNVhtqx0P8N1XZD1','MZADAT', $recipient, $body);
 
         $response = Http::post('https://el.cloud.unifonic.com/rest/SMS/messages', $requestData);
 
