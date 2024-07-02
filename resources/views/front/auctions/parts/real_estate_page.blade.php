@@ -103,7 +103,7 @@
         </label>
     </div>
     <div class="col-lg-10 col-md-9">
-        <input type="text" id="space" name="space"
+        <input type="number" id="space" name="space"
                class="form-control   @error('space') is-invalid @enderror"
                value="{{ old('space') }}"
                placeholder="{{trans('messages.auction.enter_space')}}">
